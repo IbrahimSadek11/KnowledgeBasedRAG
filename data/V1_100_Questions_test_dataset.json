@@ -1,0 +1,762 @@
+{
+  "test_questions": [
+    {
+      "question_id": "Q1",
+      "question": "Quels sont les noms des chevaux dans le système ?",
+      "ground_truth": "Les chevaux dans le système sont : Dakota, Naya, Orion, Luna, Thunder, Bella, Apollon, Pixie, Zephyr, Comet, Nova, Storm, Iris, Atlas, Mistral, Falcon, Rio, Sable, Dune, Eclat, Sirius, Vega, Brume, Eclair, Ombre, Arrow, Soleil, Tempete, Ecume, Nuage, Luminos, Etoile, Grondre, Rafale, Tonnerre, Cascade, Riviere, Aurore, Crepuscule, Glacier, Volcan, Braise, Zephire, Auroch, Galop, Horizon, Lumiere, Mirage, Nebule et Orage.",
+      "category": "simple_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q2",
+      "question": "Quelle est la race de Dakota ?",
+      "ground_truth": "Dakota est un cheval de race Selle Français.",
+      "category": "simple_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q3",
+      "question": "Quelle est la race de Naya ?",
+      "ground_truth": "Naya est un cheval de race Anglo-Arabe.",
+      "category": "simple_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q4",
+      "question": "Dans quels événements sportifs Dakota participe-t-il ?",
+      "ground_truth": "Dakota participe à plusieurs événements sportifs : Event_SJ_01 (saut d'obstacles à Saumur), Event_SJ_2026_01 (saut d'obstacles à Paris), Event_Dressage_01 (dressage à Angers), Event_Dressage_2026_01 (dressage à Lyon) et Event_Cross_2026_01 (cross à Bordeaux).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q5",
+      "question": "Quelles étapes d'entraînement Dakota suit-il ?",
+      "ground_truth": "Dakota suit six étapes d'entraînement : Training_Prepa_SJ_01 (préparation), Training_PreComp_SJ_01 (pré-compétition), Training_Preparation_SJ_01 (préparation), Training_PreCompetition_SJ_01 (pré-compétition), Training_Competition_SJ_01 (compétition) et Training_Transition_SJ_01 (transition).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q6",
+      "question": "Quelle est la fréquence d'entraînement pendant la phase de préparation ?",
+      "ground_truth": "Pendant la phase de préparation, la fréquence d'entraînement varie selon les chevaux. S'entraînent 5 fois par semaine : Orion, Luna, Pixie, Comet, Storm, Rio, Dune, Vega, Soleil, Ecume, Grondre, Riviere, Volcan, Auroch et Zephire. Tous les autres chevaux s'entraînent 4 fois par semaine.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q7",
+      "question": "Quelle est l'intensité d'entraînement durant la phase pré-compétition ?",
+      "ground_truth": "Durant la phase pré-compétition, l'intensité d'entraînement est élevée pour tous les chevaux (High ou Élevée selon le cheval).",
+      "category": "attribute_retrieval",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q8",
+      "question": "Quelle est la durée des séances pendant la phase de préparation ?",
+      "ground_truth": "Pendant la phase de préparation, les durées de séances varient : 40 minutes pour Pixie (la plus courte), 45 minutes pour la majorité des chevaux (Dakota, Naya, Thunder, Bella, Zephyr, Nova, Iris, Mistral, Falcon, Sable, Sirius, Brume, Eclair, Ombre, Arrow, Tempete, Nuage, Etoile, Rafale, Tonnerre, Cascade, Aurore, Crepuscule, Glacier, Braise, Zephire, Galop, Horizon, Lumiere, Mirage, Orage), 50 minutes pour Orion, Apollon, Atlas, Storm, Rio, Dune, Eclat, Luminos, Grondre, Riviere et Ecume, et 55 minutes pour Comet (la plus longue).",
+      "category": "attribute_retrieval",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q9",
+      "question": "Quelle est la durée des séances pendant la phase pré-compétition ?",
+      "ground_truth": "Pendant la phase pré-compétition, les durées de séances varient : 55 minutes pour Pixie, 60 minutes pour la majorité des chevaux (Dakota, Naya, Thunder, Bella, Zephyr, Nova, Iris, Mistral, Falcon, Sable, Sirius, Brume, Eclair, Ombre, Arrow, Tempete, Nuage, Etoile, Rafale, Cascade, Aurore, Crepuscule, Glacier, Braise, Zephire, Galop, Horizon, Lumiere, Mirage, Orage), 65 minutes pour Orion, Apollon, Atlas, Storm, Rio, Dune, Eclat, Ecume, Grondre, Tonnerre, Auroch et Nebule, 70 minutes pour Luna, Vega et Soleil et Riviere, et 75 minutes pour Comet (la plus longue du système).",
+      "category": "attribute_retrieval",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q10",
+      "question": "De quel événement dépendent les étapes d'entraînement de Dakota ?",
+      "ground_truth": "Les étapes d'entraînement de Dakota dépendent de deux événements : Event_SJ_01 (saut d'obstacles à Saumur le 12 avril 2026) et Event_SJ_2026_01 (saut d'obstacles à Paris le 14 juin 2026).",
+      "category": "multi_hop",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q11",
+      "question": "Combien de capteurs IMU sont attachés à Dakota ?",
+      "ground_truth": "4 capteurs IMU sont attachés à Dakota.",
+      "category": "aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q12",
+      "question": "Quels sont les identifiants des capteurs IMU ?",
+      "ground_truth": "Le système contient 108 capteurs IMU au total répartis sur les 50 chevaux : 50 capteurs au garrot (Withers, un par cheval), 20 capteurs au canon antérieur (CanonOfForelimb), 12 capteurs au canon postérieur (CanonOfHindlimb) et 26 capteurs au sternum (Sternum). Par exemple pour Dakota : IMU-W-001 (garrot), IMU-CF-002 (canon antérieur), IMU-CH-003 (canon postérieur) et IMU-ST-004 (sternum).",
+      "category": "aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q13",
+      "question": "À quelles positions anatomiques les capteurs IMU sont-ils placés sur Dakota ?",
+      "ground_truth": "Les capteurs IMU sont placés sur Dakota à 4 positions : garrot (Withers), canon antérieur (CanonOfForelimb), canon postérieur (CanonOfHindlimb) et sternum (Sternum).",
+      "category": "aggregation",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q14",
+      "question": "Quel est l'identifiant du capteur IMU placé au garrot ?",
+      "ground_truth": "Il y a cinquante capteurs IMU placés au garrot dans le système, un par cheval, par exemple IMU_Withers_01 pour Dakota, IMU_Withers_Comet_01 pour Comet et IMU_Withers_Apollon_01 pour Apollon.",
+      "category": "multi_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q15",
+      "question": "Quelle est la fréquence d'échantillonnage du capteur IMU au sternum ?",
+      "ground_truth": "La fréquence d'échantillonnage des capteurs IMU au sternum est de 200 Hz pour tous les chevaux qui en possèdent un, sur les 26 capteurs sternum présents dans le système.",
+      "category": "multi_hop",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q16",
+      "question": "Quel capteur a la fréquence d'échantillonnage la plus élevée ?",
+      "ground_truth": "Trois capteurs partagent la fréquence d'échantillonnage la plus élevée à 300 Hz : IMU_CanonFore_Luna_01 (canon antérieur de Luna), IMU_Withers_Comet_01 (garrot de Comet) et IMU_CanonFore_Comet_01 (canon antérieur de Comet).",
+      "category": "comparison",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q17",
+      "question": "Quels cavaliers sont associés à Dakota ?",
+      "ground_truth": "Deux cavaliers sont associés à Dakota : Emma et Manon.",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q18",
+      "question": "Quel cavalier est associé à Naya ?",
+      "ground_truth": "Le cavalier Leo est associé à Naya.",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q19",
+      "question": "Combien de cavaliers différents sont dans le système ?",
+      "ground_truth": "Il y a 25 cavaliers différents dans le système : Emma, Manon, Leo, Lucas, Clara, Antoine, Julien, Sarah, Nina, Hugo, Camille, Tom, Lea, Marc, Chloe, Baptiste, Jade, Alice, Maxime, Elise, Remi, Ines, Victor, Pauline et Theo.",
+      "category": "aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q20",
+      "question": "Qui est le vétérinaire impliqué dans les soins des chevaux ?",
+      "ground_truth": "Le Dr Martin est le vétérinaire impliqué dans les soins des chevaux.",
+      "category": "simple_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q21",
+      "question": "Qui est le soigneur responsable des chevaux ?",
+      "ground_truth": "Sophie est la soigneuse responsable des chevaux.",
+      "category": "simple_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q22",
+      "question": "Quels acteurs humains sont impliqués dans la phase de préparation de l'entraînement ?",
+      "ground_truth": "Les acteurs impliqués dans la phase de préparation incluent Sophie (soigneuse), Dr Martin (vétérinaire), et les 25 cavaliers du système : Emma, Manon, Leo, Lucas, Clara, Antoine, Julien, Sarah, Nina, Hugo, Camille, Tom, Lea, Marc, Chloe, Baptiste, Jade, Alice, Maxime, Elise, Remi, Ines, Victor, Pauline et Theo.",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q23",
+      "question": "Qui participe à la phase pré-compétition de l'entraînement ?",
+      "ground_truth": "Les participants à la phase pré-compétition incluent Sophie (soigneuse), Dr Martin (vétérinaire), et les 25 cavaliers du système. Manon remplace Emma pour la pré-compétition de Dakota.",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q24",
+      "question": "Quelle est la période de la saison 2026 ?",
+      "ground_truth": "La saison 2026 s'étend du 1er mars 2026 au 31 octobre 2026.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q25",
+      "question": "Quels événements font partie de la saison 2026 ?",
+      "ground_truth": "Vingt événements font partie de la saison 2026 : Event_SJ_01 (saut d'obstacles, Saumur, 12 avril), Event_Dressage_01 (dressage, Angers, 3 mai), Event_Rennes_SJ_2026 (saut d'obstacles, Rennes, 17 mai, Pro Elite), Event_SJ_2026_01 (saut d'obstacles, Paris, 14 juin), Event_Dijon_Cross_2026 (cross, Dijon, 6 juin), Event_Strasbourg_Cross_2026 (cross, Strasbourg, 12 juillet), Event_Fontainebleau_SJ_2026 (saut d'obstacles, Fontainebleau, 5 juillet), Event_Dressage_2026_01 (dressage, Lyon, 20 juillet), Event_Cross_2026_01 (cross, Bordeaux, 10 août), Event_Montpellier_Dr_2026 (dressage, Montpellier, 15 août, Club Elite), Event_Lyon_Dressage_2026 (dressage, Lyon, 23 août), Event_LeMans_Cross_2026 (cross, Le Mans, 5 septembre), Event_Versailles_SJ_2026 (saut d'obstacles, Versailles, 6 septembre, Pro Elite), Event_Toulouse_Cross_2026 (cross, Toulouse, 13 septembre), Event_Bordeaux_Cross_2026 (cross, Bordeaux, 20 septembre), Event_Nice_Dressage_2026 (dressage, Nice, 28 septembre, Pro Elite), Event_Clermont_Cross_2026 (cross, Clermont-Ferrand, 10 octobre), Event_Marseille_Dressage_2026 (dressage, Marseille, 3 octobre), Event_Pau_SJ_2026 (saut d'obstacles, Pau, 18 octobre) et Event_Nantes_SJ_2026 (saut d'obstacles, Nantes, 25 avril, Amateur 2).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q26",
+      "question": "Quelle est la date de l'événement Event_SJ_01 ?",
+      "ground_truth": "L'événement Event_SJ_01 aura lieu le 12 avril 2026.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q27",
+      "question": "Où se déroule l'événement de saut d'obstacles Event_SJ_01 ?",
+      "ground_truth": "L'événement Event_SJ_01 se déroule à Saumur.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q28",
+      "question": "Où se déroule l'événement de dressage Event_Dressage_01 ?",
+      "ground_truth": "L'événement Event_Dressage_01 se déroule à Angers.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q29",
+      "question": "Quelle est la catégorie de l'événement Event_SJ_01 ?",
+      "ground_truth": "L'événement Event_SJ_01 est de catégorie Amateur 1.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q30",
+      "question": "Quelle est la catégorie de l'événement Event_Dressage_01 ?",
+      "ground_truth": "L'événement Event_Dressage_01 est de catégorie Club Elite.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q31",
+      "question": "Quel classement Dakota et Emma ont-ils obtenu à Event_SJ_01 ?",
+      "ground_truth": "Dakota et Emma ont obtenu la 2ème place à Event_SJ_01.",
+      "category": "multi_hop",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q32",
+      "question": "Compare les fréquences d'entraînement entre la phase de préparation et la phase pré-compétition.",
+      "ground_truth": "En phase de préparation, la fréquence est de 5 séances par semaine pour : Orion, Luna, Pixie, Comet, Storm, Rio, Dune, Vega, Soleil, Ecume, Grondre, Riviere, Volcan, Auroch et Zephire. Tous les autres chevaux s'entraînent 4 fois par semaine. En phase pré-compétition, la fréquence baisse à 3 séances par semaine pour la majorité, sauf Luna (4), Pixie (4), Comet (4), Vega (4), Soleil (4) et Riviere (4) qui maintiennent 4 séances.",
+      "category": "comparison",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q33",
+      "question": "Quelles sont les différences entre les phases de préparation et de pré-compétition en termes de fréquence, intensité et durée ?",
+      "ground_truth": "La phase de préparation a 4 à 5 séances par semaine avec une intensité modérée (sauf Comet dont l'intensité est élevée dès la préparation) et des durées de 40 à 55 minutes. La phase pré-compétition a 3 à 4 séances par semaine avec une intensité élevée pour tous les chevaux et des durées de 55 à 75 minutes. Comet reste le cheval avec les séances les plus longues (55 min préparation, 75 min pré-compétition).",
+      "category": "comparison",
+      "difficulty": "very_hard"
+    },
+    {
+      "question_id": "Q34",
+      "question": "Compare les acteurs impliqués dans les phases de préparation et de pré-compétition.",
+      "ground_truth": "La phase de préparation implique les 25 cavaliers (dont Emma pour Dakota), Sophie (soigneuse) et Dr Martin (vétérinaire). La phase pré-compétition implique les mêmes acteurs sauf que Manon remplace Emma pour Dakota.",
+      "category": "comparison",
+      "difficulty": "very_hard"
+    },
+    {
+      "question_id": "Q35",
+      "question": "Donne une analyse complète de l'événement Event_SJ_01.",
+      "ground_truth": "L'événement Event_SJ_01 est une compétition de saut d'obstacles qui a eu lieu le 12 avril 2026 à Saumur en catégorie Amateur 1, dans le cadre de la Saison 2026. Dakota, monté par Emma, y a obtenu la 2ème place. La préparation pour cet événement comprenait une phase de préparation (Training_Prepa_SJ_01 : 4 séances/semaine, intensité modérée, 45 min) avec Emma, Dr Martin et Sophie, et une phase pré-compétition (Training_PreComp_SJ_01 : 3 séances/semaine, intensité élevée, 60 min) avec Manon et Sophie.",
+      "category": "multi_hop_complex",
+      "difficulty": "extreme"
+    },
+    {
+      "question_id": "Q36",
+      "question": "Combien d'événements sportifs sont enregistrés dans le système ?",
+      "ground_truth": "Il y a 20 événements sportifs enregistrés dans le système.",
+      "category": "aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q37",
+      "question": "Quels types d'événements sportifs sont disponibles dans l'ontologie ?",
+      "ground_truth": "Les types d'événements sportifs disponibles dans l'ontologie sont : le saut d'obstacles (ShowJumping), le dressage (Dressage) et le cross (Cross).",
+      "category": "hierarchical",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q38",
+      "question": "Pour quel objectif expérimental le capteur IMU_Withers_01 est-il utilisé ?",
+      "ground_truth": "Le capteur IMU_Withers_01 est utilisé pour la classification de la démarche (GaitClassif_01).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q39",
+      "question": "Pour quel objectif expérimental le capteur IMU_CanonFore_01 est-il utilisé ?",
+      "ground_truth": "Le capteur IMU_CanonFore_01 est utilisé pour la détection de fatigue (FatigueDetection).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q40",
+      "question": "Quel est l'âge de Dakota ?",
+      "ground_truth": "L'information sur l'âge de Dakota n'est pas disponible dans le système.",
+      "category": "unanswerable",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q41",
+      "question": "Quelle est la race de Mirage ?",
+      "ground_truth": "Mirage est un cheval de race Holsteiner.",
+      "category": "simple_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q42",
+      "question": "Quelle est la race de Vega ?",
+      "ground_truth": "Vega est un cheval de race Appaloosa.",
+      "category": "simple_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q43",
+      "question": "Quelle est la race de Storm ?",
+      "ground_truth": "Storm est un cheval de race Selle Belge.",
+      "category": "simple_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q44",
+      "question": "Quelle est la race d'Atlas ?",
+      "ground_truth": "Atlas est un cheval de race Holsteiner.",
+      "category": "simple_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q45",
+      "question": "Quelle est la race de Comet ?",
+      "ground_truth": "Comet est un cheval de race Selle Français.",
+      "category": "simple_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q46",
+      "question": "Qui est le vétérinaire et quel est son rôle ?",
+      "ground_truth": "Dr Martin est le vétérinaire du système. Il est impliqué comme acteur (involvesActor) dans la quasi-totalité des étapes d'entraînement, intervenant dans 97 séances d'entraînement à travers les différentes phases.",
+      "category": "simple_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q47",
+      "question": "Quels chevaux la cavalière Alice associe-t-elle ?",
+      "ground_truth": "Alice est associée à quatre chevaux : Arrow, Soleil, Braise et Orage.",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q48",
+      "question": "Quels chevaux le cavalier Theo associe-t-il ?",
+      "ground_truth": "Theo est associé à trois chevaux : Volcan, Nebule et Glacier.",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q49",
+      "question": "Quels chevaux la cavalière Elise associe-t-elle ?",
+      "ground_truth": "Elise est associée à trois chevaux : Nuage, Auroch et Luminos.",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q50",
+      "question": "Quels chevaux le cavalier Maxime associe-t-il ?",
+      "ground_truth": "Maxime est associé à trois chevaux : Zephire, Ecume et Tempete.",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q51",
+      "question": "Quels chevaux le cavalier Remi associe-t-il ?",
+      "ground_truth": "Remi est associé à trois chevaux : Galop, Etoile et Grondre.",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q52",
+      "question": "Quels chevaux le cavalier Victor associe-t-il ?",
+      "ground_truth": "Victor est associé à trois chevaux : Riviere, Cascade et Lumiere.",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q53",
+      "question": "Quels chevaux la cavalière Ines associe-t-elle ?",
+      "ground_truth": "Ines est associée à trois chevaux : Rafale, Horizon et Tonnerre.",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q54",
+      "question": "Quels chevaux la cavalière Pauline associe-t-elle ?",
+      "ground_truth": "Pauline est associée à trois chevaux : Mirage, Crepuscule et Aurore.",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q55",
+      "question": "Dans quels événements sportifs Mirage participe-t-il ?",
+      "ground_truth": "Mirage participe à deux événements de cross : Event_Dijon_Cross_2026 (Dijon, 6 juin 2026, Amateur 1) et Event_Strasbourg_Cross_2026 (Strasbourg, 12 juillet 2026, Amateur 1).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q56",
+      "question": "Dans quels événements sportifs Zephire participe-t-il ?",
+      "ground_truth": "Zephire participe à deux événements de saut d'obstacles : Event_Versailles_SJ_2026 (Versailles, 6 septembre 2026, Pro Elite) et Event_Rennes_SJ_2026 (Rennes, 17 mai 2026, Pro Elite).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q57",
+      "question": "Dans quels événements sportifs Vega participe-t-elle ?",
+      "ground_truth": "Vega participe à deux événements de saut d'obstacles : Event_Rennes_SJ_2026 (Rennes, 17 mai 2026, Pro Elite) et Event_Pau_SJ_2026 (Pau, 18 octobre 2026, Amateur 1).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q58",
+      "question": "Dans quels événements sportifs Comet participe-t-il ?",
+      "ground_truth": "Comet participe à deux événements de saut d'obstacles : Event_Pau_SJ_2026 (Pau, 18 octobre 2026, Amateur 1) et Event_Fontainebleau_SJ_2026 (Fontainebleau, 5 juillet 2026, Pro Elite).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q59",
+      "question": "Quel classement Soleil et Alice ont-ils obtenu à Event_Nantes_SJ_2026 ?",
+      "ground_truth": "Soleil, monté par Alice, a obtenu la 1ère place à Event_Nantes_SJ_2026.",
+      "category": "multi_hop",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q60",
+      "question": "Quel classement Etoile et Remi ont-ils obtenu à Event_Versailles_SJ_2026 ?",
+      "ground_truth": "Etoile, monté par Remi, a obtenu la 1ère place à Event_Versailles_SJ_2026.",
+      "category": "multi_hop",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q61",
+      "question": "Quel classement Rio et Lea ont-ils obtenu à Event_Rennes_SJ_2026 ?",
+      "ground_truth": "Rio, monté par Lea, a obtenu la 1ère place à Event_Rennes_SJ_2026.",
+      "category": "multi_hop",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q62",
+      "question": "Quel classement Crepuscule et Pauline ont-ils obtenu à Event_Montpellier_Dr_2026 ?",
+      "ground_truth": "Crepuscule, monté par Pauline, a obtenu la 1ère place à Event_Montpellier_Dr_2026.",
+      "category": "multi_hop",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q63",
+      "question": "Quel classement Ecume et Maxime ont-ils obtenu à Event_Dijon_Cross_2026 ?",
+      "ground_truth": "Ecume, monté par Maxime, a obtenu la 1ère place à Event_Dijon_Cross_2026.",
+      "category": "multi_hop",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q64",
+      "question": "Quel classement Bella et Julien ont-ils obtenu à Event_Marseille_Dressage_2026 ?",
+      "ground_truth": "Bella, montée par Julien, a obtenu la 1ère place à Event_Marseille_Dressage_2026.",
+      "category": "multi_hop",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q65",
+      "question": "Quel classement Iris et Camille ont-ils obtenu à Event_Toulouse_Cross_2026 ?",
+      "ground_truth": "Iris, montée par Camille, a obtenu la 1ère place à Event_Toulouse_Cross_2026.",
+      "category": "multi_hop",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q66",
+      "question": "Combien de chevaux participent à l'événement Event_Nantes_SJ_2026 et quels sont leurs classements ?",
+      "ground_truth": "Cinq chevaux participent à Event_Nantes_SJ_2026 : Soleil (rang 1, cavalière Alice), Arrow (rang 2, cavalière Alice), Cascade (rang 3, cavalier Victor), Volcan (rang 4, cavalier Theo) et Galop (rang 5, cavalier Remi).",
+      "category": "multi_hop_complex",
+      "difficulty": "extreme"
+    },
+    {
+      "question_id": "Q67",
+      "question": "Combien de chevaux participent à l'événement Event_Versailles_SJ_2026 et quels sont leurs classements ?",
+      "ground_truth": "Cinq chevaux participent à Event_Versailles_SJ_2026 : Etoile (rang 1, cavalier Remi), Aurore (rang 2, cavalière Pauline), Grondre (rang 3, cavalier Remi), Lumiere (rang 4, cavalier Victor) et Zephire (rang 5, cavalier Maxime).",
+      "category": "multi_hop_complex",
+      "difficulty": "extreme"
+    },
+    {
+      "question_id": "Q68",
+      "question": "Combien de chevaux participent à l'événement Event_Montpellier_Dr_2026 et quels sont leurs classements ?",
+      "ground_truth": "Six chevaux participent à Event_Montpellier_Dr_2026 : Crepuscule (rang 1, cavalière Pauline), Nuage (rang 2, cavalière Elise), Braise (rang 3, cavalière Alice), Luminos (rang 4, cavalière Elise), Horizon (rang 5, cavalière Ines) et Nebule (rang 6, cavalier Theo).",
+      "category": "multi_hop_complex",
+      "difficulty": "extreme"
+    },
+    {
+      "question_id": "Q69",
+      "question": "Quelle est l'intensité d'entraînement de Storm pendant la phase de préparation ?",
+      "ground_truth": "Storm s'entraîne en phase de préparation à une intensité modérée, avec une fréquence de 5 séances par semaine et une durée de 50 minutes par séance.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q70",
+      "question": "Quelle est la durée des séances d'entraînement de Riviere en phase pré-compétition ?",
+      "ground_truth": "En phase pré-compétition, Riviere s'entraîne 70 minutes par séance, avec une fréquence de 4 séances par semaine et une intensité élevée.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q71",
+      "question": "Quelles sont les étapes d'entraînement de Storm ?",
+      "ground_truth": "Storm suit trois étapes d'entraînement : Training_Prepa_Storm_01 (préparation, 5x/semaine, intensité modérée, 50min), Training_PreComp_Storm_01 (pré-compétition, 3x/semaine, intensité élevée, 65min) et Training_Comp_Storm_01 (compétition, 1x/semaine, intensité maximale, 30min).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q72",
+      "question": "Quelles sont les étapes d'entraînement de Riviere ?",
+      "ground_truth": "Riviere suit quatre étapes d'entraînement : Training_Prepa_Riviere_01 (préparation, 5x/semaine, intensité modérée, 50min), Training_PreComp_Riviere_01 (pré-compétition, 4x/semaine, intensité élevée, 70min), Training_Comp_Riviere_01 (compétition, 1x/semaine, intensité maximale, 30min) et Training_Transition_Riviere_01 (transition, 2x/semaine, intensité faible, 25min).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q73",
+      "question": "Combien de capteurs IMU sont attachés à Apollon ?",
+      "ground_truth": "Deux capteurs IMU sont attachés à Apollon : un au garrot (IMU_Withers_Apollon_01) et un au canon postérieur (IMU_CanonHind_Apollon_01).",
+      "category": "aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q74",
+      "question": "Combien de capteurs IMU au canon antérieur existent dans le système ?",
+      "ground_truth": "Le système contient 20 capteurs IMU placés au canon antérieur (CanonOfForelimb), répartis sur différents chevaux.",
+      "category": "aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q75",
+      "question": "Combien de capteurs IMU au canon postérieur existent dans le système ?",
+      "ground_truth": "Le système contient 12 capteurs IMU placés au canon postérieur (CanonOfHindlimb).",
+      "category": "aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q76",
+      "question": "Combien de capteurs IMU au sternum existent dans le système ?",
+      "ground_truth": "Le système contient 26 capteurs IMU placés au sternum (Sternum).",
+      "category": "aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q77",
+      "question": "Quelle est la répartition des fréquences d'échantillonnage des capteurs IMU dans le système ?",
+      "ground_truth": "Sur les 108 capteurs IMU du système, 66 fonctionnent à 200 Hz, 39 fonctionnent à 250 Hz et 3 fonctionnent à 300 Hz (les capteurs les plus rapides, attachés à Comet et Luna).",
+      "category": "comparison",
+      "difficulty": "very_hard"
+    },
+    {
+      "question_id": "Q78",
+      "question": "Quels capteurs sont attachés à Comet et à quelles fréquences fonctionnent-ils ?",
+      "ground_truth": "Comet possède au moins deux capteurs IMU fonctionnant à 300 Hz, la fréquence la plus élevée du système : IMU_Withers_Comet_01 (garrot) et IMU_CanonFore_Comet_01 (canon antérieur).",
+      "category": "multi_hop",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q79",
+      "question": "Quel capteur attaché à Luna fonctionne à 300 Hz ?",
+      "ground_truth": "Le capteur IMU_CanonFore_Luna_01, placé au canon antérieur de Luna, fonctionne à 300 Hz.",
+      "category": "multi_hop",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q80",
+      "question": "Combien d'événements de type saut d'obstacles (ShowJumping) existent dans le système ?",
+      "ground_truth": "Le système contient 7 événements de type saut d'obstacles (ShowJumping).",
+      "category": "aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q81",
+      "question": "Combien d'événements de type cross existent dans le système ?",
+      "ground_truth": "Le système contient 7 événements de type cross (Cross).",
+      "category": "aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q82",
+      "question": "Combien d'événements de type dressage existent dans le système ?",
+      "ground_truth": "Le système contient 6 événements de type dressage (Dressage).",
+      "category": "aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q83",
+      "question": "Quelle est la catégorie de l'événement Event_Versailles_SJ_2026 ?",
+      "ground_truth": "L'événement Event_Versailles_SJ_2026 est de catégorie Pro Elite.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q84",
+      "question": "Où et quand se déroule l'événement Event_Rennes_SJ_2026 ?",
+      "ground_truth": "L'événement Event_Rennes_SJ_2026 se déroule à Rennes le 17 mai 2026, en catégorie Pro Elite.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q85",
+      "question": "Où et quand se déroule l'événement Event_Montpellier_Dr_2026 ?",
+      "ground_truth": "L'événement Event_Montpellier_Dr_2026 se déroule à Montpellier le 15 août 2026, en catégorie Club Elite.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q86",
+      "question": "Où et quand se déroule l'événement Event_Nice_Dressage_2026 ?",
+      "ground_truth": "L'événement Event_Nice_Dressage_2026 se déroule à Nice le 28 septembre 2026, en catégorie Pro Elite.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q87",
+      "question": "Où et quand se déroule l'événement Event_Dijon_Cross_2026 ?",
+      "ground_truth": "L'événement Event_Dijon_Cross_2026 se déroule à Dijon le 6 juin 2026, en catégorie Amateur 1.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q88",
+      "question": "Quels sont tous les événements ayant lieu en septembre 2026 ?",
+      "ground_truth": "Cinq événements ont lieu en septembre 2026 : Event_LeMans_Cross_2026 (5 septembre, Le Mans), Event_Versailles_SJ_2026 (6 septembre, Versailles), Event_Toulouse_Cross_2026 (13 septembre, Toulouse), Event_Bordeaux_Cross_2026 (20 septembre, Bordeaux) et Event_Nice_Dressage_2026 (28 septembre, Nice).",
+      "category": "comparison",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q89",
+      "question": "Quel est le premier événement de la saison 2026 chronologiquement ?",
+      "ground_truth": "Le premier événement de la saison 2026 est Event_SJ_01, qui se déroule le 12 avril 2026 à Saumur.",
+      "category": "comparison",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q90",
+      "question": "Quel est le dernier événement de la saison 2026 chronologiquement ?",
+      "ground_truth": "Le dernier événement de la saison 2026 est Event_Pau_SJ_2026, qui se déroule le 18 octobre 2026 à Pau.",
+      "category": "comparison",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q91",
+      "question": "Combien de chevaux le cavalier Hugo associe-t-il ?",
+      "ground_truth": "Hugo est associé à deux chevaux : Nova et Storm.",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q92",
+      "question": "Combien de chevaux la cavalière Camille associe-t-elle ?",
+      "ground_truth": "Camille est associée à deux chevaux : Iris et Atlas.",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q93",
+      "question": "Quels cavaliers sont associés à plus de deux chevaux dans le système ?",
+      "ground_truth": "Huit cavaliers sont associés à trois ou quatre chevaux chacun : Alice (4 chevaux : Arrow, Soleil, Braise, Orage), Elise (3 chevaux : Nuage, Auroch, Luminos), Theo (3 chevaux : Volcan, Nebule, Glacier), Maxime (3 chevaux : Zephire, Ecume, Tempete), Remi (3 chevaux : Galop, Etoile, Grondre), Victor (3 chevaux : Riviere, Cascade, Lumiere), Ines (3 chevaux : Rafale, Horizon, Tonnerre) et Pauline (3 chevaux : Mirage, Crepuscule, Aurore).",
+      "category": "aggregation",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q94",
+      "question": "Quel cavalier est associé au plus grand nombre de chevaux ?",
+      "ground_truth": "Alice est la cavalière associée au plus grand nombre de chevaux, avec quatre chevaux : Arrow, Soleil, Braise et Orage.",
+      "category": "comparison",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q95",
+      "question": "Quel cheval a obtenu la dernière place à Event_Montpellier_Dr_2026 ?",
+      "ground_truth": "Nebule, monté par Theo, a obtenu la dernière place (rang 6) à Event_Montpellier_Dr_2026.",
+      "category": "multi_hop",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q96",
+      "question": "Quel cheval a obtenu la dernière place à Event_Versailles_SJ_2026 ?",
+      "ground_truth": "Zephire, monté par Maxime, a obtenu la dernière place (rang 5) à Event_Versailles_SJ_2026.",
+      "category": "multi_hop",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q97",
+      "question": "Combien de relations INVOLVESACTOR le Dr Martin a-t-il dans le système ?",
+      "ground_truth": "Dr Martin est impliqué comme acteur (involvesActor) dans 97 étapes d'entraînement à travers le système, ce qui en fait l'acteur humain le plus présent après les cavaliers individuels.",
+      "category": "aggregation",
+      "difficulty": "very_hard"
+    },
+    {
+      "question_id": "Q98",
+      "question": "Donne une analyse complète de l'événement Event_Nantes_SJ_2026.",
+      "ground_truth": "L'événement Event_Nantes_SJ_2026 est une compétition de saut d'obstacles de catégorie Amateur 2 qui se déroule le 25 avril 2026 à Nantes, dans le cadre de la Saison 2026. Cinq chevaux y participent : Soleil monté par Alice (rang 1), Arrow monté par Alice (rang 2), Cascade monté par Victor (rang 3), Volcan monté par Theo (rang 4) et Galop monté par Remi (rang 5).",
+      "category": "multi_hop_complex",
+      "difficulty": "extreme"
+    },
+    {
+      "question_id": "Q99",
+      "question": "Donne une analyse complète de l'événement Event_Toulouse_Cross_2026.",
+      "ground_truth": "L'événement Event_Toulouse_Cross_2026 est une compétition de cross qui se déroule le 13 septembre 2026 à Toulouse, dans le cadre de la Saison 2026. Deux chevaux montés par la même cavalière y participent : Iris (rang 1) et Atlas (rang 3), toutes deux montées par Camille.",
+      "category": "multi_hop_complex",
+      "difficulty": "extreme"
+    },
+    {
+      "question_id": "Q100",
+      "question": "Quel est le nom du propriétaire de Dakota ?",
+      "ground_truth": "L'information sur le propriétaire de Dakota n'est pas disponible dans le système.",
+      "category": "unanswerable",
+      "difficulty": "medium"
+    }
+  ],
+  "metadata": {
+    "version": "8.1_v8_100q",
+    "total_questions": 100,
+    "updated_date": "2026-06-16",
+    "description": "Extended to 100 questions for Horse_v8_augmented.rdf (50 horses, 25 riders, 20 events, 108 IMU sensors). Q1-Q40 unchanged from the V8 evaluation set. Q41-Q100 are new questions, all ground truth verified directly against the V8 Neo4j export (429 nodes, 1195 relations) rather than estimated.",
+    "new_questions_summary": {
+      "Q41-Q46": "simple_retrieval - horse races and vet role, new entities not previously asked",
+      "Q47-Q54": "single_hop - rider-to-horses associations for the 8 multi-horse riders (Alice, Theo, Elise, Maxime, Remi, Victor, Ines, Pauline)",
+      "Q55-Q58": "single_hop - horse-to-events for Mirage, Zephire, Vega, Comet (new event participants)",
+      "Q59-Q65": "multi_hop - rank verification questions (horse + rider + event -> rank), all winners verified from HASPARTICIPATION/HASHORSE/HASRIDER",
+      "Q66-Q68": "multi_hop_complex - full event participant lists with ranks for Nantes, Versailles, Montpellier events",
+      "Q69-Q72": "attribute_retrieval/single_hop - targets the known Q8/Q9-type Volume bug, asking specifically for training Volume on Storm and Riviere",
+      "Q73-Q79": "aggregation/multi_hop - sensor counts by anatomical position and sampling frequency, targets sensor-related top_k truncation",
+      "Q80-Q90": "aggregation/comparison - event type counts and date-based comparison, Q89/Q90 target the Q24-type season/date bug",
+      "Q91-Q94": "single_hop/aggregation/comparison - rider-horse count edge cases",
+      "Q95-Q96": "multi_hop - last-place ranking questions (inverse of Q59-Q65)",
+      "Q97": "aggregation - Dr Martin involvement count, a high-cardinality relationship count (97 INVOLVESACTOR edges)",
+      "Q98-Q99": "multi_hop_complex - full event analysis for newer events, same pattern as Q35 but on V7/V8-introduced events",
+      "Q100": "unanswerable - second unanswerable question with a different attribute (owner vs age)"
+    },
+    "verification_method": "All new ground truth (Q41-Q100) was computed by parsing the actual Neo4j export files (1-_neo4j_query_table_data_2026-6-15.json and 2-_neo4j_query_table_data_2026-6-15.json) and cross-referencing node properties and relationship pairs programmatically. No fact was estimated or invented.",
+    "kg_entities_v8": {
+      "total_horses": 50,
+      "total_riders": 25,
+      "total_events": 20,
+      "total_sensors": 108,
+      "sensor_breakdown": {
+        "withers": 50,
+        "canon_forelimb": 20,
+        "canon_hindlimb": 12,
+        "sternum": 26
+      },
+      "sensor_frequency_breakdown": {
+        "200Hz": 66,
+        "250Hz": 39,
+        "300Hz": 3
+      },
+      "event_type_breakdown": {
+        "ShowJumping": 7,
+        "Cross": 7,
+        "Dressage": 6
+      },
+      "relation_counts": {
+        "INVOLVESACTOR": 314,
+        "DEPENDSON": 171,
+        "TRAINSIN": 171,
+        "ISATTACHEDTO": 108,
+        "ISUSEDFOR": 108,
+        "COMPETESIN": 101,
+        "ASSOCIATEDWITH": 51,
+        "HASRIDER": 50,
+        "HASHORSE": 50,
+        "HASPARTICIPATION": 50,
+        "INSEASON": 20,
+        "HASPARTICIPATEDTO": 1
+      }
+    }
+  }
+}

@@ -19,6 +19,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from backend.llm_service import init_graph_chain
 from backend.evaluation_service import init_evaluator, calculate_semantic_similarity, llm_judge_answer
 from backend.config import COST_PER_1K_INPUT, COST_PER_1K_OUTPUT, COST_PER_1K_EMBEDDING
+from backend.timing_callback import TimingCallbackHandler
 
 # ══════════════════════════════════════════════════════════════
 # Configuration
@@ -70,6 +71,10 @@ results = []
 total_time = 0
 total_query_cost = 0
 total_eval_cost = 0
+total_cypher_gen_time = 0
+total_answer_gen_time = 0
+cypher_gen_time_count = 0
+answer_gen_time_count = 0
 
 for i, q_data in enumerate(questions_data, 1):
     question_id = q_data['question_id']
@@ -86,31 +91,57 @@ for i, q_data in enumerate(questions_data, 1):
     # ════════════════════════════════════════════════════
     
     start_time = time.time()
-    
+
+    # Per-question timing callback (records each LLM call duration in order).
+    # NOTE: GraphCypherQAChain's QA step ignores callbacks passed via
+    # chain.invoke(config={"callbacks": ...}) — langchain_community calls the inner
+    # qa_chain.invoke(..., callbacks=...) with a bare kwarg that Chain.invoke drops.
+    # Both LLM calls share the same ChatOpenAI instance, so we attach the handler to
+    # that shared LLM; it fires on both the Cypher and answer calls, in order.
+    callback = TimingCallbackHandler()
+    chain.cypher_generation_chain.llm.callbacks = [callback]
+
     try:
         result = chain.invoke({"query": question})
         answer = result.get("result", "")
-        
+
         cypher_query = ""
         if result.get("intermediate_steps"):
             cypher_query = result["intermediate_steps"][0].get("query", "")
-        
+
         query_time = time.time() - start_time
-        
+
+        # Per-LLM-call timings captured by the callback
+        cypher_generation_time = callback.cypher_time
+        answer_generation_time = callback.answer_time
+
+        if cypher_generation_time is not None:
+            total_cypher_gen_time += cypher_generation_time
+            cypher_gen_time_count += 1
+        if answer_generation_time is not None:
+            total_answer_gen_time += answer_generation_time
+            answer_gen_time_count += 1
+
+        # Sanity check: GraphCypherQAChain should make exactly 2 LLM calls
+        if len(callback.durations) != 2:
+            print(f"   ⚠️  Expected 2 LLM calls, got {len(callback.durations)}: {callback.durations}")
+
         # Estimate query cost
         query_tokens = len(question.split()) * 1.3 + 1000 + len(answer.split()) * 1.3
         query_cost = query_tokens / 1000 * COST_PER_1K_INPUT
         total_query_cost += query_cost
-        
+
         success = len(answer) > 0 and 'error' not in answer.lower()
-        
+
     except Exception as e:
         answer = f"ERROR: {str(e)}"
         cypher_query = ""
         query_time = time.time() - start_time
+        cypher_generation_time = None
+        answer_generation_time = None
         success = False
         query_cost = 0
-    
+
     total_time += query_time
     
     print(f"✅ Query answered in {query_time:.2f}s")
@@ -166,7 +197,10 @@ for i, q_data in enumerate(questions_data, 1):
         'category': category,
         'difficulty': difficulty,
         'time_seconds': query_time,
+        'total_time_seconds': query_time,
         'cypher_query': cypher_query,
+        'cypher_generation_time_seconds': cypher_generation_time,
+        'answer_generation_time_seconds': answer_generation_time,
         'success': success,
         'semantic_similarity': semantic_score,
         'llm_judge_scores': judge_scores,
@@ -222,6 +256,12 @@ report = {
         'total_questions': len(results),
         'total_time_seconds': total_time,
         'avg_time_per_question': total_time / len(results),
+        'avg_cypher_generation_time_seconds': (
+            total_cypher_gen_time / cypher_gen_time_count if cypher_gen_time_count else None
+        ),
+        'avg_answer_generation_time_seconds': (
+            total_answer_gen_time / answer_gen_time_count if answer_gen_time_count else None
+        ),
         'query_cost_usd': total_query_cost,
         'evaluation_cost_usd': total_eval_cost,
         'total_cost_usd': total_query_cost + total_eval_cost,

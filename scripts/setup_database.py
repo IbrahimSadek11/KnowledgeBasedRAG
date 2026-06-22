@@ -19,7 +19,7 @@ print(f"📊 Connexion à Neo4j: {NEO4J_URI}")
 # Charger RDF
 print("📥 Chargement du fichier RDF...")
 rdf_graph = Graph()
-rdf_graph.parse("../data/Horse_generatedDataV2.rdf", format="xml")
+rdf_graph.parse("data/Horse_V8_Clean.rdf", format="xml")
 
 HORSES = Namespace("http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#")
 
@@ -48,6 +48,11 @@ with driver.session() as session:
     for subj in rdf_graph.subjects():
         subj_str = str(subj)
         if 'www.w3.org' in subj_str:
+            continue
+        # Skip OWL property and class definitions — not real data entities
+        types = list(rdf_graph.objects(subj, RDF.type))
+        type_strs = [str(t) for t in types]
+        if any('owl#ObjectProperty' in t or 'owl#DatatypeProperty' in t or 'owl#Class' in t or 'owl#Ontology' in t for t in type_strs):
             continue
         
         # Types/Labels

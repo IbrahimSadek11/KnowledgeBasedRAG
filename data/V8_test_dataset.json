@@ -1,0 +1,504 @@
+{
+  "test_questions": [
+    {
+      "question_id": "Q1",
+      "question": "Quels sont les noms des chevaux dans le système ?",
+      "ground_truth": "Les chevaux dans le système sont : Dakota, Naya, Orion, Luna, Thunder, Bella, Apollon, Pixie, Zephyr, Comet, Nova, Storm, Iris, Atlas, Mistral, Falcon, Rio, Sable, Dune, Eclat, Sirius, Vega, Brume, Eclair, Ombre, Arrow, Soleil, Tempete, Ecume, Nuage, Luminos, Etoile, Grondre, Rafale, Tonnerre, Cascade, Riviere, Aurore, Crepuscule, Glacier, Volcan, Braise, Zephire, Auroch, Galop, Horizon, Lumiere, Mirage, Nebule et Orage.",
+      "category": "simple_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q2",
+      "question": "Quelle est la race de Dakota ?",
+      "ground_truth": "Dakota est un cheval de race Selle Français.",
+      "category": "simple_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q3",
+      "question": "Quelle est la race de Naya ?",
+      "ground_truth": "Naya est un cheval de race Anglo-Arabe.",
+      "category": "simple_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q4",
+      "question": "Dans quels événements sportifs Dakota participe-t-il ?",
+      "ground_truth": "Dakota participe à plusieurs événements sportifs : Event_SJ_01 (saut d'obstacles à Saumur), Event_SJ_2026_01 (saut d'obstacles à Paris), Event_Dressage_01 (dressage à Angers), Event_Dressage_2026_01 (dressage à Lyon) et Event_Cross_2026_01 (cross à Bordeaux).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q5",
+      "question": "Quelles étapes d'entraînement Dakota suit-il ?",
+      "ground_truth": "Dakota suit six étapes d'entraînement : Training_Prepa_SJ_01 (préparation), Training_PreComp_SJ_01 (pré-compétition), Training_Preparation_SJ_01 (préparation), Training_PreCompetition_SJ_01 (pré-compétition), Training_Competition_SJ_01 (compétition) et Training_Transition_SJ_01 (transition).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q6",
+      "question": "Quelle est la fréquence d'entraînement pendant la phase de préparation ?",
+      "ground_truth": "Pendant la phase de préparation, la fréquence d'entraînement varie selon les chevaux. S'entraînent 5 fois par semaine : Orion, Luna, Pixie, Comet, Storm, Rio, Dune, Vega, Soleil, Ecume, Grondre, Riviere, Volcan, Auroch et Zephire. Tous les autres chevaux s'entraînent 4 fois par semaine.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q7",
+      "question": "Quelle est l'intensité d'entraînement durant la phase pré-compétition ?",
+      "ground_truth": "Durant la phase pré-compétition, l'intensité d'entraînement est élevée pour tous les chevaux (High ou Élevée selon le cheval).",
+      "category": "attribute_retrieval",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q8",
+      "question": "Quelle est la durée des séances pendant la phase de préparation ?",
+      "ground_truth": "Pendant la phase de préparation, les durées de séances varient : 40 minutes pour Pixie (la plus courte), 45 minutes pour la majorité des chevaux (Dakota, Naya, Thunder, Bella, Zephyr, Nova, Iris, Mistral, Falcon, Sable, Sirius, Brume, Eclair, Ombre, Arrow, Tempete, Nuage, Etoile, Rafale, Tonnerre, Cascade, Aurore, Crepuscule, Glacier, Braise, Zephire, Galop, Horizon, Lumiere, Mirage, Orage), 50 minutes pour Orion, Apollon, Atlas, Storm, Rio, Dune, Eclat, Luminos, Grondre, Riviere et Ecume, et 55 minutes pour Comet (la plus longue).",
+      "category": "attribute_retrieval",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q9",
+      "question": "Quelle est la durée des séances pendant la phase pré-compétition ?",
+      "ground_truth": "Pendant la phase pré-compétition, les durées de séances varient : 55 minutes pour Pixie, 60 minutes pour la majorité des chevaux (Dakota, Naya, Thunder, Bella, Zephyr, Nova, Iris, Mistral, Falcon, Sable, Sirius, Brume, Eclair, Ombre, Arrow, Tempete, Nuage, Etoile, Rafale, Cascade, Aurore, Crepuscule, Glacier, Braise, Zephire, Galop, Horizon, Lumiere, Mirage, Orage), 65 minutes pour Orion, Apollon, Atlas, Storm, Rio, Dune, Eclat, Ecume, Grondre, Tonnerre, Auroch et Nebule, 70 minutes pour Luna, Vega et Soleil et Riviere, et 75 minutes pour Comet (la plus longue du système).",
+      "category": "attribute_retrieval",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q10",
+      "question": "De quel événement dépendent les étapes d'entraînement de Dakota ?",
+      "ground_truth": "Les étapes d'entraînement de Dakota dépendent de deux événements : Event_SJ_01 (saut d'obstacles à Saumur le 12 avril 2026) et Event_SJ_2026_01 (saut d'obstacles à Paris le 14 juin 2026).",
+      "category": "multi_hop",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q11",
+      "question": "Combien de capteurs IMU sont attachés à Dakota ?",
+      "ground_truth": "4 capteurs IMU sont attachés à Dakota.",
+      "category": "aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q12",
+      "question": "Quels sont les identifiants des capteurs IMU ?",
+      "ground_truth": "Les identifiants des capteurs IMU dans le système sont : IMU-W-001 (Dakota, garrot), IMU-CF-002 (Dakota, canon antérieur), IMU-CH-003 (Dakota, canon postérieur), IMU-ST-004 (Dakota, sternum), IMU-W-002 (Naya, garrot), IMU-ST-005 (Naya, sternum), IMU-W-003 (Orion, garrot), IMU-CF-003 (Orion, canon antérieur), IMU-W-004 (Luna, garrot), IMU-CF-004 (Luna, canon antérieur, 300Hz), IMU-ST-006 (Luna, sternum), IMU-W-005 (Thunder, garrot), IMU-CH-004 (Thunder, canon postérieur), IMU-ST-007 (Thunder, sternum), IMU-W-006 (Bella, garrot), IMU-CF-005 (Bella, canon antérieur), IMU-ST-008 (Bella, sternum), IMU-W-007 (Apollon, garrot), IMU-CH-005 (Apollon, canon postérieur), IMU-W-008 (Pixie, garrot), IMU-ST-009 (Pixie, sternum), IMU-W-009 (Zephyr, garrot), IMU-CF-006 (Zephyr, canon antérieur), IMU-CH-006 (Zephyr, canon postérieur), IMU-ST-010 (Zephyr, sternum), IMU-W-010 (Comet, garrot, 300Hz), IMU-CF-007 (Comet, canon antérieur, 300Hz), IMU-W-011 (Nova, garrot), IMU-ST-011 (Nova, sternum), IMU-W-012 (Storm, garrot), IMU-CF-008 (Storm, canon antérieur), IMU-W-013 (Iris, garrot), IMU-CH-007 (Iris, canon postérieur), IMU-W-014 (Atlas, garrot), IMU-CF-009 (Atlas, canon antérieur), IMU-ST-012 (Atlas, sternum), IMU-W-015 (Mistral, garrot), IMU-ST-013 (Mistral, sternum), IMU-W-016 (Falcon, garrot), IMU-ST-014 (Falcon, sternum), IMU-W-017 (Rio, garrot), IMU-CF-010 (Rio, canon antérieur), IMU-W-018 (Sable, garrot), IMU-CH-008 (Sable, canon postérieur), IMU-W-019 (Dune, garrot), IMU-ST-015 (Dune, sternum), IMU-W-020 (Eclat, garrot), IMU-CF-011 (Eclat, canon antérieur), IMU-W-021 (Sirius, garrot), IMU-ST-016 (Sirius, sternum), IMU-W-022 (Vega, garrot), IMU-ST-017 (Vega, sternum), IMU-W-023 (Brume, garrot), IMU-ST-018 (Brume, sternum), IMU-W-024 (Eclair, garrot), IMU-CF-012 (Eclair, canon antérieur), IMU-W-025 (Ombre, garrot), IMU-CH-009 (Ombre, canon postérieur), IMU-W-026 (Arrow, garrot), IMU-ST-019 (Arrow, sternum), IMU-W-027 (Soleil, garrot), IMU-CF-013 (Soleil, canon antérieur), IMU-W-028 (Tempete, garrot), IMU-CH-010 (Tempete, canon postérieur), IMU-W-029 (Ecume, garrot), IMU-ST-020 (Ecume, sternum), IMU-W-030 (Nuage, garrot), IMU-CF-014 (Nuage, canon antérieur), IMU-W-031 (Luminos, garrot), IMU-ST-021 (Luminos, sternum), IMU-W-032 (Etoile, garrot), IMU-CF-015 (Etoile, canon antérieur), IMU-W-033 (Grondre, garrot), IMU-CH-011 (Grondre, canon postérieur), IMU-W-034 (Rafale, garrot), IMU-ST-022 (Rafale, sternum), IMU-W-035 (Tonnerre, garrot), IMU-CF-016 (Tonnerre, canon antérieur), IMU-W-036 (Cascade, garrot), IMU-ST-023 (Cascade, sternum), IMU-W-037 (Riviere, garrot), IMU-CF-017 (Riviere, canon antérieur), IMU-W-038 (Aurore, garrot), IMU-CH-012 (Aurore, canon postérieur), IMU-W-039 (Crepuscule, garrot), IMU-ST-024 (Crepuscule, sternum), IMU-W-040 (Glacier, garrot), IMU-CF-018 (Glacier, canon antérieur), IMU-W-041 (Volcan, garrot), IMU-ST-025 (Volcan, sternum), IMU-W-042 (Braise, garrot), IMU-CF-019 (Braise, canon antérieur), IMU-W-043 (Zephire, garrot), IMU-ST-026 (Zephire, sternum), IMU-W-044 (Auroch, garrot), IMU-CH-013 (Auroch, canon postérieur), IMU-W-045 (Galop, garrot), IMU-ST-027 (Galop, sternum), IMU-W-046 (Horizon, garrot), IMU-CF-020 (Horizon, canon antérieur), IMU-W-047 (Lumiere, garrot), IMU-ST-028 (Lumiere, sternum), IMU-W-048 (Mirage, garrot), IMU-CH-014 (Mirage, canon postérieur), IMU-W-049 (Nebule, garrot), IMU-CF-021 (Nebule, canon antérieur), IMU-W-050 (Orage, garrot), IMU-ST-029 (Orage, sternum).",
+      "category": "aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q13",
+      "question": "À quelles positions anatomiques les capteurs IMU sont-ils placés sur Dakota ?",
+      "ground_truth": "Les capteurs IMU sont placés sur Dakota à 4 positions : garrot (Withers), canon antérieur (CanonOfForelimb), canon postérieur (CanonOfHindlimb) et sternum (Sternum).",
+      "category": "aggregation",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q14",
+      "question": "Quel est l'identifiant du capteur IMU placé au garrot ?",
+      "ground_truth": "Il y a cinquante capteurs IMU placés au garrot dans le système, un par cheval : IMU_Withers_01 (Dakota), IMU_Withers_Naya_01 (Naya), IMU_Withers_Orion_01 (Orion), IMU_Withers_Luna_01 (Luna), IMU_Withers_Thunder_01 (Thunder), IMU_Withers_Bella_01 (Bella), IMU_Withers_Apollon_01 (Apollon), IMU_Withers_Pixie_01 (Pixie), IMU_Withers_Zephyr_01 (Zephyr), IMU_Withers_Comet_01 (Comet), IMU_Withers_Nova_01 (Nova), IMU_Withers_Storm_01 (Storm), IMU_Withers_Iris_01 (Iris), IMU_Withers_Atlas_01 (Atlas), IMU_Withers_Mistral_01 (Mistral), IMU_Withers_Falcon_01 (Falcon), IMU_Withers_Rio_01 (Rio), IMU_Withers_Sable_01 (Sable), IMU_Withers_Dune_01 (Dune), IMU_Withers_Eclat_01 (Eclat), IMU_Withers_Sirius_01 (Sirius), IMU_Withers_Vega_01 (Vega), IMU_Withers_Brume_01 (Brume), IMU_Withers_Eclair_01 (Eclair), IMU_Withers_Ombre_01 (Ombre), IMU_Withers_Arrow_01 (Arrow), IMU_Withers_Soleil_01 (Soleil), IMU_Withers_Tempete_01 (Tempete), IMU_Withers_Ecume_01 (Ecume), IMU_Withers_Nuage_01 (Nuage), IMU_Withers_Luminos_01 (Luminos), IMU_Withers_Etoile_01 (Etoile), IMU_Withers_Grondre_01 (Grondre), IMU_Withers_Rafale_01 (Rafale), IMU_Withers_Tonnerre_01 (Tonnerre), IMU_Withers_Cascade_01 (Cascade), IMU_Withers_Riviere_01 (Riviere), IMU_Withers_Aurore_01 (Aurore), IMU_Withers_Crepuscule_01 (Crepuscule), IMU_Withers_Glacier_01 (Glacier), IMU_Withers_Volcan_01 (Volcan), IMU_Withers_Braise_01 (Braise), IMU_Withers_Zephire_01 (Zephire), IMU_Withers_Auroch_01 (Auroch), IMU_Withers_Galop_01 (Galop), IMU_Withers_Horizon_01 (Horizon), IMU_Withers_Lumiere_01 (Lumiere), IMU_Withers_Mirage_01 (Mirage), IMU_Withers_Nebule_01 (Nebule) et IMU_Withers_Orage_01 (Orage).",
+      "category": "multi_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q15",
+      "question": "Quelle est la fréquence d'échantillonnage du capteur IMU au sternum ?",
+      "ground_truth": "La fréquence d'échantillonnage du capteur IMU au sternum est de 200 Hz pour tous les chevaux qui en possèdent un (Dakota, Naya, Luna, Thunder, Bella, Pixie, Zephyr, Nova, Atlas et Mistral).",
+      "category": "multi_hop",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q16",
+      "question": "Quel capteur a la fréquence d'échantillonnage la plus élevée ?",
+      "ground_truth": "Trois capteurs partagent la fréquence d'échantillonnage la plus élevée à 300 Hz : IMU_CanonFore_Luna_01 (canon antérieur de Luna), IMU_Withers_Comet_01 (garrot de Comet) et IMU_CanonFore_Comet_01 (canon antérieur de Comet). Plusieurs autres capteurs atteignent 250 Hz.",
+      "category": "comparison",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q17",
+      "question": "Quels cavaliers sont associés à Dakota ?",
+      "ground_truth": "Deux cavaliers sont associés à Dakota : Emma et Manon.",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q18",
+      "question": "Quel cavalier est associé à Naya ?",
+      "ground_truth": "Le cavalier Leo est associé à Naya.",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q19",
+      "question": "Combien de cavaliers différents sont dans le système ?",
+      "ground_truth": "Il y a 25 cavaliers différents dans le système : Emma, Manon, Leo, Lucas, Clara, Antoine, Julien, Sarah, Nina, Hugo, Camille, Tom, Lea, Marc, Chloe, Baptiste, Jade, Alice, Maxime, Elise, Remi, Ines, Victor, Pauline et Theo. Plusieurs cavaliers sont associés à plus de deux chevaux : Alice (Arrow, Soleil, Braise, Orage), Maxime (Tempete, Ecume, Zephire, Mistral_V8 → nommé Zephire), Elise (Nuage, Luminos, Auroch), Remi (Etoile, Grondre, Galop), Ines (Rafale, Tonnerre, Horizon), Victor (Cascade, Riviere, Lumiere), Pauline (Aurore, Crepuscule, Mirage) et Theo (Glacier, Volcan, Nebule).",
+      "category": "aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q20",
+      "question": "Qui est le vétérinaire impliqué dans les soins des chevaux ?",
+      "ground_truth": "Le Dr Martin est le vétérinaire impliqué dans les soins des chevaux.",
+      "category": "simple_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q21",
+      "question": "Qui est le soigneur responsable des chevaux ?",
+      "ground_truth": "Sophie est la soigneuse responsable des chevaux.",
+      "category": "simple_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q22",
+      "question": "Quels acteurs humains sont impliqués dans la phase de préparation de l'entraînement ?",
+      "ground_truth": "Les acteurs impliqués dans la phase de préparation incluent Sophie (soigneuse), Dr Martin (vétérinaire), et tous les 25 cavaliers du système : Emma, Manon, Leo, Lucas, Clara, Antoine, Julien, Sarah, Nina, Hugo, Camille, Tom, Lea, Marc, Chloe, Baptiste, Jade, Alice, Maxime, Elise, Remi, Ines, Victor, Pauline et Theo. Note : Manon n'intervient qu'en pré-compétition pour Dakota, donc seule Emma est présente en préparation pour Dakota.",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q23",
+      "question": "Qui participe à la phase pré-compétition de l'entraînement ?",
+      "ground_truth": "Les participants à la phase pré-compétition incluent Sophie (soigneuse), Dr Martin (vétérinaire), et tous les 25 cavaliers du système. Manon remplace Emma pour la pré-compétition de Dakota. Tous les nouveaux cavaliers (Alice, Maxime, Elise, Remi, Ines, Victor, Pauline, Theo) participent également à la phase pré-compétition de leurs chevaux respectifs.",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q24",
+      "question": "Quelle est la période de la saison 2026 ?",
+      "ground_truth": "La saison 2026 s'étend du 1er mars 2026 au 31 octobre 2026.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q25",
+      "question": "Quels événements font partie de la saison 2026 ?",
+      "ground_truth": "Vingt événements font partie de la saison 2026 : Event_SJ_01 (saut d'obstacles, Saumur, 12 avril), Event_Dressage_01 (dressage, Angers, 3 mai), Event_Rennes_SJ_2026 (saut d'obstacles, Rennes, 17 mai, Pro Elite), Event_SJ_2026_01 (saut d'obstacles, Paris, 14 juin), Event_Dijon_Cross_2026 (cross, Dijon, 6 juin), Event_Strasbourg_Cross_2026 (cross, Strasbourg, 12 juillet), Event_Fontainebleau_SJ_2026 (saut d'obstacles, Fontainebleau, 5 juillet), Event_Dressage_2026_01 (dressage, Lyon, 20 juillet), Event_Cross_2026_01 (cross, Bordeaux, 10 août), Event_Montpellier_Dr_2026 (dressage, Montpellier, 15 août, Club Elite), Event_Lyon_Dressage_2026 (dressage, Lyon, 23 août), Event_LeMans_Cross_2026 (cross, Le Mans, 5 septembre), Event_Versailles_SJ_2026 (saut d'obstacles, Versailles, 6 septembre, Pro Elite), Event_Toulouse_Cross_2026 (cross, Toulouse, 13 septembre), Event_Bordeaux_Cross_2026 (cross, Bordeaux, 20 septembre), Event_Nice_Dressage_2026 (dressage, Nice, 28 septembre, Pro Elite), Event_Clermont_Cross_2026 (cross, Clermont-Ferrand, 10 octobre), Event_Marseille_Dressage_2026 (dressage, Marseille, 3 octobre), Event_Pau_SJ_2026 (saut d'obstacles, Pau, 18 octobre) et Event_Nantes_SJ_2026 (saut d'obstacles, Nantes, 25 avril, Amateur 2).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q26",
+      "question": "Quelle est la date de l'événement Event_SJ_01 ?",
+      "ground_truth": "L'événement Event_SJ_01 aura lieu le 12 avril 2026.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q27",
+      "question": "Où se déroule l'événement de saut d'obstacles Event_SJ_01 ?",
+      "ground_truth": "L'événement Event_SJ_01 se déroule à Saumur.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q28",
+      "question": "Où se déroule l'événement de dressage Event_Dressage_01 ?",
+      "ground_truth": "L'événement Event_Dressage_01 se déroule à Angers.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q29",
+      "question": "Quelle est la catégorie de l'événement Event_SJ_01 ?",
+      "ground_truth": "L'événement Event_SJ_01 est de catégorie Amateur 1.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q30",
+      "question": "Quelle est la catégorie de l'événement Event_Dressage_01 ?",
+      "ground_truth": "L'événement Event_Dressage_01 est de catégorie Club Elite.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q31",
+      "question": "Quel classement Dakota et Emma ont-ils obtenu à Event_SJ_01 ?",
+      "ground_truth": "Dakota et Emma ont obtenu la 2ème place à Event_SJ_01.",
+      "category": "multi_hop",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q32",
+      "question": "Compare les fréquences d'entraînement entre la phase de préparation et la phase pré-compétition.",
+      "ground_truth": "En phase de préparation, la fréquence est de 5 séances par semaine pour : Orion, Luna, Pixie, Comet, Storm, Rio, Dune, Vega, Soleil, Ecume, Grondre, Riviere, Volcan, Auroch et Zephire. Tous les autres chevaux s'entraînent 4 fois par semaine. En phase pré-compétition, la fréquence baisse à 3 séances par semaine pour la majorité, sauf Luna (4), Pixie (4), Comet (4), Vega (4), Soleil (4) et Riviere (4) qui maintiennent 4 séances.",
+      "category": "comparison",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q33",
+      "question": "Quelles sont les différences entre les phases de préparation et de pré-compétition en termes de fréquence, intensité et durée ?",
+      "ground_truth": "La phase de préparation a 4 à 5 séances par semaine avec une intensité modérée (sauf Comet dont l'intensité est élevée dès la préparation) et des durées de 40 à 55 minutes. La phase pré-compétition a 3 à 4 séances par semaine avec une intensité élevée pour tous les chevaux et des durées de 55 à 75 minutes. Comet reste le cheval avec les séances les plus longues (55 min préparation, 75 min pré-compétition). Parmi les nouveaux chevaux, Riviere et Soleil se distinguent avec 4 séances/semaine et 70 minutes en pré-compétition.",
+      "category": "comparison",
+      "difficulty": "very_hard"
+    },
+    {
+      "question_id": "Q34",
+      "question": "Compare les acteurs impliqués dans les phases de préparation et de pré-compétition.",
+      "ground_truth": "La phase de préparation implique les 25 cavaliers (dont Emma pour Dakota), Sophie (soigneuse) et Dr Martin (vétérinaire). La phase pré-compétition implique les mêmes acteurs sauf que Manon remplace Emma pour Dakota. Les 8 nouveaux cavaliers (Alice, Maxime, Elise, Remi, Ines, Victor, Pauline, Theo) sont présents dans les deux phases pour leurs chevaux respectifs.",
+      "category": "comparison",
+      "difficulty": "very_hard"
+    },
+    {
+      "question_id": "Q35",
+      "question": "Donne une analyse complète de l'événement Event_SJ_01.",
+      "ground_truth": "L'événement Event_SJ_01 est une compétition de saut d'obstacles qui a eu lieu le 12 avril 2026 à Saumur en catégorie Amateur 1, dans le cadre de la Saison 2026. Dakota, monté par Emma, y a obtenu la 2ème place. Storm y participe également comme compétition secondaire (CompetesIn) mais sans participation enregistrée avec classement. La préparation pour cet événement comprenait une phase de préparation (Training_Prepa_SJ_01 : 4 séances/semaine, intensité modérée, 45 min) avec Emma, Dr Martin et Sophie, et une phase pré-compétition (Training_PreComp_SJ_01 : 3 séances/semaine, intensité élevée, 60 min) avec Manon et Sophie.",
+      "category": "multi_hop_complex",
+      "difficulty": "extreme"
+    },
+    {
+      "question_id": "Q36",
+      "question": "Combien d'événements sportifs sont enregistrés dans le système ?",
+      "ground_truth": "Il y a 20 événements sportifs enregistrés dans le système : Event_SJ_01, Event_Dressage_01, Event_SJ_2026_01, Event_Nantes_SJ_2026, Event_Dijon_Cross_2026, Event_Rennes_SJ_2026, Event_Strasbourg_Cross_2026, Event_Fontainebleau_SJ_2026, Event_Dressage_2026_01, Event_Cross_2026_01, Event_Montpellier_Dr_2026, Event_Lyon_Dressage_2026, Event_LeMans_Cross_2026, Event_Versailles_SJ_2026, Event_Toulouse_Cross_2026, Event_Bordeaux_Cross_2026, Event_Nice_Dressage_2026, Event_Clermont_Cross_2026, Event_Marseille_Dressage_2026 et Event_Pau_SJ_2026.",
+      "category": "aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q37",
+      "question": "Quels types d'événements sportifs sont disponibles dans l'ontologie ?",
+      "ground_truth": "Les types d'événements sportifs disponibles dans l'ontologie sont : le saut d'obstacles (ShowJumping), le dressage (Dressage) et le cross (Cross).",
+      "category": "hierarchical",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q38",
+      "question": "Pour quel objectif expérimental le capteur IMU_Withers_01 est-il utilisé ?",
+      "ground_truth": "Le capteur IMU_Withers_01 est utilisé pour la classification de la démarche (GaitClassif_01).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q39",
+      "question": "Pour quel objectif expérimental le capteur IMU_CanonFore_01 est-il utilisé ?",
+      "ground_truth": "Le capteur IMU_CanonFore_01 est utilisé pour la détection de fatigue (FatigueDetection).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q40",
+      "question": "Quel est l'âge de Dakota ?",
+      "ground_truth": "L'information sur l'âge de Dakota n'est pas disponible dans le système.",
+      "category": "unanswerable",
+      "difficulty": "medium"
+    }
+  ],
+  "metadata": {
+    "version": "7.0_v8_augmented",
+    "total_questions": 40,
+    "updated_date": "2026-06-14",
+    "description": "Updated ground truth aligned with Horse_v8_augmented.rdf — 50 horses, 25 riders, 20 events, ~108 IMU sensors",
+    "changes_from_v5": [
+      "Q1: Added Nova, Storm, Iris, Atlas, Mistral as horses 11-15",
+      "Q6: Storm preparation frequency is 5; Nova, Iris, Atlas, Mistral is 4",
+      "Q8: Storm and Atlas preparation volume is 50min; Nova, Iris, Mistral is 45min — Comet remains longest at 55min",
+      "Q9: Storm and Atlas precomp volume is 65min; Nova, Iris, Mistral is 60min — Comet remains longest at 75min",
+      "Q12: 38 IMU sensors total across 15 horses (+11 new: Nova×2, Storm×2, Iris×2, Atlas×3, Mistral×2)",
+      "Q14: 15 Withers sensors (+5: Nova IMU-W-011, Storm IMU-W-012, Iris IMU-W-013, Atlas IMU-W-014, Mistral IMU-W-015)",
+      "Q15: Clarified that all Sternum sensors across all horses run at 200Hz",
+      "Q19: 12 riders now (+3: Hugo rides Nova+Storm, Camille rides Iris+Atlas, Tom rides Mistral)",
+      "Q22: Preparation actors now include Hugo, Camille, Tom",
+      "Q23: PreComp actors now include Hugo, Camille, Tom",
+      "Q25: 12 events in season 2026 (+2: Event_Lyon_Dressage_2026 on 2026-08-23, Event_Toulouse_Cross_2026 on 2026-09-13)",
+      "Q32: Preparation frequencies updated to include Storm (5x); precomp frequencies unchanged",
+      "Q33: Volume ranges unchanged at extremes (Pixie 40min, Comet 75min) but narrative updated for 15-horse context",
+      "Q34: Actor sets updated with Hugo, Camille, Tom in both phases",
+      "Q35: Event_SJ_01 analysis updated — Storm also competes there as secondary event",
+      "Q36: 12 events total instead of 10"
+    ],
+    "kg_entities_v6": {
+      "horses": [
+        "Dakota (Selle Français)",
+        "Naya (Anglo-Arabe)",
+        "Orion (Pur-sang)",
+        "Luna (KWPN)",
+        "Thunder (Hanovrien)",
+        "Bella (Lusitanien)",
+        "Apollon (AQPS)",
+        "Pixie (Connemara)",
+        "Zephyr (Trakehner)",
+        "Comet (Selle Français)",
+        "Nova (Andalou)",
+        "Storm (Selle Belge)",
+        "Iris (PRE)",
+        "Atlas (Holsteiner)",
+        "Mistral (Oldenburg)"
+      ],
+      "riders": [
+        "Emma (Dakota)",
+        "Manon (Dakota)",
+        "Leo (Naya)",
+        "Lucas (Orion)",
+        "Clara (Luna)",
+        "Antoine (Thunder)",
+        "Julien (Bella, Pixie)",
+        "Sarah (Apollon)",
+        "Nina (Zephyr, Comet)",
+        "Hugo (Nova, Storm)",
+        "Camille (Iris, Atlas)",
+        "Tom (Mistral)"
+      ],
+      "humans": [
+        "Dr Martin (Veterinarian)",
+        "Sophie (Caretaker)"
+      ],
+      "events": [
+        "Event_SJ_01 (ShowJumping, Saumur, 2026-04-12, Amateur 1)",
+        "Event_Dressage_01 (Dressage, Angers, 2026-05-03, Club Elite)",
+        "Event_SJ_2026_01 (ShowJumping, Paris, 2026-06-14, Amateur 2)",
+        "Event_Fontainebleau_SJ_2026 (ShowJumping, Fontainebleau, 2026-07-05, Pro Elite)",
+        "Event_Dressage_2026_01 (Dressage, Lyon, 2026-07-20, Club Elite)",
+        "Event_Cross_2026_01 (Cross, Bordeaux, 2026-08-10, Amateur 1)",
+        "Event_Lyon_Dressage_2026 (Dressage, Lyon, 2026-08-23, Club Elite) — Nova rank 2, Storm rank 1",
+        "Event_LeMans_Cross_2026 (Cross, Le Mans, 2026-09-05, Amateur 1)",
+        "Event_Toulouse_Cross_2026 (Cross, Toulouse, 2026-09-13, Amateur 2) — Iris rank 1, Atlas rank 3",
+        "Event_Bordeaux_Cross_2026 (Cross, Bordeaux, 2026-09-20, Amateur 2)",
+        "Event_Marseille_Dressage_2026 (Dressage, Marseille, 2026-10-03, Club Elite) — Bella rank 1, Zephyr rank 3, Mistral rank 2",
+        "Event_Pau_SJ_2026 (ShowJumping, Pau, 2026-10-18, Amateur 1) — Apollon rank 4, Pixie rank 2, Comet rank 1"
+      ],
+      "sensors_new_v6": [
+        "IMU_Withers_Nova_01 (Nova, IMU-W-011, 200Hz, GaitClassif)",
+        "IMU_Sternum_Nova_01 (Nova, IMU-ST-011, 200Hz, FatigueDetection)",
+        "IMU_Withers_Storm_01 (Storm, IMU-W-012, 250Hz, GaitClassif)",
+        "IMU_CanonFore_Storm_01 (Storm, IMU-CF-008, 250Hz, FatigueDetection)",
+        "IMU_Withers_Iris_01 (Iris, IMU-W-013, 200Hz, GaitClassif)",
+        "IMU_CanonHind_Iris_01 (Iris, IMU-CH-007, 250Hz, GaitClassif)",
+        "IMU_Withers_Atlas_01 (Atlas, IMU-W-014, 250Hz, GaitClassif)",
+        "IMU_CanonFore_Atlas_01 (Atlas, IMU-CF-009, 250Hz, FatigueDetection)",
+        "IMU_Sternum_Atlas_01 (Atlas, IMU-ST-012, 200Hz, FatigueDetection)",
+        "IMU_Withers_Mistral_01 (Mistral, IMU-W-015, 200Hz, GaitClassif)",
+        "IMU_Sternum_Mistral_01 (Mistral, IMU-ST-013, 200Hz, FatigueDetection)"
+      ],
+      "participations_new_v6": [
+        "Participation_Lyon_Nova_Hugo (Nova + Hugo, rank 2 at Event_Lyon_Dressage_2026)",
+        "Participation_Lyon_Storm_Hugo (Storm + Hugo, rank 1 at Event_Lyon_Dressage_2026)",
+        "Participation_Toulouse_Iris_Camille (Iris + Camille, rank 1 at Event_Toulouse_Cross_2026)",
+        "Participation_Toulouse_Atlas_Camille (Atlas + Camille, rank 3 at Event_Toulouse_Cross_2026)",
+        "Participation_Marseille_Mistral_Tom (Mistral + Tom, rank 2 at Event_Marseille_Dressage_2026)"
+      ]
+    },
+    "changes_from_v6": [
+      "Q1: Added Falcon, Rio, Sable, Dune, Eclat, Sirius, Vega, Brume, Eclair, Ombre as horses 16-25",
+      "Q6: Rio, Dune, Vega preparation frequency is 5x; Falcon, Sable, Eclat, Sirius, Brume, Eclair, Ombre is 4x",
+      "Q8: Rio, Dune, Eclat (50min) join the 50min Prepa group; Falcon, Sable, Sirius, Brume, Eclair, Ombre are 45min; Comet remains longest at 55min",
+      "Q9: Rio, Dune, Eclat (65min) join the 65min PreComp group; Vega is 70min; Falcon, Sable, Sirius, Brume, Eclair, Ombre are 60min; Comet remains longest at 75min",
+      "Q12: 58 IMU sensors total across 25 horses (+20 new: Falcon×2, Rio×2, Sable×2, Dune×2, Eclat×2, Sirius×2, Vega×2, Brume×2, Eclair×2, Ombre×2)",
+      "Q14: 25 Withers sensors (+10: IMU-W-016 to IMU-W-025)",
+      "Q19: 17 riders now (+5: Lea rides Falcon+Rio, Marc rides Sable+Dune, Chloe rides Eclat+Ombre, Baptiste rides Sirius+Vega, Jade rides Brume+Eclair)",
+      "Q22: Preparation actors now include Lea, Marc, Chloe, Baptiste, Jade",
+      "Q23: PreComp actors now include Lea, Marc, Chloe, Baptiste, Jade",
+      "Q25: 15 events in season 2026 (+3: Event_Rennes_SJ_2026 on 2026-05-17, Event_Strasbourg_Cross_2026 on 2026-07-12, Event_Nice_Dressage_2026 on 2026-09-28)",
+      "Q32: Preparation frequencies updated — Rio, Dune, Vega join the 5x group",
+      "Q33: Volume ranges unchanged at extremes (Pixie 40min, Comet 75min); Vega PreComp 70min now notable",
+      "Q34: Actor sets updated with Lea, Marc, Chloe, Baptiste, Jade in both phases",
+      "Q36: 15 events total instead of 12"
+    ],
+    "kg_entities_v7": {
+      "horses": [
+        "Dakota (Selle Français)",
+        "Naya (Anglo-Arabe)",
+        "Orion (Pur-sang)",
+        "Luna (KWPN)",
+        "Thunder (Hanovrien)",
+        "Bella (Lusitanien)",
+        "Apollon (AQPS)",
+        "Pixie (Connemara)",
+        "Zephyr (Trakehner)",
+        "Comet (Selle Français)",
+        "Nova (Andalou)",
+        "Storm (Selle Belge)",
+        "Iris (PRE)",
+        "Atlas (Holsteiner)",
+        "Mistral (Oldenburg)",
+        "Falcon (Barbe)",
+        "Rio (Arabe)",
+        "Sable (Fjord)",
+        "Dune (Camargue)",
+        "Eclat (Morgan)",
+        "Sirius (Frison)",
+        "Vega (Appaloosa)",
+        "Brume (Haflinger)",
+        "Eclair (Mustang)",
+        "Ombre (Percheron)"
+      ],
+      "riders": [
+        "Emma (Dakota)",
+        "Manon (Dakota)",
+        "Leo (Naya)",
+        "Lucas (Orion)",
+        "Clara (Luna)",
+        "Antoine (Thunder)",
+        "Julien (Bella, Pixie)",
+        "Sarah (Apollon)",
+        "Nina (Zephyr, Comet)",
+        "Hugo (Nova, Storm)",
+        "Camille (Iris, Atlas)",
+        "Tom (Mistral)",
+        "Lea (Falcon, Rio)",
+        "Marc (Sable, Dune)",
+        "Chloe (Eclat, Ombre)",
+        "Baptiste (Sirius, Vega)",
+        "Jade (Brume, Eclair)"
+      ],
+      "events_new_v7": [
+        "Event_Rennes_SJ_2026 (ShowJumping, Rennes, 2026-05-17, Pro Elite) — Falcon rank 3, Rio rank 1, Vega rank 2, Ombre rank 4",
+        "Event_Strasbourg_Cross_2026 (Cross, Strasbourg, 2026-07-12, Amateur 1) — Sable rank 2, Dune rank 1, Brume rank 3",
+        "Event_Nice_Dressage_2026 (Dressage, Nice, 2026-09-28, Pro Elite) — Eclat rank 2, Sirius rank 1, Eclair rank 4"
+      ]
+    },
+    "changes_from_v7": [
+      "Q1: Added 25 new horses (Arrow through Orage)",
+      "Q6: Soleil, Ecume, Grondre, Riviere, Volcan, Auroch, Zephire join the 5x/week group",
+      "Q8: Ecume/Grondre/Riviere/Luminos join the 50min Prepa group; most new horses at 45min; Comet still longest (55min)",
+      "Q9: Soleil/Riviere = 70min; Ecume/Grondre/Tonnerre/Auroch/Nebule = 65min; most new horses = 60min; Comet still longest (75min)",
+      "Q12: ~108 sensors total — added IMU-W-026 to IMU-W-050 and paired sensors for all 25 new horses",
+      "Q14: 50 Withers sensors — one per horse",
+      "Q19: 25 riders (+8: Alice, Maxime, Elise, Remi, Ines, Victor, Pauline, Theo — each rides 3-4 horses)",
+      "Q22: Preparation actors now include all 25 riders",
+      "Q23: PreComp actors now include all 25 riders",
+      "Q25: 20 events (+5: Nantes SJ, Dijon Cross, Montpellier Dressage, Versailles SJ, Clermont Cross)",
+      "Q32: Frequency groups updated with new 5x horses",
+      "Q33: Volume extremes unchanged; Soleil/Riviere notable at 70min PreComp",
+      "Q34: Actor sets updated with 8 new riders in both phases",
+      "Q36: 20 events total instead of 15"
+    ],
+    "kg_entities_v8": {
+      "total_horses": 50,
+      "total_riders": 25,
+      "total_events": 20,
+      "total_sensors_approx": 108,
+      "new_horses_v8": [
+        "Arrow (Quarter Horse) — Alice",
+        "Soleil (Andalou) — Alice",
+        "Tempete (Lipizzan) — Maxime",
+        "Ecume (Akhal-Teke) — Maxime",
+        "Nuage (Pottok) — Elise",
+        "Luminos (Lusitanien) — Elise",
+        "Etoile (Frison) — Remi",
+        "Grondre (Hanovrien) — Remi",
+        "Rafale (Morgan) — Ines",
+        "Tonnerre (Mustang) — Ines",
+        "Cascade (Barbe) — Victor",
+        "Riviere (Camargue) — Victor",
+        "Aurore (KWPN) — Pauline",
+        "Crepuscule (Selle Français) — Pauline",
+        "Glacier (Anglo-Arabe) — Theo",
+        "Volcan (Arabe) — Theo",
+        "Braise (Appaloosa) — Alice",
+        "Zephire (Trakehner) — Maxime",
+        "Auroch (Pur-sang) — Elise",
+        "Galop (Connemara) — Remi",
+        "Horizon (Oldenburg) — Ines",
+        "Lumiere (AQPS) — Victor",
+        "Mirage (Holsteiner) — Pauline",
+        "Nebule (Haflinger) — Theo",
+        "Orage (Fjord) — Alice"
+      ],
+      "new_events_v8": [
+        "Event_Nantes_SJ_2026 (ShowJumping, Nantes, 2026-04-25, Amateur 2)",
+        "Event_Dijon_Cross_2026 (Cross, Dijon, 2026-06-06, Amateur 1)",
+        "Event_Montpellier_Dr_2026 (Dressage, Montpellier, 2026-08-15, Club Elite)",
+        "Event_Versailles_SJ_2026 (ShowJumping, Versailles, 2026-09-06, Pro Elite)",
+        "Event_Clermont_Cross_2026 (Cross, Clermont-Ferrand, 2026-10-10, Amateur 2)"
+      ]
+    }
+  }
+}

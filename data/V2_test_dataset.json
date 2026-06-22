@@ -1,0 +1,318 @@
+{
+  "test_questions": [
+    {
+      "question_id": "Q1",
+      "question": "Quels sont les noms des chevaux dans le système ?",
+      "ground_truth": "Les chevaux dans le système sont Dakota et Naya.",
+      "category": "simple_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q2",
+      "question": "Quelle est la race de Dakota ?",
+      "ground_truth": "Dakota est un cheval de race Selle Français.",
+      "category": "simple_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q3",
+      "question": "Quelle est la race de Naya ?",
+      "ground_truth": "Naya est un cheval de race Anglo-Arabe.",
+      "category": "simple_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q4",
+      "question": "Dans quels événements sportifs Dakota participe-t-il ?",
+      "ground_truth": "Dakota participe à deux événements sportifs : Event_SJ_01 (saut d'obstacles) et Event_Dressage_01 (dressage).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q5",
+      "question": "Quelles étapes d'entraînement Dakota suit-il ?",
+      "ground_truth": "Dakota suit deux étapes d'entraînement : Training_Prepa_SJ_01 (préparation) et Training_PreComp_SJ_01 (pré-compétition).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q6",
+      "question": "Quelle est la fréquence d'entraînement pendant la phase de préparation ?",
+      "ground_truth": "Pendant la phase de préparation, la fréquence d'entraînement est de 4 séances par semaine.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q7",
+      "question": "Quelle est l'intensité d'entraînement durant la phase pré-compétition ?",
+      "ground_truth": "Durant la phase pré-compétition, l'intensité d'entraînement est élevée.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q8",
+      "question": "Quelle est la durée des séances pendant la phase de préparation ?",
+      "ground_truth": "Pendant la phase de préparation, les séances durent 45 minutes.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q9",
+      "question": "Quelle est la durée des séances pendant la phase pré-compétition ?",
+      "ground_truth": "Pendant la phase pré-compétition, les séances durent 60 minutes.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q10",
+      "question": "De quel événement dépendent les étapes d'entraînement de Dakota ?",
+      "ground_truth": "Les deux étapes d'entraînement de Dakota (préparation et pré-compétition) dépendent de l'événement de saut d'obstacles Event_SJ_01.",
+      "category": "multi_hop",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q11",
+      "question": "Combien de capteurs IMU sont attachés à Dakota ?",
+      "ground_truth": "4 capteurs IMU sont attachés à Dakota.",
+      "category": "aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q12",
+      "question": "Quels sont les identifiants des capteurs IMU ?",
+      "ground_truth": "Les identifiants des capteurs IMU sont : IMU-W-001, IMU-CF-002, IMU-CH-003 et IMU-ST-004.",
+      "category": "aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q13",
+      "question": "À quelles positions anatomiques les capteurs IMU sont-ils placés sur Dakota ?",
+      "ground_truth": "Les capteurs IMU sont placés à 4 positions : garrot (Withers), canon antérieur (CanonOfForelimb), canon postérieur (CanonOfHindlimb) et sternum (Sternum).",
+      "category": "aggregation",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q14",
+      "question": "Quel est l'identifiant du capteur IMU placé au garrot ?",
+      "ground_truth": "L'identifiant du capteur IMU placé au garrot est IMU-W-001.",
+      "category": "multi_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q15",
+      "question": "Quelle est la fréquence d'échantillonnage du capteur IMU au sternum ?",
+      "ground_truth": "La fréquence d'échantillonnage du capteur IMU au sternum est de 200 Hz.",
+      "category": "multi_hop",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q16",
+      "question": "Quel capteur a la fréquence d'échantillonnage la plus élevée ?",
+      "ground_truth": "Le capteur IMU_CanonFore_01 (canon antérieur) a la fréquence d'échantillonnage la plus élevée avec 250 Hz.",
+      "category": "comparison",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q17",
+      "question": "Quels cavaliers sont associés à Dakota ?",
+      "ground_truth": "Deux cavaliers sont associés à Dakota : Emma et Manon.",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q18",
+      "question": "Quel cavalier est associé à Naya ?",
+      "ground_truth": "Le cavalier Leo est associé à Naya.",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q19",
+      "question": "Combien de cavaliers différents sont dans le système ?",
+      "ground_truth": "Il y a 3 cavaliers différents dans le système : Emma, Manon et Leo.",
+      "category": "aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q20",
+      "question": "Qui est le vétérinaire impliqué dans les soins des chevaux ?",
+      "ground_truth": "Le Dr Martin est le vétérinaire impliqué dans les soins des chevaux.",
+      "category": "simple_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q21",
+      "question": "Qui est le soigneur responsable des chevaux ?",
+      "ground_truth": "Sophie est la soigneuse responsable des chevaux.",
+      "category": "simple_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q22",
+      "question": "Quels acteurs humains sont impliqués dans la phase de préparation de l'entraînement ?",
+      "ground_truth": "Trois acteurs sont impliqués dans la phase de préparation : Emma (cavalière), Dr Martin (vétérinaire) et Sophie (soigneuse).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q23",
+      "question": "Qui participe à la phase pré-compétition de l'entraînement ?",
+      "ground_truth": "Deux personnes participent à la phase pré-compétition : Manon (cavalière) et Sophie (soigneuse).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q24",
+      "question": "Quelle est la période de la saison 2026 ?",
+      "ground_truth": "La saison 2026 s'étend du 1er mars 2026 au 31 octobre 2026.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q25",
+      "question": "Quels événements font partie de la saison 2026 ?",
+      "ground_truth": "Deux événements font partie de la saison 2026 : Event_SJ_01 (saut d'obstacles) et Event_Dressage_01 (dressage).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q26",
+      "question": "Quelle est la date de l'événement Event_SJ_01 ?",
+      "ground_truth": "L'événement Event_SJ_01 aura lieu le 12 avril 2026.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q27",
+      "question": "Où se déroule l'événement de saut d'obstacles Event_SJ_01 ?",
+      "ground_truth": "L'événement Event_SJ_01 se déroule à Saumur.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q28",
+      "question": "Où se déroule l'événement de dressage Event_Dressage_01 ?",
+      "ground_truth": "L'événement Event_Dressage_01 se déroule à Angers.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q29",
+      "question": "Quelle est la catégorie de l'événement Event_SJ_01 ?",
+      "ground_truth": "L'événement Event_SJ_01 est de catégorie Amateur 1.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q30",
+      "question": "Quelle est la catégorie de l'événement Event_Dressage_01 ?",
+      "ground_truth": "L'événement Event_Dressage_01 est de catégorie Club Elite.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q31",
+      "question": "Quel classement Dakota et Emma ont-ils obtenu à Event_SJ_01 ?",
+      "ground_truth": "Dakota et Emma ont obtenu la 2ème place à Event_SJ_01.",
+      "category": "multi_hop",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q32",
+      "question": "Compare les fréquences d'entraînement entre la phase de préparation et la phase pré-compétition.",
+      "ground_truth": "La phase de préparation a une fréquence de 4 séances par semaine, tandis que la phase pré-compétition a une fréquence de 3 séances par semaine. La préparation est légèrement plus intensive en termes de fréquence.",
+      "category": "comparison",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q33",
+      "question": "Quelles sont les différences entre les phases de préparation et de pré-compétition en termes de fréquence, intensité et durée ?",
+      "ground_truth": "La phase de préparation a 4 séances/semaine avec intensité modérée pendant 45min. La phase pré-compétition a 3 séances/semaine avec intensité élevée pendant 60min. La pré-compétition est plus intense et plus longue, mais moins fréquente.",
+      "category": "comparison",
+      "difficulty": "very_hard"
+    },
+    {
+      "question_id": "Q34",
+      "question": "Compare les acteurs impliqués dans les phases de préparation et de pré-compétition.",
+      "ground_truth": "La phase de préparation implique Emma (cavalière), Dr Martin (vétérinaire) et Sophie (soigneuse), soit 3 acteurs. La phase pré-compétition implique Manon (cavalière) et Sophie (soigneuse), soit 2 acteurs. Sophie est la seule personne commune aux deux phases. Emma et Dr Martin ne participent qu'à la préparation, tandis que Manon ne participe qu'à la pré-compétition.",
+      "category": "comparison",
+      "difficulty": "very_hard"
+    },
+    {
+      "question_id": "Q35",
+      "question": "Donne une analyse complète de l'événement Event_SJ_01.",
+      "ground_truth": "L'événement Event_SJ_01 est une compétition de saut d'obstacles qui aura lieu le 12 avril 2026 à Saumur en catégorie Amateur 1, dans le cadre de la Saison 2026. Dakota, monté par Emma, y a obtenu la 2ème place. La préparation pour cet événement comprenait deux phases d'entraînement : une phase de préparation (4 séances/semaine, intensité modérée, 45min) avec Emma, Dr Martin et Sophie, et une phase pré-compétition (3 séances/semaine, intensité élevée, 60min) avec Manon et Sophie.",
+      "category": "multi_hop_complex",
+      "difficulty": "extreme"
+    },
+    {
+      "question_id": "Q36",
+      "question": "Combien d'événements sportifs sont enregistrés dans le système ?",
+      "ground_truth": "Il y a 2 événements sportifs enregistrés dans le système : un événement de saut d'obstacles (Event_SJ_01) et un événement de dressage (Event_Dressage_01).",
+      "category": "aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q37",
+      "question": "Quels types d'événements sportifs sont disponibles dans l'ontologie ?",
+      "ground_truth": "Les événements sportifs dans l'ontologie incluent le saut d'obstacles (ShowJumping) et le dressage (Dressage).",
+      "category": "hierarchical",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q38",
+      "question": "Pour quel objectif expérimental le capteur IMU_Withers_01 est-il utilisé ?",
+      "ground_truth": "Le capteur IMU_Withers_01 est utilisé pour la classification de la démarche (GaitClassification).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q39",
+      "question": "Pour quel objectif expérimental le capteur IMU_CanonFore_01 est-il utilisé ?",
+      "ground_truth": "Le capteur IMU_CanonFore_01 est utilisé pour la détection de fatigue (FatigueDetection).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q40",
+      "question": "Quel est l'âge de Dakota ?",
+      "ground_truth": "L'information sur l'âge de Dakota n'est pas disponible dans le système.",
+      "category": "unanswerable",
+      "difficulty": "medium"
+    }
+  ],
+  "metadata": {
+    "version": "2.1_corrected",
+    "total_questions": 40,
+    "updated_date": "2025-01-15",
+    "description": "Test dataset to match  knowledge graph",
+    "categories": {
+      "simple_retrieval": 6,
+      "single_hop": 9,
+      "attribute_retrieval": 10,
+      "multi_hop": 4,
+      "aggregation": 6,
+      "comparison": 4,
+      "multi_hop_complex": 1,
+      "unanswerable": 1,
+      "hierarchical": 1
+    },
+    "difficulty_distribution": {
+      "easy": 10,
+      "medium": 18,
+      "hard": 8,
+      "very_hard": 3,
+      "extreme": 1
+    },
+    "actual_kg_entities": {
+      "horses": ["Dakota (Selle Français)", "Naya (Anglo-Arabe)"],
+      "riders": ["Emma", "Leo", "Manon"],
+      "humans": ["Dr Martin (Veterinarian)", "Sophie (Caretaker)"],
+      "events": ["Event_SJ_01 (ShowJumping, Saumur, 2026-04-12, Amateur 1)", "Event_Dressage_01 (Dressage, Angers, 2026-05-03, Club Elite)"],
+      "trainings": ["Training_Prepa_SJ_01 (4/week, Moderate, 45min)", "Training_PreComp_SJ_01 (3/week, Élevée, 60min)"],
+      "sensors": ["IMU-W-001 (Withers, 200Hz)", "IMU-CF-002 (CanonFore, 250Hz)", "IMU-CH-003 (CanonHind, 250Hz)", "IMU-ST-004 (Sternum, 200Hz)"],
+      "season": "Season_2026 (2026-03-01 to 2026-10-31)",
+      "participation": "Participation_SJ01_H1_Emma (Dakota + Emma, rank 2)"
+    }
+  }
+}

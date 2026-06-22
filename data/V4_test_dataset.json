@@ -1,0 +1,413 @@
+{
+  "test_questions": [
+    {
+      "question_id": "Q1",
+      "question": "Quels sont les noms des chevaux dans le système ?",
+      "ground_truth": "Les chevaux dans le système sont Dakota, Naya, Orion, Luna et Thunder.",
+      "category": "simple_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q2",
+      "question": "Quelle est la race de Dakota ?",
+      "ground_truth": "Dakota est un cheval de race Selle Français.",
+      "category": "simple_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q3",
+      "question": "Quelle est la race de Naya ?",
+      "ground_truth": "Naya est un cheval de race Anglo-Arabe.",
+      "category": "simple_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q4",
+      "question": "Dans quels événements sportifs Dakota participe-t-il ?",
+      "ground_truth": "Dakota participe à plusieurs événements sportifs : Event_SJ_01 (saut d'obstacles à Saumur), Event_SJ_2026_01 (saut d'obstacles à Paris), Event_Dressage_01 (dressage à Angers), Event_Dressage_2026_01 (dressage à Lyon) et Event_Cross_2026_01 (cross à Bordeaux).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q5",
+      "question": "Quelles étapes d'entraînement Dakota suit-il ?",
+      "ground_truth": "Dakota suit quatre étapes d'entraînement : Training_Prepa_SJ_01 (préparation), Training_PreComp_SJ_01 (pré-compétition), Training_PreCompetition_SJ_01 (pré-compétition), Training_Preparation_SJ_01 (préparation), Training_Competition_SJ_01 (compétition) et Training_Transition_SJ_01 (transition).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q6",
+      "question": "Quelle est la fréquence d'entraînement pendant la phase de préparation ?",
+      "ground_truth": "Pendant la phase de préparation, la fréquence d'entraînement est généralement de 4 séances par semaine pour Dakota, Naya et Thunder, et de 5 séances par semaine pour Orion et Luna.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q7",
+      "question": "Quelle est l'intensité d'entraînement durant la phase pré-compétition ?",
+      "ground_truth": "Durant la phase pré-compétition, l'intensité d'entraînement est élevée (High ou Élevée selon le cheval).",
+      "category": "attribute_retrieval",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q8",
+      "question": "Quelle est la durée des séances pendant la phase de préparation ?",
+      "ground_truth": "Pendant la phase de préparation, les séances durent 45 minutes pour Dakota, Naya et Thunder, et 50 minutes pour Orion et Luna.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q9",
+      "question": "Quelle est la durée des séances pendant la phase pré-compétition ?",
+      "ground_truth": "Pendant la phase pré-compétition, les séances durent 60 minutes pour Dakota, Naya et Thunder, et 65 minutes pour Orion, et 70 minutes pour Luna.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q10",
+      "question": "De quel événement dépendent les étapes d'entraînement de Dakota ?",
+      "ground_truth": "Les étapes d'entraînement de Dakota dépendent de deux événements : Event_SJ_01 (saut d'obstacles à Saumur le 12 avril 2026) et Event_SJ_2026_01 (saut d'obstacles à Paris le 14 juin 2026).",
+      "category": "multi_hop",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q11",
+      "question": "Combien de capteurs IMU sont attachés à Dakota ?",
+      "ground_truth": "4 capteurs IMU sont attachés à Dakota.",
+      "category": "aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q12",
+      "question": "Quels sont les identifiants des capteurs IMU ?",
+      "ground_truth": "Les identifiants des capteurs IMU dans le système sont : IMU-W-001 (Dakota, garrot), IMU-CF-002 (Dakota, canon antérieur), IMU-CH-003 (Dakota, canon postérieur), IMU-ST-004 (Dakota, sternum), IMU-W-002 (Naya, garrot), IMU-ST-005 (Naya, sternum), IMU-W-003 (Orion, garrot), IMU-CF-003 (Orion, canon antérieur), IMU-W-004 (Luna, garrot), IMU-CF-004 (Luna, canon antérieur), IMU-ST-006 (Luna, sternum), IMU-W-005 (Thunder, garrot), IMU-CH-004 (Thunder, canon postérieur), IMU-ST-007 (Thunder, sternum).",
+      "category": "aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q13",
+      "question": "À quelles positions anatomiques les capteurs IMU sont-ils placés sur Dakota ?",
+      "ground_truth": "Les capteurs IMU sont placés sur Dakota à 4 positions : garrot (Withers), canon antérieur (CanonOfForelimb), canon postérieur (CanonOfHindlimb) et sternum (Sternum).",
+      "category": "aggregation",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q14",
+      "question": "Quel est l'identifiant du capteur IMU placé au garrot ?",
+      "ground_truth": "Il y a cinq capteurs IMU placés au garrot dans le système : IMU_Withers_01 (Dakota, ID: IMU-W-001), IMU_Withers_Naya_01 (Naya, ID: IMU-W-002), IMU_Withers_Orion_01 (Orion, ID: IMU-W-003), IMU_Withers_Luna_01 (Luna, ID: IMU-W-004), IMU_Withers_Thunder_01 (Thunder, ID: IMU-W-005).",
+      "category": "multi_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q15",
+      "question": "Quelle est la fréquence d'échantillonnage du capteur IMU au sternum ?",
+      "ground_truth": "La fréquence d'échantillonnage du capteur IMU au sternum est de 200 Hz.",
+      "category": "multi_hop",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q16",
+      "question": "Quel capteur a la fréquence d'échantillonnage la plus élevée ?",
+      "ground_truth": "Le capteur IMU_CanonFore_Luna_01 (canon antérieur de Luna) a la fréquence d'échantillonnage la plus élevée avec 300 Hz, suivi par plusieurs capteurs à 250 Hz : IMU_CanonFore_01, IMU_CanonHind_01 (Dakota), IMU_CanonFore_Orion_01 (Orion), IMU_Withers_Luna_01 (Luna), et IMU_CanonHind_Thunder_01 (Thunder).",
+      "category": "comparison",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q17",
+      "question": "Quels cavaliers sont associés à Dakota ?",
+      "ground_truth": "Deux cavaliers sont associés à Dakota : Emma et Manon.",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q18",
+      "question": "Quel cavalier est associé à Naya ?",
+      "ground_truth": "Le cavalier Leo est associé à Naya.",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q19",
+      "question": "Combien de cavaliers différents sont dans le système ?",
+      "ground_truth": "Il y a 6 cavaliers différents dans le système : Emma, Manon, Leo, Lucas, Clara et Antoine.",
+      "category": "aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q20",
+      "question": "Qui est le vétérinaire impliqué dans les soins des chevaux ?",
+      "ground_truth": "Le Dr Martin est le vétérinaire impliqué dans les soins des chevaux.",
+      "category": "simple_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q21",
+      "question": "Qui est le soigneur responsable des chevaux ?",
+      "ground_truth": "Sophie est la soigneuse responsable des chevaux.",
+      "category": "simple_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q22",
+      "question": "Quels acteurs humains sont impliqués dans la phase de préparation de l'entraînement ?",
+      "ground_truth": "Les acteurs impliqués dans la phase de préparation sont : Emma (cavalière de Dakota), Sophie (soigneuse), Dr Martin (vétérinaire), Leo (cavalier de Naya), Lucas (cavalier d'Orion), Clara (cavalière de Luna) et Antoine (cavalier de Thunder).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q23",
+      "question": "Qui participe à la phase pré-compétition de l'entraînement ?",
+      "ground_truth": "Les participants à la phase pré-compétition sont : Manon (cavalière de Dakota), Sophie (soigneuse), Leo (cavalier de Naya), Dr Martin (vétérinaire), Lucas (cavalier d'Orion), Clara (cavalière de Luna) et Antoine (cavalier de Thunder).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q24",
+      "question": "Quelle est la période de la saison 2026 ?",
+      "ground_truth": "La saison 2026 s'étend du 1er mars 2026 au 31 octobre 2026.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q25",
+      "question": "Quels événements font partie de la saison 2026 ?",
+      "ground_truth": "Huit événements font partie de la saison 2026 : Event_SJ_01 (saut d'obstacles, Saumur, 12 avril), Event_Dressage_01 (dressage, Angers, 3 mai), Event_SJ_2026_01 (saut d'obstacles, Paris, 14 juin), Event_Fontainebleau_SJ_2026 (saut d'obstacles, Fontainebleau, 5 juillet), Event_Dressage_2026_01 (dressage, Lyon, 20 juillet), Event_Cross_2026_01 (cross, Bordeaux, 10 août), Event_LeMans_Cross_2026 (cross, Le Mans, 5 septembre), Event_Bordeaux_Cross_2026 (cross, Bordeaux, 20 septembre).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q26",
+      "question": "Quelle est la date de l'événement Event_SJ_01 ?",
+      "ground_truth": "L'événement Event_SJ_01 aura lieu le 12 avril 2026.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q27",
+      "question": "Où se déroule l'événement de saut d'obstacles Event_SJ_01 ?",
+      "ground_truth": "L'événement Event_SJ_01 se déroule à Saumur.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q28",
+      "question": "Où se déroule l'événement de dressage Event_Dressage_01 ?",
+      "ground_truth": "L'événement Event_Dressage_01 se déroule à Angers.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "Q29",
+      "question": "Quelle est la catégorie de l'événement Event_SJ_01 ?",
+      "ground_truth": "L'événement Event_SJ_01 est de catégorie Amateur 1.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q30",
+      "question": "Quelle est la catégorie de l'événement Event_Dressage_01 ?",
+      "ground_truth": "L'événement Event_Dressage_01 est de catégorie Club Elite.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q31",
+      "question": "Quel classement Dakota et Emma ont-ils obtenu à Event_SJ_01 ?",
+      "ground_truth": "Dakota et Emma ont obtenu la 2ème place à Event_SJ_01.",
+      "category": "multi_hop",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q32",
+      "question": "Compare les fréquences d'entraînement entre la phase de préparation et la phase pré-compétition.",
+      "ground_truth": "La phase de préparation a une fréquence de 4 séances par semaine pour Dakota, Naya et Thunder, et de 5 séances par semaine pour Orion et Luna. La phase pré-compétition a une fréquence de 3 séances par semaine pour tous les chevaux, sauf Luna qui en a 4.",
+      "category": "comparison",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "Q33",
+      "question": "Quelles sont les différences entre les phases de préparation et de pré-compétition en termes de fréquence, intensité et durée ?",
+      "ground_truth": "La phase de préparation a 4-5 séances/semaine avec intensité modérée pendant 45-50min. La phase pré-compétition a 3-4 séances/semaine avec intensité élevée pendant 60-70min. La pré-compétition est plus intense et plus longue, mais moins fréquente, sauf pour Luna où la pré-compétition est aussi plus fréquente (4 contre 5).",
+      "category": "comparison",
+      "difficulty": "very_hard"
+    },
+    {
+      "question_id": "Q34",
+      "question": "Compare les acteurs impliqués dans les phases de préparation et de pré-compétition.",
+      "ground_truth": "La phase de préparation implique Emma, Sophie, Dr Martin, Leo, Lucas, Clara et Antoine. La phase pré-compétition implique Manon, Sophie, Leo, Dr Martin, Lucas, Clara et Antoine. Sophie, Leo, Dr Martin, Lucas, Clara et Antoine sont communs aux deux phases. Emma ne participe qu'à la préparation, tandis que Manon ne participe qu'à la pré-compétition.",
+      "category": "comparison",
+      "difficulty": "very_hard"
+    },
+    {
+      "question_id": "Q35",
+      "question": "Donne une analyse complète de l'événement Event_SJ_01.",
+      "ground_truth": "L'événement Event_SJ_01 est une compétition de saut d'obstacles qui a eu lieu le 12 avril 2026 à Saumur en catégorie Amateur 1, dans le cadre de la Saison 2026. Dakota, monté par Emma, y a obtenu la 2ème place. La préparation pour cet événement comprenait une phase de préparation (Training_Prepa_SJ_01 : 4 séances/semaine, intensité modérée, 45min) avec Emma, Dr Martin et Sophie, et une phase pré-compétition (Training_PreComp_SJ_01 : 3 séances/semaine, intensité élevée, 60min) avec Manon et Sophie.",
+      "category": "multi_hop_complex",
+      "difficulty": "extreme"
+    },
+    {
+      "question_id": "Q36",
+      "question": "Combien d'événements sportifs sont enregistrés dans le système ?",
+      "ground_truth": "Il y a 8 événements sportifs enregistrés dans le système : Event_SJ_01, Event_Dressage_01, Event_SJ_2026_01, Event_Fontainebleau_SJ_2026, Event_Dressage_2026_01, Event_Cross_2026_01, Event_LeMans_Cross_2026, Event_Bordeaux_Cross_2026.",
+      "category": "aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q37",
+      "question": "Quels types d'événements sportifs sont disponibles dans l'ontologie ?",
+      "ground_truth": "Les types d'événements sportifs disponibles dans l'ontologie sont : le saut d'obstacles (ShowJumping), le dressage (Dressage) et le cross (Cross).",
+      "category": "hierarchical",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q38",
+      "question": "Pour quel objectif expérimental le capteur IMU_Withers_01 est-il utilisé ?",
+      "ground_truth": "Le capteur IMU_Withers_01 est utilisé pour la classification de la démarche (GaitClassif_01).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q39",
+      "question": "Pour quel objectif expérimental le capteur IMU_CanonFore_01 est-il utilisé ?",
+      "ground_truth": "Le capteur IMU_CanonFore_01 est utilisé pour la détection de fatigue (FatigueDetection).",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "Q40",
+      "question": "Quel est l'âge de Dakota ?",
+      "ground_truth": "L'information sur l'âge de Dakota n'est pas disponible dans le système.",
+      "category": "unanswerable",
+      "difficulty": "medium"
+    }
+  ],
+  "metadata": {
+    "version": "3.0_v4_augmented",
+    "total_questions": 40,
+    "updated_date": "2026-06-12",
+    "description": "Updated ground truth aligned with Horse_v4_augmented.rdf — 5 horses, 6 riders, 8 events, 14 IMU sensors",
+    "changes_from_v1": [
+      "Q1: Added Orion as third horse",
+      "Q4: Dakota now competes in 5 events instead of 2",
+      "Q5: Dakota now has 6 training stages instead of 2",
+      "Q6: Orion preparation frequency is 5, others remain 4",
+      "Q8: Orion preparation volume is 50min, others remain 45min",
+      "Q9: Orion precomp volume is 65min, others remain 60min",
+      "Q10: Dakota training now depends on 2 events",
+      "Q12: 8 IMU sensors total across 3 horses",
+      "Q14: 3 sensors at garrot position (one per horse)",
+      "Q16: Multiple sensors share 250Hz highest frequency",
+      "Q19: 4 riders now (Lucas added for Orion)",
+      "Q22: Preparation actors now include Leo and Lucas",
+      "Q23: PreComp actors now include Leo, Dr Martin and Lucas",
+      "Q25: 6 events in season 2026 instead of 2",
+      "Q32: Frequencies now vary by horse",
+      "Q33: Volume ranges added for Orion",
+      "Q34: Actor sets updated with Leo, Lucas, Dr Martin in precomp",
+      "Q36: 6 events total instead of 2",
+      "Q37: Cross added as third event type"
+    ],
+    "kg_entities_v2": {
+      "horses": [
+        "Dakota (Selle Français)",
+        "Naya (Anglo-Arabe)",
+        "Orion (Pur-sang)"
+      ],
+      "riders": [
+        "Emma (Dakota)",
+        "Manon (Dakota)",
+        "Leo (Naya)",
+        "Lucas (Orion)"
+      ],
+      "humans": [
+        "Dr Martin (Veterinarian)",
+        "Sophie (Caretaker)"
+      ],
+      "events": [
+        "Event_SJ_01 (ShowJumping, Saumur, 2026-04-12, Amateur 1)",
+        "Event_Dressage_01 (Dressage, Angers, 2026-05-03, Club Elite)",
+        "Event_SJ_2026_01 (ShowJumping, Paris, 2026-06-14, Amateur 2)",
+        "Event_Dressage_2026_01 (Dressage, Lyon, 2026-07-20, Club Elite)",
+        "Event_Cross_2026_01 (Cross, Bordeaux, 2026-08-10, Amateur 1)",
+        "Event_LeMans_Cross_2026 (Cross, Le Mans, 2026-09-05, Amateur 1)"
+      ],
+      "sensors": [
+        "IMU_Withers_01 (Dakota, 200Hz, GaitClassif)",
+        "IMU_CanonFore_01 (Dakota, 250Hz, FatigueDetection)",
+        "IMU_CanonHind_01 (Dakota, 250Hz, GaitClassif)",
+        "IMU_Sternum_01 (Dakota, 200Hz, FatigueDetection)",
+        "IMU_Withers_Naya_01 (Naya, 200Hz, GaitClassif)",
+        "IMU_Sternum_Naya_01 (Naya, 200Hz, FatigueDetection)",
+        "IMU_Withers_Orion_01 (Orion, 250Hz, GaitClassif)",
+        "IMU_CanonFore_Orion_01 (Orion, 250Hz, FatigueDetection)"
+      ],
+      "season": "Season_2026 (2026-03-01 to 2026-10-31)",
+      "participations": [
+        "Participation_SJ01_H1_Emma (Dakota + Emma, rank 2 at Event_SJ_01)",
+        "Participation_Dress2026_H2_Leo (Naya + Leo, rank 1 at Event_Dressage_2026_01)",
+        "Participation_LeMans_Orion_Lucas (Orion + Lucas, rank 3 at Event_LeMans_Cross_2026)"
+      ]
+    },
+    "changes_from_v2": [
+      "Q1: Added Luna and Thunder as 4th and 5th horses",
+      "Q6: Luna preparation frequency is 5, Thunder is 4",
+      "Q8: Luna preparation volume is 50min, Thunder is 45min",
+      "Q9: Luna precomp volume is 70min (highest), Thunder is 60min",
+      "Q12: 14 IMU sensors total across 5 horses",
+      "Q14: 5 sensors at garrot position (one per horse)",
+      "Q16: Luna's CanonFore sensor (300Hz) is now the highest frequency",
+      "Q19: 6 riders now (Clara and Antoine added)",
+      "Q22: Preparation actors now include Clara and Antoine",
+      "Q23: PreComp actors now include Clara and Antoine",
+      "Q25: 8 events in season 2026 instead of 6",
+      "Q32: Frequencies now include Luna (5) and Thunder (4), precomp varies for Luna",
+      "Q33: Volume ranges widened with Luna's data",
+      "Q34: Actor sets updated with Clara and Antoine",
+      "Q36: 8 events total instead of 6"
+    ],
+    "kg_entities_v4": {
+      "horses": [
+        "Dakota (Selle Français)",
+        "Naya (Anglo-Arabe)",
+        "Orion (Pur-sang)",
+        "Luna (KWPN)",
+        "Thunder (Hanovrien)"
+      ],
+      "riders": [
+        "Emma (Dakota)",
+        "Manon (Dakota)",
+        "Leo (Naya)",
+        "Lucas (Orion)",
+        "Clara (Luna)",
+        "Antoine (Thunder)"
+      ],
+      "humans": [
+        "Dr Martin (Veterinarian)",
+        "Sophie (Caretaker)"
+      ],
+      "events": [
+        "Event_SJ_01 (ShowJumping, Saumur, 2026-04-12, Amateur 1)",
+        "Event_Dressage_01 (Dressage, Angers, 2026-05-03, Club Elite)",
+        "Event_SJ_2026_01 (ShowJumping, Paris, 2026-06-14, Amateur 2)",
+        "Event_Fontainebleau_SJ_2026 (ShowJumping, Fontainebleau, 2026-07-05, Pro Elite)",
+        "Event_Dressage_2026_01 (Dressage, Lyon, 2026-07-20, Club Elite)",
+        "Event_Cross_2026_01 (Cross, Bordeaux, 2026-08-10, Amateur 1)",
+        "Event_LeMans_Cross_2026 (Cross, Le Mans, 2026-09-05, Amateur 1)",
+        "Event_Bordeaux_Cross_2026 (Cross, Bordeaux, 2026-09-20, Amateur 2)"
+      ],
+      "sensors_new": [
+        "IMU_Withers_Luna_01 (Luna, 250Hz, GaitClassif)",
+        "IMU_CanonFore_Luna_01 (Luna, 300Hz, FatigueDetection)",
+        "IMU_Sternum_Luna_01 (Luna, 200Hz, FatigueDetection)",
+        "IMU_Withers_Thunder_01 (Thunder, 200Hz, GaitClassif)",
+        "IMU_CanonHind_Thunder_01 (Thunder, 250Hz, GaitClassif)",
+        "IMU_Sternum_Thunder_01 (Thunder, 200Hz, FatigueDetection)"
+      ],
+      "season": "Season_2026 (2026-03-01 to 2026-10-31)",
+      "participations_new": [
+        "Participation_Fontainebleau_Luna_Clara (Luna + Clara, rank 1 at Event_Fontainebleau_SJ_2026)",
+        "Participation_Bordeaux_Thunder_Antoine (Thunder + Antoine, rank 2 at Event_Bordeaux_Cross_2026)"
+      ]
+    }
+  }
+}
