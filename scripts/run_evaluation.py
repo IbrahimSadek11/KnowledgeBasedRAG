@@ -10,6 +10,7 @@ import json
 import os
 import sys
 import time
+from concurrent.futures import ThreadPoolExecutor, TimeoutError as FuturesTimeoutError
 from datetime import datetime
 from pathlib import Path
 
@@ -28,6 +29,7 @@ from backend.timing_callback import TimingCallbackHandler
 TEST_DATASET_PATH = "../data/test_dataset.json"
 RESULTS_DIR = Path("../evaluation_results")
 RESULTS_DIR.mkdir(exist_ok=True)
+QUESTION_TIMEOUT_SECONDS = 120
 
 print("="*80)
 print("🎯 SEMANTIC GRAPHRAG EVALUATION")
@@ -76,6 +78,16 @@ total_answer_gen_time = 0
 cypher_gen_time_count = 0
 answer_gen_time_count = 0
 
+
+def attach_timing_callback(graph_chain, callback):
+    """Attach callback to both LLM calls inside GraphCypherQAChain."""
+    graph_chain.cypher_generation_chain.llm.callbacks = [callback]
+
+    qa_chain = getattr(graph_chain, "qa_chain", None)
+    qa_llm = getattr(qa_chain, "llm", None)
+    if qa_llm is not None:
+        qa_llm.callbacks = [callback]
+
 for i, q_data in enumerate(questions_data, 1):
     question_id = q_data['question_id']
     question = q_data['question']
@@ -92,17 +104,59 @@ for i, q_data in enumerate(questions_data, 1):
     
     start_time = time.time()
 
-    # Per-question timing callback (records each LLM call duration in order).
-    # NOTE: GraphCypherQAChain's QA step ignores callbacks passed via
-    # chain.invoke(config={"callbacks": ...}) — langchain_community calls the inner
-    # qa_chain.invoke(..., callbacks=...) with a bare kwarg that Chain.invoke drops.
-    # Both LLM calls share the same ChatOpenAI instance, so we attach the handler to
-    # that shared LLM; it fires on both the Cypher and answer calls, in order.
     callback = TimingCallbackHandler()
-    chain.cypher_generation_chain.llm.callbacks = [callback]
+    attach_timing_callback(chain, callback)
 
     try:
-        result = chain.invoke({"query": question})
+        executor = ThreadPoolExecutor(max_workers=1)
+        future = executor.submit(
+            chain.invoke,
+            {"query": question},
+            config={"callbacks": [callback]}
+        )
+        timed_out = False
+        try:
+            result = future.result(timeout=QUESTION_TIMEOUT_SECONDS)
+        except FuturesTimeoutError:
+            timed_out = True
+            future.cancel()
+            executor.shutdown(wait=False, cancel_futures=True)
+            answer = f"TIMEOUT: question exceeded {QUESTION_TIMEOUT_SECONDS}s"
+            cypher_query = ""
+            query_time = time.time() - start_time
+            success = False
+            query_cost = 0
+            total_time += query_time
+            print(f"⏰ Q{question_id} TIMED OUT after {QUESTION_TIMEOUT_SECONDS}s — skipping")
+            results.append({
+                'question_id': question_id,
+                'question': question,
+                'answer': answer,
+                'ground_truth': ground_truth,
+                'category': category,
+                'difficulty': difficulty,
+                'time_seconds': query_time,
+                'cypher_query': '',
+                'success': False,
+                'semantic_similarity': 0.0,
+                'llm_judge_scores': {
+                    'correctness': 0.0,
+                    'completeness': 0.0,
+                    'accuracy': 0.0,
+                    'overall': 0.0,
+                    'reasoning': 'Timed out'
+                },
+                'combined_score': 0.0,
+                'cypher_generation_time_seconds': None,
+                'answer_generation_time_seconds': None,
+                'query_cost_usd': 0.0,
+                'eval_cost_usd': 0.0
+            })
+            callback.reset()
+            continue
+        finally:
+            if not timed_out:
+                executor.shutdown(wait=True)
         answer = result.get("result", "")
 
         cypher_query = ""
@@ -112,8 +166,9 @@ for i, q_data in enumerate(questions_data, 1):
         query_time = time.time() - start_time
 
         # Per-LLM-call timings captured by the callback
-        cypher_generation_time = callback.cypher_time
-        answer_generation_time = callback.answer_time
+        cypher_generation_time = callback.cypher_generation_time
+        answer_generation_time = callback.answer_generation_time
+        llm_call_count = len(callback.durations)
 
         if cypher_generation_time is not None:
             total_cypher_gen_time += cypher_generation_time
@@ -123,8 +178,8 @@ for i, q_data in enumerate(questions_data, 1):
             answer_gen_time_count += 1
 
         # Sanity check: GraphCypherQAChain should make exactly 2 LLM calls
-        if len(callback.durations) != 2:
-            print(f"   ⚠️  Expected 2 LLM calls, got {len(callback.durations)}: {callback.durations}")
+        if llm_call_count != 2:
+            print(f"   ⚠️  Expected 2 LLM calls, got {llm_call_count}")
 
         # Estimate query cost
         query_tokens = len(question.split()) * 1.3 + 1000 + len(answer.split()) * 1.3
@@ -137,8 +192,8 @@ for i, q_data in enumerate(questions_data, 1):
         answer = f"ERROR: {str(e)}"
         cypher_query = ""
         query_time = time.time() - start_time
-        cypher_generation_time = None
-        answer_generation_time = None
+        cypher_generation_time = callback.cypher_generation_time
+        answer_generation_time = callback.answer_generation_time
         success = False
         query_cost = 0
 
@@ -146,6 +201,16 @@ for i, q_data in enumerate(questions_data, 1):
     
     print(f"✅ Query answered in {query_time:.2f}s")
     print(f"A: {answer[:100]}...")
+    cypher_time_text = (
+        f"{callback.cypher_generation_time:.2f}s"
+        if callback.cypher_generation_time is not None else "N/A"
+    )
+    answer_time_text = (
+        f"{callback.answer_generation_time:.2f}s"
+        if callback.answer_generation_time is not None else "N/A"
+    )
+    print(f"   ⏱️  Cypher generation : {cypher_time_text}")
+    print(f"   ⏱️  Answer generation : {answer_time_text}")
     
     # ════════════════════════════════════════════════════
     # Step 2: Evaluate answer quality
@@ -199,13 +264,14 @@ for i, q_data in enumerate(questions_data, 1):
         'time_seconds': query_time,
         'total_time_seconds': query_time,
         'cypher_query': cypher_query,
-        'cypher_generation_time_seconds': cypher_generation_time,
-        'answer_generation_time_seconds': answer_generation_time,
+        'cypher_generation_time_seconds': callback.cypher_generation_time,
+        'answer_generation_time_seconds': callback.answer_generation_time,
         'success': success,
         'semantic_similarity': semantic_score,
         'llm_judge_scores': judge_scores,
         'combined_score': (semantic_score + judge_scores['overall']) / 2  # Average
     })
+    callback.reset()
 
 print("\n" + "="*80)
 print(" Evaluation completed!")
@@ -262,6 +328,18 @@ report = {
         'avg_answer_generation_time_seconds': (
             total_answer_gen_time / answer_gen_time_count if answer_gen_time_count else None
         ),
+        'avg_cypher_generation_time': round(
+            sum(r["cypher_generation_time_seconds"] for r in results
+                if r["cypher_generation_time_seconds"] is not None) /
+            max(sum(1 for r in results
+                if r["cypher_generation_time_seconds"] is not None), 1), 4
+        ),
+        'avg_answer_generation_time': round(
+            sum(r["answer_generation_time_seconds"] for r in results
+                if r["answer_generation_time_seconds"] is not None) /
+            max(sum(1 for r in results
+                if r["answer_generation_time_seconds"] is not None), 1), 4
+        ),
         'query_cost_usd': total_query_cost,
         'evaluation_cost_usd': total_eval_cost,
         'total_cost_usd': total_query_cost + total_eval_cost,
@@ -301,6 +379,14 @@ print(f"  Success Rate: {report['overall_metrics']['success_rate']*100:.1f}%")
 print(f"  Failed Questions: {report['overall_metrics']['failed_count']}")
 print(f"  Avg Time: {report['metadata']['avg_time_per_question']:.2f}s")
 print(f"  Total Cost: ${report['metadata']['total_cost_usd']:.4f}")
+total_cypher = sum(r["cypher_generation_time_seconds"] for r in results if r["cypher_generation_time_seconds"] is not None)
+total_answer = sum(r["answer_generation_time_seconds"] for r in results if r["answer_generation_time_seconds"] is not None)
+avg_cypher = total_cypher / max(sum(1 for r in results if r["cypher_generation_time_seconds"] is not None), 1)
+avg_answer = total_answer / max(sum(1 for r in results if r["answer_generation_time_seconds"] is not None), 1)
+print(f"⏱️  Avg Cypher generation time : {avg_cypher:.2f}s")
+print(f"⏱️  Avg Answer generation time : {avg_answer:.2f}s")
+print(f"⏱️  Total Cypher generation time : {total_cypher:.2f}s")
+print(f"⏱️  Total Answer generation time : {total_answer:.2f}s")
 
 print(f"\n🎯 Quality Scores (0-1 scale):")
 print(f"  Semantic Similarity: {report['overall_metrics']['avg_semantic_similarity']:.3f}")

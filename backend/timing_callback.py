@@ -28,22 +28,34 @@ class TimingCallbackHandler(BaseCallbackHandler):
     def reset(self):
         """Clear recorded timings (call before each chain.invoke)."""
         self.durations = []
-        self._start = None
+        self.cypher_generation_time = None
+        self.answer_generation_time = None
+        self._call_count = 0
+        self._starts = {}
 
-    def on_llm_start(self, *args, **kwargs):
-        self._start = time.perf_counter()
+    def on_llm_start(self, serialized, prompts, *, run_id=None, **kwargs):
+        key = str(run_id) if run_id is not None else "__default__"
+        self._starts[key] = time.perf_counter()
 
-    def on_llm_end(self, *args, **kwargs):
-        if self._start is not None:
-            self.durations.append(time.perf_counter() - self._start)
-            self._start = None
+    def on_llm_end(self, response, *, run_id=None, **kwargs):
+        key = str(run_id) if run_id is not None else "__default__"
+        start = self._starts.pop(key, None)
+        if start is None:
+            return
+        duration = time.perf_counter() - start
+        self.durations.append(duration)
+        if self._call_count == 0:
+            self.cypher_generation_time = duration
+        elif self._call_count == 1:
+            self.answer_generation_time = duration
+        self._call_count += 1
 
     @property
     def cypher_time(self):
         """Duration of the Cypher-generation LLM call (first call), or None."""
-        return self.durations[0] if len(self.durations) > 0 else None
+        return self.cypher_generation_time
 
     @property
     def answer_time(self):
         """Duration of the QA / final-answer LLM call (second call), or None."""
-        return self.durations[1] if len(self.durations) > 1 else None
+        return self.answer_generation_time
