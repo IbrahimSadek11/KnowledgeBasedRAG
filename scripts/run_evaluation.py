@@ -428,3 +428,4 @@ for r in worst:
 print("\n" + "="*80)
 print("✅ Semantic evaluation complete!")
 print("="*80)
+sys.exit(0)

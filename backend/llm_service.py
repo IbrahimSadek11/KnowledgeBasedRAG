@@ -13,6 +13,19 @@ def get_cypher_prompt():
     """Get the Cypher generation prompt template"""
     CYPHER_GENERATION_TEMPLATE = """Tâche : Générer une requête Cypher pour Neo4j.
 
+FORBIDDEN PATTERNS
+1. NEVER use UNION or UNION ALL. Instead use OPTIONAL MATCH with multiple branches in a single query.
+2. NEVER use OR inside a MATCH clause. Use separate OPTIONAL MATCH branches.
+3. NEVER write two WHERE clauses in the same query block. Merge all conditions into one WHERE using AND.
+4. NEVER return explanatory text instead of a Cypher query. If data may not exist, use OPTIONAL MATCH and return null-safe results.
+5. If no schema element matches the question, generate:
+   RETURN "Information not available in the knowledge graph" AS answer
+
+GRACEFUL EMPTY RESULTS
+- Always use OPTIONAL MATCH when querying relationships that may not exist
+- Always include a RETURN clause even if result may be empty
+- Never assume a relationship exists; use OPTIONAL MATCH + WHERE x IS NOT NULL to filter
+
 RÈGLE 1 — LABELS D'ÉVÉNEMENTS
 Il n'existe PAS de label "Event" dans ce graphe.
 Les événements utilisent UNIQUEMENT : ShowJumping, Dressage, ou Cross.
@@ -103,6 +116,26 @@ Réponds UNIQUEMENT à ce qui est demandé. Ne mélange pas plusieurs sujets dan
 - Question sur les événements → utilise les labels d'événement et leurs relations seulement
 - Question sur les capteurs → utilise InertialSensors + ISUSEDFOR/ISATTACHEDTO seulement
 
+RÈGLE 14 — LABELS DE TRAININGSTAGE
+Les seuls labels valides pour les étapes d'entraînement sont :
+PreparationStage, PreCompetitionStage, CompetitionStage, TransitionStage
+INVALID: MATCH (t:TrainingStage)
+VALID: MATCH (t) WHERE (t:PreparationStage OR t:PreCompetitionStage OR t:CompetitionStage OR t:TransitionStage)
+TransitionStage est l'étape de récupération/recovery.
+
+RÈGLE 15 — NE JAMAIS ABANDONNER AVEC UN RETURN STATIQUE
+Tu ne dois JAMAIS générer:
+  RETURN "Information not available in the knowledge graph" AS answer
+...sauf si AUCUN label, relation ou propriété du schéma ne correspond à la question.
+
+Si la question parle de durée → utilise t.Volume (TransitionStage)
+Si la question parle de récupération/recovery → utilise TransitionStage
+Si la question parle de lien saison/compétition → utilise INSEASON + category
+Si la question parle de phase de compétition organisée différemment →
+  MATCH (t:CompetitionStage) RETURN t.id, t.Volume, t.Intensity, t.Frequency
+
+Avant de retourner "not available", essaie OBLIGATOIREMENT une requête avec OPTIONAL MATCH sur les nœuds les plus proches du sujet de la question.
+
 RÈGLE — AGRÉGATION DES POSITIONS DE CAPTEURS
 Quand la question demande où les capteurs sont placés ou combien de capteurs sont à chaque position,
 ne retourne jamais les capteurs individuellement. Groupe toujours par position.
@@ -116,6 +149,23 @@ INCORRECT:
 MATCH (s:InertialSensors)-[:ISATTACHEDTO]->(h:Horse)
 RETURN s.id, labels(s)[1] as body_part
 (cela retourne 108 lignes et le résultat est trop grand)
+
+RÈGLE — NOMBRE DE CAPTEURS PAR OBJECTIF
+Quand la question demande combien de capteurs servent chaque objectif (FatigueDetection ou GaitClassif_01),
+ou quelles positions de capteurs sont utilisées par objectif, ne liste jamais les capteurs individuellement.
+Groupe toujours par objectif et par position.
+
+CORRECT:
+MATCH (s:InertialSensors)-[:ISUSEDFOR]->(eo:ExperimentalObjective)
+RETURN eo.id as objective, labels(s)[1] as position, COUNT(DISTINCT s) as count
+ORDER BY eo.id, count DESC
+
+Cette requête retourne au maximum 8 lignes et ne provoque pas de timeout.
+
+INCORRECT:
+MATCH (s:InertialSensors)-[:ISUSEDFOR]->(eo:ExperimentalObjective)
+RETURN s.id, labels(s)[1] as body_part, eo.id as objective
+(cela retourne 108 lignes et provoque un timeout)
 
 RÈGLE — OBJECTIFS DES CAPTEURS SANS UNION
 Quand la question demande quels capteurs servent l'objectif A ou l'objectif B pour un cheval précis,
@@ -131,6 +181,20 @@ MATCH ... RETURN ... "GaitClassif_01"
 UNION
 MATCH ... RETURN ... "FatigueDetection"
 
+SELF-CHECK — BEFORE RETURNING YOUR CYPHER, VERIFY:
+□ Does it contain UNION or UNION ALL? → Rewrite with OPTIONAL MATCH
+□ Does it contain OR inside a MATCH clause? → Use separate OPTIONAL MATCH
+□ Does it have WHERE after RETURN? → Move WHERE before RETURN
+□ Does it have two WHERE clauses? → Merge into one with AND
+□ Does every relationship direction match RÈGLE 3 exactly? → Fix if not
+□ Does it use (Rider)-[:ASSOCIATEDWITH]->(Horse) not the reverse? → Verify
+□ Does it use (Horse)-[:TRAINSIN]->(TrainingStage) not the reverse? → Verify
+□ Does it return explanatory text instead of Cypher? → Replace with valid Cypher
+□ Does it use HAVING? → NEVER use HAVING in Cypher. Use WITH + WHERE instead.
+□ Does it use NOT EXISTS with a pattern expression? → Replace with OPTIONAL MATCH + WHERE x IS NULL
+
+Only return the Cypher query after all checks pass.
+
 Schema: {schema}
 Question: {question}
 Cypher Query:"""
@@ -145,6 +209,13 @@ def get_qa_prompt():
     """Get the QA prompt template"""
     QA_TEMPLATE = """Question: {question}
 Context: {context}
+
+RÈGLES PRIORITAIRES
+1. Ta réponse doit être basée exclusivement sur le context fourni ci-dessous. N'utilise aucune connaissance externe.
+2. Si le context contient des données, extrais-les et présente-les directement et précisément.
+3. Si le context est vide, réponds : Cette information n'est pas disponible. MAIS si le context contient des données partielles, utilise-les pour répondre partiellement plutôt que de dire non disponible.
+4. Ne contredis jamais le context récupéré. Si le context dit X, ta réponse doit dire X.
+5. Pour les questions de comparaison ou d'agrégation, liste explicitement les valeurs du context avant de conclure.
 
 RÈGLES DE GROUNDING — NE JAMAIS HALLUCINER
 - Si un cheval n'est PAS mentionné dans le context, ne le mentionne pas.
