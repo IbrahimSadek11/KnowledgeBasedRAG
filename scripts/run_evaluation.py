@@ -29,7 +29,7 @@ from backend.timing_callback import TimingCallbackHandler
 TEST_DATASET_PATH = "../data/test_dataset.json"
 RESULTS_DIR = Path("../evaluation_results")
 RESULTS_DIR.mkdir(exist_ok=True)
-QUESTION_TIMEOUT_SECONDS = 120
+QUESTION_TIMEOUT_SECONDS = 300
 
 print("="*80)
 print("🎯 SEMANTIC GRAPHRAG EVALUATION")

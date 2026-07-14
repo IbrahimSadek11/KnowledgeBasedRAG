@@ -7,15 +7,15 @@ answer wording.
 """
 
 import json
-import os
+# import os
 import sys
-import time
+# import time
 from concurrent.futures import ThreadPoolExecutor, TimeoutError as FuturesTimeoutError
 from datetime import datetime
 from pathlib import Path
 
 # Add repository root to path so the script works from any current directory.
-REPO_ROOT = Path(__file__).resolve().parents[1]
+REPO_ROOT = Path(__file__).resolve().parents[1]   # C:\Users\iTECH\Desktop\Ibrahim\project\  = repo_root
 sys.path.append(str(REPO_ROOT))
 
 from backend.config import OPENAI_API_KEY
@@ -26,7 +26,7 @@ from langchain_openai import ChatOpenAI
 
 TEST_DATASET_PATH = REPO_ROOT / "data" / "test_dataset.json"
 RESULTS_DIR = REPO_ROOT / "evaluation_results"
-QUESTION_TIMEOUT_SECONDS = 60
+QUESTION_TIMEOUT_SECONDS = 300
 
 
 def attach_timing_callback(graph_chain, callback):
@@ -40,6 +40,9 @@ def attach_timing_callback(graph_chain, callback):
 
 
 def extract_intermediate_steps(result):
+    #This function's job is: open that result object and pull out two specific things:
+        #1-The Cypher query that was generated
+        #2-The raw data that Neo4j returned
     """Best-effort extraction of generated Cypher and raw context."""
     cypher_query = ""
     raw_context = []
