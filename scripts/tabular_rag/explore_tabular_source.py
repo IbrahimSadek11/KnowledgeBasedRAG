@@ -11,7 +11,7 @@ import sys
 from neo4j import GraphDatabase
 
 # Add project root to path so we can reuse the existing connection config
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
 from backend.config import NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD, NEO4J_DATABASE
 
 print(f"Connexion a Neo4j: {NEO4J_URI} (database: {NEO4J_DATABASE})")

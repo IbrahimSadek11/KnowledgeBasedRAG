@@ -13,7 +13,7 @@ from neo4j import GraphDatabase
 from backend.config import NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD, NEO4J_DATABASE
 
 # Resolve paths relative to the project root (parent of backend/)
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 DATA_DIR = os.path.join(PROJECT_ROOT, "data")
 DB_PATH = os.path.join(DATA_DIR, "tabular.db")
 
@@ -77,6 +77,39 @@ RETURN s.id AS sensor_id, h.id AS horse_id, labels(s) AS labels,
        s.hasSensorTime AS sample_rate, o.id AS objective_id
 """
 
+EVENT_ENTRY_QUERY = """
+MATCH (h:Horse)-[:COMPETESIN]->(e)
+WHERE e:ShowJumping OR e:Cross OR e:Dressage
+RETURN h.id AS horse_id, e.id AS event_id
+"""
+
+OBJECTIVE_QUERY = """
+MATCH (o:ExperimentalObjective)
+RETURN o.id AS objective_id, o.hasName AS name, o.description AS description
+"""
+
+ASSOCIATION_QUERY = """
+MATCH (r:Rider)-[:ASSOCIATEDWITH]->(h:Horse)
+RETURN r.id AS rider_id, h.id AS horse_id
+"""
+
+SEASON_QUERY = """
+MATCH (s:CompetitiveSeason)
+RETURN s.id AS season_id, s.seasonName AS season_name,
+       s.seasonStart AS season_start, s.seasonEnd AS season_end
+"""
+
+EVENT_SEASON_QUERY = """
+MATCH (e)-[:INSEASON]->(s:CompetitiveSeason)
+WHERE e:ShowJumping OR e:Cross OR e:Dressage
+RETURN e.id AS event_id, s.id AS season_id
+"""
+
+PEOPLE_QUERY = """
+MATCH (p) WHERE p:Rider OR p:Caretaker OR p:Veterinarian
+RETURN p.id AS person_id, labels(p) AS labels
+"""
+
 
 def date_to_iso(value):
     """Convert a Neo4j Date (or None) to an ISO YYYY-MM-DD string."""
@@ -129,6 +162,10 @@ def fetch_from_neo4j():
                 (rec["horse_id"], rec["name"], rec["race"])
                 for rec in session.run(HORSE_QUERY)
             ]
+            event_seasons = {
+                rec["event_id"]: rec["season_id"]
+                for rec in session.run(EVENT_SEASON_QUERY)
+            }
             events = [
                 (
                     rec["event_id"],
@@ -136,6 +173,7 @@ def fetch_from_neo4j():
                     rec["category"],
                     date_to_iso(rec["event_date"]),
                     pick_discipline(rec["labels"]),
+                    event_seasons.get(rec["event_id"]),
                 )
                 for rec in session.run(EVENT_QUERY)
             ]
@@ -183,6 +221,31 @@ def fetch_from_neo4j():
                 )
                 for rec in session.run(SENSOR_QUERY)
             ]
+            event_entries = [
+                (rec["horse_id"], rec["event_id"])
+                for rec in session.run(EVENT_ENTRY_QUERY)
+            ]
+            objectives = [
+                (rec["objective_id"], rec["name"], rec["description"])
+                for rec in session.run(OBJECTIVE_QUERY)
+            ]
+            horse_rider_associations = [
+                (rec["rider_id"], rec["horse_id"])
+                for rec in session.run(ASSOCIATION_QUERY)
+            ]
+            seasons = [
+                (
+                    rec["season_id"],
+                    rec["season_name"],
+                    date_to_iso(rec["season_start"]),
+                    date_to_iso(rec["season_end"]),
+                )
+                for rec in session.run(SEASON_QUERY)
+            ]
+            people = [
+                (rec["person_id"], pick_actor_role(rec["labels"]))
+                for rec in session.run(PEOPLE_QUERY)
+            ]
     finally:
         driver.close()
     return (
@@ -192,11 +255,26 @@ def fetch_from_neo4j():
         training_actors,
         event_participations,
         sensors,
+        event_entries,
+        objectives,
+        horse_rider_associations,
+        seasons,
+        people,
     )
 
 
 def build_sqlite(
-    horses, events, trainings, training_actors, event_participations, sensors
+    horses,
+    events,
+    trainings,
+    training_actors,
+    event_participations,
+    sensors,
+    event_entries,
+    objectives,
+    horse_rider_associations,
+    seasons,
+    people,
 ):
     os.makedirs(DATA_DIR, exist_ok=True)
 
@@ -210,6 +288,11 @@ def build_sqlite(
         cur.execute("DROP TABLE IF EXISTS training_actors")
         cur.execute("DROP TABLE IF EXISTS event_participations")
         cur.execute("DROP TABLE IF EXISTS sensors")
+        cur.execute("DROP TABLE IF EXISTS event_entries")
+        cur.execute("DROP TABLE IF EXISTS objectives")
+        cur.execute("DROP TABLE IF EXISTS horse_rider_associations")
+        cur.execute("DROP TABLE IF EXISTS seasons")
+        cur.execute("DROP TABLE IF EXISTS people")
         cur.execute(
             """
             CREATE TABLE horses (
@@ -221,18 +304,35 @@ def build_sqlite(
         )
         cur.execute(
             """
+            CREATE TABLE seasons (
+                season_id TEXT PRIMARY KEY,
+                season_name TEXT,
+                season_start TEXT,
+                season_end TEXT
+            )
+            """
+        )
+        cur.execute(
+            """
             CREATE TABLE events (
                 event_id TEXT PRIMARY KEY,
                 location TEXT,
                 category TEXT,
                 event_date TEXT,
-                discipline TEXT
+                discipline TEXT,
+                season_id TEXT,
+                FOREIGN KEY (season_id) REFERENCES seasons(season_id)
             )
             """
         )
         cur.executemany(
             "INSERT INTO horses (horse_id, name, race) VALUES (?, ?, ?)",
             horses,
+        )
+        cur.executemany(
+            "INSERT INTO seasons (season_id, season_name, season_start, season_end) "
+            "VALUES (?, ?, ?, ?)",
+            seasons,
         )
         cur.execute(
             """
@@ -250,8 +350,9 @@ def build_sqlite(
             """
         )
         cur.executemany(
-            "INSERT INTO events (event_id, location, category, event_date, discipline) "
-            "VALUES (?, ?, ?, ?, ?)",
+            "INSERT INTO events "
+            "(event_id, location, category, event_date, discipline, season_id) "
+            "VALUES (?, ?, ?, ?, ?, ?)",
             events,
         )
         cur.execute(
@@ -311,12 +412,68 @@ def build_sqlite(
             "VALUES (?, ?, ?, ?, ?)",
             event_participations,
         )
+        cur.execute(
+            """
+            CREATE TABLE event_entries (
+                horse_id TEXT,
+                event_id TEXT,
+                PRIMARY KEY (horse_id, event_id),
+                FOREIGN KEY (horse_id) REFERENCES horses(horse_id),
+                FOREIGN KEY (event_id) REFERENCES events(event_id)
+            )
+            """
+        )
+        cur.execute(
+            """
+            CREATE TABLE objectives (
+                objective_id TEXT PRIMARY KEY,
+                name TEXT,
+                description TEXT
+            )
+            """
+        )
         cur.executemany(
             "INSERT INTO sensors "
             "(sensor_id, horse_id, sensor_type, sensor_code, format, "
             "sensor_offset, file_size, sample_rate, objective_id) "
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
             sensors,
+        )
+        cur.executemany(
+            "INSERT INTO event_entries (horse_id, event_id) VALUES (?, ?)",
+            event_entries,
+        )
+        cur.executemany(
+            "INSERT INTO objectives (objective_id, name, description) "
+            "VALUES (?, ?, ?)",
+            objectives,
+        )
+        cur.execute(
+            """
+            CREATE TABLE horse_rider_associations (
+                rider_id TEXT,
+                horse_id TEXT,
+                PRIMARY KEY (rider_id, horse_id),
+                FOREIGN KEY (horse_id) REFERENCES horses(horse_id)
+            )
+            """
+        )
+        cur.executemany(
+            "INSERT INTO horse_rider_associations (rider_id, horse_id) "
+            "VALUES (?, ?)",
+            horse_rider_associations,
+        )
+        cur.execute(
+            """
+            CREATE TABLE people (
+                person_id TEXT PRIMARY KEY,
+                role TEXT
+            )
+            """
+        )
+        cur.executemany(
+            "INSERT INTO people (person_id, role) VALUES (?, ?)",
+            people,
         )
         conn.commit()
 
@@ -420,6 +577,78 @@ def build_sqlite(
         ).fetchall()
         for row in dakota_sensor_rows:
             print(f"  {row}")
+
+        entry_count = cur.execute("SELECT COUNT(*) FROM event_entries").fetchone()[0]
+        objective_count = cur.execute("SELECT COUNT(*) FROM objectives").fetchone()[0]
+        print(f"\nevent_entries: {entry_count}")
+        print(f"objectives: {objective_count}")
+
+        print("\nDakota (Horse1) event entries:")
+        dakota_entry_rows = cur.execute(
+            """
+            SELECT event_id FROM event_entries WHERE horse_id = 'Horse1'
+            ORDER BY event_id
+            """
+        ).fetchall()
+        for row in dakota_entry_rows:
+            print(f"  {row}")
+
+        print("\nAll objectives:")
+        for row in cur.execute("SELECT * FROM objectives"):
+            print(f"  {row}")
+
+        entered_no_result = cur.execute(
+            """
+            SELECT COUNT(*) FROM event_entries ee
+            LEFT JOIN event_participations ep
+              ON ee.horse_id = ep.horse_id AND ee.event_id = ep.event_id
+            WHERE ep.participation_id IS NULL
+            """
+        ).fetchone()[0]
+        print(f"\nentered but no ranked result: {entered_no_result}")
+
+        print("\n" + "=" * 60)
+        print("SCHEMA-GAP EXTENSION VERIFICATION")
+        print("=" * 60)
+
+        assoc_count = cur.execute(
+            "SELECT COUNT(*) FROM horse_rider_associations"
+        ).fetchone()[0]
+        season_count = cur.execute("SELECT COUNT(*) FROM seasons").fetchone()[0]
+        people_count = cur.execute("SELECT COUNT(*) FROM people").fetchone()[0]
+        events_with_season = cur.execute(
+            "SELECT COUNT(*) FROM events WHERE season_id IS NOT NULL"
+        ).fetchone()[0]
+        total_events = cur.execute("SELECT COUNT(*) FROM events").fetchone()[0]
+
+        print(f"\n(a) horse_rider_associations: {assoc_count} (expected 51)")
+        print(f"(a) seasons: {season_count} (expected 1)")
+        print(f"(a) people: {people_count} (expected 27)")
+        print(
+            f"(a) events with non-null season_id: {events_with_season} "
+            f"of {total_events} (expected 20 of 20)"
+        )
+
+        print("\n(b) seasons table:")
+        for row in cur.execute("SELECT * FROM seasons"):
+            print(f"  {row}")
+
+        print("\n(c) riders associated with Horse1 (expected Rider_Emma, Rider_Manon):")
+        for row in cur.execute(
+            "SELECT rider_id FROM horse_rider_associations "
+            "WHERE horse_id = 'Horse1' ORDER BY rider_id"
+        ):
+            print(f"  {row}")
+
+        print(
+            "\n(d) horses associated with Rider_Alice (expected Horse_Arrow, "
+            "Horse_Braise, Horse_Orage, Horse_Soleil):"
+        )
+        for row in cur.execute(
+            "SELECT horse_id FROM horse_rider_associations "
+            "WHERE rider_id = 'Rider_Alice' ORDER BY horse_id"
+        ):
+            print(f"  {row}")
     finally:
         conn.close()
 
@@ -433,15 +662,33 @@ def main():
         training_actors,
         event_participations,
         sensors,
+        event_entries,
+        objectives,
+        horse_rider_associations,
+        seasons,
+        people,
     ) = fetch_from_neo4j()
     print(
         f"Fetched {len(horses)} horses, {len(events)} events, "
         f"{len(trainings)} trainings, {len(training_actors)} training-actor links, "
-        f"{len(event_participations)} event participations, "
-        f"and {len(sensors)} sensors from Neo4j."
+        f"{len(event_participations)} event participations, {len(sensors)} sensors, "
+        f"{len(event_entries)} event entries, {len(objectives)} objectives, "
+        f"{len(horse_rider_associations)} horse-rider associations, "
+        f"{len(seasons)} seasons, and {len(people)} people "
+        f"from Neo4j."
     )
     build_sqlite(
-        horses, events, trainings, training_actors, event_participations, sensors
+        horses,
+        events,
+        trainings,
+        training_actors,
+        event_participations,
+        sensors,
+        event_entries,
+        objectives,
+        horse_rider_associations,
+        seasons,
+        people,
     )
     print(f"\nSQLite ecrit dans: {DB_PATH}")
 

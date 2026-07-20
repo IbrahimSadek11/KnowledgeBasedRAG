@@ -10,7 +10,7 @@ and a full six-table join for Dakota (Horse1).
 import os
 import sqlite3
 
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 DB_PATH = os.path.join(PROJECT_ROOT, "data", "tabular.db")
 SCRIPTS_DIR = os.path.join(PROJECT_ROOT, "scripts")
 ENCODING_OUTPUT = os.path.join(SCRIPTS_DIR, "encoding_check_output.txt")
@@ -22,6 +22,11 @@ EXPECTED_COUNTS = {
     "training_actors": 314,
     "event_participations": 50,
     "sensors": 108,
+    "event_entries": 101,
+    "objectives": 2,
+    "horse_rider_associations": 51,
+    "seasons": 1,
+    "people": 27,
 }
 
 # (label, child query returning offending ids)
@@ -74,6 +79,38 @@ ORPHAN_CHECKS = [
         WHERE h.horse_id IS NULL
         """,
     ),
+    (
+        "event_entries.horse_id -> horses.horse_id",
+        """
+        SELECT ee.horse_id || '|' || ee.event_id FROM event_entries ee
+        LEFT JOIN horses h ON ee.horse_id = h.horse_id
+        WHERE h.horse_id IS NULL
+        """,
+    ),
+    (
+        "event_entries.event_id -> events.event_id",
+        """
+        SELECT ee.horse_id || '|' || ee.event_id FROM event_entries ee
+        LEFT JOIN events e ON ee.event_id = e.event_id
+        WHERE e.event_id IS NULL
+        """,
+    ),
+    (
+        "horse_rider_associations.horse_id -> horses.horse_id",
+        """
+        SELECT hra.rider_id || '|' || hra.horse_id FROM horse_rider_associations hra
+        LEFT JOIN horses h ON hra.horse_id = h.horse_id
+        WHERE h.horse_id IS NULL
+        """,
+    ),
+    (
+        "events.season_id -> seasons.season_id (excluding NULLs)",
+        """
+        SELECT e.event_id FROM events e
+        LEFT JOIN seasons s ON e.season_id = s.season_id
+        WHERE e.season_id IS NOT NULL AND s.season_id IS NULL
+        """,
+    ),
 ]
 
 
@@ -104,6 +141,18 @@ def main():
             else:
                 print(f"  {label}: {len(offenders)} orphans -> FAIL")
                 print(f"    offending ids: {offenders}")
+
+        # --- Season completeness (every event must be in a season) ---
+        print("\n=== SEASON COMPLETENESS ===")
+        null_season = cur.execute(
+            "SELECT COUNT(*) FROM events WHERE season_id IS NULL"
+        ).fetchone()[0]
+        season_ok = null_season == 0
+        all_passed = all_passed and season_ok
+        print(
+            f"  events with NULL season_id: {null_season} (expected 0) -> "
+            f"{'PASS' if season_ok else 'FAIL'}"
+        )
 
         # --- Type check ---
         print("\n=== TYPE CHECK ===")
