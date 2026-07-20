@@ -1,7 +1,7 @@
 """
 Exhaustive full-row verification of data/tabular.db against the Neo4j graph.
 
-For every one of the six tables, this pulls a fresh "ground truth" from Neo4j
+For every one of the eleven tables, this pulls a fresh "ground truth" from Neo4j
 using INDEPENDENTLY formulated Cypher (different traversal directions, UNION
 per label instead of WHERE...OR) so it genuinely double-checks the ETL rather
 than re-running identical queries. It then compares every field of every row,
@@ -11,20 +11,30 @@ mismatches.
 The SQLite database is opened read-only (mode=ro).
 """
 import os
+import sys
 import sqlite3
 
 from neo4j import GraphDatabase
 
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.append(PROJECT_ROOT)
+
 from backend.config import NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD, NEO4J_DATABASE
 
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DB_PATH = os.path.join(PROJECT_ROOT, "data", "tabular.db")
 DIFF_OUTPUT = os.path.join(PROJECT_ROOT, "scripts", "full_diff_output.txt")
 
 SENSOR_TYPES = {"Withers", "Sternum", "CanonOfForelimb", "CanonOfHindlimb"}
 ACTOR_ROLES = {"Rider", "Veterinarian", "Caretaker"}
 
-EXPECTED_TOTAL = 50 + 20 + 171 + 314 + 50 + 108  # 713
+EXPECTED_TOTAL = (
+    50 + 20 + 171 + 314 + 50 + 108  # original six tables = 713
+    + 101  # event_entries
+    + 2    # objectives
+    + 51   # horse_rider_associations
+    + 1    # seasons
+    + 27   # people
+)  # 895
 
 
 def date_to_iso(value):
@@ -49,18 +59,23 @@ RETURN h.id AS horse_id, h.hasName AS name, h.hasRace AS race
 """
 
 # UNION per discipline label instead of WHERE ... OR, discipline as a literal.
+# season_id pulled via a separate OPTIONAL MATCH ... INSEASON clause per branch,
+# independent of tabular_etl.py's dictionary-merge approach.
 EVENTS_CYPHER = """
 MATCH (e:ShowJumping)
+OPTIONAL MATCH (e)-[:INSEASON]->(s:CompetitiveSeason)
 RETURN e.id AS event_id, e.eventLocation AS location, e.category AS category,
-       e.eventDate AS event_date, 'ShowJumping' AS discipline
+       e.eventDate AS event_date, 'ShowJumping' AS discipline, s.id AS season_id
 UNION
 MATCH (e:Cross)
+OPTIONAL MATCH (e)-[:INSEASON]->(s:CompetitiveSeason)
 RETURN e.id AS event_id, e.eventLocation AS location, e.category AS category,
-       e.eventDate AS event_date, 'Cross' AS discipline
+       e.eventDate AS event_date, 'Cross' AS discipline, s.id AS season_id
 UNION
 MATCH (e:Dressage)
+OPTIONAL MATCH (e)-[:INSEASON]->(s:CompetitiveSeason)
 RETURN e.id AS event_id, e.eventLocation AS location, e.category AS category,
-       e.eventDate AS event_date, 'Dressage' AS discipline
+       e.eventDate AS event_date, 'Dressage' AS discipline, s.id AS season_id
 """
 
 # UNION per stage label, reverse TRAINSIN direction, literal stage_type.
@@ -118,6 +133,44 @@ RETURN s.id AS sensor_id, h.id AS horse_id, labels(s) AS labels,
        s.hasSensorTime AS sample_rate, o.id AS objective_id
 """
 
+# Start from Horse, traverse reverse ASSOCIATEDWITH to Rider (the ETL starts
+# from Rider; this goes the opposite direction to double-check).
+ASSOCIATIONS_CYPHER = """
+MATCH (h:Horse)<-[:ASSOCIATEDWITH]-(r:Rider)
+RETURN r.id AS rider_id, h.id AS horse_id
+"""
+
+# Single-row table; a straightforward equivalent query is fine here.
+SEASONS_CYPHER = """
+MATCH (s:CompetitiveSeason)
+RETURN s.id AS season_id, s.seasonName AS season_name,
+       s.seasonStart AS season_start, s.seasonEnd AS season_end
+"""
+
+# UNION per discipline label, reverse COMPETESIN direction (start from event),
+# independent of tabular_etl.py's Horse-first formulation.
+EVENT_ENTRIES_CYPHER = """
+MATCH (e:ShowJumping)<-[:COMPETESIN]-(h:Horse)
+RETURN h.id AS horse_id, e.id AS event_id
+UNION
+MATCH (e:Cross)<-[:COMPETESIN]-(h:Horse)
+RETURN h.id AS horse_id, e.id AS event_id
+UNION
+MATCH (e:Dressage)<-[:COMPETESIN]-(h:Horse)
+RETURN h.id AS horse_id, e.id AS event_id
+"""
+
+OBJECTIVES_CYPHER = """
+MATCH (o:ExperimentalObjective)
+RETURN o.id AS objective_id, o.hasName AS name, o.description AS description
+"""
+
+# All people across the three actor labels; role derived independently from labels.
+PEOPLE_CYPHER = """
+MATCH (p) WHERE p:Rider OR p:Caretaker OR p:Veterinarian
+RETURN p.id AS person_id, labels(p) AS labels
+"""
+
 
 def build_neo4j_dicts(session):
     """Return {table: (fields, {key: value_tuple})} pulled fresh from Neo4j."""
@@ -132,15 +185,16 @@ def build_neo4j_dicts(session):
         },
     )
 
-    # events: key event_id -> (location, category, event_date, discipline)
+    # events: key event_id -> (location, category, event_date, discipline, season_id)
     data["events"] = (
-        ["location", "category", "event_date", "discipline"],
+        ["location", "category", "event_date", "discipline", "season_id"],
         {
             rec["event_id"]: (
                 rec["location"],
                 rec["category"],
                 date_to_iso(rec["event_date"]),
                 rec["discipline"],
+                rec["season_id"],
             )
             for rec in session.run(EVENTS_CYPHER)
         },
@@ -210,6 +264,55 @@ def build_neo4j_dicts(session):
         sensors,
     )
 
+    # event_entries: key (horse_id, event_id) -> () — presence-only composite key
+    data["event_entries"] = (
+        [],
+        {
+            (rec["horse_id"], rec["event_id"]): ()
+            for rec in session.run(EVENT_ENTRIES_CYPHER)
+        },
+    )
+
+    # objectives: key objective_id -> (name, description)
+    data["objectives"] = (
+        ["name", "description"],
+        {
+            rec["objective_id"]: (rec["name"], rec["description"])
+            for rec in session.run(OBJECTIVES_CYPHER)
+        },
+    )
+
+    # horse_rider_associations: key (rider_id, horse_id) -> () — presence-only
+    data["horse_rider_associations"] = (
+        [],
+        {
+            (rec["rider_id"], rec["horse_id"]): ()
+            for rec in session.run(ASSOCIATIONS_CYPHER)
+        },
+    )
+
+    # seasons: key season_id -> (season_name, season_start, season_end)
+    data["seasons"] = (
+        ["season_name", "season_start", "season_end"],
+        {
+            rec["season_id"]: (
+                rec["season_name"],
+                date_to_iso(rec["season_start"]),
+                date_to_iso(rec["season_end"]),
+            )
+            for rec in session.run(SEASONS_CYPHER)
+        },
+    )
+
+    # people: key person_id -> (role,)
+    data["people"] = (
+        ["role"],
+        {
+            rec["person_id"]: (pick(rec["labels"], ACTOR_ROLES),)
+            for rec in session.run(PEOPLE_CYPHER)
+        },
+    )
+
     return data
 
 
@@ -223,9 +326,10 @@ def build_sqlite_dicts(cur):
     }
 
     data["events"] = {
-        row[0]: (row[1], row[2], row[3], row[4])
+        row[0]: (row[1], row[2], row[3], row[4], row[5])
         for row in cur.execute(
-            "SELECT event_id, location, category, event_date, discipline FROM events"
+            "SELECT event_id, location, category, event_date, discipline, season_id "
+            "FROM events"
         )
     }
 
@@ -258,6 +362,37 @@ def build_sqlite_dicts(cur):
             "SELECT sensor_id, horse_id, sensor_type, sensor_code, format, "
             "sensor_offset, file_size, sample_rate, objective_id FROM sensors"
         )
+    }
+
+    data["event_entries"] = {
+        (row[0], row[1]): ()
+        for row in cur.execute("SELECT horse_id, event_id FROM event_entries")
+    }
+
+    data["objectives"] = {
+        row[0]: (row[1], row[2])
+        for row in cur.execute(
+            "SELECT objective_id, name, description FROM objectives"
+        )
+    }
+
+    data["horse_rider_associations"] = {
+        (row[0], row[1]): ()
+        for row in cur.execute(
+            "SELECT rider_id, horse_id FROM horse_rider_associations"
+        )
+    }
+
+    data["seasons"] = {
+        row[0]: (row[1], row[2], row[3])
+        for row in cur.execute(
+            "SELECT season_id, season_name, season_start, season_end FROM seasons"
+        )
+    }
+
+    data["people"] = {
+        row[0]: (row[1],)
+        for row in cur.execute("SELECT person_id, role FROM people")
     }
 
     return data
@@ -327,6 +462,11 @@ def main():
         "training_actors",
         "event_participations",
         "sensors",
+        "event_entries",
+        "objectives",
+        "horse_rider_associations",
+        "seasons",
+        "people",
     ]
 
     total_rows = 0
@@ -339,7 +479,7 @@ def main():
         total_discrepancies += discrepancies
 
     sink("\n=== FINAL SUMMARY ===")
-    sink(f"  total rows checked across six tables: {total_rows} (expected {EXPECTED_TOTAL})")
+    sink(f"  total rows checked across all eleven tables: {total_rows} (expected {EXPECTED_TOTAL})")
     sink(f"  total discrepancies found: {total_discrepancies}")
     if total_discrepancies == 0 and total_rows == EXPECTED_TOTAL:
         sink(f"\nPERFECT MATCH — {total_rows}/{EXPECTED_TOTAL} ROWS VERIFIED IDENTICAL TO GRAPH")
