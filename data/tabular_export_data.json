@@ -1,0 +1,5813 @@
+{
+  "horses": [
+    {
+      "horse_id": "Horse_Aurore",
+      "name": "Aurore",
+      "race": "KWPN"
+    },
+    {
+      "horse_id": "Horse_Braise",
+      "name": "Braise",
+      "race": "Appaloosa"
+    },
+    {
+      "horse_id": "Horse_Atlas",
+      "name": "Atlas",
+      "race": "Holsteiner"
+    },
+    {
+      "horse_id": "Horse_Rafale",
+      "name": "Rafale",
+      "race": "Morgan"
+    },
+    {
+      "horse_id": "Horse_Pixie",
+      "name": "Pixie",
+      "race": "Connemara"
+    },
+    {
+      "horse_id": "Horse_Sable",
+      "name": "Sable",
+      "race": "Fjord"
+    },
+    {
+      "horse_id": "Horse_Thunder",
+      "name": "Thunder",
+      "race": "Hanovrien"
+    },
+    {
+      "horse_id": "Horse1",
+      "name": "Dakota",
+      "race": "Selle Français"
+    },
+    {
+      "horse_id": "Horse_Zephire",
+      "name": "Zephire",
+      "race": "Trakehner"
+    },
+    {
+      "horse_id": "Horse_Falcon",
+      "name": "Falcon",
+      "race": "Barbe"
+    },
+    {
+      "horse_id": "Horse_Sirius",
+      "name": "Sirius",
+      "race": "Frison"
+    },
+    {
+      "horse_id": "Horse_Apollon",
+      "name": "Apollon",
+      "race": "AQPS"
+    },
+    {
+      "horse_id": "Horse_Luminos",
+      "name": "Luminos",
+      "race": "Lusitanien"
+    },
+    {
+      "horse_id": "Horse_Orage",
+      "name": "Orage",
+      "race": "Fjord"
+    },
+    {
+      "horse_id": "Horse_Horizon",
+      "name": "Horizon",
+      "race": "Oldenburg"
+    },
+    {
+      "horse_id": "Horse_Luna",
+      "name": "Luna",
+      "race": "KWPN"
+    },
+    {
+      "horse_id": "Horse_Mistral",
+      "name": "Mistral",
+      "race": "Oldenburg"
+    },
+    {
+      "horse_id": "Horse_Rio",
+      "name": "Rio",
+      "race": "Arabe"
+    },
+    {
+      "horse_id": "Horse_Crepuscule",
+      "name": "Crepuscule",
+      "race": "Selle Français"
+    },
+    {
+      "horse_id": "Horse_Cascade",
+      "name": "Cascade",
+      "race": "Barbe"
+    },
+    {
+      "horse_id": "Horse_Orion",
+      "name": "Orion",
+      "race": "Pur-sang"
+    },
+    {
+      "horse_id": "Horse_Soleil",
+      "name": "Soleil",
+      "race": "Andalou"
+    },
+    {
+      "horse_id": "Horse_Dune",
+      "name": "Dune",
+      "race": "Camargue"
+    },
+    {
+      "horse_id": "Horse_Zephyr",
+      "name": "Zephyr",
+      "race": "Trakehner"
+    },
+    {
+      "horse_id": "Horse_Brume",
+      "name": "Brume",
+      "race": "Haflinger"
+    },
+    {
+      "horse_id": "Horse_Nuage",
+      "name": "Nuage",
+      "race": "Pottok"
+    },
+    {
+      "horse_id": "Horse_Glacier",
+      "name": "Glacier",
+      "race": "Anglo-Arabe"
+    },
+    {
+      "horse_id": "Horse_Galop",
+      "name": "Galop",
+      "race": "Connemara"
+    },
+    {
+      "horse_id": "Horse_Riviere",
+      "name": "Riviere",
+      "race": "Camargue"
+    },
+    {
+      "horse_id": "Horse_Nova",
+      "name": "Nova",
+      "race": "Andalou"
+    },
+    {
+      "horse_id": "Horse_Ombre",
+      "name": "Ombre",
+      "race": "Percheron"
+    },
+    {
+      "horse_id": "Horse_Volcan",
+      "name": "Volcan",
+      "race": "Arabe"
+    },
+    {
+      "horse_id": "Horse_Nebule",
+      "name": "Nebule",
+      "race": "Haflinger"
+    },
+    {
+      "horse_id": "Horse_Etoile",
+      "name": "Etoile",
+      "race": "Frison"
+    },
+    {
+      "horse_id": "Horse_Lumiere",
+      "name": "Lumiere",
+      "race": "AQPS"
+    },
+    {
+      "horse_id": "Horse_Iris",
+      "name": "Iris",
+      "race": "PRE"
+    },
+    {
+      "horse_id": "Horse_Tempete",
+      "name": "Tempete",
+      "race": "Lipizzan"
+    },
+    {
+      "horse_id": "Horse_Eclair",
+      "name": "Eclair",
+      "race": "Mustang"
+    },
+    {
+      "horse_id": "Horse_Tonnerre",
+      "name": "Tonnerre",
+      "race": "Mustang"
+    },
+    {
+      "horse_id": "Horse_Storm",
+      "name": "Storm",
+      "race": "Selle Belge"
+    },
+    {
+      "horse_id": "Horse_Comet",
+      "name": "Comet",
+      "race": "Selle Français"
+    },
+    {
+      "horse_id": "Horse_Bella",
+      "name": "Bella",
+      "race": "Lusitanien"
+    },
+    {
+      "horse_id": "Horse_Mirage",
+      "name": "Mirage",
+      "race": "Holsteiner"
+    },
+    {
+      "horse_id": "Horse_Arrow",
+      "name": "Arrow",
+      "race": "Quarter Horse"
+    },
+    {
+      "horse_id": "Horse_Ecume",
+      "name": "Ecume",
+      "race": "Akhal-Teke"
+    },
+    {
+      "horse_id": "Horse_Grondre",
+      "name": "Grondre",
+      "race": "Hanovrien"
+    },
+    {
+      "horse_id": "Horse_Auroch",
+      "name": "Auroch",
+      "race": "Pur-sang"
+    },
+    {
+      "horse_id": "Horse2",
+      "name": "Naya",
+      "race": "Anglo-Arabe"
+    },
+    {
+      "horse_id": "Horse_Vega",
+      "name": "Vega",
+      "race": "Appaloosa"
+    },
+    {
+      "horse_id": "Horse_Eclat",
+      "name": "Eclat",
+      "race": "Morgan"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "Event_Dijon_Cross_2026",
+      "location": "Dijon",
+      "category": "Amateur 1",
+      "event_date": "2026-06-06",
+      "discipline": "Cross",
+      "season_id": "Season_2026"
+    },
+    {
+      "event_id": "Event_Fontainebleau_SJ_2026",
+      "location": "Fontainebleau",
+      "category": "Pro Elite",
+      "event_date": "2026-07-05",
+      "discipline": "ShowJumping",
+      "season_id": "Season_2026"
+    },
+    {
+      "event_id": "Event_Strasbourg_Cross_2026",
+      "location": "Strasbourg",
+      "category": "Amateur 1",
+      "event_date": "2026-07-12",
+      "discipline": "Cross",
+      "season_id": "Season_2026"
+    },
+    {
+      "event_id": "Event_Nantes_SJ_2026",
+      "location": "Nantes",
+      "category": "Amateur 2",
+      "event_date": "2026-04-25",
+      "discipline": "ShowJumping",
+      "season_id": "Season_2026"
+    },
+    {
+      "event_id": "Event_Bordeaux_Cross_2026",
+      "location": "Bordeaux",
+      "category": "Amateur 2",
+      "event_date": "2026-09-20",
+      "discipline": "Cross",
+      "season_id": "Season_2026"
+    },
+    {
+      "event_id": "Event_Toulouse_Cross_2026",
+      "location": "Toulouse",
+      "category": "Amateur 2",
+      "event_date": "2026-09-13",
+      "discipline": "Cross",
+      "season_id": "Season_2026"
+    },
+    {
+      "event_id": "Event_Montpellier_Dr_2026",
+      "location": "Montpellier",
+      "category": "Club Elite",
+      "event_date": "2026-08-15",
+      "discipline": "Dressage",
+      "season_id": "Season_2026"
+    },
+    {
+      "event_id": "Event_SJ_2026_01",
+      "location": "Paris",
+      "category": "Amateur 2",
+      "event_date": "2026-06-14",
+      "discipline": "ShowJumping",
+      "season_id": "Season_2026"
+    },
+    {
+      "event_id": "Event_Cross_2026_01",
+      "location": "Bordeaux",
+      "category": "Amateur 1",
+      "event_date": "2026-08-10",
+      "discipline": "Cross",
+      "season_id": "Season_2026"
+    },
+    {
+      "event_id": "Event_Rennes_SJ_2026",
+      "location": "Rennes",
+      "category": "Pro Elite",
+      "event_date": "2026-05-17",
+      "discipline": "ShowJumping",
+      "season_id": "Season_2026"
+    },
+    {
+      "event_id": "Event_Versailles_SJ_2026",
+      "location": "Versailles",
+      "category": "Pro Elite",
+      "event_date": "2026-09-06",
+      "discipline": "ShowJumping",
+      "season_id": "Season_2026"
+    },
+    {
+      "event_id": "Event_Pau_SJ_2026",
+      "location": "Pau",
+      "category": "Amateur 1",
+      "event_date": "2026-10-18",
+      "discipline": "ShowJumping",
+      "season_id": "Season_2026"
+    },
+    {
+      "event_id": "Event_Marseille_Dressage_2026",
+      "location": "Marseille",
+      "category": "Club Elite",
+      "event_date": "2026-10-03",
+      "discipline": "Dressage",
+      "season_id": "Season_2026"
+    },
+    {
+      "event_id": "Event_Clermont_Cross_2026",
+      "location": "Clermont-Ferrand",
+      "category": "Amateur 2",
+      "event_date": "2026-10-10",
+      "discipline": "Cross",
+      "season_id": "Season_2026"
+    },
+    {
+      "event_id": "Event_Nice_Dressage_2026",
+      "location": "Nice",
+      "category": "Pro Elite",
+      "event_date": "2026-09-28",
+      "discipline": "Dressage",
+      "season_id": "Season_2026"
+    },
+    {
+      "event_id": "Event_Dressage_01",
+      "location": "Angers",
+      "category": "Club Elite",
+      "event_date": "2026-05-03",
+      "discipline": "Dressage",
+      "season_id": "Season_2026"
+    },
+    {
+      "event_id": "Event_Dressage_2026_01",
+      "location": "Lyon",
+      "category": "Club Elite",
+      "event_date": "2026-07-20",
+      "discipline": "Dressage",
+      "season_id": "Season_2026"
+    },
+    {
+      "event_id": "Event_LeMans_Cross_2026",
+      "location": "Le Mans",
+      "category": "Amateur 1",
+      "event_date": "2026-09-05",
+      "discipline": "Cross",
+      "season_id": "Season_2026"
+    },
+    {
+      "event_id": "Event_Lyon_Dressage_2026",
+      "location": "Lyon",
+      "category": "Club Elite",
+      "event_date": "2026-08-23",
+      "discipline": "Dressage",
+      "season_id": "Season_2026"
+    },
+    {
+      "event_id": "Event_SJ_01",
+      "location": "Saumur",
+      "category": "Amateur 1",
+      "event_date": "2026-04-12",
+      "discipline": "ShowJumping",
+      "season_id": "Season_2026"
+    }
+  ],
+  "seasons": [
+    {
+      "season_id": "Season_2026",
+      "season_name": "Saison 2026",
+      "season_start": "2026-03-01",
+      "season_end": "2026-10-31"
+    }
+  ],
+  "trainings": [
+    {
+      "training_id": "Training_Prepa_Aurore_01",
+      "horse_id": "Horse_Aurore",
+      "event_id": "Event_Versailles_SJ_2026",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Comp_Aurore_01",
+      "horse_id": "Horse_Aurore",
+      "event_id": "Event_Versailles_SJ_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_PreComp_Aurore_01",
+      "horse_id": "Horse_Aurore",
+      "event_id": "Event_Versailles_SJ_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Comp_Braise_01",
+      "horse_id": "Horse_Braise",
+      "event_id": "Event_Montpellier_Dr_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_PreComp_Braise_01",
+      "horse_id": "Horse_Braise",
+      "event_id": "Event_Montpellier_Dr_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Prepa_Braise_01",
+      "horse_id": "Horse_Braise",
+      "event_id": "Event_Montpellier_Dr_2026",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Transition_Atlas_01",
+      "horse_id": "Horse_Atlas",
+      "event_id": "Event_Toulouse_Cross_2026",
+      "stage_type": "TransitionStage",
+      "volume": "30min",
+      "intensity": "Faible",
+      "frequency": 2
+    },
+    {
+      "training_id": "Training_PreComp_Atlas_01",
+      "horse_id": "Horse_Atlas",
+      "event_id": "Event_Toulouse_Cross_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "65min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Prepa_Atlas_01",
+      "horse_id": "Horse_Atlas",
+      "event_id": "Event_Toulouse_Cross_2026",
+      "stage_type": "PreparationStage",
+      "volume": "50min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Comp_Atlas_01",
+      "horse_id": "Horse_Atlas",
+      "event_id": "Event_Toulouse_Cross_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_PreComp_Rafale_01",
+      "horse_id": "Horse_Rafale",
+      "event_id": "Event_Clermont_Cross_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Prepa_Rafale_01",
+      "horse_id": "Horse_Rafale",
+      "event_id": "Event_Clermont_Cross_2026",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Comp_Rafale_01",
+      "horse_id": "Horse_Rafale",
+      "event_id": "Event_Clermont_Cross_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Comp_Pixie_01",
+      "horse_id": "Horse_Pixie",
+      "event_id": "Event_Pau_SJ_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Prepa_Pixie_01",
+      "horse_id": "Horse_Pixie",
+      "event_id": "Event_Pau_SJ_2026",
+      "stage_type": "PreparationStage",
+      "volume": "40min",
+      "intensity": "Modérée",
+      "frequency": 5
+    },
+    {
+      "training_id": "Training_PreComp_Pixie_01",
+      "horse_id": "Horse_Pixie",
+      "event_id": "Event_Pau_SJ_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "55min",
+      "intensity": "Élevée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_PreComp_Sable_01",
+      "horse_id": "Horse_Sable",
+      "event_id": "Event_Strasbourg_Cross_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Comp_Sable_01",
+      "horse_id": "Horse_Sable",
+      "event_id": "Event_Strasbourg_Cross_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Prepa_Sable_01",
+      "horse_id": "Horse_Sable",
+      "event_id": "Event_Strasbourg_Cross_2026",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Prepa_Thunder_01",
+      "horse_id": "Horse_Thunder",
+      "event_id": "Event_Bordeaux_Cross_2026",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Comp_Thunder_01",
+      "horse_id": "Horse_Thunder",
+      "event_id": "Event_Bordeaux_Cross_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_PreComp_Thunder_01",
+      "horse_id": "Horse_Thunder",
+      "event_id": "Event_Bordeaux_Cross_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Transition_Thunder_01",
+      "horse_id": "Horse_Thunder",
+      "event_id": "Event_Bordeaux_Cross_2026",
+      "stage_type": "TransitionStage",
+      "volume": "30min",
+      "intensity": "Faible",
+      "frequency": 2
+    },
+    {
+      "training_id": "Training_Prepa_SJ_01",
+      "horse_id": "Horse1",
+      "event_id": "Event_SJ_01",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Preparation_SJ_01",
+      "horse_id": "Horse1",
+      "event_id": "Event_SJ_2026_01",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_PreComp_SJ_01",
+      "horse_id": "Horse1",
+      "event_id": "Event_SJ_01",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Competition_SJ_01",
+      "horse_id": "Horse1",
+      "event_id": "Event_SJ_2026_01",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_PreCompetition_SJ_01",
+      "horse_id": "Horse1",
+      "event_id": "Event_SJ_2026_01",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Transition_SJ_01",
+      "horse_id": "Horse1",
+      "event_id": "Event_SJ_2026_01",
+      "stage_type": "TransitionStage",
+      "volume": "30min",
+      "intensity": "Faible",
+      "frequency": 2
+    },
+    {
+      "training_id": "Training_PreComp_Zephire_01",
+      "horse_id": "Horse_Zephire",
+      "event_id": "Event_Versailles_SJ_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Prepa_Zephire_01",
+      "horse_id": "Horse_Zephire",
+      "event_id": "Event_Versailles_SJ_2026",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Comp_Zephire_01",
+      "horse_id": "Horse_Zephire",
+      "event_id": "Event_Versailles_SJ_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Prepa_Falcon_01",
+      "horse_id": "Horse_Falcon",
+      "event_id": "Event_Rennes_SJ_2026",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_PreComp_Falcon_01",
+      "horse_id": "Horse_Falcon",
+      "event_id": "Event_Rennes_SJ_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Comp_Falcon_01",
+      "horse_id": "Horse_Falcon",
+      "event_id": "Event_Rennes_SJ_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Prepa_Sirius_01",
+      "horse_id": "Horse_Sirius",
+      "event_id": "Event_Nice_Dressage_2026",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Comp_Sirius_01",
+      "horse_id": "Horse_Sirius",
+      "event_id": "Event_Nice_Dressage_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_PreComp_Sirius_01",
+      "horse_id": "Horse_Sirius",
+      "event_id": "Event_Nice_Dressage_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Comp_Apollon_01",
+      "horse_id": "Horse_Apollon",
+      "event_id": "Event_Pau_SJ_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_PreComp_Apollon_01",
+      "horse_id": "Horse_Apollon",
+      "event_id": "Event_Pau_SJ_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "65min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Prepa_Apollon_01",
+      "horse_id": "Horse_Apollon",
+      "event_id": "Event_Pau_SJ_2026",
+      "stage_type": "PreparationStage",
+      "volume": "50min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Transition_Apollon_01",
+      "horse_id": "Horse_Apollon",
+      "event_id": "Event_Pau_SJ_2026",
+      "stage_type": "TransitionStage",
+      "volume": "30min",
+      "intensity": "Faible",
+      "frequency": 2
+    },
+    {
+      "training_id": "Training_Comp_Luminos_01",
+      "horse_id": "Horse_Luminos",
+      "event_id": "Event_Montpellier_Dr_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Prepa_Luminos_01",
+      "horse_id": "Horse_Luminos",
+      "event_id": "Event_Montpellier_Dr_2026",
+      "stage_type": "PreparationStage",
+      "volume": "50min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_PreComp_Luminos_01",
+      "horse_id": "Horse_Luminos",
+      "event_id": "Event_Montpellier_Dr_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "65min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Comp_Orage_01",
+      "horse_id": "Horse_Orage",
+      "event_id": "Event_Clermont_Cross_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_PreComp_Orage_01",
+      "horse_id": "Horse_Orage",
+      "event_id": "Event_Clermont_Cross_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Prepa_Orage_01",
+      "horse_id": "Horse_Orage",
+      "event_id": "Event_Clermont_Cross_2026",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Comp_Horizon_01",
+      "horse_id": "Horse_Horizon",
+      "event_id": "Event_Montpellier_Dr_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Prepa_Horizon_01",
+      "horse_id": "Horse_Horizon",
+      "event_id": "Event_Montpellier_Dr_2026",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_PreComp_Horizon_01",
+      "horse_id": "Horse_Horizon",
+      "event_id": "Event_Montpellier_Dr_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Prepa_Luna_01",
+      "horse_id": "Horse_Luna",
+      "event_id": "Event_Fontainebleau_SJ_2026",
+      "stage_type": "PreparationStage",
+      "volume": "50min",
+      "intensity": "Modérée",
+      "frequency": 5
+    },
+    {
+      "training_id": "Training_PreComp_Luna_01",
+      "horse_id": "Horse_Luna",
+      "event_id": "Event_Fontainebleau_SJ_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "70min",
+      "intensity": "Élevée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Comp_Luna_01",
+      "horse_id": "Horse_Luna",
+      "event_id": "Event_Fontainebleau_SJ_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Prepa_Mistral_01",
+      "horse_id": "Horse_Mistral",
+      "event_id": "Event_Marseille_Dressage_2026",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_PreComp_Mistral_01",
+      "horse_id": "Horse_Mistral",
+      "event_id": "Event_Marseille_Dressage_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Transition_Mistral_01",
+      "horse_id": "Horse_Mistral",
+      "event_id": "Event_Marseille_Dressage_2026",
+      "stage_type": "TransitionStage",
+      "volume": "25min",
+      "intensity": "Faible",
+      "frequency": 2
+    },
+    {
+      "training_id": "Training_Comp_Mistral_01",
+      "horse_id": "Horse_Mistral",
+      "event_id": "Event_Marseille_Dressage_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_PreComp_Rio_01",
+      "horse_id": "Horse_Rio",
+      "event_id": "Event_Rennes_SJ_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "65min",
+      "intensity": "Élevée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Transition_Rio_01",
+      "horse_id": "Horse_Rio",
+      "event_id": "Event_Rennes_SJ_2026",
+      "stage_type": "TransitionStage",
+      "volume": "25min",
+      "intensity": "Faible",
+      "frequency": 2
+    },
+    {
+      "training_id": "Training_Comp_Rio_01",
+      "horse_id": "Horse_Rio",
+      "event_id": "Event_Rennes_SJ_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Prepa_Rio_01",
+      "horse_id": "Horse_Rio",
+      "event_id": "Event_Rennes_SJ_2026",
+      "stage_type": "PreparationStage",
+      "volume": "50min",
+      "intensity": "Modérée",
+      "frequency": 5
+    },
+    {
+      "training_id": "Training_Prepa_Crepuscule_01",
+      "horse_id": "Horse_Crepuscule",
+      "event_id": "Event_Montpellier_Dr_2026",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Comp_Crepuscule_01",
+      "horse_id": "Horse_Crepuscule",
+      "event_id": "Event_Montpellier_Dr_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Transition_Crepuscule_01",
+      "horse_id": "Horse_Crepuscule",
+      "event_id": "Event_Montpellier_Dr_2026",
+      "stage_type": "TransitionStage",
+      "volume": "25min",
+      "intensity": "Faible",
+      "frequency": 2
+    },
+    {
+      "training_id": "Training_PreComp_Crepuscule_01",
+      "horse_id": "Horse_Crepuscule",
+      "event_id": "Event_Montpellier_Dr_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_PreComp_Cascade_01",
+      "horse_id": "Horse_Cascade",
+      "event_id": "Event_Nantes_SJ_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Comp_Cascade_01",
+      "horse_id": "Horse_Cascade",
+      "event_id": "Event_Nantes_SJ_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Prepa_Cascade_01",
+      "horse_id": "Horse_Cascade",
+      "event_id": "Event_Nantes_SJ_2026",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Orion_LeMans_Preparation",
+      "horse_id": "Horse_Orion",
+      "event_id": "Event_LeMans_Cross_2026",
+      "stage_type": "PreparationStage",
+      "volume": "50min",
+      "intensity": "Modérée",
+      "frequency": 5
+    },
+    {
+      "training_id": "Training_Orion_LeMans_PreComp",
+      "horse_id": "Horse_Orion",
+      "event_id": "Event_LeMans_Cross_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "65min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Orion_LeMans_Comp",
+      "horse_id": "Horse_Orion",
+      "event_id": "Event_LeMans_Cross_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Comp_Soleil_01",
+      "horse_id": "Horse_Soleil",
+      "event_id": "Event_Nantes_SJ_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Prepa_Soleil_01",
+      "horse_id": "Horse_Soleil",
+      "event_id": "Event_Nantes_SJ_2026",
+      "stage_type": "PreparationStage",
+      "volume": "50min",
+      "intensity": "Modérée",
+      "frequency": 5
+    },
+    {
+      "training_id": "Training_Transition_Soleil_01",
+      "horse_id": "Horse_Soleil",
+      "event_id": "Event_Nantes_SJ_2026",
+      "stage_type": "TransitionStage",
+      "volume": "25min",
+      "intensity": "Faible",
+      "frequency": 2
+    },
+    {
+      "training_id": "Training_PreComp_Soleil_01",
+      "horse_id": "Horse_Soleil",
+      "event_id": "Event_Nantes_SJ_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "70min",
+      "intensity": "Élevée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Transition_Dune_01",
+      "horse_id": "Horse_Dune",
+      "event_id": "Event_Strasbourg_Cross_2026",
+      "stage_type": "TransitionStage",
+      "volume": "30min",
+      "intensity": "Faible",
+      "frequency": 2
+    },
+    {
+      "training_id": "Training_Prepa_Dune_01",
+      "horse_id": "Horse_Dune",
+      "event_id": "Event_Strasbourg_Cross_2026",
+      "stage_type": "PreparationStage",
+      "volume": "50min",
+      "intensity": "Modérée",
+      "frequency": 5
+    },
+    {
+      "training_id": "Training_PreComp_Dune_01",
+      "horse_id": "Horse_Dune",
+      "event_id": "Event_Strasbourg_Cross_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "65min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Comp_Dune_01",
+      "horse_id": "Horse_Dune",
+      "event_id": "Event_Strasbourg_Cross_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_PreComp_Zephyr_01",
+      "horse_id": "Horse_Zephyr",
+      "event_id": "Event_Marseille_Dressage_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Transition_Zephyr_01",
+      "horse_id": "Horse_Zephyr",
+      "event_id": "Event_Marseille_Dressage_2026",
+      "stage_type": "TransitionStage",
+      "volume": "25min",
+      "intensity": "Faible",
+      "frequency": 2
+    },
+    {
+      "training_id": "Training_Comp_Zephyr_01",
+      "horse_id": "Horse_Zephyr",
+      "event_id": "Event_Marseille_Dressage_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Prepa_Zephyr_01",
+      "horse_id": "Horse_Zephyr",
+      "event_id": "Event_Marseille_Dressage_2026",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Prepa_Brume_01",
+      "horse_id": "Horse_Brume",
+      "event_id": "Event_Strasbourg_Cross_2026",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_PreComp_Brume_01",
+      "horse_id": "Horse_Brume",
+      "event_id": "Event_Strasbourg_Cross_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Comp_Brume_01",
+      "horse_id": "Horse_Brume",
+      "event_id": "Event_Strasbourg_Cross_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_PreComp_Nuage_01",
+      "horse_id": "Horse_Nuage",
+      "event_id": "Event_Montpellier_Dr_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Prepa_Nuage_01",
+      "horse_id": "Horse_Nuage",
+      "event_id": "Event_Montpellier_Dr_2026",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Comp_Nuage_01",
+      "horse_id": "Horse_Nuage",
+      "event_id": "Event_Montpellier_Dr_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Comp_Glacier_01",
+      "horse_id": "Horse_Glacier",
+      "event_id": "Event_Clermont_Cross_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Prepa_Glacier_01",
+      "horse_id": "Horse_Glacier",
+      "event_id": "Event_Clermont_Cross_2026",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_PreComp_Glacier_01",
+      "horse_id": "Horse_Glacier",
+      "event_id": "Event_Clermont_Cross_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_PreComp_Galop_01",
+      "horse_id": "Horse_Galop",
+      "event_id": "Event_Nantes_SJ_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Comp_Galop_01",
+      "horse_id": "Horse_Galop",
+      "event_id": "Event_Nantes_SJ_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Prepa_Galop_01",
+      "horse_id": "Horse_Galop",
+      "event_id": "Event_Nantes_SJ_2026",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_PreComp_Riviere_01",
+      "horse_id": "Horse_Riviere",
+      "event_id": "Event_Dijon_Cross_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "70min",
+      "intensity": "Élevée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Comp_Riviere_01",
+      "horse_id": "Horse_Riviere",
+      "event_id": "Event_Dijon_Cross_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Prepa_Riviere_01",
+      "horse_id": "Horse_Riviere",
+      "event_id": "Event_Dijon_Cross_2026",
+      "stage_type": "PreparationStage",
+      "volume": "50min",
+      "intensity": "Modérée",
+      "frequency": 5
+    },
+    {
+      "training_id": "Training_Transition_Riviere_01",
+      "horse_id": "Horse_Riviere",
+      "event_id": "Event_Dijon_Cross_2026",
+      "stage_type": "TransitionStage",
+      "volume": "25min",
+      "intensity": "Faible",
+      "frequency": 2
+    },
+    {
+      "training_id": "Training_PreComp_Nova_01",
+      "horse_id": "Horse_Nova",
+      "event_id": "Event_Lyon_Dressage_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Comp_Nova_01",
+      "horse_id": "Horse_Nova",
+      "event_id": "Event_Lyon_Dressage_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Prepa_Nova_01",
+      "horse_id": "Horse_Nova",
+      "event_id": "Event_Lyon_Dressage_2026",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Prepa_Ombre_01",
+      "horse_id": "Horse_Ombre",
+      "event_id": "Event_Rennes_SJ_2026",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Comp_Ombre_01",
+      "horse_id": "Horse_Ombre",
+      "event_id": "Event_Rennes_SJ_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_PreComp_Ombre_01",
+      "horse_id": "Horse_Ombre",
+      "event_id": "Event_Rennes_SJ_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_PreComp_Volcan_01",
+      "horse_id": "Horse_Volcan",
+      "event_id": "Event_Nantes_SJ_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "65min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Prepa_Volcan_01",
+      "horse_id": "Horse_Volcan",
+      "event_id": "Event_Nantes_SJ_2026",
+      "stage_type": "PreparationStage",
+      "volume": "50min",
+      "intensity": "Modérée",
+      "frequency": 5
+    },
+    {
+      "training_id": "Training_Comp_Volcan_01",
+      "horse_id": "Horse_Volcan",
+      "event_id": "Event_Nantes_SJ_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Transition_Volcan_01",
+      "horse_id": "Horse_Volcan",
+      "event_id": "Event_Nantes_SJ_2026",
+      "stage_type": "TransitionStage",
+      "volume": "25min",
+      "intensity": "Faible",
+      "frequency": 2
+    },
+    {
+      "training_id": "Training_Comp_Nebule_01",
+      "horse_id": "Horse_Nebule",
+      "event_id": "Event_Montpellier_Dr_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Transition_Nebule_01",
+      "horse_id": "Horse_Nebule",
+      "event_id": "Event_Montpellier_Dr_2026",
+      "stage_type": "TransitionStage",
+      "volume": "25min",
+      "intensity": "Faible",
+      "frequency": 2
+    },
+    {
+      "training_id": "Training_PreComp_Nebule_01",
+      "horse_id": "Horse_Nebule",
+      "event_id": "Event_Montpellier_Dr_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "65min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Prepa_Nebule_01",
+      "horse_id": "Horse_Nebule",
+      "event_id": "Event_Montpellier_Dr_2026",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_PreComp_Etoile_01",
+      "horse_id": "Horse_Etoile",
+      "event_id": "Event_Versailles_SJ_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Comp_Etoile_01",
+      "horse_id": "Horse_Etoile",
+      "event_id": "Event_Versailles_SJ_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Transition_Etoile_01",
+      "horse_id": "Horse_Etoile",
+      "event_id": "Event_Versailles_SJ_2026",
+      "stage_type": "TransitionStage",
+      "volume": "25min",
+      "intensity": "Faible",
+      "frequency": 2
+    },
+    {
+      "training_id": "Training_Prepa_Etoile_01",
+      "horse_id": "Horse_Etoile",
+      "event_id": "Event_Versailles_SJ_2026",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Prepa_Lumiere_01",
+      "horse_id": "Horse_Lumiere",
+      "event_id": "Event_Versailles_SJ_2026",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_PreComp_Lumiere_01",
+      "horse_id": "Horse_Lumiere",
+      "event_id": "Event_Versailles_SJ_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Comp_Lumiere_01",
+      "horse_id": "Horse_Lumiere",
+      "event_id": "Event_Versailles_SJ_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Transition_Lumiere_01",
+      "horse_id": "Horse_Lumiere",
+      "event_id": "Event_Versailles_SJ_2026",
+      "stage_type": "TransitionStage",
+      "volume": "25min",
+      "intensity": "Faible",
+      "frequency": 2
+    },
+    {
+      "training_id": "Training_Prepa_Iris_01",
+      "horse_id": "Horse_Iris",
+      "event_id": "Event_Toulouse_Cross_2026",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_PreComp_Iris_01",
+      "horse_id": "Horse_Iris",
+      "event_id": "Event_Toulouse_Cross_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Comp_Iris_01",
+      "horse_id": "Horse_Iris",
+      "event_id": "Event_Toulouse_Cross_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Prepa_Tempete_01",
+      "horse_id": "Horse_Tempete",
+      "event_id": "Event_Dijon_Cross_2026",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_PreComp_Tempete_01",
+      "horse_id": "Horse_Tempete",
+      "event_id": "Event_Dijon_Cross_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Comp_Tempete_01",
+      "horse_id": "Horse_Tempete",
+      "event_id": "Event_Dijon_Cross_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Comp_Eclair_01",
+      "horse_id": "Horse_Eclair",
+      "event_id": "Event_Nice_Dressage_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Prepa_Eclair_01",
+      "horse_id": "Horse_Eclair",
+      "event_id": "Event_Nice_Dressage_2026",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_PreComp_Eclair_01",
+      "horse_id": "Horse_Eclair",
+      "event_id": "Event_Nice_Dressage_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Prepa_Tonnerre_01",
+      "horse_id": "Horse_Tonnerre",
+      "event_id": "Event_Clermont_Cross_2026",
+      "stage_type": "PreparationStage",
+      "volume": "50min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Comp_Tonnerre_01",
+      "horse_id": "Horse_Tonnerre",
+      "event_id": "Event_Clermont_Cross_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_PreComp_Tonnerre_01",
+      "horse_id": "Horse_Tonnerre",
+      "event_id": "Event_Clermont_Cross_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "65min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Transition_Tonnerre_01",
+      "horse_id": "Horse_Tonnerre",
+      "event_id": "Event_Clermont_Cross_2026",
+      "stage_type": "TransitionStage",
+      "volume": "25min",
+      "intensity": "Faible",
+      "frequency": 2
+    },
+    {
+      "training_id": "Training_Prepa_Storm_01",
+      "horse_id": "Horse_Storm",
+      "event_id": "Event_Lyon_Dressage_2026",
+      "stage_type": "PreparationStage",
+      "volume": "50min",
+      "intensity": "Modérée",
+      "frequency": 5
+    },
+    {
+      "training_id": "Training_PreComp_Storm_01",
+      "horse_id": "Horse_Storm",
+      "event_id": "Event_Lyon_Dressage_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "65min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Comp_Storm_01",
+      "horse_id": "Horse_Storm",
+      "event_id": "Event_Lyon_Dressage_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Comp_Comet_01",
+      "horse_id": "Horse_Comet",
+      "event_id": "Event_Pau_SJ_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_PreComp_Comet_01",
+      "horse_id": "Horse_Comet",
+      "event_id": "Event_Pau_SJ_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "75min",
+      "intensity": "Élevée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Prepa_Comet_01",
+      "horse_id": "Horse_Comet",
+      "event_id": "Event_Pau_SJ_2026",
+      "stage_type": "PreparationStage",
+      "volume": "55min",
+      "intensity": "Élevée",
+      "frequency": 5
+    },
+    {
+      "training_id": "Training_PreComp_Bella_01",
+      "horse_id": "Horse_Bella",
+      "event_id": "Event_Marseille_Dressage_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Prepa_Bella_01",
+      "horse_id": "Horse_Bella",
+      "event_id": "Event_Marseille_Dressage_2026",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Comp_Bella_01",
+      "horse_id": "Horse_Bella",
+      "event_id": "Event_Marseille_Dressage_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Comp_Mirage_01",
+      "horse_id": "Horse_Mirage",
+      "event_id": "Event_Dijon_Cross_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_PreComp_Mirage_01",
+      "horse_id": "Horse_Mirage",
+      "event_id": "Event_Dijon_Cross_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Prepa_Mirage_01",
+      "horse_id": "Horse_Mirage",
+      "event_id": "Event_Dijon_Cross_2026",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Prepa_Arrow_01",
+      "horse_id": "Horse_Arrow",
+      "event_id": "Event_Nantes_SJ_2026",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Comp_Arrow_01",
+      "horse_id": "Horse_Arrow",
+      "event_id": "Event_Nantes_SJ_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_PreComp_Arrow_01",
+      "horse_id": "Horse_Arrow",
+      "event_id": "Event_Nantes_SJ_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Transition_Ecume_01",
+      "horse_id": "Horse_Ecume",
+      "event_id": "Event_Dijon_Cross_2026",
+      "stage_type": "TransitionStage",
+      "volume": "25min",
+      "intensity": "Faible",
+      "frequency": 2
+    },
+    {
+      "training_id": "Training_Prepa_Ecume_01",
+      "horse_id": "Horse_Ecume",
+      "event_id": "Event_Dijon_Cross_2026",
+      "stage_type": "PreparationStage",
+      "volume": "55min",
+      "intensity": "Modérée",
+      "frequency": 5
+    },
+    {
+      "training_id": "Training_PreComp_Ecume_01",
+      "horse_id": "Horse_Ecume",
+      "event_id": "Event_Dijon_Cross_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "65min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Comp_Ecume_01",
+      "horse_id": "Horse_Ecume",
+      "event_id": "Event_Dijon_Cross_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Prepa_Grondre_01",
+      "horse_id": "Horse_Grondre",
+      "event_id": "Event_Versailles_SJ_2026",
+      "stage_type": "PreparationStage",
+      "volume": "50min",
+      "intensity": "Modérée",
+      "frequency": 5
+    },
+    {
+      "training_id": "Training_Comp_Grondre_01",
+      "horse_id": "Horse_Grondre",
+      "event_id": "Event_Versailles_SJ_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_PreComp_Grondre_01",
+      "horse_id": "Horse_Grondre",
+      "event_id": "Event_Versailles_SJ_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "65min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Comp_Auroch_01",
+      "horse_id": "Horse_Auroch",
+      "event_id": "Event_Clermont_Cross_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_Prepa_Auroch_01",
+      "horse_id": "Horse_Auroch",
+      "event_id": "Event_Clermont_Cross_2026",
+      "stage_type": "PreparationStage",
+      "volume": "50min",
+      "intensity": "Modérée",
+      "frequency": 5
+    },
+    {
+      "training_id": "Training_Transition_Auroch_01",
+      "horse_id": "Horse_Auroch",
+      "event_id": "Event_Clermont_Cross_2026",
+      "stage_type": "TransitionStage",
+      "volume": "25min",
+      "intensity": "Faible",
+      "frequency": 2
+    },
+    {
+      "training_id": "Training_PreComp_Auroch_01",
+      "horse_id": "Horse_Auroch",
+      "event_id": "Event_Clermont_Cross_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "65min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Prepa_Naya_01",
+      "horse_id": "Horse2",
+      "event_id": "Event_Dressage_2026_01",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Comp_Naya_01",
+      "horse_id": "Horse2",
+      "event_id": "Event_Dressage_2026_01",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_PreComp_Naya_01",
+      "horse_id": "Horse2",
+      "event_id": "Event_Dressage_2026_01",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Comp_Vega_01",
+      "horse_id": "Horse_Vega",
+      "event_id": "Event_Rennes_SJ_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    },
+    {
+      "training_id": "Training_PreComp_Vega_01",
+      "horse_id": "Horse_Vega",
+      "event_id": "Event_Rennes_SJ_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "70min",
+      "intensity": "Élevée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Prepa_Vega_01",
+      "horse_id": "Horse_Vega",
+      "event_id": "Event_Rennes_SJ_2026",
+      "stage_type": "PreparationStage",
+      "volume": "50min",
+      "intensity": "Modérée",
+      "frequency": 5
+    },
+    {
+      "training_id": "Training_Transition_Vega_01",
+      "horse_id": "Horse_Vega",
+      "event_id": "Event_Rennes_SJ_2026",
+      "stage_type": "TransitionStage",
+      "volume": "25min",
+      "intensity": "Faible",
+      "frequency": 2
+    },
+    {
+      "training_id": "Training_PreComp_Eclat_01",
+      "horse_id": "Horse_Eclat",
+      "event_id": "Event_Nice_Dressage_2026",
+      "stage_type": "PreCompetitionStage",
+      "volume": "65min",
+      "intensity": "Élevée",
+      "frequency": 3
+    },
+    {
+      "training_id": "Training_Prepa_Eclat_01",
+      "horse_id": "Horse_Eclat",
+      "event_id": "Event_Nice_Dressage_2026",
+      "stage_type": "PreparationStage",
+      "volume": "50min",
+      "intensity": "Modérée",
+      "frequency": 4
+    },
+    {
+      "training_id": "Training_Comp_Eclat_01",
+      "horse_id": "Horse_Eclat",
+      "event_id": "Event_Nice_Dressage_2026",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1
+    }
+  ],
+  "training_actors": [
+    {
+      "training_id": "Training_Prepa_Tonnerre_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Tonnerre_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Prepa_Tonnerre_01",
+      "actor_id": "Rider_Ines",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Brume_01",
+      "actor_id": "Rider_Jade",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Brume_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Brume_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Comp_Orage_01",
+      "actor_id": "Rider_Alice",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Mistral_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Mistral_01",
+      "actor_id": "Rider_Tom",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Mistral_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Prepa_Iris_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Iris_01",
+      "actor_id": "Rider_Camille",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Iris_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_PreComp_Zephyr_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Zephyr_01",
+      "actor_id": "Rider_Nina",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Ombre_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Ombre_01",
+      "actor_id": "Rider_Chloe",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Ombre_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Prepa_SJ_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_SJ_01",
+      "actor_id": "Rider_Emma",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_SJ_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_PreComp_Brume_01",
+      "actor_id": "Rider_Jade",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Brume_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Etoile_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Etoile_01",
+      "actor_id": "Rider_Remi",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Orion_LeMans_Preparation",
+      "actor_id": "Rider_Lucas",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Orion_LeMans_Preparation",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_PreComp_Cascade_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Cascade_01",
+      "actor_id": "Rider_Victor",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Thunder_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Thunder_01",
+      "actor_id": "Rider_Antoine",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Thunder_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_PreComp_Rafale_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Rafale_01",
+      "actor_id": "Rider_Ines",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Transition_Atlas_01",
+      "actor_id": "Rider_Camille",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Etoile_01",
+      "actor_id": "Rider_Remi",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Lumiere_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Lumiere_01",
+      "actor_id": "Rider_Victor",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Lumiere_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Comp_Vega_01",
+      "actor_id": "Rider_Baptiste",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Orion_LeMans_PreComp",
+      "actor_id": "Rider_Lucas",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Orion_LeMans_PreComp",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Storm_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Storm_01",
+      "actor_id": "Rider_Hugo",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Storm_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_PreComp_Orage_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Orage_01",
+      "actor_id": "Rider_Alice",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Nebule_01",
+      "actor_id": "Rider_Theo",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Orion_LeMans_Comp",
+      "actor_id": "Rider_Lucas",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Galop_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Galop_01",
+      "actor_id": "Rider_Remi",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Rio_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Rio_01",
+      "actor_id": "Rider_Lea",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Volcan_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Volcan_01",
+      "actor_id": "Rider_Theo",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Comet_01",
+      "actor_id": "Rider_Nina",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Riviere_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Riviere_01",
+      "actor_id": "Rider_Victor",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Comet_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Comet_01",
+      "actor_id": "Rider_Nina",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Eclat_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Eclat_01",
+      "actor_id": "Rider_Chloe",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Volcan_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Volcan_01",
+      "actor_id": "Rider_Theo",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Volcan_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Prepa_Eclat_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Eclat_01",
+      "actor_id": "Rider_Chloe",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Eclat_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Comp_Galop_01",
+      "actor_id": "Rider_Remi",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Transition_Rio_01",
+      "actor_id": "Rider_Lea",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Tonnerre_01",
+      "actor_id": "Rider_Ines",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Nuage_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Nuage_01",
+      "actor_id": "Rider_Elise",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Zephire_01",
+      "actor_id": "Rider_Maxime",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Zephire_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Naya_01",
+      "actor_id": "Rider_Leo",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Naya_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Prepa_Luna_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Luna_01",
+      "actor_id": "Rider_Clara",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Luna_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Prepa_Falcon_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Falcon_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Prepa_Falcon_01",
+      "actor_id": "Rider_Lea",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Thunder_01",
+      "actor_id": "Rider_Antoine",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Cascade_01",
+      "actor_id": "Rider_Victor",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Orage_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Orage_01",
+      "actor_id": "Rider_Alice",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Orage_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Transition_Dune_01",
+      "actor_id": "Rider_Marc",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Glacier_01",
+      "actor_id": "Rider_Theo",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Pixie_01",
+      "actor_id": "Rider_Julien",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Mistral_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Mistral_01",
+      "actor_id": "Rider_Tom",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Atlas_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Atlas_01",
+      "actor_id": "Rider_Camille",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Vega_01",
+      "actor_id": "Rider_Baptiste",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Vega_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Luna_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Luna_01",
+      "actor_id": "Rider_Clara",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Crepuscule_01",
+      "actor_id": "Rider_Pauline",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Crepuscule_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Crepuscule_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Comp_Braise_01",
+      "actor_id": "Rider_Alice",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Auroch_01",
+      "actor_id": "Rider_Elise",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Transition_Etoile_01",
+      "actor_id": "Rider_Remi",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Crepuscule_01",
+      "actor_id": "Rider_Pauline",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Dune_01",
+      "actor_id": "Rider_Marc",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Dune_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Dune_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Prepa_Auroch_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Auroch_01",
+      "actor_id": "Rider_Elise",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Auroch_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Comp_Luna_01",
+      "actor_id": "Rider_Clara",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Transition_Zephyr_01",
+      "actor_id": "Rider_Nina",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Sable_01",
+      "actor_id": "Rider_Marc",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Sable_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Comp_Soleil_01",
+      "actor_id": "Rider_Alice",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Rafale_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Rafale_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Prepa_Rafale_01",
+      "actor_id": "Rider_Ines",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Braise_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Braise_01",
+      "actor_id": "Rider_Alice",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Glacier_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Glacier_01",
+      "actor_id": "Rider_Theo",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Glacier_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_PreComp_Lumiere_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Lumiere_01",
+      "actor_id": "Rider_Victor",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Grondre_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Grondre_01",
+      "actor_id": "Rider_Remi",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Grondre_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Transition_Mistral_01",
+      "actor_id": "Rider_Tom",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Sable_01",
+      "actor_id": "Rider_Marc",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Nova_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Nova_01",
+      "actor_id": "Rider_Hugo",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Soleil_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Soleil_01",
+      "actor_id": "Rider_Alice",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Soleil_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Transition_Crepuscule_01",
+      "actor_id": "Rider_Pauline",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Brume_01",
+      "actor_id": "Rider_Jade",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Riviere_01",
+      "actor_id": "Rider_Victor",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Tempete_01",
+      "actor_id": "Rider_Maxime",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Tempete_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Tempete_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Comp_Eclair_01",
+      "actor_id": "Rider_Jade",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Apollon_01",
+      "actor_id": "Rider_Sarah",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Lumiere_01",
+      "actor_id": "Rider_Victor",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Bella_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Bella_01",
+      "actor_id": "Rider_Julien",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Aurore_01",
+      "actor_id": "Rider_Pauline",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Aurore_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Aurore_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Prepa_Eclair_01",
+      "actor_id": "Rider_Jade",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Eclair_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Eclair_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_PreComp_Tonnerre_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Tonnerre_01",
+      "actor_id": "Rider_Ines",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Storm_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Storm_01",
+      "actor_id": "Rider_Hugo",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Thunder_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Thunder_01",
+      "actor_id": "Rider_Antoine",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Aurore_01",
+      "actor_id": "Rider_Pauline",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Transition_Ecume_01",
+      "actor_id": "Rider_Maxime",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Falcon_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Falcon_01",
+      "actor_id": "Rider_Lea",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_SJ_01",
+      "actor_id": "Rider_Manon",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_SJ_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Prepa_Sable_01",
+      "actor_id": "Rider_Marc",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Sable_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Sable_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Comp_Rio_01",
+      "actor_id": "Rider_Lea",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Mirage_01",
+      "actor_id": "Rider_Pauline",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Vega_01",
+      "actor_id": "Rider_Baptiste",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Vega_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Vega_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Transition_Nebule_01",
+      "actor_id": "Rider_Theo",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Rafale_01",
+      "actor_id": "Rider_Ines",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Eclat_01",
+      "actor_id": "Rider_Chloe",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Bella_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Bella_01",
+      "actor_id": "Rider_Julien",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Bella_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Transition_Vega_01",
+      "actor_id": "Rider_Baptiste",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Ombre_01",
+      "actor_id": "Rider_Chloe",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Arrow_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Arrow_01",
+      "actor_id": "Rider_Alice",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Arrow_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Transition_Soleil_01",
+      "actor_id": "Rider_Alice",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Volcan_01",
+      "actor_id": "Rider_Theo",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Mirage_01",
+      "actor_id": "Rider_Pauline",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Mirage_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Comp_Luminos_01",
+      "actor_id": "Rider_Elise",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Nuage_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Nuage_01",
+      "actor_id": "Rider_Elise",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Nuage_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_PreComp_Nebule_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Nebule_01",
+      "actor_id": "Rider_Theo",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Glacier_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Glacier_01",
+      "actor_id": "Rider_Theo",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Horizon_01",
+      "actor_id": "Rider_Ines",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Nuage_01",
+      "actor_id": "Rider_Elise",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Sirius_01",
+      "actor_id": "Rider_Baptiste",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Sirius_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Sirius_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Prepa_Ecume_01",
+      "actor_id": "Rider_Maxime",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Ecume_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Ecume_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Prepa_Luminos_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Luminos_01",
+      "actor_id": "Rider_Elise",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Luminos_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Comp_Grondre_01",
+      "actor_id": "Rider_Remi",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Dune_01",
+      "actor_id": "Rider_Marc",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Dune_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Eclair_01",
+      "actor_id": "Rider_Jade",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Eclair_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Transition_Tonnerre_01",
+      "actor_id": "Rider_Ines",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Galop_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Galop_01",
+      "actor_id": "Rider_Remi",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Galop_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_PreComp_Aurore_01",
+      "actor_id": "Rider_Pauline",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Aurore_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Tempete_01",
+      "actor_id": "Rider_Maxime",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Tempete_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Apollon_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Apollon_01",
+      "actor_id": "Rider_Sarah",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Sirius_01",
+      "actor_id": "Rider_Baptiste",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Etoile_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Etoile_01",
+      "actor_id": "Rider_Remi",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Etoile_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_PreComp_Soleil_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Soleil_01",
+      "actor_id": "Rider_Alice",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Atlas_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Atlas_01",
+      "actor_id": "Rider_Camille",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Atlas_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Comp_Nova_01",
+      "actor_id": "Rider_Hugo",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Storm_01",
+      "actor_id": "Rider_Hugo",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Horizon_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Horizon_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Prepa_Horizon_01",
+      "actor_id": "Rider_Ines",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Comet_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Comet_01",
+      "actor_id": "Rider_Nina",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Comet_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_PreComp_Ecume_01",
+      "actor_id": "Rider_Maxime",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Ecume_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Comp_Naya_01",
+      "actor_id": "Rider_Leo",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Atlas_01",
+      "actor_id": "Rider_Camille",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Dune_01",
+      "actor_id": "Rider_Marc",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Zephyr_01",
+      "actor_id": "Rider_Nina",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Ombre_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Ombre_01",
+      "actor_id": "Rider_Chloe",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Crepuscule_01",
+      "actor_id": "Rider_Pauline",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Crepuscule_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Comp_Arrow_01",
+      "actor_id": "Rider_Alice",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Transition_Auroch_01",
+      "actor_id": "Rider_Elise",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Luminos_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Luminos_01",
+      "actor_id": "Rider_Elise",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Braise_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Braise_01",
+      "actor_id": "Rider_Alice",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Braise_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Comp_Ecume_01",
+      "actor_id": "Rider_Maxime",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Transition_Volcan_01",
+      "actor_id": "Rider_Theo",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Pixie_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Pixie_01",
+      "actor_id": "Rider_Julien",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Pixie_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Prepa_Riviere_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Riviere_01",
+      "actor_id": "Rider_Victor",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Riviere_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Comp_Falcon_01",
+      "actor_id": "Rider_Lea",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Tempete_01",
+      "actor_id": "Rider_Maxime",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Iris_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Iris_01",
+      "actor_id": "Rider_Camille",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Transition_Riviere_01",
+      "actor_id": "Rider_Victor",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Apollon_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Apollon_01",
+      "actor_id": "Rider_Sarah",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Apollon_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Prepa_Rio_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Rio_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Prepa_Rio_01",
+      "actor_id": "Rider_Lea",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Naya_01",
+      "actor_id": "Rider_Leo",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Naya_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Zephire_01",
+      "actor_id": "Rider_Maxime",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Zephire_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Zephire_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Comp_Zephire_01",
+      "actor_id": "Rider_Maxime",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Horizon_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Horizon_01",
+      "actor_id": "Rider_Ines",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Pixie_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Pixie_01",
+      "actor_id": "Rider_Julien",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Mistral_01",
+      "actor_id": "Rider_Tom",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Bella_01",
+      "actor_id": "Rider_Julien",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Auroch_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Auroch_01",
+      "actor_id": "Rider_Elise",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Grondre_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Grondre_01",
+      "actor_id": "Rider_Remi",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Transition_Apollon_01",
+      "actor_id": "Rider_Sarah",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Nova_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Nova_01",
+      "actor_id": "Rider_Hugo",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Nova_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_PreComp_Sirius_01",
+      "actor_id": "Rider_Baptiste",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Sirius_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Mirage_01",
+      "actor_id": "Rider_Pauline",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Mirage_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Mirage_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Prepa_Nebule_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Nebule_01",
+      "actor_id": "Rider_Theo",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Nebule_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Prepa_Cascade_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Cascade_01",
+      "actor_id": "Rider_Victor",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Cascade_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Prepa_Zephyr_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_Prepa_Zephyr_01",
+      "actor_id": "Rider_Nina",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Prepa_Zephyr_01",
+      "actor_id": "Caretaker_Sophie",
+      "actor_role": "Caretaker"
+    },
+    {
+      "training_id": "Training_Transition_Lumiere_01",
+      "actor_id": "Rider_Victor",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_Comp_Iris_01",
+      "actor_id": "Rider_Camille",
+      "actor_role": "Rider"
+    },
+    {
+      "training_id": "Training_PreComp_Arrow_01",
+      "actor_id": "Vet_DrMartin",
+      "actor_role": "Veterinarian"
+    },
+    {
+      "training_id": "Training_PreComp_Arrow_01",
+      "actor_id": "Rider_Alice",
+      "actor_role": "Rider"
+    }
+  ],
+  "event_participations": [
+    {
+      "participation_id": "Participation_Nice_Eclair_Jade",
+      "event_id": "Event_Nice_Dressage_2026",
+      "horse_id": "Horse_Eclair",
+      "rider_id": "Rider_Jade",
+      "rank": 4
+    },
+    {
+      "participation_id": "Participation_Strasbourg_Brume_Jade",
+      "event_id": "Event_Strasbourg_Cross_2026",
+      "horse_id": "Horse_Brume",
+      "rider_id": "Rider_Jade",
+      "rank": 3
+    },
+    {
+      "participation_id": "Participation_Dress2026_H2_Leo",
+      "event_id": "Event_Dressage_2026_01",
+      "horse_id": "Horse2",
+      "rider_id": "Rider_Leo",
+      "rank": 1
+    },
+    {
+      "participation_id": "Participation_Rennes_Vega_Baptiste",
+      "event_id": "Event_Rennes_SJ_2026",
+      "horse_id": "Horse_Vega",
+      "rider_id": "Rider_Baptiste",
+      "rank": 2
+    },
+    {
+      "participation_id": "Participation_Nice_Sirius_Baptiste",
+      "event_id": "Event_Nice_Dressage_2026",
+      "horse_id": "Horse_Sirius",
+      "rider_id": "Rider_Baptiste",
+      "rank": 1
+    },
+    {
+      "participation_id": "Participation_Versailles_Zephire_Maxime",
+      "event_id": "Event_Versailles_SJ_2026",
+      "horse_id": "Horse_Zephire",
+      "rider_id": "Rider_Maxime",
+      "rank": 5
+    },
+    {
+      "participation_id": "Participation_Dijon_Ecume_Maxime",
+      "event_id": "Event_Dijon_Cross_2026",
+      "horse_id": "Horse_Ecume",
+      "rider_id": "Rider_Maxime",
+      "rank": 1
+    },
+    {
+      "participation_id": "Participation_Dijon_Tempete_Maxime",
+      "event_id": "Event_Dijon_Cross_2026",
+      "horse_id": "Horse_Tempete",
+      "rider_id": "Rider_Maxime",
+      "rank": 2
+    },
+    {
+      "participation_id": "Participation_Versailles_Aurore_Pauline",
+      "event_id": "Event_Versailles_SJ_2026",
+      "horse_id": "Horse_Aurore",
+      "rider_id": "Rider_Pauline",
+      "rank": 2
+    },
+    {
+      "participation_id": "Participation_Montpellier_Crepuscule_Pauline",
+      "event_id": "Event_Montpellier_Dr_2026",
+      "horse_id": "Horse_Crepuscule",
+      "rider_id": "Rider_Pauline",
+      "rank": 1
+    },
+    {
+      "participation_id": "Participation_Dijon_Mirage_Pauline",
+      "event_id": "Event_Dijon_Cross_2026",
+      "horse_id": "Horse_Mirage",
+      "rider_id": "Rider_Pauline",
+      "rank": 3
+    },
+    {
+      "participation_id": "Participation_LeMans_Orion_Lucas",
+      "event_id": "Event_LeMans_Cross_2026",
+      "horse_id": "Horse_Orion",
+      "rider_id": "Rider_Lucas",
+      "rank": 3
+    },
+    {
+      "participation_id": "Participation_Strasbourg_Sable_Marc",
+      "event_id": "Event_Strasbourg_Cross_2026",
+      "horse_id": "Horse_Sable",
+      "rider_id": "Rider_Marc",
+      "rank": 2
+    },
+    {
+      "participation_id": "Participation_Strasbourg_Dune_Marc",
+      "event_id": "Event_Strasbourg_Cross_2026",
+      "horse_id": "Horse_Dune",
+      "rider_id": "Rider_Marc",
+      "rank": 1
+    },
+    {
+      "participation_id": "Participation_Montpellier_Braise_Alice",
+      "event_id": "Event_Montpellier_Dr_2026",
+      "horse_id": "Horse_Braise",
+      "rider_id": "Rider_Alice",
+      "rank": 3
+    },
+    {
+      "participation_id": "Participation_Nantes_Soleil_Alice",
+      "event_id": "Event_Nantes_SJ_2026",
+      "horse_id": "Horse_Soleil",
+      "rider_id": "Rider_Alice",
+      "rank": 1
+    },
+    {
+      "participation_id": "Participation_Nantes_Arrow_Alice",
+      "event_id": "Event_Nantes_SJ_2026",
+      "horse_id": "Horse_Arrow",
+      "rider_id": "Rider_Alice",
+      "rank": 2
+    },
+    {
+      "participation_id": "Participation_Clermont_Orage_Alice",
+      "event_id": "Event_Clermont_Cross_2026",
+      "horse_id": "Horse_Orage",
+      "rider_id": "Rider_Alice",
+      "rank": 4
+    },
+    {
+      "participation_id": "Participation_SJ01_H1_Emma",
+      "event_id": "Event_SJ_01",
+      "horse_id": "Horse1",
+      "rider_id": "Rider_Emma",
+      "rank": 2
+    },
+    {
+      "participation_id": "Participation_Pau_Apollon_Sarah",
+      "event_id": "Event_Pau_SJ_2026",
+      "horse_id": "Horse_Apollon",
+      "rider_id": "Rider_Sarah",
+      "rank": 4
+    },
+    {
+      "participation_id": "Participation_Clermont_Glacier_Theo",
+      "event_id": "Event_Clermont_Cross_2026",
+      "horse_id": "Horse_Glacier",
+      "rider_id": "Rider_Theo",
+      "rank": 2
+    },
+    {
+      "participation_id": "Participation_Nantes_Volcan_Theo",
+      "event_id": "Event_Nantes_SJ_2026",
+      "horse_id": "Horse_Volcan",
+      "rider_id": "Rider_Theo",
+      "rank": 4
+    },
+    {
+      "participation_id": "Participation_Montpellier_Nebule_Theo",
+      "event_id": "Event_Montpellier_Dr_2026",
+      "horse_id": "Horse_Nebule",
+      "rider_id": "Rider_Theo",
+      "rank": 6
+    },
+    {
+      "participation_id": "Participation_Pau_Pixie_Julien",
+      "event_id": "Event_Pau_SJ_2026",
+      "horse_id": "Horse_Pixie",
+      "rider_id": "Rider_Julien",
+      "rank": 2
+    },
+    {
+      "participation_id": "Participation_Marseille_Bella_Julien",
+      "event_id": "Event_Marseille_Dressage_2026",
+      "horse_id": "Horse_Bella",
+      "rider_id": "Rider_Julien",
+      "rank": 1
+    },
+    {
+      "participation_id": "Participation_Toulouse_Iris_Camille",
+      "event_id": "Event_Toulouse_Cross_2026",
+      "horse_id": "Horse_Iris",
+      "rider_id": "Rider_Camille",
+      "rank": 1
+    },
+    {
+      "participation_id": "Participation_Toulouse_Atlas_Camille",
+      "event_id": "Event_Toulouse_Cross_2026",
+      "horse_id": "Horse_Atlas",
+      "rider_id": "Rider_Camille",
+      "rank": 3
+    },
+    {
+      "participation_id": "Participation_Fontainebleau_Luna_Clara",
+      "event_id": "Event_Fontainebleau_SJ_2026",
+      "horse_id": "Horse_Luna",
+      "rider_id": "Rider_Clara",
+      "rank": 1
+    },
+    {
+      "participation_id": "Participation_Pau_Comet_Nina",
+      "event_id": "Event_Pau_SJ_2026",
+      "horse_id": "Horse_Comet",
+      "rider_id": "Rider_Nina",
+      "rank": 1
+    },
+    {
+      "participation_id": "Participation_Marseille_Zephyr_Nina",
+      "event_id": "Event_Marseille_Dressage_2026",
+      "horse_id": "Horse_Zephyr",
+      "rider_id": "Rider_Nina",
+      "rank": 3
+    },
+    {
+      "participation_id": "Participation_Lyon_Storm_Hugo",
+      "event_id": "Event_Lyon_Dressage_2026",
+      "horse_id": "Horse_Storm",
+      "rider_id": "Rider_Hugo",
+      "rank": 1
+    },
+    {
+      "participation_id": "Participation_Lyon_Nova_Hugo",
+      "event_id": "Event_Lyon_Dressage_2026",
+      "horse_id": "Horse_Nova",
+      "rider_id": "Rider_Hugo",
+      "rank": 2
+    },
+    {
+      "participation_id": "Participation_Versailles_Lumiere_Victor",
+      "event_id": "Event_Versailles_SJ_2026",
+      "horse_id": "Horse_Lumiere",
+      "rider_id": "Rider_Victor",
+      "rank": 4
+    },
+    {
+      "participation_id": "Participation_Nantes_Cascade_Victor",
+      "event_id": "Event_Nantes_SJ_2026",
+      "horse_id": "Horse_Cascade",
+      "rider_id": "Rider_Victor",
+      "rank": 3
+    },
+    {
+      "participation_id": "Participation_Dijon_Riviere_Victor",
+      "event_id": "Event_Dijon_Cross_2026",
+      "horse_id": "Horse_Riviere",
+      "rider_id": "Rider_Victor",
+      "rank": 4
+    },
+    {
+      "participation_id": "Participation_Montpellier_Nuage_Elise",
+      "event_id": "Event_Montpellier_Dr_2026",
+      "horse_id": "Horse_Nuage",
+      "rider_id": "Rider_Elise",
+      "rank": 2
+    },
+    {
+      "participation_id": "Participation_Clermont_Auroch_Elise",
+      "event_id": "Event_Clermont_Cross_2026",
+      "horse_id": "Horse_Auroch",
+      "rider_id": "Rider_Elise",
+      "rank": 5
+    },
+    {
+      "participation_id": "Participation_Montpellier_Luminos_Elise",
+      "event_id": "Event_Montpellier_Dr_2026",
+      "horse_id": "Horse_Luminos",
+      "rider_id": "Rider_Elise",
+      "rank": 4
+    },
+    {
+      "participation_id": "Participation_Versailles_Etoile_Remi",
+      "event_id": "Event_Versailles_SJ_2026",
+      "horse_id": "Horse_Etoile",
+      "rider_id": "Rider_Remi",
+      "rank": 1
+    },
+    {
+      "participation_id": "Participation_Versailles_Grondre_Remi",
+      "event_id": "Event_Versailles_SJ_2026",
+      "horse_id": "Horse_Grondre",
+      "rider_id": "Rider_Remi",
+      "rank": 3
+    },
+    {
+      "participation_id": "Participation_Nantes_Galop_Remi",
+      "event_id": "Event_Nantes_SJ_2026",
+      "horse_id": "Horse_Galop",
+      "rider_id": "Rider_Remi",
+      "rank": 5
+    },
+    {
+      "participation_id": "Participation_Bordeaux_Thunder_Antoine",
+      "event_id": "Event_Bordeaux_Cross_2026",
+      "horse_id": "Horse_Thunder",
+      "rider_id": "Rider_Antoine",
+      "rank": 2
+    },
+    {
+      "participation_id": "Participation_Rennes_Ombre_Chloe",
+      "event_id": "Event_Rennes_SJ_2026",
+      "horse_id": "Horse_Ombre",
+      "rider_id": "Rider_Chloe",
+      "rank": 4
+    },
+    {
+      "participation_id": "Participation_Nice_Eclat_Chloe",
+      "event_id": "Event_Nice_Dressage_2026",
+      "horse_id": "Horse_Eclat",
+      "rider_id": "Rider_Chloe",
+      "rank": 2
+    },
+    {
+      "participation_id": "Participation_Marseille_Mistral_Tom",
+      "event_id": "Event_Marseille_Dressage_2026",
+      "horse_id": "Horse_Mistral",
+      "rider_id": "Rider_Tom",
+      "rank": 2
+    },
+    {
+      "participation_id": "Participation_Rennes_Rio_Lea",
+      "event_id": "Event_Rennes_SJ_2026",
+      "horse_id": "Horse_Rio",
+      "rider_id": "Rider_Lea",
+      "rank": 1
+    },
+    {
+      "participation_id": "Participation_Rennes_Falcon_Lea",
+      "event_id": "Event_Rennes_SJ_2026",
+      "horse_id": "Horse_Falcon",
+      "rider_id": "Rider_Lea",
+      "rank": 3
+    },
+    {
+      "participation_id": "Participation_Clermont_Rafale_Ines",
+      "event_id": "Event_Clermont_Cross_2026",
+      "horse_id": "Horse_Rafale",
+      "rider_id": "Rider_Ines",
+      "rank": 1
+    },
+    {
+      "participation_id": "Participation_Clermont_Tonnerre_Ines",
+      "event_id": "Event_Clermont_Cross_2026",
+      "horse_id": "Horse_Tonnerre",
+      "rider_id": "Rider_Ines",
+      "rank": 3
+    },
+    {
+      "participation_id": "Participation_Montpellier_Horizon_Ines",
+      "event_id": "Event_Montpellier_Dr_2026",
+      "horse_id": "Horse_Horizon",
+      "rider_id": "Rider_Ines",
+      "rank": 5
+    }
+  ],
+  "sensors": [
+    {
+      "sensor_id": "IMU_CanonHind_Aurore_01",
+      "horse_id": "Horse_Aurore",
+      "sensor_type": "CanonOfHindlimb",
+      "sensor_code": "IMU-CH-012",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 7800,
+      "sample_rate": "250Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Withers_Aurore_01",
+      "horse_id": "Horse_Aurore",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-038",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5500,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_CanonFore_Braise_01",
+      "horse_id": "Horse_Braise",
+      "sensor_type": "CanonOfForelimb",
+      "sensor_code": "IMU-CF-019",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 7800,
+      "sample_rate": "250Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Braise_01",
+      "horse_id": "Horse_Braise",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-042",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5500,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_CanonFore_Atlas_01",
+      "horse_id": "Horse_Atlas",
+      "sensor_type": "CanonOfForelimb",
+      "sensor_code": "IMU-CF-009",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 8000,
+      "sample_rate": "250Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Atlas_01",
+      "horse_id": "Horse_Atlas",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-014",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5700,
+      "sample_rate": "250Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Sternum_Atlas_01",
+      "horse_id": "Horse_Atlas",
+      "sensor_type": "Sternum",
+      "sensor_code": "IMU-ST-012",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 6600,
+      "sample_rate": "200Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Sternum_Rafale_01",
+      "horse_id": "Horse_Rafale",
+      "sensor_type": "Sternum",
+      "sensor_code": "IMU-ST-022",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 6300,
+      "sample_rate": "200Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Rafale_01",
+      "horse_id": "Horse_Rafale",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-034",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5500,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Withers_Pixie_01",
+      "horse_id": "Horse_Pixie",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-008",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5000,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Sternum_Pixie_01",
+      "horse_id": "Horse_Pixie",
+      "sensor_type": "Sternum",
+      "sensor_code": "IMU-ST-009",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 6100,
+      "sample_rate": "200Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Sable_01",
+      "horse_id": "Horse_Sable",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-018",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5300,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_CanonHind_Sable_01",
+      "horse_id": "Horse_Sable",
+      "sensor_type": "CanonOfHindlimb",
+      "sensor_code": "IMU-CH-008",
+      "format": "CSV",
+      "sensor_offset": "0.015",
+      "file_size": 7500,
+      "sample_rate": "250Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Withers_Thunder_01",
+      "horse_id": "Horse_Thunder",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-005",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5900,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Sternum_Thunder_01",
+      "horse_id": "Horse_Thunder",
+      "sensor_type": "Sternum",
+      "sensor_code": "IMU-ST-007",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 6500,
+      "sample_rate": "200Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_CanonHind_Thunder_01",
+      "horse_id": "Horse_Thunder",
+      "sensor_type": "CanonOfHindlimb",
+      "sensor_code": "IMU-CH-004",
+      "format": "CSV",
+      "sensor_offset": "0.015",
+      "file_size": 7800,
+      "sample_rate": "250Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Withers_01",
+      "horse_id": "Horse1",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-001",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5120,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Sternum_01",
+      "horse_id": "Horse1",
+      "sensor_type": "Sternum",
+      "sensor_code": "IMU-ST-004",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 6890,
+      "sample_rate": "200Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_CanonHind_01",
+      "horse_id": "Horse1",
+      "sensor_type": "CanonOfHindlimb",
+      "sensor_code": "IMU-CH-003",
+      "format": "CSV",
+      "sensor_offset": "0.015",
+      "file_size": 7420,
+      "sample_rate": "250Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_CanonFore_01",
+      "horse_id": "Horse1",
+      "sensor_type": "CanonOfForelimb",
+      "sensor_code": "IMU-CF-002",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 7680,
+      "sample_rate": "250Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Sternum_Zephire_01",
+      "horse_id": "Horse_Zephire",
+      "sensor_type": "Sternum",
+      "sensor_code": "IMU-ST-026",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 6300,
+      "sample_rate": "200Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Zephire_01",
+      "horse_id": "Horse_Zephire",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-043",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5500,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Sternum_Falcon_01",
+      "horse_id": "Horse_Falcon",
+      "sensor_type": "Sternum",
+      "sensor_code": "IMU-ST-014",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 6100,
+      "sample_rate": "200Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Falcon_01",
+      "horse_id": "Horse_Falcon",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-016",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5400,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Withers_Sirius_01",
+      "horse_id": "Horse_Sirius",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-021",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5700,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Sternum_Sirius_01",
+      "horse_id": "Horse_Sirius",
+      "sensor_type": "Sternum",
+      "sensor_code": "IMU-ST-016",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 6400,
+      "sample_rate": "200Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_CanonHind_Apollon_01",
+      "horse_id": "Horse_Apollon",
+      "sensor_type": "CanonOfHindlimb",
+      "sensor_code": "IMU-CH-005",
+      "format": "CSV",
+      "sensor_offset": "0.015",
+      "file_size": 7500,
+      "sample_rate": "250Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Withers_Apollon_01",
+      "horse_id": "Horse_Apollon",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-007",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5200,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Withers_Luminos_01",
+      "horse_id": "Horse_Luminos",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-031",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5500,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Sternum_Luminos_01",
+      "horse_id": "Horse_Luminos",
+      "sensor_type": "Sternum",
+      "sensor_code": "IMU-ST-021",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 6300,
+      "sample_rate": "200Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Sternum_Orage_01",
+      "horse_id": "Horse_Orage",
+      "sensor_type": "Sternum",
+      "sensor_code": "IMU-ST-029",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 6300,
+      "sample_rate": "200Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Orage_01",
+      "horse_id": "Horse_Orage",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-050",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5500,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_CanonFore_Horizon_01",
+      "horse_id": "Horse_Horizon",
+      "sensor_type": "CanonOfForelimb",
+      "sensor_code": "IMU-CF-020",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 7800,
+      "sample_rate": "250Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Horizon_01",
+      "horse_id": "Horse_Horizon",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-046",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5500,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Withers_Luna_01",
+      "horse_id": "Horse_Luna",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-004",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5600,
+      "sample_rate": "250Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Sternum_Luna_01",
+      "horse_id": "Horse_Luna",
+      "sensor_type": "Sternum",
+      "sensor_code": "IMU-ST-006",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 7200,
+      "sample_rate": "200Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_CanonFore_Luna_01",
+      "horse_id": "Horse_Luna",
+      "sensor_type": "CanonOfForelimb",
+      "sensor_code": "IMU-CF-004",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 8100,
+      "sample_rate": "300Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Mistral_01",
+      "horse_id": "Horse_Mistral",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-015",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5500,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Sternum_Mistral_01",
+      "horse_id": "Horse_Mistral",
+      "sensor_type": "Sternum",
+      "sensor_code": "IMU-ST-013",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 6500,
+      "sample_rate": "200Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_CanonFore_Rio_01",
+      "horse_id": "Horse_Rio",
+      "sensor_type": "CanonOfForelimb",
+      "sensor_code": "IMU-CF-010",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 7800,
+      "sample_rate": "250Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Rio_01",
+      "horse_id": "Horse_Rio",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-017",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5600,
+      "sample_rate": "250Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Sternum_Crepuscule_01",
+      "horse_id": "Horse_Crepuscule",
+      "sensor_type": "Sternum",
+      "sensor_code": "IMU-ST-024",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 6300,
+      "sample_rate": "200Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Crepuscule_01",
+      "horse_id": "Horse_Crepuscule",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-039",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5500,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Withers_Cascade_01",
+      "horse_id": "Horse_Cascade",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-036",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5500,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Sternum_Cascade_01",
+      "horse_id": "Horse_Cascade",
+      "sensor_type": "Sternum",
+      "sensor_code": "IMU-ST-023",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 6300,
+      "sample_rate": "200Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Orion_01",
+      "horse_id": "Horse_Orion",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-003",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5800,
+      "sample_rate": "250Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_CanonFore_Orion_01",
+      "horse_id": "Horse_Orion",
+      "sensor_type": "CanonOfForelimb",
+      "sensor_code": "IMU-CF-003",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 7900,
+      "sample_rate": "250Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_CanonFore_Soleil_01",
+      "horse_id": "Horse_Soleil",
+      "sensor_type": "CanonOfForelimb",
+      "sensor_code": "IMU-CF-013",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 7800,
+      "sample_rate": "250Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Soleil_01",
+      "horse_id": "Horse_Soleil",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-027",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5500,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Withers_Dune_01",
+      "horse_id": "Horse_Dune",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-019",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5200,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Sternum_Dune_01",
+      "horse_id": "Horse_Dune",
+      "sensor_type": "Sternum",
+      "sensor_code": "IMU-ST-015",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 6300,
+      "sample_rate": "200Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Sternum_Zephyr_01",
+      "horse_id": "Horse_Zephyr",
+      "sensor_type": "Sternum",
+      "sensor_code": "IMU-ST-010",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 6400,
+      "sample_rate": "200Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_CanonHind_Zephyr_01",
+      "horse_id": "Horse_Zephyr",
+      "sensor_type": "CanonOfHindlimb",
+      "sensor_code": "IMU-CH-006",
+      "format": "CSV",
+      "sensor_offset": "0.015",
+      "file_size": 7600,
+      "sample_rate": "250Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Withers_Zephyr_01",
+      "horse_id": "Horse_Zephyr",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-009",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5600,
+      "sample_rate": "250Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_CanonFore_Zephyr_01",
+      "horse_id": "Horse_Zephyr",
+      "sensor_type": "CanonOfForelimb",
+      "sensor_code": "IMU-CF-006",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 7900,
+      "sample_rate": "250Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Brume_01",
+      "horse_id": "Horse_Brume",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-023",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5100,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Sternum_Brume_01",
+      "horse_id": "Horse_Brume",
+      "sensor_type": "Sternum",
+      "sensor_code": "IMU-ST-018",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 6000,
+      "sample_rate": "200Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_CanonFore_Nuage_01",
+      "horse_id": "Horse_Nuage",
+      "sensor_type": "CanonOfForelimb",
+      "sensor_code": "IMU-CF-014",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 7800,
+      "sample_rate": "250Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Nuage_01",
+      "horse_id": "Horse_Nuage",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-030",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5500,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_CanonFore_Glacier_01",
+      "horse_id": "Horse_Glacier",
+      "sensor_type": "CanonOfForelimb",
+      "sensor_code": "IMU-CF-018",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 7800,
+      "sample_rate": "250Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Glacier_01",
+      "horse_id": "Horse_Glacier",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-040",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5500,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Withers_Galop_01",
+      "horse_id": "Horse_Galop",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-045",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5500,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Sternum_Galop_01",
+      "horse_id": "Horse_Galop",
+      "sensor_type": "Sternum",
+      "sensor_code": "IMU-ST-027",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 6300,
+      "sample_rate": "200Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_CanonFore_Riviere_01",
+      "horse_id": "Horse_Riviere",
+      "sensor_type": "CanonOfForelimb",
+      "sensor_code": "IMU-CF-017",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 7800,
+      "sample_rate": "250Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Riviere_01",
+      "horse_id": "Horse_Riviere",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-037",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5500,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Withers_Nova_01",
+      "horse_id": "Horse_Nova",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-011",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5300,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Sternum_Nova_01",
+      "horse_id": "Horse_Nova",
+      "sensor_type": "Sternum",
+      "sensor_code": "IMU-ST-011",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 6200,
+      "sample_rate": "200Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_CanonHind_Ombre_01",
+      "horse_id": "Horse_Ombre",
+      "sensor_type": "CanonOfHindlimb",
+      "sensor_code": "IMU-CH-009",
+      "format": "CSV",
+      "sensor_offset": "0.015",
+      "file_size": 7300,
+      "sample_rate": "250Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Withers_Ombre_01",
+      "horse_id": "Horse_Ombre",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-025",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5300,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Sternum_Volcan_01",
+      "horse_id": "Horse_Volcan",
+      "sensor_type": "Sternum",
+      "sensor_code": "IMU-ST-025",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 6300,
+      "sample_rate": "200Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Volcan_01",
+      "horse_id": "Horse_Volcan",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-041",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5500,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_CanonFore_Nebule_01",
+      "horse_id": "Horse_Nebule",
+      "sensor_type": "CanonOfForelimb",
+      "sensor_code": "IMU-CF-021",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 7800,
+      "sample_rate": "250Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Nebule_01",
+      "horse_id": "Horse_Nebule",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-049",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5500,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_CanonFore_Etoile_01",
+      "horse_id": "Horse_Etoile",
+      "sensor_type": "CanonOfForelimb",
+      "sensor_code": "IMU-CF-015",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 7800,
+      "sample_rate": "250Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Etoile_01",
+      "horse_id": "Horse_Etoile",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-032",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5500,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Withers_Lumiere_01",
+      "horse_id": "Horse_Lumiere",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-047",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5500,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Sternum_Lumiere_01",
+      "horse_id": "Horse_Lumiere",
+      "sensor_type": "Sternum",
+      "sensor_code": "IMU-ST-028",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 6300,
+      "sample_rate": "200Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_CanonHind_Iris_01",
+      "horse_id": "Horse_Iris",
+      "sensor_type": "CanonOfHindlimb",
+      "sensor_code": "IMU-CH-007",
+      "format": "CSV",
+      "sensor_offset": "0.015",
+      "file_size": 7400,
+      "sample_rate": "250Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Withers_Iris_01",
+      "horse_id": "Horse_Iris",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-013",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5400,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_CanonHind_Tempete_01",
+      "horse_id": "Horse_Tempete",
+      "sensor_type": "CanonOfHindlimb",
+      "sensor_code": "IMU-CH-010",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 7800,
+      "sample_rate": "250Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Withers_Tempete_01",
+      "horse_id": "Horse_Tempete",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-028",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5500,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Withers_Eclair_01",
+      "horse_id": "Horse_Eclair",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-024",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5400,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_CanonFore_Eclair_01",
+      "horse_id": "Horse_Eclair",
+      "sensor_type": "CanonOfForelimb",
+      "sensor_code": "IMU-CF-012",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 7600,
+      "sample_rate": "250Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Tonnerre_01",
+      "horse_id": "Horse_Tonnerre",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-035",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5500,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_CanonFore_Tonnerre_01",
+      "horse_id": "Horse_Tonnerre",
+      "sensor_type": "CanonOfForelimb",
+      "sensor_code": "IMU-CF-016",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 7800,
+      "sample_rate": "250Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_CanonFore_Storm_01",
+      "horse_id": "Horse_Storm",
+      "sensor_type": "CanonOfForelimb",
+      "sensor_code": "IMU-CF-008",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 7700,
+      "sample_rate": "250Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Storm_01",
+      "horse_id": "Horse_Storm",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-012",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5500,
+      "sample_rate": "250Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Withers_Comet_01",
+      "horse_id": "Horse_Comet",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-010",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5900,
+      "sample_rate": "300Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_CanonFore_Comet_01",
+      "horse_id": "Horse_Comet",
+      "sensor_type": "CanonOfForelimb",
+      "sensor_code": "IMU-CF-007",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 8200,
+      "sample_rate": "300Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Bella_01",
+      "horse_id": "Horse_Bella",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-006",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5400,
+      "sample_rate": "250Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Sternum_Bella_01",
+      "horse_id": "Horse_Bella",
+      "sensor_type": "Sternum",
+      "sensor_code": "IMU-ST-008",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 6300,
+      "sample_rate": "200Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_CanonFore_Bella_01",
+      "horse_id": "Horse_Bella",
+      "sensor_type": "CanonOfForelimb",
+      "sensor_code": "IMU-CF-005",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 7700,
+      "sample_rate": "250Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Mirage_01",
+      "horse_id": "Horse_Mirage",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-048",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5500,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_CanonHind_Mirage_01",
+      "horse_id": "Horse_Mirage",
+      "sensor_type": "CanonOfHindlimb",
+      "sensor_code": "IMU-CH-014",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 7800,
+      "sample_rate": "250Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Sternum_Arrow_01",
+      "horse_id": "Horse_Arrow",
+      "sensor_type": "Sternum",
+      "sensor_code": "IMU-ST-019",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 6300,
+      "sample_rate": "200Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Arrow_01",
+      "horse_id": "Horse_Arrow",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-026",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5500,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Sternum_Ecume_01",
+      "horse_id": "Horse_Ecume",
+      "sensor_type": "Sternum",
+      "sensor_code": "IMU-ST-020",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 6300,
+      "sample_rate": "200Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Ecume_01",
+      "horse_id": "Horse_Ecume",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-029",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5500,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Withers_Grondre_01",
+      "horse_id": "Horse_Grondre",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-033",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5500,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_CanonHind_Grondre_01",
+      "horse_id": "Horse_Grondre",
+      "sensor_type": "CanonOfHindlimb",
+      "sensor_code": "IMU-CH-011",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 7800,
+      "sample_rate": "250Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Withers_Auroch_01",
+      "horse_id": "Horse_Auroch",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-044",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5500,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_CanonHind_Auroch_01",
+      "horse_id": "Horse_Auroch",
+      "sensor_type": "CanonOfHindlimb",
+      "sensor_code": "IMU-CH-013",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 7800,
+      "sample_rate": "250Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Withers_Naya_01",
+      "horse_id": "Horse2",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-002",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5340,
+      "sample_rate": "200Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Sternum_Naya_01",
+      "horse_id": "Horse2",
+      "sensor_type": "Sternum",
+      "sensor_code": "IMU-ST-005",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 6200,
+      "sample_rate": "200Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Sternum_Vega_01",
+      "horse_id": "Horse_Vega",
+      "sensor_type": "Sternum",
+      "sensor_code": "IMU-ST-017",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 6500,
+      "sample_rate": "200Hz",
+      "objective_id": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Vega_01",
+      "horse_id": "Horse_Vega",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-022",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5800,
+      "sample_rate": "250Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Withers_Eclat_01",
+      "horse_id": "Horse_Eclat",
+      "sensor_type": "Withers",
+      "sensor_code": "IMU-W-020",
+      "format": "CSV",
+      "sensor_offset": "0.01",
+      "file_size": 5500,
+      "sample_rate": "250Hz",
+      "objective_id": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_CanonFore_Eclat_01",
+      "horse_id": "Horse_Eclat",
+      "sensor_type": "CanonOfForelimb",
+      "sensor_code": "IMU-CF-011",
+      "format": "CSV",
+      "sensor_offset": "0.02",
+      "file_size": 7900,
+      "sample_rate": "250Hz",
+      "objective_id": "FatigueDetection"
+    }
+  ],
+  "event_entries": [
+    {
+      "horse_id": "Horse_Aurore",
+      "event_id": "Event_Fontainebleau_SJ_2026"
+    },
+    {
+      "horse_id": "Horse_Aurore",
+      "event_id": "Event_Versailles_SJ_2026"
+    },
+    {
+      "horse_id": "Horse_Braise",
+      "event_id": "Event_Montpellier_Dr_2026"
+    },
+    {
+      "horse_id": "Horse_Braise",
+      "event_id": "Event_Nice_Dressage_2026"
+    },
+    {
+      "horse_id": "Horse_Atlas",
+      "event_id": "Event_Toulouse_Cross_2026"
+    },
+    {
+      "horse_id": "Horse_Atlas",
+      "event_id": "Event_Pau_SJ_2026"
+    },
+    {
+      "horse_id": "Horse_Rafale",
+      "event_id": "Event_Bordeaux_Cross_2026"
+    },
+    {
+      "horse_id": "Horse_Rafale",
+      "event_id": "Event_Clermont_Cross_2026"
+    },
+    {
+      "horse_id": "Horse_Pixie",
+      "event_id": "Event_Cross_2026_01"
+    },
+    {
+      "horse_id": "Horse_Pixie",
+      "event_id": "Event_Pau_SJ_2026"
+    },
+    {
+      "horse_id": "Horse_Sable",
+      "event_id": "Event_Strasbourg_Cross_2026"
+    },
+    {
+      "horse_id": "Horse_Sable",
+      "event_id": "Event_LeMans_Cross_2026"
+    },
+    {
+      "horse_id": "Horse_Thunder",
+      "event_id": "Event_Bordeaux_Cross_2026"
+    },
+    {
+      "horse_id": "Horse_Thunder",
+      "event_id": "Event_LeMans_Cross_2026"
+    },
+    {
+      "horse_id": "Horse1",
+      "event_id": "Event_SJ_2026_01"
+    },
+    {
+      "horse_id": "Horse1",
+      "event_id": "Event_Cross_2026_01"
+    },
+    {
+      "horse_id": "Horse1",
+      "event_id": "Event_Dressage_01"
+    },
+    {
+      "horse_id": "Horse1",
+      "event_id": "Event_Dressage_2026_01"
+    },
+    {
+      "horse_id": "Horse1",
+      "event_id": "Event_SJ_01"
+    },
+    {
+      "horse_id": "Horse_Zephire",
+      "event_id": "Event_Rennes_SJ_2026"
+    },
+    {
+      "horse_id": "Horse_Zephire",
+      "event_id": "Event_Versailles_SJ_2026"
+    },
+    {
+      "horse_id": "Horse_Falcon",
+      "event_id": "Event_Rennes_SJ_2026"
+    },
+    {
+      "horse_id": "Horse_Falcon",
+      "event_id": "Event_SJ_01"
+    },
+    {
+      "horse_id": "Horse_Sirius",
+      "event_id": "Event_Nice_Dressage_2026"
+    },
+    {
+      "horse_id": "Horse_Sirius",
+      "event_id": "Event_Lyon_Dressage_2026"
+    },
+    {
+      "horse_id": "Horse_Apollon",
+      "event_id": "Event_SJ_2026_01"
+    },
+    {
+      "horse_id": "Horse_Apollon",
+      "event_id": "Event_Pau_SJ_2026"
+    },
+    {
+      "horse_id": "Horse_Luminos",
+      "event_id": "Event_Montpellier_Dr_2026"
+    },
+    {
+      "horse_id": "Horse_Luminos",
+      "event_id": "Event_Lyon_Dressage_2026"
+    },
+    {
+      "horse_id": "Horse_Orage",
+      "event_id": "Event_Toulouse_Cross_2026"
+    },
+    {
+      "horse_id": "Horse_Orage",
+      "event_id": "Event_Clermont_Cross_2026"
+    },
+    {
+      "horse_id": "Horse_Horizon",
+      "event_id": "Event_Montpellier_Dr_2026"
+    },
+    {
+      "horse_id": "Horse_Horizon",
+      "event_id": "Event_Lyon_Dressage_2026"
+    },
+    {
+      "horse_id": "Horse_Luna",
+      "event_id": "Event_Fontainebleau_SJ_2026"
+    },
+    {
+      "horse_id": "Horse_Luna",
+      "event_id": "Event_SJ_2026_01"
+    },
+    {
+      "horse_id": "Horse_Mistral",
+      "event_id": "Event_SJ_2026_01"
+    },
+    {
+      "horse_id": "Horse_Mistral",
+      "event_id": "Event_Marseille_Dressage_2026"
+    },
+    {
+      "horse_id": "Horse_Rio",
+      "event_id": "Event_Fontainebleau_SJ_2026"
+    },
+    {
+      "horse_id": "Horse_Rio",
+      "event_id": "Event_Rennes_SJ_2026"
+    },
+    {
+      "horse_id": "Horse_Crepuscule",
+      "event_id": "Event_Montpellier_Dr_2026"
+    },
+    {
+      "horse_id": "Horse_Crepuscule",
+      "event_id": "Event_Marseille_Dressage_2026"
+    },
+    {
+      "horse_id": "Horse_Cascade",
+      "event_id": "Event_Nantes_SJ_2026"
+    },
+    {
+      "horse_id": "Horse_Cascade",
+      "event_id": "Event_SJ_2026_01"
+    },
+    {
+      "horse_id": "Horse_Orion",
+      "event_id": "Event_LeMans_Cross_2026"
+    },
+    {
+      "horse_id": "Horse_Soleil",
+      "event_id": "Event_Fontainebleau_SJ_2026"
+    },
+    {
+      "horse_id": "Horse_Soleil",
+      "event_id": "Event_Nantes_SJ_2026"
+    },
+    {
+      "horse_id": "Horse_Dune",
+      "event_id": "Event_Strasbourg_Cross_2026"
+    },
+    {
+      "horse_id": "Horse_Dune",
+      "event_id": "Event_Cross_2026_01"
+    },
+    {
+      "horse_id": "Horse_Zephyr",
+      "event_id": "Event_Marseille_Dressage_2026"
+    },
+    {
+      "horse_id": "Horse_Zephyr",
+      "event_id": "Event_LeMans_Cross_2026"
+    },
+    {
+      "horse_id": "Horse_Brume",
+      "event_id": "Event_Strasbourg_Cross_2026"
+    },
+    {
+      "horse_id": "Horse_Brume",
+      "event_id": "Event_Bordeaux_Cross_2026"
+    },
+    {
+      "horse_id": "Horse_Nuage",
+      "event_id": "Event_Montpellier_Dr_2026"
+    },
+    {
+      "horse_id": "Horse_Nuage",
+      "event_id": "Event_Dressage_2026_01"
+    },
+    {
+      "horse_id": "Horse_Glacier",
+      "event_id": "Event_Clermont_Cross_2026"
+    },
+    {
+      "horse_id": "Horse_Glacier",
+      "event_id": "Event_LeMans_Cross_2026"
+    },
+    {
+      "horse_id": "Horse_Galop",
+      "event_id": "Event_Nantes_SJ_2026"
+    },
+    {
+      "horse_id": "Horse_Galop",
+      "event_id": "Event_Pau_SJ_2026"
+    },
+    {
+      "horse_id": "Horse_Riviere",
+      "event_id": "Event_Dijon_Cross_2026"
+    },
+    {
+      "horse_id": "Horse_Riviere",
+      "event_id": "Event_Strasbourg_Cross_2026"
+    },
+    {
+      "horse_id": "Horse_Nova",
+      "event_id": "Event_Dressage_2026_01"
+    },
+    {
+      "horse_id": "Horse_Nova",
+      "event_id": "Event_Lyon_Dressage_2026"
+    },
+    {
+      "horse_id": "Horse_Ombre",
+      "event_id": "Event_SJ_2026_01"
+    },
+    {
+      "horse_id": "Horse_Ombre",
+      "event_id": "Event_Rennes_SJ_2026"
+    },
+    {
+      "horse_id": "Horse_Volcan",
+      "event_id": "Event_Nantes_SJ_2026"
+    },
+    {
+      "horse_id": "Horse_Volcan",
+      "event_id": "Event_SJ_01"
+    },
+    {
+      "horse_id": "Horse_Nebule",
+      "event_id": "Event_Montpellier_Dr_2026"
+    },
+    {
+      "horse_id": "Horse_Nebule",
+      "event_id": "Event_Marseille_Dressage_2026"
+    },
+    {
+      "horse_id": "Horse_Etoile",
+      "event_id": "Event_Rennes_SJ_2026"
+    },
+    {
+      "horse_id": "Horse_Etoile",
+      "event_id": "Event_Versailles_SJ_2026"
+    },
+    {
+      "horse_id": "Horse_Lumiere",
+      "event_id": "Event_SJ_2026_01"
+    },
+    {
+      "horse_id": "Horse_Lumiere",
+      "event_id": "Event_Versailles_SJ_2026"
+    },
+    {
+      "horse_id": "Horse_Iris",
+      "event_id": "Event_Toulouse_Cross_2026"
+    },
+    {
+      "horse_id": "Horse_Iris",
+      "event_id": "Event_LeMans_Cross_2026"
+    },
+    {
+      "horse_id": "Horse_Tempete",
+      "event_id": "Event_Dijon_Cross_2026"
+    },
+    {
+      "horse_id": "Horse_Tempete",
+      "event_id": "Event_LeMans_Cross_2026"
+    },
+    {
+      "horse_id": "Horse_Eclair",
+      "event_id": "Event_Nice_Dressage_2026"
+    },
+    {
+      "horse_id": "Horse_Eclair",
+      "event_id": "Event_Dressage_2026_01"
+    },
+    {
+      "horse_id": "Horse_Tonnerre",
+      "event_id": "Event_Toulouse_Cross_2026"
+    },
+    {
+      "horse_id": "Horse_Tonnerre",
+      "event_id": "Event_Clermont_Cross_2026"
+    },
+    {
+      "horse_id": "Horse_Storm",
+      "event_id": "Event_Lyon_Dressage_2026"
+    },
+    {
+      "horse_id": "Horse_Storm",
+      "event_id": "Event_SJ_01"
+    },
+    {
+      "horse_id": "Horse_Comet",
+      "event_id": "Event_Fontainebleau_SJ_2026"
+    },
+    {
+      "horse_id": "Horse_Comet",
+      "event_id": "Event_Pau_SJ_2026"
+    },
+    {
+      "horse_id": "Horse_Bella",
+      "event_id": "Event_Marseille_Dressage_2026"
+    },
+    {
+      "horse_id": "Horse_Bella",
+      "event_id": "Event_Dressage_2026_01"
+    },
+    {
+      "horse_id": "Horse_Mirage",
+      "event_id": "Event_Dijon_Cross_2026"
+    },
+    {
+      "horse_id": "Horse_Mirage",
+      "event_id": "Event_Strasbourg_Cross_2026"
+    },
+    {
+      "horse_id": "Horse_Arrow",
+      "event_id": "Event_Nantes_SJ_2026"
+    },
+    {
+      "horse_id": "Horse_Arrow",
+      "event_id": "Event_SJ_01"
+    },
+    {
+      "horse_id": "Horse_Ecume",
+      "event_id": "Event_Dijon_Cross_2026"
+    },
+    {
+      "horse_id": "Horse_Ecume",
+      "event_id": "Event_Cross_2026_01"
+    },
+    {
+      "horse_id": "Horse_Grondre",
+      "event_id": "Event_Versailles_SJ_2026"
+    },
+    {
+      "horse_id": "Horse_Grondre",
+      "event_id": "Event_Pau_SJ_2026"
+    },
+    {
+      "horse_id": "Horse_Auroch",
+      "event_id": "Event_Bordeaux_Cross_2026"
+    },
+    {
+      "horse_id": "Horse_Auroch",
+      "event_id": "Event_Clermont_Cross_2026"
+    },
+    {
+      "horse_id": "Horse2",
+      "event_id": "Event_Dressage_2026_01"
+    },
+    {
+      "horse_id": "Horse_Vega",
+      "event_id": "Event_Rennes_SJ_2026"
+    },
+    {
+      "horse_id": "Horse_Vega",
+      "event_id": "Event_Pau_SJ_2026"
+    },
+    {
+      "horse_id": "Horse_Eclat",
+      "event_id": "Event_Marseille_Dressage_2026"
+    },
+    {
+      "horse_id": "Horse_Eclat",
+      "event_id": "Event_Nice_Dressage_2026"
+    }
+  ],
+  "objectives": [
+    {
+      "objective_id": "GaitClassif_01",
+      "name": "Gait Classification",
+      "description": "Classification of horse gaits using IMU data from withers and hindlimb canon"
+    },
+    {
+      "objective_id": "FatigueDetection",
+      "name": "Fatigue Detection",
+      "description": "Detection of physical fatigue in competition horses using sternum and forelimb canon sensors"
+    }
+  ],
+  "horse_rider_associations": [
+    {
+      "rider_id": "Rider_Manon",
+      "horse_id": "Horse1"
+    },
+    {
+      "rider_id": "Rider_Jade",
+      "horse_id": "Horse_Brume"
+    },
+    {
+      "rider_id": "Rider_Jade",
+      "horse_id": "Horse_Eclair"
+    },
+    {
+      "rider_id": "Rider_Leo",
+      "horse_id": "Horse2"
+    },
+    {
+      "rider_id": "Rider_Baptiste",
+      "horse_id": "Horse_Sirius"
+    },
+    {
+      "rider_id": "Rider_Baptiste",
+      "horse_id": "Horse_Vega"
+    },
+    {
+      "rider_id": "Rider_Maxime",
+      "horse_id": "Horse_Zephire"
+    },
+    {
+      "rider_id": "Rider_Maxime",
+      "horse_id": "Horse_Tempete"
+    },
+    {
+      "rider_id": "Rider_Maxime",
+      "horse_id": "Horse_Ecume"
+    },
+    {
+      "rider_id": "Rider_Pauline",
+      "horse_id": "Horse_Aurore"
+    },
+    {
+      "rider_id": "Rider_Pauline",
+      "horse_id": "Horse_Crepuscule"
+    },
+    {
+      "rider_id": "Rider_Pauline",
+      "horse_id": "Horse_Mirage"
+    },
+    {
+      "rider_id": "Rider_Lucas",
+      "horse_id": "Horse_Orion"
+    },
+    {
+      "rider_id": "Rider_Marc",
+      "horse_id": "Horse_Sable"
+    },
+    {
+      "rider_id": "Rider_Marc",
+      "horse_id": "Horse_Dune"
+    },
+    {
+      "rider_id": "Rider_Alice",
+      "horse_id": "Horse_Braise"
+    },
+    {
+      "rider_id": "Rider_Alice",
+      "horse_id": "Horse_Orage"
+    },
+    {
+      "rider_id": "Rider_Alice",
+      "horse_id": "Horse_Soleil"
+    },
+    {
+      "rider_id": "Rider_Alice",
+      "horse_id": "Horse_Arrow"
+    },
+    {
+      "rider_id": "Rider_Emma",
+      "horse_id": "Horse1"
+    },
+    {
+      "rider_id": "Rider_Sarah",
+      "horse_id": "Horse_Apollon"
+    },
+    {
+      "rider_id": "Rider_Theo",
+      "horse_id": "Horse_Glacier"
+    },
+    {
+      "rider_id": "Rider_Theo",
+      "horse_id": "Horse_Volcan"
+    },
+    {
+      "rider_id": "Rider_Theo",
+      "horse_id": "Horse_Nebule"
+    },
+    {
+      "rider_id": "Rider_Julien",
+      "horse_id": "Horse_Pixie"
+    },
+    {
+      "rider_id": "Rider_Julien",
+      "horse_id": "Horse_Bella"
+    },
+    {
+      "rider_id": "Rider_Camille",
+      "horse_id": "Horse_Atlas"
+    },
+    {
+      "rider_id": "Rider_Camille",
+      "horse_id": "Horse_Iris"
+    },
+    {
+      "rider_id": "Rider_Clara",
+      "horse_id": "Horse_Luna"
+    },
+    {
+      "rider_id": "Rider_Nina",
+      "horse_id": "Horse_Zephyr"
+    },
+    {
+      "rider_id": "Rider_Nina",
+      "horse_id": "Horse_Comet"
+    },
+    {
+      "rider_id": "Rider_Hugo",
+      "horse_id": "Horse_Nova"
+    },
+    {
+      "rider_id": "Rider_Hugo",
+      "horse_id": "Horse_Storm"
+    },
+    {
+      "rider_id": "Rider_Victor",
+      "horse_id": "Horse_Cascade"
+    },
+    {
+      "rider_id": "Rider_Victor",
+      "horse_id": "Horse_Riviere"
+    },
+    {
+      "rider_id": "Rider_Victor",
+      "horse_id": "Horse_Lumiere"
+    },
+    {
+      "rider_id": "Rider_Elise",
+      "horse_id": "Horse_Luminos"
+    },
+    {
+      "rider_id": "Rider_Elise",
+      "horse_id": "Horse_Nuage"
+    },
+    {
+      "rider_id": "Rider_Elise",
+      "horse_id": "Horse_Auroch"
+    },
+    {
+      "rider_id": "Rider_Remi",
+      "horse_id": "Horse_Galop"
+    },
+    {
+      "rider_id": "Rider_Remi",
+      "horse_id": "Horse_Etoile"
+    },
+    {
+      "rider_id": "Rider_Remi",
+      "horse_id": "Horse_Grondre"
+    },
+    {
+      "rider_id": "Rider_Antoine",
+      "horse_id": "Horse_Thunder"
+    },
+    {
+      "rider_id": "Rider_Chloe",
+      "horse_id": "Horse_Ombre"
+    },
+    {
+      "rider_id": "Rider_Chloe",
+      "horse_id": "Horse_Eclat"
+    },
+    {
+      "rider_id": "Rider_Tom",
+      "horse_id": "Horse_Mistral"
+    },
+    {
+      "rider_id": "Rider_Lea",
+      "horse_id": "Horse_Falcon"
+    },
+    {
+      "rider_id": "Rider_Lea",
+      "horse_id": "Horse_Rio"
+    },
+    {
+      "rider_id": "Rider_Ines",
+      "horse_id": "Horse_Rafale"
+    },
+    {
+      "rider_id": "Rider_Ines",
+      "horse_id": "Horse_Horizon"
+    },
+    {
+      "rider_id": "Rider_Ines",
+      "horse_id": "Horse_Tonnerre"
+    }
+  ],
+  "people": [
+    {
+      "person_id": "Rider_Manon",
+      "role": "Rider"
+    },
+    {
+      "person_id": "Rider_Jade",
+      "role": "Rider"
+    },
+    {
+      "person_id": "Rider_Leo",
+      "role": "Rider"
+    },
+    {
+      "person_id": "Rider_Baptiste",
+      "role": "Rider"
+    },
+    {
+      "person_id": "Rider_Maxime",
+      "role": "Rider"
+    },
+    {
+      "person_id": "Rider_Pauline",
+      "role": "Rider"
+    },
+    {
+      "person_id": "Rider_Lucas",
+      "role": "Rider"
+    },
+    {
+      "person_id": "Rider_Marc",
+      "role": "Rider"
+    },
+    {
+      "person_id": "Vet_DrMartin",
+      "role": "Veterinarian"
+    },
+    {
+      "person_id": "Rider_Alice",
+      "role": "Rider"
+    },
+    {
+      "person_id": "Rider_Emma",
+      "role": "Rider"
+    },
+    {
+      "person_id": "Rider_Sarah",
+      "role": "Rider"
+    },
+    {
+      "person_id": "Rider_Theo",
+      "role": "Rider"
+    },
+    {
+      "person_id": "Rider_Julien",
+      "role": "Rider"
+    },
+    {
+      "person_id": "Rider_Camille",
+      "role": "Rider"
+    },
+    {
+      "person_id": "Rider_Clara",
+      "role": "Rider"
+    },
+    {
+      "person_id": "Rider_Nina",
+      "role": "Rider"
+    },
+    {
+      "person_id": "Rider_Hugo",
+      "role": "Rider"
+    },
+    {
+      "person_id": "Rider_Victor",
+      "role": "Rider"
+    },
+    {
+      "person_id": "Rider_Elise",
+      "role": "Rider"
+    },
+    {
+      "person_id": "Rider_Remi",
+      "role": "Rider"
+    },
+    {
+      "person_id": "Rider_Antoine",
+      "role": "Rider"
+    },
+    {
+      "person_id": "Rider_Chloe",
+      "role": "Rider"
+    },
+    {
+      "person_id": "Rider_Tom",
+      "role": "Rider"
+    },
+    {
+      "person_id": "Caretaker_Sophie",
+      "role": "Caretaker"
+    },
+    {
+      "person_id": "Rider_Lea",
+      "role": "Rider"
+    },
+    {
+      "person_id": "Rider_Ines",
+      "role": "Rider"
+    }
+  ]
+}

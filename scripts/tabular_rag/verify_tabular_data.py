@@ -3,9 +3,9 @@ Permanent data-integrity verification for the Tabular RAG database
 (data/tabular.db).
 
 Read-only: opens the database with mode=ro and never issues INSERT/UPDATE/
-DELETE. Validates row counts, referential integrity across all six tables,
+DELETE. Validates row counts, referential integrity across all tables,
 column types, text encoding (written to a file to avoid console mangling),
-and a full six-table join for Dakota (Horse1).
+and a full multi-table join for Dakota (Horse1).
 """
 import os
 import sqlite3
@@ -27,6 +27,9 @@ EXPECTED_COUNTS = {
     "horse_rider_associations": 51,
     "seasons": 1,
     "people": 27,
+    "riders": 25,
+    "veterinarians": 1,
+    "caretakers": 1,
 }
 
 # (label, child query returning offending ids)
@@ -56,6 +59,14 @@ ORPHAN_CHECKS = [
         """,
     ),
     (
+        "training_actors.actor_id -> people.person_id",
+        """
+        SELECT ta.training_id || '|' || ta.actor_id FROM training_actors ta
+        LEFT JOIN people p ON ta.actor_id = p.person_id
+        WHERE p.person_id IS NULL
+        """,
+    ),
+    (
         "event_participations.event_id -> events.event_id",
         """
         SELECT ep.participation_id FROM event_participations ep
@@ -72,11 +83,36 @@ ORPHAN_CHECKS = [
         """,
     ),
     (
+        "event_participations.rider_id -> riders.person_id",
+        """
+        SELECT ep.participation_id FROM event_participations ep
+        LEFT JOIN riders r ON ep.rider_id = r.person_id
+        WHERE r.person_id IS NULL
+        """,
+    ),
+    (
+        "event_participations (horse_id, event_id) -> event_entries",
+        """
+        SELECT ep.participation_id FROM event_participations ep
+        LEFT JOIN event_entries ee
+          ON ep.horse_id = ee.horse_id AND ep.event_id = ee.event_id
+        WHERE ee.horse_id IS NULL
+        """,
+    ),
+    (
         "sensors.horse_id -> horses.horse_id",
         """
         SELECT s.sensor_id FROM sensors s
         LEFT JOIN horses h ON s.horse_id = h.horse_id
         WHERE h.horse_id IS NULL
+        """,
+    ),
+    (
+        "sensors.objective_id -> objectives.objective_id (excluding NULLs)",
+        """
+        SELECT s.sensor_id FROM sensors s
+        LEFT JOIN objectives o ON s.objective_id = o.objective_id
+        WHERE s.objective_id IS NOT NULL AND o.objective_id IS NULL
         """,
     ),
     (
@@ -101,6 +137,38 @@ ORPHAN_CHECKS = [
         SELECT hra.rider_id || '|' || hra.horse_id FROM horse_rider_associations hra
         LEFT JOIN horses h ON hra.horse_id = h.horse_id
         WHERE h.horse_id IS NULL
+        """,
+    ),
+    (
+        "horse_rider_associations.rider_id -> riders.person_id",
+        """
+        SELECT hra.rider_id || '|' || hra.horse_id FROM horse_rider_associations hra
+        LEFT JOIN riders r ON hra.rider_id = r.person_id
+        WHERE r.person_id IS NULL
+        """,
+    ),
+    (
+        "riders.person_id -> people.person_id",
+        """
+        SELECT r.person_id FROM riders r
+        LEFT JOIN people p ON r.person_id = p.person_id
+        WHERE p.person_id IS NULL
+        """,
+    ),
+    (
+        "veterinarians.person_id -> people.person_id",
+        """
+        SELECT v.person_id FROM veterinarians v
+        LEFT JOIN people p ON v.person_id = p.person_id
+        WHERE p.person_id IS NULL
+        """,
+    ),
+    (
+        "caretakers.person_id -> people.person_id",
+        """
+        SELECT c.person_id FROM caretakers c
+        LEFT JOIN people p ON c.person_id = p.person_id
+        WHERE p.person_id IS NULL
         """,
     ),
     (
@@ -167,6 +235,43 @@ def main():
         all_passed = all_passed and freq_ok and rank_ok
         print(f"  trainings.frequency typeof = {freq_type} -> {'PASS' if freq_ok else 'FAIL'}")
         print(f"  event_participations.rank typeof = {rank_type} -> {'PASS' if rank_ok else 'FAIL'}")
+
+        # --- Parsed numeric columns must succeed whenever source TEXT is non-NULL ---
+        print("\n=== PARSED NUMERIC COLUMN COMPLETENESS ===")
+        volume_gaps = cur.execute(
+            """
+            SELECT COUNT(*) FROM trainings
+            WHERE volume IS NOT NULL AND volume_minutes IS NULL
+            """
+        ).fetchone()[0]
+        sample_gaps = cur.execute(
+            """
+            SELECT COUNT(*) FROM sensors
+            WHERE sample_rate IS NOT NULL AND sample_rate_hz IS NULL
+            """
+        ).fetchone()[0]
+        offset_gaps = cur.execute(
+            """
+            SELECT COUNT(*) FROM sensors
+            WHERE sensor_offset IS NOT NULL AND sensor_offset_value IS NULL
+            """
+        ).fetchone()[0]
+        volume_ok = volume_gaps == 0
+        sample_ok = sample_gaps == 0
+        offset_ok = offset_gaps == 0
+        all_passed = all_passed and volume_ok and sample_ok and offset_ok
+        print(
+            f"  trainings.volume_minutes NULL with non-NULL volume: "
+            f"{volume_gaps} -> {'PASS' if volume_ok else 'FAIL'}"
+        )
+        print(
+            f"  sensors.sample_rate_hz NULL with non-NULL sample_rate: "
+            f"{sample_gaps} -> {'PASS' if sample_ok else 'FAIL'}"
+        )
+        print(
+            f"  sensors.sensor_offset_value NULL with non-NULL sensor_offset: "
+            f"{offset_gaps} -> {'PASS' if offset_ok else 'FAIL'}"
+        )
 
         # --- Encoding check (written to file, not console) ---
         encoding_rows = cur.execute(

@@ -1,0 +1,750 @@
+{
+    "test_questions": [
+      {
+        "question_id": "Q1",
+        "question": "Quels sont les noms des chevaux dans le système ?",
+        "ground_truth": "Les chevaux dans le système sont : Dakota, Naya, Orion, Luna, Thunder, Bella, Apollon, Pixie, Zephyr, Comet, Nova, Storm, Iris, Atlas, Mistral, Falcon, Rio, Sable, Dune, Eclat, Sirius, Vega, Brume, Eclair, Ombre, Arrow, Soleil, Tempete, Ecume, Nuage, Luminos, Etoile, Grondre, Rafale, Tonnerre, Cascade, Riviere, Aurore, Crepuscule, Glacier, Volcan, Braise, Zephire, Auroch, Galop, Horizon, Lumiere, Mirage, Nebule et Orage.",
+        "category": "simple_retrieval",
+        "difficulty": "easy"
+      },
+      {
+        "question_id": "Q2",
+        "question": "Quelle est la race de Dakota ?",
+        "ground_truth": "Dakota est un cheval de race Selle Français.",
+        "category": "simple_retrieval",
+        "difficulty": "easy"
+      },
+      {
+        "question_id": "Q3",
+        "question": "Quelle est la race de Naya ?",
+        "ground_truth": "Naya est un cheval de race Anglo-Arabe.",
+        "category": "simple_retrieval",
+        "difficulty": "easy"
+      },
+      {
+        "question_id": "Q4",
+        "question": "Dans quels événements sportifs Dakota participe-t-il ?",
+        "ground_truth": "Dakota participe à plusieurs événements sportifs : Event_SJ_01 (saut d'obstacles à Saumur), Event_SJ_2026_01 (saut d'obstacles à Paris), Event_Dressage_01 (dressage à Angers), Event_Dressage_2026_01 (dressage à Lyon) et Event_Cross_2026_01 (cross à Bordeaux).",
+        "category": "single_hop",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q5",
+        "question": "Quelles étapes d'entraînement Dakota suit-il ?",
+        "ground_truth": "Dakota suit six étapes d'entraînement : Training_Prepa_SJ_01 (préparation), Training_PreComp_SJ_01 (pré-compétition), Training_Preparation_SJ_01 (préparation), Training_PreCompetition_SJ_01 (pré-compétition), Training_Competition_SJ_01 (compétition) et Training_Transition_SJ_01 (transition).",
+        "category": "single_hop",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q6",
+        "question": "Quelle est la fréquence d'entraînement pendant la phase de préparation ?",
+        "ground_truth": "Pendant la phase de préparation, la fréquence d'entraînement varie selon les chevaux. S'entraînent 5 fois par semaine : Orion, Luna, Pixie, Comet, Storm, Rio, Dune, Vega, Soleil, Ecume, Grondre, Riviere, Volcan, Auroch et Zephire. Tous les autres chevaux s'entraînent 4 fois par semaine.",
+        "category": "attribute_retrieval",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q7",
+        "question": "Quelle est l'intensité d'entraînement durant la phase pré-compétition ?",
+        "ground_truth": "Durant la phase pré-compétition, l'intensité d'entraînement est élevée pour tous les chevaux (High ou Élevée selon le cheval).",
+        "category": "attribute_retrieval",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q8",
+        "question": "Quelle est la durée des séances pendant la phase de préparation ?",
+        "ground_truth": "Pendant la phase de préparation, les durées de séances varient : 40 minutes pour Pixie (la plus courte), 45 minutes pour la majorité des chevaux (Dakota, Naya, Thunder, Bella, Zephyr, Nova, Iris, Mistral, Falcon, Sable, Sirius, Brume, Eclair, Ombre, Arrow, Tempete, Nuage, Etoile, Rafale, Tonnerre, Cascade, Aurore, Crepuscule, Glacier, Braise, Zephire, Galop, Horizon, Lumiere, Mirage, Orage), 50 minutes pour Orion, Apollon, Atlas, Storm, Rio, Dune, Eclat, Luminos, Grondre, Riviere et Ecume, et 55 minutes pour Comet (la plus longue).",
+        "category": "attribute_retrieval",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q9",
+        "question": "Quelle est la durée des séances pendant la phase pré-compétition ?",
+        "ground_truth": "Pendant la phase pré-compétition, les durées de séances varient : 55 minutes pour Pixie, 60 minutes pour la majorité des chevaux (Dakota, Naya, Thunder, Bella, Zephyr, Nova, Iris, Mistral, Falcon, Sable, Sirius, Brume, Eclair, Ombre, Arrow, Tempete, Nuage, Etoile, Rafale, Cascade, Aurore, Crepuscule, Glacier, Braise, Zephire, Galop, Horizon, Lumiere, Mirage, Orage), 65 minutes pour Orion, Apollon, Atlas, Storm, Rio, Dune, Eclat, Ecume, Grondre, Tonnerre, Auroch et Nebule, 70 minutes pour Luna, Vega et Soleil et Riviere, et 75 minutes pour Comet (la plus longue du système).",
+        "category": "attribute_retrieval",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q10",
+        "question": "De quel événement dépendent les étapes d'entraînement de Dakota ?",
+        "ground_truth": "Les étapes d'entraînement de Dakota dépendent de deux événements : Event_SJ_01 (saut d'obstacles à Saumur le 12 avril 2026) et Event_SJ_2026_01 (saut d'obstacles à Paris le 14 juin 2026).",
+        "category": "multi_hop",
+        "difficulty": "hard"
+      },
+      {
+        "question_id": "Q11",
+        "question": "Combien de capteurs IMU sont attachés à Dakota ?",
+        "ground_truth": "4 capteurs IMU sont attachés à Dakota.",
+        "category": "aggregation",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q12",
+        "question": "Quels sont les identifiants des capteurs IMU ?",
+        "ground_truth": "Le système contient 108 capteurs IMU au total répartis sur les 50 chevaux : 50 capteurs au garrot (Withers, un par cheval), 20 capteurs au canon antérieur (CanonOfForelimb), 12 capteurs au canon postérieur (CanonOfHindlimb) et 26 capteurs au sternum (Sternum). Par exemple pour Dakota : IMU-W-001 (garrot), IMU-CF-002 (canon antérieur), IMU-CH-003 (canon postérieur) et IMU-ST-004 (sternum).",
+        "category": "aggregation",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q13",
+        "question": "À quelles positions anatomiques les capteurs IMU sont-ils placés sur Dakota ?",
+        "ground_truth": "Les capteurs IMU sont placés sur Dakota à 4 positions : garrot (Withers), canon antérieur (CanonOfForelimb), canon postérieur (CanonOfHindlimb) et sternum (Sternum).",
+        "category": "aggregation",
+        "difficulty": "hard"
+      },
+      {
+        "question_id": "Q14",
+        "question": "Quel est l'identifiant du capteur IMU placé au garrot ?",
+        "ground_truth": "Il y a cinquante capteurs IMU placés au garrot dans le système, un par cheval, par exemple IMU_Withers_01 pour Dakota, IMU_Withers_Comet_01 pour Comet et IMU_Withers_Apollon_01 pour Apollon.",
+        "category": "multi_hop",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q15",
+        "question": "Quelle est la fréquence d'échantillonnage du capteur IMU au sternum ?",
+        "ground_truth": "La fréquence d'échantillonnage des capteurs IMU au sternum est de 200 Hz pour tous les chevaux qui en possèdent un, sur les 26 capteurs sternum présents dans le système.",
+        "category": "multi_hop",
+        "difficulty": "hard"
+      },
+      {
+        "question_id": "Q16",
+        "question": "Quel capteur a la fréquence d'échantillonnage la plus élevée ?",
+        "ground_truth": "Trois capteurs partagent la fréquence d'échantillonnage la plus élevée à 300 Hz : IMU_CanonFore_Luna_01 (canon antérieur de Luna), IMU_Withers_Comet_01 (garrot de Comet) et IMU_CanonFore_Comet_01 (canon antérieur de Comet).",
+        "category": "comparison",
+        "difficulty": "hard"
+      },
+      {
+        "question_id": "Q17",
+        "question": "Quels cavaliers sont associés à Dakota ?",
+        "ground_truth": "Deux cavaliers sont associés à Dakota : Emma et Manon.",
+        "category": "single_hop",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q18",
+        "question": "Quel cavalier est associé à Naya ?",
+        "ground_truth": "Le cavalier Leo est associé à Naya.",
+        "category": "single_hop",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q19",
+        "question": "Combien de cavaliers différents sont dans le système ?",
+        "ground_truth": "Il y a 25 cavaliers différents dans le système : Emma, Manon, Leo, Lucas, Clara, Antoine, Julien, Sarah, Nina, Hugo, Camille, Tom, Lea, Marc, Chloe, Baptiste, Jade, Alice, Maxime, Elise, Remi, Ines, Victor, Pauline et Theo.",
+        "category": "aggregation",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q20",
+        "question": "Qui est le vétérinaire impliqué dans les soins des chevaux ?",
+        "ground_truth": "Le Dr Martin est le vétérinaire impliqué dans les soins des chevaux.",
+        "category": "simple_retrieval",
+        "difficulty": "easy"
+      },
+      {
+        "question_id": "Q21",
+        "question": "Qui est le soigneur responsable des chevaux ?",
+        "ground_truth": "Sophie est la soigneuse responsable des chevaux.",
+        "category": "simple_retrieval",
+        "difficulty": "easy"
+      },
+      {
+        "question_id": "Q22",
+        "question": "Quels acteurs humains sont impliqués dans la phase de préparation de l'entraînement ?",
+        "ground_truth": "Les acteurs impliqués dans la phase de préparation incluent Sophie (soigneuse), Dr Martin (vétérinaire), et les 25 cavaliers du système : Emma, Manon, Leo, Lucas, Clara, Antoine, Julien, Sarah, Nina, Hugo, Camille, Tom, Lea, Marc, Chloe, Baptiste, Jade, Alice, Maxime, Elise, Remi, Ines, Victor, Pauline et Theo.",
+        "category": "single_hop",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q23",
+        "question": "Qui participe à la phase pré-compétition de l'entraînement ?",
+        "ground_truth": "Les participants à la phase pré-compétition incluent Sophie (soigneuse), Dr Martin (vétérinaire), et les 25 cavaliers du système. Manon remplace Emma pour la pré-compétition de Dakota.",
+        "category": "single_hop",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q24",
+        "question": "Quelle est la période de la saison 2026 ?",
+        "ground_truth": "La saison 2026 s'étend du 1er mars 2026 au 31 octobre 2026.",
+        "category": "attribute_retrieval",
+        "difficulty": "easy"
+      },
+      {
+        "question_id": "Q25",
+        "question": "Quels événements font partie de la saison 2026 ?",
+        "ground_truth": "Vingt événements font partie de la saison 2026 : Event_SJ_01 (saut d'obstacles, Saumur, 12 avril), Event_Dressage_01 (dressage, Angers, 3 mai), Event_Rennes_SJ_2026 (saut d'obstacles, Rennes, 17 mai, Pro Elite), Event_SJ_2026_01 (saut d'obstacles, Paris, 14 juin), Event_Dijon_Cross_2026 (cross, Dijon, 6 juin), Event_Strasbourg_Cross_2026 (cross, Strasbourg, 12 juillet), Event_Fontainebleau_SJ_2026 (saut d'obstacles, Fontainebleau, 5 juillet), Event_Dressage_2026_01 (dressage, Lyon, 20 juillet), Event_Cross_2026_01 (cross, Bordeaux, 10 août), Event_Montpellier_Dr_2026 (dressage, Montpellier, 15 août, Club Elite), Event_Lyon_Dressage_2026 (dressage, Lyon, 23 août), Event_LeMans_Cross_2026 (cross, Le Mans, 5 septembre), Event_Versailles_SJ_2026 (saut d'obstacles, Versailles, 6 septembre, Pro Elite), Event_Toulouse_Cross_2026 (cross, Toulouse, 13 septembre), Event_Bordeaux_Cross_2026 (cross, Bordeaux, 20 septembre), Event_Nice_Dressage_2026 (dressage, Nice, 28 septembre, Pro Elite), Event_Clermont_Cross_2026 (cross, Clermont-Ferrand, 10 octobre), Event_Marseille_Dressage_2026 (dressage, Marseille, 3 octobre), Event_Pau_SJ_2026 (saut d'obstacles, Pau, 18 octobre) et Event_Nantes_SJ_2026 (saut d'obstacles, Nantes, 25 avril, Amateur 2).",
+        "category": "single_hop",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q26",
+        "question": "Quelle est la date de l'événement Event_SJ_01 ?",
+        "ground_truth": "L'événement Event_SJ_01 aura lieu le 12 avril 2026.",
+        "category": "attribute_retrieval",
+        "difficulty": "easy"
+      },
+      {
+        "question_id": "Q27",
+        "question": "Où se déroule l'événement de saut d'obstacles Event_SJ_01 ?",
+        "ground_truth": "L'événement Event_SJ_01 se déroule à Saumur.",
+        "category": "attribute_retrieval",
+        "difficulty": "easy"
+      },
+      {
+        "question_id": "Q28",
+        "question": "Où se déroule l'événement de dressage Event_Dressage_01 ?",
+        "ground_truth": "L'événement Event_Dressage_01 se déroule à Angers.",
+        "category": "attribute_retrieval",
+        "difficulty": "easy"
+      },
+      {
+        "question_id": "Q29",
+        "question": "Quelle est la catégorie de l'événement Event_SJ_01 ?",
+        "ground_truth": "L'événement Event_SJ_01 est de catégorie Amateur 1.",
+        "category": "attribute_retrieval",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q30",
+        "question": "Quelle est la catégorie de l'événement Event_Dressage_01 ?",
+        "ground_truth": "L'événement Event_Dressage_01 est de catégorie Club Elite.",
+        "category": "attribute_retrieval",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q31",
+        "question": "Quel classement Dakota et Emma ont-ils obtenu à Event_SJ_01 ?",
+        "ground_truth": "Dakota et Emma ont obtenu la 2ème place à Event_SJ_01.",
+        "category": "multi_hop",
+        "difficulty": "hard"
+      },
+      {
+        "question_id": "Q32",
+        "question": "Compare les fréquences d'entraînement entre la phase de préparation et la phase pré-compétition.",
+        "ground_truth": "En phase de préparation, la fréquence est de 5 séances par semaine pour : Orion, Luna, Pixie, Comet, Storm, Rio, Dune, Vega, Soleil, Ecume, Grondre, Riviere, Volcan, Auroch et Zephire. Tous les autres chevaux s'entraînent 4 fois par semaine. En phase pré-compétition, la fréquence baisse à 3 séances par semaine pour la majorité, sauf Luna (4), Pixie (4), Comet (4), Vega (4), Soleil (4) et Riviere (4) qui maintiennent 4 séances.",
+        "category": "comparison",
+        "difficulty": "hard"
+      },
+      {
+        "question_id": "Q33",
+        "question": "Quelles sont les différences entre les phases de préparation et de pré-compétition en termes de fréquence, intensité et durée ?",
+        "ground_truth": "La phase de préparation a 4 à 5 séances par semaine avec une intensité modérée (sauf Comet dont l'intensité est élevée dès la préparation) et des durées de 40 à 55 minutes. La phase pré-compétition a 3 à 4 séances par semaine avec une intensité élevée pour tous les chevaux et des durées de 55 à 75 minutes. Comet reste le cheval avec les séances les plus longues (55 min préparation, 75 min pré-compétition).",
+        "category": "comparison",
+        "difficulty": "very_hard"
+      },
+      {
+        "question_id": "Q34",
+        "question": "Compare les acteurs impliqués dans les phases de préparation et de pré-compétition.",
+        "ground_truth": "La phase de préparation implique les 25 cavaliers (dont Emma pour Dakota), Sophie (soigneuse) et Dr Martin (vétérinaire). La phase pré-compétition implique les mêmes acteurs sauf que Manon remplace Emma pour Dakota.",
+        "category": "comparison",
+        "difficulty": "very_hard"
+      },
+      {
+        "question_id": "Q35",
+        "question": "Donne une analyse complète de l'événement Event_SJ_01.",
+        "ground_truth": "L'événement Event_SJ_01 est une compétition de saut d'obstacles qui a eu lieu le 12 avril 2026 à Saumur en catégorie Amateur 1, dans le cadre de la Saison 2026. Dakota, monté par Emma, y a obtenu la 2ème place. La préparation pour cet événement comprenait une phase de préparation (Training_Prepa_SJ_01 : 4 séances/semaine, intensité modérée, 45 min) avec Emma, Dr Martin et Sophie, et une phase pré-compétition (Training_PreComp_SJ_01 : 3 séances/semaine, intensité élevée, 60 min) avec Manon et Sophie.",
+        "category": "multi_hop_complex",
+        "difficulty": "extreme"
+      },
+      {
+        "question_id": "Q36",
+        "question": "Combien d'événements sportifs sont enregistrés dans le système ?",
+        "ground_truth": "Il y a 20 événements sportifs enregistrés dans le système.",
+        "category": "aggregation",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q37",
+        "question": "Quels types d'événements sportifs sont disponibles dans l'ontologie ?",
+        "ground_truth": "Les types d'événements sportifs disponibles dans l'ontologie sont : le saut d'obstacles (ShowJumping), le dressage (Dressage) et le cross (Cross).",
+        "category": "hierarchical",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q38",
+        "question": "Pour quel objectif expérimental le capteur IMU_Withers_01 est-il utilisé ?",
+        "ground_truth": "Le capteur IMU_Withers_01 est utilisé pour la classification de la démarche (GaitClassif_01).",
+        "category": "single_hop",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q39",
+        "question": "Pour quel objectif expérimental le capteur IMU_CanonFore_01 est-il utilisé ?",
+        "ground_truth": "Le capteur IMU_CanonFore_01 est utilisé pour la détection de fatigue (FatigueDetection).",
+        "category": "single_hop",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q40",
+        "question": "Quel est l'âge de Dakota ?",
+        "ground_truth": "L'information sur l'âge de Dakota n'est pas disponible dans le système.",
+        "category": "unanswerable",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q41",
+        "question": "Quelle est la race de cheval la plus courante dans l'écurie ?",
+        "ground_truth": "La race la plus représentée est le Selle Français, avec trois chevaux : Dakota, Comet et Crepuscule.",
+        "category": "aggregation",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q42",
+        "question": "Y a-t-il des races rares, représentées par un seul cheval ?",
+        "ground_truth": "Oui, sept races ne sont représentées que par un seul cheval : Akhal-Teke (Ecume), Lipizzan (Tempete), PRE (Iris), Percheron (Ombre), Pottok (Nuage), Quarter Horse (Arrow) et Selle Belge (Storm).",
+        "category": "aggregation",
+        "difficulty": "hard"
+      },
+      {
+        "question_id": "Q43",
+        "question": "En général, un cavalier travaille-t-il avec un seul cheval ou avec plusieurs ?",
+        "ground_truth": "Cela varie selon le cavalier. Sur les 25 cavaliers, 8 sont associés à un seul cheval, 9 à deux chevaux, 7 à trois chevaux, et un cavalier (Alice) est associé à quatre chevaux.",
+        "category": "aggregation",
+        "difficulty": "hard"
+      },
+      {
+        "question_id": "Q44",
+        "question": "Y a-t-il des chevaux montés par plusieurs cavaliers différents ?",
+        "ground_truth": "Oui, un seul cas : Dakota est associé à deux cavaliers, Emma et Manon. Tous les autres chevaux du système sont associés à un seul cavalier.",
+        "category": "data_quality",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q45",
+        "question": "Quel cavalier s'occupe du plus grand nombre de chevaux ?",
+        "ground_truth": "Alice est la cavalière qui s'occupe du plus grand nombre de chevaux : Arrow, Soleil, Braise et Orage, soit quatre chevaux.",
+        "category": "comparison",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q46",
+        "question": "Où sont placés les capteurs IMU sur les chevaux du programme ?",
+        "ground_truth": "Les 108 capteurs IMU du système sont répartis sur 4 positions anatomiques : 50 au garrot (Withers), 26 au sternum (Sternum), 20 au canon antérieur (CanonOfForelimb) et 12 au canon postérieur (CanonOfHindlimb).",
+        "category": "aggregation",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q47",
+        "question": "Tous les chevaux ont-ils le même nombre de capteurs, ou cela varie-t-il ?",
+        "ground_truth": "Cela varie. La majorité des chevaux (44 sur 50) portent deux capteurs IMU. Quatre chevaux (Atlas, Bella, Luna et Thunder) en portent trois, et deux chevaux (Dakota et Zephyr) en portent quatre, ce qui en fait les plus instrumentés du système.",
+        "category": "aggregation",
+        "difficulty": "hard"
+      },
+      {
+        "question_id": "Q48",
+        "question": "Quels capteurs sont utilisés pour détecter la fatigue, et lesquels servent à analyser la démarche du cheval ?",
+        "ground_truth": "La détection de fatigue (FatigueDetection) s'appuie sur les capteurs du sternum et du canon antérieur, soit 46 capteurs au total. L'analyse de la démarche (GaitClassif_01) s'appuie sur les capteurs du garrot et du canon postérieur, soit 62 capteurs au total.",
+        "category": "multi_hop",
+        "difficulty": "hard"
+      },
+      {
+        "question_id": "Q49",
+        "question": "Dans quel format sont enregistrées les données des capteurs IMU ?",
+        "ground_truth": "Toutes les données des 108 capteurs IMU du système sont enregistrées au format CSV.",
+        "category": "consistency_check",
+        "difficulty": "easy"
+      },
+      {
+        "question_id": "Q50",
+        "question": "Quels sont les capteurs qui enregistrent avec la fréquence d'échantillonnage la plus élevée ?",
+        "ground_truth": "La fréquence d'échantillonnage maximale du système est de 300 Hz. Trois capteurs l'atteignent : IMU_CanonFore_Comet_01, IMU_CanonFore_Luna_01 et IMU_Withers_Comet_01.",
+        "category": "comparison",
+        "difficulty": "hard"
+      },
+      {
+        "question_id": "Q51",
+        "question": "Les capteurs placés au même endroit sur différents chevaux sont-ils calibrés de la même façon ?",
+        "ground_truth": "Pas tout à fait pour les capteurs du canon postérieur : 7 ont un offset de calibration de 0.015 et 5 ont un offset de 0.02. Pour les autres positions (garrot, canon antérieur, sternum), l'offset est uniforme sur tous les chevaux.",
+        "category": "data_quality",
+        "difficulty": "hard"
+      },
+      {
+      "question_id": "Q52",
+      "question": "Comment se décompose le programme d'entraînement dans le système : quelles phases existent et combien d'étapes sont enregistrées pour chacune ?",
+      "ground_truth": "Le programme d'entraînement comprend quatre types de phases : préparation, pré-compétition, compétition et transition. Dans le système, il y a 51 étapes de préparation, 51 étapes de pré-compétition, 50 étapes de compétition et 19 étapes de transition. Le total supérieur à 50 pour la préparation et la pré-compétition vient du fait que Dakota possède des étapes supplémentaires liées au saut d'obstacles ; le nombre réel de chevaux reste 50.",
+      "category": "hierarchical",
+      "difficulty": "medium"
+      },
+      {
+        "question_id": "Q53",
+        "question": "Quel cheval suit le programme d'entraînement le plus complet, avec le plus grand nombre d'étapes ?",
+        "ground_truth": "Dakota suit le programme le plus complet avec 6 étapes d'entraînement au total, contre 3 ou 4 étapes pour la majorité des autres chevaux (31 chevaux suivent 3 étapes, 18 chevaux en suivent 4). Le nombre d'étapes par cheval correspond bien au détail des phases suivies individuellement : 31×3 + 18×4 + 6 = 171.",
+        "category": "aggregation",
+        "difficulty": "hard"
+      },
+      {
+        "question_id": "Q54",
+        "question": "La phase de compétition est-elle organisée différemment selon les chevaux ?",
+        "ground_truth": "Non, la phase de compétition est identique pour tous les chevaux : une séance de 30 minutes, intensité Pic, une seule fois (juste avant l'épreuve).",
+        "category": "consistency_check",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q55",
+        "question": "Combien de temps dure généralement la phase de récupération après une compétition ?",
+        "ground_truth": "19 chevaux ont une phase de transition (récupération) enregistrée. Elle dure 25 minutes pour 14 d'entre eux, et 30 minutes pour 5 chevaux : Apollon, Atlas, Dakota, Dune et Thunder.",
+        "category": "aggregation",
+        "difficulty": "hard"
+      },
+      {
+        "question_id": "Q56",
+        "question": "Le vétérinaire et la soigneuse interviennent-ils à toutes les étapes de l'entraînement ?",
+        "ground_truth": "Pas exactement. Le Dr Martin intervient surtout en préparation et en pré-compétition (48 et 49 fois respectivement), mais pas en phase de compétition ni de transition. Sophie intervient quasi systématiquement en préparation (50 fois), mais une seule fois en pré-compétition.",
+        "category": "data_quality",
+        "difficulty": "very_hard"
+      },
+      {
+        "question_id": "Q57",
+        "question": "Y a-t-il des étapes d'entraînement où aucun encadrant (cavalier, vétérinaire ou soigneur) n'est mentionné ?",
+        "ground_truth": "Oui, cinq étapes n'ont aucun encadrant humain enregistré : Training_Preparation_SJ_01, Training_PreCompetition_SJ_01, Training_Competition_SJ_01, Training_Transition_SJ_01 et Training_Transition_Thunder_01.",
+        "category": "data_quality",
+        "difficulty": "very_hard"
+      },
+      {
+        "question_id": "Q58",
+        "question": "Quelle discipline est la plus représentée dans le calendrier de la saison ?",
+        "ground_truth": "Les trois disciplines sont assez équilibrées sur les 20 événements de la saison : 7 en saut d'obstacles (ShowJumping), 7 en cross (Cross) et 6 en dressage (Dressage).",
+        "category": "aggregation",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q59",
+        "question": "Quelle est la période la plus chargée de la saison en termes de compétitions ?",
+        "ground_truth": "Septembre est le mois le plus chargé, avec cinq événements : Event_LeMans_Cross_2026, Event_Versailles_SJ_2026, Event_Toulouse_Cross_2026, Event_Bordeaux_Cross_2026 et Event_Nice_Dressage_2026.",
+        "category": "aggregation",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q60",
+        "question": "Y a-t-il des villes qui accueillent plusieurs compétitions dans la saison ?",
+        "ground_truth": "Oui, deux villes accueillent chacune deux événements : Lyon (Event_Dressage_2026_01 et Event_Lyon_Dressage_2026) et Bordeaux (Event_Cross_2026_01 et Event_Bordeaux_Cross_2026).",
+        "category": "comparison",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q61",
+        "question": "Dans quelles disciplines retrouve-t-on les compétitions de plus haut niveau (Pro Elite) ?",
+        "ground_truth": "Le niveau Pro Elite se retrouve surtout en saut d'obstacles : trois des quatre événements Pro Elite sont du saut d'obstacles (Event_Fontainebleau_SJ_2026, Event_Rennes_SJ_2026 et Event_Versailles_SJ_2026), et un seul est du dressage (Event_Nice_Dressage_2026). Aucun événement de cross n'est classé Pro Elite.",
+        "category": "comparison",
+        "difficulty": "hard"
+      },
+      {
+        "question_id": "Q62",
+        "question": "Y a-t-il des compétitions où des chevaux étaient engagés mais où aucun résultat officiel n'a été enregistré ?",
+        "ground_truth": "Oui, trois événements ont des chevaux engagés sans qu'aucun classement officiel n'ait été enregistré : Event_SJ_2026_01, Event_Cross_2026_01 et Event_Dressage_01.",
+        "category": "data_quality",
+        "difficulty": "very_hard"
+      },
+      {
+        "question_id": "Q63",
+        "question": "Quel événement de la saison a réuni le plus de résultats classés ?",
+        "ground_truth": "Event_Montpellier_Dr_2026 est l'événement avec le plus grand nombre de résultats officiels enregistrés : six chevaux y ont un classement.",
+        "category": "comparison",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q64",
+        "question": "La plupart des chevaux participent-ils au même nombre de compétitions dans la saison, ou y a-t-il des exceptions ?",
+        "ground_truth": "La majorité des chevaux sont engagés dans deux compétitions. Trois chevaux font exception : Dakota, engagé dans cinq compétitions (sa charge la plus élevée du système, à comparer avec ses 6 étapes d'entraînement, également la plus élevée), tandis que Naya et Orion ne sont engagés que dans une seule compétition chacun.",
+        "category": "data_quality",
+        "difficulty": "hard"
+      },
+      {
+        "question_id": "Q65",
+        "question": "Est-il fréquent qu'un cheval soit engagé dans une compétition sans qu'un résultat officiel y soit ensuite enregistré ?",
+        "ground_truth": "Oui, c'est même le cas le plus courant : 48 chevaux sur 50 ont au moins un engagement en compétition sans résultat officiel correspondant. Seuls Naya et Orion font exception, car ils n'ont chacun qu'une seule compétition et un résultat officiel associé.",
+        "category": "data_quality",
+        "difficulty": "very_hard"
+      },
+      {
+        "question_id": "Q66",
+        "question": "Arrive-t-il qu'un même cavalier présente deux chevaux différents lors du même événement ?",
+        "ground_truth": "Oui, cela arrive dans neuf cas : Alice à Nantes (Soleil, Arrow), Remi à Versailles (Etoile, Grondre), Lea à Rennes (Rio, Falcon), Camille à Toulouse (Atlas, Iris), Elise à Montpellier (Luminos, Nuage), Maxime à Dijon (Tempete, Ecume), Ines à Clermont-Ferrand (Rafale, Tonnerre), Marc à Strasbourg (Dune, Sable) et Hugo à Lyon (Nova, Storm).",
+        "category": "multi_hop",
+        "difficulty": "hard"
+      },
+      {
+        "question_id": "Q67",
+        "question": "Quelle compétition a le plus grand nombre de chevaux engagés sans résultat officiel enregistré ?",
+        "ground_truth": "Event_SJ_2026_01 a l'écart le plus important : 7 chevaux y sont engagés, mais aucun résultat officiel n'a été enregistré pour cet événement.",
+        "category": "data_quality",
+        "difficulty": "very_hard"
+      },
+      {
+        "question_id": "Q68",
+        "question": "Peut-on connaître la robe d'un cheval, son poids, ou le numéro de téléphone du vétérinaire à partir du système ?",
+        "ground_truth": "Non, ces informations ne sont pas disponibles. Le système ne contient pas de données sur la robe d'un cheval, son poids, ni le numéro de téléphone du vétérinaire.",
+        "category": "unanswerable",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q69",
+        "question": "Quels sont les liens les plus fréquents dans le système : entre l'entraînement et les encadrants, entre les chevaux et les événements, ou ailleurs ?",
+        "ground_truth": "Le lien le plus fréquent est celui entre une étape d'entraînement et ses encadrants (INVOLVES_ACTOR, 314 occurrences), suivi par les liens entre une étape d'entraînement et l'événement qu'elle prépare (DEPENDS_ON, 171) et entre un cheval et ses étapes d'entraînement (TRAINS_IN, 171). Viennent ensuite les liens entre capteurs et chevaux ou objectifs (IS_ATTACHED_TO et IS_USED_FOR, 108 chacun), puis les engagements en compétition (COMPETES_IN, 101).",
+        "category": "aggregation",
+        "difficulty": "hard"
+      },
+      {
+        "question_id": "Q70",
+        "question": "Comment savoir à quelle saison appartient un événement donné ?",
+        "ground_truth": "Chaque événement est rattaché à une saison via la relation IN_SEASON. Les 20 événements du système appartiennent tous à la Saison 2026.",
+        "category": "schema_validation",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q71",
+        "question": "Pour un événement donné, comment savoir quel cheval a été monté par quel cavalier et avec quel classement ?",
+        "ground_truth": "Chaque événement est relié à un ou plusieurs résultats officiels (HAS_PARTICIPATION), et chaque résultat précise à la fois le cheval (HAS_HORSE) et le cavalier (HAS_RIDER) concernés, ainsi que le rang obtenu. C'est ce résultat qui permet de savoir exactement qui montait quel cheval, et quelle place ils ont obtenue.",
+        "category": "schema_validation",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q72",
+        "question": "Si je veux connaître le classement d'un cheval à un événement précis, par quelles informations dois-je passer ?",
+        "ground_truth": "Il faut d'abord identifier l'événement, puis consulter son résultat officiel associé (HAS_PARTICIPATION), qui indique le cheval (HAS_HORSE), le cavalier (HAS_RIDER) et le rang obtenu.",
+        "category": "schema_validation",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q73",
+        "question": "Comment retrouver à quel cheval appartient un capteur IMU, et à quoi il sert ?",
+        "ground_truth": "Chaque capteur IMU est relié à un cheval (IS_ATTACHED_TO) et à un objectif expérimental (IS_USED_FOR), comme la détection de fatigue (FatigueDetection) ou la classification de la démarche (GaitClassif_01).",
+        "category": "schema_validation",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q74",
+        "question": "Les dates des événements sont-elles présentées de façon cohérente dans le système ?",
+        "ground_truth": "Oui, dans la version actuelle du graphe, toutes les dates (dates d'événements, début et fin de saison) sont au format standard AAAA-MM-JJ, par exemple 2026-09-20.",
+        "category": "data_quality",
+        "difficulty": "hard"
+      },
+      {
+        "question_id": "Q75",
+        "question": "Quels niveaux d'intensité d'entraînement sont utilisés dans le programme des chevaux ?",
+        "ground_truth": "Quatre niveaux d'intensité sont utilisés : Faible, Modérée, Élevée et Pic. Ils sont exprimés en français de façon homogène dans la version actuelle du graphe.",
+        "category": "simple_retrieval",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q76",
+        "question": "Qui peut encadrer une séance d'entraînement, en dehors du cavalier ?",
+        "ground_truth": "Une séance d'entraînement peut impliquer trois types d'encadrants : le cavalier (Rider), le vétérinaire (Veterinarian) et le soigneur (Caretaker).",
+        "category": "hierarchical",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q77",
+        "question": "Quelles disciplines équestres sont couvertes par le système ?",
+        "ground_truth": "Trois disciplines sont couvertes : le saut d'obstacles (ShowJumping), le dressage (Dressage) et le cross (Cross).",
+        "category": "hierarchical",
+        "difficulty": "easy"
+      },
+      {
+        "question_id": "Q78",
+        "question": "Quelles catégories de niveau retrouve-t-on dans les événements de la saison ?",
+        "ground_truth": "Quatre catégories existent dans la saison 2026 : Amateur 1 (6 événements), Amateur 2 (5 événements), Club Elite (5 événements) et Pro Elite (4 événements).",
+        "category": "aggregation",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q79",
+        "question": "La catégorie Club Elite concerne-t-elle plusieurs disciplines, ou est-elle propre à une seule ?",
+        "ground_truth": "Elle est propre au dressage. Les cinq événements classés Club Elite sont tous des événements de dressage ; aucun événement de saut d'obstacles ou de cross n'est dans cette catégorie.",
+        "category": "comparison",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q80",
+        "question": "Quels sont le premier et le dernier événement de la saison 2026 ?",
+        "ground_truth": "Le premier événement de la saison est Event_SJ_01, le 12 avril 2026. Le dernier est Event_Pau_SJ_2026, le 18 octobre 2026. Tous les événements de la saison se déroulent entre le 1er mars et le 31 octobre 2026.",
+        "category": "consistency_check",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q81",
+        "question": "À quoi servent les objectifs expérimentaux suivis avec les capteurs IMU ?",
+        "ground_truth": "Deux objectifs expérimentaux sont suivis : la détection de fatigue (FatigueDetection), qui vise à repérer la fatigue physique des chevaux, et la classification de la démarche (GaitClassif_01), qui vise à analyser les allures du cheval à partir des données des capteurs.",
+        "category": "simple_retrieval",
+        "difficulty": "easy"
+      },
+      {
+        "question_id": "Q82",
+        "question": "Quels capteurs de Dakota servent à analyser sa démarche, et lesquels servent à surveiller sa fatigue ?",
+        "ground_truth": "Pour Dakota, les capteurs IMU_Withers_01 (garrot) et IMU_CanonHind_01 (canon postérieur) sont utilisés pour l'analyse de la démarche. Les capteurs IMU_CanonFore_01 (canon antérieur) et IMU_Sternum_01 (sternum) sont utilisés pour la détection de fatigue.",
+        "category": "multi_hop",
+        "difficulty": "hard"
+      },
+      {
+        "question_id": "Q83",
+        "question": "Quel cheval a les séances de pré-compétition les plus longues ?",
+        "ground_truth": "Comet a les séances de pré-compétition les plus longues du système, avec 75 minutes par séance.",
+        "category": "comparison",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q84",
+        "question": "Quels chevaux ont les séances de préparation les plus longues ?",
+        "ground_truth": "Comet et Ecume ont les séances de préparation les plus longues, avec 55 minutes chacun.",
+        "category": "comparison",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q85",
+        "question": "Quel cheval a le programme de préparation le plus léger en durée de séance ?",
+        "ground_truth": "Pixie a les séances les plus courtes à la fois en préparation (40 minutes) et en pré-compétition (55 minutes), ce qui en fait le programme le plus léger en durée sur ces deux phases.",
+        "category": "comparison",
+        "difficulty": "hard"
+      },
+      {
+        "question_id": "Q86",
+        "question": "Le programme d'entraînement et de compétition de Dakota ressemble-t-il à celui des autres chevaux du système ?",
+        "ground_truth": "Non, Dakota se distingue nettement des autres chevaux : il participe à 5 compétitions et suit 6 étapes d'entraînement, alors que la majorité des chevaux ne participent qu'à 2 compétitions et suivent 3 ou 4 étapes d'entraînement.",
+        "category": "data_quality",
+        "difficulty": "hard"
+      },
+      {
+        "question_id": "Q87",
+        "question": "Peut-on toujours retrouver à quel cheval et à quel objectif un capteur IMU est rattaché ?",
+        "ground_truth": "Oui, chacun des 108 capteurs IMU du système est systématiquement rattaché à un cheval et à un objectif expérimental.",
+        "category": "schema_validation",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q88",
+        "question": "Quelle est la différence entre dire qu'un cavalier est \"associé\" à un cheval et dire qu'il l'a monté lors d'un événement classé ?",
+        "ground_truth": "Être associé à un cheval (ASSOCIATED_WITH) signifie qu'un cavalier travaille généralement avec lui, sans référence à un événement précis. Avoir un résultat classé est plus spécifique : cela passe par un résultat officiel qui relie ce cavalier et ce cheval (HAS_RIDER, HAS_HORSE) à un événement et un rang précis.",
+        "category": "schema_validation",
+        "difficulty": "hard"
+      },
+      {
+        "question_id": "Q89",
+        "question": "Comment le système relie-t-il une étape d'entraînement à l'événement qu'elle prépare ?",
+        "ground_truth": "Le lien se fait via la relation DEPENDS_ON, qui relie chaque étape d'entraînement à l'événement pour lequel elle prépare le cheval. C'est ce lien (171 occurrences au total) qui permet de savoir pour quelle compétition un cheval s'entraîne à un moment donné. Une ancienne relation redondante (hasParticipatedTo) exprimait partiellement la même idée mais a été retirée du graphe, car elle n'apportait aucune information que DEPENDS_ON ne couvrait pas déjà.",
+        "category": "schema_validation",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q90",
+        "question": "La phase de récupération dure-t-elle toujours le même temps pour tous les chevaux concernés ?",
+        "ground_truth": "Non, elle dure le plus souvent 25 minutes, mais cinq chevaux ont une phase de récupération plus longue de 30 minutes : Apollon, Atlas, Dakota, Dune et Thunder.",
+        "category": "comparison",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q91",
+        "question": "Auroch a-t-il un classement à toutes les compétitions auxquelles il est inscrit ?",
+        "ground_truth": "Non. Auroch est inscrit à Event_Bordeaux_Cross_2026, mais aucun résultat officiel n'y est enregistré pour lui. Son seul classement enregistré concerne Event_Clermont_Cross_2026, où il termine 5ème avec sa cavalière Elise.",
+        "category": "data_quality",
+        "difficulty": "hard"
+      },
+      {
+        "question_id": "Q92",
+        "question": "Quel cheval a le moins de capteurs IMU, et combien en porte-t-il ?",
+        "ground_truth": "44 des 50 chevaux portent seulement deux capteurs IMU, ce qui est le niveau d'instrumentation le plus bas du système (contre trois capteurs pour Atlas, Bella, Luna et Thunder, et quatre pour Dakota et Zephyr).",
+        "category": "comparison",
+        "difficulty": "easy"
+      },
+      {
+        "question_id": "Q93",
+        "question": "Les chevaux ayant un programme d'entraînement plus long ont-ils aussi tendance à participer à plus de compétitions ?",
+        "ground_truth": "Pas nécessairement, à une exception près. Dakota est le seul cheval où les deux coïncident : il a à la fois le plus grand nombre d'étapes d'entraînement (6) et le plus grand nombre de compétitions (5). Pour les autres chevaux, le nombre d'étapes (3 ou 4) et le nombre de compétitions (généralement 2) ne sont pas particulièrement corrélés cas par cas.",
+        "category": "comparison",
+        "difficulty": "hard"
+      },
+      {
+        "question_id": "Q94",
+        "question": "Certains chevaux ont-ils des identifiants d'entraînement qui sortent du schéma habituel ?",
+        "ground_truth": "Oui, deux cas sortent du schéma de nommage habituel (Training_<Type>_<Cheval>_01) : Orion, dont les étapes sont nommées Training_Orion_LeMans_Preparation, Training_Orion_LeMans_PreComp et Training_Orion_LeMans_Comp, et Dakota, dont les étapes portent des identifiants centrés sur SJ comme Training_Preparation_SJ_01, Training_PreCompetition_SJ_01, Training_PreComp_SJ_01, Training_Prepa_SJ_01, Training_Competition_SJ_01 et Training_Transition_SJ_01.",
+        "category": "data_quality",
+        "difficulty": "very_hard"
+      },
+      {
+        "question_id": "Q95",
+        "question": "Existe-t-il un lien entre la saison d'un cheval et le niveau des compétitions auxquelles il participe (Amateur, Club Elite, Pro Elite) ?",
+        "ground_truth": "Tous les chevaux du système participent à des événements de la Saison 2026, qui est la seule saison enregistrée. Le niveau des compétitions varie cependant par discipline : la catégorie Club Elite n'apparaît qu'en dressage, et le niveau Pro Elite concerne surtout le saut d'obstacles (3 des 4 événements Pro Elite). Un cheval inscrit dans plusieurs disciplines, comme Dakota (saut d'obstacles, dressage et cross), peut donc évoluer dans des catégories différentes selon l'événement.",
+        "category": "multi_hop",
+        "difficulty": "hard"
+      },
+      {
+        "question_id": "Q96",
+        "question": "Y a-t-il des cas où un cavalier termine 1er et 2ème à la même compétition avec deux chevaux différents ?",
+        "ground_truth": "Oui, cela arrive dans quatre cas : Alice à Nantes (Soleil 1er, Arrow 2ème), Marc à Strasbourg (Dune 1er, Sable 2ème), Maxime à Dijon (Ecume 1er, Tempete 2ème), et Hugo à Lyon (Storm 1er, Nova 2ème).",
+        "category": "multi_hop",
+        "difficulty": "hard"
+      },
+      {
+        "question_id": "Q97",
+        "question": "Est-ce que tous les chevaux du système ont au moins un résultat de compétition enregistré ?",
+        "ground_truth": "Oui, chacun des 50 chevaux a exactement un résultat officiel enregistré, même si beaucoup d'entre eux ont participé à d'autres compétitions pour lesquelles aucun classement n'a été renseigné.",
+        "category": "consistency_check",
+        "difficulty": "hard"
+      },
+      {
+        "question_id": "Q98",
+        "question": "Si un cheval est inscrit à une compétition, est-on certain qu'un classement existe pour cette compétition précise ?",
+        "ground_truth": "Non, ce n'est pas garanti. L'inscription à une compétition et l'existence d'un classement officiel sont deux informations distinctes dans le système : un cheval peut très bien être inscrit (COMPETES_IN) sans qu'un résultat classé (HAS_PARTICIPATION) ne soit enregistré pour cette compétition précise — c'est même le cas le plus fréquent.",
+        "category": "schema_validation",
+        "difficulty": "hard"
+      },
+      {
+        "question_id": "Q99",
+        "question": "Le nombre de capteurs rattachés à un cheval correspond-il toujours au nombre de capteurs utilisés pour un objectif expérimental ?",
+        "ground_truth": "Oui : chaque capteur IMU étant relié à exactement un cheval et à exactement un objectif expérimental, les 108 capteurs du système donnent 108 liens cheval-capteur et 108 liens capteur-objectif, en parfaite correspondance.",
+        "category": "consistency_check",
+        "difficulty": "medium"
+      },
+      {
+        "question_id": "Q100",
+        "question": "Peux-tu me donner un aperçu rapide de la taille du programme couvert par le système (chevaux, cavaliers, événements, capteurs) ?",
+        "ground_truth": "Le système couvre 50 chevaux, 25 cavaliers et 20 événements sur la saison 2026, avec 108 capteurs IMU déployés pour le suivi de l'entraînement et de la performance.",
+        "category": "simple_retrieval",
+        "difficulty": "easy"
+      }
+    ],
+    "metadata": {
+      "version": "8.5_v8_clean_user_facing_questions",
+      "total_questions": 100,
+      "updated_date": "2026-06-20",
+      "description": "User-interface-style revision of the V8 evaluation set. Q1-Q40 unchanged (supervisor-provided). Q41-Q100 rewritten so questions read like natural domain questions a coach, rider, researcher, supervisor, or analyst would realistically ask in a Graph RAG UI about equestrian sports, rather than internal database/schema-audit questions. Every underlying FACT in ground_truth is unchanged from the previously fact-checked revision (test_dataset_v8_clean.json); only phrasing of the question (and, where needed, framing of the ground_truth) changed. Cleaned Neo4j relationship names (COMPETES_IN, TRAINS_IN, DEPENDS_ON, IS_ATTACHED_TO, IS_USED_FOR, HAS_PARTICIPATION, HAS_RIDER, HAS_HORSE, IN_SEASON, INVOLVES_ACTOR, ASSOCIATED_WITH) appear only in ground_truth, and only where naming the relation adds clarity, never inside the user-facing question text itself.",
+      "qa_note_on_q1_40": "Q1-Q40 untouched per explicit instruction; known staleness in Q6/Q8/Q9 (flagged in a prior revision) remains unresolved since these are supervisor-provided and out of scope.",
+      "reframing_notes": "Two former pure-arithmetic consistency checks (old Q92: IMU total = sum of 4 positions; old Q99: which two relation counts equal sensor count) had no natural user framing and were replaced with new user-facing questions (new Q92: which horses carry the fewest sensors; new Q99: does sensor-to-horse count match sensor-to-objective count) that still exercise the same underlying counting/consistency reasoning. Two pairs of near-duplicate facts (old Q53/Q93 on Dakota's training-stage count, old Q64/Q86 on Dakota's competition count) were consolidated into single, non-redundant questions (new Q53, new Q64) once reframed naturally, to keep all 60 questions in Q41-Q100 distinct per the no-duplicate-pattern rule; new Q86 and new Q93 cover the same Dakota anomaly from a different analytical angle (overall atypicality vs. cross-metric correlation) without repeating new Q53/Q64 verbatim.",
+      "verification_method": "All ground_truth facts are carried over unchanged from the previously verified revision, which was recomputed programmatically against the verified Neo4j export files (1-_neo4j_query_table_data_2026-6-15.json: 429 nodes; 2-_neo4j_query_table_data_2026-6-15.json: 1195 relations, 1194 after HASPARTICIPATEDTO removal). No new facts were introduced in this rephrasing pass; only question/ground_truth wording changed.",
+      "kg_entities_v8_clean": {
+        "total_horses": 50,
+        "total_riders": 25,
+        "total_events": 20,
+        "total_sensors": 108,
+        "total_nodes": 429,
+        "total_relations": 1194,
+        "sensor_breakdown": {
+          "withers": 50,
+          "canon_forelimb": 20,
+          "canon_hindlimb": 12,
+          "sternum": 26
+        },
+        "sensor_frequency_breakdown": {
+          "200Hz": 66,
+          "250Hz": 39,
+          "300Hz": 3
+        },
+        "event_type_breakdown": {
+          "ShowJumping": 7,
+          "Cross": 7,
+          "Dressage": 6
+        },
+        "relation_counts": {
+          "INVOLVES_ACTOR": 314,
+          "DEPENDS_ON": 171,
+          "TRAINS_IN": 171,
+          "IS_ATTACHED_TO": 108,
+          "IS_USED_FOR": 108,
+          "COMPETES_IN": 101,
+          "ASSOCIATED_WITH": 51,
+          "HAS_RIDER": 50,
+          "HAS_HORSE": 50,
+          "HAS_PARTICIPATION": 50,
+          "IN_SEASON": 20
+        }
+      }
+    }
+  }
