@@ -1,7 +1,7 @@
 """
 Exhaustive full-row verification of data/tabular.db against the Neo4j graph.
 
-For every one of the eleven tables, this pulls a fresh "ground truth" from Neo4j
+For every one of the fourteen tables, this pulls a fresh "ground truth" from Neo4j
 using INDEPENDENTLY formulated Cypher (different traversal directions, UNION
 per label instead of WHERE...OR) so it genuinely double-checks the ETL rather
 than re-running identical queries. It then compares every field of every row,
@@ -34,7 +34,10 @@ EXPECTED_TOTAL = (
     + 51   # horse_rider_associations
     + 1    # seasons
     + 27   # people
-)  # 895
+    + 25   # riders
+    + 1    # veterinarians
+    + 1    # caretakers
+)  # 922
 
 
 def date_to_iso(value):
@@ -169,6 +172,24 @@ RETURN o.id AS objective_id, o.hasName AS name, o.description AS description
 PEOPLE_CYPHER = """
 MATCH (p) WHERE p:Rider OR p:Caretaker OR p:Veterinarian
 RETURN p.id AS person_id, labels(p) AS labels
+"""
+
+# Independently formulated: direct :Rider label match (ETL derives riders by
+# filtering the people list in Python after a multi-label PEOPLE_QUERY).
+RIDERS_CYPHER = """
+MATCH (p:Rider)
+RETURN p.id AS person_id
+"""
+
+# Same independent-label pattern for the other two role-extension tables.
+VETERINARIANS_CYPHER = """
+MATCH (p:Veterinarian)
+RETURN p.id AS person_id
+"""
+
+CARETAKERS_CYPHER = """
+MATCH (p:Caretaker)
+RETURN p.id AS person_id
 """
 
 
@@ -313,6 +334,31 @@ def build_neo4j_dicts(session):
         },
     )
 
+    # riders: key person_id -> () — presence-only extension of people
+    data["riders"] = (
+        [],
+        {
+            rec["person_id"]: ()
+            for rec in session.run(RIDERS_CYPHER)
+        },
+    )
+
+    # veterinarians / caretakers: same presence-only shape
+    data["veterinarians"] = (
+        [],
+        {
+            rec["person_id"]: ()
+            for rec in session.run(VETERINARIANS_CYPHER)
+        },
+    )
+    data["caretakers"] = (
+        [],
+        {
+            rec["person_id"]: ()
+            for rec in session.run(CARETAKERS_CYPHER)
+        },
+    )
+
     return data
 
 
@@ -395,6 +441,21 @@ def build_sqlite_dicts(cur):
         for row in cur.execute("SELECT person_id, role FROM people")
     }
 
+    data["riders"] = {
+        row[0]: ()
+        for row in cur.execute("SELECT person_id FROM riders")
+    }
+
+    data["veterinarians"] = {
+        row[0]: ()
+        for row in cur.execute("SELECT person_id FROM veterinarians")
+    }
+
+    data["caretakers"] = {
+        row[0]: ()
+        for row in cur.execute("SELECT person_id FROM caretakers")
+    }
+
     return data
 
 
@@ -467,6 +528,9 @@ def main():
         "horse_rider_associations",
         "seasons",
         "people",
+        "riders",
+        "veterinarians",
+        "caretakers",
     ]
 
     total_rows = 0
@@ -479,7 +543,7 @@ def main():
         total_discrepancies += discrepancies
 
     sink("\n=== FINAL SUMMARY ===")
-    sink(f"  total rows checked across all eleven tables: {total_rows} (expected {EXPECTED_TOTAL})")
+    sink(f"  total rows checked across all fourteen tables: {total_rows} (expected {EXPECTED_TOTAL})")
     sink(f"  total discrepancies found: {total_discrepancies}")
     if total_discrepancies == 0 and total_rows == EXPECTED_TOTAL:
         sink(f"\nPERFECT MATCH — {total_rows}/{EXPECTED_TOTAL} ROWS VERIFIED IDENTICAL TO GRAPH")

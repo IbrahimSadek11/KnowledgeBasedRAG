@@ -3,22 +3,12 @@ SQL safety validator for the Tabular RAG pipeline.
 
 Mirrors the purpose of backend/cypher_validator.py, but for SQL: a pure
 validation function with no LLM call and no database execution. It enforces
-that generated queries are read-only SELECT statements, contain no dangerous
-keywords, and cannot stack multiple statements.
+that generated queries are single SELECT statements and cannot stack multiple
+statements. Dangerous write operations are blocked at execution time by
+sqlite3's set_authorizer in tabular_chain.execute_sql() — not by scanning
+keyword substrings here (which falsely rejects values like '%DROP%').
 """
 import re
-
-BANNED_KEYWORDS = [
-    "DROP",
-    "DELETE",
-    "INSERT",
-    "UPDATE",
-    "ALTER",
-    "TRUNCATE",
-    "ATTACH",
-    "PRAGMA",
-    "CREATE",
-]
 
 
 def validate_sql(sql: str) -> tuple[bool, str]:
@@ -31,11 +21,6 @@ def validate_sql(sql: str) -> tuple[bool, str]:
     # Must be a SELECT statement.
     if not stripped[:6].upper() == "SELECT":
         return (False, "Only SELECT statements are permitted.")
-
-    # No banned keywords (matched as whole words, case-insensitive).
-    for keyword in BANNED_KEYWORDS:
-        if re.search(rf"\b{keyword}\b", stripped, flags=re.IGNORECASE):
-            return (False, f"Disallowed keyword found: {keyword}")
 
     # No query stacking: a semicolon may only appear as a trailing terminator.
     # Any non-whitespace content after a semicolon is rejected.
@@ -56,6 +41,7 @@ if __name__ == "__main__":
         ("SELECT * FROM horses; DROP TABLE horses", False),
         ("DELETE FROM trainings WHERE horse_id = 'Horse1'", False),
         ("SELECT * FROM horses WHERE name = 'updated_athlete'", True),
+        ("SELECT * FROM horses WHERE race LIKE '%DROP%'", True),
     ]
 
     for sql, expected_valid in test_cases:
