@@ -31,7 +31,7 @@
     {
       "question_id": "Q5",
       "question": "Quelles étapes d'entraînement Dakota suit-il ?",
-      "ground_truth": "Dakota suit six étapes d'entraînement : Training_Prepa_SJ_01 (préparation), Training_PreComp_SJ_01 (pré-compétition), Training_Preparation_SJ_01 (préparation), Training_PreCompetition_SJ_01 (pré-compétition), Training_Competition_SJ_01 (compétition) et Training_Transition_SJ_01 (transition).",
+      "ground_truth": "Dakota suit huit étapes d'entraînement : Training_Prepa_SJ_01 (préparation), Training_Preparation_SJ_01 (préparation), Training_PreComp_SJ_01 (pré-compétition), Training_PreCompetition_SJ_01 (pré-compétition), Training_Competition_SJ_01 (compétition), Training_Comp_Cross2026_Dakota_01 (compétition), Training_Comp_Dress01_Dakota_01 (compétition) et Training_Transition_SJ_01 (transition).",
       "category": "single_hop",
       "difficulty": "medium"
     },
@@ -94,7 +94,7 @@
     {
       "question_id": "Q14",
       "question": "Combien de capteurs IMU sont placés au garrot, et peux-tu donner quelques exemples d'identifiants ?",
-      "ground_truth": "Il y a cinquante capteurs IMU placés au garrot dans le système, un par cheval, par exemple IMU_Withers_01 pour Dakota, IMU_Withers_Comet_01 pour Comet et IMU_Withers_Apollon_01 pour Apollon.",
+      "ground_truth": "Il y a cinquante capteurs IMU placés au garrot dans le système, un par cheval, par exemple IMU_Withers_Dakota_01 pour Dakota, IMU_Withers_Comet_01 pour Comet et IMU_Withers_Apollon_01 pour Apollon.",
       "category": "multi_hop",
       "difficulty": "medium"
     },
@@ -157,7 +157,7 @@
     {
       "question_id": "Q23",
       "question": "Qui participe à la phase pré-compétition de l'entraînement ?",
-      "ground_truth": "Les participants à la phase pré-compétition incluent Sophie (soigneuse), Dr Martin (vétérinaire), et 24 des 25 cavaliers du système (tous sauf Emma, remplacée par Manon pour la pré-compétition de Dakota) : Alice, Antoine, Baptiste, Camille, Chloe, Clara, Elise, Hugo, Ines, Jade, Julien, Lea, Leo, Lucas, Manon, Marc, Maxime, Nina, Pauline, Remi, Sarah, Theo, Tom et Victor.",
+      "ground_truth": "Les participants à la phase pré-compétition incluent Sophie (soigneuse), Dr Martin (vétérinaire), et les 25 cavaliers du système (Emma et Manon sont toutes deux présentes, chacune sur une étape pré-compétition distincte de Dakota) : Alice, Antoine, Baptiste, Camille, Chloe, Clara, Elise, Emma, Hugo, Ines, Jade, Julien, Lea, Leo, Lucas, Manon, Marc, Maxime, Nina, Pauline, Remi, Sarah, Theo, Tom et Victor.",
       "category": "single_hop",
       "difficulty": "medium"
     },
@@ -234,7 +234,7 @@
     {
       "question_id": "Q34",
       "question": "Compare les acteurs impliqués dans les phases de préparation et de pré-compétition.",
-      "ground_truth": "La phase de préparation implique 24 des 25 cavaliers (tous sauf Manon, y compris Emma pour Dakota), Sophie (soigneuse) et Dr Martin (vétérinaire). La phase pré-compétition implique le même ensemble d'acteurs, à ceci près que Manon remplace Emma pour la pré-compétition de Dakota : les cavaliers y sont donc au nombre de 24 également, mais avec Manon à la place d'Emma.",
+      "ground_truth": "La phase de préparation implique 24 des 25 cavaliers (tous sauf Manon, y compris Emma pour Dakota), Sophie (soigneuse) et Dr Martin (vétérinaire). La phase pré-compétition implique Sophie, Dr Martin et les 25 cavaliers : Emma et Manon y sont toutes deux présentes (chacune sur une étape pré-compétition distincte de Dakota).",
       "category": "comparison",
       "difficulty": "hard"
     },
@@ -262,14 +262,14 @@
     {
       "question_id": "Q38",
       "question": "Pour quel objectif expérimental le capteur IMU_Withers_01 est-il utilisé ?",
-      "ground_truth": "Le capteur IMU_Withers_01 est utilisé pour la classification de la démarche (GaitClassif_01).",
+      "ground_truth": "Le capteur IMU_Withers_Dakota_01 (garrot de Dakota) est utilisé pour la classification de la démarche (GaitClassif_01).",
       "category": "single_hop",
       "difficulty": "medium"
     },
     {
       "question_id": "Q39",
       "question": "Pour quel objectif expérimental le capteur IMU_CanonFore_01 est-il utilisé ?",
-      "ground_truth": "Le capteur IMU_CanonFore_01 est utilisé pour la détection de fatigue (FatigueDetection).",
+      "ground_truth": "Le capteur IMU_CanonFore_Dakota_01 (canon antérieur de Dakota) est utilisé pour la détection de fatigue (FatigueDetection).",
       "category": "single_hop",
       "difficulty": "medium"
     },
@@ -360,14 +360,14 @@
     {
       "question_id": "Q52",
       "question": "Comment se décompose le programme d'entraînement dans le système : quelles phases existent et combien d'étapes sont enregistrées pour chacune ?",
-      "ground_truth": "Le programme d'entraînement comprend quatre types de phases : préparation, pré-compétition, compétition et transition. Dans le système, il y a 51 étapes de préparation, 51 étapes de pré-compétition, 50 étapes de compétition et 19 étapes de transition. Le total supérieur à 50 pour la préparation et la pré-compétition vient du fait que Dakota possède des étapes supplémentaires liées au saut d'obstacles ; le nombre réel de chevaux reste 50.",
+      "ground_truth": "Le programme d'entraînement comprend quatre types de phases : préparation, pré-compétition, compétition et transition. Dans le système, il y a 51 étapes de préparation, 51 étapes de pré-compétition, 55 étapes de compétition et 50 étapes de transition. Le total supérieur à 50 pour la préparation, la pré-compétition et la compétition vient du fait que Dakota possède des étapes supplémentaires ; chaque cheval a désormais une phase de transition.",
       "category": "hierarchical",
       "difficulty": "medium"
     },
     {
       "question_id": "Q53",
       "question": "Quel cheval suit le programme d'entraînement le plus complet, avec le plus grand nombre d'étapes ?",
-      "ground_truth": "Dakota suit le programme le plus complet avec 6 étapes d'entraînement au total, contre 3 ou 4 étapes pour la majorité des autres chevaux (31 chevaux suivent 3 étapes, 18 chevaux en suivent 4). Le nombre d'étapes par cheval correspond bien au détail des phases suivies individuellement : 31×3 + 18×4 + 6 = 171.",
+      "ground_truth": "Dakota suit le programme le plus complet avec 8 étapes d'entraînement au total. La répartition est : 46 chevaux suivent 4 étapes, 3 chevaux en suivent 5 (Dune, Pixie, Ecume), et Dakota en suit 8. Vérification : 46×4 + 3×5 + 8 = 207.",
       "category": "aggregation",
       "difficulty": "hard"
     },
@@ -381,7 +381,7 @@
     {
       "question_id": "Q55",
       "question": "Combien de temps dure généralement la phase de récupération après une compétition ?",
-      "ground_truth": "19 chevaux ont une phase de transition (récupération) enregistrée. Elle dure 25 minutes pour 14 d'entre eux, et 30 minutes pour 5 chevaux : Apollon, Atlas, Dakota, Dune et Thunder.",
+      "ground_truth": "50 chevaux ont une phase de transition (récupération) enregistrée. Elle dure 25 minutes pour 45 d'entre eux, et 30 minutes pour 5 chevaux : Apollon, Atlas, Dakota, Dune et Thunder.",
       "category": "aggregation",
       "difficulty": "medium"
     },
@@ -395,7 +395,7 @@
     {
       "question_id": "Q57",
       "question": "Y a-t-il des étapes d'entraînement où aucun encadrant (cavalier, vétérinaire ou soigneur) n'est mentionné ?",
-      "ground_truth": "Oui, cinq étapes n'ont aucun encadrant humain enregistré : Training_Preparation_SJ_01, Training_PreCompetition_SJ_01, Training_Competition_SJ_01, Training_Transition_SJ_01 et Training_Transition_Thunder_01.",
+      "ground_truth": "Non — chaque étape d'entraînement a au moins un encadrant (cavalier, vétérinaire ou soigneur).",
       "category": "data_quality",
       "difficulty": "very_hard"
     },
@@ -430,14 +430,14 @@
     {
       "question_id": "Q62",
       "question": "Y a-t-il des compétitions où des chevaux étaient engagés mais où aucun résultat officiel n'a été enregistré ?",
-      "ground_truth": "Oui, trois événements ont des chevaux engagés sans qu'aucun classement officiel n'ait été enregistré : Event_SJ_2026_01, Event_Cross_2026_01 et Event_Dressage_01.",
+      "ground_truth": "Non — dans le graphe actuel, chaque engagement a un résultat officiel enregistré.",
       "category": "data_quality",
       "difficulty": "very_hard"
     },
     {
       "question_id": "Q63",
       "question": "Quel événement de la saison a réuni le plus de résultats classés ?",
-      "ground_truth": "Event_Montpellier_Dr_2026 est l'événement avec le plus grand nombre de résultats officiels enregistrés : six chevaux y ont un classement.",
+      "ground_truth": "Trois événements sont à égalité en tête avec 7 résultats classés : Event_Pau_SJ_2026, Event_LeMans_Cross_2026 et Event_SJ_2026_01. Event_Montpellier_Dr_2026 en a 6.",
       "category": "comparison",
       "difficulty": "medium"
     },
@@ -451,21 +451,21 @@
     {
       "question_id": "Q65",
       "question": "Est-il fréquent qu'un cheval soit engagé dans une compétition sans qu'un résultat officiel y soit ensuite enregistré ?",
-      "ground_truth": "Oui, c'est même le cas le plus courant : 48 chevaux sur 50 ont au moins un engagement en compétition sans résultat officiel correspondant. Seuls Naya et Orion font exception, car ils n'ont chacun qu'une seule compétition et un résultat officiel associé.",
+      "ground_truth": "Non, ce n'est pas fréquent : le cas ne se produit jamais. Pour chaque cheval, le nombre d'engagements COMPETESIN égale le nombre de résultats EventParticipation.",
       "category": "data_quality",
       "difficulty": "very_hard"
     },
     {
       "question_id": "Q66",
       "question": "Arrive-t-il qu'un même cavalier présente deux chevaux différents lors du même événement ?",
-      "ground_truth": "Oui, cela arrive dans neuf cas : Alice à Nantes (Soleil, Arrow), Remi à Versailles (Etoile, Grondre), Lea à Rennes (Rio, Falcon), Camille à Toulouse (Atlas, Iris), Elise à Montpellier (Luminos, Nuage), Maxime à Dijon (Tempete, Ecume), Ines à Clermont-Ferrand (Rafale, Tonnerre), Marc à Strasbourg (Dune, Sable) et Hugo à Lyon (Nova, Storm).",
+      "ground_truth": "Oui, cela arrive dans onze cas : Alice à Nantes (Soleil, Arrow), Remi à Versailles (Etoile, Grondre), Remi à Pau (Grondre, Galop), Lea à Rennes (Rio, Falcon), Camille à Toulouse (Atlas, Iris), Elise à Montpellier (Luminos, Nuage), Maxime à Dijon (Tempete, Ecume), Ines à Clermont-Ferrand (Rafale, Tonnerre), Marc à Strasbourg (Dune, Sable), Hugo à Lyon (Nova, Storm) et Victor à Event_SJ_2026_01 (Cascade, Lumiere).",
       "category": "multi_hop",
       "difficulty": "hard"
     },
     {
       "question_id": "Q67",
       "question": "Quelle compétition a le plus grand nombre de chevaux engagés sans résultat officiel enregistré ?",
-      "ground_truth": "Event_SJ_2026_01 a l'écart le plus important : 7 chevaux y sont engagés, mais aucun résultat officiel n'a été enregistré pour cet événement.",
+      "ground_truth": "Aucune compétition : tous les engagements ont un résultat. Event_SJ_2026_01 a bien 7 participations enregistrées.",
       "category": "data_quality",
       "difficulty": "very_hard"
     },
@@ -479,7 +479,7 @@
     {
       "question_id": "Q69",
       "question": "Quels sont les liens les plus fréquents dans le système : entre l'entraînement et les encadrants, entre les chevaux et les événements, ou ailleurs ?",
-      "ground_truth": "Le lien le plus fréquent est celui entre une étape d'entraînement et ses encadrants (INVOLVES_ACTOR, 314 occurrences), suivi par les liens entre une étape d'entraînement et l'événement qu'elle prépare (DEPENDS_ON, 171) et entre un cheval et ses étapes d'entraînement (TRAINS_IN, 171). Viennent ensuite les liens entre capteurs et chevaux ou objectifs (IS_ATTACHED_TO et IS_USED_FOR, 108 chacun), puis les engagements en compétition (COMPETES_IN, 101).",
+      "ground_truth": "Le lien le plus fréquent est celui entre une étape d'entraînement et ses encadrants (INVOLVESACTOR, 355 occurrences), suivi par TRAINSIN (207) et DEPENDSON (207). Viennent ensuite ISATTACHEDTO et ISUSEDFOR (108 chacun), puis les engagements en compétition (COMPETESIN, 101).",
       "category": "aggregation",
       "difficulty": "hard"
     },
@@ -570,7 +570,7 @@
     {
       "question_id": "Q82",
       "question": "Quels capteurs de Dakota servent à analyser sa démarche, et lesquels servent à surveiller sa fatigue ?",
-      "ground_truth": "Pour Dakota, les capteurs IMU_Withers_01 (garrot) et IMU_CanonHind_01 (canon postérieur) sont utilisés pour l'analyse de la démarche. Les capteurs IMU_CanonFore_01 (canon antérieur) et IMU_Sternum_01 (sternum) sont utilisés pour la détection de fatigue.",
+      "ground_truth": "Pour Dakota, les capteurs IMU_Withers_Dakota_01 (garrot) et IMU_CanonHind_Dakota_01 (canon postérieur) sont utilisés pour l'analyse de la démarche (GaitClassif_01). Les capteurs IMU_CanonFore_Dakota_01 (canon antérieur) et IMU_Sternum_Dakota_01 (sternum) sont utilisés pour la détection de fatigue (FatigueDetection).",
       "category": "multi_hop",
       "difficulty": "hard"
     },
@@ -598,7 +598,7 @@
     {
       "question_id": "Q86",
       "question": "Le programme d'entraînement et de compétition de Dakota ressemble-t-il à celui des autres chevaux du système ?",
-      "ground_truth": "Non, Dakota se distingue nettement des autres chevaux : il participe à 5 compétitions et suit 6 étapes d'entraînement, alors que la majorité des chevaux ne participent qu'à 2 compétitions et suivent 3 ou 4 étapes d'entraînement.",
+      "ground_truth": "Non, Dakota se distingue nettement des autres chevaux : il participe à 5 compétitions et suit 8 étapes d'entraînement, alors que la majorité des chevaux ne participent qu'à 2 compétitions et suivent 4 étapes d'entraînement.",
       "category": "data_quality",
       "difficulty": "hard"
     },
@@ -633,7 +633,7 @@
     {
       "question_id": "Q91",
       "question": "Auroch a-t-il un classement à toutes les compétitions auxquelles il est inscrit ?",
-      "ground_truth": "Non. Auroch est inscrit à Event_Bordeaux_Cross_2026, mais aucun résultat officiel n'y est enregistré pour lui. Son seul classement enregistré concerne Event_Clermont_Cross_2026, où il termine 5ème avec sa cavalière Elise.",
+      "ground_truth": "Oui. Auroch a un classement enregistré pour chacune de ses deux participations : il termine 4ème à Event_Bordeaux_Cross_2026 et 5ème à Event_Clermont_Cross_2026.",
       "category": "data_quality",
       "difficulty": "hard"
     },
@@ -647,14 +647,14 @@
     {
       "question_id": "Q93",
       "question": "Les chevaux ayant un programme d'entraînement plus long ont-ils aussi tendance à participer à plus de compétitions ?",
-      "ground_truth": "Pas nécessairement, à une exception près. Dakota est le seul cheval où les deux coïncident : il a à la fois le plus grand nombre d'étapes d'entraînement (6) et le plus grand nombre de compétitions (5). Pour les autres chevaux, le nombre d'étapes (3 ou 4) et le nombre de compétitions (généralement 2) ne sont pas particulièrement corrélés cas par cas.",
+      "ground_truth": "Pas nécessairement, à une exception près. Dakota est le seul cheval où les deux coïncident : il a à la fois le plus grand nombre d'étapes d'entraînement (8) et le plus grand nombre de compétitions (5). Pour les autres chevaux, le nombre d'étapes (surtout 4, parfois 5) et le nombre de compétitions (généralement 2) ne sont pas particulièrement corrélés cas par cas.",
       "category": "comparison",
       "difficulty": "hard"
     },
     {
       "question_id": "Q94",
       "question": "Certains chevaux ont-ils des identifiants d'entraînement qui sortent du schéma habituel ?",
-      "ground_truth": "Oui, deux cas sortent du schéma de nommage habituel (Training_<Type>_<Cheval>_01) : Orion, dont les étapes sont nommées Training_Orion_LeMans_Preparation, Training_Orion_LeMans_PreComp et Training_Orion_LeMans_Comp, et Dakota, dont les étapes portent des identifiants centrés sur SJ comme Training_Preparation_SJ_01, Training_PreCompetition_SJ_01, Training_PreComp_SJ_01, Training_Prepa_SJ_01, Training_Competition_SJ_01 et Training_Transition_SJ_01.",
+      "ground_truth": "Oui, deux cas sortent du schéma de nommage habituel (Training_<Type>_<Cheval>_01) : Orion, dont les étapes sont nommées Training_Orion_LeMans_Preparation, Training_Orion_LeMans_PreComp, Training_Orion_LeMans_Comp et Training_Transition_Orion_01, et Dakota, dont les étapes portent des identifiants centrés sur SJ ou des ids de compétition : Training_Preparation_SJ_01, Training_Prepa_SJ_01, Training_PreCompetition_SJ_01, Training_PreComp_SJ_01, Training_Competition_SJ_01, Training_Comp_Cross2026_Dakota_01, Training_Comp_Dress01_Dakota_01 et Training_Transition_SJ_01.",
       "category": "data_quality",
       "difficulty": "very_hard"
     },
@@ -675,14 +675,14 @@
     {
       "question_id": "Q97",
       "question": "Est-ce que tous les chevaux du système ont au moins un résultat de compétition enregistré ?",
-      "ground_truth": "Oui, chacun des 50 chevaux a exactement un résultat officiel enregistré, même si beaucoup d'entre eux ont participé à d'autres compétitions pour lesquelles aucun classement n'a été renseigné.",
+      "ground_truth": "Oui, les 50 chevaux ont au moins un résultat. Répartition : 2 chevaux ×1 (Naya, Orion), 47 ×2, Dakota ×5. Il n'y a plus d'engagements sans classement.",
       "category": "consistency_check",
       "difficulty": "medium"
     },
     {
       "question_id": "Q98",
       "question": "Si un cheval est inscrit à une compétition, est-on certain qu'un classement existe pour cette compétition précise ?",
-      "ground_truth": "Non, ce n'est pas garanti. L'inscription à une compétition et l'existence d'un classement officiel sont deux informations distinctes dans le système : un cheval peut très bien être inscrit (COMPETES_IN) sans qu'un résultat classé (HAS_PARTICIPATION) ne soit enregistré pour cette compétition précise — c'est même le cas le plus fréquent.",
+      "ground_truth": "Oui — dans le graphe actuel, pour chaque inscription COMPETESIN il existe un classement (EventParticipation) pour ce cheval et cet événement.",
       "category": "schema_validation",
       "difficulty": "hard"
     },
@@ -704,7 +704,7 @@
   "metadata": {
     "version": "8.7_v8_rdf_reaudited",
     "total_questions": 100,
-    "updated_date": "2026-07-15",
-    "audit_note": "Independent full re-audit against Horse_V8_Clean.rdf (429 nodes, 1194 relations; the RDF generated from the verified Neo4j export, used because the live Neo4j DB was offline and no neo4j_query_table_data_*.json export files were present). Content: 98/100 ground_truths verified correct; 2 corrected — Q34 (preparation involves 24 of 25 riders, not 25; was self-contradictory with Q22) and Q51 (canon-postérieur calibration offsets were swapped: 5x0.02 / 7x0.015). Difficulty: 15 labels changed by strict 3-dial rubric + same-shape sibling calibration (Q8,Q9 -> hard; Q13,Q16,Q50,Q55,Q85,Q97 -> medium; Q19,Q29,Q30,Q36,Q37,Q76 -> easy; Q34 -> hard). Q71/Q72 left at medium (schema-description questions like Q70/Q73/Q89)."
+    "updated_date": "2026-07-26",
+    "audit_note": "Independent full re-audit against Horse_V8_Clean.rdf (429 nodes, 1194 relations; the RDF generated from the verified Neo4j export, used because the live Neo4j DB was offline and no neo4j_query_table_data_*.json export files were present). Content: 98/100 ground_truths verified correct; 2 corrected — Q34 (preparation involves 24 of 25 riders, not 25; was self-contradictory with Q22) and Q51 (canon-postérieur calibration offsets were swapped: 5x0.02 / 7x0.015). Difficulty: 15 labels changed by strict 3-dial rubric + same-shape sibling calibration (Q8,Q9 -> hard; Q13,Q16,Q50,Q55,Q85,Q97 -> medium; Q19,Q29,Q30,Q36,Q37,Q76 -> easy; Q34 -> hard). Q71/Q72 left at medium (schema-description questions like Q70/Q73/Q89). Q91 ground_truth corrected 2026-07-26: V8-era expectation (no official result at Bordeaux) no longer holds on V9 graph — Auroch has rank 4/Terminé at Bordeaux. Verified via direct Neo4j query. V9 ground-truth batch 2026-07-26 (Track 1 sign-off): updated 22 CLEAN questions including Q34 partial from docs/gt_reconciliation_signoff.md — Q5,Q14,Q23,Q34,Q38,Q39,Q52,Q53,Q55,Q57,Q62,Q63,Q65,Q66,Q67,Q69,Q82,Q86,Q93,Q94,Q97,Q98. Verified via direct Neo4j queries against live V9 graph (516 nodes / 1460 rels). Q8 left unchanged (horse-level prep durations still correct). Q91 left as prior 2026-07-26 correction."
   }
 }
