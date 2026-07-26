@@ -40,5 +40,15 @@ data/tabular.db
 scripts/encoding_check_output.txt
 scripts/full_diff_output.txt
 
+# Prompt-tuning / GT-audit scratch (local only)
+_b*
+_c*
+_t*
+_eval*
+evaluation_results/*.txt
+prompt_changelog.md
+ground_truth_flags.md
+docs/*.md
+
 # Streamlit
 .streamlit/secrets.toml

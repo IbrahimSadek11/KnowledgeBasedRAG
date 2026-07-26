@@ -19,7 +19,7 @@ print(f"📊 Connexion à Neo4j: {NEO4J_URI}")
 # Charger RDF
 print("📥 Chargement du fichier RDF...")
 rdf_graph = Graph()
-rdf_graph.parse("data/Horse_V8_Clean.rdf", format="xml")
+rdf_graph.parse("data/Horse_V9_augmented.rdf", format="xml")
 
 HORSES = Namespace("http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#")
 
