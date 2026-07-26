@@ -1,13 +1,30 @@
 """
-Tabular RAG data layer — ETL slice #1.
+Tabular RAG data layer — ETL from live Neo4j into data/tabular.db.
 
-Builds a SQLite database (data/tabular.db) from two Neo4j node types (Horse and
-Event subtypes). Reuses the existing Graph RAG Neo4j connection config from
-backend/config.py. Read-only against Neo4j; only writes to the local SQLite file.
+Reuses Graph RAG Neo4j config (backend/config.py). Read-only against Neo4j;
+only writes the local SQLite file.
+
+V9 notes (do not "simplify" away):
+- Trainings are one SQLite row per Neo4j training *node* (PRIMARY KEY
+  training_id). Several horses have multiple stages of the same type
+  (Dakota 8 stages with duplicate Competition/Prep/PreComp labels; Dune,
+  Ecume, Pixie each 5 with 2× Competition). There is NO (horse_id,
+  stage_type) uniqueness — collapsing on that key would silently drop rows.
+- event_entries = COMPETESIN (engagement). event_participations =
+  HASPARTICIPATION (official result). "Engagement without result" is
+  event_entries LEFT JOIN participations with no match — NOT a NULL rank
+  inside event_participations. PARTICIPATION_QUERY always binds a Rider, so
+  rider_id is never NULL from this ETL; on current V9 every engagement has
+  a result (101 entries = 101 participations, 0 NULL ranks).
+- INVOLVESACTOR is asymmetric: CompetitionStage / TransitionStage only link
+  to Rider; Vet/Caretaker appear on Preparation / PreCompetition only.
+  TRAINING_ACTOR_QUERY does not filter by stage type — it just materializes
+  whatever Neo4j has.
 """
 import os
 import re
 import sqlite3
+from datetime import datetime, timezone
 
 from neo4j import GraphDatabase
 
@@ -17,6 +34,15 @@ from backend.config import NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD, NEO4J_DATABASE
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 DATA_DIR = os.path.join(PROJECT_ROOT, "data")
 DB_PATH = os.path.join(DATA_DIR, "tabular.db")
+STALENESS_REPORT_PATH = os.path.join(DATA_DIR, "tabular_etl_rowcounts.txt")
+
+# Expected row counts for the live V9 graph (Horse_V9_augmented / current Neo4j).
+# Update these when the ontology inventory deliberately changes.
+EXPECTED_V9_COUNTS = {
+    "trainings": 207,
+    "training_actors": 355,
+    "event_participations": 101,
+}
 
 # Deliberate exception: person nodes are not all reachable via one relationship,
 # so PEOPLE_QUERY still enumerates Rider/Caretaker/Veterinarian labels. ACTOR_ROLES
@@ -36,6 +62,8 @@ RETURN e.id AS event_id, e.eventLocation AS location, e.category AS category,
        e.eventDate AS event_date, labels(e) AS labels
 """
 
+# One result row per TRAINSIN edge / training node (keyed later by t.id).
+# Must NOT aggregate or DISTINCT on (horse, stage label) — V9 allows duplicates.
 TRAINING_QUERY = """
 MATCH (h:Horse)-[:TRAINSIN]->(t)
 OPTIONAL MATCH (t)-[:DEPENDSON]->(e)
@@ -44,11 +72,16 @@ RETURN t.id AS training_id, h.id AS horse_id, e.id AS event_id,
        t.Frequency AS frequency, labels(t) AS labels
 """
 
+# All INVOLVESACTOR edges; stage-type asymmetry (no Vet/Caretaker on Comp/
+# Transition) is inherited from the graph, not imposed here.
 TRAINING_ACTOR_QUERY = """
 MATCH (t)-[:INVOLVESACTOR]->(a)
 RETURN t.id AS training_id, a.id AS actor_id, labels(a) AS labels
 """
 
+# Official results only. Requires HASRIDER — never produces NULL rider_id.
+# Engagements without a result would appear in event_entries minus this table,
+# not as NULL-rank rows here. On V9 that anti-join is empty.
 PARTICIPATION_QUERY = """
 MATCH (e)-[:HASPARTICIPATION]->(p:EventParticipation)
 MATCH (p)-[:HASHORSE]->(h:Horse)
@@ -171,6 +204,8 @@ def fetch_from_neo4j():
                 )
                 for rec in session.run(EVENT_QUERY)
             ]
+            # List-comprehension over every Neo4j record — one tuple per
+            # training_id. Not a dict keyed by (horse_id, stage_type).
             trainings = [
                 (
                     rec["training_id"],
@@ -541,7 +576,9 @@ def build_sqlite(
             training_actors,
         )
 
-        # 12. event_participations
+        # 12. event_participations (official results; see module docstring —
+        # NULL rank is not the V9 "entry without result" path; that is
+        # event_entries without a matching participation row.)
         cur.execute(
             """
             CREATE TABLE event_participations (
@@ -801,6 +838,83 @@ def build_sqlite(
         conn.close()
 
 
+def check_v9_staleness(db_path=DB_PATH, report_path=STALENESS_REPORT_PATH):
+    """Compare key SQLite counts to EXPECTED_V9_COUNTS; print + write a report.
+
+    Returns True if all expected counts match, False if any mismatch (stale /
+    unexpected graph). Does not raise — callers decide whether to abort.
+    """
+    conn = sqlite3.connect(db_path)
+    try:
+        cur = conn.cursor()
+        actual = {
+            "trainings": cur.execute("SELECT COUNT(*) FROM trainings").fetchone()[0],
+            "training_actors": cur.execute(
+                "SELECT COUNT(*) FROM training_actors"
+            ).fetchone()[0],
+            "event_participations": cur.execute(
+                "SELECT COUNT(*) FROM event_participations"
+            ).fetchone()[0],
+        }
+        null_ranks = cur.execute(
+            "SELECT COUNT(*) FROM event_participations WHERE rank IS NULL"
+        ).fetchone()[0]
+        entries = cur.execute("SELECT COUNT(*) FROM event_entries").fetchone()[0]
+        # Actor asymmetry sample: Comp/Transition should never involve Vet/Caretaker
+        bad_actors = cur.execute(
+            """
+            SELECT COUNT(*) FROM training_actors ta
+            JOIN trainings t ON t.training_id = ta.training_id
+            WHERE t.stage_type IN ('CompetitionStage', 'TransitionStage')
+              AND ta.actor_role IN ('Veterinarian', 'Caretaker')
+            """
+        ).fetchone()[0]
+    finally:
+        conn.close()
+
+    mismatches = []
+    for key, expected in EXPECTED_V9_COUNTS.items():
+        got = actual[key]
+        if got != expected:
+            mismatches.append(f"{key}: got {got}, expected V9 {expected}")
+
+    lines = [
+        f"tabular ETL staleness report — {datetime.now(timezone.utc).isoformat()}",
+        f"database: {db_path}",
+        "",
+        f"trainings:            {actual['trainings']}  (expected {EXPECTED_V9_COUNTS['trainings']})",
+        f"training_actors:      {actual['training_actors']}  (expected {EXPECTED_V9_COUNTS['training_actors']})",
+        f"event_participations: {actual['event_participations']}  (expected {EXPECTED_V9_COUNTS['event_participations']})",
+        f"event_entries:        {entries}  (should equal event_participations on V9)",
+        f"participations with NULL rank: {null_ranks}  (expected 0 on V9)",
+        f"Vet/Caretaker on Comp/Transition stages: {bad_actors}  (expected 0)",
+        "",
+    ]
+    if mismatches:
+        lines.append("STALE / UNEXPECTED COUNTS — tabular.db may not match live V9 Neo4j:")
+        lines.extend(f"  - {m}" for m in mismatches)
+        lines.append(
+            "Re-run: python -m backend.tabular_rag.tabular_etl "
+            "after confirming Neo4j is loaded from the current RDF."
+        )
+    else:
+        lines.append("OK — key counts match EXPECTED_V9_COUNTS.")
+
+    report = "\n".join(lines) + "\n"
+    os.makedirs(os.path.dirname(report_path), exist_ok=True)
+    with open(report_path, "w", encoding="utf-8") as f:
+        f.write(report)
+
+    print("\n" + "=" * 60)
+    print("V9 STALENESS GUARD")
+    print("=" * 60)
+    print(report.rstrip())
+    print(f"(also written to {report_path})")
+    return not mismatches and null_ranks == 0 and bad_actors == 0 and entries == actual[
+        "event_participations"
+    ]
+
+
 def main():
     print(f"Connexion a Neo4j: {NEO4J_URI} (database: {NEO4J_DATABASE})")
     (
@@ -839,6 +953,12 @@ def main():
         people,
     )
     print(f"\nSQLite ecrit dans: {DB_PATH}")
+    ok = check_v9_staleness()
+    if not ok:
+        print(
+            "\nWARNING: staleness guard failed — do not trust tabular.db "
+            "until counts match EXPECTED_V9_COUNTS / live Neo4j."
+        )
 
 
 if __name__ == "__main__":

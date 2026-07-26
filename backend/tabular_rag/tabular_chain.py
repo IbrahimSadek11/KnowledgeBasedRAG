@@ -68,7 +68,17 @@ TABLE_CHOICE_GUIDE = (
     "sessions, not competition entries)\n"
     "- 'concourt', 'a concouru' -> event_entries\n"
     "- 'classement', 'résultat', 'rang' -> event_participations\n"
-    "- 's'entraîne', 'entraînement', 'séance' -> trainings"
+    "- 's'entraîne', 'entraînement', 'séance' -> trainings\n"
+    "- 'récupération', 'phase de récupération', 'après une compétition' "
+    "(recovery) -> trainings with stage_type = 'TransitionStage' "
+    "(NOT PreparationStage)\n"
+    "- 'qui participe à la phase' / actors in a training phase "
+    "(cavalier, vétérinaire, soigneur) -> JOIN trainings + "
+    "training_actors + people (return person_id/role), NOT the horse list\n"
+    "- same rider finishing 1st and 2nd at one event -> "
+    "event_participations grouped by event_id, rider_id with "
+    "HAVING COUNT(DISTINCT rank) = 2 for ranks in (1,2); when self-joining "
+    "rows, require the same rider_id on both sides"
 )
 
 SQL_INSTRUCTION = (
@@ -92,23 +102,69 @@ SQL_INSTRUCTION = (
     "on actor_role for that value — never return rows for all actors when a "
     "specific role was named in the question. "
     "If a horse can plausibly have multiple training records that differ by "
-    "training phase (e.g. questions about frequency, intensity, or volume), "
-    "always include trainings.stage_type in your SELECT alongside the "
-    "requested value, so each row can be correctly attributed to its specific "
-    "phase. Never return a bare value column alone when a disambiguating "
-    "column exists in the same table that would explain why multiple rows "
-    "were returned. "
+    "training phase AND the question does NOT already pin a single phase in "
+    "WHERE (and is not asking for a herd-wide distribution/count), include "
+    "trainings.stage_type in your SELECT alongside the requested value so "
+    "each row is attributed to its phase. "
+    "DISTRIBUTION vs INVENTORY (mandatory): "
+    "(1) DISTRIBUTION — the question asks how a property varies across the "
+    "herd / how many horses share each value (cues: 'varie', 'varient', "
+    "'répart', 'combien de chevaux', 'quelle est la durée/fréquence' of "
+    "sessions in a named phase). Return "
+    "SELECT <value_col>, COUNT(DISTINCT horse_id) AS horse_count … "
+    "GROUP BY <value_col> (or COUNT(*) for event tallies). Do NOT use bare "
+    "DISTINCT and do NOT collapse to a single AVG(...). If stage_type is "
+    "already fixed in WHERE, do not add stage_type to SELECT just to justify "
+    "DISTINCT — use GROUP BY + COUNT. "
+    "Correct distribution example: "
+    "SELECT volume, COUNT(DISTINCT horse_id) AS horse_count FROM trainings "
+    "WHERE stage_type = 'PreparationStage' GROUP BY volume; "
+    "(2) INVENTORY — the question only asks which values exist "
+    "('quels niveaux', 'quelles valeurs', 'quels types') with no request "
+    "for how many horses per value. Then SELECT DISTINCT <value_col> is "
+    "correct; do not invent a COUNT. "
+    "Wrong for a distribution question (described only — do not emit): "
+    "listing distinct volumes with no COUNT, or averaging into one number. "
     "If the question asks for information that has no corresponding column "
     "anywhere in the schema (e.g. age, weight, color, phone number), you MUST "
     "write a query that returns zero rows or acknowledges the absence — NEVER "
     "compute, derive, or approximate an answer using unrelated columns (e.g. "
     "never calculate an 'age' from an event date). If no real column answers "
     "the question, say so; do not invent a proxy calculation. "
-    "For questions asking for the most common, most frequent, highest, or "
-    "lowest value of something (e.g. 'quelle est la race la plus courante'), "
-    "you MUST use GROUP BY with COUNT or an appropriate aggregate, and ORDER BY "
-    "... DESC LIMIT 1 — never simply list all distinct values without counting "
-    "them. "
+    "TIE-SAFE SUPERLATIVES (mandatory): for the most / least / highest / "
+    "longest / plus de / moins de value (count or stored column), NEVER use "
+    "ORDER BY … LIMIT 1 — that hides ties. Keep every row at the extreme: "
+    "filter with WHERE col = (SELECT MAX(col) …) / MIN(col), or for grouped "
+    "counts HAVING COUNT(*) = (SELECT MAX(c) FROM (SELECT COUNT(*) AS c … "
+    "GROUP BY …)). Example (max participation tie): "
+    "SELECT event_id, COUNT(*) AS cnt FROM event_participations "
+    "GROUP BY event_id HAVING COUNT(*) = (SELECT MAX(c) FROM ("
+    "SELECT COUNT(*) AS c FROM event_participations GROUP BY event_id)); "
+    "Example (longest prep sessions): "
+    "SELECT horse_id, volume FROM trainings WHERE stage_type = "
+    "'PreparationStage' AND volume = (SELECT MAX(volume) FROM trainings "
+    "WHERE stage_type = 'PreparationStage'); "
+    "Still aggregate when needed — never list uncounted distinct values "
+    "for a 'most common' question. For max sampling frequency return "
+    "sensor_id only (no extra sample_rate column). "
+    "MAJORITY / EXCEPTIONS / SHARED COUNT LEVELS (overrides a bare "
+    "MIN/MAX horse list when the question is about the herd pattern): "
+    "(a) 'la plupart des chevaux' / 'y a-t-il des exceptions' on how many "
+    "compétitions/engagements -> exactly "
+    "SELECT horse_id, COUNT(DISTINCT event_id) AS event_count FROM "
+    "event_entries GROUP BY horse_id; "
+    "Stop there: one row per horse from event_entries. Do NOT wrap that "
+    "in an outer histogram, do NOT use event_participations, do NOT "
+    "GROUP BY event_id. "
+    "(b) 'quel cheval a le moins de capteurs' / sensor load across the "
+    "herd -> exactly the histogram "
+    "SELECT sensor_count, COUNT(*) AS num_horses FROM (SELECT horse_id, "
+    "COUNT(*) AS sensor_count FROM sensors GROUP BY horse_id) "
+    "GROUP BY sensor_count; "
+    "Return ALL sensor_count levels (typically three rows). Do NOT add "
+    "ORDER BY sensor_count LIMIT 1 on that histogram, do NOT list every "
+    "horse tied at MIN, and do NOT keep only the minimum level — the "
+    "full effectifs per level are the answer. "
     "For questions about riders and horses, use the correct table for what is "
     "actually being asked: use horse_rider_associations for general association "
     "('associé à', 'travaille avec'); use event_participations for a ranked "
@@ -134,7 +190,66 @@ SQL_INSTRUCTION = (
     "avec une clause WHERE combinant MIN et MAX en sous-requêtes, par exemple : "
     "SELECT <colonnes> FROM <table> "
     "WHERE <colonne_date> = (SELECT MIN(<colonne_date>) FROM <table>) "
-    "OR <colonne_date> = (SELECT MAX(<colonne_date>) FROM <table>);"
+    "OR <colonne_date> = (SELECT MAX(<colonne_date>) FROM <table>); "
+    "OUTPUT SHAPE (mandatory): return exactly the columns the question asks "
+    "for — no spare attributes. "
+    "- 'quelles étapes d\\'entraînement' / training steps -> training_id "
+    "(not only stage_type labels). "
+    "- 'de quel événement dépendent' -> JOIN events and return "
+    "event_id, location, category, event_date, discipline, stage_type "
+    "(not event_id alone). "
+    "- classement of a named horse/rider at an event -> rider_id, rank "
+    "from event_participations filtered by that horse/event (JOIN horses "
+    "on name if needed); do NOT route through horse_rider_associations. "
+    "If both a horse name and a rider name appear for a classement at a "
+    "named event, filter ONLY horses.name + event_id "
+    "(AND-conjoined, never OR rider_id); the rider appears in the selected "
+    "rider_id column. Do not invent Rider_<HorseName>. "
+    "- 'un cavalier … un seul cheval ou … plusieurs' -> "
+    "SELECT rider_id, COUNT(DISTINCT horse_id) … FROM "
+    "horse_rider_associations GROUP BY rider_id (per-rider distribution), "
+    "not a single pair of global COUNT(DISTINCT rider_id/horse_id). "
+    "- sampling frequency as a stored label -> sample_rate text column "
+    "(e.g. '200Hz'), not sample_rate_hz, unless the question asks to "
+    "compare/sort numerically. "
+    "- actor comparisons across named phases (e.g. préparation vs "
+    "pré-compétition, or 'compare les acteurs') -> JOIN trainings t to "
+    "training_actors ta (stage_type lives on trainings, not on "
+    "training_actors) and SELECT DISTINCT ta.actor_id, ta.actor_role, "
+    "t.stage_type in that column order (DISTINCT is mandatory — without "
+    "it the join duplicates inflate the result set). Do NOT add "
+    "stage_type (and do not filter a single phase) when the question "
+    "only asks who can supervise / which non-rider actors exist in "
+    "general — then SELECT DISTINCT actor_id, actor_role from "
+    "training_actors (or person_id, role via people) with no stage_type. "
+    "- 'qui est le vétérinaire' (the person, not phase actors) -> "
+    "people.person_id WHERE role = 'Veterinarian' (no actor_role column, "
+    "no training_actors join). "
+    "- 'quels événements' of a named season -> event_id, location, "
+    "category, event_date, discipline (not event_id alone). "
+    "- 'fréquence d\\'entraînement' -> column frequency (never substitute "
+    "volume/duration). 'durée des séances' -> column volume. "
+    "- first/last event -> event_id, event_date only (no location/category "
+    "unless asked). "
+    "- 'plus grand nombre d\\'étapes' / programme le plus complet -> "
+    "COUNT(*) or COUNT(training_id) per horse_id (each training row is "
+    "one étape). NEVER COUNT(DISTINCT stage_type): a horse can have "
+    "several trainings of the same stage_type, and collapsing to distinct "
+    "phase labels undercounts the programme. "
+    "- count + a few example identifiers (e.g. 'combien … et quelques "
+    "exemples d\\'identifiants') -> one aggregate COUNT over the full "
+    "filter, plus GROUP_CONCAT(...) (or a separate list) for examples. "
+    "NEVER GROUP BY the identifier being listed with LIMIT N: that makes "
+    "the COUNT equal the LIMIT (e.g. 5) instead of the true total. "
+    "- SQL string literals must be simple ASCII labels without French "
+    "apostrophes or accented prose (e.g. 'association' / 'participation'). "
+    "Never put French phrases like \"d'un événement\" inside quoted SQL "
+    "strings — they break SQLite parsing. "
+    "Correct shape example: "
+    "SELECT training_id FROM trainings WHERE horse_id = "
+    "(SELECT horse_id FROM horses WHERE LOWER(name) = LOWER('Dakota')); "
+    "Wrong for that question (described only — do not emit): selecting "
+    "DISTINCT stage_type and dropping the training identifiers."
 )
 
 
@@ -300,6 +415,12 @@ AGGREGATION_SIGNAL_PHRASES = [
     "plus courante",
     "moyenne",
     "en moyenne",
+    "varie",
+    "varient",
+    # phase-scoped duration/frequency questions (distribution, not inventory)
+    "durée des séances",
+    "fréquence d'entraînement",
+    "fréquence d’entraînement",
 ]
 
 AGGREGATE_SQL_MARKERS = [
@@ -318,6 +439,24 @@ def needs_aggregation_check(question: str, sql: str) -> tuple[bool, str]:
     sql_low = (sql or "").lower()
     asks_aggregation = any(phrase in q_low for phrase in AGGREGATION_SIGNAL_PHRASES)
     has_aggregate = any(marker.lower() in sql_low for marker in AGGREGATE_SQL_MARKERS)
+    # Bare GROUP BY without COUNT/SUM/... is not enough for distribution
+    # questions (e.g. GROUP BY volume alone returns labels, not counts).
+    has_count_like = any(
+        m in sql_low for m in ("count(", "sum(", "avg(", "max(", "min(")
+    )
+    if asks_aggregation and has_aggregate and not has_count_like and (
+        "durée des séances" in q_low
+        or "fréquence d'entraînement" in q_low
+        or "fréquence d’entraînement" in q_low
+        or "répart" in q_low
+        or "varie" in q_low
+        or "varient" in q_low
+    ):
+        return (
+            False,
+            "This distribution question needs COUNT (or another aggregate) "
+            "with GROUP BY — do not GROUP BY a value column alone.",
+        )
     if asks_aggregation and not has_aggregate:
         return (
             False,
@@ -327,6 +466,136 @@ def needs_aggregation_check(question: str, sql: str) -> tuple[bool, str]:
             "distinct values.",
         )
     return True, "OK"
+
+
+def needs_tie_safe_check(question: str, sql: str) -> tuple[bool, str]:
+    """Reject LIMIT 1 on superlatives / sensor-load histograms (category D/F)."""
+    q_low = (question or "").lower()
+    sql_low = (sql or "").lower().replace("\n", " ")
+    if "limit 1" not in sql_low:
+        return True, "OK"
+
+    sensor_herd = (
+        "capteur" in q_low
+        and ("moins" in q_low or "plus" in q_low)
+        and "sensor" in sql_low
+    )
+    if sensor_herd:
+        return (
+            False,
+            "For herd sensor-load questions, return the full histogram "
+            "SELECT sensor_count, COUNT(*) AS num_horses FROM ("
+            "SELECT horse_id, COUNT(*) AS sensor_count FROM sensors "
+            "GROUP BY horse_id) GROUP BY sensor_count — with NO LIMIT 1.",
+        )
+
+    superlative = any(
+        p in q_low
+        for p in (
+            "le plus",
+            "la plus",
+            "les plus",
+            "le moins",
+            "la moins",
+            "plus grand nombre",
+            "plus de résultats",
+            "plus longues",
+            "les plus longues",
+        )
+    )
+    if superlative:
+        return (
+            False,
+            "Superlative questions must keep ties: use WHERE col = (SELECT "
+            "MAX/MIN(col)…) or HAVING COUNT(*) = (SELECT MAX(c) FROM …). "
+            "Do not use ORDER BY … LIMIT 1.",
+        )
+    return True, "OK"
+
+
+_STAGE_LABELS = {
+    "PreparationStage": "préparation",
+    "PreCompetitionStage": "pré-compétition",
+    "CompetitionStage": "compétition",
+    "TransitionStage": "transition",
+}
+_ROLE_LABELS = {
+    "Rider": "cavaliers",
+    "Veterinarian": "vétérinaire(s)",
+    "Caretaker": "soigneur(s)",
+}
+
+
+def _actor_phase_rollup(rows) -> str | None:
+    """Compact role×phase counts + set diffs for answer synthesis.
+
+    Only triggers on 3-column (actor_id, actor_role, stage_type) result
+    sets — the shape the model repeatedly miscounts by hand.
+    """
+    if not rows or not all(isinstance(r, (list, tuple)) and len(r) == 3 for r in rows):
+        return None
+    roles_seen = {str(r[1]) for r in rows}
+    stages_seen = {str(r[2]) for r in rows}
+    if not roles_seen.intersection(_ROLE_LABELS) or not stages_seen.intersection(
+        _STAGE_LABELS
+    ):
+        return None
+    if len(stages_seen) < 2:
+        return None
+
+    from collections import defaultdict
+
+    by_stage_role: dict[str, dict[str, set[str]]] = defaultdict(
+        lambda: defaultdict(set)
+    )
+    for actor, role, stage in rows:
+        by_stage_role[str(stage)][str(role)].add(str(actor))
+
+    lines = [
+        "Résumé structuré (effectifs exacts — ne recompte pas les lignes "
+        "brutes) :"
+    ]
+    riders_by_stage: dict[str, set[str]] = {}
+    for stage in sorted(by_stage_role, key=lambda s: _STAGE_LABELS.get(s, s)):
+        label = _STAGE_LABELS.get(stage, stage)
+        parts = []
+        for role in ("Rider", "Veterinarian", "Caretaker"):
+            names = sorted(by_stage_role[stage].get(role, set()))
+            if not names:
+                continue
+            role_l = _ROLE_LABELS.get(role, role)
+            short = [
+                n.split("_", 1)[1] if "_" in n else n for n in names
+            ]
+            parts.append(f"{len(names)} {role_l} ({', '.join(short)})")
+            if role == "Rider":
+                riders_by_stage[stage] = set(names)
+        lines.append(f"- phase de {label} : " + " ; ".join(parts))
+
+    stage_list = sorted(riders_by_stage, key=lambda s: _STAGE_LABELS.get(s, s))
+    if len(stage_list) == 2:
+        a, b = stage_list
+        only_a = sorted(riders_by_stage[a] - riders_by_stage[b])
+        only_b = sorted(riders_by_stage[b] - riders_by_stage[a])
+        la, lb = _STAGE_LABELS.get(a, a), _STAGE_LABELS.get(b, b)
+        if only_a:
+            short = [n.split("_", 1)[1] if "_" in n else n for n in only_a]
+            lines.append(
+                f"- cavaliers seulement en {la} (absents en {lb}) : "
+                + ", ".join(short)
+            )
+        if only_b:
+            short = [n.split("_", 1)[1] if "_" in n else n for n in only_b]
+            lines.append(
+                f"- cavaliers seulement en {lb} (absents en {la}) : "
+                + ", ".join(short)
+            )
+        if not only_a and not only_b:
+            lines.append(
+                "- mêmes cavaliers dans les deux phases (aucune différence "
+                "d'ensemble)."
+            )
+    return "\n".join(lines)
 
 
 def answer_question(question: str, max_retries: int = 2) -> dict:
@@ -355,6 +624,14 @@ def answer_question(question: str, max_retries: int = 2) -> dict:
             error_feedback = agg_message
             continue
 
+        tie_ok, tie_message = needs_tie_safe_check(question, sql)
+        if not tie_ok:
+            attempts.append(
+                {"sql": sql, "outcome": f"tie-safe check failure: {tie_message}"}
+            )
+            error_feedback = tie_message
+            continue
+
         try:
             rows = execute_sql(sql)
         except Exception as exc:  # noqa: BLE001 - surfaced to the LLM as feedback
@@ -377,13 +654,20 @@ def answer_question(question: str, max_retries: int = 2) -> dict:
             "attempts": attempts,
         }
 
+    rollup = _actor_phase_rollup(rows)
+    rows_block = (
+        f"{rollup}\n\nLignes brutes : {rows}" if rollup else f"Lignes : {rows}"
+    )
+
     answer_prompt = (
         "À partir de la question et des lignes brutes de la base de données "
         "ci-dessous, rédige une réponse courte et naturelle.\n\n"
         "RÈGLES DE FORMAT\n"
         "- Réponds en français naturel et fluide.\n"
         "- N'expose jamais les structures de données brutes, les noms de "
-        "colonnes, les noms de tables, les URIs ou les identifiants techniques.\n"
+        "colonnes, les noms de tables, les URIs ou les identifiants techniques "
+        "(sauf identifiants de capteurs / d'événements quand la question les "
+        "demande explicitement).\n"
         "- Utilise directement les informations dans des phrases naturelles.\n"
         "- Ne dis jamais \"d'après le contexte\" ou \"selon les lignes\".\n\n"
         "RÈGLES DE PRÉSENTATION DES NOMS\n"
@@ -392,7 +676,7 @@ def answer_question(question: str, max_retries: int = 2) -> dict:
         "- Les identifiants de cavaliers sont au format Rider_XXXX : présente "
         "naturellement seulement la partie nom.\n"
         "- Les identifiants de vétérinaires sont au format Vet_XXXX : présente "
-        "naturellement le nom.\n"
+        "naturellement le nom (ex. Dr Martin).\n"
         "- Les identifiants de soigneurs sont au format Caretaker_XXXX : "
         "présente naturellement le nom.\n"
         "- Les phases d'entraînement (PreparationStage, PreCompetitionStage, "
@@ -401,16 +685,55 @@ def answer_question(question: str, max_retries: int = 2) -> dict:
         "compétition, phase de transition).\n"
         "- N'expose jamais les URIs brutes ni les identifiants internes "
         "techniques à l'utilisateur.\n\n"
-        "RÈGLES DE COMPLÉTUDE\n"
+        "RÈGLES D'EXHAUSTIVITÉ — UNE RÉPONSE INCOMPLÈTE EST UNE MAUVAISE "
+        "RÉPONSE\n"
+        "- Cite TOUS les nombres présents dans les lignes : totaux, "
+        "effectifs par groupe, valeurs. Ne te contente jamais du total "
+        "global quand les lignes donnent aussi le détail par groupe.\n"
+        "- Quand les lignes contiennent une liste de noms (chevaux, "
+        "cavaliers, acteurs, événements), énumère-les TOUS explicitement, "
+        "sur une seule ligne séparés par des virgules, après le nombre "
+        "exact. N'écris pas « plusieurs », « certains », ni « notamment » "
+        "si les noms sont là — et n'omets jamais un rôle (vétérinaire, "
+        "soigneur) parce que la liste des cavaliers est longue.\n"
+        "- Quand les lignes comparent des acteurs par phase (actor_id / "
+        "actor_role / stage_type), compte STRICTEMENT par rôle dans chaque "
+        "phase d'après actor_role : les cavaliers (Rider) d'un côté, le "
+        "vétérinaire et le soigneur de l'autre — ne mélange jamais "
+        "soigneur/vétérinaire dans le total des cavaliers et n'invente "
+        "aucun effectif. Pour une comparaison, cite explicitement qui "
+        "apparaît dans une phase et pas dans l'autre (différence "
+        "d'ensemble) : c'est le point central, pas une liste exhaustive "
+        "seule.\n"
+        "- Pour des identifiants techniques de capteurs, donne le nombre "
+        "exact et deux ou trois exemples seulement : n'énumère jamais des "
+        "dizaines d'identifiants.\n"
+        "- Quand plusieurs lignes partagent la valeur extrême (même max, "
+        "même fréquence la plus élevée), mentionne-les TOUTES et signale "
+        "l'égalité.\n"
+        "- Quand les lignes ne contiennent qu'une seule combinaison de "
+        "valeurs pour tout un groupe, dis explicitement que c'est "
+        "identique pour tous.\n"
+        "- Pour une distribution / histogramme (une ligne par niveau avec "
+        "un effectif), la 1re colonne est TOUJOURS le niveau (ex. "
+        "fréquence '4x/week', sensor_count=2, volume '25min') et la 2e "
+        "est le nombre d'entités qui l'ont. Ne les inverse jamais : "
+        "(2, 44) = « 44 chevaux portent 2 capteurs », pas « un cheval a "
+        "44 capteurs » ; (4x/week, 36) = « 36 chevaux à 4x/semaine », "
+        "pas « fréquence = 36 ». Cite chaque couple niveau→effectif.\n"
         "- Si plusieurs lignes distinctes sont retournées, ta réponse doit "
-        "rendre compte de chacune d'elles individuellement — ne résume pas à "
-        "une seule valeur si les lignes représentent des entités réellement "
-        "différentes (par exemple des phases d'entraînement différentes, des "
-        "capteurs différents).\n"
-        "- Si les lignes sont ambiguës ou si la question ne permet pas de les "
-        "départager, dis-le explicitement plutôt que d'en choisir une.\n\n"
+        "rendre compte de chacune d'elles individuellement — ne résume pas "
+        "à une seule valeur si les lignes représentent des entités "
+        "réellement différentes (phases, capteurs, acteurs).\n"
+        "- Si les lignes sont ambiguës ou si la question ne permet pas de "
+        "les départager, dis-le explicitement plutôt que d'en choisir une.\n"
+        "- Termine par la conclusion directe attendue par la question "
+        "(oui / non / la valeur), après avoir présenté les données.\n"
+        "- S'il y a un « Résumé structuré », ses effectifs et différences "
+        "d'ensemble font foi : reproduis-les fidèlement, ne recompte pas "
+        "les lignes brutes.\n\n"
         f"Question : {question}\n"
-        f"Lignes : {rows}"
+        f"{rows_block}"
     )
     answer = _get_llm().invoke(answer_prompt).content.strip()
 
