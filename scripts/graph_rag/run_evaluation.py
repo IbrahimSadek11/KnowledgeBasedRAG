@@ -14,21 +14,31 @@ from concurrent.futures import ThreadPoolExecutor, TimeoutError as FuturesTimeou
 from datetime import datetime
 from pathlib import Path
 
-# Add backend to path
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+# Add repository root + this script's directory to path
+REPO_ROOT = Path(__file__).resolve().parents[2]
+SCRIPT_DIR = Path(__file__).resolve().parent
+sys.path.append(str(REPO_ROOT))
+sys.path.append(str(SCRIPT_DIR))
 
-from backend.llm_service import init_graph_chain
+from backend.graph_rag.llm_service import init_graph_chain
 from backend.evaluation_service import init_evaluator, calculate_semantic_similarity, llm_judge_answer
 from backend.config import COST_PER_1K_INPUT, COST_PER_1K_OUTPUT, COST_PER_1K_EMBEDDING
 from backend.timing_callback import TimingCallbackHandler
+from gold_cypher_queries import (
+    GOLD_CYPHER_QUERIES,
+    EX_NOT_APPLICABLE,
+    AMBIGUOUS_FOR_REVIEW,
+    LIST_COMPARE_OVERRIDES,
+    compare_cypher_execution,
+)
 
 # ══════════════════════════════════════════════════════════════
 # Configuration
 # ══════════════════════════════════════════════════════════════
 
-TEST_DATASET_PATH = "../data/test_dataset.json"
-RESULTS_DIR = Path("../evaluation_results")
-RESULTS_DIR.mkdir(exist_ok=True)
+TEST_DATASET_PATH = str(REPO_ROOT / "data" / "test_dataset.json")
+RESULTS_DIR = REPO_ROOT / "evaluation_results" / "graph_rag"
+RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 QUESTION_TIMEOUT_SECONDS = 500
 
 print("="*80)
@@ -88,6 +98,64 @@ def attach_timing_callback(graph_chain, callback):
     if qa_llm is not None:
         qa_llm.callbacks = [callback]
 
+
+def extract_cypher_and_context(result):
+    """Best-effort extraction of generated Cypher and raw Neo4j context."""
+    cypher_query = ""
+    raw_context = []
+    steps = result.get("intermediate_steps") or []
+
+    for step in steps:
+        if not isinstance(step, dict):
+            continue
+        if step.get("query"):
+            cypher_query = step["query"]
+        if "context" in step:
+            raw_context = step.get("context") or []
+
+    if not cypher_query and steps and isinstance(steps[0], dict):
+        cypher_query = steps[0].get("query", "") or ""
+
+    return cypher_query, raw_context
+
+
+def score_execution_accuracy(question_id, cypher_query, neo4j_graph):
+    """Score EX vs locked gold Cypher result set.
+
+    Returns (execution_match, ex_error, ex_na_reason, gold_cypher).
+    execution_match is True/False for applicable questions, None for N/A.
+    """
+    if question_id in EX_NOT_APPLICABLE:
+        return None, None, EX_NOT_APPLICABLE[question_id], None
+
+    if question_id in AMBIGUOUS_FOR_REVIEW:
+        return None, None, AMBIGUOUS_FOR_REVIEW[question_id], None
+
+    if question_id not in GOLD_CYPHER_QUERIES:
+        return None, None, "no gold Cypher defined for this question", None
+
+    gold_cypher = GOLD_CYPHER_QUERIES[question_id]
+    list_mode = LIST_COMPARE_OVERRIDES.get(question_id, "multiset")
+
+    if not cypher_query or not str(cypher_query).strip():
+        return False, "generated Cypher is None or empty", None, gold_cypher
+
+    try:
+        generated_result = neo4j_graph.query(cypher_query)
+    except Exception as exc:  # noqa: BLE001 - surface as EX miss
+        return False, f"generated Cypher exception: {exc}", None, gold_cypher
+
+    try:
+        gold_result = neo4j_graph.query(gold_cypher)
+    except Exception as exc:  # noqa: BLE001 - surface as EX miss
+        return False, f"gold Cypher exception: {exc}", None, gold_cypher
+
+    matched, err = compare_cypher_execution(
+        generated_result, gold_result, list_mode=list_mode
+    )
+    return matched, err, None, gold_cypher
+
+
 for i, q_data in enumerate(questions_data, 1):
     question_id = q_data['question_id']
     question = q_data['question']
@@ -128,6 +196,16 @@ for i, q_data in enumerate(questions_data, 1):
             query_cost = 0
             total_time += query_time
             print(f"⏰ Q{question_id} TIMED OUT after {QUESTION_TIMEOUT_SECONDS}s — skipping")
+            execution_match, ex_error, ex_na_reason, gold_cypher = score_execution_accuracy(
+                question_id, cypher_query, graph
+            )
+            if execution_match is True:
+                print("EX: MATCH")
+            elif execution_match is False:
+                detail = f" ({ex_error})" if ex_error else ""
+                print(f"EX: MISMATCH{detail}")
+            else:
+                print(f"EX: N/A ({ex_na_reason})")
             results.append({
                 'question_id': question_id,
                 'question': question,
@@ -137,6 +215,10 @@ for i, q_data in enumerate(questions_data, 1):
                 'difficulty': difficulty,
                 'time_seconds': query_time,
                 'cypher_query': '',
+                'gold_cypher': gold_cypher,
+                'execution_match': execution_match,
+                'ex_error': ex_error,
+                'ex_na_reason': ex_na_reason,
                 'success': False,
                 'semantic_similarity': 0.0,
                 'llm_judge_scores': {
@@ -159,9 +241,7 @@ for i, q_data in enumerate(questions_data, 1):
                 executor.shutdown(wait=True)
         answer = result.get("result", "")
 
-        cypher_query = ""
-        if result.get("intermediate_steps"):
-            cypher_query = result["intermediate_steps"][0].get("query", "")
+        cypher_query, _raw_context = extract_cypher_and_context(result)
 
         query_time = time.time() - start_time
 
@@ -211,6 +291,18 @@ for i, q_data in enumerate(questions_data, 1):
     )
     print(f"   ⏱️  Cypher generation : {cypher_time_text}")
     print(f"   ⏱️  Answer generation : {answer_time_text}")
+
+    # ── Execution Accuracy (EX) — separate axis from answer quality ──
+    execution_match, ex_error, ex_na_reason, gold_cypher = score_execution_accuracy(
+        question_id, cypher_query, graph
+    )
+    if execution_match is True:
+        print("EX: MATCH")
+    elif execution_match is False:
+        detail = f" ({ex_error})" if ex_error else ""
+        print(f"EX: MISMATCH{detail}")
+    else:
+        print(f"EX: N/A ({ex_na_reason})")
     
     # ════════════════════════════════════════════════════
     # Step 2: Evaluate answer quality
@@ -264,6 +356,10 @@ for i, q_data in enumerate(questions_data, 1):
         'time_seconds': query_time,
         'total_time_seconds': query_time,
         'cypher_query': cypher_query,
+        'gold_cypher': gold_cypher,
+        'execution_match': execution_match,
+        'ex_error': ex_error,
+        'ex_na_reason': ex_na_reason,
         'cypher_generation_time_seconds': callback.cypher_generation_time,
         'answer_generation_time_seconds': callback.answer_generation_time,
         'success': success,
@@ -315,6 +411,17 @@ for difficulty in set(r['difficulty'] for r in results):
         'avg_llm_judge': sum(r['llm_judge_scores']['overall'] for r in diff_results) / len(diff_results),
     }
 
+ex_applicable = [r for r in results if r.get("execution_match") is not None]
+ex_matches = sum(1 for r in ex_applicable if r["execution_match"])
+ex_rate = (ex_matches / len(ex_applicable)) if ex_applicable else 0.0
+execution_accuracy = {
+    "applicable_count": len(ex_applicable),
+    "match_count": ex_matches,
+    "mismatch_count": len(ex_applicable) - ex_matches,
+    "na_count": sum(1 for r in results if r.get("execution_match") is None),
+    "ex_rate": ex_rate,
+}
+
 # Full report
 report = {
     'metadata': {
@@ -344,7 +451,11 @@ report = {
         'evaluation_cost_usd': total_eval_cost,
         'total_cost_usd': total_query_cost + total_eval_cost,
         'model': 'gpt-4o-mini',
-        'evaluation_type': 'semantic_similarity + llm_judge'
+        'evaluation_type': 'semantic_similarity + llm_judge + execution_accuracy',
+        'ex_formula': (
+            'exact Neo4j result-set match vs gold Cypher; '
+            'N/A excluded from denominator'
+        ),
     },
     'overall_metrics': {
         'success_rate': sum(1 for r in results if r['success']) / len(results),
@@ -355,6 +466,7 @@ report = {
         'avg_llm_judge_completeness': sum(r['llm_judge_scores']['completeness'] for r in results) / len(results),
         'avg_llm_judge_accuracy': sum(r['llm_judge_scores']['accuracy'] for r in results) / len(results),
         'avg_combined_score': sum(r['combined_score'] for r in results) / len(results),
+        'execution_accuracy': execution_accuracy,
     },
     'category_stats': category_stats,
     'difficulty_stats': difficulty_stats,
@@ -373,6 +485,20 @@ print(f"✅ Report saved to: {report_file}")
 print("\n" + "="*80)
 print("📊 SEMANTIC EVALUATION SUMMARY")
 print("="*80)
+
+print("\nPer-question EX:")
+print(f"  {'ID':<5} {'CATEGORY':<20} {'DIFFICULTY':<11} {'COMBINED':>8}  {'EX':<10}")
+for r in results:
+    if r.get("execution_match") is True:
+        ex_label = "MATCH"
+    elif r.get("execution_match") is False:
+        ex_label = "MISMATCH"
+    else:
+        ex_label = "N/A"
+    print(
+        f"  {r['question_id']:<5} {r['category']:<20} {r['difficulty']:<11} "
+        f"{r['combined_score']:>8.2f}  {ex_label:<10}"
+    )
 
 print(f"\n📈 Overall Metrics:")
 print(f"  Success Rate: {report['overall_metrics']['success_rate']*100:.1f}%")
@@ -395,6 +521,12 @@ print(f"  LLM Judge Correctness: {report['overall_metrics']['avg_llm_judge_corre
 print(f"  LLM Judge Completeness: {report['overall_metrics']['avg_llm_judge_completeness']:.3f}")
 print(f"  LLM Judge Accuracy: {report['overall_metrics']['avg_llm_judge_accuracy']:.3f}")
 print(f"  Combined Score: {report['overall_metrics']['avg_combined_score']:.3f}")
+ex_info = report["overall_metrics"]["execution_accuracy"]
+print(
+    f"  Execution Accuracy (EX): {ex_info['ex_rate'] * 100:.1f}% "
+    f"({ex_info['match_count']}/{ex_info['applicable_count']} applicable; "
+    f"{ex_info['na_count']} N/A excluded)"
+)
 
 print(f"\n📊 By Category:")
 for category, stats in sorted(category_stats.items(), key=lambda x: x[1]['avg_combined'], reverse=True):

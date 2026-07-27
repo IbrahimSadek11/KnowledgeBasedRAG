@@ -18,15 +18,20 @@ from datasets import Dataset
 from ragas import evaluate
 from ragas.metrics import context_precision, context_recall
 
-# Add backend to path, matching the local script pattern.
-sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+# Add repository root to path.
+REPO_ROOT = Path(__file__).resolve().parents[2]
+sys.path.append(str(REPO_ROOT))
 
 from backend.config import OPENAI_API_KEY
 
 
-REPO_ROOT = Path(__file__).resolve().parents[1]
-SOURCE_FILE = REPO_ROOT / "evaluation_results" / "semantic_evaluation_20260623_145348.json"
-RESULTS_DIR = REPO_ROOT / "evaluation_results"
+SOURCE_FILE = (
+    REPO_ROOT
+    / "evaluation_results"
+    / "graph_rag"
+    / "semantic_evaluation_20260623_145348.json"
+)
+RESULTS_DIR = REPO_ROOT / "evaluation_results" / "graph_rag"
 
 
 def truncate(text, max_chars=100):
@@ -171,10 +176,10 @@ def write_markdown_report(
 
         file.write("## Run Status\n")
         if success:
-            file.write("- Command: `python scripts/ragas_cypher_eval.py`\n")
+            file.write("- Command: `python scripts/graph_rag/ragas_cypher_eval.py`\n")
             file.write("- Status: completed without errors\n\n")
         else:
-            file.write("- Command: `python scripts/ragas_cypher_eval.py`\n")
+            file.write("- Command: `python scripts/graph_rag/ragas_cypher_eval.py`\n")
             file.write(f"- Status: failed\n- Error: `{error_text}`\n\n")
 
         file.write("## Totals\n")

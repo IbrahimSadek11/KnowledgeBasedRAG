@@ -13,7 +13,7 @@ from pathlib import Path
 
 # Add backend to path
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from backend.llm_service import init_graph_chain
+from backend.graph_rag.llm_service import init_graph_chain
 from backend.news_service import EquestrianNewsScraper
 
 # ============================================================================

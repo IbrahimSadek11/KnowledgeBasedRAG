@@ -1,7 +1,7 @@
 """
 SQL safety validator for the Tabular RAG pipeline.
 
-Mirrors the purpose of backend/cypher_validator.py, but for SQL: a pure
+Mirrors the purpose of backend/graph_rag/_archive/cypher_validator.py, but for SQL: a pure
 validation function with no LLM call and no database execution. It enforces
 that generated queries are single SELECT statements and cannot stack multiple
 statements. Dangerous write operations are blocked at execution time by

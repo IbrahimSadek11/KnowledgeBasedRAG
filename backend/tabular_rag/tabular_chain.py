@@ -254,7 +254,7 @@ SQL_INSTRUCTION = (
 
 
 def _get_llm():
-    """Same client configuration as backend/llm_service.py."""
+    """Same client configuration as backend/graph_rag/llm_service.py."""
     return ChatOpenAI(
         model="gpt-4o-mini",
         temperature=0,

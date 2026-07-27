@@ -19,7 +19,8 @@ from datetime import datetime
 from io import StringIO
 from pathlib import Path
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+REPO_ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(REPO_ROOT))
 
 from datasets import Dataset
 from ragas import evaluate
@@ -28,10 +29,16 @@ from ragas.metrics.collections import context_precision, context_recall
 from backend.config import OPENAI_API_KEY
 
 
-REPO_ROOT = Path(__file__).resolve().parents[1]
-RETRIEVAL_SOURCE_FILE = REPO_ROOT / "evaluation_results" / "retrieval_eval_20260624_030926.json"
-SEMANTIC_SOURCE_FILE = REPO_ROOT / "evaluation_results" / "semantic_evaluation_20260623_145348.json"
-RESULTS_DIR = REPO_ROOT / "evaluation_results"
+RETRIEVAL_SOURCE_FILE = (
+    REPO_ROOT / "evaluation_results" / "graph_rag" / "retrieval_eval_20260624_030926.json"
+)
+SEMANTIC_SOURCE_FILE = (
+    REPO_ROOT
+    / "evaluation_results"
+    / "graph_rag"
+    / "semantic_evaluation_20260623_145348.json"
+)
+RESULTS_DIR = REPO_ROOT / "evaluation_results" / "graph_rag"
 
 EVALUATE_TIMEOUT_SECONDS = 300
 PARTIAL_SAVE_INTERVAL = 10

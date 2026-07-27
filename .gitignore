@@ -27,6 +27,7 @@ data/conversations/*.json
 # Results
 evaluation_results/*.json
 evaluation_results/tabular_rag/*.json
+evaluation_results/graph_rag/*.json
 !evaluation_results/.gitkeep
 
 # Logs
@@ -47,6 +48,7 @@ _c*
 _t*
 _eval*
 evaluation_results/*.txt
+graph_prompt_changelog.md
 prompt_changelog.md
 ground_truth_flags.md
 docs/*.md

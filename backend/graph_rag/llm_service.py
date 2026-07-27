@@ -4,7 +4,7 @@ LangChain & OpenAI logic
 from langchain_openai import ChatOpenAI
 from langchain_community.chains.graph_qa.cypher import GraphCypherQAChain
 from langchain_core.prompts import PromptTemplate
-from .config import OPENAI_API_KEY
+from ..config import OPENAI_API_KEY
 from .graph_service import init_graph
 
 
@@ -17,16 +17,86 @@ Reply with the Cypher query only — no commentary, no markdown, no the word "cy
 RED LINE — rewrite before answering if your draft matches any of these crashes:
   Crash A: WITH <keys>, COUNT(...) AS n
            WITH <keys>, n, COLLECT(...)     ← merge COLLECT into the FIRST WITH
+  Crash A2 (COLLECT after COUNT dropped the source):
+           WITH h, COUNT(DISTINCT t) AS n
+           WITH h, n, COLLECT(DISTINCT t.id) AS ids   ← t is GONE — CRASH
+           YES : WITH h, COUNT(DISTINCT t) AS n, COLLECT(DISTINCT t.id) AS ids
+           For a histogram of counts (no stage ids needed), do NOT collect t at all:
+           YES : WITH h, COUNT(DISTINCT t) AS n
+                 RETURN n AS stages, COUNT(h) AS horses, COLLECT(h.hasName) AS names
   Crash B: WITH <keys>, COUNT(...) AS n
            RETURN ..., COUNT(DISTINCT x)    ← move that COUNT into the WITH
   Crash C: WITH e, COUNT(p) AS ranked
            RETURN h.hasName / COUNT(h) ...  ← h was dropped; keep h in the WITH
                                              OR count h in that same WITH
+  Crash D (argmax / "le plus" that hides ties):
+           ... ORDER BY <count> DESC LIMIT 1   ← FORBIDDEN whenever ties or a
+           distribution exist. "Quel X a le plus…" is NOT permission to LIMIT 1.
   Same WITH must hold EVERY aggregate AND every entity the RETURN will name.
   After an aggregating WITH, the RETURN lists aliases only — never a new COUNT
   and never a variable the WITH did not list.
 
-  Copy these two shapes when the question matches:
+  COPY THESE SHAPES EXACTLY when the question matches (do not invent LIMIT 1):
+
+  "programme d'entraînement le plus complet" / "plus grand nombre d'étapes"
+  / which horse has the most training stages → FULL histogram (NEVER LIMIT 1,
+  NEVER COLLECT(t.*) after WITH h, COUNT(t)):
+  MATCH (h:Horse)-[:TRAINSIN]->(t)
+  WITH h, COUNT(DISTINCT t) AS n
+  RETURN n AS stages, COUNT(h) AS horses, COLLECT(h.hasName) AS names
+
+  "quel événement … le plus de résultats classés" → MUST end with LIMIT 10
+  and MUST tie-break with , event (never LIMIT 1, never omit LIMIT):
+  MATCH (e)-[:HASPARTICIPATION]->(p:EventParticipation)
+  MATCH (e)-[:INSEASON]->(:CompetitiveSeason {{seasonName: "Saison 2026"}})
+  WITH e, COUNT(DISTINCT p) AS result_count
+  RETURN e.id AS event, result_count
+  ORDER BY result_count DESC, event
+  LIMIT 10
+
+  "durée des séances … phase de préparation" → Volume + horses + stages + names
+  (stages = COUNT(DISTINCT t) — required, not optional; horses≠stages):
+  MATCH (h:Horse)-[:TRAINSIN]->(t:PreparationStage)
+  RETURN t.Volume AS volume, COUNT(DISTINCT h) AS horses,
+         COUNT(DISTINCT t) AS stages, COLLECT(DISTINCT h.hasName) AS names
+
+  "un cavalier … un seul cheval ou … plusieurs" → FULL horse_count histogram
+  (NEVER WHERE horse_count > 1):
+  MATCH (r:Rider)-[:ASSOCIATEDWITH]->(h:Horse)
+  WITH r, COUNT(DISTINCT h) AS horse_count
+  RETURN horse_count, COUNT(r) AS riders, COLLECT(r.id) AS rider_ids
+
+  "même nombre de capteurs" / sensor load varies → histogram WITH names:
+  MATCH (h:Horse)<-[:ISATTACHEDTO]-(s:InertialSensors)
+  WITH h, COUNT(s) AS sensor_count
+  RETURN sensor_count, COUNT(h) AS horses, COLLECT(h.hasName) AS names
+
+  "récupération … même temps" / TransitionStage duration → WITH names:
+  MATCH (h:Horse)-[:TRAINSIN]->(t:TransitionStage)
+  RETURN t.Volume AS volume, COUNT(DISTINCT h) AS horses,
+         COLLECT(DISTINCT h.hasName) AS names
+
+  "plusieurs compétitions dans la même ville" → COLLECT event ids:
+  MATCH (e) WHERE e:ShowJumping OR e:Dressage OR e:Cross
+  WITH e.eventLocation AS location, COUNT(e) AS n, COLLECT(e.id) AS ids
+  WHERE n > 1
+  RETURN location, n AS event_count, ids
+
+  "chevaux montés par plusieurs cavaliers" → MUST COLLECT rider ids:
+  MATCH (r:Rider)-[:ASSOCIATEDWITH]->(h:Horse)
+  WITH h, COUNT(DISTINCT r) AS rider_count, COLLECT(DISTINCT r.id) AS riders
+  WHERE rider_count > 1
+  RETURN h.hasName AS horse, rider_count, riders
+
+  "vétérinaire et la soigneuse … étapes" → group by ROLE label, not actor id:
+  MATCH (t)-[:INVOLVESACTOR]->(a)
+  WHERE (t:PreparationStage OR t:PreCompetitionStage
+     OR t:CompetitionStage OR t:TransitionStage)
+    AND (a:Veterinarian OR a:Caretaker)
+  RETURN labels(a)[0] AS role, labels(t)[0] AS phase,
+         COUNT(DISTINCT t) AS stage_count
+
+  Copy these shapes when the question matches:
 
   Engagements / events with no official result:
   MATCH (h:Horse)-[:COMPETESIN]->(e)
@@ -44,6 +114,63 @@ RED LINE — rewrite before answering if your draft matches any of these crashes
        COUNT(DISTINCT h) AS horse_count
   RETURN training_count, competition_count, horse_count
   ORDER BY training_count DESC, competition_count DESC
+
+  Relationship-type frequency ("liens les plus fréquents", "which
+  relationships are most common"):
+  MATCH ()-[r]->()
+  RETURN type(r) AS relationship, COUNT(r) AS n
+  ORDER BY n DESC
+
+  Event category histogram (Amateur / Club Elite / Pro Elite counts):
+  MATCH (e) WHERE e:ShowJumping OR e:Dressage OR e:Cross
+  RETURN e.category AS category, COUNT(e) AS count
+
+  Named horse — how many competitions AND training stages (side by side):
+  MATCH (h:Horse {{hasName: "Dakota"}})
+  OPTIONAL MATCH (h)-[:COMPETESIN]->(e)
+  OPTIONAL MATCH (h)-[:TRAINSIN]->(t)
+  RETURN COUNT(DISTINCT e) AS comps, COUNT(DISTINCT t) AS stages
+
+  Global longest/shortest stage Volume (NEVER per-horse MAX) —
+  same skeleton for PreCompetitionStage AND PreparationStage:
+  MATCH (h:Horse)-[:TRAINSIN]->(t:PreparationStage)
+  WITH max(t.Volume) AS max_v
+  MATCH (h:Horse)-[:TRAINSIN]->(t:PreparationStage)
+  WHERE t.Volume = max_v
+  RETURN DISTINCT h.hasName AS horse, t.Volume AS volume
+
+  Rare races (exactly one horse) — ALWAYS COLLECT the horse name:
+  MATCH (h:Horse)
+  WITH h.hasRace AS race, COUNT(h) AS n, COLLECT(h.hasName) AS names
+  WHERE n = 1
+  RETURN race, names
+
+  Recovery / TransitionStage duration distribution (COLLECT is mandatory —
+  a bare COUNT fails Change-1 even for yes/no "toujours le même temps"):
+  MATCH (h:Horse)-[:TRAINSIN]->(t:TransitionStage)
+  RETURN t.Volume AS volume, COUNT(DISTINCT h) AS horses,
+         COLLECT(DISTINCT h.hasName) AS names
+
+  Sensor-count histogram ("même nombre de capteurs" / "cela varie") —
+  COLLECT names is mandatory on the RETURN (never bare horse_count):
+  MATCH (h:Horse)<-[:ISATTACHEDTO]-(s:InertialSensors)
+  WITH h, COUNT(s) AS sensor_count
+  RETURN sensor_count, COUNT(h) AS horses, COLLECT(h.hasName) AS names
+
+  Completeness gap (sensors missing a horse or an objective) — return ONLY gaps:
+  MATCH (s:InertialSensors)
+  OPTIONAL MATCH (s)-[:ISATTACHEDTO]->(h:Horse)
+  OPTIONAL MATCH (s)-[:ISUSEDFOR]->(o)
+  WITH s, h, o
+  WHERE h IS NULL OR o IS NULL
+  RETURN s.id AS sensor, h.hasName AS horse, o.id AS objective
+
+  Engagement without ranking — MUST keep WHERE ranked = 0:
+  MATCH (h:Horse)-[:COMPETESIN]->(e)
+  OPTIONAL MATCH (e)-[:HASPARTICIPATION]->(p:EventParticipation)-[:HASHORSE]->(h)
+  WITH h, e, COUNT(p) AS ranked
+  WHERE ranked = 0
+  RETURN h.hasName AS horse, e.id AS event, ranked
 
 ═══════════════════════════════════════════════════════════════
 ABSOLUTE PROHIBITIONS — check these first and last
@@ -86,8 +213,13 @@ A. NEVER return one raw row per node for a whole population. Group, and group
                 COUNT(DISTINCT s) AS sensor_count        (still one row/horse)
    YES : MATCH (s:InertialSensors)
          RETURN labels(s)[1] AS position, COUNT(DISTINCT s) AS sensor_count,
-                COLLECT(DISTINCT s.id)[0..3] AS sample_ids
+                COLLECT(DISTINCT s.id) AS ids
          ORDER BY sensor_count DESC
+   When the question asks for a COUNT plus examples/ids at ONE position
+   (Withers / Sternum / CanonOfForelimb / CanonOfHindlimb), return the FULL
+   COLLECT of ids — do NOT slice with [0..3]:
+   YES : MATCH (s:Withers)
+         RETURN COUNT(s) AS withers_count, COLLECT(s.id) AS ids
    Only keep a per-horse (or per-rider) column when the question explicitly
    asks for a breakdown per horse ("for each horse", "Dakota's sensors").
    "Where are the sensors placed?", "how are they distributed?" → position
@@ -97,6 +229,10 @@ B. EVERY COUNT(DISTINCT x) IS WRITTEN TOGETHER WITH COLLECT(DISTINCT <name
    of x>), ON THE SAME CLAUSE, IN ONE GO. A count alone is an incomplete
    answer, and a count and its list split across two clauses is a broken
    query — the entity stops existing at the first WITH.
+   CHANGE-1 (enumeration — Tabular RAG parity): if the question asks "which" /
+   "who" / "quels" / "qui" / "combien de chevaux" with named members in the
+   ground-truth style, or any distribution that names who is in a bucket —
+   NEVER return a bare COUNT. Always pair COUNT with COLLECT of names or ids.
    Treat "COUNT(DISTINCT x) AS n, COLLECT(DISTINCT x.name) AS items" as a
    single indivisible expression that you type as one unit:
    YES : RETURN t.Frequency AS frequency, COUNT(DISTINCT h) AS horse_count,
@@ -108,13 +244,47 @@ B. EVERY COUNT(DISTINCT x) IS WRITTEN TOGETHER WITH COLLECT(DISTINCT <name
    YES : MATCH (s:InertialSensors)-[:ISUSEDFOR]->(eo:ExperimentalObjective)
          WITH eo, COUNT(DISTINCT s) AS sensor_count,
               COLLECT(DISTINCT s.id) AS sensor_ids
-         RETURN eo.id AS objective, sensor_count,
-                sensor_ids[0..3] AS sample_ids
+         RETURN eo.id AS objective, sensor_count, sensor_ids
          ORDER BY sensor_count DESC
+   YES (prep Volume — MUST include stages count + horse names):
+         MATCH (h:Horse)-[:TRAINSIN]->(t:PreparationStage)
+         RETURN t.Volume AS volume, COUNT(DISTINCT h) AS horses,
+                COUNT(DISTINCT t) AS stages, COLLECT(DISTINCT h.hasName) AS names
+   YES (freq prep vs pré-compétition — MUST COLLECT horse names):
+         MATCH (h:Horse)-[:TRAINSIN]->(t)
+         WHERE t:PreparationStage OR t:PreCompetitionStage
+         RETURN labels(t)[0] AS stage_type, t.Frequency AS frequency,
+                COUNT(DISTINCT h) AS horse_count,
+                COLLECT(DISTINCT h.hasName) AS horses
+   YES (rider↔horse load histogram — MUST COLLECT rider ids):
+         MATCH (r:Rider)-[:ASSOCIATEDWITH]->(h:Horse)
+         WITH r, COUNT(DISTINCT h) AS horse_count
+         RETURN horse_count, COUNT(r) AS riders, COLLECT(r.id) AS rider_ids
+   YES (sensor-count histogram — MUST COLLECT horse names):
+         MATCH (h:Horse)<-[:ISATTACHEDTO]-(s:InertialSensors)
+         WITH h, COUNT(s) AS sensor_count
+         RETURN sensor_count, COUNT(h) AS horses, COLLECT(h.hasName) AS names
+   YES (TransitionStage / recovery Volume — MUST COLLECT names):
+         MATCH (h:Horse)-[:TRAINSIN]->(t:TransitionStage)
+         RETURN t.Volume AS volume, COUNT(DISTINCT h) AS horses,
+                COLLECT(DISTINCT h.hasName) AS names
+   FORBIDDEN : RETURN phase, frequency, COUNT(DISTINCT h) AS horse_count
+               (missing COLLECT of horse names)
+   FORBIDDEN : RETURN sensor_count, COUNT(h) AS horses
+               (missing COLLECT(h.hasName))
+   FORBIDDEN : RETURN horse_count, COUNT(r) AS riders
+               (missing COLLECT(r.id))
+   FORBIDDEN : RETURN t.Volume, COUNT(DISTINCT h) AS horses
+               (missing COLLECT names — and for PreparationStage also missing
+                COUNT(DISTINCT t) AS stages)
+   FORBIDDEN : WITH r, COUNT(DISTINCT h) AS horse_count WHERE horse_count > 1
+               RETURN r.id, horse_count
+               (filters the histogram — return EVERY horse_count bucket with
+                COUNT(riders) + COLLECT(rider ids) instead)
    Use h.hasName for horses and node.id for everything else.
-   Collect the FULL list for horses, riders, events and stages. For sensor
-   identifiers, which are long and numerous, slice the ALREADY COLLECTED
-   alias at the end: sensor_ids[0..3] AS sample_ids.
+   Collect the FULL list for horses, riders, events, stages AND sensor ids
+   when the question asks for identifiers/examples — never truncate with
+   [0..3] in the RETURN.
 
 D. IF THE QUERY CONTAINS A WITH, THE RETURN MUST CONTAIN NO AGGREGATE.
    Compute every COUNT/COLLECT/MAX/MIN inside a WITH that still carries its
@@ -130,10 +300,11 @@ D. IF THE QUERY CONTAINS A WITH, THE RETURN MUST CONTAIN NO AGGREGATE.
    Before writing the RETURN, re-read the last WITH: every variable you are
    about to use must appear in it by name.
 
-C. SUPERLATIVE ("the highest", "the longest", "the most", "the least") →
-   there is exactly ONE accepted skeleton, and your query must contain the
-   three tokens COLLECT( ... ) AS rows, UNWIND rows AS row, and
-   WHERE row.<field> = <the MAX or MIN alias>:
+C. SUPERLATIVE — two cases. NEVER use ORDER BY ... LIMIT 1 (drops ties and
+   hides the rest of the distribution).
+
+   C1. Single property extreme ("longest Volume", "highest sampling rate")
+   → capture ALL ties with global MAX/MIN, not LIMIT 1:
        MATCH <pattern>
        WITH COLLECT({{id: <label expr>, v: <compared expr>}}) AS rows,
             MAX(<compared expr>) AS top
@@ -141,16 +312,87 @@ C. SUPERLATIVE ("the highest", "the longest", "the most", "the least") →
        WITH row, top
        WHERE row.v = top
        RETURN row.id AS <entity>, row.v AS <value>
-   Replace MAX by MIN for "the lowest"/"the shortest"/"the least".
-   <compared expr> is a property (t.Volume, s.hasSensorTime) when the
-   superlative is about a value, and a count alias when it is about a number
-   (see 3.4.a to tell the two apart).
-   Any other shape — in particular keeping the entity variable in the WITH
-   that computes MAX()/MIN(), or re-matching the entity afterwards to compare
-   it against its own maximum — computes the aggregate one row at a time, so
-   the value always equals that row's own value and EVERY row passes the
-   filter. That returns the whole population instead of the top one.
-   This applies even when the entity has a single matching node.
+   FORBIDDEN : ... ORDER BY v DESC LIMIT 1
+   FORBIDDEN (per-horse MAX — returns ~50 rows):
+     WITH h, MAX(t.Volume) AS max_volume
+
+   C2. Distribution / histogram / "most common" / "le plus complet" /
+   "quel événement a le plus de résultats" / "quel cheval … le plus d'étapes"
+   / breakdown by count → return the FULL grouped distribution.
+   "Quel …" does NOT mean LIMIT 1. Do NOT truncate with LIMIT 1.
+   YES (training-stage histogram — copy verbatim for "programme le plus complet"):
+     MATCH (h:Horse)-[:TRAINSIN]->(t)
+     WITH h, COUNT(DISTINCT t) AS n
+     RETURN n AS stages, COUNT(h) AS horses, COLLECT(h.hasName) AS names
+   YES (event result-count leaderboard — MUST use LIMIT 10 + ORDER BY …, event):
+     MATCH (e)-[:HASPARTICIPATION]->(p:EventParticipation)
+     MATCH (e)-[:INSEASON]->(:CompetitiveSeason {{seasonName: "Saison 2026"}})
+     WITH e, COUNT(DISTINCT p) AS result_count
+     RETURN e.id AS event, result_count
+     ORDER BY result_count DESC, event
+     LIMIT 10
+   FORBIDDEN : ORDER BY result_count DESC LIMIT 1
+   FORBIDDEN : ORDER BY result_count DESC LIMIT 10
+               (missing secondary , event — tie order becomes non-deterministic)
+   FORBIDDEN : ORDER BY result_count DESC   (missing LIMIT 10 and , event)
+   FORBIDDEN : ORDER BY training_count DESC LIMIT 1
+   FORBIDDEN : ORDER BY sensor_count ASC LIMIT 1 on a histogram question
+   FORBIDDEN : WITH h, n, COLLECT(DISTINCT t.id) after COUNT dropped t
+
+E. "QUELLES ÉTAPES / WHICH TRAINING STAGES" for a named horse → one row:
+   COUNT + COLLECT of stage ids. Never one RETURN row per stage.
+   YES : MATCH (h:Horse {{hasName: "Dakota"}})-[:TRAINSIN]->(t)
+         RETURN COUNT(DISTINCT t) AS n, COLLECT(DISTINCT t.id) AS ids
+   Same for "de quel événement dépendent les étapes de X":
+   YES : MATCH (h:Horse {{hasName: "Dakota"}})-[:TRAINSIN]->(t)-[:DEPENDSON]->(e)
+         RETURN COUNT(DISTINCT e) AS n, COLLECT(DISTINCT e.id) AS ids
+
+F. COMPLETENESS / "peut-on toujours" / "est-on certain" / gaps:
+   Return the MISSING links (anti-join), not the full positive population.
+   Sensors missing horse or objective:
+   MATCH (s:InertialSensors)
+   OPTIONAL MATCH (s)-[:ISATTACHEDTO]->(h:Horse)
+   OPTIONAL MATCH (s)-[:ISUSEDFOR]->(o)
+   WITH s, h, o
+   WHERE h IS NULL OR o IS NULL
+   RETURN s.id AS sensor, h.hasName AS horse, o.id AS objective
+   Engagement without a ranking for that same horse+event:
+   MATCH (h:Horse)-[:COMPETESIN]->(e)
+   OPTIONAL MATCH (e)-[:HASPARTICIPATION]->(p:EventParticipation)-[:HASHORSE]->(h)
+   WITH h, e, COUNT(p) AS ranked
+   WHERE ranked = 0
+   RETURN h.hasName AS horse, e.id AS event, ranked
+
+G. EXPERIMENTAL OBJECTIVES catalog ("à quoi servent les objectifs"):
+   Match ExperimentalObjective DIRECTLY — joining InertialSensors duplicates
+   rows (one per sensor) and fails. No ISUSEDFOR in this query.
+   YES : MATCH (o:ExperimentalObjective)
+         RETURN o.id AS objective_id, o.hasName AS name, o.description AS description
+   FORBIDDEN : MATCH (s:InertialSensors)-[:ISUSEDFOR]->(eo:ExperimentalObjective)
+               RETURN eo.id, eo.hasName, eo.description
+
+H. SENSOR → OBJECTIVE for a named horse: return s.id, labels(s), o.id
+   labels(s) means the FULL list — FORBIDDEN to write labels(s)[1] here:
+   YES : MATCH (h:Horse {{hasName: "Dakota"}})<-[:ISATTACHEDTO]-(s)-[:ISUSEDFOR]->(o)
+         RETURN s.id AS sensor, labels(s) AS sensor_labels, o.id AS objective
+         ORDER BY sensor
+   FORBIDDEN : RETURN s.id, labels(s)[1] AS position, o.id
+
+I. NON-RIDER supervisors ("en dehors du cavalier"): DISTINCT role labels
+   Veterinarian and Caretaker only. Write `NOT a:Rider` with NO space after
+   the colon. Do not project actor ids or phases unless asked.
+   YES : MATCH (t)-[:INVOLVESACTOR]->(a)
+         WHERE a:Veterinarian OR a:Caretaker
+         RETURN DISTINCT labels(a)[0] AS role
+
+J. Same as C2 for programme / sensor / event-count histograms — FULL
+   distribution, COUNT + COLLECT names, never LIMIT 1 (see C2).
+
+K. Duration / Volume distributions by phase: always COUNT horses + COLLECT
+   names (rule B), counting via TRAINSIN from Horse — not COUNT(stage) alone:
+   YES : MATCH (h:Horse)-[:TRAINSIN]->(t:TransitionStage)
+         RETURN t.Volume AS volume, COUNT(DISTINCT h) AS horses,
+                COLLECT(DISTINCT h.hasName) AS names
 
 ═══════════════════════════════════════════════════════════════
 SECTION 1 — SCHEMA (THE ONLY SOURCE OF TRUTH)
@@ -212,7 +454,7 @@ It does not matter which node you start the pattern from: only the arrow counts.
 - TRAINSIN ALWAYS starts from the horse:
   MATCH (h:Horse {{hasName: "Dakota"}})-[:TRAINSIN]->(t)
   WHERE (t:PreparationStage OR t:PreCompetitionStage OR t:CompetitionStage OR t:TransitionStage)
-  RETURN h.hasName, t.id, labels(t)[0] AS phase
+  RETURN COUNT(DISTINCT t) AS n, COLLECT(DISTINCT t.id) AS ids
 ISATTACHEDTO ALWAYS goes from the sensor to the horse, whatever position
 label the sensor carries (InertialSensors, Withers, Sternum, CanonOfForelimb,
 CanonOfHindlimb) and even inside an OPTIONAL MATCH:
@@ -542,8 +784,10 @@ RETURN h.hasName, n
  a wrong answer)
 
 3.4.b GENERAL PATTERN FOR TIES
-Only use LIMIT 1 when the question explicitly asks for a single item.
-Otherwise return every tied row with this pattern:
+NEVER use LIMIT 1 for "quel / which … le plus / the most / le moins".
+That wording still admits ties and usually wants the full count distribution
+(see C2 / 3.4.c). LIMIT 1 is forbidden on those questions.
+Return every tied row with this pattern, OR the full histogram from 3.4.c:
 MATCH (h:Horse)-[:TRAINSIN]->(t)
 WITH h, COUNT(DISTINCT t) AS stage_count
 WITH COLLECT({{name: h.hasName, n: stage_count}}) AS rows, MAX(stage_count) AS max_count
@@ -1028,7 +1272,9 @@ SECTION 5 — CHECKS BEFORE ANSWERING
   missing, REWRITE THAT CLAUSE to hold both. Never repair this by appending
   another WITH: the entity is out of scope there and the query will not run.
 □ Superlative: is it about a property VALUE (MAX on the property) or about a
-  NUMBER (MAX on the COUNT)? Re-read 3.4.a.
+  NUMBER (MAX on the COUNT)? Re-read 3.4.a. If the draft has LIMIT 1 on a
+  "le plus / the most" count question → DELETE the LIMIT and emit the full
+  histogram (C2) or the MAX-tie filter instead.
 □ Simple question about a role or a label → a single MATCH line, with no
   superfluous traversal or aggregation?
 
