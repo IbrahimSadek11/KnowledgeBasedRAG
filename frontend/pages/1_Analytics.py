@@ -24,7 +24,7 @@ from datetime import datetime
 
 # Add backend directory to Python path
 sys.path.append(os.path.join(os.path.dirname(__file__), '../..'))
-from backend.graph_service import init_graph, execute_query
+from backend.graph_rag.graph_service import init_graph, execute_query
 
 # Load environment variables from .env file
 load_dotenv()

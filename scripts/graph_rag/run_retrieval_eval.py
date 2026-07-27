@@ -15,17 +15,17 @@ from datetime import datetime
 from pathlib import Path
 
 # Add repository root to path so the script works from any current directory.
-REPO_ROOT = Path(__file__).resolve().parents[1]   # C:\Users\iTECH\Desktop\Ibrahim\project\  = repo_root
+REPO_ROOT = Path(__file__).resolve().parents[2]
 sys.path.append(str(REPO_ROOT))
 
 from backend.config import OPENAI_API_KEY
-from backend.llm_service import init_graph_chain
+from backend.graph_rag.llm_service import init_graph_chain
 from backend.timing_callback import TimingCallbackHandler
 from langchain_openai import ChatOpenAI
 
 
 TEST_DATASET_PATH = REPO_ROOT / "data" / "test_dataset.json"
-RESULTS_DIR = REPO_ROOT / "evaluation_results"
+RESULTS_DIR = REPO_ROOT / "evaluation_results" / "graph_rag"
 QUESTION_TIMEOUT_SECONDS = 300
 
 

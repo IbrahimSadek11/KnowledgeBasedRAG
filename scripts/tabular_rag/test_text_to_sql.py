@@ -68,7 +68,7 @@ def main():
         f"Question: {TEST_QUESTION}"
     )
 
-    # Same client config as the Graph RAG code (backend/llm_service.py)
+    # Same client config as the Graph RAG code (backend/graph_rag/llm_service.py)
     llm = ChatOpenAI(
         model="gpt-4o-mini",
         temperature=0,
