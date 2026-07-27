@@ -1,0 +1,135 @@
+{
+  "doc_type": "horse_fact_sheet",
+  "source": "live_neo4j_v9",
+  "extracted_at": "2026-07-27T00:24:22.888743+00:00",
+  "horse": {
+    "id": "Horse_Comet",
+    "hasName": "Comet",
+    "hasRace": "Selle Français"
+  },
+  "associated_riders": [
+    "Rider_Nina"
+  ],
+  "training_stages": [
+    {
+      "stage_id": "Training_Comp_Comet_01",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1,
+      "depends_on_events": [
+        "Event_Pau_SJ_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Nina",
+          "role": "Rider"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_PreComp_Comet_01",
+      "stage_type": "PreCompetitionStage",
+      "volume": "75min",
+      "intensity": "Élevée",
+      "frequency": 4,
+      "depends_on_events": [
+        "Event_Pau_SJ_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Nina",
+          "role": "Rider"
+        },
+        {
+          "actor_id": "Vet_DrMartin",
+          "role": "Veterinarian"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_Prepa_Comet_01",
+      "stage_type": "PreparationStage",
+      "volume": "55min",
+      "intensity": "Élevée",
+      "frequency": 5,
+      "depends_on_events": [
+        "Event_Pau_SJ_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Caretaker_Sophie",
+          "role": "Caretaker"
+        },
+        {
+          "actor_id": "Rider_Nina",
+          "role": "Rider"
+        },
+        {
+          "actor_id": "Vet_DrMartin",
+          "role": "Veterinarian"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_Transition_Comet_01",
+      "stage_type": "TransitionStage",
+      "volume": "25min",
+      "intensity": "Faible",
+      "frequency": 2,
+      "depends_on_events": [
+        "Event_Pau_SJ_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Nina",
+          "role": "Rider"
+        }
+      ]
+    }
+  ],
+  "sensors": [
+    {
+      "sensor_id": "IMU_CanonFore_Comet_01",
+      "sensor_code": "IMU-CF-007",
+      "position": "CanonOfForelimb",
+      "sample_rate": "300Hz",
+      "offset": "0.02",
+      "format": "CSV",
+      "file_size": 8200,
+      "objective": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Comet_01",
+      "sensor_code": "IMU-W-010",
+      "position": "Withers",
+      "sample_rate": "300Hz",
+      "offset": "0.01",
+      "format": "CSV",
+      "file_size": 5900,
+      "objective": "GaitClassif_01"
+    }
+  ],
+  "event_participations": [
+    {
+      "event_id": "Event_Fontainebleau_SJ_2026",
+      "discipline": "ShowJumping",
+      "category": "Pro Elite",
+      "event_date": "2026-07-05",
+      "location": "Fontainebleau",
+      "rank": 5,
+      "status": "Terminé",
+      "rider_id": "Rider_Nina"
+    },
+    {
+      "event_id": "Event_Pau_SJ_2026",
+      "discipline": "ShowJumping",
+      "category": "Amateur 1",
+      "event_date": "2026-10-18",
+      "location": "Pau",
+      "rank": 1,
+      "status": "Terminé",
+      "rider_id": "Rider_Nina"
+    }
+  ]
+}

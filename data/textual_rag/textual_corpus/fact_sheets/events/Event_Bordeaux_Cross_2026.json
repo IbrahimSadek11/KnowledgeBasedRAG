@@ -1,0 +1,73 @@
+{
+  "doc_type": "event_fact_sheet",
+  "source": "live_neo4j_v9",
+  "extracted_at": "2026-07-27T00:24:23.584975+00:00",
+  "event": {
+    "id": "Event_Bordeaux_Cross_2026",
+    "discipline": "Cross",
+    "category": "Amateur 2",
+    "event_date": "2026-09-20",
+    "location": "Bordeaux",
+    "season": "Saison 2026"
+  },
+  "participants": [
+    {
+      "participation_id": "Participation_Bordeaux_Rafale_Ines",
+      "horse_name": "Rafale",
+      "horse_id": "Horse_Rafale",
+      "horse_race": "Morgan",
+      "rider_id": "Rider_Ines",
+      "rank": 1,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Bordeaux_Thunder_Antoine",
+      "horse_name": "Thunder",
+      "horse_id": "Horse_Thunder",
+      "horse_race": "Hanovrien",
+      "rider_id": "Rider_Antoine",
+      "rank": 2,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Bordeaux_Brume_Jade",
+      "horse_name": "Brume",
+      "horse_id": "Horse_Brume",
+      "horse_race": "Haflinger",
+      "rider_id": "Rider_Jade",
+      "rank": 3,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Bordeaux_Auroch_Elise",
+      "horse_name": "Auroch",
+      "horse_id": "Horse_Auroch",
+      "horse_race": "Pur-sang",
+      "rider_id": "Rider_Elise",
+      "rank": 4,
+      "status": "Terminé"
+    }
+  ],
+  "linked_training_summary": [
+    {
+      "stage_type": "CompetitionStage",
+      "stage_count": 1,
+      "horse_count": 1
+    },
+    {
+      "stage_type": "PreCompetitionStage",
+      "stage_count": 1,
+      "horse_count": 1
+    },
+    {
+      "stage_type": "PreparationStage",
+      "stage_count": 1,
+      "horse_count": 1
+    },
+    {
+      "stage_type": "TransitionStage",
+      "stage_count": 1,
+      "horse_count": 1
+    }
+  ]
+}

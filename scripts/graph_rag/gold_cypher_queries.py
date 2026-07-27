@@ -3,7 +3,7 @@ Gold Cypher queries + Neo4j result-set comparator for Graph RAG Execution Accura
 
 GOLD_CYPHER_QUERIES entries are accepted only after live V9 Neo4j verification
 (or after reusing a Cypher+result already recorded in
-docs/graph_gt_reconciliation_signoff.md).
+docs/graph_rag/graph_gt_reconciliation_signoff.md).
 """
 from __future__ import annotations
 
@@ -20,7 +20,7 @@ GOLD_CYPHER_QUERIES: dict[str, str] = {
         "MATCH (h:Horse {hasName: 'Dakota'})-[:COMPETESIN]->(e) "
         "RETURN DISTINCT e.id AS event_id"
     ),
-    # Exact Cypher from docs/graph_gt_reconciliation_signoff.md (Q5)
+    # Exact Cypher from docs/graph_rag/graph_gt_reconciliation_signoff.md (Q5)
     "Q5": (
         "MATCH (h:Horse {hasName:'Dakota'})-[:TRAINSIN]->(t) "
         "RETURN COUNT(DISTINCT t) AS n, COLLECT(DISTINCT t.id) AS ids"
@@ -34,7 +34,7 @@ GOLD_CYPHER_QUERIES: dict[str, str] = {
         "MATCH (h:Horse)-[:TRAINSIN]->(t:PreCompetitionStage) "
         "RETURN DISTINCT t.Intensity AS intensity"
     ),
-    # Exact Cypher from docs/graph_gt_reconciliation_signoff.md (Q8)
+    # Exact Cypher from docs/graph_rag/graph_gt_reconciliation_signoff.md (Q8)
     "Q8": (
         "MATCH (h:Horse)-[:TRAINSIN]->(t:PreparationStage) "
         "RETURN t.Volume AS volume, COUNT(DISTINCT h) AS horses, "
@@ -228,14 +228,14 @@ GOLD_CYPHER_QUERIES: dict[str, str] = {
         "MATCH (s:InertialSensors) "
         "RETURN labels(s)[1] AS position, s.hasSensorOffset AS offset, COUNT(s) AS count"
     ),
-    # Exact Cypher from docs/graph_gt_reconciliation_signoff.md (Q52)
+    # Exact Cypher from docs/graph_rag/graph_gt_reconciliation_signoff.md (Q52)
     "Q52": (
         "MATCH (t) "
         "WHERE t:PreparationStage OR t:PreCompetitionStage "
         "OR t:CompetitionStage OR t:TransitionStage "
         "RETURN labels(t)[0] AS stage_type, COUNT(t) AS n"
     ),
-    # Exact Cypher from docs/graph_gt_reconciliation_signoff.md (Q53)
+    # Exact Cypher from docs/graph_rag/graph_gt_reconciliation_signoff.md (Q53)
     "Q53": (
         "MATCH (h:Horse)-[:TRAINSIN]->(t) "
         "WITH h, COUNT(DISTINCT t) AS n "
@@ -260,7 +260,7 @@ GOLD_CYPHER_QUERIES: dict[str, str] = {
         "RETURN labels(a)[0] AS role, labels(t)[0] AS phase, "
         "COUNT(DISTINCT t) AS stage_count"
     ),
-    # Exact Cypher from docs/graph_gt_reconciliation_signoff.md (Q57)
+    # Exact Cypher from docs/graph_rag/graph_gt_reconciliation_signoff.md (Q57)
     "Q57": (
         "MATCH (t) "
         "WHERE t:PreparationStage OR t:PreCompetitionStage "
@@ -297,7 +297,7 @@ GOLD_CYPHER_QUERIES: dict[str, str] = {
         "AND e.category = 'Pro Elite' "
         "RETURN labels(e)[0] AS discipline, e.id AS event_id"
     ),
-    # Exact Cypher from docs/graph_gt_reconciliation_signoff.md (Q62)
+    # Exact Cypher from docs/graph_rag/graph_gt_reconciliation_signoff.md (Q62)
     "Q62": (
         "MATCH (h:Horse)-[:COMPETESIN]->(e) "
         "OPTIONAL MATCH (e)-[:HASPARTICIPATION]->(p:EventParticipation) "
@@ -306,7 +306,7 @@ GOLD_CYPHER_QUERIES: dict[str, str] = {
         "RETURN e.id AS event, entrants, ranked "
         "ORDER BY entrants DESC"
     ),
-    # Exact Cypher from docs/graph_gt_reconciliation_signoff.md (Q63)
+    # Exact Cypher from docs/graph_rag/graph_gt_reconciliation_signoff.md (Q63)
     "Q63": (
         "MATCH (e)-[:HASPARTICIPATION]->(p:EventParticipation) "
         "MATCH (e)-[:INSEASON]->(:CompetitiveSeason {seasonName:'Saison 2026'}) "
@@ -320,7 +320,7 @@ GOLD_CYPHER_QUERIES: dict[str, str] = {
         "WITH h, COUNT(DISTINCT e) AS event_count "
         "RETURN event_count, COUNT(h) AS horses, COLLECT(h.hasName) AS names"
     ),
-    # Exact Cypher from docs/graph_gt_reconciliation_signoff.md (Q65)
+    # Exact Cypher from docs/graph_rag/graph_gt_reconciliation_signoff.md (Q65)
     "Q65": (
         "MATCH (h:Horse)-[:COMPETESIN]->(e) "
         "OPTIONAL MATCH (e)-[:HASPARTICIPATION]->(p:EventParticipation)-[:HASHORSE]->(h) "
@@ -329,7 +329,7 @@ GOLD_CYPHER_QUERIES: dict[str, str] = {
         "RETURN h.hasName AS horse, e.id AS event, ranked "
         "ORDER BY horse"
     ),
-    # Exact Cypher from docs/graph_gt_reconciliation_signoff.md (Q66)
+    # Exact Cypher from docs/graph_rag/graph_gt_reconciliation_signoff.md (Q66)
     "Q66": (
         "MATCH (e)-[:HASPARTICIPATION]->(p:EventParticipation)-[:HASRIDER]->(r:Rider) "
         "MATCH (p)-[:HASHORSE]->(h:Horse) "
@@ -354,7 +354,7 @@ GOLD_CYPHER_QUERIES: dict[str, str] = {
         "WHERE ranked = 0 "
         "RETURN h.hasName AS horse, ranked"
     ),
-    # Exact Cypher from docs/graph_gt_reconciliation_signoff.md (Q69)
+    # Exact Cypher from docs/graph_rag/graph_gt_reconciliation_signoff.md (Q69)
     "Q69": (
         "MATCH ()-[r]->() "
         "RETURN type(r) AS relationship, COUNT(r) AS n "
@@ -402,7 +402,7 @@ GOLD_CYPHER_QUERIES: dict[str, str] = {
         "MATCH (o:ExperimentalObjective) "
         "RETURN o.id AS objective_id, o.hasName AS name, o.description AS description"
     ),
-    # Exact Cypher from docs/graph_gt_reconciliation_signoff.md (Q82)
+    # Exact Cypher from docs/graph_rag/graph_gt_reconciliation_signoff.md (Q82)
     "Q82": (
         "MATCH (h:Horse {hasName:'Dakota'})<-[:ISATTACHEDTO]-(s)-[:ISUSEDFOR]->(o) "
         "RETURN s.id AS sensor, labels(s) AS sensor_labels, o.id AS objective "
@@ -429,7 +429,7 @@ GOLD_CYPHER_QUERIES: dict[str, str] = {
         "WHERE t.Volume = min_v "
         "RETURN DISTINCT h.hasName AS horse, t.Volume AS volume"
     ),
-    # Exact Cypher from docs/graph_gt_reconciliation_signoff.md (Q86)
+    # Exact Cypher from docs/graph_rag/graph_gt_reconciliation_signoff.md (Q86)
     "Q86": (
         "MATCH (h:Horse {hasName:'Dakota'}) "
         "OPTIONAL MATCH (h)-[:COMPETESIN]->(e) "
@@ -460,7 +460,7 @@ GOLD_CYPHER_QUERIES: dict[str, str] = {
         "WITH h, COUNT(s) AS sensor_count "
         "RETURN sensor_count, COUNT(h) AS horses, COLLECT(h.hasName) AS names"
     ),
-    # Exact Cypher from docs/graph_gt_reconciliation_signoff.md (Q93)
+    # Exact Cypher from docs/graph_rag/graph_gt_reconciliation_signoff.md (Q93)
     "Q93": (
         "MATCH (h:Horse) "
         "OPTIONAL MATCH (h)-[:COMPETESIN]->(e) "
@@ -468,7 +468,7 @@ GOLD_CYPHER_QUERIES: dict[str, str] = {
         "WITH h, COUNT(DISTINCT e) AS eng, COUNT(DISTINCT p) AS res "
         "RETURN eng, res, COUNT(h) AS horses"
     ),
-    # Exact Cypher from docs/graph_gt_reconciliation_signoff.md (Q94)
+    # Exact Cypher from docs/graph_rag/graph_gt_reconciliation_signoff.md (Q94)
     "Q94": (
         "MATCH (h:Horse)-[:TRAINSIN]->(t) "
         "WHERE h.hasName IN ['Dakota','Orion'] "
@@ -489,7 +489,7 @@ GOLD_CYPHER_QUERIES: dict[str, str] = {
         "RETURN DISTINCT e.id AS event, r.id AS rider, "
         "h1.hasName AS first, h2.hasName AS second"
     ),
-    # Exact Cypher from docs/graph_gt_reconciliation_signoff.md (Q97)
+    # Exact Cypher from docs/graph_rag/graph_gt_reconciliation_signoff.md (Q97)
     "Q97": (
         "MATCH (h:Horse) "
         "OPTIONAL MATCH (h)-[:COMPETESIN]->(e) "

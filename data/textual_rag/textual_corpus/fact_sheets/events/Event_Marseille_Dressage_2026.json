@@ -1,0 +1,91 @@
+{
+  "doc_type": "event_fact_sheet",
+  "source": "live_neo4j_v9",
+  "extracted_at": "2026-07-27T00:24:23.601860+00:00",
+  "event": {
+    "id": "Event_Marseille_Dressage_2026",
+    "discipline": "Dressage",
+    "category": "Club Elite",
+    "event_date": "2026-10-03",
+    "location": "Marseille",
+    "season": "Saison 2026"
+  },
+  "participants": [
+    {
+      "participation_id": "Participation_Marseille_Bella_Julien",
+      "horse_name": "Bella",
+      "horse_id": "Horse_Bella",
+      "horse_race": "Lusitanien",
+      "rider_id": "Rider_Julien",
+      "rank": 1,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Marseille_Mistral_Tom",
+      "horse_name": "Mistral",
+      "horse_id": "Horse_Mistral",
+      "horse_race": "Oldenburg",
+      "rider_id": "Rider_Tom",
+      "rank": 2,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Marseille_Zephyr_Nina",
+      "horse_name": "Zephyr",
+      "horse_id": "Horse_Zephyr",
+      "horse_race": "Trakehner",
+      "rider_id": "Rider_Nina",
+      "rank": 3,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Marseille_Crepuscule_Pauline",
+      "horse_name": "Crepuscule",
+      "horse_id": "Horse_Crepuscule",
+      "horse_race": "Selle Français",
+      "rider_id": "Rider_Pauline",
+      "rank": 4,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Marseille_Nebule_Theo",
+      "horse_name": "Nebule",
+      "horse_id": "Horse_Nebule",
+      "horse_race": "Haflinger",
+      "rider_id": "Rider_Theo",
+      "rank": 5,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Marseille_Eclat_Chloe",
+      "horse_name": "Eclat",
+      "horse_id": "Horse_Eclat",
+      "horse_race": "Morgan",
+      "rider_id": "Rider_Chloe",
+      "rank": 6,
+      "status": "Terminé"
+    }
+  ],
+  "linked_training_summary": [
+    {
+      "stage_type": "CompetitionStage",
+      "stage_count": 3,
+      "horse_count": 3
+    },
+    {
+      "stage_type": "PreCompetitionStage",
+      "stage_count": 3,
+      "horse_count": 3
+    },
+    {
+      "stage_type": "PreparationStage",
+      "stage_count": 3,
+      "horse_count": 3
+    },
+    {
+      "stage_type": "TransitionStage",
+      "stage_count": 3,
+      "horse_count": 3
+    }
+  ]
+}

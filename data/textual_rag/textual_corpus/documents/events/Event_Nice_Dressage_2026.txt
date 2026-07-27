@@ -1,0 +1,20 @@
+Compte rendu d'épreuve — Event_Nice_Dressage_2026
+=====================================================
+
+Épreuve de dressage (Dressage), catégorie Pro Elite, organisée le 2026-09-28 à Nice, rattachée à la saison « Saison 2026 ».
+
+Classement et participants (4 engagement(s))
+----------------------------------------
+  • Rang 1 — cheval Sirius (Horse_Sirius, race « Frison »), cavalier Rider_Baptiste, statut « Terminé ».
+  • Rang 2 — cheval Eclat (Horse_Eclat, race « Morgan »), cavalier Rider_Chloe, statut « Terminé ».
+  • Rang 3 — cheval Braise (Horse_Braise, race « Appaloosa »), cavalier Rider_Alice, statut « Terminé ».
+  • Rang 4 — cheval Eclair (Horse_Eclair, race « Mustang »), cavalier Rider_Jade, statut « Terminé ».
+
+Entraînements liés (étapes DEPENDSON vers cette épreuve)
+----------------------------------------
+  • compétition (entraînement) (CompetitionStage) : 3 étape(s) pour 3 cheval(aux).
+  • pré-compétition (PreCompetitionStage) : 3 étape(s) pour 3 cheval(aux).
+  • préparation (PreparationStage) : 3 étape(s) pour 3 cheval(aux).
+  • transition / récupération (TransitionStage) : 3 étape(s) pour 3 cheval(aux).
+
+Note méthodologique : discipline, date, lieu, catégorie, rangs et cavaliers sont exclusivement issus du fact-sheet Neo4j V9.

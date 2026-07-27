@@ -1,0 +1,34 @@
+Rapport d'entraînement — Atlas
+==================================
+
+Ce rapport synthétise exclusivement les faits enregistrés dans le graphe de connaissances pour le cheval Atlas (identifiant Horse_Atlas), race Holsteiner.
+
+Cavaliers associés (relation ASSOCIATEDWITH) : Rider_Camille.
+
+Programme d'entraînement (4 étape(s) enregistrée(s))
+----------------------------------------
+
+Phase compétition (entraînement) (CompetitionStage) — 1 séance(s) :
+  • Training_Comp_Atlas_01 : volume 30min, intensité Pic, fréquence 1 ; acteurs : cavalier Rider_Camille ; événements liés : Event_Toulouse_Cross_2026.
+
+Phase pré-compétition (PreCompetitionStage) — 1 séance(s) :
+  • Training_PreComp_Atlas_01 : volume 65min, intensité Élevée, fréquence 3 ; acteurs : cavalier Rider_Camille, vétérinaire Vet_DrMartin ; événements liés : Event_Toulouse_Cross_2026.
+
+Phase préparation (PreparationStage) — 1 séance(s) :
+  • Training_Prepa_Atlas_01 : volume 50min, intensité Modérée, fréquence 4 ; acteurs : cavalier Rider_Camille, soigneur Caretaker_Sophie, vétérinaire Vet_DrMartin ; événements liés : Event_Toulouse_Cross_2026.
+
+Phase transition / récupération (TransitionStage) — 1 séance(s) :
+  • Training_Transition_Atlas_01 : volume 30min, intensité Faible, fréquence 2 ; acteurs : cavalier Rider_Camille ; événements liés : Event_Toulouse_Cross_2026.
+
+Capteurs inertiels (3 capteur(s) attaché(s))
+----------------------------------------
+  • IMU_CanonFore_Atlas_01 en position canon antérieur (CanonOfForelimb), fréquence d'échantillonnage 250Hz, offset 0.02, format CSV, taille de fichier 8000, objectif expérimental FatigueDetection.
+  • IMU_Sternum_Atlas_01 en position sternum (Sternum), fréquence d'échantillonnage 200Hz, offset 0.02, format CSV, taille de fichier 6600, objectif expérimental FatigueDetection.
+  • IMU_Withers_Atlas_01 en position garrot (Withers), fréquence d'échantillonnage 250Hz, offset 0.01, format CSV, taille de fichier 5700, objectif expérimental GaitClassif_01.
+
+Participations en compétition (2 résultat(s))
+----------------------------------------
+  • Event_Toulouse_Cross_2026 (cross / concours complet / Cross, catégorie « Amateur 2 ») le 2026-09-13 à Toulouse : rang 3, statut « Terminé », cavalier Rider_Camille.
+  • Event_Pau_SJ_2026 (saut d'obstacles / ShowJumping, catégorie « Amateur 1 ») le 2026-10-18 à Pau : rang 3, statut « Terminé », cavalier Rider_Camille.
+
+Note méthodologique : aucun rang, volume, intensité, fréquence, capteur ou participant n'a été inventé ; toutes les valeurs ci-dessus proviennent du fact-sheet extrait de Neo4j V9.

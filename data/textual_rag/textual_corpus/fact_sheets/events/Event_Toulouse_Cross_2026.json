@@ -1,0 +1,73 @@
+{
+  "doc_type": "event_fact_sheet",
+  "source": "live_neo4j_v9",
+  "extracted_at": "2026-07-27T00:24:23.577422+00:00",
+  "event": {
+    "id": "Event_Toulouse_Cross_2026",
+    "discipline": "Cross",
+    "category": "Amateur 2",
+    "event_date": "2026-09-13",
+    "location": "Toulouse",
+    "season": "Saison 2026"
+  },
+  "participants": [
+    {
+      "participation_id": "Participation_Toulouse_Iris_Camille",
+      "horse_name": "Iris",
+      "horse_id": "Horse_Iris",
+      "horse_race": "PRE",
+      "rider_id": "Rider_Camille",
+      "rank": 1,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Toulouse_Orage_Alice",
+      "horse_name": "Orage",
+      "horse_id": "Horse_Orage",
+      "horse_race": "Fjord",
+      "rider_id": "Rider_Alice",
+      "rank": 2,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Toulouse_Atlas_Camille",
+      "horse_name": "Atlas",
+      "horse_id": "Horse_Atlas",
+      "horse_race": "Holsteiner",
+      "rider_id": "Rider_Camille",
+      "rank": 3,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Toulouse_Tonnerre_Ines",
+      "horse_name": "Tonnerre",
+      "horse_id": "Horse_Tonnerre",
+      "horse_race": "Mustang",
+      "rider_id": "Rider_Ines",
+      "rank": 4,
+      "status": "Terminé"
+    }
+  ],
+  "linked_training_summary": [
+    {
+      "stage_type": "CompetitionStage",
+      "stage_count": 2,
+      "horse_count": 2
+    },
+    {
+      "stage_type": "PreCompetitionStage",
+      "stage_count": 2,
+      "horse_count": 2
+    },
+    {
+      "stage_type": "PreparationStage",
+      "stage_count": 2,
+      "horse_count": 2
+    },
+    {
+      "stage_type": "TransitionStage",
+      "stage_count": 2,
+      "horse_count": 2
+    }
+  ]
+}

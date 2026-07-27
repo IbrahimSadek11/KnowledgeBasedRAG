@@ -1,0 +1,20 @@
+Compte rendu d'épreuve — Event_Bordeaux_Cross_2026
+======================================================
+
+Épreuve de cross / concours complet (Cross), catégorie Amateur 2, organisée le 2026-09-20 à Bordeaux, rattachée à la saison « Saison 2026 ».
+
+Classement et participants (4 engagement(s))
+----------------------------------------
+  • Rang 1 — cheval Rafale (Horse_Rafale, race « Morgan »), cavalier Rider_Ines, statut « Terminé ».
+  • Rang 2 — cheval Thunder (Horse_Thunder, race « Hanovrien »), cavalier Rider_Antoine, statut « Terminé ».
+  • Rang 3 — cheval Brume (Horse_Brume, race « Haflinger »), cavalier Rider_Jade, statut « Terminé ».
+  • Rang 4 — cheval Auroch (Horse_Auroch, race « Pur-sang »), cavalier Rider_Elise, statut « Terminé ».
+
+Entraînements liés (étapes DEPENDSON vers cette épreuve)
+----------------------------------------
+  • compétition (entraînement) (CompetitionStage) : 1 étape(s) pour 1 cheval(aux).
+  • pré-compétition (PreCompetitionStage) : 1 étape(s) pour 1 cheval(aux).
+  • préparation (PreparationStage) : 1 étape(s) pour 1 cheval(aux).
+  • transition / récupération (TransitionStage) : 1 étape(s) pour 1 cheval(aux).
+
+Note méthodologique : discipline, date, lieu, catégorie, rangs et cavaliers sont exclusivement issus du fact-sheet Neo4j V9.

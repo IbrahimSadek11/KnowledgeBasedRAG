@@ -1,0 +1,82 @@
+{
+  "doc_type": "event_fact_sheet",
+  "source": "live_neo4j_v9",
+  "extracted_at": "2026-07-27T00:24:23.511560+00:00",
+  "event": {
+    "id": "Event_Fontainebleau_SJ_2026",
+    "discipline": "ShowJumping",
+    "category": "Pro Elite",
+    "event_date": "2026-07-05",
+    "location": "Fontainebleau",
+    "season": "Saison 2026"
+  },
+  "participants": [
+    {
+      "participation_id": "Participation_Fontainebleau_Luna_Clara",
+      "horse_name": "Luna",
+      "horse_id": "Horse_Luna",
+      "horse_race": "KWPN",
+      "rider_id": "Rider_Clara",
+      "rank": 1,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Fontainebleau_Aurore_Pauline",
+      "horse_name": "Aurore",
+      "horse_id": "Horse_Aurore",
+      "horse_race": "KWPN",
+      "rider_id": "Rider_Pauline",
+      "rank": 2,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Fontainebleau_Rio_Lea",
+      "horse_name": "Rio",
+      "horse_id": "Horse_Rio",
+      "horse_race": "Arabe",
+      "rider_id": "Rider_Lea",
+      "rank": 3,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Fontainebleau_Soleil_Alice",
+      "horse_name": "Soleil",
+      "horse_id": "Horse_Soleil",
+      "horse_race": "Andalou",
+      "rider_id": "Rider_Alice",
+      "rank": 4,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Fontainebleau_Comet_Nina",
+      "horse_name": "Comet",
+      "horse_id": "Horse_Comet",
+      "horse_race": "Selle Français",
+      "rider_id": "Rider_Nina",
+      "rank": 5,
+      "status": "Terminé"
+    }
+  ],
+  "linked_training_summary": [
+    {
+      "stage_type": "CompetitionStage",
+      "stage_count": 1,
+      "horse_count": 1
+    },
+    {
+      "stage_type": "PreCompetitionStage",
+      "stage_count": 1,
+      "horse_count": 1
+    },
+    {
+      "stage_type": "PreparationStage",
+      "stage_count": 1,
+      "horse_count": 1
+    },
+    {
+      "stage_type": "TransitionStage",
+      "stage_count": 1,
+      "horse_count": 1
+    }
+  ]
+}

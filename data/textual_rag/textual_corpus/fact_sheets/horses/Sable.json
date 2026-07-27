@@ -1,0 +1,135 @@
+{
+  "doc_type": "horse_fact_sheet",
+  "source": "live_neo4j_v9",
+  "extracted_at": "2026-07-27T00:24:23.308177+00:00",
+  "horse": {
+    "id": "Horse_Sable",
+    "hasName": "Sable",
+    "hasRace": "Fjord"
+  },
+  "associated_riders": [
+    "Rider_Marc"
+  ],
+  "training_stages": [
+    {
+      "stage_id": "Training_Comp_Sable_01",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1,
+      "depends_on_events": [
+        "Event_Strasbourg_Cross_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Marc",
+          "role": "Rider"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_PreComp_Sable_01",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3,
+      "depends_on_events": [
+        "Event_Strasbourg_Cross_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Marc",
+          "role": "Rider"
+        },
+        {
+          "actor_id": "Vet_DrMartin",
+          "role": "Veterinarian"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_Prepa_Sable_01",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4,
+      "depends_on_events": [
+        "Event_Strasbourg_Cross_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Caretaker_Sophie",
+          "role": "Caretaker"
+        },
+        {
+          "actor_id": "Rider_Marc",
+          "role": "Rider"
+        },
+        {
+          "actor_id": "Vet_DrMartin",
+          "role": "Veterinarian"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_Transition_Sable_01",
+      "stage_type": "TransitionStage",
+      "volume": "25min",
+      "intensity": "Faible",
+      "frequency": 2,
+      "depends_on_events": [
+        "Event_Strasbourg_Cross_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Marc",
+          "role": "Rider"
+        }
+      ]
+    }
+  ],
+  "sensors": [
+    {
+      "sensor_id": "IMU_CanonHind_Sable_01",
+      "sensor_code": "IMU-CH-008",
+      "position": "CanonOfHindlimb",
+      "sample_rate": "250Hz",
+      "offset": "0.015",
+      "format": "CSV",
+      "file_size": 7500,
+      "objective": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Withers_Sable_01",
+      "sensor_code": "IMU-W-018",
+      "position": "Withers",
+      "sample_rate": "200Hz",
+      "offset": "0.01",
+      "format": "CSV",
+      "file_size": 5300,
+      "objective": "GaitClassif_01"
+    }
+  ],
+  "event_participations": [
+    {
+      "event_id": "Event_Strasbourg_Cross_2026",
+      "discipline": "Cross",
+      "category": "Amateur 1",
+      "event_date": "2026-07-12",
+      "location": "Strasbourg",
+      "rank": 2,
+      "status": "Terminé",
+      "rider_id": "Rider_Marc"
+    },
+    {
+      "event_id": "Event_LeMans_Cross_2026",
+      "discipline": "Cross",
+      "category": "Amateur 1",
+      "event_date": "2026-09-05",
+      "location": "Le Mans",
+      "rank": 1,
+      "status": "Terminé",
+      "rider_id": "Rider_Marc"
+    }
+  ]
+}

@@ -19,7 +19,7 @@ from backend.config import OPENAI_API_KEY
 from backend.tabular_rag.sql_validator import validate_sql
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-DB_PATH = os.path.join(PROJECT_ROOT, "data", "tabular.db")
+DB_PATH = os.path.join(PROJECT_ROOT, "data", "tabular_rag", "tabular.db")
 
 TABLES = [
     "horses",

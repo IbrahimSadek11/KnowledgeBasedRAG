@@ -1,0 +1,135 @@
+{
+  "doc_type": "horse_fact_sheet",
+  "source": "live_neo4j_v9",
+  "extracted_at": "2026-07-27T00:24:22.819706+00:00",
+  "horse": {
+    "id": "Horse_Auroch",
+    "hasName": "Auroch",
+    "hasRace": "Pur-sang"
+  },
+  "associated_riders": [
+    "Rider_Elise"
+  ],
+  "training_stages": [
+    {
+      "stage_id": "Training_Comp_Auroch_01",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1,
+      "depends_on_events": [
+        "Event_Clermont_Cross_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Elise",
+          "role": "Rider"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_PreComp_Auroch_01",
+      "stage_type": "PreCompetitionStage",
+      "volume": "65min",
+      "intensity": "Élevée",
+      "frequency": 3,
+      "depends_on_events": [
+        "Event_Clermont_Cross_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Elise",
+          "role": "Rider"
+        },
+        {
+          "actor_id": "Vet_DrMartin",
+          "role": "Veterinarian"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_Prepa_Auroch_01",
+      "stage_type": "PreparationStage",
+      "volume": "50min",
+      "intensity": "Modérée",
+      "frequency": 5,
+      "depends_on_events": [
+        "Event_Clermont_Cross_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Elise",
+          "role": "Rider"
+        },
+        {
+          "actor_id": "Caretaker_Sophie",
+          "role": "Caretaker"
+        },
+        {
+          "actor_id": "Vet_DrMartin",
+          "role": "Veterinarian"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_Transition_Auroch_01",
+      "stage_type": "TransitionStage",
+      "volume": "25min",
+      "intensity": "Faible",
+      "frequency": 2,
+      "depends_on_events": [
+        "Event_Clermont_Cross_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Elise",
+          "role": "Rider"
+        }
+      ]
+    }
+  ],
+  "sensors": [
+    {
+      "sensor_id": "IMU_CanonHind_Auroch_01",
+      "sensor_code": "IMU-CH-013",
+      "position": "CanonOfHindlimb",
+      "sample_rate": "250Hz",
+      "offset": "0.02",
+      "format": "CSV",
+      "file_size": 7800,
+      "objective": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Withers_Auroch_01",
+      "sensor_code": "IMU-W-044",
+      "position": "Withers",
+      "sample_rate": "200Hz",
+      "offset": "0.01",
+      "format": "CSV",
+      "file_size": 5500,
+      "objective": "GaitClassif_01"
+    }
+  ],
+  "event_participations": [
+    {
+      "event_id": "Event_Bordeaux_Cross_2026",
+      "discipline": "Cross",
+      "category": "Amateur 2",
+      "event_date": "2026-09-20",
+      "location": "Bordeaux",
+      "rank": 4,
+      "status": "Terminé",
+      "rider_id": "Rider_Elise"
+    },
+    {
+      "event_id": "Event_Clermont_Cross_2026",
+      "discipline": "Cross",
+      "category": "Amateur 2",
+      "event_date": "2026-10-10",
+      "location": "Clermont-Ferrand",
+      "rank": 5,
+      "status": "Terminé",
+      "rider_id": "Rider_Elise"
+    }
+  ]
+}

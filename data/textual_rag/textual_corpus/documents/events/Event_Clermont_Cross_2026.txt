@@ -1,0 +1,21 @@
+Compte rendu d'épreuve — Event_Clermont_Cross_2026
+======================================================
+
+Épreuve de cross / concours complet (Cross), catégorie Amateur 2, organisée le 2026-10-10 à Clermont-Ferrand, rattachée à la saison « Saison 2026 ».
+
+Classement et participants (5 engagement(s))
+----------------------------------------
+  • Rang 1 — cheval Rafale (Horse_Rafale, race « Morgan »), cavalier Rider_Ines, statut « Terminé ».
+  • Rang 2 — cheval Glacier (Horse_Glacier, race « Anglo-Arabe »), cavalier Rider_Theo, statut « Terminé ».
+  • Rang 3 — cheval Tonnerre (Horse_Tonnerre, race « Mustang »), cavalier Rider_Ines, statut « Terminé ».
+  • Rang 4 — cheval Orage (Horse_Orage, race « Fjord »), cavalier Rider_Alice, statut « Terminé ».
+  • Rang 5 — cheval Auroch (Horse_Auroch, race « Pur-sang »), cavalier Rider_Elise, statut « Terminé ».
+
+Entraînements liés (étapes DEPENDSON vers cette épreuve)
+----------------------------------------
+  • compétition (entraînement) (CompetitionStage) : 5 étape(s) pour 5 cheval(aux).
+  • pré-compétition (PreCompetitionStage) : 5 étape(s) pour 5 cheval(aux).
+  • préparation (PreparationStage) : 5 étape(s) pour 5 cheval(aux).
+  • transition / récupération (TransitionStage) : 5 étape(s) pour 5 cheval(aux).
+
+Note méthodologique : discipline, date, lieu, catégorie, rangs et cavaliers sont exclusivement issus du fact-sheet Neo4j V9.

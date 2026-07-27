@@ -1,0 +1,33 @@
+Rapport d'entraînement — Ombre
+==================================
+
+Ce rapport synthétise exclusivement les faits enregistrés dans le graphe de connaissances pour le cheval Ombre (identifiant Horse_Ombre), race Percheron.
+
+Cavaliers associés (relation ASSOCIATEDWITH) : Rider_Chloe.
+
+Programme d'entraînement (4 étape(s) enregistrée(s))
+----------------------------------------
+
+Phase compétition (entraînement) (CompetitionStage) — 1 séance(s) :
+  • Training_Comp_Ombre_01 : volume 30min, intensité Pic, fréquence 1 ; acteurs : cavalier Rider_Chloe ; événements liés : Event_Rennes_SJ_2026.
+
+Phase pré-compétition (PreCompetitionStage) — 1 séance(s) :
+  • Training_PreComp_Ombre_01 : volume 60min, intensité Élevée, fréquence 3 ; acteurs : cavalier Rider_Chloe, vétérinaire Vet_DrMartin ; événements liés : Event_Rennes_SJ_2026.
+
+Phase préparation (PreparationStage) — 1 séance(s) :
+  • Training_Prepa_Ombre_01 : volume 45min, intensité Modérée, fréquence 4 ; acteurs : cavalier Rider_Chloe, soigneur Caretaker_Sophie, vétérinaire Vet_DrMartin ; événements liés : Event_Rennes_SJ_2026.
+
+Phase transition / récupération (TransitionStage) — 1 séance(s) :
+  • Training_Transition_Ombre_01 : volume 25min, intensité Faible, fréquence 2 ; acteurs : cavalier Rider_Chloe ; événements liés : Event_Rennes_SJ_2026.
+
+Capteurs inertiels (2 capteur(s) attaché(s))
+----------------------------------------
+  • IMU_CanonHind_Ombre_01 en position canon postérieur (CanonOfHindlimb), fréquence d'échantillonnage 250Hz, offset 0.015, format CSV, taille de fichier 7300, objectif expérimental GaitClassif_01.
+  • IMU_Withers_Ombre_01 en position garrot (Withers), fréquence d'échantillonnage 200Hz, offset 0.01, format CSV, taille de fichier 5300, objectif expérimental GaitClassif_01.
+
+Participations en compétition (2 résultat(s))
+----------------------------------------
+  • Event_Rennes_SJ_2026 (saut d'obstacles / ShowJumping, catégorie « Pro Elite ») le 2026-05-17 à Rennes : rang 4, statut « Terminé », cavalier Rider_Chloe.
+  • Event_SJ_2026_01 (saut d'obstacles / ShowJumping, catégorie « Amateur 2 ») le 2026-06-14 à Paris : rang 6, statut « Terminé », cavalier Rider_Chloe.
+
+Note méthodologique : aucun rang, volume, intensité, fréquence, capteur ou participant n'a été inventé ; toutes les valeurs ci-dessus proviennent du fact-sheet extrait de Neo4j V9.

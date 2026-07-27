@@ -1,5 +1,5 @@
 """
-Tabular RAG data layer — ETL from live Neo4j into data/tabular.db.
+Tabular RAG data layer — ETL from live Neo4j into data/tabular_rag/tabular.db.
 
 Reuses Graph RAG Neo4j config (backend/config.py). Read-only against Neo4j;
 only writes the local SQLite file.
@@ -32,7 +32,7 @@ from backend.config import NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD, NEO4J_DATABASE
 
 # Resolve paths relative to the project root (parent of backend/)
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-DATA_DIR = os.path.join(PROJECT_ROOT, "data")
+DATA_DIR = os.path.join(PROJECT_ROOT, "data", "tabular_rag")
 DB_PATH = os.path.join(DATA_DIR, "tabular.db")
 STALENESS_REPORT_PATH = os.path.join(DATA_DIR, "tabular_etl_rowcounts.txt")
 

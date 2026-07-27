@@ -1,0 +1,112 @@
+[
+  {
+    "doc_id": "horse_Sirius",
+    "doc_type": "horse_report",
+    "subject": "Sirius",
+    "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Sirius.txt",
+    "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Sirius.json",
+    "atomic_facts_count": 48,
+    "facts_missing_from_prose": [],
+    "invented_or_untraced_claims": [],
+    "verdict": "PASS"
+  },
+  {
+    "doc_id": "horse_Riviere",
+    "doc_type": "horse_report",
+    "subject": "Riviere",
+    "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Riviere.txt",
+    "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Riviere.json",
+    "atomic_facts_count": 48,
+    "facts_missing_from_prose": [],
+    "invented_or_untraced_claims": [],
+    "verdict": "PASS"
+  },
+  {
+    "doc_id": "horse_Mirage",
+    "doc_type": "horse_report",
+    "subject": "Mirage",
+    "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Mirage.txt",
+    "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Mirage.json",
+    "atomic_facts_count": 48,
+    "facts_missing_from_prose": [],
+    "invented_or_untraced_claims": [],
+    "verdict": "PASS"
+  },
+  {
+    "doc_id": "horse_Etoile",
+    "doc_type": "horse_report",
+    "subject": "Etoile",
+    "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Etoile.txt",
+    "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Etoile.json",
+    "atomic_facts_count": 49,
+    "facts_missing_from_prose": [],
+    "invented_or_untraced_claims": [],
+    "verdict": "PASS"
+  },
+  {
+    "doc_id": "horse_Arrow",
+    "doc_type": "horse_report",
+    "subject": "Arrow",
+    "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Arrow.txt",
+    "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Arrow.json",
+    "atomic_facts_count": 49,
+    "facts_missing_from_prose": [],
+    "invented_or_untraced_claims": [],
+    "verdict": "PASS"
+  },
+  {
+    "doc_id": "event_Event_Montpellier_Dr_2026",
+    "doc_type": "event_report",
+    "subject": "Event_Montpellier_Dr_2026",
+    "path": "data\\textual_rag\\textual_corpus\\documents\\events\\Event_Montpellier_Dr_2026.txt",
+    "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\events\\Event_Montpellier_Dr_2026.json",
+    "atomic_facts_count": 42,
+    "facts_missing_from_prose": [],
+    "invented_or_untraced_claims": [],
+    "verdict": "PASS"
+  },
+  {
+    "doc_id": "event_Event_Marseille_Dressage_2026",
+    "doc_type": "event_report",
+    "subject": "Event_Marseille_Dressage_2026",
+    "path": "data\\textual_rag\\textual_corpus\\documents\\events\\Event_Marseille_Dressage_2026.txt",
+    "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\events\\Event_Marseille_Dressage_2026.json",
+    "atomic_facts_count": 41,
+    "facts_missing_from_prose": [],
+    "invented_or_untraced_claims": [],
+    "verdict": "PASS"
+  },
+  {
+    "doc_id": "horse_Brume",
+    "doc_type": "horse_report",
+    "subject": "Brume",
+    "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Brume.txt",
+    "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Brume.json",
+    "atomic_facts_count": 48,
+    "facts_missing_from_prose": [],
+    "invented_or_untraced_claims": [],
+    "verdict": "PASS"
+  },
+  {
+    "doc_id": "horse_Grondre",
+    "doc_type": "horse_report",
+    "subject": "Grondre",
+    "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Grondre.txt",
+    "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Grondre.json",
+    "atomic_facts_count": 49,
+    "facts_missing_from_prose": [],
+    "invented_or_untraced_claims": [],
+    "verdict": "PASS"
+  },
+  {
+    "doc_id": "event_Event_Dressage_01",
+    "doc_type": "event_report",
+    "subject": "Event_Dressage_01",
+    "path": "data\\textual_rag\\textual_corpus\\documents\\events\\Event_Dressage_01.txt",
+    "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\events\\Event_Dressage_01.json",
+    "atomic_facts_count": 13,
+    "facts_missing_from_prose": [],
+    "invented_or_untraced_claims": [],
+    "verdict": "PASS"
+  }
+]

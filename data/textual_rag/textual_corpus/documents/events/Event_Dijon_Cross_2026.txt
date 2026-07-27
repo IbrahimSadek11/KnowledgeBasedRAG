@@ -1,0 +1,20 @@
+Compte rendu d'épreuve — Event_Dijon_Cross_2026
+===================================================
+
+Épreuve de cross / concours complet (Cross), catégorie Amateur 1, organisée le 2026-06-06 à Dijon, rattachée à la saison « Saison 2026 ».
+
+Classement et participants (4 engagement(s))
+----------------------------------------
+  • Rang 1 — cheval Ecume (Horse_Ecume, race « Akhal-Teke »), cavalier Rider_Maxime, statut « Terminé ».
+  • Rang 2 — cheval Tempete (Horse_Tempete, race « Lipizzan »), cavalier Rider_Maxime, statut « Terminé ».
+  • Rang 3 — cheval Mirage (Horse_Mirage, race « Holsteiner »), cavalier Rider_Pauline, statut « Terminé ».
+  • Rang 4 — cheval Riviere (Horse_Riviere, race « Camargue »), cavalier Rider_Victor, statut « Terminé ».
+
+Entraînements liés (étapes DEPENDSON vers cette épreuve)
+----------------------------------------
+  • compétition (entraînement) (CompetitionStage) : 4 étape(s) pour 4 cheval(aux).
+  • pré-compétition (PreCompetitionStage) : 4 étape(s) pour 4 cheval(aux).
+  • préparation (PreparationStage) : 4 étape(s) pour 4 cheval(aux).
+  • transition / récupération (TransitionStage) : 4 étape(s) pour 4 cheval(aux).
+
+Note méthodologique : discipline, date, lieu, catégorie, rangs et cavaliers sont exclusivement issus du fact-sheet Neo4j V9.

@@ -52,7 +52,7 @@ from gold_queries import GOLD_QUERIES, EX_NOT_APPLICABLE, compare_execution
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.join(SCRIPT_DIR, "..", "..")
 TEST_DATASET_PATH = os.path.join(PROJECT_ROOT, "data", "test_dataset.json")
-DB_PATH = os.path.abspath(os.path.join(PROJECT_ROOT, "data", "tabular.db"))
+DB_PATH = os.path.abspath(os.path.join(PROJECT_ROOT, "data", "tabular_rag", "tabular.db"))
 RESULTS_DIR = Path(SCRIPT_DIR) / ".." / ".." / "evaluation_results" / "tabular_rag"
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 

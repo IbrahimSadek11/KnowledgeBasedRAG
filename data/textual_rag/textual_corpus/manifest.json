@@ -1,0 +1,572 @@
+{
+  "generated_at": "2026-07-27T00:24:23.658169+00:00",
+  "source": "live_neo4j_v9",
+  "horse_documents": 50,
+  "event_documents": 20,
+  "total_documents": 70,
+  "horses": [
+    {
+      "doc_id": "horse_Apollon",
+      "doc_type": "horse_report",
+      "subject": "Apollon",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Apollon.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Apollon.json",
+      "char_count": 2347
+    },
+    {
+      "doc_id": "horse_Arrow",
+      "doc_type": "horse_report",
+      "subject": "Arrow",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Arrow.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Arrow.json",
+      "char_count": 2332
+    },
+    {
+      "doc_id": "horse_Atlas",
+      "doc_type": "horse_report",
+      "subject": "Atlas",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Atlas.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Atlas.json",
+      "char_count": 2573
+    },
+    {
+      "doc_id": "horse_Auroch",
+      "doc_type": "horse_report",
+      "subject": "Auroch",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Auroch.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Auroch.json",
+      "char_count": 2409
+    },
+    {
+      "doc_id": "horse_Aurore",
+      "doc_type": "horse_report",
+      "subject": "Aurore",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Aurore.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Aurore.json",
+      "char_count": 2411
+    },
+    {
+      "doc_id": "horse_Bella",
+      "doc_type": "horse_report",
+      "subject": "Bella",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Bella.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Bella.json",
+      "char_count": 2571
+    },
+    {
+      "doc_id": "horse_Braise",
+      "doc_type": "horse_report",
+      "subject": "Braise",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Braise.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Braise.json",
+      "char_count": 2376
+    },
+    {
+      "doc_id": "horse_Brume",
+      "doc_type": "horse_report",
+      "subject": "Brume",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Brume.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Brume.json",
+      "char_count": 2380
+    },
+    {
+      "doc_id": "horse_Cascade",
+      "doc_type": "horse_report",
+      "subject": "Cascade",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Cascade.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Cascade.json",
+      "char_count": 2355
+    },
+    {
+      "doc_id": "horse_Comet",
+      "doc_type": "horse_report",
+      "subject": "Comet",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Comet.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Comet.json",
+      "char_count": 2348
+    },
+    {
+      "doc_id": "horse_Crepuscule",
+      "doc_type": "horse_report",
+      "subject": "Crepuscule",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Crepuscule.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Crepuscule.json",
+      "char_count": 2428
+    },
+    {
+      "doc_id": "horse_Dakota",
+      "doc_type": "horse_report",
+      "subject": "Dakota",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Dakota.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Dakota.json",
+      "char_count": 3763
+    },
+    {
+      "doc_id": "horse_Dune",
+      "doc_type": "horse_report",
+      "subject": "Dune",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Dune.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Dune.json",
+      "char_count": 2515
+    },
+    {
+      "doc_id": "horse_Eclair",
+      "doc_type": "horse_report",
+      "subject": "Eclair",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Eclair.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Eclair.json",
+      "char_count": 2353
+    },
+    {
+      "doc_id": "horse_Eclat",
+      "doc_type": "horse_report",
+      "subject": "Eclat",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Eclat.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Eclat.json",
+      "char_count": 2361
+    },
+    {
+      "doc_id": "horse_Ecume",
+      "doc_type": "horse_report",
+      "subject": "Ecume",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Ecume.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Ecume.json",
+      "char_count": 2514
+    },
+    {
+      "doc_id": "horse_Etoile",
+      "doc_type": "horse_report",
+      "subject": "Etoile",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Etoile.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Etoile.json",
+      "char_count": 2379
+    },
+    {
+      "doc_id": "horse_Falcon",
+      "doc_type": "horse_report",
+      "subject": "Falcon",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Falcon.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Falcon.json",
+      "char_count": 2320
+    },
+    {
+      "doc_id": "horse_Galop",
+      "doc_type": "horse_report",
+      "subject": "Galop",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Galop.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Galop.json",
+      "char_count": 2324
+    },
+    {
+      "doc_id": "horse_Glacier",
+      "doc_type": "horse_report",
+      "subject": "Glacier",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Glacier.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Glacier.json",
+      "char_count": 2413
+    },
+    {
+      "doc_id": "horse_Grondre",
+      "doc_type": "horse_report",
+      "subject": "Grondre",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Grondre.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Grondre.json",
+      "char_count": 2385
+    },
+    {
+      "doc_id": "horse_Horizon",
+      "doc_type": "horse_report",
+      "subject": "Horizon",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Horizon.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Horizon.json",
+      "char_count": 2380
+    },
+    {
+      "doc_id": "horse_Iris",
+      "doc_type": "horse_report",
+      "subject": "Iris",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Iris.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Iris.json",
+      "char_count": 2388
+    },
+    {
+      "doc_id": "horse_Lumiere",
+      "doc_type": "horse_report",
+      "subject": "Lumiere",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Lumiere.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Lumiere.json",
+      "char_count": 2378
+    },
+    {
+      "doc_id": "horse_Luminos",
+      "doc_type": "horse_report",
+      "subject": "Luminos",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Luminos.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Luminos.json",
+      "char_count": 2370
+    },
+    {
+      "doc_id": "horse_Luna",
+      "doc_type": "horse_report",
+      "subject": "Luna",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Luna.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Luna.json",
+      "char_count": 2556
+    },
+    {
+      "doc_id": "horse_Mirage",
+      "doc_type": "horse_report",
+      "subject": "Mirage",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Mirage.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Mirage.json",
+      "char_count": 2403
+    },
+    {
+      "doc_id": "horse_Mistral",
+      "doc_type": "horse_report",
+      "subject": "Mistral",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Mistral.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Mistral.json",
+      "char_count": 2376
+    },
+    {
+      "doc_id": "horse_Naya",
+      "doc_type": "horse_report",
+      "subject": "Naya",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Naya.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Naya.json",
+      "char_count": 2131
+    },
+    {
+      "doc_id": "horse_Nebule",
+      "doc_type": "horse_report",
+      "subject": "Nebule",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Nebule.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Nebule.json",
+      "char_count": 2383
+    },
+    {
+      "doc_id": "horse_Nova",
+      "doc_type": "horse_report",
+      "subject": "Nova",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Nova.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Nova.json",
+      "char_count": 2316
+    },
+    {
+      "doc_id": "horse_Nuage",
+      "doc_type": "horse_report",
+      "subject": "Nuage",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Nuage.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Nuage.json",
+      "char_count": 2362
+    },
+    {
+      "doc_id": "horse_Ombre",
+      "doc_type": "horse_report",
+      "subject": "Ombre",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Ombre.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Ombre.json",
+      "char_count": 2350
+    },
+    {
+      "doc_id": "horse_Orage",
+      "doc_type": "horse_report",
+      "subject": "Orage",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Orage.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Orage.json",
+      "char_count": 2379
+    },
+    {
+      "doc_id": "horse_Orion",
+      "doc_type": "horse_report",
+      "subject": "Orion",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Orion.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Orion.json",
+      "char_count": 2206
+    },
+    {
+      "doc_id": "horse_Pixie",
+      "doc_type": "horse_report",
+      "subject": "Pixie",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Pixie.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Pixie.json",
+      "char_count": 2484
+    },
+    {
+      "doc_id": "horse_Rafale",
+      "doc_type": "horse_report",
+      "subject": "Rafale",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Rafale.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Rafale.json",
+      "char_count": 2383
+    },
+    {
+      "doc_id": "horse_Rio",
+      "doc_type": "horse_report",
+      "subject": "Rio",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Rio.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Rio.json",
+      "char_count": 2331
+    },
+    {
+      "doc_id": "horse_Riviere",
+      "doc_type": "horse_report",
+      "subject": "Riviere",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Riviere.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Riviere.json",
+      "char_count": 2405
+    },
+    {
+      "doc_id": "horse_Sable",
+      "doc_type": "horse_report",
+      "subject": "Sable",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Sable.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Sable.json",
+      "char_count": 2391
+    },
+    {
+      "doc_id": "horse_Sirius",
+      "doc_type": "horse_report",
+      "subject": "Sirius",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Sirius.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Sirius.json",
+      "char_count": 2364
+    },
+    {
+      "doc_id": "horse_Soleil",
+      "doc_type": "horse_report",
+      "subject": "Soleil",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Soleil.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Soleil.json",
+      "char_count": 2377
+    },
+    {
+      "doc_id": "horse_Storm",
+      "doc_type": "horse_report",
+      "subject": "Storm",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Storm.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Storm.json",
+      "char_count": 2349
+    },
+    {
+      "doc_id": "horse_Tempete",
+      "doc_type": "horse_report",
+      "subject": "Tempete",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Tempete.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Tempete.json",
+      "char_count": 2397
+    },
+    {
+      "doc_id": "horse_Thunder",
+      "doc_type": "horse_report",
+      "subject": "Thunder",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Thunder.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Thunder.json",
+      "char_count": 2606
+    },
+    {
+      "doc_id": "horse_Tonnerre",
+      "doc_type": "horse_report",
+      "subject": "Tonnerre",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Tonnerre.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Tonnerre.json",
+      "char_count": 2422
+    },
+    {
+      "doc_id": "horse_Vega",
+      "doc_type": "horse_report",
+      "subject": "Vega",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Vega.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Vega.json",
+      "char_count": 2342
+    },
+    {
+      "doc_id": "horse_Volcan",
+      "doc_type": "horse_report",
+      "subject": "Volcan",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Volcan.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Volcan.json",
+      "char_count": 2327
+    },
+    {
+      "doc_id": "horse_Zephire",
+      "doc_type": "horse_report",
+      "subject": "Zephire",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Zephire.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Zephire.json",
+      "char_count": 2388
+    },
+    {
+      "doc_id": "horse_Zephyr",
+      "doc_type": "horse_report",
+      "subject": "Zephyr",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\horses\\Zephyr.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\horses\\Zephyr.json",
+      "char_count": 2782
+    }
+  ],
+  "events": [
+    {
+      "doc_id": "event_Event_SJ_01",
+      "doc_type": "event_report",
+      "subject": "Event_SJ_01",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\events\\Event_SJ_01.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\events\\Event_SJ_01.json",
+      "char_count": 1190
+    },
+    {
+      "doc_id": "event_Event_Nantes_SJ_2026",
+      "doc_type": "event_report",
+      "subject": "Event_Nantes_SJ_2026",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\events\\Event_Nantes_SJ_2026.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\events\\Event_Nantes_SJ_2026.json",
+      "char_count": 1369
+    },
+    {
+      "doc_id": "event_Event_Dressage_01",
+      "doc_type": "event_report",
+      "subject": "Event_Dressage_01",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\events\\Event_Dressage_01.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\events\\Event_Dressage_01.json",
+      "char_count": 722
+    },
+    {
+      "doc_id": "event_Event_Rennes_SJ_2026",
+      "doc_type": "event_report",
+      "subject": "Event_Rennes_SJ_2026",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\events\\Event_Rennes_SJ_2026.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\events\\Event_Rennes_SJ_2026.json",
+      "char_count": 1461
+    },
+    {
+      "doc_id": "event_Event_Dijon_Cross_2026",
+      "doc_type": "event_report",
+      "subject": "Event_Dijon_Cross_2026",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\events\\Event_Dijon_Cross_2026.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\events\\Event_Dijon_Cross_2026.json",
+      "char_count": 1285
+    },
+    {
+      "doc_id": "event_Event_SJ_2026_01",
+      "doc_type": "event_report",
+      "subject": "Event_SJ_2026_01",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\events\\Event_SJ_2026_01.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\events\\Event_SJ_2026_01.json",
+      "char_count": 1567
+    },
+    {
+      "doc_id": "event_Event_Fontainebleau_SJ_2026",
+      "doc_type": "event_report",
+      "subject": "Event_Fontainebleau_SJ_2026",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\events\\Event_Fontainebleau_SJ_2026.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\events\\Event_Fontainebleau_SJ_2026.json",
+      "char_count": 1375
+    },
+    {
+      "doc_id": "event_Event_Strasbourg_Cross_2026",
+      "doc_type": "event_report",
+      "subject": "Event_Strasbourg_Cross_2026",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\events\\Event_Strasbourg_Cross_2026.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\events\\Event_Strasbourg_Cross_2026.json",
+      "char_count": 1387
+    },
+    {
+      "doc_id": "event_Event_Dressage_2026_01",
+      "doc_type": "event_report",
+      "subject": "Event_Dressage_2026_01",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\events\\Event_Dressage_2026_01.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\events\\Event_Dressage_2026_01.json",
+      "char_count": 1460
+    },
+    {
+      "doc_id": "event_Event_Cross_2026_01",
+      "doc_type": "event_report",
+      "subject": "Event_Cross_2026_01",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\events\\Event_Cross_2026_01.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\events\\Event_Cross_2026_01.json",
+      "char_count": 1048
+    },
+    {
+      "doc_id": "event_Event_Montpellier_Dr_2026",
+      "doc_type": "event_report",
+      "subject": "Event_Montpellier_Dr_2026",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\events\\Event_Montpellier_Dr_2026.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\events\\Event_Montpellier_Dr_2026.json",
+      "char_count": 1504
+    },
+    {
+      "doc_id": "event_Event_Lyon_Dressage_2026",
+      "doc_type": "event_report",
+      "subject": "Event_Lyon_Dressage_2026",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\events\\Event_Lyon_Dressage_2026.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\events\\Event_Lyon_Dressage_2026.json",
+      "char_count": 1370
+    },
+    {
+      "doc_id": "event_Event_LeMans_Cross_2026",
+      "doc_type": "event_report",
+      "subject": "Event_LeMans_Cross_2026",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\events\\Event_LeMans_Cross_2026.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\events\\Event_LeMans_Cross_2026.json",
+      "char_count": 1587
+    },
+    {
+      "doc_id": "event_Event_Versailles_SJ_2026",
+      "doc_type": "event_report",
+      "subject": "Event_Versailles_SJ_2026",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\events\\Event_Versailles_SJ_2026.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\events\\Event_Versailles_SJ_2026.json",
+      "char_count": 1385
+    },
+    {
+      "doc_id": "event_Event_Toulouse_Cross_2026",
+      "doc_type": "event_report",
+      "subject": "Event_Toulouse_Cross_2026",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\events\\Event_Toulouse_Cross_2026.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\events\\Event_Toulouse_Cross_2026.json",
+      "char_count": 1275
+    },
+    {
+      "doc_id": "event_Event_Bordeaux_Cross_2026",
+      "doc_type": "event_report",
+      "subject": "Event_Bordeaux_Cross_2026",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\events\\Event_Bordeaux_Cross_2026.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\events\\Event_Bordeaux_Cross_2026.json",
+      "char_count": 1283
+    },
+    {
+      "doc_id": "event_Event_Nice_Dressage_2026",
+      "doc_type": "event_report",
+      "subject": "Event_Nice_Dressage_2026",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\events\\Event_Nice_Dressage_2026.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\events\\Event_Nice_Dressage_2026.json",
+      "char_count": 1260
+    },
+    {
+      "doc_id": "event_Event_Marseille_Dressage_2026",
+      "doc_type": "event_report",
+      "subject": "Event_Marseille_Dressage_2026",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\events\\Event_Marseille_Dressage_2026.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\events\\Event_Marseille_Dressage_2026.json",
+      "char_count": 1502
+    },
+    {
+      "doc_id": "event_Event_Clermont_Cross_2026",
+      "doc_type": "event_report",
+      "subject": "Event_Clermont_Cross_2026",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\events\\Event_Clermont_Cross_2026.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\events\\Event_Clermont_Cross_2026.json",
+      "char_count": 1393
+    },
+    {
+      "doc_id": "event_Event_Pau_SJ_2026",
+      "doc_type": "event_report",
+      "subject": "Event_Pau_SJ_2026",
+      "path": "data\\textual_rag\\textual_corpus\\documents\\events\\Event_Pau_SJ_2026.txt",
+      "fact_sheet_path": "data\\textual_rag\\textual_corpus\\fact_sheets\\events\\Event_Pau_SJ_2026.json",
+      "char_count": 1575
+    }
+  ],
+  "generation": "deterministic_french_templates_from_fact_sheets"
+}

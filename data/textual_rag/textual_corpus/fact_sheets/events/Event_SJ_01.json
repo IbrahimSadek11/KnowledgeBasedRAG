@@ -1,0 +1,72 @@
+{
+  "doc_type": "event_fact_sheet",
+  "source": "live_neo4j_v9",
+  "extracted_at": "2026-07-27T00:24:23.448028+00:00",
+  "event": {
+    "id": "Event_SJ_01",
+    "discipline": "ShowJumping",
+    "category": "Amateur 1",
+    "event_date": "2026-04-12",
+    "location": "Saumur",
+    "season": "Saison 2026"
+  },
+  "participants": [
+    {
+      "participation_id": "Participation_SJ01_Falcon_Lea",
+      "horse_name": "Falcon",
+      "horse_id": "Horse_Falcon",
+      "horse_race": "Barbe",
+      "rider_id": "Rider_Lea",
+      "rank": 1,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_SJ01_Dakota_Emma",
+      "horse_name": "Dakota",
+      "horse_id": "Horse_Dakota",
+      "horse_race": "Selle Français",
+      "rider_id": "Rider_Emma",
+      "rank": 2,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_SJ01_Volcan_Theo",
+      "horse_name": "Volcan",
+      "horse_id": "Horse_Volcan",
+      "horse_race": "Arabe",
+      "rider_id": "Rider_Theo",
+      "rank": 3,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_SJ01_Storm_Hugo",
+      "horse_name": "Storm",
+      "horse_id": "Horse_Storm",
+      "horse_race": "Selle Belge",
+      "rider_id": "Rider_Hugo",
+      "rank": 4,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_SJ01_Arrow_Alice",
+      "horse_name": "Arrow",
+      "horse_id": "Horse_Arrow",
+      "horse_race": "Quarter Horse",
+      "rider_id": "Rider_Alice",
+      "rank": 5,
+      "status": "Terminé"
+    }
+  ],
+  "linked_training_summary": [
+    {
+      "stage_type": "PreCompetitionStage",
+      "stage_count": 1,
+      "horse_count": 1
+    },
+    {
+      "stage_type": "PreparationStage",
+      "stage_count": 1,
+      "horse_count": 1
+    }
+  ]
+}

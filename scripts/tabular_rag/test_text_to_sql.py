@@ -4,7 +4,7 @@ Diagnostic: can the LLM generate correct SQL against the Tabular RAG schema?
 This script ONLY prints the SQL the model produces — it never executes it.
 It reuses the exact same LLM client configuration as the Graph RAG code
 (gpt-4o-mini, temperature=0, OPENAI_API_KEY from backend.config) and builds
-the schema description live from data/tabular.db so it can never drift out of
+the schema description live from data/tabular_rag/tabular.db so it can never drift out of
 sync with the real database.
 """
 import os
@@ -18,7 +18,7 @@ sys.path.append(PROJECT_ROOT)
 
 from backend.config import OPENAI_API_KEY
 
-DB_PATH = os.path.join(PROJECT_ROOT, "data", "tabular.db")
+DB_PATH = os.path.join(PROJECT_ROOT, "data", "tabular_rag", "tabular.db")
 
 TABLES = [
     "horses",

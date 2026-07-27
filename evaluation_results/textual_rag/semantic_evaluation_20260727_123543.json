@@ -1,0 +1,3056 @@
+{
+  "metadata": {
+    "timestamp": "20260727_123543",
+    "pipeline": "textual_rag",
+    "run_type": "full_benchmark",
+    "total_questions": 100,
+    "total_time_seconds": 236.30321710021235,
+    "avg_time_per_question": 2.3630321710021236,
+    "query_cost_usd": 0.01651125,
+    "evaluation_cost_usd": 0.3497118000000001,
+    "total_cost_usd": 0.36622305000000005,
+    "model": "gpt-4o-mini",
+    "embedding_model": "text-embedding-3-small",
+    "evaluation_type": "semantic_similarity + llm_judge",
+    "combined_score_formula": "(semantic_similarity + llm_judge_overall) / 2",
+    "ex_metric": null,
+    "ex_note": "Execution Accuracy is not applicable to Textual RAG (no structured query / gold result-set comparison).",
+    "scoring_reused_from": "backend/evaluation_service.py (Graph/Tabular RAG)",
+    "dataset_path": "data/test_dataset.json"
+  },
+  "overall_metrics": {
+    "success_rate": 1.0,
+    "failed_count": 0,
+    "avg_semantic_similarity": 0.8517859125945431,
+    "avg_llm_judge_overall": 0.4631,
+    "avg_llm_judge_correctness": 0.5,
+    "avg_llm_judge_completeness": 0.455,
+    "avg_llm_judge_accuracy": 0.495,
+    "avg_combined_score": 0.6574429562972715
+  },
+  "category_stats": {
+    "aggregation": {
+      "count": 16,
+      "success_rate": 1.0,
+      "avg_semantic_similarity": 0.8219935596202513,
+      "avg_llm_judge": 0.26875,
+      "avg_combined": 0.5453717798101256
+    },
+    "attribute_retrieval": {
+      "count": 10,
+      "success_rate": 1.0,
+      "avg_semantic_similarity": 0.8783243944980447,
+      "avg_llm_judge": 0.6,
+      "avg_combined": 0.7391621972490223
+    },
+    "comparison": {
+      "count": 16,
+      "success_rate": 1.0,
+      "avg_semantic_similarity": 0.8505681972219519,
+      "avg_llm_judge": 0.21875,
+      "avg_combined": 0.5346590986109759
+    },
+    "consistency_check": {
+      "count": 5,
+      "success_rate": 1.0,
+      "avg_semantic_similarity": 0.8506039889871791,
+      "avg_llm_judge": 0.33399999999999996,
+      "avg_combined": 0.5923019944935897
+    },
+    "data_quality": {
+      "count": 12,
+      "success_rate": 1.0,
+      "avg_semantic_similarity": 0.8106107315825507,
+      "avg_llm_judge": 0.5,
+      "avg_combined": 0.6553053657912754
+    },
+    "hierarchical": {
+      "count": 4,
+      "success_rate": 1.0,
+      "avg_semantic_similarity": 0.891927047318859,
+      "avg_llm_judge": 0.75,
+      "avg_combined": 0.8209635236594295
+    },
+    "multi_hop": {
+      "count": 9,
+      "success_rate": 1.0,
+      "avg_semantic_similarity": 0.8544363891253635,
+      "avg_llm_judge": 0.3522222222222222,
+      "avg_combined": 0.603329305673793
+    },
+    "multi_hop_complex": {
+      "count": 1,
+      "success_rate": 1.0,
+      "avg_semantic_similarity": 0.885983603199372,
+      "avg_llm_judge": 0.5,
+      "avg_combined": 0.692991801599686
+    },
+    "schema_validation": {
+      "count": 8,
+      "success_rate": 1.0,
+      "avg_semantic_similarity": 0.8600510956825826,
+      "avg_llm_judge": 0.70875,
+      "avg_combined": 0.7844005478412913
+    },
+    "simple_retrieval": {
+      "count": 8,
+      "success_rate": 1.0,
+      "avg_semantic_similarity": 0.865546196613002,
+      "avg_llm_judge": 0.6875,
+      "avg_combined": 0.776523098306501
+    },
+    "single_hop": {
+      "count": 9,
+      "success_rate": 1.0,
+      "avg_semantic_similarity": 0.8885582051009467,
+      "avg_llm_judge": 0.5555555555555556,
+      "avg_combined": 0.7220568803282511
+    },
+    "unanswerable": {
+      "count": 2,
+      "success_rate": 1.0,
+      "avg_semantic_similarity": 0.8542945010979139,
+      "avg_llm_judge": 1.0,
+      "avg_combined": 0.927147250548957
+    }
+  },
+  "difficulty_stats": {
+    "easy": {
+      "count": 18,
+      "success_rate": 1.0,
+      "avg_semantic_similarity": 0.8845680841578826,
+      "avg_llm_judge": 0.6666666666666666,
+      "avg_combined": 0.7756173754122746
+    },
+    "extreme": {
+      "count": 1,
+      "success_rate": 1.0,
+      "avg_semantic_similarity": 0.885983603199372,
+      "avg_llm_judge": 0.5,
+      "avg_combined": 0.692991801599686
+    },
+    "hard": {
+      "count": 24,
+      "success_rate": 1.0,
+      "avg_semantic_similarity": 0.8339355267206252,
+      "avg_llm_judge": 0.375,
+      "avg_combined": 0.6044677633603126
+    },
+    "medium": {
+      "count": 50,
+      "success_rate": 1.0,
+      "avg_semantic_similarity": 0.8528705671941704,
+      "avg_llm_judge": 0.4362,
+      "avg_combined": 0.6445352835970851
+    },
+    "very_hard": {
+      "count": 7,
+      "success_rate": 1.0,
+      "avg_semantic_similarity": 0.8160573057727897,
+      "avg_llm_judge": 0.42857142857142855,
+      "avg_combined": 0.6223143671721091
+    }
+  },
+  "detailed_results": [
+    {
+      "question_id": "Q1",
+      "question": "Quels sont les noms des chevaux dans le système ?",
+      "category": "simple_retrieval",
+      "difficulty": "easy",
+      "ground_truth": "Les chevaux dans le système sont : Dakota, Naya, Orion, Luna, Thunder, Bella, Apollon, Pixie, Zephyr, Comet, Nova, Storm, Iris, Atlas, Mistral, Falcon, Rio, Sable, Dune, Eclat, Sirius, Vega, Brume, Eclair, Ombre, Arrow, Soleil, Tempete, Ecume, Nuage, Luminos, Etoile, Grondre, Rafale, Tonnerre, Cascade, Riviere, Aurore, Crepuscule, Glacier, Volcan, Braise, Zephire, Auroch, Galop, Horizon, Lumiere, Mirage, Nebule et Orage.",
+      "system_answer": "Les noms des chevaux dans le système, parmi les documents consultés, sont :\n\n1. Auroch\n2. Nebule\n3. Sable\n4. Rafale\n5. Tonnerre\n\nCette liste n'est peut-être pas exhaustive.",
+      "retrieved_docs": [
+        "Auroch.txt",
+        "Nebule.txt",
+        "Sable.txt",
+        "Rafale.txt",
+        "Tonnerre.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 2.5587501000845805,
+      "semantic_similarity": 0.8805911438447576,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 0.5,
+        "accuracy": 1.0,
+        "overall": 0.5,
+        "reasoning": "La réponse contient des noms de chevaux corrects, mais elle ne mentionne pas tous les chevaux de la liste de référence, ce qui affecte la complétude."
+      },
+      "combined_score": 0.6902955719223788,
+      "query_cost_usd": 0.00015760499999999998,
+      "eval_cost_usd": 0.0031291000000000005
+    },
+    {
+      "question_id": "Q2",
+      "question": "Quelle est la race de Dakota ?",
+      "category": "simple_retrieval",
+      "difficulty": "easy",
+      "ground_truth": "Dakota est un cheval de race Selle Français.",
+      "system_answer": "La race de Dakota est Selle Français, comme indiqué dans les documents fournis.",
+      "retrieved_docs": [
+        "Dakota.txt",
+        "Event_Dressage_01.txt",
+        "Event_Cross_2026_01.txt",
+        "Dune.txt",
+        "Event_Dressage_2026_01.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.5492152000078931,
+      "semantic_similarity": 0.902867234355593,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse indique correctement que Dakota est un Selle Français, ce qui correspond exactement à la réponse de référence. Tous les éléments importants sont présents et les détails sont exacts."
+      },
+      "combined_score": 0.9514336171777965,
+      "query_cost_usd": 0.0001539,
+      "eval_cost_usd": 0.0007434000000000001
+    },
+    {
+      "question_id": "Q3",
+      "question": "Quelle est la race de Naya ?",
+      "category": "simple_retrieval",
+      "difficulty": "easy",
+      "ground_truth": "Naya est un cheval de race Anglo-Arabe.",
+      "system_answer": "La race de Naya est Anglo-Arabe, comme indiqué dans le Document 1.",
+      "retrieved_docs": [
+        "Naya.txt",
+        "Event_Dressage_2026_01.txt",
+        "Nuage.txt",
+        "Nebule.txt",
+        "Event_Nantes_SJ_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.1343655000673607,
+      "semantic_similarity": 0.8671113249666904,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse indique correctement que Naya est un cheval de race Anglo-Arabe, ce qui correspond exactement à la réponse de référence. Tous les éléments importants sont présents et les détails sont exacts."
+      },
+      "combined_score": 0.9335556624833452,
+      "query_cost_usd": 0.00015370499999999997,
+      "eval_cost_usd": 0.0006528
+    },
+    {
+      "question_id": "Q4",
+      "question": "Dans quels événements sportifs Dakota participe-t-il ?",
+      "category": "single_hop",
+      "difficulty": "medium",
+      "ground_truth": "Dakota participe à plusieurs événements sportifs : Event_SJ_01 (saut d'obstacles à Saumur), Event_SJ_2026_01 (saut d'obstacles à Paris), Event_Dressage_01 (dressage à Angers), Event_Dressage_2026_01 (dressage à Lyon) et Event_Cross_2026_01 (cross à Bordeaux).",
+      "system_answer": "Dakota participe aux événements sportifs suivants, selon les documents fournis :\n\n1. **Event_SJ_01** (saut d'obstacles, catégorie « Amateur 1 ») le 2026-04-12 à Saumur : rang 2, cavalier Rider_Emma.\n2. **Event_Dressage_01** (dressage, catégorie « Club Elite ») le 2026-05-03 à Angers : rang 1, cavalier Rider_Emma.\n3. **Event_SJ_2026_01** (saut d'obstacles, catégorie « Amateur 2 ») le 2026-06-14 à Paris : rang 1, cavalier Rider_Manon.\n4. **Event_Dressage_2026_01** (dressage, catégorie « Club Elite ») le 2026-07-20 à Lyon : rang 2, cavalier Rider_Emma.\n5. **Event_Cross_2026_01** (cross, catégorie « Amateur 1 ») le 2026-08-10 à Bordeaux : rang 2, cavalier Rider_Emma.\n\nCette liste est basée sur les documents consultés et peut ne pas être exhaustive.",
+      "retrieved_docs": [
+        "Dakota.txt",
+        "Event_Dressage_01.txt",
+        "Event_SJ_2026_01.txt",
+        "Event_SJ_01.txt",
+        "Event_Cross_2026_01.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 3.0905137999216095,
+      "semantic_similarity": 0.9265348105801021,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse contient toutes les informations correctes sur les événements sportifs auxquels Dakota participe, y compris les détails sur les catégories, les dates et les lieux, qui correspondent à la ground truth."
+      },
+      "combined_score": 0.9632674052900511,
+      "query_cost_usd": 0.000173205,
+      "eval_cost_usd": 0.0052297
+    },
+    {
+      "question_id": "Q5",
+      "question": "Quelles étapes d'entraînement Dakota suit-il ?",
+      "category": "single_hop",
+      "difficulty": "medium",
+      "ground_truth": "Dakota suit huit étapes d'entraînement : Training_Prepa_SJ_01 (préparation), Training_Preparation_SJ_01 (préparation), Training_PreComp_SJ_01 (pré-compétition), Training_PreCompetition_SJ_01 (pré-compétition), Training_Competition_SJ_01 (compétition), Training_Comp_Cross2026_Dakota_01 (compétition), Training_Comp_Dress01_Dakota_01 (compétition) et Training_Transition_SJ_01 (transition).",
+      "system_answer": "Dakota suit les étapes d'entraînement suivantes, selon les documents fournis :\n\n1. **Phase compétition (entraînement) (CompetitionStage)** — 3 séances :\n   - Training_Comp_Cross2026_Dakota_01 : volume 30min, intensité Pic, fréquence 1.\n   - Training_Comp_Dress01_Dakota_01 : volume 30min, intensité Pic, fréquence 1.\n   - Training_Competition_SJ_01 : volume 30min, intensité Pic, fréquence 1.\n\n2. **Phase pré-compétition (PreCompetitionStage)** — 2 séances :\n   - Training_PreComp_SJ_01 : volume 60min, intensité Élevée, fréquence 3.\n   - Training_PreCompetition_SJ_01 : volume 60min, intensité Élevée, fréquence 3.\n\n3. **Phase préparation (PreparationStage)** — 2 séances :\n   - Training_Prepa_SJ_01 : volume 45min, intensité Modérée, fréquence 4.\n   - Training_Preparation_SJ_01 : volume 45min, intensité Modérée, fréquence 4.\n\n4. **Phase transition / récupération (TransitionStage)** — 1 séance :\n   - Training_Transition_SJ_01 : volume 30min, intensité Faible, fréquence 2.\n\nCette liste est basée sur les documents consultés et peut ne pas être exhaustive.",
+      "retrieved_docs": [
+        "Dakota.txt",
+        "Event_Dressage_01.txt",
+        "Dune.txt",
+        "Glacier.txt",
+        "Cascade.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 4.414729900076054,
+      "semantic_similarity": 0.9211357789023662,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.5,
+        "accuracy": 0.5,
+        "overall": 0.5,
+        "reasoning": "La réponse contient des informations correctes sur les étapes d'entraînement, mais elle ne mentionne pas toutes les étapes de la ground truth. De plus, certains détails comme les noms des phases et les fréquences sont corrects, mais d'autres éléments sont manquants ou incorrects."
+      },
+      "combined_score": 0.7105678894511831,
+      "query_cost_usd": 0.00017690999999999996,
+      "eval_cost_usd": 0.0074133
+    },
+    {
+      "question_id": "Q6",
+      "question": "Quelle est la fréquence d'entraînement pendant la phase de préparation ?",
+      "category": "attribute_retrieval",
+      "difficulty": "medium",
+      "ground_truth": "Pendant la phase de préparation, la fréquence d'entraînement varie selon les chevaux. S'entraînent 5 fois par semaine : Orion, Luna, Pixie, Comet, Storm, Rio, Dune, Vega, Soleil, Ecume, Grondre, Riviere, Volcan et Auroch (14 chevaux). Tous les autres chevaux, dont Zephire, s'entraînent 4 fois par semaine.",
+      "system_answer": "Dans les documents fournis, la fréquence d'entraînement pendant la phase de préparation est la suivante :\n\n- Pour Rafale : fréquence 4.\n- Pour Zephire : fréquence 4.\n- Pour Thunder : fréquence 4.\n- Pour Eclat : fréquence 4.\n- Pour Zephyr : fréquence 4.\n\nAinsi, la fréquence d'entraînement pendant la phase de préparation est de 4 pour tous les chevaux mentionnés dans les documents consultés.",
+      "retrieved_docs": [
+        "Rafale.txt",
+        "Zephire.txt",
+        "Thunder.txt",
+        "Eclat.txt",
+        "Zephyr.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.9725034999428317,
+      "semantic_similarity": 0.8482548883365895,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse fournie indique que tous les chevaux mentionnés s'entraînent 4 fois par semaine, ce qui est incorrect. La ground truth précise que certains chevaux s'entraînent 5 fois par semaine, ce qui n'est pas mentionné dans la réponse à évaluer. De plus, les chevaux listés dans la réponse ne correspondent pas à ceux de la ground truth."
+      },
+      "combined_score": 0.42412744416829473,
+      "query_cost_usd": 0.00016520999999999997,
+      "eval_cost_usd": 0.0036472000000000006
+    },
+    {
+      "question_id": "Q7",
+      "question": "Quelle est l'intensité d'entraînement durant la phase pré-compétition ?",
+      "category": "attribute_retrieval",
+      "difficulty": "medium",
+      "ground_truth": "Durant la phase pré-compétition, l'intensité d'entraînement est Élevée pour tous les chevaux, sans exception.",
+      "system_answer": "L'intensité d'entraînement durant la phase pré-compétition pour les chevaux mentionnés dans les documents fournis est la suivante :\n\n- Pour Eclat : Élevée.\n- Pour Crepuscule : Élevée.\n- Pour Comet : Élevée.\n\nCette information est tirée des documents consultés, mais il est possible qu'il existe d'autres chevaux avec des intensités différentes qui ne sont pas inclus dans cet échantillon.",
+      "retrieved_docs": [
+        "Eclat.txt",
+        "Event_LeMans_Cross_2026.txt",
+        "Crepuscule.txt",
+        "Comet.txt",
+        "Event_Clermont_Cross_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.7532697999849916,
+      "semantic_similarity": 0.8529137368541535,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 0.5,
+        "accuracy": 1.0,
+        "overall": 0.5,
+        "reasoning": "La réponse est correcte pour les chevaux mentionnés, mais elle ne couvre pas l'affirmation selon laquelle l'intensité est élevée pour tous les chevaux sans exception, ce qui constitue un manque de complétude."
+      },
+      "combined_score": 0.6764568684270768,
+      "query_cost_usd": 0.000163455,
+      "eval_cost_usd": 0.0026299
+    },
+    {
+      "question_id": "Q8",
+      "question": "Quelle est la durée des séances pendant la phase de préparation ?",
+      "category": "attribute_retrieval",
+      "difficulty": "hard",
+      "ground_truth": "Pendant la phase de préparation, les durées de séances varient : 40 minutes pour Pixie (la plus courte), 45 minutes pour 31 chevaux (Dakota, Naya, Thunder, Bella, Zephyr, Nova, Iris, Mistral, Falcon, Sable, Sirius, Brume, Eclair, Ombre, Arrow, Tempete, Nuage, Etoile, Rafale, Cascade, Aurore, Crepuscule, Glacier, Braise, Zephire, Galop, Horizon, Lumiere, Mirage, Orage, Nebule), 50 minutes pour 16 chevaux (Orion, Apollon, Atlas, Auroch, Storm, Rio, Dune, Eclat, Luminos, Grondre, Riviere, Luna, Soleil, Tonnerre, Vega, Volcan), et 55 minutes pour Comet et Ecume, à égalité pour la durée la plus longue.",
+      "system_answer": "L'information sur la durée des séances pendant la phase de préparation n'est pas présente dans les documents fournis.",
+      "retrieved_docs": [
+        "Event_Versailles_SJ_2026.txt",
+        "Event_Montpellier_Dr_2026.txt",
+        "Event_Marseille_Dressage_2026.txt",
+        "Event_Strasbourg_Cross_2026.txt",
+        "Event_Fontainebleau_SJ_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.3187827999936417,
+      "semantic_similarity": 0.7242211678590239,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse indique que l'information sur la durée des séances n'est pas présente, ce qui est incorrect car la ground truth fournit des détails précis sur les durées des séances. Aucune information n'est couverte, donc la réponse est totalement inexacte et incomplète."
+      },
+      "combined_score": 0.36211058392951195,
+      "query_cost_usd": 0.00015584999999999997,
+      "eval_cost_usd": 0.003761
+    },
+    {
+      "question_id": "Q9",
+      "question": "Quelle est la durée des séances pendant la phase pré-compétition ?",
+      "category": "attribute_retrieval",
+      "difficulty": "hard",
+      "ground_truth": "Durant la phase pré-compétition, les durées de séances varient : 55 minutes pour Pixie, 60 minutes pour 30 chevaux (Dakota, Naya, Thunder, Bella, Zephyr, Nova, Iris, Mistral, Falcon, Sable, Sirius, Brume, Eclair, Ombre, Arrow, Tempete, Nuage, Etoile, Rafale, Cascade, Aurore, Crepuscule, Glacier, Braise, Zephire, Galop, Horizon, Lumiere, Mirage, Orage), 65 minutes pour 14 chevaux (Orion, Apollon, Atlas, Auroch, Storm, Rio, Dune, Eclat, Ecume, Grondre, Luminos, Tonnerre, Volcan, Nebule), 70 minutes pour Luna, Vega, Soleil et Riviere, et 75 minutes pour Comet (la plus longue du système).",
+      "system_answer": "Dans les documents fournis, la durée des séances pendant la phase pré-compétition est la suivante :\n\n- Pour le cheval Comet : 75 minutes (phase pré-compétition, Training_PreComp_Comet_01).\n- Pour l'épreuve Event_SJ_2026_01 : la durée n'est pas spécifiée dans le document.\n\nAinsi, parmi les documents consultés, seule la durée de la séance pour le cheval Comet est mentionnée. L'information concernant d'autres chevaux ou épreuves n'est pas présente dans les documents fournis.",
+      "retrieved_docs": [
+        "Event_Fontainebleau_SJ_2026.txt",
+        "Event_Versailles_SJ_2026.txt",
+        "Comet.txt",
+        "Event_SJ_2026_01.txt",
+        "Event_LeMans_Cross_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 2.27792570006568,
+      "semantic_similarity": 0.8397213211766449,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.5,
+        "accuracy": 0.5,
+        "overall": 0.5,
+        "reasoning": "La réponse mentionne correctement la durée pour Comet, mais omet les durées pour les autres chevaux, ce qui est essentiel pour une réponse complète. Les détails sont partiellement exacts, mais l'absence d'informations sur d'autres chevaux affecte la précision globale."
+      },
+      "combined_score": 0.6698606605883224,
+      "query_cost_usd": 0.00016579499999999997,
+      "eval_cost_usd": 0.005505100000000001
+    },
+    {
+      "question_id": "Q10",
+      "question": "De quel événement dépendent les étapes d'entraînement de Dakota ?",
+      "category": "multi_hop",
+      "difficulty": "hard",
+      "ground_truth": "Les étapes d'entraînement de Dakota dépendent de deux événements : Event_SJ_01 (saut d'obstacles à Saumur le 12 avril 2026) et Event_SJ_2026_01 (saut d'obstacles à Paris le 14 juin 2026).",
+      "system_answer": "Les étapes d'entraînement de Dakota dépendent des événements suivants, selon les documents fournis :\n\n1. **Event_SJ_01** (saut d'obstacles) pour la phase pré-compétition et la phase préparation.\n2. **Event_Dressage_01** (dressage) pour la phase compétition.\n3. **Event_SJ_2026_01** (saut d'obstacles) pour la phase pré-compétition, la phase préparation et la phase transition/récupération.\n4. **Event_Dressage_2026_01** (dressage) pour la phase compétition, la phase pré-compétition, la phase préparation et la phase transition/récupération.\n\nCette liste est basée sur les documents consultés et peut ne pas être exhaustive.",
+      "retrieved_docs": [
+        "Dakota.txt",
+        "Event_Dressage_01.txt",
+        "Dune.txt",
+        "Event_SJ_01.txt",
+        "Event_Dressage_2026_01.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 2.7297864999854937,
+      "semantic_similarity": 0.9033761293170967,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.5,
+        "accuracy": 0.5,
+        "overall": 0.5,
+        "reasoning": "La réponse mentionne des événements supplémentaires (dressage) qui ne figurent pas dans la réponse de référence, ce qui entraîne des informations incorrectes. De plus, elle ne couvre pas tous les événements mentionnés dans la ground truth, ce qui affecte la complétude. Les détails des événements de saut d'obstacles sont corrects, mais l'ajout d'événements de dressage crée une confusion."
+      },
+      "combined_score": 0.7016880646585484,
+      "query_cost_usd": 0.000167355,
+      "eval_cost_usd": 0.0042104
+    },
+    {
+      "question_id": "Q11",
+      "question": "Combien de capteurs IMU sont attachés à Dakota ?",
+      "category": "aggregation",
+      "difficulty": "medium",
+      "ground_truth": "4 capteurs IMU sont attachés à Dakota.",
+      "system_answer": "Dakota a 4 capteurs IMU attachés, comme indiqué dans le Document 1.",
+      "retrieved_docs": [
+        "Dakota.txt",
+        "Dune.txt",
+        "Event_Dressage_01.txt",
+        "Nuage.txt",
+        "Mirage.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.2230825999286026,
+      "semantic_similarity": 0.9306662779840367,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse contient toutes les informations correctes et pertinentes, y compris le nombre exact de capteurs IMU attachés à Dakota, et elle est formulée de manière précise."
+      },
+      "combined_score": 0.9653331389920183,
+      "query_cost_usd": 0.00015409499999999998,
+      "eval_cost_usd": 0.0006534
+    },
+    {
+      "question_id": "Q12",
+      "question": "Combien de capteurs IMU existe-t-il et comment sont-ils répartis ?",
+      "category": "aggregation",
+      "difficulty": "medium",
+      "ground_truth": "Le système contient 108 capteurs IMU au total répartis sur les 50 chevaux : 50 capteurs au garrot (Withers, un par cheval), 20 capteurs au canon antérieur (CanonOfForelimb), 12 capteurs au canon postérieur (CanonOfHindlimb) et 26 capteurs au sternum (Sternum). Par exemple pour Dakota : IMU-W-001 (garrot), IMU-CF-002 (canon antérieur), IMU-CH-003 (canon postérieur) et IMU-ST-004 (sternum).",
+      "system_answer": "Dans les documents fournis, il existe un total de 12 capteurs IMU répartis comme suit :\n\n1. **Iris** : 2 capteurs\n   - IMU_CanonHind_Iris_01\n   - IMU_Withers_Iris_01\n\n2. **Dakota** : 4 capteurs\n   - IMU_CanonFore_Dakota_01\n   - IMU_CanonHind_Dakota_01\n   - IMU_Sternum_Dakota_01\n   - IMU_Withers_Dakota_01\n\n3. **Ecume** : 2 capteurs\n   - IMU_Sternum_Ecume_01\n   - IMU_Withers_Ecume_01\n\n4. **Lumiere** : 2 capteurs\n   - IMU_Sternum_Lumiere_01\n   - IMU_Withers_Lumiere_01\n\n5. **Nuage** : 2 capteurs\n   - IMU_CanonFore_Nuage_01\n   - IMU_Withers_Nuage_01\n\nCette répartition est basée sur les documents consultés et peut ne pas être exhaustive.",
+      "retrieved_docs": [
+        "Iris.txt",
+        "Dakota.txt",
+        "Ecume.txt",
+        "Lumiere.txt",
+        "Nuage.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 3.4624281000578776,
+      "semantic_similarity": 0.8695845268834401,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse fournie mentionne un total de 12 capteurs IMU, alors que la ground truth indique qu'il y en a 108. De plus, la répartition des capteurs par cheval et par emplacement ne correspond pas à celle de la référence. Les informations sont donc incorrectes et incomplètes."
+      },
+      "combined_score": 0.43479226344172006,
+      "query_cost_usd": 0.000167355,
+      "eval_cost_usd": 0.0053135
+    },
+    {
+      "question_id": "Q13",
+      "question": "À quelles positions anatomiques les capteurs IMU sont-ils placés sur Dakota ?",
+      "category": "aggregation",
+      "difficulty": "medium",
+      "ground_truth": "Les capteurs IMU sont placés sur Dakota à 4 positions : garrot (Withers), canon antérieur (CanonOfForelimb), canon postérieur (CanonOfHindlimb) et sternum (Sternum).",
+      "system_answer": "Les capteurs IMU sur Dakota sont placés aux positions anatomiques suivantes :\n\n1. Canon antérieur (CanonOfForelimb)\n2. Canon postérieur (CanonOfHindlimb)\n3. Sternum (Sternum)\n4. Garrot (Withers)\n\nCette liste est basée sur les documents fournis et peut ne pas être exhaustive.",
+      "retrieved_docs": [
+        "Dakota.txt",
+        "Dune.txt",
+        "Atlas.txt",
+        "Horizon.txt",
+        "Mirage.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.9678634000010788,
+      "semantic_similarity": 0.9637105454443717,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse contient toutes les positions anatomiques correctes et les noms sont exacts, ce qui correspond parfaitement à la réponse de référence."
+      },
+      "combined_score": 0.9818552727221859,
+      "query_cost_usd": 0.00016013999999999997,
+      "eval_cost_usd": 0.0023422
+    },
+    {
+      "question_id": "Q14",
+      "question": "Combien de capteurs IMU sont placés au garrot, et peux-tu donner quelques exemples d'identifiants ?",
+      "category": "multi_hop",
+      "difficulty": "medium",
+      "ground_truth": "Il y a cinquante capteurs IMU placés au garrot dans le système, un par cheval, par exemple IMU_Withers_Dakota_01 pour Dakota, IMU_Withers_Comet_01 pour Comet et IMU_Withers_Apollon_01 pour Apollon.",
+      "system_answer": "Dans les documents fournis, il y a 4 capteurs IMU placés au garrot. Voici quelques exemples d'identifiants de ces capteurs :\n\n1. IMU_Withers_Falcon_01 (cheval Falcon)\n2. IMU_Withers_Iris_01 (cheval Iris)\n3. IMU_Withers_Orion_01 (cheval Orion)\n4. IMU_Withers_Atlas_01 (cheval Atlas)\n5. IMU_Withers_Bella_01 (cheval Bella)\n\nCette liste n'est peut-être pas exhaustive, mais elle est basée sur les documents consultés.",
+      "retrieved_docs": [
+        "Falcon.txt",
+        "Iris.txt",
+        "Orion.txt",
+        "Atlas.txt",
+        "Bella.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 2.170623599900864,
+      "semantic_similarity": 0.9064201470739603,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse indique qu'il y a 4 capteurs IMU, alors que la ground truth mentionne qu'il y en a 50. De plus, les identifiants fournis ne correspondent pas à ceux de la référence, ce qui entraîne des erreurs d'exactitude et de complétude."
+      },
+      "combined_score": 0.4532100735369802,
+      "query_cost_usd": 0.00016365,
+      "eval_cost_usd": 0.0032041000000000005
+    },
+    {
+      "question_id": "Q15",
+      "question": "Quelle est la fréquence d'échantillonnage du capteur IMU au sternum ?",
+      "category": "multi_hop",
+      "difficulty": "medium",
+      "ground_truth": "La fréquence d'échantillonnage des capteurs IMU au sternum est de 200 Hz pour tous les chevaux qui en possèdent un, sur les 26 capteurs sternum présents dans le système.",
+      "system_answer": "La fréquence d'échantillonnage du capteur IMU au sternum est de 200 Hz. Cette information est présente dans les documents fournis pour les chevaux Ecume, Falcon et Rafale.",
+      "retrieved_docs": [
+        "Ecume.txt",
+        "Etoile.txt",
+        "Falcon.txt",
+        "Rafale.txt",
+        "Galop.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.5680186999961734,
+      "semantic_similarity": 0.9578880762417833,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 0.5,
+        "accuracy": 1.0,
+        "overall": 0.67,
+        "reasoning": "La réponse est correcte en ce qui concerne la fréquence d'échantillonnage de 200 Hz, mais elle ne mentionne pas le fait qu'il y a 26 capteurs sternum dans le système, ce qui est un élément important de la ground truth."
+      },
+      "combined_score": 0.8139440381208917,
+      "query_cost_usd": 0.00015740999999999997,
+      "eval_cost_usd": 0.0018401000000000001
+    },
+    {
+      "question_id": "Q16",
+      "question": "Quel capteur a la fréquence d'échantillonnage la plus élevée ?",
+      "category": "comparison",
+      "difficulty": "medium",
+      "ground_truth": "Trois capteurs partagent la fréquence d'échantillonnage la plus élevée à 300 Hz : IMU_CanonFore_Luna_01 (canon antérieur de Luna), IMU_Withers_Comet_01 (garrot de Comet) et IMU_CanonFore_Comet_01 (canon antérieur de Comet).",
+      "system_answer": "Parmi les documents consultés, le capteur avec la fréquence d'échantillonnage la plus élevée est l'IMU_CanonFore_Comet_01, qui a une fréquence d'échantillonnage de 300Hz.",
+      "retrieved_docs": [
+        "Ecume.txt",
+        "Sirius.txt",
+        "Falcon.txt",
+        "Comet.txt",
+        "Cascade.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.576046000001952,
+      "semantic_similarity": 0.9113612243175626,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.5,
+        "accuracy": 0.5,
+        "overall": 0.5,
+        "reasoning": "La réponse mentionne correctement l'IMU_CanonFore_Comet_01 et sa fréquence d'échantillonnage de 300 Hz, mais elle omet de mentionner les deux autres capteurs qui partagent cette fréquence, ce qui affecte la complétude et l'exactitude des informations."
+      },
+      "combined_score": 0.7056806121587813,
+      "query_cost_usd": 0.00015623999999999995,
+      "eval_cost_usd": 0.0021030000000000003
+    },
+    {
+      "question_id": "Q17",
+      "question": "Quels cavaliers sont associés à Dakota ?",
+      "category": "single_hop",
+      "difficulty": "medium",
+      "ground_truth": "Deux cavaliers sont associés à Dakota : Emma et Manon.",
+      "system_answer": "Les cavaliers associés à Dakota, selon les documents fournis, sont Rider_Emma et Rider_Manon. Cette information provient du Document 1.",
+      "retrieved_docs": [
+        "Dakota.txt",
+        "Event_Dressage_01.txt",
+        "Event_Dressage_2026_01.txt",
+        "Event_SJ_01.txt",
+        "Dune.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.4436210000421852,
+      "semantic_similarity": 0.877447780333696,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse mentionne correctement les deux cavaliers associés à Dakota, en utilisant des noms qui sont des variantes des noms de la réponse de référence, ce qui est acceptable. Tous les éléments importants sont présents et les détails sont exacts."
+      },
+      "combined_score": 0.938723890166848,
+      "query_cost_usd": 0.00015507,
+      "eval_cost_usd": 0.0010758
+    },
+    {
+      "question_id": "Q18",
+      "question": "Quel cavalier est associé à Naya ?",
+      "category": "single_hop",
+      "difficulty": "medium",
+      "ground_truth": "Le cavalier Leo est associé à Naya.",
+      "system_answer": "Le cavalier associé à Naya est Rider_Leo, selon les documents fournis.",
+      "retrieved_docs": [
+        "Naya.txt",
+        "Event_Dressage_2026_01.txt",
+        "Nuage.txt",
+        "Nebule.txt",
+        "Zephyr.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 5.374290200066753,
+      "semantic_similarity": 0.9084885502842777,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse mentionne correctement le cavalier associé à Naya, en utilisant un nom qui est une variante acceptable de la réponse de référence. Tous les éléments importants sont présents et les détails sont exacts."
+      },
+      "combined_score": 0.9542442751421388,
+      "query_cost_usd": 0.00015351,
+      "eval_cost_usd": 0.0006525000000000001
+    },
+    {
+      "question_id": "Q19",
+      "question": "Combien de cavaliers différents sont dans le système ?",
+      "category": "aggregation",
+      "difficulty": "easy",
+      "ground_truth": "Il y a 25 cavaliers différents dans le système : Emma, Manon, Leo, Lucas, Clara, Antoine, Julien, Sarah, Nina, Hugo, Camille, Tom, Lea, Marc, Chloe, Baptiste, Jade, Alice, Maxime, Elise, Remi, Ines, Victor, Pauline et Theo.",
+      "system_answer": "Dans les documents fournis, il y a quatre cavaliers différents associés aux chevaux :\n\n1. Rider_Ines\n2. Rider_Elise\n3. Rider_Remi\n4. Rider_Theo\n\nCette liste n'est peut-être pas exhaustive, car elle se base uniquement sur les documents consultés.",
+      "retrieved_docs": [
+        "Rafale.txt",
+        "Auroch.txt",
+        "Tonnerre.txt",
+        "Galop.txt",
+        "Nebule.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.5211223999504,
+      "semantic_similarity": 0.8320803900500993,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse à évaluer mentionne seulement quatre cavaliers, alors que la réponse de référence en liste 25. De plus, les noms des cavaliers dans la réponse à évaluer ne correspondent pas à ceux de la ground truth, ce qui indique une inexactitude totale."
+      },
+      "combined_score": 0.41604019502504963,
+      "query_cost_usd": 0.00015896999999999998,
+      "eval_cost_usd": 0.0024846
+    },
+    {
+      "question_id": "Q20",
+      "question": "Qui est le vétérinaire impliqué dans les soins des chevaux ?",
+      "category": "simple_retrieval",
+      "difficulty": "easy",
+      "ground_truth": "Le Dr Martin est le vétérinaire impliqué dans les soins des chevaux.",
+      "system_answer": "Le vétérinaire impliqué dans les soins des chevaux, selon les documents fournis, est Vet_DrMartin. Cette information est présente dans les rapports d'entraînement des chevaux Vega, Auroch et Volcan.",
+      "retrieved_docs": [
+        "Vega.txt",
+        "Auroch.txt",
+        "Volcan.txt",
+        "Event_Montpellier_Dr_2026.txt",
+        "Event_Versailles_SJ_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 4.033378900028765,
+      "semantic_similarity": 0.8910331520556489,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.5,
+        "accuracy": 0.5,
+        "overall": 0.5,
+        "reasoning": "La réponse mentionne un vétérinaire, mais le nom 'Vet_DrMartin' n'est pas conforme à la ground truth qui indique 'Dr Martin'. De plus, la réponse fait référence à des documents et des chevaux spécifiques, ce qui n'est pas présent dans la réponse de référence, ce qui affecte la complétude."
+      },
+      "combined_score": 0.6955165760278245,
+      "query_cost_usd": 0.00015760499999999998,
+      "eval_cost_usd": 0.0014653000000000001
+    },
+    {
+      "question_id": "Q21",
+      "question": "Qui est le soigneur responsable des chevaux ?",
+      "category": "simple_retrieval",
+      "difficulty": "easy",
+      "ground_truth": "Sophie est la soigneuse responsable des chevaux.",
+      "system_answer": "Le soigneur responsable des chevaux, selon les documents fournis, est Caretaker_Sophie. Cette information est mentionnée dans les rapports d'entraînement des chevaux Auroch, Grondre et Rafale. Cependant, cette liste n'est peut-être pas exhaustive, car d'autres soigneurs pourraient exister en dehors des documents consultés.",
+      "retrieved_docs": [
+        "Event_Montpellier_Dr_2026.txt",
+        "Auroch.txt",
+        "Grondre.txt",
+        "Aurore.txt",
+        "Rafale.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.5954780000029132,
+      "semantic_similarity": 0.8396967122675649,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 0.5,
+        "accuracy": 1.0,
+        "overall": 0.5,
+        "reasoning": "La réponse mentionne correctement le nom du soigneur, mais elle introduit une incertitude sur l'existence d'autres soigneurs, ce qui n'est pas présent dans la réponse de référence. De plus, elle ne mentionne pas explicitement que Sophie est la soigneuse, ce qui affecte la complétude."
+      },
+      "combined_score": 0.6698483561337825,
+      "query_cost_usd": 0.00015974999999999998,
+      "eval_cost_usd": 0.0019971
+    },
+    {
+      "question_id": "Q22",
+      "question": "Quels acteurs humains sont impliqués dans la phase de préparation de l'entraînement ?",
+      "category": "single_hop",
+      "difficulty": "medium",
+      "ground_truth": "Les acteurs impliqués dans la phase de préparation incluent Sophie (soigneuse), Dr Martin (vétérinaire), et 24 des 25 cavaliers du système (tous sauf Manon, qui n'intervient que sur la pré-compétition de Dakota) : Alice, Antoine, Baptiste, Camille, Chloe, Clara, Elise, Emma, Hugo, Ines, Jade, Julien, Lea, Leo, Lucas, Marc, Maxime, Nina, Pauline, Remi, Sarah, Theo, Tom et Victor.",
+      "system_answer": "Dans la phase de préparation de l'entraînement, les acteurs humains impliqués sont :\n\n1. Pour Thunder : cavalier Rider_Antoine, soigneur Caretaker_Sophie, vétérinaire Vet_DrMartin.\n2. Pour Zephyr : cavalier Rider_Nina, soigneur Caretaker_Sophie, vétérinaire Vet_DrMartin.\n3. Pour Rafale : cavalier Rider_Ines, soigneur Caretaker_Sophie, vétérinaire Vet_DrMartin.\n4. Pour Zephire : cavalier Rider_Maxime, soigneur Caretaker_Sophie, vétérinaire Vet_DrMartin.\n\nCette liste est basée sur les documents consultés et peut ne pas être exhaustive.",
+      "retrieved_docs": [
+        "Thunder.txt",
+        "Zephyr.txt",
+        "Rafale.txt",
+        "Event_LeMans_Cross_2026.txt",
+        "Zephire.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 2.6557599999941885,
+      "semantic_similarity": 0.8668497399679028,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.5,
+        "accuracy": 0.5,
+        "overall": 0.5,
+        "reasoning": "La réponse mentionne certains acteurs corrects (Sophie et Dr Martin) mais omet la majorité des cavaliers et inclut des noms qui ne figurent pas dans la réponse de référence. De plus, elle ne couvre pas tous les cavaliers impliqués dans la phase de préparation."
+      },
+      "combined_score": 0.6834248699839514,
+      "query_cost_usd": 0.0001656,
+      "eval_cost_usd": 0.004761400000000001
+    },
+    {
+      "question_id": "Q23",
+      "question": "Qui participe à la phase pré-compétition de l'entraînement ?",
+      "category": "single_hop",
+      "difficulty": "medium",
+      "ground_truth": "Les participants à la phase pré-compétition incluent Sophie (soigneuse), Dr Martin (vétérinaire), et les 25 cavaliers du système (Emma et Manon sont toutes deux présentes, chacune sur une étape pré-compétition distincte de Dakota) : Alice, Antoine, Baptiste, Camille, Chloe, Clara, Elise, Emma, Hugo, Ines, Jade, Julien, Lea, Leo, Lucas, Manon, Marc, Maxime, Nina, Pauline, Remi, Sarah, Theo, Tom et Victor.",
+      "system_answer": "Dans les documents fournis, les cavaliers qui participent à la phase pré-compétition de l'entraînement sont :\n\n1. Rider_Theo pour le cheval Glacier (Document 3).\n2. Rider_Nina pour le cheval Zephyr (Document 4).\n3. Rider_Lea pour le cheval Falcon (Document 5).\n\nCette liste est basée sur les documents consultés et peut ne pas être exhaustive.",
+      "retrieved_docs": [
+        "Event_LeMans_Cross_2026.txt",
+        "Event_Clermont_Cross_2026.txt",
+        "Glacier.txt",
+        "Zephyr.txt",
+        "Falcon.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 2.1145710999844596,
+      "semantic_similarity": 0.8352584336169311,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse ne mentionne pas les participants corrects de la phase pré-compétition, omettant des cavaliers importants et d'autres participants comme Sophie et Dr Martin. Les noms des cavaliers cités ne correspondent pas à ceux de la réponse de référence."
+      },
+      "combined_score": 0.41762921680846554,
+      "query_cost_usd": 0.000162285,
+      "eval_cost_usd": 0.0039069000000000005
+    },
+    {
+      "question_id": "Q24",
+      "question": "Quelle est la période de la saison 2026 ?",
+      "category": "attribute_retrieval",
+      "difficulty": "easy",
+      "ground_truth": "La saison 2026 s'étend du 1er mars 2026 au 31 octobre 2026.",
+      "system_answer": "L'information sur la période de la saison 2026 n'est pas présente dans les documents fournis.",
+      "retrieved_docs": [
+        "Event_Versailles_SJ_2026.txt",
+        "Event_Rennes_SJ_2026.txt",
+        "Event_Dressage_2026_01.txt",
+        "Event_Fontainebleau_SJ_2026.txt",
+        "Event_Lyon_Dressage_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.215091499965638,
+      "semantic_similarity": 0.8187502942385843,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse ne fournit aucune information sur la période de la saison 2026, ce qui est incorrect et incomplet par rapport à la réponse de référence."
+      },
+      "combined_score": 0.4093751471192921,
+      "query_cost_usd": 0.00015468,
+      "eval_cost_usd": 0.0008908
+    },
+    {
+      "question_id": "Q25",
+      "question": "Quels événements font partie de la saison 2026 ?",
+      "category": "single_hop",
+      "difficulty": "medium",
+      "ground_truth": "Vingt événements font partie de la saison 2026 : Event_SJ_01 (saut d'obstacles, Saumur, 12 avril), Event_Dressage_01 (dressage, Angers, 3 mai), Event_Rennes_SJ_2026 (saut d'obstacles, Rennes, 17 mai, Pro Elite), Event_SJ_2026_01 (saut d'obstacles, Paris, 14 juin), Event_Dijon_Cross_2026 (cross, Dijon, 6 juin), Event_Strasbourg_Cross_2026 (cross, Strasbourg, 12 juillet), Event_Fontainebleau_SJ_2026 (saut d'obstacles, Fontainebleau, 5 juillet), Event_Dressage_2026_01 (dressage, Lyon, 20 juillet), Event_Cross_2026_01 (cross, Bordeaux, 10 août), Event_Montpellier_Dr_2026 (dressage, Montpellier, 15 août, Club Elite), Event_Lyon_Dressage_2026 (dressage, Lyon, 23 août), Event_LeMans_Cross_2026 (cross, Le Mans, 5 septembre), Event_Versailles_SJ_2026 (saut d'obstacles, Versailles, 6 septembre, Pro Elite), Event_Toulouse_Cross_2026 (cross, Toulouse, 13 septembre), Event_Bordeaux_Cross_2026 (cross, Bordeaux, 20 septembre), Event_Nice_Dressage_2026 (dressage, Nice, 28 septembre, Pro Elite), Event_Clermont_Cross_2026 (cross, Clermont-Ferrand, 10 octobre), Event_Marseille_Dressage_2026 (dressage, Marseille, 3 octobre), Event_Pau_SJ_2026 (saut d'obstacles, Pau, 18 octobre) et Event_Nantes_SJ_2026 (saut d'obstacles, Nantes, 25 avril, Amateur 2).",
+      "system_answer": "Les événements qui font partie de la saison 2026, parmi les documents consultés, sont :\n\n1. Épreuve de saut d'obstacles à Rennes, organisée le 2026-05-17.\n2. Épreuve de saut d'obstacles à Nantes, organisée le 2026-04-25.\n3. Épreuve de saut d'obstacles à Fontainebleau, organisée le 2026-07-05.\n4. Épreuve de saut d'obstacles à Versailles, organisée le 2026-09-06.\n5. Épreuve de cross / concours complet à Toulouse, organisée le 2026-09-13.\n\nCette liste n'est peut-être pas exhaustive, car elle se base uniquement sur les documents fournis.",
+      "retrieved_docs": [
+        "Event_Versailles_SJ_2026.txt",
+        "Event_Rennes_SJ_2026.txt",
+        "Event_Nantes_SJ_2026.txt",
+        "Event_Fontainebleau_SJ_2026.txt",
+        "Event_Toulouse_Cross_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 2.638589399983175,
+      "semantic_similarity": 0.9174469293410963,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.5,
+        "accuracy": 0.5,
+        "overall": 0.5,
+        "reasoning": "La réponse contient certaines informations correctes, comme les événements à Rennes, Fontainebleau et Versailles, mais inclut des erreurs sur la date de l'événement à Nantes (25 avril au lieu de 18 octobre) et omet plusieurs événements importants. Les détails des événements sont également partiellement corrects."
+      },
+      "combined_score": 0.7087234646705481,
+      "query_cost_usd": 0.00016774499999999996,
+      "eval_cost_usd": 0.0091257
+    },
+    {
+      "question_id": "Q26",
+      "question": "Quelle est la date de l'événement Event_SJ_01 ?",
+      "category": "attribute_retrieval",
+      "difficulty": "easy",
+      "ground_truth": "L'événement Event_SJ_01 aura lieu le 12 avril 2026.",
+      "system_answer": "La date de l'événement Event_SJ_01 est le 2026-04-12, comme indiqué dans le Document 1.",
+      "retrieved_docs": [
+        "Event_SJ_01.txt",
+        "Event_Versailles_SJ_2026.txt",
+        "Event_SJ_2026_01.txt",
+        "Event_Nantes_SJ_2026.txt",
+        "Event_Fontainebleau_SJ_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.2993410000344738,
+      "semantic_similarity": 0.9262749758100743,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse fournit la date correcte de l'événement Event_SJ_01, qui est le 12 avril 2026, et elle est exprimée de manière précise et complète."
+      },
+      "combined_score": 0.9631374879050372,
+      "query_cost_usd": 0.00015429,
+      "eval_cost_usd": 0.0008190000000000001
+    },
+    {
+      "question_id": "Q27",
+      "question": "Où se déroule l'événement de saut d'obstacles Event_SJ_01 ?",
+      "category": "attribute_retrieval",
+      "difficulty": "easy",
+      "ground_truth": "L'événement Event_SJ_01 se déroule à Saumur.",
+      "system_answer": "L'événement de saut d'obstacles Event_SJ_01 se déroule à Saumur, comme indiqué dans le Document 1.",
+      "retrieved_docs": [
+        "Event_SJ_01.txt",
+        "Event_SJ_2026_01.txt",
+        "Event_Versailles_SJ_2026.txt",
+        "Event_Nantes_SJ_2026.txt",
+        "Event_Pau_SJ_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.3049921999918297,
+      "semantic_similarity": 0.9128026937226665,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse contient toutes les informations correctes et pertinentes, y compris le lieu de l'événement, et mentionne une source pour renforcer la validité de l'information."
+      },
+      "combined_score": 0.9564013468613333,
+      "query_cost_usd": 0.00015468,
+      "eval_cost_usd": 0.000839
+    },
+    {
+      "question_id": "Q28",
+      "question": "Où se déroule l'événement de dressage Event_Dressage_01 ?",
+      "category": "attribute_retrieval",
+      "difficulty": "easy",
+      "ground_truth": "L'événement Event_Dressage_01 se déroule à Angers.",
+      "system_answer": "L'événement de dressage Event_Dressage_01 se déroule à Angers, comme indiqué dans le Document 1.",
+      "retrieved_docs": [
+        "Event_Dressage_01.txt",
+        "Event_Dressage_2026_01.txt",
+        "Event_Nice_Dressage_2026.txt",
+        "Event_Montpellier_Dr_2026.txt",
+        "Event_Marseille_Dressage_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.2826638000551611,
+      "semantic_similarity": 0.9550786088625094,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse contient toutes les informations correctes et pertinentes, y compris le lieu de l'événement, et les détails sont exacts."
+      },
+      "combined_score": 0.9775393044312547,
+      "query_cost_usd": 0.00015429,
+      "eval_cost_usd": 0.0008584
+    },
+    {
+      "question_id": "Q29",
+      "question": "Quelle est la catégorie de l'événement Event_SJ_01 ?",
+      "category": "attribute_retrieval",
+      "difficulty": "easy",
+      "ground_truth": "L'événement Event_SJ_01 est de catégorie Amateur 1.",
+      "system_answer": "La catégorie de l'événement Event_SJ_01 est Amateur 1. Cette information est présente dans le Document 1.",
+      "retrieved_docs": [
+        "Event_SJ_01.txt",
+        "Event_SJ_2026_01.txt",
+        "Event_Versailles_SJ_2026.txt",
+        "Event_Nantes_SJ_2026.txt",
+        "Event_Pau_SJ_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.2097935000201687,
+      "semantic_similarity": 0.9524079918024903,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse à évaluer fournit la bonne catégorie de l'événement et mentionne la source d'information, ce qui correspond parfaitement à la réponse de référence."
+      },
+      "combined_score": 0.9762039959012452,
+      "query_cost_usd": 0.00015468,
+      "eval_cost_usd": 0.0009093
+    },
+    {
+      "question_id": "Q30",
+      "question": "Quelle est la catégorie de l'événement Event_Dressage_01 ?",
+      "category": "attribute_retrieval",
+      "difficulty": "easy",
+      "ground_truth": "L'événement Event_Dressage_01 est de catégorie Club Elite.",
+      "system_answer": "La catégorie de l'événement Event_Dressage_01 est « Club Elite », comme indiqué dans le Document 1.",
+      "retrieved_docs": [
+        "Event_Dressage_01.txt",
+        "Event_Dressage_2026_01.txt",
+        "Event_Nice_Dressage_2026.txt",
+        "Event_Marseille_Dressage_2026.txt",
+        "Event_Montpellier_Dr_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.3098348999628797,
+      "semantic_similarity": 0.9528182663177098,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse contient toutes les informations correctes et importantes, et les détails sont exacts."
+      },
+      "combined_score": 0.9764091331588549,
+      "query_cost_usd": 0.00015468,
+      "eval_cost_usd": 0.0009143
+    },
+    {
+      "question_id": "Q31",
+      "question": "Quel classement Dakota et Emma ont-ils obtenu à Event_SJ_01 ?",
+      "category": "multi_hop",
+      "difficulty": "hard",
+      "ground_truth": "Dakota et Emma ont obtenu la 2ème place à Event_SJ_01.",
+      "system_answer": "Dakota et Emma ont obtenu le rang 2 à l'Event_SJ_01, qui est une épreuve de saut d'obstacles organisée le 2026-04-12 à Saumur. Cette information est présente dans le Document 3.",
+      "retrieved_docs": [
+        "Dakota.txt",
+        "Event_Dressage_01.txt",
+        "Event_SJ_01.txt",
+        "Event_SJ_2026_01.txt",
+        "Event_Cross_2026_01.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.5126969999400899,
+      "semantic_similarity": 0.9077015155353817,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse évalue correctement le classement de Dakota et Emma à Event_SJ_01, en indiquant qu'ils ont obtenu le rang 2, ce qui correspond à la ground truth. De plus, elle fournit des détails supplémentaires sur l'événement sans en altérer l'exactitude."
+      },
+      "combined_score": 0.9538507577676909,
+      "query_cost_usd": 0.0001578,
+      "eval_cost_usd": 0.00129
+    },
+    {
+      "question_id": "Q32",
+      "question": "Compare les fréquences d'entraînement entre la phase de préparation et la phase pré-compétition.",
+      "category": "comparison",
+      "difficulty": "hard",
+      "ground_truth": "En phase de préparation, la fréquence est de 5 séances par semaine pour : Orion, Luna, Pixie, Comet, Storm, Rio, Dune, Vega, Soleil, Ecume, Grondre, Riviere, Volcan et Auroch (14 chevaux). Tous les autres chevaux, dont Zephire, s'entraînent 4 fois par semaine. En phase pré-compétition, la fréquence baisse à 3 séances par semaine pour la majorité, sauf Comet, Luna, Pixie, Rio, Riviere, Soleil et Vega (7 chevaux) qui maintiennent 4 séances.",
+      "system_answer": "Voici la comparaison des fréquences d'entraînement entre la phase de préparation et la phase pré-compétition pour les chevaux mentionnés dans les documents fournis :\n\n1. **Comet** :\n   - Phase pré-compétition : fréquence 4\n   - Phase préparation : fréquence 5\n\n2. **Ecume** :\n   - Phase pré-compétition : fréquence 3\n   - Phase préparation : fréquence 5\n\n3. **Thunder** :\n   - Phase pré-compétition : fréquence 3\n   - Phase préparation : fréquence 4\n\n4. **Eclat** :\n   - Phase pré-compétition : fréquence 3\n   - Phase préparation : fréquence 4\n\n5. **Aurore** :\n   - Phase pré-compétition : fréquence 3\n   - Phase préparation : fréquence 4\n\nEn résumé, parmi les chevaux consultés, la fréquence d'entraînement en phase de préparation est généralement égale ou supérieure à celle de la phase pré-compétition. Cette liste n'est peut-être pas exhaustive, car elle ne couvre que les chevaux présents dans les documents fournis.",
+      "retrieved_docs": [
+        "Comet.txt",
+        "Ecume.txt",
+        "Thunder.txt",
+        "Eclat.txt",
+        "Aurore.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 3.9545952000189573,
+      "semantic_similarity": 0.8658746132536511,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.5,
+        "accuracy": 0.5,
+        "overall": 0.5,
+        "reasoning": "La réponse contient des informations correctes sur certains chevaux, mais elle inclut également des chevaux qui ne figurent pas dans la ground truth (comme Thunder et Eclat) et omet des chevaux importants. Les fréquences d'entraînement pour certains chevaux sont incorrectes par rapport à la référence."
+      },
+      "combined_score": 0.6829373066268256,
+      "query_cost_usd": 0.00018003,
+      "eval_cost_usd": 0.007002500000000001
+    },
+    {
+      "question_id": "Q33",
+      "question": "Quelles sont les différences entre les phases de préparation et de pré-compétition en termes de fréquence, intensité et durée ?",
+      "category": "comparison",
+      "difficulty": "very_hard",
+      "ground_truth": "La phase de préparation a 4 à 5 séances par semaine avec une intensité modérée (sauf Comet dont l'intensité est élevée dès la préparation) et des durées de 40 à 55 minutes. La phase pré-compétition a 3 à 4 séances par semaine avec une intensité élevée pour tous les chevaux et des durées de 55 à 75 minutes. Comet et Ecume sont à égalité pour les séances de préparation les plus longues (55 min) ; Comet seul a les séances de pré-compétition les plus longues (75 min).",
+      "system_answer": "Voici les différences entre les phases de préparation et de pré-compétition en termes de fréquence, intensité et durée, basées sur les documents fournis :\n\n1. **Fréquence** :\n   - Phase pré-compétition : 3 (pour Crepuscule et Eclat), 4 (pour Comet), 5 (pour Ecume).\n   - Phase préparation : 4 (pour Crepuscule et Eclat), 5 (pour Comet et Ecume).\n\n2. **Intensité** :\n   - Phase pré-compétition : Élevée (pour tous les chevaux).\n   - Phase préparation : Modérée (pour Crepuscule et Eclat), Élevée (pour Comet et Ecume).\n\n3. **Durée** :\n   - Phase pré-compétition : 60 minutes (Crepuscule), 75 minutes (Comet), 65 minutes (Eclat), 65 minutes (Ecume).\n   - Phase préparation : 45 minutes (Crepuscule), 50 minutes (Eclat), 55 minutes (Comet et Ecume).\n\nCes informations sont tirées des documents fournis et peuvent ne pas couvrir toutes les entités ou faits pertinents du corpus.",
+      "retrieved_docs": [
+        "Crepuscule.txt",
+        "Comet.txt",
+        "Eclat.txt",
+        "Event_Clermont_Cross_2026.txt",
+        "Ecume.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 3.6039771999930963,
+      "semantic_similarity": 0.9009651198269799,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.5,
+        "accuracy": 0.5,
+        "overall": 0.5,
+        "reasoning": "La réponse contient des informations correctes sur l'intensité et la fréquence, mais les durées sont incorrectes et certaines valeurs spécifiques sont inexactes. De plus, elle ne mentionne pas que Comet a les séances de pré-compétition les plus longues, ce qui est un élément important."
+      },
+      "combined_score": 0.70048255991349,
+      "query_cost_usd": 0.00018041999999999996,
+      "eval_cost_usd": 0.006902900000000001
+    },
+    {
+      "question_id": "Q34",
+      "question": "Compare les acteurs impliqués dans les phases de préparation et de pré-compétition.",
+      "category": "comparison",
+      "difficulty": "hard",
+      "ground_truth": "La phase de préparation implique 24 des 25 cavaliers (tous sauf Manon, y compris Emma pour Dakota), Sophie (soigneuse) et Dr Martin (vétérinaire). La phase pré-compétition implique Sophie, Dr Martin et les 25 cavaliers : Emma et Manon y sont toutes deux présentes (chacune sur une étape pré-compétition distincte de Dakota).",
+      "system_answer": "Dans le contexte fourni, les acteurs impliqués dans les phases de préparation et de pré-compétition pour le cheval Eclat sont les suivants :\n\n- **Phase pré-compétition (PreCompetitionStage)** :\n  - Cavalier : Rider_Chloe\n  - Vétérinaire : Vet_DrMartin\n\n- **Phase préparation (PreparationStage)** :\n  - Cavalier : Rider_Chloe\n  - Soigneur : Caretaker_Sophie\n  - Vétérinaire : Vet_DrMartin\n\nAinsi, dans la phase de pré-compétition, il y a deux acteurs (Rider_Chloe et Vet_DrMartin), tandis que dans la phase de préparation, il y a trois acteurs (Rider_Chloe, Caretaker_Sophie et Vet_DrMartin). \n\nCette comparaison est basée sur les informations extraites des documents fournis.",
+      "retrieved_docs": [
+        "Event_Clermont_Cross_2026.txt",
+        "Event_LeMans_Cross_2026.txt",
+        "Event_Strasbourg_Cross_2026.txt",
+        "Event_Versailles_SJ_2026.txt",
+        "Eclat.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 3.1773929999908432,
+      "semantic_similarity": 0.8782586977353644,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse évalue des acteurs différents de ceux mentionnés dans la réponse de référence. Elle ne mentionne pas les 24 cavaliers impliqués dans la phase de préparation, ni la présence de Manon et Emma dans la phase pré-compétition, ce qui entraîne une inexactitude totale des informations fournies."
+      },
+      "combined_score": 0.4391293488676822,
+      "query_cost_usd": 0.00017066999999999996,
+      "eval_cost_usd": 0.0051621
+    },
+    {
+      "question_id": "Q35",
+      "question": "Donne une analyse complète de l'événement Event_SJ_01.",
+      "category": "multi_hop_complex",
+      "difficulty": "extreme",
+      "ground_truth": "L'événement Event_SJ_01 est une compétition de saut d'obstacles qui a eu lieu le 12 avril 2026 à Saumur en catégorie Amateur 1, dans le cadre de la Saison 2026. Dakota, monté par Emma, y a obtenu la 2ème place. La préparation pour cet événement comprenait une phase de préparation (Training_Prepa_SJ_01 : 4 séances/semaine, intensité modérée, 45 min) avec Emma, Dr Martin et Sophie, et une phase pré-compétition (Training_PreComp_SJ_01 : 3 séances/semaine, intensité élevée, 60 min) avec Manon et Sophie.",
+      "system_answer": "L'événement Event_SJ_01 est une épreuve de saut d'obstacles (ShowJumping) qui a eu lieu le 12 avril 2026 à Saumur, dans la catégorie Amateur 1. Voici une analyse complète basée sur les documents fournis :\n\n### Détails de l'événement\n- **Date** : 2026-04-12\n- **Lieu** : Saumur\n- **Catégorie** : Amateur 1\n- **Statut** : Terminé\n\n### Classement et participants\nL'événement a vu la participation de cinq chevaux, avec les résultats suivants :\n1. **Rang 1** : Cheval Falcon (Horse_Falcon, race « Barbe »), cavalier Rider_Lea.\n2. **Rang 2** : Cheval Dakota (Horse_Dakota, race « Selle Français »), cavalier Rider_Emma.\n3. **Rang 3** : Cheval Volcan (Horse_Volcan, race « Arabe »), cavalier Rider_Theo.\n4. **Rang 4** : Cheval Storm (Horse_Storm, race « Selle Belge »), cavalier Rider_Hugo.\n5. **Rang 5** : Cheval Arrow (Horse_Arrow, race « Quarter Horse »), cavalier Rider_Alice.\n\n### Entraînements liés\nDeux phases d'entraînement ont été spécifiquement liées à cet événement :\n- **Phase pré-compétition (PreCompetitionStage)** : 1 séance pour 1 cheval.\n- **Phase préparation (PreparationStage)** : 1 séance pour 1 cheval.\n\n### Participation de Storm\nLe cheval Storm, monté par le cavalier Rider_Hugo, a terminé à la quatrième place de cet événement. Son statut est « Terminé ».\n\n### Conclusion\nL'événement Event_SJ_01 a été un concours de saut d'obstacles avec une participation variée et des résultats significatifs pour les chevaux engagés. Storm, bien qu'il ait terminé en quatrième position, a bénéficié d'un programme d'entraînement structuré en préparation de cette compétition. Les informations fournies proviennent des documents consultés et peuvent ne pas couvrir toutes les entités ou faits pertinents du corpus.",
+      "retrieved_docs": [
+        "Storm.txt",
+        "Event_SJ_01.txt",
+        "Dakota.txt",
+        "Soleil.txt",
+        "Sirius.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 5.305000600055791,
+      "semantic_similarity": 0.885983603199372,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.5,
+        "accuracy": 0.5,
+        "overall": 0.5,
+        "reasoning": "La réponse contient des informations correctes sur l'événement, mais elle omet des détails importants sur la préparation et les phases d'entraînement, et elle inclut des informations incorrectes sur le nombre de chevaux et les résultats. Les détails sur les participants sont également partiellement erronés."
+      },
+      "combined_score": 0.692991801599686,
+      "query_cost_usd": 0.00020264999999999997,
+      "eval_cost_usd": 0.0113347
+    },
+    {
+      "question_id": "Q36",
+      "question": "Combien d'événements sportifs sont enregistrés dans le système ?",
+      "category": "aggregation",
+      "difficulty": "easy",
+      "ground_truth": "Il y a 20 événements sportifs enregistrés dans le système.",
+      "system_answer": "Dans les documents fournis, il y a un total de 7 événements sportifs enregistrés :\n\n1. Event_Versailles_SJ_2026\n2. Event_Rennes_SJ_2026\n3. Event_Dijon_Cross_2026\n4. Event_Cross_2026_01\n5. Event_Nantes_SJ_2026\n6. Event_Nice_Dressage_2026\n7. Event_Strasbourg_Cross_2026\n8. Event_LeMans_Cross_2026\n9. Event_Marseille_Dressage_2026\n\nCette liste n'est peut-être pas exhaustive, car elle se base uniquement sur les documents consultés.",
+      "retrieved_docs": [
+        "Etoile.txt",
+        "Ecume.txt",
+        "Galop.txt",
+        "Eclat.txt",
+        "Sable.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 2.7440333999693394,
+      "semantic_similarity": 0.7946312573775612,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse à évaluer indique qu'il y a 7 événements sportifs, alors que la ground truth mentionne qu'il y en a 20. Cela constitue une information incorrecte et incomplète, et les détails fournis ne correspondent pas à la réalité."
+      },
+      "combined_score": 0.3973156286887806,
+      "query_cost_usd": 0.000161115,
+      "eval_cost_usd": 0.0025751000000000003
+    },
+    {
+      "question_id": "Q37",
+      "question": "Quels types d'événements sportifs sont disponibles dans l'ontologie ?",
+      "category": "hierarchical",
+      "difficulty": "easy",
+      "ground_truth": "Les types d'événements sportifs disponibles dans l'ontologie sont : le saut d'obstacles (ShowJumping), le dressage (Dressage) et le cross (Cross).",
+      "system_answer": "Dans les documents fournis, les types d'événements sportifs mentionnés sont :\n\n1. Saut d'obstacles (ShowJumping)\n2. Cross (concours complet)\n\nCette liste est basée sur les événements décrits dans les documents consultés et peut ne pas être exhaustive.",
+      "retrieved_docs": [
+        "Ombre.txt",
+        "Event_Rennes_SJ_2026.txt",
+        "Orion.txt",
+        "Orage.txt",
+        "Event_Versailles_SJ_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.6979586000088602,
+      "semantic_similarity": 0.8971277952330688,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.5,
+        "accuracy": 0.5,
+        "overall": 0.5,
+        "reasoning": "La réponse mentionne le saut d'obstacles et le cross, mais omet le dressage, ce qui affecte l'exactitude et la complétude. Les détails sont partiellement corrects, mais il manque un événement clé."
+      },
+      "combined_score": 0.6985638976165345,
+      "query_cost_usd": 0.00015896999999999998,
+      "eval_cost_usd": 0.0021248
+    },
+    {
+      "question_id": "Q38",
+      "question": "Pour quel objectif expérimental le capteur IMU_Withers_01 est-il utilisé ?",
+      "category": "single_hop",
+      "difficulty": "medium",
+      "ground_truth": "Le capteur IMU_Withers_Dakota_01 (garrot de Dakota) est utilisé pour la classification de la démarche (GaitClassif_01).",
+      "system_answer": "Le capteur IMU_Withers_01 est utilisé pour l'objectif expérimental GaitClassif_01. Cette information est présente dans les documents fournis concernant les chevaux Iris, Falcon et Horizon.",
+      "retrieved_docs": [
+        "Orion.txt",
+        "Iris.txt",
+        "Falcon.txt",
+        "Atlas.txt",
+        "Horizon.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.5716310000279918,
+      "semantic_similarity": 0.8717516364953051,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.5,
+        "accuracy": 0.5,
+        "overall": 0.5,
+        "reasoning": "La réponse mentionne l'objectif GaitClassif_01, ce qui est correct, mais elle confond le capteur IMU_Withers_01 avec IMU_Withers_Dakota_01, ce qui est une erreur. De plus, elle ne mentionne pas le nom du capteur correctement, ce qui affecte l'exactitude des détails."
+      },
+      "combined_score": 0.6858758182476525,
+      "query_cost_usd": 0.00015663,
+      "eval_cost_usd": 0.0016697
+    },
+    {
+      "question_id": "Q39",
+      "question": "Pour quel objectif expérimental le capteur IMU_CanonFore_01 est-il utilisé ?",
+      "category": "single_hop",
+      "difficulty": "medium",
+      "ground_truth": "Le capteur IMU_CanonFore_Dakota_01 (canon antérieur de Dakota) est utilisé pour la détection de fatigue (FatigueDetection).",
+      "system_answer": "Le capteur IMU_CanonFore_Orion_01 est utilisé pour l'objectif expérimental FatigueDetection, tandis que le capteur IMU_CanonFore_Comet_01 est également utilisé pour l'objectif expérimental FatigueDetection. Le capteur IMU_CanonFore_Horizon_01 est également utilisé pour le même objectif expérimental. \n\nCette information est tirée des documents fournis.",
+      "retrieved_docs": [
+        "Orion.txt",
+        "Iris.txt",
+        "Comet.txt",
+        "Falcon.txt",
+        "Horizon.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 2.0219856000039726,
+      "semantic_similarity": 0.8721101863868433,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse mentionne des capteurs qui ne correspondent pas à la référence, et elle ne fait pas mention du capteur IMU_CanonFore_Dakota_01, qui est le seul cité dans la ground truth. Les informations fournies sont donc incorrectes et incomplètes."
+      },
+      "combined_score": 0.4360550931934217,
+      "query_cost_usd": 0.000159555,
+      "eval_cost_usd": 0.0025192
+    },
+    {
+      "question_id": "Q40",
+      "question": "Quel est l'âge de Dakota ?",
+      "category": "unanswerable",
+      "difficulty": "medium",
+      "ground_truth": "L'information sur l'âge de Dakota n'est pas disponible dans le système.",
+      "system_answer": "L'information n'est pas présente dans les documents fournis.",
+      "retrieved_docs": [
+        "Dakota.txt",
+        "Event_Dressage_01.txt",
+        "Event_Dressage_2026_01.txt",
+        "Event_SJ_01.txt",
+        "Event_SJ_2026_01.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.2425394000019878,
+      "semantic_similarity": 0.7704406215339223,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse indique correctement que l'information sur l'âge de Dakota n'est pas disponible, ce qui correspond à la ground truth. Tous les éléments importants sont présents et les détails sont exacts."
+      },
+      "combined_score": 0.8852203107669612,
+      "query_cost_usd": 0.00015272999999999998,
+      "eval_cost_usd": 0.0007825000000000001
+    },
+    {
+      "question_id": "Q41",
+      "question": "Quelle est la race de cheval la plus courante dans l'écurie ?",
+      "category": "aggregation",
+      "difficulty": "medium",
+      "ground_truth": "La race la plus représentée est le Selle Français, avec trois chevaux : Dakota, Comet et Crepuscule.",
+      "system_answer": "L'information n'est pas présente dans les documents fournis.",
+      "retrieved_docs": [
+        "Event_Bordeaux_Cross_2026.txt",
+        "Event_Clermont_Cross_2026.txt",
+        "Event_Nice_Dressage_2026.txt",
+        "Tonnerre.txt",
+        "Event_Dressage_2026_01.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.087693800101988,
+      "semantic_similarity": 0.5610268638203983,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse indique que l'information n'est pas présente, alors que la ground truth fournit des détails spécifiques sur la race de cheval la plus courante et les noms des chevaux. Cela constitue une réponse incorrecte et incomplète."
+      },
+      "combined_score": 0.2805134319101992,
+      "query_cost_usd": 0.0001539,
+      "eval_cost_usd": 0.0009311
+    },
+    {
+      "question_id": "Q42",
+      "question": "Y a-t-il des races rares, représentées par un seul cheval ?",
+      "category": "aggregation",
+      "difficulty": "hard",
+      "ground_truth": "Oui, sept races ne sont représentées que par un seul cheval : Akhal-Teke (Ecume), Lipizzan (Tempete), PRE (Iris), Percheron (Ombre), Pottok (Nuage), Quarter Horse (Arrow) et Selle Belge (Storm).",
+      "system_answer": "L'information n'est pas présente dans les documents fournis.",
+      "retrieved_docs": [
+        "Auroch.txt",
+        "Event_Bordeaux_Cross_2026.txt",
+        "Event_Clermont_Cross_2026.txt",
+        "Event_LeMans_Cross_2026.txt",
+        "Event_Montpellier_Dr_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.30602729995735,
+      "semantic_similarity": 0.5931435289183158,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse ne fournit aucune information pertinente sur les races de chevaux rares, contrairement à la réponse de référence qui en énumère plusieurs. Elle ne répond pas à la question posée."
+      },
+      "combined_score": 0.2965717644591579,
+      "query_cost_usd": 0.00015370499999999997,
+      "eval_cost_usd": 0.0014044
+    },
+    {
+      "question_id": "Q43",
+      "question": "En général, un cavalier travaille-t-il avec un seul cheval ou avec plusieurs ?",
+      "category": "aggregation",
+      "difficulty": "hard",
+      "ground_truth": "Cela varie selon le cavalier. Sur les 25 cavaliers, 8 sont associés à un seul cheval, 9 à deux chevaux, 7 à trois chevaux, et un cavalier (Alice) est associé à quatre chevaux.",
+      "system_answer": "D'après les documents fournis, il semble qu'un cavalier puisse travailler avec plusieurs chevaux. Par exemple, le cavalier Rider_Marc est associé à deux chevaux, Dune et Sable. De plus, le cavalier Rider_Ines est associé à Rafale. Cela indique que les cavaliers peuvent avoir plusieurs chevaux sous leur responsabilité. Cependant, cette liste n'est peut-être pas exhaustive et ne couvre pas tous les cas possibles.",
+      "retrieved_docs": [
+        "Auroch.txt",
+        "Rafale.txt",
+        "Dune.txt",
+        "Sable.txt",
+        "Event_Clermont_Cross_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.890063300030306,
+      "semantic_similarity": 0.8671289620234617,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.5,
+        "accuracy": 0.5,
+        "overall": 0.5,
+        "reasoning": "La réponse mentionne que les cavaliers peuvent travailler avec plusieurs chevaux, ce qui est correct, mais elle ne fournit pas une vue d'ensemble complète des associations de chevaux par cavalier comme dans la réponse de référence. De plus, les détails sur les cavaliers spécifiques sont partiels et manquent d'exhaustivité."
+      },
+      "combined_score": 0.6835644810117308,
+      "query_cost_usd": 0.00016462499999999998,
+      "eval_cost_usd": 0.0030974
+    },
+    {
+      "question_id": "Q44",
+      "question": "Y a-t-il des chevaux montés par plusieurs cavaliers différents ?",
+      "category": "data_quality",
+      "difficulty": "medium",
+      "ground_truth": "Oui, un seul cas : Dakota est associé à deux cavaliers, Emma et Manon. Tous les autres chevaux du système sont associés à un seul cavalier.",
+      "system_answer": "L'information n'est pas présente dans les documents fournis.",
+      "retrieved_docs": [
+        "Event_Clermont_Cross_2026.txt",
+        "Event_Montpellier_Dr_2026.txt",
+        "Event_Bordeaux_Cross_2026.txt",
+        "Event_Dressage_2026_01.txt",
+        "Rafale.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.3092847999650985,
+      "semantic_similarity": 0.5959358433943776,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse indique que l'information n'est pas présente, alors qu'il existe un cas spécifique mentionné dans la réponse de référence. Cela montre une inexactitude totale par rapport à la ground truth."
+      },
+      "combined_score": 0.2979679216971888,
+      "query_cost_usd": 0.00015351,
+      "eval_cost_usd": 0.0011282
+    },
+    {
+      "question_id": "Q45",
+      "question": "Quel cavalier s'occupe du plus grand nombre de chevaux ?",
+      "category": "comparison",
+      "difficulty": "medium",
+      "ground_truth": "Alice est la cavalière qui s'occupe du plus grand nombre de chevaux : Arrow, Soleil, Braise et Orage, soit quatre chevaux.",
+      "system_answer": "Parmi les documents consultés, le cavalier Rider_Ines s'occupe de deux chevaux : Rafale et Tonnerre. Les autres cavaliers (Rider_Elise, Rider_Marc, et Rider_Remi) s'occupent chacun d'un seul cheval. Ainsi, Rider_Ines est le cavalier qui s'occupe du plus grand nombre de chevaux dans les documents fournis. Cette liste n'est peut-être pas exhaustive.",
+      "retrieved_docs": [
+        "Auroch.txt",
+        "Rafale.txt",
+        "Dune.txt",
+        "Grondre.txt",
+        "Tonnerre.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.9996566999470815,
+      "semantic_similarity": 0.8113627834493762,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse mentionne Rider_Ines comme le cavalier s'occupant du plus grand nombre de chevaux, alors que la réponse de référence indique qu'Alice s'occupe de quatre chevaux, ce qui est incorrect. De plus, la réponse ne couvre pas les chevaux d'Alice, ce qui est essentiel pour la complétude."
+      },
+      "combined_score": 0.4056813917246881,
+      "query_cost_usd": 0.0001617,
+      "eval_cost_usd": 0.0024993000000000003
+    },
+    {
+      "question_id": "Q46",
+      "question": "Où sont placés les capteurs IMU sur les chevaux du programme ?",
+      "category": "aggregation",
+      "difficulty": "medium",
+      "ground_truth": "Les 108 capteurs IMU du système sont répartis sur 4 positions anatomiques : 50 au garrot (Withers), 26 au sternum (Sternum), 20 au canon antérieur (CanonOfForelimb) et 12 au canon postérieur (CanonOfHindlimb).",
+      "system_answer": "Voici les positions des capteurs IMU pour les chevaux mentionnés dans les documents fournis :\n\n1. **Horizon** :\n   - IMU_CanonFore_Horizon_01 : position canon antérieur (CanonOfForelimb)\n   - IMU_Withers_Horizon_01 : position garrot (Withers)\n\n2. **Galop** :\n   - IMU_Sternum_Galop_01 : position sternum (Sternum)\n   - IMU_Withers_Galop_01 : position garrot (Withers)\n\n3. **Rafale** :\n   - IMU_Sternum_Rafale_01 : position sternum (Sternum)\n   - IMU_Withers_Rafale_01 : position garrot (Withers)\n\n4. **Atlas** :\n   - IMU_CanonFore_Atlas_01 : position canon antérieur (CanonOfForelimb)\n   - IMU_Sternum_Atlas_01 : position sternum (Sternum)\n   - IMU_Withers_Atlas_01 : position garrot (Withers)\n\n5. **Lumiere** :\n   - IMU_Sternum_Lumiere_01 : position sternum (Sternum)\n   - IMU_Withers_Lumiere_01 : position garrot (Withers)\n\nCette liste est basée sur les documents consultés et peut ne pas être exhaustive.",
+      "retrieved_docs": [
+        "Horizon.txt",
+        "Galop.txt",
+        "Rafale.txt",
+        "Atlas.txt",
+        "Lumiere.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 4.534054099931382,
+      "semantic_similarity": 0.8626576394872888,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.5,
+        "accuracy": 0.5,
+        "overall": 0.5,
+        "reasoning": "La réponse mentionne certaines positions correctes des capteurs IMU, mais ne fournit pas le nombre total de capteurs par position, ce qui est essentiel pour la complétude. De plus, elle ne couvre pas toutes les positions et quantités de la ground truth."
+      },
+      "combined_score": 0.6813288197436445,
+      "query_cost_usd": 0.00017418,
+      "eval_cost_usd": 0.005746800000000001
+    },
+    {
+      "question_id": "Q47",
+      "question": "Tous les chevaux ont-ils le même nombre de capteurs, ou cela varie-t-il ?",
+      "category": "aggregation",
+      "difficulty": "hard",
+      "ground_truth": "Cela varie. La majorité des chevaux (44 sur 50) portent deux capteurs IMU. Quatre chevaux (Atlas, Bella, Luna et Thunder) en portent trois, et deux chevaux (Dakota et Zephyr) en portent quatre, ce qui en fait les plus instrumentés du système.",
+      "system_answer": "D'après les documents fournis, le nombre de capteurs attachés aux chevaux varie :\n\n- Galop : 2 capteurs\n- Atlas : 3 capteurs\n- Rafale : 2 capteurs\n- Auroch : 2 capteurs\n- Tempete : 2 capteurs\n\nAinsi, tous les chevaux n'ont pas le même nombre de capteurs, et cela varie parmi les chevaux mentionnés dans les documents consultés.",
+      "retrieved_docs": [
+        "Galop.txt",
+        "Atlas.txt",
+        "Rafale.txt",
+        "Auroch.txt",
+        "Tempete.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 2.1231151999672875,
+      "semantic_similarity": 0.8942139550639896,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.5,
+        "accuracy": 0.5,
+        "overall": 0.5,
+        "reasoning": "La réponse mentionne que le nombre de capteurs varie, ce qui est correct, mais elle omet des chevaux qui portent plus de capteurs (comme Dakota et Zephyr) et ne fournit pas le nombre total de chevaux avec chaque configuration, ce qui affecte la complétude et l'exactitude des détails."
+      },
+      "combined_score": 0.6971069775319948,
+      "query_cost_usd": 0.000164235,
+      "eval_cost_usd": 0.0029992000000000005
+    },
+    {
+      "question_id": "Q48",
+      "question": "Quels capteurs sont utilisés pour détecter la fatigue, et lesquels servent à analyser la démarche du cheval ?",
+      "category": "multi_hop",
+      "difficulty": "hard",
+      "ground_truth": "La détection de fatigue (FatigueDetection) s'appuie sur les capteurs du sternum et du canon antérieur, soit 46 capteurs au total. L'analyse de la démarche (GaitClassif_01) s'appuie sur les capteurs du garrot et du canon postérieur, soit 62 capteurs au total.",
+      "system_answer": "D'après les documents fournis, les capteurs utilisés pour détecter la fatigue sont :\n\n- IMU_Sternum_Galop_01 (cheval Galop)\n- IMU_Sternum_Lumiere_01 (cheval Lumiere)\n- IMU_CanonFore_Eclair_01 (cheval Eclair)\n- IMU_Sternum_Crepuscule_01 (cheval Crepuscule)\n- IMU_Sternum_Ecume_01 (cheval Ecume)\n\nLes capteurs utilisés pour analyser la démarche du cheval sont :\n\n- IMU_Withers_Galop_01 (cheval Galop)\n- IMU_Withers_Lumiere_01 (cheval Lumiere)\n- IMU_Withers_Eclair_01 (cheval Eclair)\n- IMU_Withers_Crepuscule_01 (cheval Crepuscule)\n- IMU_Withers_Ecume_01 (cheval Ecume)\n\nCette liste est basée sur les documents consultés et peut ne pas être exhaustive.",
+      "retrieved_docs": [
+        "Galop.txt",
+        "Lumiere.txt",
+        "Eclair.txt",
+        "Crepuscule.txt",
+        "Ecume.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 3.886331200017594,
+      "semantic_similarity": 0.864447152998193,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse fournie mentionne des capteurs spécifiques qui ne correspondent pas à ceux de la réponse de référence. De plus, elle ne couvre pas le nombre total de capteurs pour chaque type de détection, ce qui est essentiel pour la complétude et l'exactitude des informations."
+      },
+      "combined_score": 0.4322235764990965,
+      "query_cost_usd": 0.00016872,
+      "eval_cost_usd": 0.0046958
+    },
+    {
+      "question_id": "Q49",
+      "question": "Dans quel format sont enregistrées les données des capteurs IMU ?",
+      "category": "consistency_check",
+      "difficulty": "medium",
+      "ground_truth": "Toutes les données des 108 capteurs IMU du système sont enregistrées au format CSV.",
+      "system_answer": "Les données des capteurs IMU sont enregistrées au format CSV, comme indiqué dans les documents fournis. Cette information est présente dans chaque rapport d'entraînement pour les chevaux Iris, Galop, Ecume, Horizon et Falcon.",
+      "retrieved_docs": [
+        "Iris.txt",
+        "Galop.txt",
+        "Ecume.txt",
+        "Horizon.txt",
+        "Falcon.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.6010306999087334,
+      "semantic_similarity": 0.8938833329281664,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 0.5,
+        "accuracy": 0.5,
+        "overall": 0.67,
+        "reasoning": "La réponse mentionne correctement le format CSV, mais elle omet de préciser qu'il s'agit de 108 capteurs IMU. De plus, les détails sur les chevaux ne sont pas vérifiables dans la ground truth."
+      },
+      "combined_score": 0.7819416664640833,
+      "query_cost_usd": 0.00015858000000000002,
+      "eval_cost_usd": 0.0016774000000000001
+    },
+    {
+      "question_id": "Q50",
+      "question": "Quels sont les capteurs qui enregistrent avec la fréquence d'échantillonnage la plus élevée ?",
+      "category": "comparison",
+      "difficulty": "medium",
+      "ground_truth": "La fréquence d'échantillonnage maximale du système est de 300 Hz. Trois capteurs l'atteignent : IMU_CanonFore_Comet_01, IMU_CanonFore_Luna_01 et IMU_Withers_Comet_01.",
+      "system_answer": "Parmi les documents consultés, les capteurs qui enregistrent avec la fréquence d'échantillonnage la plus élevée (250Hz) sont :\n\n1. IMU_CanonFore_Zephyr_01 en position canon antérieur (CanonOfForelimb).\n2. IMU_CanonHind_Zephyr_01 en position canon postérieur (CanonOfHindlimb).\n3. IMU_Withers_Zephyr_01 en position garrot (Withers) (250Hz).\n\nLes autres capteurs mentionnés dans les documents ont une fréquence d'échantillonnage de 200Hz. Cette liste n'est peut-être pas exhaustive, car elle se base uniquement sur les documents fournis.",
+      "retrieved_docs": [
+        "Ecume.txt",
+        "Falcon.txt",
+        "Cascade.txt",
+        "Sirius.txt",
+        "Zephyr.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 2.3565586999757215,
+      "semantic_similarity": 0.8778529100085155,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse mentionne une fréquence d'échantillonnage de 250 Hz, alors que la référence indique 300 Hz. De plus, les capteurs listés ne correspondent pas à ceux de la réponse de référence, ce qui entraîne des erreurs d'exactitude et de complétude."
+      },
+      "combined_score": 0.43892645500425775,
+      "query_cost_usd": 0.00016579499999999997,
+      "eval_cost_usd": 0.0036547000000000003
+    },
+    {
+      "question_id": "Q51",
+      "question": "Les capteurs placés au même endroit sur différents chevaux sont-ils calibrés de la même façon ?",
+      "category": "data_quality",
+      "difficulty": "hard",
+      "ground_truth": "Pas tout à fait pour les capteurs du canon postérieur : 5 ont un offset de calibration de 0.02 et 7 ont un offset de 0.015. Pour les autres positions (garrot, canon antérieur, sternum), l'offset est uniforme sur tous les chevaux.",
+      "system_answer": "L'information concernant la calibration des capteurs placés au même endroit sur différents chevaux n'est pas présente dans les documents fournis.",
+      "retrieved_docs": [
+        "Atlas.txt",
+        "Galop.txt",
+        "Rafale.txt",
+        "Sable.txt",
+        "Auroch.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.8068959000520408,
+      "semantic_similarity": 0.8064228378729765,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse indique que l'information sur la calibration des capteurs n'est pas présente, alors que la ground truth fournit des détails spécifiques sur les offsets de calibration pour différents capteurs. Cela montre une absence totale d'exactitude et de complétude par rapport à la réponse de référence."
+      },
+      "combined_score": 0.40321141893648826,
+      "query_cost_usd": 0.00015701999999999998,
+      "eval_cost_usd": 0.0020131000000000003
+    },
+    {
+      "question_id": "Q52",
+      "question": "Comment se décompose le programme d'entraînement dans le système : quelles phases existent et combien d'étapes sont enregistrées pour chacune ?",
+      "category": "hierarchical",
+      "difficulty": "medium",
+      "ground_truth": "Le programme d'entraînement comprend quatre types de phases : préparation, pré-compétition, compétition et transition. Dans le système, il y a 51 étapes de préparation, 51 étapes de pré-compétition, 55 étapes de compétition et 50 étapes de transition. Le total supérieur à 50 pour la préparation, la pré-compétition et la compétition vient du fait que Dakota possède des étapes supplémentaires ; chaque cheval a désormais une phase de transition.",
+      "system_answer": "Dans les documents fournis, le programme d'entraînement se décompose en quatre phases principales, avec le nombre d'étapes enregistrées pour chacune :\n\n1. **Phase compétition (CompetitionStage)** :\n   - Ecume : 2 séances\n   - Galop : 1 séance\n   - Zephire : 1 séance\n   - Eclat : 1 séance\n   - Etoile : 1 séance\n\n2. **Phase pré-compétition (PreCompetitionStage)** :\n   - Ecume : 1 séance\n   - Galop : 1 séance\n   - Zephire : 1 séance\n   - Eclat : 1 séance\n   - Etoile : 1 séance\n\n3. **Phase préparation (PreparationStage)** :\n   - Ecume : 1 séance\n   - Galop : 1 séance\n   - Zephire : 1 séance\n   - Eclat : 1 séance\n   - Etoile : 1 séance\n\n4. **Phase transition / récupération (TransitionStage)** :\n   - Ecume : 1 séance\n   - Galop : 1 séance\n   - Zephire : 1 séance\n   - Eclat : 1 séance\n   - Etoile : 1 séance\n\nCette liste n'est peut-être pas exhaustive, car elle se base uniquement sur les documents consultés.",
+      "retrieved_docs": [
+        "Ecume.txt",
+        "Galop.txt",
+        "Zephire.txt",
+        "Eclat.txt",
+        "Etoile.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 3.659759300062433,
+      "semantic_similarity": 0.8805177789517994,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.5,
+        "accuracy": 0.5,
+        "overall": 0.5,
+        "reasoning": "La réponse mentionne les quatre phases, mais les détails sur le nombre d'étapes sont incorrects et ne correspondent pas à la ground truth. De plus, la phase de transition est mal décrite et le total des étapes n'est pas précisé. Certaines informations sont correctes, mais d'autres sont inexactes ou manquantes."
+      },
+      "combined_score": 0.6902588894758996,
+      "query_cost_usd": 0.000184905,
+      "eval_cost_usd": 0.006989100000000001
+    },
+    {
+      "question_id": "Q53",
+      "question": "Quel cheval suit le programme d'entraînement le plus complet, avec le plus grand nombre d'étapes ?",
+      "category": "aggregation",
+      "difficulty": "hard",
+      "ground_truth": "Dakota suit le programme le plus complet avec 8 étapes d'entraînement au total. La répartition est : 46 chevaux suivent 4 étapes, 3 chevaux en suivent 5 (Dune, Pixie, Ecume), et Dakota en suit 8. Vérification : 46×4 + 3×5 + 8 = 207.",
+      "system_answer": "Parmi les documents consultés, le cheval qui suit le programme d'entraînement le plus complet, avec le plus grand nombre d'étapes, est Ecume, qui a enregistré 5 étapes dans son programme d'entraînement. Les autres chevaux mentionnés ont entre 4 et 2 étapes.",
+      "retrieved_docs": [
+        "Auroch.txt",
+        "Thunder.txt",
+        "Ecume.txt",
+        "Zephire.txt",
+        "Tonnerre.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.8210501000285149,
+      "semantic_similarity": 0.8391104241387739,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse identifie Ecume comme le cheval avec le programme le plus complet, alors que c'est Dakota qui a le plus grand nombre d'étapes (8). Les informations sur les autres chevaux sont également incorrectes."
+      },
+      "combined_score": 0.41955521206938695,
+      "query_cost_usd": 0.00016111499999999995,
+      "eval_cost_usd": 0.0025953
+    },
+    {
+      "question_id": "Q54",
+      "question": "La phase de compétition est-elle organisée différemment selon les chevaux ?",
+      "category": "consistency_check",
+      "difficulty": "medium",
+      "ground_truth": "Non, la phase de compétition est identique pour tous les chevaux : une séance de 30 minutes, intensité Pic, une seule fois (juste avant l'épreuve).",
+      "system_answer": "D'après les documents fournis, la phase de compétition semble être organisée de manière similaire pour tous les chevaux, car chaque épreuve mentionne des étapes d'entraînement identiques : compétition, pré-compétition, préparation et transition/récupération, avec un nombre d'étapes correspondant au nombre de chevaux engagés. \n\nCependant, il n'y a pas d'indication dans les documents sur des différences spécifiques dans l'organisation de la phase de compétition selon les chevaux. Cette liste n'est peut-être pas exhaustive, et d'autres documents pourraient contenir des informations supplémentaires.",
+      "retrieved_docs": [
+        "Event_Clermont_Cross_2026.txt",
+        "Event_Versailles_SJ_2026.txt",
+        "Event_LeMans_Cross_2026.txt",
+        "Event_Montpellier_Dr_2026.txt",
+        "Event_Fontainebleau_SJ_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 2.262772100046277,
+      "semantic_similarity": 0.8634829275740423,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 0.5,
+        "accuracy": 1.0,
+        "overall": 0.5,
+        "reasoning": "La réponse indique que la phase de compétition est similaire pour tous les chevaux, ce qui est correct. Cependant, elle ne mentionne pas explicitement que la phase est identique pour tous les chevaux comme dans la réponse de référence, ce qui constitue un manque de complétude. Les détails fournis sont exacts."
+      },
+      "combined_score": 0.6817414637870212,
+      "query_cost_usd": 0.00016754999999999998,
+      "eval_cost_usd": 0.0038995000000000006
+    },
+    {
+      "question_id": "Q55",
+      "question": "Combien de temps dure généralement la phase de récupération après une compétition ?",
+      "category": "aggregation",
+      "difficulty": "medium",
+      "ground_truth": "50 chevaux ont une phase de transition (récupération) enregistrée. Elle dure 25 minutes pour 45 d'entre eux, et 30 minutes pour 5 chevaux : Apollon, Atlas, Dakota, Dune et Thunder.",
+      "system_answer": "L'information concernant la durée générale de la phase de récupération après une compétition n'est pas présente dans les documents fournis.",
+      "retrieved_docs": [
+        "Event_Clermont_Cross_2026.txt",
+        "Event_Dijon_Cross_2026.txt",
+        "Event_LeMans_Cross_2026.txt",
+        "Event_Bordeaux_Cross_2026.txt",
+        "Ecume.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.4562961999326944,
+      "semantic_similarity": 0.6917976449136976,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse ne fournit aucune information sur la durée de la phase de récupération, contrairement à la réponse de référence qui donne des détails précis sur la durée pour différents chevaux."
+      },
+      "combined_score": 0.3458988224568488,
+      "query_cost_usd": 0.00015643500000000002,
+      "eval_cost_usd": 0.0017339
+    },
+    {
+      "question_id": "Q56",
+      "question": "Le vétérinaire et la soigneuse interviennent-ils à toutes les étapes de l'entraînement ?",
+      "category": "data_quality",
+      "difficulty": "very_hard",
+      "ground_truth": "Pas exactement. Le Dr Martin intervient surtout en préparation et en pré-compétition (48 et 49 fois respectivement), mais pas en phase de compétition ni de transition. Sophie intervient quasi systématiquement en préparation (50 fois), mais une seule fois en pré-compétition.",
+      "system_answer": "D'après les documents fournis, le vétérinaire (Vet_DrMartin) et la soigneuse (Caretaker_Sophie) n'interviennent pas à toutes les étapes de l'entraînement. \n\n- Pour le cheval Vega, le vétérinaire et la soigneuse interviennent uniquement lors de la phase pré-compétition et de la phase préparation.\n- Pour le cheval Volcan, le vétérinaire et la soigneuse interviennent également lors de la phase pré-compétition et de la phase préparation.\n- Pour le cheval Aurore, le vétérinaire et la soigneuse interviennent lors de la phase pré-compétition et de la phase préparation.\n- Pour le cheval Auroch, le vétérinaire et la soigneuse interviennent lors de la phase pré-compétition et de la phase préparation.\n- Pour le cheval Bella, le vétérinaire et la soigneuse interviennent lors de la phase pré-compétition et de la phase préparation.\n\nAinsi, dans tous les cas, ils ne sont pas présents à toutes les étapes, mais seulement à certaines phases spécifiques. Cette liste n'est peut-être pas exhaustive, car d'autres chevaux pourraient avoir des arrangements différents qui ne sont pas couverts dans les documents fournis.",
+      "retrieved_docs": [
+        "Vega.txt",
+        "Volcan.txt",
+        "Aurore.txt",
+        "Auroch.txt",
+        "Bella.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 3.422798000043258,
+      "semantic_similarity": 0.773304899765372,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.5,
+        "accuracy": 0.5,
+        "overall": 0.5,
+        "reasoning": "La réponse mentionne que le vétérinaire et la soigneuse n'interviennent pas à toutes les étapes, ce qui est correct. Cependant, elle indique qu'ils interviennent uniquement en phase pré-compétition et préparation, ce qui est incorrect car la ground truth précise que le vétérinaire intervient aussi en pré-compétition, mais pas en phase de compétition ni de transition. De plus, la réponse ne mentionne pas les fréquences d'intervention, ce qui est un élément important de la ground truth."
+      },
+      "combined_score": 0.636652449882686,
+      "query_cost_usd": 0.00018548999999999996,
+      "eval_cost_usd": 0.007116600000000001
+    },
+    {
+      "question_id": "Q57",
+      "question": "Y a-t-il des étapes d'entraînement où aucun encadrant (cavalier, vétérinaire ou soigneur) n'est mentionné ?",
+      "category": "data_quality",
+      "difficulty": "very_hard",
+      "ground_truth": "Non — chaque étape d'entraînement a au moins un encadrant (cavalier, vétérinaire ou soigneur).",
+      "system_answer": "Parmi les documents consultés, il n'y a pas d'étapes d'entraînement où aucun encadrant (cavalier, vétérinaire ou soigneur) n'est mentionné. Chaque séance d'entraînement inclut au moins un cavalier, et dans certains cas, un vétérinaire ou un soigneur est également présent. Cette liste n'est peut-être pas exhaustive, mais c'est ce qui ressort des documents fournis.",
+      "retrieved_docs": [
+        "Auroch.txt",
+        "Dune.txt",
+        "Grondre.txt",
+        "Rafale.txt",
+        "Vega.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.8680850000819191,
+      "semantic_similarity": 0.8979097143074369,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse évalue correctement qu'il n'y a pas d'étapes d'entraînement sans encadrant et mentionne la présence d'au moins un cavalier, ce qui correspond à la ground truth. Tous les éléments importants sont présents et les détails sont exacts."
+      },
+      "combined_score": 0.9489548571537185,
+      "query_cost_usd": 0.00016325999999999998,
+      "eval_cost_usd": 0.0024396
+    },
+    {
+      "question_id": "Q58",
+      "question": "Quelle discipline est la plus représentée dans le calendrier de la saison ?",
+      "category": "aggregation",
+      "difficulty": "medium",
+      "ground_truth": "Les trois disciplines sont assez équilibrées sur les 20 événements de la saison : 7 en saut d'obstacles (ShowJumping), 7 en cross (Cross) et 6 en dressage (Dressage).",
+      "system_answer": "Parmi les documents consultés, la discipline la plus représentée dans le calendrier de la saison 2026 est le dressage, avec deux épreuves (Event_Montpellier_Dr_2026 et Event_Marseille_Dressage_2026). Les autres disciplines présentes sont le saut d'obstacles (deux épreuves : Event_Nantes_SJ_2026 et Event_Versailles_SJ_2026) et le cross (une épreuve : Event_Clermont_Cross_2026). Cette liste n'est peut-être pas exhaustive, car elle se base uniquement sur les documents fournis.",
+      "retrieved_docs": [
+        "Event_Nantes_SJ_2026.txt",
+        "Event_Versailles_SJ_2026.txt",
+        "Event_Clermont_Cross_2026.txt",
+        "Event_Montpellier_Dr_2026.txt",
+        "Event_Marseille_Dressage_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 2.12074600008782,
+      "semantic_similarity": 0.850844620449884,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse indique que le dressage est la discipline la plus représentée, alors que la ground truth mentionne un équilibre entre les disciplines, avec 7 en saut d'obstacles, 7 en cross et 6 en dressage. Les informations sur le nombre d'épreuves et les disciplines sont incorrectes et incomplètes par rapport à la référence."
+      },
+      "combined_score": 0.425422310224942,
+      "query_cost_usd": 0.00016443,
+      "eval_cost_usd": 0.0033706
+    },
+    {
+      "question_id": "Q59",
+      "question": "Quelle est la période la plus chargée de la saison en termes de compétitions ?",
+      "category": "aggregation",
+      "difficulty": "medium",
+      "ground_truth": "Septembre est le mois le plus chargé, avec cinq événements : Event_LeMans_Cross_2026, Event_Versailles_SJ_2026, Event_Toulouse_Cross_2026, Event_Bordeaux_Cross_2026 et Event_Nice_Dressage_2026.",
+      "system_answer": "Parmi les documents consultés, la période la plus chargée de la saison en termes de compétitions semble être celle de septembre 2026, avec plusieurs épreuves organisées :\n\n- Le 5 septembre 2026 : Épreuve de cross à Le Mans (Amateur 1).\n- Le 6 septembre 2026 : Épreuve de saut d'obstacles à Versailles (Pro Elite).\n- Le 13 septembre 2026 : Épreuve de cross à Toulouse (Amateur 2).\n\nCette liste n'est peut-être pas exhaustive, mais elle indique une concentration d'événements durant ce mois.",
+      "retrieved_docs": [
+        "Event_Versailles_SJ_2026.txt",
+        "Event_LeMans_Cross_2026.txt",
+        "Event_Clermont_Cross_2026.txt",
+        "Event_Marseille_Dressage_2026.txt",
+        "Event_Toulouse_Cross_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 2.8337396999122575,
+      "semantic_similarity": 0.8884053671572325,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.5,
+        "accuracy": 0.5,
+        "overall": 0.5,
+        "reasoning": "La réponse mentionne septembre comme période chargée, mais ne cite que trois événements au lieu des cinq mentionnés dans la réponse de référence. Les détails des événements sont partiellement corrects, mais incomplets."
+      },
+      "combined_score": 0.6942026835786163,
+      "query_cost_usd": 0.00016911,
+      "eval_cost_usd": 0.0035645000000000004
+    },
+    {
+      "question_id": "Q60",
+      "question": "Y a-t-il des villes qui accueillent plusieurs compétitions dans la saison ?",
+      "category": "comparison",
+      "difficulty": "medium",
+      "ground_truth": "Oui, deux villes accueillent chacune deux événements : Lyon (Event_Dressage_2026_01 et Event_Lyon_Dressage_2026) et Bordeaux (Event_Cross_2026_01 et Event_Bordeaux_Cross_2026).",
+      "system_answer": "Parmi les documents consultés, il y a deux villes qui accueillent plusieurs compétitions dans la saison 2026 :\n\n1. Clermont-Ferrand : Épreuve de cross le 2026-10-10.\n2. Toulouse : Épreuve de cross le 2026-09-13.\n\nCette liste n'est peut-être pas exhaustive, car d'autres compétitions peuvent exister dans d'autres documents non fournis.",
+      "retrieved_docs": [
+        "Event_Clermont_Cross_2026.txt",
+        "Event_Toulouse_Cross_2026.txt",
+        "Event_Strasbourg_Cross_2026.txt",
+        "Event_Versailles_SJ_2026.txt",
+        "Event_Dijon_Cross_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.838842900004238,
+      "semantic_similarity": 0.8334418651043416,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse mentionne des villes et des événements, mais elle ne correspond pas aux informations de référence, qui indiquent que Lyon et Bordeaux accueillent plusieurs compétitions. Clermont-Ferrand et Toulouse ne sont pas mentionnées dans la réponse de référence, et les événements cités ne correspondent pas non plus."
+      },
+      "combined_score": 0.4167209325521708,
+      "query_cost_usd": 0.00016209,
+      "eval_cost_usd": 0.0026987000000000005
+    },
+    {
+      "question_id": "Q61",
+      "question": "Dans quelles disciplines retrouve-t-on les compétitions de plus haut niveau (Pro Elite) ?",
+      "category": "comparison",
+      "difficulty": "hard",
+      "ground_truth": "Le niveau Pro Elite se retrouve surtout en saut d'obstacles : trois des quatre événements Pro Elite sont du saut d'obstacles (Event_Fontainebleau_SJ_2026, Event_Rennes_SJ_2026 et Event_Versailles_SJ_2026), et un seul est du dressage (Event_Nice_Dressage_2026). Aucun événement de cross n'est classé Pro Elite.",
+      "system_answer": "Dans les documents fournis, les compétitions de plus haut niveau (Pro Elite) se retrouvent dans la discipline de saut d'obstacles (ShowJumping). Cette catégorie est mentionnée dans le Document 1 (Event_Versailles_SJ_2026) et le Document 3 (Event_Rennes_SJ_2026). \n\nCette liste n'est peut-être pas exhaustive, car elle se base uniquement sur les documents consultés.",
+      "retrieved_docs": [
+        "Event_Versailles_SJ_2026.txt",
+        "Event_Dijon_Cross_2026.txt",
+        "Event_Rennes_SJ_2026.txt",
+        "Event_Clermont_Cross_2026.txt",
+        "Event_LeMans_Cross_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.8362673999508843,
+      "semantic_similarity": 0.8702868491101583,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.5,
+        "accuracy": 0.5,
+        "overall": 0.5,
+        "reasoning": "La réponse mentionne correctement le saut d'obstacles comme discipline Pro Elite, mais elle omet le fait qu'il y a aussi un événement de dressage et ne précise pas qu'aucun événement de cross n'est classé Pro Elite. De plus, les détails sur les événements ne sont pas tous fournis, ce qui affecte la complétude et l'exactitude."
+      },
+      "combined_score": 0.6851434245550792,
+      "query_cost_usd": 0.000162285,
+      "eval_cost_usd": 0.0035209
+    },
+    {
+      "question_id": "Q62",
+      "question": "Y a-t-il des compétitions où des chevaux étaient engagés mais où aucun résultat officiel n'a été enregistré ?",
+      "category": "data_quality",
+      "difficulty": "very_hard",
+      "ground_truth": "Non — dans le graphe actuel, chaque engagement a un résultat officiel enregistré.",
+      "system_answer": "L'information n'est pas présente dans les documents fournis. Tous les chevaux engagés dans les compétitions mentionnées ont des résultats enregistrés, qu'ils soient terminés ou éliminés.",
+      "retrieved_docs": [
+        "Event_Bordeaux_Cross_2026.txt",
+        "Event_Clermont_Cross_2026.txt",
+        "Event_LeMans_Cross_2026.txt",
+        "Event_Versailles_SJ_2026.txt",
+        "Event_Dijon_Cross_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.5238473999779671,
+      "semantic_similarity": 0.7372315414749302,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse indique que tous les chevaux engagés ont des résultats enregistrés, ce qui est conforme à l'information de référence. Elle couvre tous les éléments importants et les détails sont exacts."
+      },
+      "combined_score": 0.8686157707374651,
+      "query_cost_usd": 0.00015838499999999998,
+      "eval_cost_usd": 0.0014718
+    },
+    {
+      "question_id": "Q63",
+      "question": "Quel événement de la saison a réuni le plus de résultats classés ?",
+      "category": "comparison",
+      "difficulty": "medium",
+      "ground_truth": "Trois événements sont à égalité en tête avec 7 résultats classés : Event_Pau_SJ_2026, Event_LeMans_Cross_2026 et Event_SJ_2026_01. Event_Montpellier_Dr_2026 en a 6.",
+      "system_answer": "Parmi les documents consultés, l'événement qui a réuni le plus de résultats classés est l'Event_LeMans_Cross_2026, avec 7 engagements. Les autres événements ont respectivement 5, 5, 4 et 4 engagements. Cette liste n'est peut-être pas exhaustive, mais elle est basée sur les documents fournis.",
+      "retrieved_docs": [
+        "Event_Clermont_Cross_2026.txt",
+        "Event_Versailles_SJ_2026.txt",
+        "Event_LeMans_Cross_2026.txt",
+        "Event_Dijon_Cross_2026.txt",
+        "Event_Nice_Dressage_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.5772140000481158,
+      "semantic_similarity": 0.861236594708687,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse mentionne uniquement l'Event_LeMans_Cross_2026 avec 7 engagements, omettant les autres événements à égalité et fournissant des chiffres incorrects pour les autres événements."
+      },
+      "combined_score": 0.4306182973543435,
+      "query_cost_usd": 0.00016091999999999997,
+      "eval_cost_usd": 0.0024228
+    },
+    {
+      "question_id": "Q64",
+      "question": "La plupart des chevaux participent-ils au même nombre de compétitions dans la saison, ou y a-t-il des exceptions ?",
+      "category": "data_quality",
+      "difficulty": "hard",
+      "ground_truth": "La majorité des chevaux sont engagés dans deux compétitions. Trois chevaux font exception : Dakota, engagé dans cinq compétitions (sa charge la plus élevée du système, à comparer avec ses 6 étapes d'entraînement, également la plus élevée), tandis que Naya et Orion ne sont engagés que dans une seule compétition chacun.",
+      "system_answer": "D'après les documents fournis, il semble qu'il y ait des exceptions concernant le nombre de compétitions auxquelles participent les chevaux. Par exemple :\n\n- Le cheval Rafale a participé à deux compétitions : Event_Clermont_Cross_2026 et Event_Bordeaux_Cross_2026.\n- Le cheval Glacier a également participé à deux compétitions : Event_LeMans_Cross_2026 et Event_Clermont_Cross_2026.\n- Les autres chevaux semblent avoir participé à une seule compétition dans les documents fournis.\n\nAinsi, la plupart des chevaux participent à une seule compétition, mais il y a des exceptions avec certains chevaux qui participent à plusieurs compétitions. Cette liste n'est peut-être pas exhaustive, car elle se base uniquement sur les documents consultés.",
+      "retrieved_docs": [
+        "Event_Clermont_Cross_2026.txt",
+        "Event_LeMans_Cross_2026.txt",
+        "Event_Montpellier_Dr_2026.txt",
+        "Event_Versailles_SJ_2026.txt",
+        "Event_Bordeaux_Cross_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 2.6578647000715137,
+      "semantic_similarity": 0.8481726235875189,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.5,
+        "accuracy": 0.5,
+        "overall": 0.5,
+        "reasoning": "La réponse mentionne des chevaux et des compétitions, mais elle ne fait pas référence aux chevaux spécifiques mentionnés dans la réponse de référence, et les informations sur le nombre de compétitions ne sont pas entièrement correctes par rapport à la ground truth."
+      },
+      "combined_score": 0.6740863117937594,
+      "query_cost_usd": 0.000173985,
+      "eval_cost_usd": 0.0054672
+    },
+    {
+      "question_id": "Q65",
+      "question": "Est-il fréquent qu'un cheval soit engagé dans une compétition sans qu'un résultat officiel y soit ensuite enregistré ?",
+      "category": "data_quality",
+      "difficulty": "very_hard",
+      "ground_truth": "Non, ce n'est pas fréquent : le cas ne se produit jamais. Pour chaque cheval, le nombre d'engagements COMPETESIN égale le nombre de résultats EventParticipation.",
+      "system_answer": "L'information n'est pas présente dans les documents fournis. Il n'y a pas d'indication sur la fréquence à laquelle un cheval pourrait être engagé dans une compétition sans qu'un résultat officiel y soit enregistré.",
+      "retrieved_docs": [
+        "Event_Bordeaux_Cross_2026.txt",
+        "Event_Clermont_Cross_2026.txt",
+        "Event_LeMans_Cross_2026.txt",
+        "Event_Versailles_SJ_2026.txt",
+        "Event_SJ_01.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.6948137000435963,
+      "semantic_similarity": 0.8128555677793574,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse évalue que l'information n'est pas présente, alors que la ground truth affirme que le cas ne se produit jamais. Cela montre une compréhension incorrecte de la situation."
+      },
+      "combined_score": 0.4064277838896787,
+      "query_cost_usd": 0.000159945,
+      "eval_cost_usd": 0.0020178
+    },
+    {
+      "question_id": "Q66",
+      "question": "Arrive-t-il qu'un même cavalier présente deux chevaux différents lors du même événement ?",
+      "category": "multi_hop",
+      "difficulty": "hard",
+      "ground_truth": "Oui, cela arrive dans onze cas : Alice à Nantes (Soleil, Arrow), Remi à Versailles (Etoile, Grondre), Remi à Pau (Grondre, Galop), Lea à Rennes (Rio, Falcon), Camille à Toulouse (Atlas, Iris), Elise à Montpellier (Luminos, Nuage), Maxime à Dijon (Tempete, Ecume), Ines à Clermont-Ferrand (Rafale, Tonnerre), Marc à Strasbourg (Dune, Sable), Hugo à Lyon (Nova, Storm) et Victor à Event_SJ_2026_01 (Cascade, Lumiere).",
+      "system_answer": "Parmi les documents consultés, il n'y a pas d'exemple où un même cavalier présente deux chevaux différents lors du même événement. Chaque cavalier mentionné dans les classements des épreuves a un cheval unique associé. Cette liste n'est peut-être pas exhaustive, mais elle ne montre pas de cas de double engagement pour un même cavalier.",
+      "retrieved_docs": [
+        "Event_Clermont_Cross_2026.txt",
+        "Event_Bordeaux_Cross_2026.txt",
+        "Event_Montpellier_Dr_2026.txt",
+        "Event_Dressage_2026_01.txt",
+        "Event_Dijon_Cross_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.6205078999046236,
+      "semantic_similarity": 0.7034851746584457,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse à évaluer affirme qu'il n'y a pas d'exemple de cavalier présentant deux chevaux, ce qui est incorrect. La ground truth fournit plusieurs exemples précis de tels cas, ce qui rend la réponse totalement erronée et incomplète."
+      },
+      "combined_score": 0.35174258732922287,
+      "query_cost_usd": 0.00016306499999999997,
+      "eval_cost_usd": 0.003919000000000001
+    },
+    {
+      "question_id": "Q67",
+      "question": "Quelle compétition a le plus grand nombre de chevaux engagés sans résultat officiel enregistré ?",
+      "category": "data_quality",
+      "difficulty": "very_hard",
+      "ground_truth": "Aucune compétition : tous les engagements ont un résultat. Event_SJ_2026_01 a bien 7 participations enregistrées.",
+      "system_answer": "Parmi les documents consultés, la compétition qui a le plus grand nombre de chevaux engagés sans résultat officiel enregistré est l'épreuve de cross à Le Mans, où le cheval Tempete a été éliminé, ce qui indique qu'il n'y a pas de résultat officiel pour ce cheval. Les autres chevaux ont terminé, donc ils ont des résultats enregistrés. \n\nLes autres compétitions n'ont pas de chevaux engagés sans résultat officiel, car tous les chevaux engagés ont terminé leur épreuve. \n\nCette liste n'est peut-être pas exhaustive, mais c'est l'information disponible dans les documents fournis.",
+      "retrieved_docs": [
+        "Event_Versailles_SJ_2026.txt",
+        "Event_LeMans_Cross_2026.txt",
+        "Event_Bordeaux_Cross_2026.txt",
+        "Event_Clermont_Cross_2026.txt",
+        "Event_Dijon_Cross_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 2.050550099927932,
+      "semantic_similarity": 0.7729785926480821,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse indique qu'il existe une compétition avec des chevaux engagés sans résultat, ce qui contredit la ground truth qui affirme qu'il n'y a aucune compétition de ce type. De plus, elle mentionne un cheval éliminé, ce qui ne correspond pas à l'absence de résultats officiels pour tous les engagements."
+      },
+      "combined_score": 0.38648929632404105,
+      "query_cost_usd": 0.00017066999999999996,
+      "eval_cost_usd": 0.0036163000000000002
+    },
+    {
+      "question_id": "Q68",
+      "question": "Peut-on connaître la robe d'un cheval, son poids, ou le numéro de téléphone du vétérinaire à partir du système ?",
+      "category": "unanswerable",
+      "difficulty": "medium",
+      "ground_truth": "Non, ces informations ne sont pas disponibles. Le système ne contient pas de données sur la robe d'un cheval, son poids, ni le numéro de téléphone du vétérinaire.",
+      "system_answer": "L'information n'est pas présente dans les documents fournis concernant la robe d'un cheval, son poids, ou le numéro de téléphone du vétérinaire.",
+      "retrieved_docs": [
+        "Vega.txt",
+        "Sable.txt",
+        "Etoile.txt",
+        "Bella.txt",
+        "Galop.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 2.656189400004223,
+      "semantic_similarity": 0.9381483806619055,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse évalue correctement l'absence d'informations sur la robe d'un cheval, son poids et le numéro de téléphone du vétérinaire, en reprenant tous les éléments de la ground truth."
+      },
+      "combined_score": 0.9690741903309528,
+      "query_cost_usd": 0.00015818999999999997,
+      "eval_cost_usd": 0.0016710000000000002
+    },
+    {
+      "question_id": "Q69",
+      "question": "Quels sont les liens les plus fréquents dans le système : entre l'entraînement et les encadrants, entre les chevaux et les événements, ou ailleurs ?",
+      "category": "aggregation",
+      "difficulty": "hard",
+      "ground_truth": "Le lien le plus fréquent est celui entre une étape d'entraînement et ses encadrants (INVOLVESACTOR, 355 occurrences), suivi par TRAINSIN (207) et DEPENDSON (207). Viennent ensuite ISATTACHEDTO et ISUSEDFOR (108 chacun), puis les engagements en compétition (COMPETESIN, 101).",
+      "system_answer": "Parmi les documents consultés, les liens les plus fréquents semblent être entre les chevaux et les événements. Chaque cheval mentionné a des séances d'entraînement liées à des événements spécifiques, et ces événements sont clairement indiqués dans les rapports d'entraînement. \n\nEn ce qui concerne les encadrants, chaque cheval a un cavalier associé, et souvent un vétérinaire et un soigneur, mais ces relations ne sont pas aussi systématiquement documentées que les liens entre les chevaux et les événements. \n\nIl est donc possible de conclure que, dans cet échantillon, les liens entre les chevaux et les événements sont plus fréquents que ceux entre l'entraînement et les encadrants. Cette liste n'est peut-être pas exhaustive et pourrait varier dans un corpus plus large.",
+      "retrieved_docs": [
+        "Auroch.txt",
+        "Galop.txt",
+        "Dune.txt",
+        "Thunder.txt",
+        "Etoile.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 2.6207446000771597,
+      "semantic_similarity": 0.8234919770883389,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse évalue incorrectement les liens, affirmant que ceux entre les chevaux et les événements sont plus fréquents, alors que la ground truth indique que les liens entre l'entraînement et les encadrants sont les plus fréquents. De plus, elle ne mentionne pas les occurrences spécifiques des différents types de liens, ce qui est essentiel pour une évaluation précise."
+      },
+      "combined_score": 0.41174598854416944,
+      "query_cost_usd": 0.00017788500000000002,
+      "eval_cost_usd": 0.0054193
+    },
+    {
+      "question_id": "Q70",
+      "question": "Comment savoir à quelle saison appartient un événement donné ?",
+      "category": "schema_validation",
+      "difficulty": "medium",
+      "ground_truth": "Chaque événement est rattaché à une saison via la relation IN_SEASON. Les 20 événements du système appartiennent tous à la Saison 2026.",
+      "system_answer": "Pour savoir à quelle saison appartient un événement donné, il faut se référer aux informations fournies dans les documents. Dans les documents consultés, chaque événement mentionne explicitement la saison à laquelle il est rattaché. Par exemple, l'événement \"Event_Lyon_Dressage_2026\" est rattaché à la saison « Saison 2026 », tout comme l'événement \"Event_Nice_Dressage_2026\". \n\nAinsi, pour déterminer la saison d'un événement, il suffit de consulter le compte rendu de l'épreuve où la saison est indiquée. Cette méthode est applicable uniquement aux événements présents dans les documents fournis, et il est possible que d'autres événements ne soient pas couverts dans cet échantillon.",
+      "retrieved_docs": [
+        "Event_Lyon_Dressage_2026.txt",
+        "Event_Nice_Dressage_2026.txt",
+        "Storm.txt",
+        "Event_Nantes_SJ_2026.txt",
+        "Orage.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 2.624876799993217,
+      "semantic_similarity": 0.845823452644104,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 0.5,
+        "accuracy": 1.0,
+        "overall": 0.67,
+        "reasoning": "La réponse est correcte sur le fait que les événements mentionnent leur saison, mais elle ne précise pas que tous les événements appartiennent à la même saison (Saison 2026), ce qui est un élément important de la ground truth."
+      },
+      "combined_score": 0.7579117263220521,
+      "query_cost_usd": 0.00017106,
+      "eval_cost_usd": 0.004269
+    },
+    {
+      "question_id": "Q71",
+      "question": "Pour un événement donné, comment savoir quel cheval a été monté par quel cavalier et avec quel classement ?",
+      "category": "schema_validation",
+      "difficulty": "medium",
+      "ground_truth": "Chaque événement est relié à un ou plusieurs résultats officiels (HAS_PARTICIPATION), et chaque résultat précise à la fois le cheval (HAS_HORSE) et le cavalier (HAS_RIDER) concernés, ainsi que le rang obtenu. C'est ce résultat qui permet de savoir exactement qui montait quel cheval, et quelle place ils ont obtenue.",
+      "system_answer": "Pour savoir quel cheval a été monté par quel cavalier et avec quel classement lors d'un événement donné, il est possible de consulter les comptes rendus d'épreuve fournis dans les documents. Voici les informations extraites des documents consultés :\n\n1. **Event_Nice_Dressage_2026** :\n   - Cheval : Eclat (Horse_Eclat)\n   - Cavalier : Rider_Chloe\n   - Classement : Rang 2\n\n2. **Event_Marseille_Dressage_2026** :\n   - Cheval : Eclat (Horse_Eclat)\n   - Cavalier : Rider_Chloe\n   - Classement : Rang 6\n\n3. **Event_Montpellier_Dr_2026** :\n   - Cheval : Nuage (Horse_Nuage)\n   - Cavalier : Rider_Elise\n   - Classement : Rang 2\n\n4. **Event_Clermont_Cross_2026** :\n   - Cheval : Rafale (Horse_Rafale)\n   - Cavalier : Rider_Ines\n   - Classement : Rang 1\n\n5. **Event_Versailles_SJ_2026** :\n   - Cheval : Grondre (Horse_Grondre)\n   - Cavalier : Rider_Remi\n   - Classement : Rang 3\n\n6. **Event_Versailles_SJ_2026** (autre participation) :\n   - Cheval : Etoile (Horse_Etoile)\n   - Cavalier : Rider_Remi\n   - Classement : Rang 1\n\nCette liste n'est peut-être pas exhaustive, car elle se base uniquement sur les documents fournis.",
+      "retrieved_docs": [
+        "Eclat.txt",
+        "Event_Montpellier_Dr_2026.txt",
+        "Event_Clermont_Cross_2026.txt",
+        "Grondre.txt",
+        "Etoile.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 4.7043828999157995,
+      "semantic_similarity": 0.8487599288374598,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 0.5,
+        "accuracy": 1.0,
+        "overall": 0.5,
+        "reasoning": "La réponse fournit des informations correctes sur les chevaux, cavaliers et classements, mais elle ne mentionne pas le lien entre les résultats et les événements, ce qui est essentiel selon la ground truth."
+      },
+      "combined_score": 0.6743799644187298,
+      "query_cost_usd": 0.000184515,
+      "eval_cost_usd": 0.007342800000000001
+    },
+    {
+      "question_id": "Q72",
+      "question": "Si je veux connaître le classement d'un cheval à un événement précis, par quelles informations dois-je passer ?",
+      "category": "schema_validation",
+      "difficulty": "medium",
+      "ground_truth": "Il faut d'abord identifier l'événement, puis consulter son résultat officiel associé (HAS_PARTICIPATION), qui indique le cheval (HAS_HORSE), le cavalier (HAS_RIDER) et le rang obtenu.",
+      "system_answer": "Pour connaître le classement d'un cheval à un événement précis, vous devez passer par les informations suivantes :\n\n1. **Nom du cheval** : Identifier le cheval dont vous souhaitez connaître le classement.\n2. **Nom de l'événement** : Spécifier l'événement pour lequel vous voulez le classement.\n3. **Date de l'événement** : Indiquer la date à laquelle l'événement a eu lieu.\n4. **Rang** : Le classement obtenu par le cheval lors de cet événement.\n5. **Statut** : Le statut de la participation (par exemple, « Terminé » ou « Éliminé »).\n\nCes informations peuvent être trouvées dans les sections « Participations en compétition » des documents fournis. Notez que cette liste n'est peut-être pas exhaustive, car elle se base uniquement sur les documents consultés.",
+      "retrieved_docs": [
+        "Sable.txt",
+        "Etoile.txt",
+        "Galop.txt",
+        "Grondre.txt",
+        "Tempete.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 3.1032409000908956,
+      "semantic_similarity": 0.8923555792212814,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.5,
+        "accuracy": 0.5,
+        "overall": 0.5,
+        "reasoning": "La réponse contient des informations correctes, comme le nom du cheval et de l'événement, mais elle omet des éléments clés comme le résultat officiel et la mention du cavalier. De plus, le rang est mentionné comme une information à fournir, alors qu'il devrait être un résultat à consulter."
+      },
+      "combined_score": 0.6961777896106407,
+      "query_cost_usd": 0.00017729999999999997,
+      "eval_cost_usd": 0.0048842
+    },
+    {
+      "question_id": "Q73",
+      "question": "Comment retrouver à quel cheval appartient un capteur IMU, et à quoi il sert ?",
+      "category": "schema_validation",
+      "difficulty": "medium",
+      "ground_truth": "Chaque capteur IMU est relié à un cheval (IS_ATTACHED_TO) et à un objectif expérimental (IS_USED_FOR), comme la détection de fatigue (FatigueDetection) ou la classification de la démarche (GaitClassif_01).",
+      "system_answer": "Pour retrouver à quel cheval appartient un capteur IMU et à quoi il sert, il faut se référer aux documents fournis. Voici les informations disponibles :\n\n1. **Horse_Iris** :\n   - **IMU_CanonHind_Iris_01** : position canon postérieur, objectif expérimental GaitClassif_01.\n   - **IMU_Withers_Iris_01** : position garrot, objectif expérimental GaitClassif_01.\n\n2. **Horse_Horizon** :\n   - **IMU_CanonFore_Horizon_01** : position canon antérieur, objectif expérimental FatigueDetection.\n   - **IMU_Withers_Horizon_01** : position garrot, objectif expérimental GaitClassif_01.\n\n3. **Horse_Orion** :\n   - **IMU_CanonFore_Orion_01** : position canon antérieur, objectif expérimental FatigueDetection.\n   - **IMU_Withers_Orion_01** : position garrot, objectif expérimental GaitClassif_01.\n\n4. **Horse_Lumiere** :\n   - **IMU_Sternum_Lumiere_01** : position sternum, objectif expérimental FatigueDetection.\n   - **IMU_Withers_Lumiere_01** : position garrot, objectif expérimental GaitClassif_01.\n\n5. **Horse_Ecume** :\n   - **IMU_Sternum_Ecume_01** : position sternum, objectif expérimental FatigueDetection.\n   - **IMU_Withers_Ecume_01** : position garrot, objectif expérimental GaitClassif_01.\n\nCette liste est basée sur les documents consultés et peut ne pas être exhaustive.",
+      "retrieved_docs": [
+        "Iris.txt",
+        "Horizon.txt",
+        "Orion.txt",
+        "Lumiere.txt",
+        "Ecume.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 5.354155899956822,
+      "semantic_similarity": 0.8708281611291242,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse fournit des informations correctes et complètes sur les capteurs IMU, leur association avec les chevaux et leurs objectifs expérimentaux, en respectant les détails fournis dans la réponse de référence."
+      },
+      "combined_score": 0.9354140805645621,
+      "query_cost_usd": 0.000179835,
+      "eval_cost_usd": 0.0075393000000000005
+    },
+    {
+      "question_id": "Q74",
+      "question": "Les dates des événements sont-elles présentées de façon cohérente dans le système ?",
+      "category": "data_quality",
+      "difficulty": "medium",
+      "ground_truth": "Oui, dans la version actuelle du graphe, toutes les dates (dates d'événements, début et fin de saison) sont au format standard AAAA-MM-JJ, par exemple 2026-09-20.",
+      "system_answer": "Oui, les dates des événements sont présentées de façon cohérente dans le système parmi les documents consultés. Chaque événement est associé à une date précise au format « AAAA-MM-JJ », et toutes les dates sont dans le futur par rapport à la date de rédaction des rapports. Voici les dates des événements mentionnés :\n\n- Event_Toulouse_Cross_2026 : 2026-09-13\n- Event_Pau_SJ_2026 : 2026-10-18\n- Event_Nice_Dressage_2026 : 2026-09-28\n- Event_Marseille_Dressage_2026 : 2026-10-03\n- Event_Rennes_SJ_2026 : 2026-05-17\n- Event_Versailles_SJ_2026 : 2026-09-06\n- Event_Clermont_Cross_2026 : 2026-10-10\n- Event_Strasbourg_Cross_2026 : 2026-07-12\n- Event_LeMans_Cross_2026 : 2026-09-05\n\nLes événements sont bien datés et organisés chronologiquement.",
+      "retrieved_docs": [
+        "Atlas.txt",
+        "Eclat.txt",
+        "Etoile.txt",
+        "Orage.txt",
+        "Sable.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 3.2819090000120923,
+      "semantic_similarity": 0.8163676286265038,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse contient toutes les informations correctes sur la présentation des dates, y compris le format standard et des exemples précis d'événements avec leurs dates. Elle couvre tous les éléments importants de la réponse de référence."
+      },
+      "combined_score": 0.9081838143132519,
+      "query_cost_usd": 0.00017164499999999997,
+      "eval_cost_usd": 0.0046708
+    },
+    {
+      "question_id": "Q75",
+      "question": "Quels niveaux d'intensité d'entraînement sont utilisés dans le programme des chevaux ?",
+      "category": "simple_retrieval",
+      "difficulty": "medium",
+      "ground_truth": "Quatre niveaux d'intensité sont utilisés : Faible, Modérée, Élevée et Pic. Ils sont exprimés en français de façon homogène dans la version actuelle du graphe.",
+      "system_answer": "Dans les documents fournis, les niveaux d'intensité d'entraînement utilisés dans le programme des chevaux sont les suivants :\n\n1. Pic\n2. Élevée\n3. Modérée\n4. Faible\n\nCette liste est basée sur les informations présentes dans les documents consultés et peut ne pas être exhaustive.",
+      "retrieved_docs": [
+        "Ecume.txt",
+        "Eclair.txt",
+        "Tonnerre.txt",
+        "Tempete.txt",
+        "Rafale.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.7012880999827757,
+      "semantic_similarity": 0.8341789465674629,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse énumère correctement tous les niveaux d'intensité d'entraînement et les présente de manière exhaustive et précise, sans erreurs dans les détails."
+      },
+      "combined_score": 0.9170894732837315,
+      "query_cost_usd": 0.00016091999999999997,
+      "eval_cost_usd": 0.0023293000000000003
+    },
+    {
+      "question_id": "Q76",
+      "question": "Qui peut encadrer une séance d'entraînement, en dehors du cavalier ?",
+      "category": "hierarchical",
+      "difficulty": "easy",
+      "ground_truth": "Une séance d'entraînement peut impliquer trois types d'encadrants : le cavalier (Rider), le vétérinaire (Veterinarian) et le soigneur (Caretaker).",
+      "system_answer": "D'après les documents fournis, en dehors du cavalier, les personnes qui peuvent encadrer une séance d'entraînement incluent :\n\n1. Vétérinaire (exemple : Vet_DrMartin, mentionné dans les rapports d'entraînement de Tonnerre et Thunder).\n2. Soigneur (exemple : Caretaker_Sophie, mentionné dans les rapports d'entraînement de Tonnerre et Thunder).\n\nCette liste n'est peut-être pas exhaustive, car elle se base uniquement sur les documents consultés.",
+      "retrieved_docs": [
+        "Event_Clermont_Cross_2026.txt",
+        "Event_Montpellier_Dr_2026.txt",
+        "Aurore.txt",
+        "Tonnerre.txt",
+        "Thunder.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 2.0159681000513956,
+      "semantic_similarity": 0.8855081315924689,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse mentionne correctement les deux types d'encadrants (vétérinaire et soigneur) et inclut des exemples spécifiques, tout en notant que la liste peut ne pas être exhaustive, ce qui est acceptable."
+      },
+      "combined_score": 0.9427540657962344,
+      "query_cost_usd": 0.00016403999999999998,
+      "eval_cost_usd": 0.0031023
+    },
+    {
+      "question_id": "Q77",
+      "question": "Quelles disciplines équestres sont couvertes par le système ?",
+      "category": "hierarchical",
+      "difficulty": "easy",
+      "ground_truth": "Trois disciplines sont couvertes : le saut d'obstacles (ShowJumping), le dressage (Dressage) et le cross (Cross).",
+      "system_answer": "Les disciplines équestres couvertes par le système, selon les documents fournis, sont :\n\n1. Saut d'obstacles (Show Jumping)\n2. Dressage\n3. Cross / concours complet\n\nCette liste est basée sur les épreuves mentionnées dans les documents consultés et peut ne pas être exhaustive.",
+      "retrieved_docs": [
+        "Event_Versailles_SJ_2026.txt",
+        "Event_Lyon_Dressage_2026.txt",
+        "Event_Montpellier_Dr_2026.txt",
+        "Event_Dressage_2026_01.txt",
+        "Event_Bordeaux_Cross_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.691075999988243,
+      "semantic_similarity": 0.904554483498099,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse énumère correctement les trois disciplines équestres couvertes par le système, sans erreurs dans les noms ou les descriptions, et inclut tous les éléments de la réponse de référence."
+      },
+      "combined_score": 0.9522772417490495,
+      "query_cost_usd": 0.00016014,
+      "eval_cost_usd": 0.0020854000000000003
+    },
+    {
+      "question_id": "Q78",
+      "question": "Quelles catégories de niveau retrouve-t-on dans les événements de la saison ?",
+      "category": "aggregation",
+      "difficulty": "medium",
+      "ground_truth": "Quatre catégories existent dans la saison 2026 : Amateur 1 (6 événements), Amateur 2 (5 événements), Club Elite (5 événements) et Pro Elite (4 événements).",
+      "system_answer": "Dans les documents fournis, on retrouve les catégories de niveau suivantes pour les événements de la saison 2026 :\n\n1. Pro Elite (saut d'obstacles)\n2. Club Elite (dressage)\n3. Amateur 2 (saut d'obstacles)\n\nCette liste est basée sur les événements mentionnés dans les documents consultés et peut ne pas être exhaustive.",
+      "retrieved_docs": [
+        "Event_Versailles_SJ_2026.txt",
+        "Event_Marseille_Dressage_2026.txt",
+        "Event_Rennes_SJ_2026.txt",
+        "Event_Montpellier_Dr_2026.txt",
+        "Event_Nantes_SJ_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.8008421999402344,
+      "semantic_similarity": 0.889402973123132,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.0,
+        "accuracy": 0.5,
+        "overall": 0.3,
+        "reasoning": "La réponse mentionne certaines catégories correctes, mais elle omet des catégories importantes et ne fournit pas le nombre d'événements pour chaque catégorie, ce qui affecte la complétude et l'exactitude des détails."
+      },
+      "combined_score": 0.594701486561566,
+      "query_cost_usd": 0.000162285,
+      "eval_cost_usd": 0.0025114000000000004
+    },
+    {
+      "question_id": "Q79",
+      "question": "La catégorie Club Elite concerne-t-elle plusieurs disciplines, ou est-elle propre à une seule ?",
+      "category": "comparison",
+      "difficulty": "medium",
+      "ground_truth": "Elle est propre au dressage. Les cinq événements classés Club Elite sont tous des événements de dressage ; aucun événement de saut d'obstacles ou de cross n'est dans cette catégorie.",
+      "system_answer": "La catégorie Club Elite semble être propre à la discipline du dressage, car tous les événements mentionnés dans les documents fournis qui sont classés sous cette catégorie concernent uniquement des épreuves de dressage. Parmi les documents consultés, il n'y a pas d'indication que cette catégorie soit utilisée pour d'autres disciplines.",
+      "retrieved_docs": [
+        "Event_Marseille_Dressage_2026.txt",
+        "Event_Montpellier_Dr_2026.txt",
+        "Event_Dressage_2026_01.txt",
+        "Event_Clermont_Cross_2026.txt",
+        "Event_LeMans_Cross_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.7783462000079453,
+      "semantic_similarity": 0.9092634254647508,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse est correcte, complète et précise, indiquant que la catégorie Club Elite est propre au dressage et que les événements mentionnés concernent uniquement cette discipline."
+      },
+      "combined_score": 0.9546317127323753,
+      "query_cost_usd": 0.00016247999999999998,
+      "eval_cost_usd": 0.0027432
+    },
+    {
+      "question_id": "Q80",
+      "question": "Quels sont le premier et le dernier événement de la saison 2026 ?",
+      "category": "consistency_check",
+      "difficulty": "medium",
+      "ground_truth": "Le premier événement de la saison est Event_SJ_01, le 12 avril 2026. Le dernier est Event_Pau_SJ_2026, le 18 octobre 2026. Tous les événements de la saison se déroulent entre le 1er mars et le 31 octobre 2026.",
+      "system_answer": "D'après les documents fournis, le premier événement de la saison 2026 est l'épreuve de saut d'obstacles organisée à Nantes le 2026-04-25. Le dernier événement est l'épreuve de saut d'obstacles organisée à Versailles le 2026-09-06. \n\nCette liste n'est peut-être pas exhaustive, mais elle est basée sur les documents consultés.",
+      "retrieved_docs": [
+        "Event_Rennes_SJ_2026.txt",
+        "Event_Versailles_SJ_2026.txt",
+        "Event_Nantes_SJ_2026.txt",
+        "Event_Fontainebleau_SJ_2026.txt",
+        "Event_Strasbourg_Cross_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 2.3445859999628738,
+      "semantic_similarity": 0.8310312070080877,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse fournie contient des informations incorrectes concernant les dates et les événements, ne correspondant pas à ceux de la réponse de référence."
+      },
+      "combined_score": 0.4155156035040439,
+      "query_cost_usd": 0.00016189499999999998,
+      "eval_cost_usd": 0.0028194
+    },
+    {
+      "question_id": "Q81",
+      "question": "À quoi servent les objectifs expérimentaux suivis avec les capteurs IMU ?",
+      "category": "simple_retrieval",
+      "difficulty": "easy",
+      "ground_truth": "Deux objectifs expérimentaux sont suivis : la détection de fatigue (FatigueDetection), qui vise à repérer la fatigue physique des chevaux, et la classification de la démarche (GaitClassif_01), qui vise à analyser les allures du cheval à partir des données des capteurs.",
+      "system_answer": "Les objectifs expérimentaux suivis avec les capteurs IMU dans les documents fournis sont les suivants :\n\n- Pour le cheval Iris, l'objectif expérimental est **GaitClassif_01**.\n- Pour le cheval Galop, l'objectif expérimental est **FatigueDetection** et **GaitClassif_01**.\n- Pour le cheval Ecume, l'objectif expérimental est **FatigueDetection** et **GaitClassif_01**.\n- Pour le cheval Falcon, l'objectif expérimental est **FatigueDetection** et **GaitClassif_01**.\n- Pour le cheval Atlas, les objectifs expérimentaux sont **FatigueDetection** et **GaitClassif_01**.\n\nCette liste n'est peut-être pas exhaustive, car elle se base uniquement sur les documents fournis.",
+      "retrieved_docs": [
+        "Iris.txt",
+        "Galop.txt",
+        "Ecume.txt",
+        "Falcon.txt",
+        "Atlas.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 2.8541796000208706,
+      "semantic_similarity": 0.8783626149188923,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse évalue correctement les objectifs expérimentaux en les associant aux chevaux spécifiques, tout en mentionnant les deux objectifs principaux, ce qui correspond à la ground truth."
+      },
+      "combined_score": 0.9391813074594462,
+      "query_cost_usd": 0.00016891499999999998,
+      "eval_cost_usd": 0.0048314000000000005
+    },
+    {
+      "question_id": "Q82",
+      "question": "Quels capteurs de Dakota servent à analyser sa démarche, et lesquels servent à surveiller sa fatigue ?",
+      "category": "multi_hop",
+      "difficulty": "hard",
+      "ground_truth": "Pour Dakota, les capteurs IMU_Withers_Dakota_01 (garrot) et IMU_CanonHind_Dakota_01 (canon postérieur) sont utilisés pour l'analyse de la démarche (GaitClassif_01). Les capteurs IMU_CanonFore_Dakota_01 (canon antérieur) et IMU_Sternum_Dakota_01 (sternum) sont utilisés pour la détection de fatigue (FatigueDetection).",
+      "system_answer": "Pour le cheval Dakota, parmi les documents consultés, les capteurs qui servent à analyser sa démarche sont :\n\n- IMU_CanonHind_Dakota_01 en position canon postérieur (CanonOfHindlimb) avec l'objectif expérimental GaitClassif_01.\n- IMU_Withers_Dakota_01 en position garrot (Withers) avec l'objectif expérimental GaitClassif_01.\n\nLes capteurs qui servent à surveiller sa fatigue sont :\n\n- IMU_CanonFore_Dakota_01 en position canon antérieur (CanonOfForelimb) avec l'objectif expérimental FatigueDetection.\n- IMU_Sternum_Dakota_01 en position sternum (Sternum) avec l'objectif expérimental FatigueDetection.\n\nCette liste n'est peut-être pas exhaustive, mais elle est basée sur les informations fournies dans les documents.",
+      "retrieved_docs": [
+        "Dakota.txt",
+        "Dune.txt",
+        "Nuage.txt",
+        "Lumiere.txt",
+        "Crepuscule.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 2.902809099992737,
+      "semantic_similarity": 0.9295800559184608,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse contient toutes les informations correctes concernant les capteurs utilisés pour analyser la démarche et surveiller la fatigue de Dakota, avec des détails précis sur les positions et les objectifs expérimentaux."
+      },
+      "combined_score": 0.9647900279592304,
+      "query_cost_usd": 0.00017027999999999998,
+      "eval_cost_usd": 0.005336400000000001
+    },
+    {
+      "question_id": "Q83",
+      "question": "Quel cheval a les séances de pré-compétition les plus longues ?",
+      "category": "comparison",
+      "difficulty": "medium",
+      "ground_truth": "Comet a les séances de pré-compétition les plus longues du système, avec 75 minutes par séance.",
+      "system_answer": "Parmi les documents consultés, les séances de pré-compétition les plus longues sont associées à l'épreuve de saut d'obstacles (Event_Versailles_SJ_2026) et à l'épreuve de dressage (Event_Montpellier_Dr_2026) où il y a 5 étapes pour 5 chevaux. Cependant, il n'y a pas d'indication sur la durée des séances de pré-compétition pour chaque cheval. \n\nL'information précise sur quel cheval a les séances de pré-compétition les plus longues n'est pas présente dans les documents fournis.",
+      "retrieved_docs": [
+        "Event_LeMans_Cross_2026.txt",
+        "Event_Versailles_SJ_2026.txt",
+        "Event_Montpellier_Dr_2026.txt",
+        "Event_Dressage_2026_01.txt",
+        "Event_Clermont_Cross_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.8923933999612927,
+      "semantic_similarity": 0.804894179592535,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse ne fournit pas d'information sur le cheval ayant les séances de pré-compétition les plus longues, ce qui est essentiel pour répondre à la question. De plus, elle ne mentionne pas Comet, qui est le cheval concerné selon la réponse de référence."
+      },
+      "combined_score": 0.4024470897962675,
+      "query_cost_usd": 0.00016579499999999997,
+      "eval_cost_usd": 0.0030241000000000005
+    },
+    {
+      "question_id": "Q84",
+      "question": "Quels chevaux ont les séances de préparation les plus longues ?",
+      "category": "comparison",
+      "difficulty": "medium",
+      "ground_truth": "Comet et Ecume ont les séances de préparation les plus longues, avec 55 minutes chacun.",
+      "system_answer": "Parmi les documents consultés, les chevaux ayant les séances de préparation les plus longues sont :\n\n1. Épreuve de dressage à Montpellier (Document 1) : 6 étapes de préparation pour 6 chevaux.\n2. Épreuve de dressage à Lyon (Document 2) : 1 étape de préparation pour 1 cheval.\n3. Épreuve de saut d'obstacles à Versailles (Document 3) : 5 étapes de préparation pour 5 chevaux.\n4. Épreuve de cross à Le Mans (Document 4) : 1 étape de préparation pour 1 cheval.\n5. Épreuve de cross à Strasbourg (Document 5) : 3 étapes de préparation pour 3 chevaux.\n\nAinsi, le cheval ayant la séance de préparation la plus longue est celui de l'épreuve de dressage à Montpellier, avec 6 étapes de préparation. Cette liste n'est peut-être pas exhaustive, car elle se base uniquement sur les documents fournis.",
+      "retrieved_docs": [
+        "Event_Montpellier_Dr_2026.txt",
+        "Event_Dressage_2026_01.txt",
+        "Event_Versailles_SJ_2026.txt",
+        "Event_LeMans_Cross_2026.txt",
+        "Event_Strasbourg_Cross_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 3.5999163000378758,
+      "semantic_similarity": 0.7428241569810697,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse ne mentionne pas Comet et Ecume, qui sont les chevaux avec les séances de préparation les plus longues selon la référence. Elle se concentre sur le nombre d'étapes de préparation, ce qui n'est pas équivalent à la durée des séances."
+      },
+      "combined_score": 0.37141207849053487,
+      "query_cost_usd": 0.00017885999999999998,
+      "eval_cost_usd": 0.0045439
+    },
+    {
+      "question_id": "Q85",
+      "question": "Quel cheval a le programme de préparation le plus léger en durée de séance ?",
+      "category": "comparison",
+      "difficulty": "medium",
+      "ground_truth": "Pixie a les séances les plus courtes à la fois en préparation (40 minutes) et en pré-compétition (55 minutes), ce qui en fait le programme le plus léger en durée sur ces deux phases.",
+      "system_answer": "Parmi les documents consultés, le cheval qui a le programme de préparation le plus léger en durée de séance est Lumiere, avec une séance de préparation de 45 minutes. Les autres chevaux ont des séances de préparation de 45 minutes (Eclair et Aurore) ou de 50 minutes (Dune). \n\nAinsi, Lumiere, Eclair et Aurore ont la même durée de préparation, mais Lumiere est mentionné en premier.",
+      "retrieved_docs": [
+        "Lumiere.txt",
+        "Rafale.txt",
+        "Eclair.txt",
+        "Aurore.txt",
+        "Dune.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.8717246999731287,
+      "semantic_similarity": 0.8408034202337655,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse mentionne Lumiere comme ayant le programme le plus léger, alors que Pixie a des séances plus courtes. De plus, elle ne couvre pas les détails concernant les durées de Pixie, ce qui est essentiel pour répondre à la question."
+      },
+      "combined_score": 0.42040171011688277,
+      "query_cost_usd": 0.0001656,
+      "eval_cost_usd": 0.0029742
+    },
+    {
+      "question_id": "Q86",
+      "question": "Le programme d'entraînement et de compétition de Dakota ressemble-t-il à celui des autres chevaux du système ?",
+      "category": "data_quality",
+      "difficulty": "hard",
+      "ground_truth": "Non, Dakota se distingue nettement des autres chevaux : il participe à 5 compétitions et suit 8 étapes d'entraînement, alors que la majorité des chevaux ne participent qu'à 2 compétitions et suivent 4 étapes d'entraînement.",
+      "system_answer": "Le programme d'entraînement et de compétition de Dakota présente certaines similitudes et différences par rapport aux autres chevaux mentionnés dans les documents fournis.\n\n1. **Entraînement** : Dakota a un programme d'entraînement structuré en plusieurs phases (compétition, pré-compétition, préparation, transition/récupération) avec un total de 8 séances. Dune, par exemple, a également un programme en plusieurs phases, mais avec un nombre total de 5 séances. Rafale a un programme similaire en termes de phases, mais avec seulement 4 séances. Cela montre que Dakota a un programme d'entraînement plus intensif ou plus complet que Dune et Rafale.\n\n2. **Compétitions** : Dakota a participé à 5 compétitions, obtenant des classements variés, dont des rangs 1 et 2 dans des épreuves de dressage et de saut d'obstacles. Dune a participé à 2 compétitions avec des résultats également positifs, tandis que Rafale a également participé à 2 compétitions, mais a obtenu des rangs 1 dans les deux cas. Cela indique que Dakota est engagé dans un plus grand nombre de compétitions que Dune et Rafale.\n\nEn résumé, parmi les documents consultés, Dakota semble avoir un programme d'entraînement plus complet et une participation plus fréquente en compétition par rapport à Dune et Rafale. Cependant, il est important de noter que cette analyse est basée sur un échantillon limité et peut ne pas refléter l'ensemble des programmes d'entraînement et de compétition des chevaux dans le système.",
+      "retrieved_docs": [
+        "Dakota.txt",
+        "Event_Dressage_01.txt",
+        "Dune.txt",
+        "Event_Dressage_2026_01.txt",
+        "Rafale.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 4.47814310004469,
+      "semantic_similarity": 0.8839488149633392,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse fournit des informations correctes et complètes sur le programme d'entraînement et de compétition de Dakota par rapport à Dune et Rafale, en mentionnant les détails pertinents et en respectant les chiffres fournis dans la réponse de référence."
+      },
+      "combined_score": 0.9419744074816696,
+      "query_cost_usd": 0.000197775,
+      "eval_cost_usd": 0.008719
+    },
+    {
+      "question_id": "Q87",
+      "question": "Peut-on toujours retrouver à quel cheval et à quel objectif un capteur IMU est rattaché ?",
+      "category": "schema_validation",
+      "difficulty": "medium",
+      "ground_truth": "Oui, chacun des 108 capteurs IMU du système est systématiquement rattaché à un cheval et à un objectif expérimental.",
+      "system_answer": "Oui, parmi les documents consultés, il est possible de retrouver à quel cheval et à quel objectif un capteur IMU est rattaché. Chaque capteur est associé à un cheval spécifique et à un objectif expérimental. Par exemple :\n\n- Pour le cheval Atlas, les capteurs IMU sont :\n  - IMU_CanonFore_Atlas_01 : objectif expérimental FatigueDetection.\n  - IMU_Sternum_Atlas_01 : objectif expérimental FatigueDetection.\n  - IMU_Withers_Atlas_01 : objectif expérimental GaitClassif_01.\n\n- Pour le cheval Iris, les capteurs IMU sont :\n  - IMU_CanonHind_Iris_01 : objectif expérimental GaitClassif_01.\n  - IMU_Withers_Iris_01 : objectif expérimental GaitClassif_01.\n\n- Pour le cheval Horizon, les capteurs IMU sont :\n  - IMU_CanonFore_Horizon_01 : objectif expérimental FatigueDetection.\n  - IMU_Withers_Horizon_01 : objectif expérimental GaitClassif_01.\n\n- Pour le cheval Tempete, les capteurs IMU sont :\n  - IMU_CanonHind_Tempete_01 : objectif expérimental GaitClassif_01.\n  - IMU_Withers_Tempete_01 : objectif expérimental GaitClassif_01.\n\n- Pour le cheval Rafale, les capteurs IMU sont :\n  - IMU_Sternum_Rafale_01 : objectif expérimental FatigueDetection.\n  - IMU_Withers_Rafale_01 : objectif expérimental GaitClassif_01.\n\nCette liste n'est peut-être pas exhaustive, mais elle montre clairement la relation entre les capteurs IMU, les chevaux et leurs objectifs.",
+      "retrieved_docs": [
+        "Atlas.txt",
+        "Iris.txt",
+        "Horizon.txt",
+        "Tempete.txt",
+        "Rafale.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 5.620314700063318,
+      "semantic_similarity": 0.8889920903282704,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse fournit des informations correctes et complètes sur la relation entre les capteurs IMU, les chevaux et leurs objectifs expérimentaux, avec des détails précis et pertinents."
+      },
+      "combined_score": 0.9444960451641352,
+      "query_cost_usd": 0.00018724499999999997,
+      "eval_cost_usd": 0.007513000000000001
+    },
+    {
+      "question_id": "Q88",
+      "question": "Quelle est la différence entre dire qu'un cavalier est \"associé\" à un cheval et dire qu'il l'a monté lors d'un événement classé ?",
+      "category": "schema_validation",
+      "difficulty": "hard",
+      "ground_truth": "Être associé à un cheval (ASSOCIATED_WITH) signifie qu'un cavalier travaille généralement avec lui, sans référence à un événement précis. Avoir un résultat classé est plus spécifique : cela passe par un résultat officiel qui relie ce cavalier et ce cheval (HAS_RIDER, HAS_HORSE) à un événement et un rang précis.",
+      "system_answer": "Dans les documents fournis, un cavalier \"associé\" à un cheval signifie qu'il est lié à ce cheval dans le cadre de son entraînement, sans nécessairement avoir participé à une compétition ensemble. Par exemple, dans le rapport d'entraînement de Rafale, le cavalier associé est Rider_Ines, ce qui indique qu'il s'entraîne avec ce cheval.\n\nEn revanche, dire qu'un cavalier a monté un cheval lors d'un événement classé signifie qu'il a effectivement participé à une compétition avec ce cheval et a obtenu un classement. Par exemple, Rider_Ines a monté Rafale lors de l'événement Clermont Cross 2026, où Rafale a terminé à la première place.\n\nAinsi, la différence réside dans le fait que l'association indique une relation d'entraînement, tandis que la participation à un événement classé indique une performance en compétition. Cette distinction est clairement présente dans les documents consultés.",
+      "retrieved_docs": [
+        "Rafale.txt",
+        "Eclat.txt",
+        "Auroch.txt",
+        "Event_Clermont_Cross_2026.txt",
+        "Galop.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 2.8134958000155166,
+      "semantic_similarity": 0.8702187399808563,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse fournit des informations correctes sur la distinction entre l'association d'un cavalier à un cheval et la participation à un événement classé, tout en incluant des exemples pertinents et précis."
+      },
+      "combined_score": 0.9351093699904282,
+      "query_cost_usd": 0.000181005,
+      "eval_cost_usd": 0.006212400000000001
+    },
+    {
+      "question_id": "Q89",
+      "question": "Comment le système relie-t-il une étape d'entraînement à l'événement qu'elle prépare ?",
+      "category": "schema_validation",
+      "difficulty": "medium",
+      "ground_truth": "Le lien se fait via la relation DEPENDS_ON, qui relie chaque étape d'entraînement à l'événement pour lequel elle prépare le cheval. C'est ce lien (171 occurrences au total) qui permet de savoir pour quelle compétition un cheval s'entraîne à un moment donné. Une ancienne relation redondante (hasParticipatedTo) exprimait partiellement la même idée mais a été retirée du graphe, car elle n'apportait aucune information que DEPENDS_ON ne couvrait pas déjà.",
+      "system_answer": "Le système relie une étape d'entraînement à l'événement qu'elle prépare en indiquant des événements liés à chaque phase d'entraînement. Par exemple, dans les documents fournis, chaque phase d'entraînement (compétition, pré-compétition, préparation, transition/récupération) mentionne un événement spécifique associé, tel que \"Event_Nice_Dressage_2026\" pour Eclat, ou \"Event_Clermont_Cross_2026\" pour Orage. Cela montre que chaque séance d'entraînement est conçue pour préparer le cheval à un événement particulier. \n\nCette méthode de liaison est présente dans tous les documents consultés, mais il est important de noter que cette liste n'est peut-être pas exhaustive et que d'autres événements pourraient exister dans un corpus plus large.",
+      "retrieved_docs": [
+        "Eclat.txt",
+        "Orage.txt",
+        "Tempete.txt",
+        "Iris.txt",
+        "Eclair.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 3.863604399957694,
+      "semantic_similarity": 0.8486066124382281,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.5,
+        "accuracy": 0.5,
+        "overall": 0.5,
+        "reasoning": "La réponse mentionne des événements spécifiques liés aux étapes d'entraînement, mais elle ne fait pas référence à la relation DEPENDS_ON, qui est essentielle pour comprendre le lien entre l'étape d'entraînement et l'événement. De plus, elle ne mentionne pas la suppression de l'ancienne relation redondante, ce qui est un élément important de la ground truth."
+      },
+      "combined_score": 0.674303306219114,
+      "query_cost_usd": 0.00017125499999999999,
+      "eval_cost_usd": 0.0061434
+    },
+    {
+      "question_id": "Q90",
+      "question": "La phase de récupération dure-t-elle toujours le même temps pour tous les chevaux concernés ?",
+      "category": "comparison",
+      "difficulty": "medium",
+      "ground_truth": "Non, elle dure le plus souvent 25 minutes, mais cinq chevaux ont une phase de récupération plus longue de 30 minutes : Apollon, Atlas, Dakota, Dune et Thunder.",
+      "system_answer": "D'après les documents fournis, la phase de récupération dure 25 minutes pour tous les chevaux concernés (Rafale, Crepuscule, Galop, Orage, Ecume). Cependant, il est important de noter que cette information est basée sur les documents consultés et peut ne pas être exhaustive.",
+      "retrieved_docs": [
+        "Rafale.txt",
+        "Crepuscule.txt",
+        "Galop.txt",
+        "Orage.txt",
+        "Ecume.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.6886670000385493,
+      "semantic_similarity": 0.8632269084410815,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse à évaluer affirme que la phase de récupération dure 25 minutes pour tous les chevaux, ce qui est incorrect. La ground truth mentionne que certains chevaux ont une phase de récupération plus longue de 30 minutes, ce qui n'est pas pris en compte dans la réponse. De plus, les noms des chevaux cités dans la réponse à évaluer ne correspondent pas à ceux de la ground truth, ce qui entraîne des erreurs de détails."
+      },
+      "combined_score": 0.43161345422054076,
+      "query_cost_usd": 0.00016111499999999995,
+      "eval_cost_usd": 0.0023155
+    },
+    {
+      "question_id": "Q91",
+      "question": "Auroch a-t-il un classement à toutes les compétitions auxquelles il est inscrit ?",
+      "category": "data_quality",
+      "difficulty": "hard",
+      "ground_truth": "Oui. Auroch a un classement enregistré pour chacune de ses deux participations : il termine 4ème à Event_Bordeaux_Cross_2026 et 5ème à Event_Clermont_Cross_2026.",
+      "system_answer": "Oui, Auroch a un classement à toutes les compétitions auxquelles il est inscrit, selon les documents fournis. Il a terminé 4ème à l'Event_Bordeaux_Cross_2026 et 5ème à l'Event_Clermont_Cross_2026. Cette information est basée sur les documents consultés.",
+      "retrieved_docs": [
+        "Auroch.txt",
+        "Aurore.txt",
+        "Event_Clermont_Cross_2026.txt",
+        "Event_Bordeaux_Cross_2026.txt",
+        "Orage.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.5732876000693068,
+      "semantic_similarity": 0.9650450099633452,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse contient toutes les informations correctes et pertinentes, y compris les classements exacts d'Auroch dans les deux compétitions mentionnées."
+      },
+      "combined_score": 0.9825225049816726,
+      "query_cost_usd": 0.00015936,
+      "eval_cost_usd": 0.0022110000000000003
+    },
+    {
+      "question_id": "Q92",
+      "question": "Quel cheval a le moins de capteurs IMU, et combien en porte-t-il ?",
+      "category": "comparison",
+      "difficulty": "medium",
+      "ground_truth": "44 des 50 chevaux portent seulement deux capteurs IMU, ce qui est le niveau d'instrumentation le plus bas du système (contre trois capteurs pour Atlas, Bella, Luna et Thunder, et quatre pour Dakota et Zephyr).",
+      "system_answer": "Parmi les documents consultés, le cheval qui a le moins de capteurs IMU est Rafale, qui en porte 2.",
+      "retrieved_docs": [
+        "Eclair.txt",
+        "Rafale.txt",
+        "Nebule.txt",
+        "Bella.txt",
+        "Falcon.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.057916000019759,
+      "semantic_similarity": 0.8326887684580102,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.5,
+        "accuracy": 0.5,
+        "overall": 0.5,
+        "reasoning": "La réponse mentionne correctement que Rafale porte 2 capteurs IMU, mais elle ne fait pas référence aux autres chevaux et à la majorité qui portent également 2 capteurs, ce qui est une information importante. De plus, le nom 'Rafale' n'est pas mentionné dans la réponse de référence, ce qui soulève des doutes sur l'exactitude des détails."
+      },
+      "combined_score": 0.6663443842290051,
+      "query_cost_usd": 0.00015623999999999995,
+      "eval_cost_usd": 0.0016801000000000001
+    },
+    {
+      "question_id": "Q93",
+      "question": "Les chevaux ayant un programme d'entraînement plus long ont-ils aussi tendance à participer à plus de compétitions ?",
+      "category": "comparison",
+      "difficulty": "hard",
+      "ground_truth": "Pas nécessairement, à une exception près. Dakota est le seul cheval où les deux coïncident : il a à la fois le plus grand nombre d'étapes d'entraînement (8) et le plus grand nombre de compétitions (5). Pour les autres chevaux, le nombre d'étapes (surtout 4, parfois 5) et le nombre de compétitions (généralement 2) ne sont pas particulièrement corrélés cas par cas.",
+      "system_answer": "L'information concernant la durée des programmes d'entraînement et le nombre de participations en compétition n'est pas clairement présente dans les documents fournis. Par conséquent, je ne peux pas conclure si les chevaux ayant un programme d'entraînement plus long participent à plus de compétitions.",
+      "retrieved_docs": [
+        "Tempete.txt",
+        "Rafale.txt",
+        "Eclat.txt",
+        "Auroch.txt",
+        "Etoile.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.3901770999655128,
+      "semantic_similarity": 0.8047496388653803,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse ne fournit pas d'informations correctes sur la corrélation entre le programme d'entraînement et le nombre de compétitions, et elle omet des éléments clés de la réponse de référence."
+      },
+      "combined_score": 0.40237481943269016,
+      "query_cost_usd": 0.00016189499999999998,
+      "eval_cost_usd": 0.0034919000000000005
+    },
+    {
+      "question_id": "Q94",
+      "question": "Certains chevaux ont-ils des identifiants d'entraînement qui sortent du schéma habituel ?",
+      "category": "data_quality",
+      "difficulty": "very_hard",
+      "ground_truth": "Oui, deux cas sortent du schéma de nommage habituel (Training_<Type>_<Cheval>_01) : Orion, dont les étapes sont nommées Training_Orion_LeMans_Preparation, Training_Orion_LeMans_PreComp, Training_Orion_LeMans_Comp et Training_Transition_Orion_01, et Dakota, dont les étapes portent des identifiants centrés sur SJ ou des ids de compétition : Training_Preparation_SJ_01, Training_Prepa_SJ_01, Training_PreCompetition_SJ_01, Training_PreComp_SJ_01, Training_Competition_SJ_01, Training_Comp_Cross2026_Dakota_01, Training_Comp_Dress01_Dakota_01 et Training_Transition_SJ_01.",
+      "system_answer": "L'information concernant les identifiants d'entraînement des chevaux ne mentionne pas de schéma habituel ou d'anomalies. Les identifiants d'entraînement pour chaque cheval dans les documents fournis suivent un format standardisé (par exemple, Training_Comp_Auroch_01, Training_PreComp_Eclair_01, etc.). \n\nCependant, il n'y a pas d'indication claire sur ce qui constituerait un schéma habituel ou des identifiants qui sortent de ce schéma. Par conséquent, je ne peux pas conclure si certains chevaux ont des identifiants d'entraînement qui sortent du schéma habituel, car cette information n'est pas présente dans les documents fournis.",
+      "retrieved_docs": [
+        "Auroch.txt",
+        "Eclair.txt",
+        "Ecume.txt",
+        "Eclat.txt",
+        "Nebule.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 2.3367926999926567,
+      "semantic_similarity": 0.8171557046073687,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse ne mentionne pas les cas spécifiques d'anomalies dans les identifiants d'entraînement des chevaux, ce qui est essentiel pour répondre à la question. Elle ne fournit pas d'informations correctes sur les chevaux Orion et Dakota, et ne respecte pas le schéma habituel décrit dans la réponse de référence."
+      },
+      "combined_score": 0.4085778523036844,
+      "query_cost_usd": 0.00016891499999999998,
+      "eval_cost_usd": 0.0061885
+    },
+    {
+      "question_id": "Q95",
+      "question": "Existe-t-il un lien entre la saison d'un cheval et le niveau des compétitions auxquelles il participe (Amateur, Club Elite, Pro Elite) ?",
+      "category": "multi_hop",
+      "difficulty": "hard",
+      "ground_truth": "Tous les chevaux du système participent à des événements de la Saison 2026, qui est la seule saison enregistrée. Le niveau des compétitions varie cependant par discipline : la catégorie Club Elite n'apparaît qu'en dressage, et le niveau Pro Elite concerne surtout le saut d'obstacles (3 des 4 événements Pro Elite). Un cheval inscrit dans plusieurs disciplines, comme Dakota (saut d'obstacles, dressage et cross), peut donc évoluer dans des catégories différentes selon l'événement.",
+      "system_answer": "L'information n'est pas présente dans les documents fournis. Il n'y a pas de lien explicite mentionné entre la saison d'un cheval et le niveau des compétitions (Amateur, Club Elite, Pro Elite) dans les documents consultés.",
+      "retrieved_docs": [
+        "Event_Dressage_2026_01.txt",
+        "Event_Montpellier_Dr_2026.txt",
+        "Event_Versailles_SJ_2026.txt",
+        "Event_Marseille_Dressage_2026.txt",
+        "Event_Nice_Dressage_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.6224747999804094,
+      "semantic_similarity": 0.8335013228336285,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse ne fournit pas d'informations correctes sur le lien entre la saison d'un cheval et les niveaux de compétition, et elle omet des éléments clés de la ground truth, comme la mention des disciplines et des catégories spécifiques."
+      },
+      "combined_score": 0.41675066141681427,
+      "query_cost_usd": 0.00016111499999999995,
+      "eval_cost_usd": 0.003679
+    },
+    {
+      "question_id": "Q96",
+      "question": "Y a-t-il des cas où un cavalier termine 1er et 2ème à la même compétition avec deux chevaux différents ?",
+      "category": "multi_hop",
+      "difficulty": "hard",
+      "ground_truth": "Oui, cela arrive dans quatre cas : Alice à Nantes (Soleil 1er, Arrow 2ème), Marc à Strasbourg (Dune 1er, Sable 2ème), Maxime à Dijon (Ecume 1er, Tempete 2ème), et Hugo à Lyon (Storm 1er, Nova 2ème).",
+      "system_answer": "Parmi les documents consultés, il n'y a pas de cas où un cavalier termine 1er et 2ème à la même compétition avec deux chevaux différents. Les classements indiquent que chaque cavalier a terminé avec un seul cheval dans chaque épreuve. Cette liste n'est peut-être pas exhaustive, mais c'est ce qui ressort des documents fournis.",
+      "retrieved_docs": [
+        "Event_Clermont_Cross_2026.txt",
+        "Event_Bordeaux_Cross_2026.txt",
+        "Event_Dijon_Cross_2026.txt",
+        "Event_Dressage_2026_01.txt",
+        "Event_LeMans_Cross_2026.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.7837593000149354,
+      "semantic_similarity": 0.6835279275513212,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse est incorrecte car elle affirme qu'il n'y a pas de cas où un cavalier termine 1er et 2ème avec deux chevaux différents, alors que la ground truth en fournit plusieurs exemples précis."
+      },
+      "combined_score": 0.3417639637756606,
+      "query_cost_usd": 0.00016443,
+      "eval_cost_usd": 0.002778
+    },
+    {
+      "question_id": "Q97",
+      "question": "Est-ce que tous les chevaux du système ont au moins un résultat de compétition enregistré ?",
+      "category": "consistency_check",
+      "difficulty": "medium",
+      "ground_truth": "Oui, les 50 chevaux ont au moins un résultat. Répartition : 2 chevaux ×1 (Naya, Orion), 47 ×2, Dakota ×5. Il n'y a plus d'engagements sans classement.",
+      "system_answer": "Oui, parmi les documents consultés, tous les chevaux ont au moins un résultat de compétition enregistré. Voici les chevaux et leurs résultats :\n\n1. **Sable** : Rang 2 à l'Event_Strasbourg_Cross_2026 et Rang 1 à l'Event_LeMans_Cross_2026.\n2. **Auroch** : Rang 4 à l'Event_Bordeaux_Cross_2026 et Rang 5 à l'Event_Clermont_Cross_2026.\n3. **Galop** : Rang 5 à l'Event_Nantes_SJ_2026 et Rang 5 à l'Event_Pau_SJ_2026.\n4. **Etoile** : Rang 6 à l'Event_Rennes_SJ_2026 et Rang 1 à l'Event_Versailles_SJ_2026.\n5. **Grondre** : Rang 3 à l'Event_Versailles_SJ_2026 et Rang 6 à l'Event_Pau_SJ_2026.\n\nCette liste n'est peut-être pas exhaustive, car elle se base uniquement sur les documents fournis.",
+      "retrieved_docs": [
+        "Sable.txt",
+        "Auroch.txt",
+        "Galop.txt",
+        "Etoile.txt",
+        "Grondre.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 4.063064599991776,
+      "semantic_similarity": 0.8140207220925428,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.5,
+        "accuracy": 0.5,
+        "overall": 0.5,
+        "reasoning": "La réponse indique que tous les chevaux ont des résultats, mais ne mentionne pas le nombre total de chevaux ni la répartition des résultats comme dans la réponse de référence. De plus, les chevaux listés ne correspondent pas à ceux de la ground truth."
+      },
+      "combined_score": 0.6570103610462714,
+      "query_cost_usd": 0.00017223,
+      "eval_cost_usd": 0.0043373000000000005
+    },
+    {
+      "question_id": "Q98",
+      "question": "Si un cheval est inscrit à une compétition, est-on certain qu'un classement existe pour cette compétition précise ?",
+      "category": "schema_validation",
+      "difficulty": "hard",
+      "ground_truth": "Oui — dans le graphe actuel, pour chaque inscription COMPETESIN il existe un classement (EventParticipation) pour ce cheval et cet événement.",
+      "system_answer": "D'après les documents fournis, il semble qu'un classement existe pour chaque compétition mentionnée, car chaque compte rendu d'épreuve présente un classement et des participants. Cependant, il est important de noter que ces documents ne couvrent qu'un échantillon spécifique et ne garantissent pas que toutes les compétitions aient un classement. Par conséquent, on ne peut pas affirmer avec certitude qu'un classement existe pour chaque compétition à partir des informations fournies.",
+      "retrieved_docs": [
+        "Event_Clermont_Cross_2026.txt",
+        "Event_LeMans_Cross_2026.txt",
+        "Sable.txt",
+        "Event_Bordeaux_Cross_2026.txt",
+        "Event_Dressage_2026_01.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.9591046000132337,
+      "semantic_similarity": 0.814824200881337,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.5,
+        "accuracy": 0.5,
+        "overall": 0.5,
+        "reasoning": "La réponse mentionne que les documents ne garantissent pas qu'un classement existe pour toutes les compétitions, ce qui est incorrect selon la ground truth. Cependant, elle reconnaît que des classements existent pour les compétitions mentionnées, ce qui est partiellement correct. Elle manque également de clarté sur le fait que chaque inscription a un classement, ce qui affecte la complétude."
+      },
+      "combined_score": 0.6574121004406686,
+      "query_cost_usd": 0.00016696499999999998,
+      "eval_cost_usd": 0.0032824000000000004
+    },
+    {
+      "question_id": "Q99",
+      "question": "Le nombre de capteurs rattachés à un cheval correspond-il toujours au nombre de capteurs utilisés pour un objectif expérimental ?",
+      "category": "consistency_check",
+      "difficulty": "medium",
+      "ground_truth": "Oui : chaque capteur IMU étant relié à exactement un cheval et à exactement un objectif expérimental, les 108 capteurs du système donnent 108 liens cheval-capteur et 108 liens capteur-objectif, en parfaite correspondance.",
+      "system_answer": "L'information n'est pas présente dans les documents fournis concernant la correspondance entre le nombre de capteurs rattachés à un cheval et le nombre de capteurs utilisés pour un objectif expérimental. Les documents mentionnent les capteurs attachés à chaque cheval ainsi que leurs objectifs expérimentaux, mais ne précisent pas s'il y a une relation systématique entre ces deux éléments.",
+      "retrieved_docs": [
+        "Galop.txt",
+        "Atlas.txt",
+        "Rafale.txt",
+        "Auroch.txt",
+        "Tempete.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 1.593044799985364,
+      "semantic_similarity": 0.8506017553330568,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse indique qu'il n'y a pas d'information sur la correspondance entre le nombre de capteurs et les objectifs expérimentaux, ce qui est incorrect. La ground truth affirme qu'il y a une correspondance systématique, ce qui n'est pas mentionné dans la réponse évaluée."
+      },
+      "combined_score": 0.4253008776665284,
+      "query_cost_usd": 0.00016521,
+      "eval_cost_usd": 0.0032083000000000003
+    },
+    {
+      "question_id": "Q100",
+      "question": "Peux-tu me donner un aperçu rapide de la taille du programme couvert par le système (chevaux, cavaliers, événements, capteurs) ?",
+      "category": "simple_retrieval",
+      "difficulty": "easy",
+      "ground_truth": "Le système couvre 50 chevaux, 25 cavaliers et 20 événements sur la saison 2026, avec 108 capteurs IMU déployés pour le suivi de l'entraînement et de la performance.",
+      "system_answer": "D'après les documents fournis, voici un aperçu rapide de la taille du programme couvert par le système :\n\n- **Chevaux** : 5 chevaux sont mentionnés, à savoir Auroch, Ecume, Galop, Atlas et Nebule.\n- **Cavaliers** : 5 cavaliers sont associés aux chevaux, à savoir Rider_Elise, Rider_Maxime, Rider_Remi, Rider_Camille et Rider_Theo.\n- **Événements** : 7 événements sont liés aux séances d'entraînement et aux compétitions, incluant des cross, des concours complets et des sauts d'obstacles.\n- **Capteurs** : 12 capteurs inertiels sont attachés aux chevaux, répartis entre différentes positions (canon antérieur, canon postérieur, sternum, garrot).\n\nCette liste n'est peut-être pas exhaustive, car elle se base uniquement sur les documents consultés.",
+      "retrieved_docs": [
+        "Auroch.txt",
+        "Ecume.txt",
+        "Galop.txt",
+        "Atlas.txt",
+        "Nebule.txt"
+      ],
+      "success": true,
+      "error": null,
+      "time_seconds": 2.9166311000008136,
+      "semantic_similarity": 0.8305284439274059,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse fournie contient des informations incorrectes et ne couvre pas les éléments essentiels de la ground truth, notamment le nombre total de chevaux, cavaliers, événements et capteurs, qui sont très différents de ceux mentionnés dans la réponse à évaluer."
+      },
+      "combined_score": 0.41526422196370294,
+      "query_cost_usd": 0.00017496,
+      "eval_cost_usd": 0.0047218
+    }
+  ]
+}

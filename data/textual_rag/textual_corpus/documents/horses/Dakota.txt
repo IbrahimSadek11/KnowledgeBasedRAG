@@ -1,0 +1,42 @@
+Rapport d'entraînement — Dakota
+===================================
+
+Ce rapport synthétise exclusivement les faits enregistrés dans le graphe de connaissances pour le cheval Dakota (identifiant Horse_Dakota), race Selle Français.
+
+Cavaliers associés (relation ASSOCIATEDWITH) : Rider_Emma, Rider_Manon.
+
+Programme d'entraînement (8 étape(s) enregistrée(s))
+----------------------------------------
+
+Phase compétition (entraînement) (CompetitionStage) — 3 séance(s) :
+  • Training_Comp_Cross2026_Dakota_01 : volume 30min, intensité Pic, fréquence 1 ; acteurs : cavalier Rider_Emma ; événements liés : Event_Cross_2026_01.
+  • Training_Comp_Dress01_Dakota_01 : volume 30min, intensité Pic, fréquence 1 ; acteurs : cavalier Rider_Emma ; événements liés : Event_Dressage_01.
+  • Training_Competition_SJ_01 : volume 30min, intensité Pic, fréquence 1 ; acteurs : cavalier Rider_Emma ; événements liés : Event_SJ_2026_01.
+
+Phase pré-compétition (PreCompetitionStage) — 2 séance(s) :
+  • Training_PreComp_SJ_01 : volume 60min, intensité Élevée, fréquence 3 ; acteurs : soigneur Caretaker_Sophie, cavalier Rider_Manon ; événements liés : Event_SJ_01.
+  • Training_PreCompetition_SJ_01 : volume 60min, intensité Élevée, fréquence 3 ; acteurs : cavalier Rider_Emma ; événements liés : Event_SJ_2026_01.
+
+Phase préparation (PreparationStage) — 2 séance(s) :
+  • Training_Prepa_SJ_01 : volume 45min, intensité Modérée, fréquence 4 ; acteurs : soigneur Caretaker_Sophie, cavalier Rider_Emma, vétérinaire Vet_DrMartin ; événements liés : Event_SJ_01.
+  • Training_Preparation_SJ_01 : volume 45min, intensité Modérée, fréquence 4 ; acteurs : cavalier Rider_Emma ; événements liés : Event_SJ_2026_01.
+
+Phase transition / récupération (TransitionStage) — 1 séance(s) :
+  • Training_Transition_SJ_01 : volume 30min, intensité Faible, fréquence 2 ; acteurs : cavalier Rider_Emma ; événements liés : Event_SJ_2026_01.
+
+Capteurs inertiels (4 capteur(s) attaché(s))
+----------------------------------------
+  • IMU_CanonFore_Dakota_01 en position canon antérieur (CanonOfForelimb), fréquence d'échantillonnage 250Hz, offset 0.02, format CSV, taille de fichier 7680, objectif expérimental FatigueDetection.
+  • IMU_CanonHind_Dakota_01 en position canon postérieur (CanonOfHindlimb), fréquence d'échantillonnage 250Hz, offset 0.015, format CSV, taille de fichier 7420, objectif expérimental GaitClassif_01.
+  • IMU_Sternum_Dakota_01 en position sternum (Sternum), fréquence d'échantillonnage 200Hz, offset 0.02, format CSV, taille de fichier 6890, objectif expérimental FatigueDetection.
+  • IMU_Withers_Dakota_01 en position garrot (Withers), fréquence d'échantillonnage 200Hz, offset 0.01, format CSV, taille de fichier 5120, objectif expérimental GaitClassif_01.
+
+Participations en compétition (5 résultat(s))
+----------------------------------------
+  • Event_SJ_01 (saut d'obstacles / ShowJumping, catégorie « Amateur 1 ») le 2026-04-12 à Saumur : rang 2, statut « Terminé », cavalier Rider_Emma.
+  • Event_Dressage_01 (dressage / Dressage, catégorie « Club Elite ») le 2026-05-03 à Angers : rang 1, statut « Terminé », cavalier Rider_Emma.
+  • Event_SJ_2026_01 (saut d'obstacles / ShowJumping, catégorie « Amateur 2 ») le 2026-06-14 à Paris : rang 1, statut « Terminé », cavalier Rider_Manon.
+  • Event_Dressage_2026_01 (dressage / Dressage, catégorie « Club Elite ») le 2026-07-20 à Lyon : rang 2, statut « Terminé », cavalier Rider_Emma.
+  • Event_Cross_2026_01 (cross / concours complet / Cross, catégorie « Amateur 1 ») le 2026-08-10 à Bordeaux : rang 2, statut « Terminé », cavalier Rider_Emma.
+
+Note méthodologique : aucun rang, volume, intensité, fréquence, capteur ou participant n'a été inventé ; toutes les valeurs ci-dessus proviennent du fact-sheet extrait de Neo4j V9.

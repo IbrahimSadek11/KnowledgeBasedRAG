@@ -1,0 +1,19 @@
+Compte rendu d'épreuve — Event_SJ_01
+========================================
+
+Épreuve de saut d'obstacles (ShowJumping), catégorie Amateur 1, organisée le 2026-04-12 à Saumur, rattachée à la saison « Saison 2026 ».
+
+Classement et participants (5 engagement(s))
+----------------------------------------
+  • Rang 1 — cheval Falcon (Horse_Falcon, race « Barbe »), cavalier Rider_Lea, statut « Terminé ».
+  • Rang 2 — cheval Dakota (Horse_Dakota, race « Selle Français »), cavalier Rider_Emma, statut « Terminé ».
+  • Rang 3 — cheval Volcan (Horse_Volcan, race « Arabe »), cavalier Rider_Theo, statut « Terminé ».
+  • Rang 4 — cheval Storm (Horse_Storm, race « Selle Belge »), cavalier Rider_Hugo, statut « Terminé ».
+  • Rang 5 — cheval Arrow (Horse_Arrow, race « Quarter Horse »), cavalier Rider_Alice, statut « Terminé ».
+
+Entraînements liés (étapes DEPENDSON vers cette épreuve)
+----------------------------------------
+  • pré-compétition (PreCompetitionStage) : 1 étape(s) pour 1 cheval(aux).
+  • préparation (PreparationStage) : 1 étape(s) pour 1 cheval(aux).
+
+Note méthodologique : discipline, date, lieu, catégorie, rangs et cavaliers sont exclusivement issus du fact-sheet Neo4j V9.

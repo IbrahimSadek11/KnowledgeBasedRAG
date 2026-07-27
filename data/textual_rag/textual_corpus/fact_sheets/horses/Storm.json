@@ -1,0 +1,135 @@
+{
+  "doc_type": "horse_fact_sheet",
+  "source": "live_neo4j_v9",
+  "extracted_at": "2026-07-27T00:24:23.348905+00:00",
+  "horse": {
+    "id": "Horse_Storm",
+    "hasName": "Storm",
+    "hasRace": "Selle Belge"
+  },
+  "associated_riders": [
+    "Rider_Hugo"
+  ],
+  "training_stages": [
+    {
+      "stage_id": "Training_Comp_Storm_01",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1,
+      "depends_on_events": [
+        "Event_Lyon_Dressage_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Hugo",
+          "role": "Rider"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_PreComp_Storm_01",
+      "stage_type": "PreCompetitionStage",
+      "volume": "65min",
+      "intensity": "Élevée",
+      "frequency": 3,
+      "depends_on_events": [
+        "Event_Lyon_Dressage_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Hugo",
+          "role": "Rider"
+        },
+        {
+          "actor_id": "Vet_DrMartin",
+          "role": "Veterinarian"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_Prepa_Storm_01",
+      "stage_type": "PreparationStage",
+      "volume": "50min",
+      "intensity": "Modérée",
+      "frequency": 5,
+      "depends_on_events": [
+        "Event_Lyon_Dressage_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Hugo",
+          "role": "Rider"
+        },
+        {
+          "actor_id": "Caretaker_Sophie",
+          "role": "Caretaker"
+        },
+        {
+          "actor_id": "Vet_DrMartin",
+          "role": "Veterinarian"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_Transition_Storm_01",
+      "stage_type": "TransitionStage",
+      "volume": "25min",
+      "intensity": "Faible",
+      "frequency": 2,
+      "depends_on_events": [
+        "Event_Lyon_Dressage_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Hugo",
+          "role": "Rider"
+        }
+      ]
+    }
+  ],
+  "sensors": [
+    {
+      "sensor_id": "IMU_CanonFore_Storm_01",
+      "sensor_code": "IMU-CF-008",
+      "position": "CanonOfForelimb",
+      "sample_rate": "250Hz",
+      "offset": "0.02",
+      "format": "CSV",
+      "file_size": 7700,
+      "objective": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Storm_01",
+      "sensor_code": "IMU-W-012",
+      "position": "Withers",
+      "sample_rate": "250Hz",
+      "offset": "0.01",
+      "format": "CSV",
+      "file_size": 5500,
+      "objective": "GaitClassif_01"
+    }
+  ],
+  "event_participations": [
+    {
+      "event_id": "Event_SJ_01",
+      "discipline": "ShowJumping",
+      "category": "Amateur 1",
+      "event_date": "2026-04-12",
+      "location": "Saumur",
+      "rank": 4,
+      "status": "Terminé",
+      "rider_id": "Rider_Hugo"
+    },
+    {
+      "event_id": "Event_Lyon_Dressage_2026",
+      "discipline": "Dressage",
+      "category": "Club Elite",
+      "event_date": "2026-08-23",
+      "location": "Lyon",
+      "rank": 1,
+      "status": "Terminé",
+      "rider_id": "Rider_Hugo"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 """
-Export the full contents of data/tabular.db to a single JSON file.
+Export the full contents of data/tabular_rag/tabular.db to a single JSON file.
 
 Read-only against tabular.db — never modifies the database.
 """
@@ -8,8 +8,8 @@ import os
 import sqlite3
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-DB_PATH = os.path.join(PROJECT_ROOT, "data", "tabular.db")
-OUTPUT_PATH = os.path.join(PROJECT_ROOT, "data", "tabular_export_data.json")
+DB_PATH = os.path.join(PROJECT_ROOT, "data", "tabular_rag", "tabular.db")
+OUTPUT_PATH = os.path.join(PROJECT_ROOT, "data", "tabular_rag", "tabular_export_data.json")
 
 TABLES = [
     "horses",

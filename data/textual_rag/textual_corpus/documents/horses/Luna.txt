@@ -1,0 +1,34 @@
+Rapport d'entraînement — Luna
+=================================
+
+Ce rapport synthétise exclusivement les faits enregistrés dans le graphe de connaissances pour le cheval Luna (identifiant Horse_Luna), race KWPN.
+
+Cavaliers associés (relation ASSOCIATEDWITH) : Rider_Clara.
+
+Programme d'entraînement (4 étape(s) enregistrée(s))
+----------------------------------------
+
+Phase compétition (entraînement) (CompetitionStage) — 1 séance(s) :
+  • Training_Comp_Luna_01 : volume 30min, intensité Pic, fréquence 1 ; acteurs : cavalier Rider_Clara ; événements liés : Event_Fontainebleau_SJ_2026.
+
+Phase pré-compétition (PreCompetitionStage) — 1 séance(s) :
+  • Training_PreComp_Luna_01 : volume 70min, intensité Élevée, fréquence 4 ; acteurs : cavalier Rider_Clara, vétérinaire Vet_DrMartin ; événements liés : Event_Fontainebleau_SJ_2026.
+
+Phase préparation (PreparationStage) — 1 séance(s) :
+  • Training_Prepa_Luna_01 : volume 50min, intensité Modérée, fréquence 5 ; acteurs : cavalier Rider_Clara, soigneur Caretaker_Sophie, vétérinaire Vet_DrMartin ; événements liés : Event_Fontainebleau_SJ_2026.
+
+Phase transition / récupération (TransitionStage) — 1 séance(s) :
+  • Training_Transition_Luna_01 : volume 25min, intensité Faible, fréquence 2 ; acteurs : cavalier Rider_Clara ; événements liés : Event_Fontainebleau_SJ_2026.
+
+Capteurs inertiels (3 capteur(s) attaché(s))
+----------------------------------------
+  • IMU_CanonFore_Luna_01 en position canon antérieur (CanonOfForelimb), fréquence d'échantillonnage 300Hz, offset 0.02, format CSV, taille de fichier 8100, objectif expérimental FatigueDetection.
+  • IMU_Sternum_Luna_01 en position sternum (Sternum), fréquence d'échantillonnage 200Hz, offset 0.02, format CSV, taille de fichier 7200, objectif expérimental FatigueDetection.
+  • IMU_Withers_Luna_01 en position garrot (Withers), fréquence d'échantillonnage 250Hz, offset 0.01, format CSV, taille de fichier 5600, objectif expérimental GaitClassif_01.
+
+Participations en compétition (2 résultat(s))
+----------------------------------------
+  • Event_SJ_2026_01 (saut d'obstacles / ShowJumping, catégorie « Amateur 2 ») le 2026-06-14 à Paris : rang 3, statut « Terminé », cavalier Rider_Clara.
+  • Event_Fontainebleau_SJ_2026 (saut d'obstacles / ShowJumping, catégorie « Pro Elite ») le 2026-07-05 à Fontainebleau : rang 1, statut « Terminé », cavalier Rider_Clara.
+
+Note méthodologique : aucun rang, volume, intensité, fréquence, capteur ou participant n'a été inventé ; toutes les valeurs ci-dessus proviennent du fact-sheet extrait de Neo4j V9.

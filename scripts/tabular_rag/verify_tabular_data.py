@@ -1,6 +1,6 @@
 """
 Permanent data-integrity verification for the Tabular RAG database
-(data/tabular.db).
+(data/tabular_rag/tabular.db).
 
 Read-only: opens the database with mode=ro and never issues INSERT/UPDATE/
 DELETE. Validates row counts, referential integrity across all tables,
@@ -11,7 +11,7 @@ import os
 import sqlite3
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-DB_PATH = os.path.join(PROJECT_ROOT, "data", "tabular.db")
+DB_PATH = os.path.join(PROJECT_ROOT, "data", "tabular_rag", "tabular.db")
 SCRIPTS_DIR = os.path.join(PROJECT_ROOT, "scripts")
 ENCODING_OUTPUT = os.path.join(SCRIPTS_DIR, "encoding_check_output.txt")
 

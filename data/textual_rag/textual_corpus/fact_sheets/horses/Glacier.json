@@ -1,0 +1,135 @@
+{
+  "doc_type": "horse_fact_sheet",
+  "source": "live_neo4j_v9",
+  "extracted_at": "2026-07-27T00:24:23.025966+00:00",
+  "horse": {
+    "id": "Horse_Glacier",
+    "hasName": "Glacier",
+    "hasRace": "Anglo-Arabe"
+  },
+  "associated_riders": [
+    "Rider_Theo"
+  ],
+  "training_stages": [
+    {
+      "stage_id": "Training_Comp_Glacier_01",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1,
+      "depends_on_events": [
+        "Event_Clermont_Cross_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Theo",
+          "role": "Rider"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_PreComp_Glacier_01",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3,
+      "depends_on_events": [
+        "Event_Clermont_Cross_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Theo",
+          "role": "Rider"
+        },
+        {
+          "actor_id": "Vet_DrMartin",
+          "role": "Veterinarian"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_Prepa_Glacier_01",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4,
+      "depends_on_events": [
+        "Event_Clermont_Cross_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Theo",
+          "role": "Rider"
+        },
+        {
+          "actor_id": "Caretaker_Sophie",
+          "role": "Caretaker"
+        },
+        {
+          "actor_id": "Vet_DrMartin",
+          "role": "Veterinarian"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_Transition_Glacier_01",
+      "stage_type": "TransitionStage",
+      "volume": "25min",
+      "intensity": "Faible",
+      "frequency": 2,
+      "depends_on_events": [
+        "Event_Clermont_Cross_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Theo",
+          "role": "Rider"
+        }
+      ]
+    }
+  ],
+  "sensors": [
+    {
+      "sensor_id": "IMU_CanonFore_Glacier_01",
+      "sensor_code": "IMU-CF-018",
+      "position": "CanonOfForelimb",
+      "sample_rate": "250Hz",
+      "offset": "0.02",
+      "format": "CSV",
+      "file_size": 7800,
+      "objective": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Glacier_01",
+      "sensor_code": "IMU-W-040",
+      "position": "Withers",
+      "sample_rate": "200Hz",
+      "offset": "0.01",
+      "format": "CSV",
+      "file_size": 5500,
+      "objective": "GaitClassif_01"
+    }
+  ],
+  "event_participations": [
+    {
+      "event_id": "Event_LeMans_Cross_2026",
+      "discipline": "Cross",
+      "category": "Amateur 1",
+      "event_date": "2026-09-05",
+      "location": "Le Mans",
+      "rank": 5,
+      "status": "Terminé",
+      "rider_id": "Rider_Theo"
+    },
+    {
+      "event_id": "Event_Clermont_Cross_2026",
+      "discipline": "Cross",
+      "category": "Amateur 2",
+      "event_date": "2026-10-10",
+      "location": "Clermont-Ferrand",
+      "rank": 2,
+      "status": "Terminé",
+      "rider_id": "Rider_Theo"
+    }
+  ]
+}
