@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>tabular.db — ERD V9 (live schema)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: #f1f5f9; color: #0f172a;
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+  }
+  .topbar {
+    background: #0b1220; color: #fff; padding: 18px 24px;
+    border-bottom: 4px solid #1d4ed8;
+    display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; justify-content: space-between;
+  }
+  .topbar h1 { margin: 0; font-size: 18px; font-weight: 700; }
+  .topbar .meta { color: #94a3b8; font-size: 13px; }
+  .badge {
+    background: #1e3a8a; color: #93c5fd; border: 1px solid #3b82f6;
+    padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 700;
+  }
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 14px; }
+  .chip { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #cbd5e1; }
+  .dot { width: 9px; height: 9px; border-radius: 2px; display: inline-block; }
+  main { padding: 20px 22px 48px; max-width: 1400px; margin: 0 auto; }
+  .group { margin-bottom: 28px; }
+  .group h3 {
+    margin: 0 0 12px; font-size: 13px; letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 14px;
+  }
+  .table-card {
+    background: #fff; border: 1px solid #e2e8f0; border-radius: 10px;
+    overflow: hidden; box-shadow: 0 1px 2px rgb(15 23 42 / 4%);
+  }
+  .table-card > header {
+    background: var(--accent); color: #fff; padding: 10px 14px;
+    display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
+  }
+  .table-card h2 { margin: 0; font-size: 15px; font-family: 'IBM Plex Mono', monospace; }
+  .rows { font-size: 12px; opacity: 0.85; }
+  .cols { padding: 4px 0; }
+  .col {
+    display: grid; grid-template-columns: 1fr auto auto; gap: 8px;
+    padding: 7px 14px; font-size: 13px; align-items: center;
+  }
+  .col:nth-child(odd) { background: #f8fafc; }
+  .cname { font-family: 'IBM Plex Mono', monospace; font-weight: 600; color: #1e293b; }
+  .col.pk .cname { color: #1e3a8a; font-weight: 700; }
+  .col.fk .cname { font-style: italic; color: #334155; }
+  .ctype { color: #64748b; font-size: 11px; font-family: 'IBM Plex Mono', monospace; }
+  .cbadge {
+    color: var(--accent); font-size: 10px; font-weight: 700; min-width: 36px; text-align: right;
+  }
+  .fks {
+    border-top: 1px dashed #e2e8f0; padding: 8px 14px 10px;
+    background: #fffbeb; font-size: 11px; color: #92400e;
+  }
+  .fkline { font-family: 'IBM Plex Mono', monospace; margin: 2px 0; }
+  .rels {
+    background: #fff; border: 1px solid #e2e8f0; border-radius: 10px;
+    padding: 16px 18px; margin-top: 8px;
+  }
+  .rels h3 { margin: 0 0 10px; font-size: 14px; }
+  .rels ul { margin: 0; padding-left: 18px; columns: 2; gap: 24px; }
+  .rels li { margin: 4px 0; font-size: 12.5px; break-inside: avoid; }
+  .rels code { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; }
+  .note {
+    margin-top: 18px; padding: 12px 14px; background: #eff6ff; border-left: 4px solid #1d4ed8;
+    font-size: 13px; color: #1e3a8a; border-radius: 0 8px 8px 0;
+  }
+  @media (max-width: 800px) {
+    .rels ul { columns: 1; }
+  }
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <div>
+      <h1>tabular.db — ERD <span class="badge">V9</span></h1>
+      <div class="meta">Live schema from data/tabular_rag/tabular.db · 14 tables · 1050 total rows · aligned with Horse_V9_augmented.rdf</div>
+    </div>
+    <div class="legend"><span class="chip"><span class="dot" style="background:#1d4ed8"></span>Core animals & calendar</span><span class="chip"><span class="dot" style="background:#047857"></span>People & roles</span><span class="chip"><span class="dot" style="background:#b45309"></span>Competition links</span><span class="chip"><span class="dot" style="background:#6d28d9"></span>Training</span><span class="chip"><span class="dot" style="background:#0f766e"></span>Sensors & goals</span></div>
+  </div>
+  <main>
+    <section class="group"><h3 style="color:#1d4ed8">Core animals & calendar</h3><div class="grid">
+            <article class="table-card" style="--accent:#1d4ed8">
+              <header>
+                <h2>horses</h2>
+                <span class="rows">50 rows</span>
+              </header>
+              <div class="cols"><div class="col pk"><span class="cname">horse_id</span><span class="ctype">TEXT</span><span class="cbadge">PK</span></div><div class="col "><span class="cname">name</span><span class="ctype">TEXT</span><span class="cbadge"></span></div><div class="col "><span class="cname">race</span><span class="ctype">TEXT</span><span class="cbadge"></span></div></div>
+              
+            </article>
+            <article class="table-card" style="--accent:#1d4ed8">
+              <header>
+                <h2>seasons</h2>
+                <span class="rows">1 rows</span>
+              </header>
+              <div class="cols"><div class="col pk"><span class="cname">season_id</span><span class="ctype">TEXT</span><span class="cbadge">PK</span></div><div class="col "><span class="cname">season_name</span><span class="ctype">TEXT</span><span class="cbadge"></span></div><div class="col "><span class="cname">season_start</span><span class="ctype">TEXT</span><span class="cbadge"></span></div><div class="col "><span class="cname">season_end</span><span class="ctype">TEXT</span><span class="cbadge"></span></div></div>
+              
+            </article>
+            <article class="table-card" style="--accent:#1d4ed8">
+              <header>
+                <h2>events</h2>
+                <span class="rows">20 rows</span>
+              </header>
+              <div class="cols"><div class="col pk"><span class="cname">event_id</span><span class="ctype">TEXT</span><span class="cbadge">PK</span></div><div class="col "><span class="cname">location</span><span class="ctype">TEXT</span><span class="cbadge"></span></div><div class="col "><span class="cname">category</span><span class="ctype">TEXT</span><span class="cbadge"></span></div><div class="col "><span class="cname">event_date</span><span class="ctype">TEXT</span><span class="cbadge"></span></div><div class="col "><span class="cname">discipline</span><span class="ctype">TEXT</span><span class="cbadge"></span></div><div class="col fk"><span class="cname">season_id</span><span class="ctype">TEXT</span><span class="cbadge">FK</span></div></div>
+              <div class="fks"><div class="fkline">season_id → seasons(season_id)</div></div>
+            </article></div></section><section class="group"><h3 style="color:#047857">People & roles</h3><div class="grid">
+            <article class="table-card" style="--accent:#047857">
+              <header>
+                <h2>people</h2>
+                <span class="rows">27 rows</span>
+              </header>
+              <div class="cols"><div class="col pk"><span class="cname">person_id</span><span class="ctype">TEXT</span><span class="cbadge">PK</span></div><div class="col "><span class="cname">role</span><span class="ctype">TEXT</span><span class="cbadge"></span></div></div>
+              
+            </article>
+            <article class="table-card" style="--accent:#047857">
+              <header>
+                <h2>riders</h2>
+                <span class="rows">25 rows</span>
+              </header>
+              <div class="cols"><div class="col pk"><span class="cname">person_id</span><span class="ctype">TEXT</span><span class="cbadge">PK FK</span></div></div>
+              <div class="fks"><div class="fkline">person_id → people(person_id)</div></div>
+            </article>
+            <article class="table-card" style="--accent:#047857">
+              <header>
+                <h2>veterinarians</h2>
+                <span class="rows">1 rows</span>
+              </header>
+              <div class="cols"><div class="col pk"><span class="cname">person_id</span><span class="ctype">TEXT</span><span class="cbadge">PK FK</span></div></div>
+              <div class="fks"><div class="fkline">person_id → people(person_id)</div></div>
+            </article>
+            <article class="table-card" style="--accent:#047857">
+              <header>
+                <h2>caretakers</h2>
+                <span class="rows">1 rows</span>
+              </header>
+              <div class="cols"><div class="col pk"><span class="cname">person_id</span><span class="ctype">TEXT</span><span class="cbadge">PK FK</span></div></div>
+              <div class="fks"><div class="fkline">person_id → people(person_id)</div></div>
+            </article></div></section><section class="group"><h3 style="color:#b45309">Competition links</h3><div class="grid">
+            <article class="table-card" style="--accent:#b45309">
+              <header>
+                <h2>event_entries</h2>
+                <span class="rows">101 rows</span>
+              </header>
+              <div class="cols"><div class="col pk"><span class="cname">horse_id</span><span class="ctype">TEXT</span><span class="cbadge">PK FK</span></div><div class="col pk"><span class="cname">event_id</span><span class="ctype">TEXT</span><span class="cbadge">PK FK</span></div></div>
+              <div class="fks"><div class="fkline">event_id → events(event_id)</div><div class="fkline">horse_id → horses(horse_id)</div></div>
+            </article>
+            <article class="table-card" style="--accent:#b45309">
+              <header>
+                <h2>event_participations</h2>
+                <span class="rows">101 rows</span>
+              </header>
+              <div class="cols"><div class="col pk"><span class="cname">participation_id</span><span class="ctype">TEXT</span><span class="cbadge">PK</span></div><div class="col fk"><span class="cname">event_id</span><span class="ctype">TEXT</span><span class="cbadge">FK</span></div><div class="col fk"><span class="cname">horse_id</span><span class="ctype">TEXT</span><span class="cbadge">FK</span></div><div class="col fk"><span class="cname">rider_id</span><span class="ctype">TEXT</span><span class="cbadge">FK</span></div><div class="col "><span class="cname">rank</span><span class="ctype">INTEGER</span><span class="cbadge"></span></div></div>
+              <div class="fks"><div class="fkline">horse_id → event_entries(horse_id)</div><div class="fkline">event_id → event_entries(event_id)</div><div class="fkline">rider_id → riders(person_id)</div><div class="fkline">horse_id → horses(horse_id)</div><div class="fkline">event_id → events(event_id)</div></div>
+            </article>
+            <article class="table-card" style="--accent:#b45309">
+              <header>
+                <h2>horse_rider_associations</h2>
+                <span class="rows">51 rows</span>
+              </header>
+              <div class="cols"><div class="col pk"><span class="cname">rider_id</span><span class="ctype">TEXT</span><span class="cbadge">PK FK</span></div><div class="col pk"><span class="cname">horse_id</span><span class="ctype">TEXT</span><span class="cbadge">PK FK</span></div></div>
+              <div class="fks"><div class="fkline">rider_id → riders(person_id)</div><div class="fkline">horse_id → horses(horse_id)</div></div>
+            </article></div></section><section class="group"><h3 style="color:#6d28d9">Training</h3><div class="grid">
+            <article class="table-card" style="--accent:#6d28d9">
+              <header>
+                <h2>trainings</h2>
+                <span class="rows">207 rows</span>
+              </header>
+              <div class="cols"><div class="col pk"><span class="cname">training_id</span><span class="ctype">TEXT</span><span class="cbadge">PK</span></div><div class="col fk"><span class="cname">horse_id</span><span class="ctype">TEXT</span><span class="cbadge">FK</span></div><div class="col fk"><span class="cname">event_id</span><span class="ctype">TEXT</span><span class="cbadge">FK</span></div><div class="col "><span class="cname">stage_type</span><span class="ctype">TEXT</span><span class="cbadge"></span></div><div class="col "><span class="cname">volume</span><span class="ctype">TEXT</span><span class="cbadge"></span></div><div class="col "><span class="cname">volume_minutes</span><span class="ctype">INTEGER</span><span class="cbadge"></span></div><div class="col "><span class="cname">intensity</span><span class="ctype">TEXT</span><span class="cbadge"></span></div><div class="col "><span class="cname">frequency</span><span class="ctype">INTEGER</span><span class="cbadge"></span></div></div>
+              <div class="fks"><div class="fkline">event_id → events(event_id)</div><div class="fkline">horse_id → horses(horse_id)</div></div>
+            </article>
+            <article class="table-card" style="--accent:#6d28d9">
+              <header>
+                <h2>training_actors</h2>
+                <span class="rows">355 rows</span>
+              </header>
+              <div class="cols"><div class="col pk"><span class="cname">training_id</span><span class="ctype">TEXT</span><span class="cbadge">PK FK</span></div><div class="col pk"><span class="cname">actor_id</span><span class="ctype">TEXT</span><span class="cbadge">PK FK</span></div><div class="col "><span class="cname">actor_role</span><span class="ctype">TEXT</span><span class="cbadge"></span></div></div>
+              <div class="fks"><div class="fkline">actor_id → people(person_id)</div><div class="fkline">training_id → trainings(training_id)</div></div>
+            </article></div></section><section class="group"><h3 style="color:#0f766e">Sensors & goals</h3><div class="grid">
+            <article class="table-card" style="--accent:#0f766e">
+              <header>
+                <h2>sensors</h2>
+                <span class="rows">108 rows</span>
+              </header>
+              <div class="cols"><div class="col pk"><span class="cname">sensor_id</span><span class="ctype">TEXT</span><span class="cbadge">PK</span></div><div class="col fk"><span class="cname">horse_id</span><span class="ctype">TEXT</span><span class="cbadge">FK</span></div><div class="col "><span class="cname">sensor_type</span><span class="ctype">TEXT</span><span class="cbadge"></span></div><div class="col "><span class="cname">sensor_code</span><span class="ctype">TEXT</span><span class="cbadge"></span></div><div class="col "><span class="cname">format</span><span class="ctype">TEXT</span><span class="cbadge"></span></div><div class="col "><span class="cname">sensor_offset</span><span class="ctype">TEXT</span><span class="cbadge"></span></div><div class="col "><span class="cname">sensor_offset_value</span><span class="ctype">REAL</span><span class="cbadge"></span></div><div class="col "><span class="cname">file_size</span><span class="ctype">INTEGER</span><span class="cbadge"></span></div><div class="col "><span class="cname">sample_rate</span><span class="ctype">TEXT</span><span class="cbadge"></span></div><div class="col "><span class="cname">sample_rate_hz</span><span class="ctype">INTEGER</span><span class="cbadge"></span></div><div class="col fk"><span class="cname">objective_id</span><span class="ctype">TEXT</span><span class="cbadge">FK</span></div></div>
+              <div class="fks"><div class="fkline">objective_id → objectives(objective_id)</div><div class="fkline">horse_id → horses(horse_id)</div></div>
+            </article>
+            <article class="table-card" style="--accent:#0f766e">
+              <header>
+                <h2>objectives</h2>
+                <span class="rows">2 rows</span>
+              </header>
+              <div class="cols"><div class="col pk"><span class="cname">objective_id</span><span class="ctype">TEXT</span><span class="cbadge">PK</span></div><div class="col "><span class="cname">name</span><span class="ctype">TEXT</span><span class="cbadge"></span></div><div class="col "><span class="cname">description</span><span class="ctype">TEXT</span><span class="cbadge"></span></div></div>
+              
+            </article></div></section>
+    <section class="rels">
+      <h3>Foreign keys</h3>
+      <ul>
+        <li><code>caretakers.person_id</code> → <code>people.person_id</code></li><li><code>event_entries.event_id</code> → <code>events.event_id</code></li><li><code>event_entries.horse_id</code> → <code>horses.horse_id</code></li><li><code>event_participations.horse_id</code> → <code>event_entries.horse_id</code></li><li><code>event_participations.event_id</code> → <code>event_entries.event_id</code></li><li><code>event_participations.rider_id</code> → <code>riders.person_id</code></li><li><code>event_participations.horse_id</code> → <code>horses.horse_id</code></li><li><code>event_participations.event_id</code> → <code>events.event_id</code></li><li><code>events.season_id</code> → <code>seasons.season_id</code></li><li><code>horse_rider_associations.rider_id</code> → <code>riders.person_id</code></li><li><code>horse_rider_associations.horse_id</code> → <code>horses.horse_id</code></li><li><code>riders.person_id</code> → <code>people.person_id</code></li><li><code>sensors.objective_id</code> → <code>objectives.objective_id</code></li><li><code>sensors.horse_id</code> → <code>horses.horse_id</code></li><li><code>training_actors.actor_id</code> → <code>people.person_id</code></li><li><code>training_actors.training_id</code> → <code>trainings.training_id</code></li><li><code>trainings.event_id</code> → <code>events.event_id</code></li><li><code>trainings.horse_id</code> → <code>horses.horse_id</code></li><li><code>veterinarians.person_id</code> → <code>people.person_id</code></li>
+      </ul>
+    </section>
+    <p class="note">
+      Generated from the live SQLite schema (not the stale V8 ERD).
+      Includes <code>event_entries</code> (COMPETESIN) and <code>horse_rider_associations</code> (AssociatedWith).
+      <code>people.role</code> (not name) — riders have no <code>hasName</code> in the RDF; identity is in <code>person_id</code>.
+      Participation <code>status</code> exists in RDF but is not stored in tabular.db.
+    </p>
+  </main>
+</body>
+</html>

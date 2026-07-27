@@ -66,7 +66,7 @@
     {
       "question_id": "Q10",
       "question": "De quel événement dépendent les étapes d'entraînement de Dakota ?",
-      "ground_truth": "Les étapes d'entraînement de Dakota dépendent de deux événements : Event_SJ_01 (saut d'obstacles à Saumur le 12 avril 2026) et Event_SJ_2026_01 (saut d'obstacles à Paris le 14 juin 2026).",
+      "ground_truth": "Les étapes d'entraînement de Dakota dépendent de quatre événements : Event_SJ_01 (saut d'obstacles à Saumur), Event_SJ_2026_01 (saut d'obstacles à Paris), Event_Cross_2026_01 (cross) et Event_Dressage_01 (dressage).",
       "category": "multi_hop",
       "difficulty": "hard"
     },
@@ -444,7 +444,7 @@
     {
       "question_id": "Q64",
       "question": "La plupart des chevaux participent-ils au même nombre de compétitions dans la saison, ou y a-t-il des exceptions ?",
-      "ground_truth": "La majorité des chevaux sont engagés dans deux compétitions. Trois chevaux font exception : Dakota, engagé dans cinq compétitions (sa charge la plus élevée du système, à comparer avec ses 6 étapes d'entraînement, également la plus élevée), tandis que Naya et Orion ne sont engagés que dans une seule compétition chacun.",
+      "ground_truth": "La majorité des chevaux sont engagés dans deux compétitions. Trois chevaux font exception : Dakota, engagé dans cinq compétitions (sa charge la plus élevée du système, à comparer avec ses 8 étapes d'entraînement, également la plus élevée), tandis que Naya et Orion ne sont engagés que dans une seule compétition chacun.",
       "category": "data_quality",
       "difficulty": "hard"
     },
@@ -619,7 +619,7 @@
     {
       "question_id": "Q89",
       "question": "Comment le système relie-t-il une étape d'entraînement à l'événement qu'elle prépare ?",
-      "ground_truth": "Le lien se fait via la relation DEPENDS_ON, qui relie chaque étape d'entraînement à l'événement pour lequel elle prépare le cheval. C'est ce lien (171 occurrences au total) qui permet de savoir pour quelle compétition un cheval s'entraîne à un moment donné. Une ancienne relation redondante (hasParticipatedTo) exprimait partiellement la même idée mais a été retirée du graphe, car elle n'apportait aucune information que DEPENDS_ON ne couvrait pas déjà.",
+      "ground_truth": "Le lien se fait via la relation DEPENDSON, qui relie chaque étape d'entraînement à l'événement pour lequel elle prépare le cheval. C'est ce lien (207 occurrences au total) qui permet de savoir pour quelle compétition un cheval s'entraîne à un moment donné.",
       "category": "schema_validation",
       "difficulty": "medium"
     },

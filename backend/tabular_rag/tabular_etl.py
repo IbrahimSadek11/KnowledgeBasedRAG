@@ -87,7 +87,7 @@ MATCH (e)-[:HASPARTICIPATION]->(p:EventParticipation)
 MATCH (p)-[:HASHORSE]->(h:Horse)
 MATCH (p)-[:HASRIDER]->(r:Rider)
 RETURN p.id AS participation_id, e.id AS event_id, h.id AS horse_id,
-       r.id AS rider_id, p.rank AS rank
+       r.id AS rider_id, p.rank AS rank, p.status AS status
 """
 
 SENSOR_QUERY = """
@@ -233,6 +233,7 @@ def fetch_from_neo4j():
                     rec["horse_id"],
                     rec["rider_id"],
                     rec["rank"],
+                    rec["status"],
                 )
                 for rec in session.run(PARTICIPATION_QUERY)
             ]
@@ -587,6 +588,7 @@ def build_sqlite(
                 horse_id TEXT,
                 rider_id TEXT,
                 rank INTEGER,
+                status TEXT,
                 FOREIGN KEY (event_id) REFERENCES events(event_id),
                 FOREIGN KEY (horse_id) REFERENCES horses(horse_id),
                 FOREIGN KEY (rider_id) REFERENCES riders(person_id),
@@ -596,8 +598,8 @@ def build_sqlite(
         )
         cur.executemany(
             "INSERT INTO event_participations "
-            "(participation_id, event_id, horse_id, rider_id, rank) "
-            "VALUES (?, ?, ?, ?, ?)",
+            "(participation_id, event_id, horse_id, rider_id, rank, status) "
+            "VALUES (?, ?, ?, ?, ?, ?)",
             event_participations,
         )
 
