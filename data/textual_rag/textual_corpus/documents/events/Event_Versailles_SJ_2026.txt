@@ -1,0 +1,21 @@
+Compte rendu d'épreuve — Event_Versailles_SJ_2026
+=====================================================
+
+Épreuve de saut d'obstacles (ShowJumping), catégorie Pro Elite, organisée le 2026-09-06 à Versailles, rattachée à la saison « Saison 2026 ».
+
+Classement et participants (5 engagement(s))
+----------------------------------------
+  • Rang 1 — cheval Etoile (Horse_Etoile, race « Frison »), cavalier Rider_Remi, statut « Terminé ».
+  • Rang 2 — cheval Aurore (Horse_Aurore, race « KWPN »), cavalier Rider_Pauline, statut « Terminé ».
+  • Rang 3 — cheval Grondre (Horse_Grondre, race « Hanovrien »), cavalier Rider_Remi, statut « Terminé ».
+  • Rang 4 — cheval Lumiere (Horse_Lumiere, race « AQPS »), cavalier Rider_Victor, statut « Terminé ».
+  • Rang 5 — cheval Zephire (Horse_Zephire, race « Trakehner »), cavalier Rider_Maxime, statut « Terminé ».
+
+Entraînements liés (étapes DEPENDSON vers cette épreuve)
+----------------------------------------
+  • compétition (entraînement) (CompetitionStage) : 5 étape(s) pour 5 cheval(aux).
+  • pré-compétition (PreCompetitionStage) : 5 étape(s) pour 5 cheval(aux).
+  • préparation (PreparationStage) : 5 étape(s) pour 5 cheval(aux).
+  • transition / récupération (TransitionStage) : 5 étape(s) pour 5 cheval(aux).
+
+Note méthodologique : discipline, date, lieu, catégorie, rangs et cavaliers sont exclusivement issus du fact-sheet Neo4j V9.

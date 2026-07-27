@@ -1,0 +1,82 @@
+{
+  "doc_type": "event_fact_sheet",
+  "source": "live_neo4j_v9",
+  "extracted_at": "2026-07-27T00:24:23.518736+00:00",
+  "event": {
+    "id": "Event_Strasbourg_Cross_2026",
+    "discipline": "Cross",
+    "category": "Amateur 1",
+    "event_date": "2026-07-12",
+    "location": "Strasbourg",
+    "season": "Saison 2026"
+  },
+  "participants": [
+    {
+      "participation_id": "Participation_Strasbourg_Dune_Marc",
+      "horse_name": "Dune",
+      "horse_id": "Horse_Dune",
+      "horse_race": "Camargue",
+      "rider_id": "Rider_Marc",
+      "rank": 1,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Strasbourg_Sable_Marc",
+      "horse_name": "Sable",
+      "horse_id": "Horse_Sable",
+      "horse_race": "Fjord",
+      "rider_id": "Rider_Marc",
+      "rank": 2,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Strasbourg_Brume_Jade",
+      "horse_name": "Brume",
+      "horse_id": "Horse_Brume",
+      "horse_race": "Haflinger",
+      "rider_id": "Rider_Jade",
+      "rank": 3,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Strasbourg_Riviere_Victor",
+      "horse_name": "Riviere",
+      "horse_id": "Horse_Riviere",
+      "horse_race": "Camargue",
+      "rider_id": "Rider_Victor",
+      "rank": 4,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Strasbourg_Mirage_Pauline",
+      "horse_name": "Mirage",
+      "horse_id": "Horse_Mirage",
+      "horse_race": "Holsteiner",
+      "rider_id": "Rider_Pauline",
+      "rank": 5,
+      "status": "Terminé"
+    }
+  ],
+  "linked_training_summary": [
+    {
+      "stage_type": "CompetitionStage",
+      "stage_count": 3,
+      "horse_count": 3
+    },
+    {
+      "stage_type": "PreCompetitionStage",
+      "stage_count": 3,
+      "horse_count": 3
+    },
+    {
+      "stage_type": "PreparationStage",
+      "stage_count": 3,
+      "horse_count": 3
+    },
+    {
+      "stage_type": "TransitionStage",
+      "stage_count": 3,
+      "horse_count": 3
+    }
+  ]
+}

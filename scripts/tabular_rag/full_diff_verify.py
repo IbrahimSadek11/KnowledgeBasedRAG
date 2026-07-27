@@ -1,5 +1,5 @@
 """
-Exhaustive full-row verification of data/tabular.db against the Neo4j graph.
+Exhaustive full-row verification of data/tabular_rag/tabular.db against the Neo4j graph.
 
 For every one of the fourteen tables, this pulls a fresh "ground truth" from Neo4j
 using INDEPENDENTLY formulated Cypher (different traversal directions, UNION
@@ -21,7 +21,7 @@ sys.path.append(PROJECT_ROOT)
 
 from backend.config import NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD, NEO4J_DATABASE
 
-DB_PATH = os.path.join(PROJECT_ROOT, "data", "tabular.db")
+DB_PATH = os.path.join(PROJECT_ROOT, "data", "tabular_rag", "tabular.db")
 DIFF_OUTPUT = os.path.join(PROJECT_ROOT, "scripts", "full_diff_output.txt")
 
 SENSOR_TYPES = {"Withers", "Sternum", "CanonOfForelimb", "CanonOfHindlimb"}

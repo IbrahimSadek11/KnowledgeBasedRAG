@@ -1,0 +1,33 @@
+Rapport d'entraînement — Orage
+==================================
+
+Ce rapport synthétise exclusivement les faits enregistrés dans le graphe de connaissances pour le cheval Orage (identifiant Horse_Orage), race Fjord.
+
+Cavaliers associés (relation ASSOCIATEDWITH) : Rider_Alice.
+
+Programme d'entraînement (4 étape(s) enregistrée(s))
+----------------------------------------
+
+Phase compétition (entraînement) (CompetitionStage) — 1 séance(s) :
+  • Training_Comp_Orage_01 : volume 30min, intensité Pic, fréquence 1 ; acteurs : cavalier Rider_Alice ; événements liés : Event_Clermont_Cross_2026.
+
+Phase pré-compétition (PreCompetitionStage) — 1 séance(s) :
+  • Training_PreComp_Orage_01 : volume 60min, intensité Élevée, fréquence 3 ; acteurs : cavalier Rider_Alice, vétérinaire Vet_DrMartin ; événements liés : Event_Clermont_Cross_2026.
+
+Phase préparation (PreparationStage) — 1 séance(s) :
+  • Training_Prepa_Orage_01 : volume 45min, intensité Modérée, fréquence 4 ; acteurs : soigneur Caretaker_Sophie, cavalier Rider_Alice, vétérinaire Vet_DrMartin ; événements liés : Event_Clermont_Cross_2026.
+
+Phase transition / récupération (TransitionStage) — 1 séance(s) :
+  • Training_Transition_Orage_01 : volume 25min, intensité Faible, fréquence 2 ; acteurs : cavalier Rider_Alice ; événements liés : Event_Clermont_Cross_2026.
+
+Capteurs inertiels (2 capteur(s) attaché(s))
+----------------------------------------
+  • IMU_Sternum_Orage_01 en position sternum (Sternum), fréquence d'échantillonnage 200Hz, offset 0.02, format CSV, taille de fichier 6300, objectif expérimental FatigueDetection.
+  • IMU_Withers_Orage_01 en position garrot (Withers), fréquence d'échantillonnage 200Hz, offset 0.01, format CSV, taille de fichier 5500, objectif expérimental GaitClassif_01.
+
+Participations en compétition (2 résultat(s))
+----------------------------------------
+  • Event_Toulouse_Cross_2026 (cross / concours complet / Cross, catégorie « Amateur 2 ») le 2026-09-13 à Toulouse : rang 2, statut « Terminé », cavalier Rider_Alice.
+  • Event_Clermont_Cross_2026 (cross / concours complet / Cross, catégorie « Amateur 2 ») le 2026-10-10 à Clermont-Ferrand : rang 4, statut « Terminé », cavalier Rider_Alice.
+
+Note méthodologique : aucun rang, volume, intensité, fréquence, capteur ou participant n'a été inventé ; toutes les valeurs ci-dessus proviennent du fact-sheet extrait de Neo4j V9.

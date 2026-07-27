@@ -1,0 +1,20 @@
+Compte rendu d'épreuve — Event_Toulouse_Cross_2026
+======================================================
+
+Épreuve de cross / concours complet (Cross), catégorie Amateur 2, organisée le 2026-09-13 à Toulouse, rattachée à la saison « Saison 2026 ».
+
+Classement et participants (4 engagement(s))
+----------------------------------------
+  • Rang 1 — cheval Iris (Horse_Iris, race « PRE »), cavalier Rider_Camille, statut « Terminé ».
+  • Rang 2 — cheval Orage (Horse_Orage, race « Fjord »), cavalier Rider_Alice, statut « Terminé ».
+  • Rang 3 — cheval Atlas (Horse_Atlas, race « Holsteiner »), cavalier Rider_Camille, statut « Terminé ».
+  • Rang 4 — cheval Tonnerre (Horse_Tonnerre, race « Mustang »), cavalier Rider_Ines, statut « Terminé ».
+
+Entraînements liés (étapes DEPENDSON vers cette épreuve)
+----------------------------------------
+  • compétition (entraînement) (CompetitionStage) : 2 étape(s) pour 2 cheval(aux).
+  • pré-compétition (PreCompetitionStage) : 2 étape(s) pour 2 cheval(aux).
+  • préparation (PreparationStage) : 2 étape(s) pour 2 cheval(aux).
+  • transition / récupération (TransitionStage) : 2 étape(s) pour 2 cheval(aux).
+
+Note méthodologique : discipline, date, lieu, catégorie, rangs et cavaliers sont exclusivement issus du fact-sheet Neo4j V9.

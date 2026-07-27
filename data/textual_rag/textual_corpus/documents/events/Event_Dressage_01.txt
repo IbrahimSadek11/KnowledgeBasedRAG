@@ -1,0 +1,14 @@
+Compte rendu d'épreuve — Event_Dressage_01
+==============================================
+
+Épreuve de dressage (Dressage), catégorie Club Elite, organisée le 2026-05-03 à Angers, rattachée à la saison « Saison 2026 ».
+
+Classement et participants (1 engagement(s))
+----------------------------------------
+  • Rang 1 — cheval Dakota (Horse_Dakota, race « Selle Français »), cavalier Rider_Emma, statut « Terminé ».
+
+Entraînements liés (étapes DEPENDSON vers cette épreuve)
+----------------------------------------
+  • compétition (entraînement) (CompetitionStage) : 1 étape(s) pour 1 cheval(aux).
+
+Note méthodologique : discipline, date, lieu, catégorie, rangs et cavaliers sont exclusivement issus du fact-sheet Neo4j V9.

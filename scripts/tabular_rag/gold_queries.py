@@ -163,7 +163,7 @@ if __name__ == "__main__":
     import os
 
     _here = os.path.dirname(os.path.abspath(__file__))
-    _db = os.path.join(_here, "..", "..", "data", "tabular.db")
+    _db = os.path.join(_here, "..", "..", "data", "tabular_rag", "tabular.db")
 
     a = execute_and_normalize(
         "SELECT * FROM (SELECT 1 AS n UNION ALL SELECT 2 AS n) ORDER BY n ASC",

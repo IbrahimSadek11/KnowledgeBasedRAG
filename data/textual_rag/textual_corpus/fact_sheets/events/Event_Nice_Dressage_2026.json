@@ -1,0 +1,73 @@
+{
+  "doc_type": "event_fact_sheet",
+  "source": "live_neo4j_v9",
+  "extracted_at": "2026-07-27T00:24:23.594042+00:00",
+  "event": {
+    "id": "Event_Nice_Dressage_2026",
+    "discipline": "Dressage",
+    "category": "Pro Elite",
+    "event_date": "2026-09-28",
+    "location": "Nice",
+    "season": "Saison 2026"
+  },
+  "participants": [
+    {
+      "participation_id": "Participation_Nice_Sirius_Baptiste",
+      "horse_name": "Sirius",
+      "horse_id": "Horse_Sirius",
+      "horse_race": "Frison",
+      "rider_id": "Rider_Baptiste",
+      "rank": 1,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Nice_Eclat_Chloe",
+      "horse_name": "Eclat",
+      "horse_id": "Horse_Eclat",
+      "horse_race": "Morgan",
+      "rider_id": "Rider_Chloe",
+      "rank": 2,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Nice_Braise_Alice",
+      "horse_name": "Braise",
+      "horse_id": "Horse_Braise",
+      "horse_race": "Appaloosa",
+      "rider_id": "Rider_Alice",
+      "rank": 3,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Nice_Eclair_Jade",
+      "horse_name": "Eclair",
+      "horse_id": "Horse_Eclair",
+      "horse_race": "Mustang",
+      "rider_id": "Rider_Jade",
+      "rank": 4,
+      "status": "Terminé"
+    }
+  ],
+  "linked_training_summary": [
+    {
+      "stage_type": "CompetitionStage",
+      "stage_count": 3,
+      "horse_count": 3
+    },
+    {
+      "stage_type": "PreCompetitionStage",
+      "stage_count": 3,
+      "horse_count": 3
+    },
+    {
+      "stage_type": "PreparationStage",
+      "stage_count": 3,
+      "horse_count": 3
+    },
+    {
+      "stage_type": "TransitionStage",
+      "stage_count": 3,
+      "horse_count": 3
+    }
+  ]
+}

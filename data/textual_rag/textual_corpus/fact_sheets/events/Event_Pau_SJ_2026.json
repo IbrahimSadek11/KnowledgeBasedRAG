@@ -1,0 +1,100 @@
+{
+  "doc_type": "event_fact_sheet",
+  "source": "live_neo4j_v9",
+  "extracted_at": "2026-07-27T00:24:23.620679+00:00",
+  "event": {
+    "id": "Event_Pau_SJ_2026",
+    "discipline": "ShowJumping",
+    "category": "Amateur 1",
+    "event_date": "2026-10-18",
+    "location": "Pau",
+    "season": "Saison 2026"
+  },
+  "participants": [
+    {
+      "participation_id": "Participation_Pau_Vega_Baptiste",
+      "horse_name": "Vega",
+      "horse_id": "Horse_Vega",
+      "horse_race": "Appaloosa",
+      "rider_id": "Rider_Baptiste",
+      "rank": 0,
+      "status": "Abandon"
+    },
+    {
+      "participation_id": "Participation_Pau_Comet_Nina",
+      "horse_name": "Comet",
+      "horse_id": "Horse_Comet",
+      "horse_race": "Selle Français",
+      "rider_id": "Rider_Nina",
+      "rank": 1,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Pau_Pixie_Julien",
+      "horse_name": "Pixie",
+      "horse_id": "Horse_Pixie",
+      "horse_race": "Connemara",
+      "rider_id": "Rider_Julien",
+      "rank": 2,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Pau_Atlas_Camille",
+      "horse_name": "Atlas",
+      "horse_id": "Horse_Atlas",
+      "horse_race": "Holsteiner",
+      "rider_id": "Rider_Camille",
+      "rank": 3,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Pau_Apollon_Sarah",
+      "horse_name": "Apollon",
+      "horse_id": "Horse_Apollon",
+      "horse_race": "AQPS",
+      "rider_id": "Rider_Sarah",
+      "rank": 4,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Pau_Galop_Remi",
+      "horse_name": "Galop",
+      "horse_id": "Horse_Galop",
+      "horse_race": "Connemara",
+      "rider_id": "Rider_Remi",
+      "rank": 5,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Pau_Grondre_Remi",
+      "horse_name": "Grondre",
+      "horse_id": "Horse_Grondre",
+      "horse_race": "Hanovrien",
+      "rider_id": "Rider_Remi",
+      "rank": 6,
+      "status": "Terminé"
+    }
+  ],
+  "linked_training_summary": [
+    {
+      "stage_type": "CompetitionStage",
+      "stage_count": 3,
+      "horse_count": 3
+    },
+    {
+      "stage_type": "PreCompetitionStage",
+      "stage_count": 3,
+      "horse_count": 3
+    },
+    {
+      "stage_type": "PreparationStage",
+      "stage_count": 3,
+      "horse_count": 3
+    },
+    {
+      "stage_type": "TransitionStage",
+      "stage_count": 3,
+      "horse_count": 3
+    }
+  ]
+}

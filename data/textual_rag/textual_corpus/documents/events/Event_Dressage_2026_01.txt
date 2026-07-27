@@ -1,0 +1,22 @@
+Compte rendu d'épreuve — Event_Dressage_2026_01
+===================================================
+
+Épreuve de dressage (Dressage), catégorie Club Elite, organisée le 2026-07-20 à Lyon, rattachée à la saison « Saison 2026 ».
+
+Classement et participants (6 engagement(s))
+----------------------------------------
+  • Rang 1 — cheval Naya (Horse_Naya, race « Anglo-Arabe »), cavalier Rider_Leo, statut « Terminé ».
+  • Rang 2 — cheval Dakota (Horse_Dakota, race « Selle Français »), cavalier Rider_Emma, statut « Terminé ».
+  • Rang 3 — cheval Nuage (Horse_Nuage, race « Pottok »), cavalier Rider_Elise, statut « Terminé ».
+  • Rang 4 — cheval Nova (Horse_Nova, race « Andalou »), cavalier Rider_Hugo, statut « Terminé ».
+  • Rang 5 — cheval Eclair (Horse_Eclair, race « Mustang »), cavalier Rider_Jade, statut « Terminé ».
+  • Rang 6 — cheval Bella (Horse_Bella, race « Lusitanien »), cavalier Rider_Julien, statut « Terminé ».
+
+Entraînements liés (étapes DEPENDSON vers cette épreuve)
+----------------------------------------
+  • compétition (entraînement) (CompetitionStage) : 1 étape(s) pour 1 cheval(aux).
+  • pré-compétition (PreCompetitionStage) : 1 étape(s) pour 1 cheval(aux).
+  • préparation (PreparationStage) : 1 étape(s) pour 1 cheval(aux).
+  • transition / récupération (TransitionStage) : 1 étape(s) pour 1 cheval(aux).
+
+Note méthodologique : discipline, date, lieu, catégorie, rangs et cavaliers sont exclusivement issus du fact-sheet Neo4j V9.

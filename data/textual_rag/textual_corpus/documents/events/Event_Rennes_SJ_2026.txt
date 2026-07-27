@@ -1,0 +1,22 @@
+Compte rendu d'épreuve — Event_Rennes_SJ_2026
+=================================================
+
+Épreuve de saut d'obstacles (ShowJumping), catégorie Pro Elite, organisée le 2026-05-17 à Rennes, rattachée à la saison « Saison 2026 ».
+
+Classement et participants (6 engagement(s))
+----------------------------------------
+  • Rang 1 — cheval Rio (Horse_Rio, race « Arabe »), cavalier Rider_Lea, statut « Terminé ».
+  • Rang 2 — cheval Vega (Horse_Vega, race « Appaloosa »), cavalier Rider_Baptiste, statut « Terminé ».
+  • Rang 3 — cheval Falcon (Horse_Falcon, race « Barbe »), cavalier Rider_Lea, statut « Terminé ».
+  • Rang 4 — cheval Ombre (Horse_Ombre, race « Percheron »), cavalier Rider_Chloe, statut « Terminé ».
+  • Rang 5 — cheval Zephire (Horse_Zephire, race « Trakehner »), cavalier Rider_Maxime, statut « Terminé ».
+  • Rang 6 — cheval Etoile (Horse_Etoile, race « Frison »), cavalier Rider_Remi, statut « Terminé ».
+
+Entraînements liés (étapes DEPENDSON vers cette épreuve)
+----------------------------------------
+  • compétition (entraînement) (CompetitionStage) : 4 étape(s) pour 4 cheval(aux).
+  • pré-compétition (PreCompetitionStage) : 4 étape(s) pour 4 cheval(aux).
+  • préparation (PreparationStage) : 4 étape(s) pour 4 cheval(aux).
+  • transition / récupération (TransitionStage) : 4 étape(s) pour 4 cheval(aux).
+
+Note méthodologique : discipline, date, lieu, catégorie, rangs et cavaliers sont exclusivement issus du fact-sheet Neo4j V9.

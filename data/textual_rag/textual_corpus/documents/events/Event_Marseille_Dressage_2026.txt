@@ -1,0 +1,22 @@
+Compte rendu d'épreuve — Event_Marseille_Dressage_2026
+==========================================================
+
+Épreuve de dressage (Dressage), catégorie Club Elite, organisée le 2026-10-03 à Marseille, rattachée à la saison « Saison 2026 ».
+
+Classement et participants (6 engagement(s))
+----------------------------------------
+  • Rang 1 — cheval Bella (Horse_Bella, race « Lusitanien »), cavalier Rider_Julien, statut « Terminé ».
+  • Rang 2 — cheval Mistral (Horse_Mistral, race « Oldenburg »), cavalier Rider_Tom, statut « Terminé ».
+  • Rang 3 — cheval Zephyr (Horse_Zephyr, race « Trakehner »), cavalier Rider_Nina, statut « Terminé ».
+  • Rang 4 — cheval Crepuscule (Horse_Crepuscule, race « Selle Français »), cavalier Rider_Pauline, statut « Terminé ».
+  • Rang 5 — cheval Nebule (Horse_Nebule, race « Haflinger »), cavalier Rider_Theo, statut « Terminé ».
+  • Rang 6 — cheval Eclat (Horse_Eclat, race « Morgan »), cavalier Rider_Chloe, statut « Terminé ».
+
+Entraînements liés (étapes DEPENDSON vers cette épreuve)
+----------------------------------------
+  • compétition (entraînement) (CompetitionStage) : 3 étape(s) pour 3 cheval(aux).
+  • pré-compétition (PreCompetitionStage) : 3 étape(s) pour 3 cheval(aux).
+  • préparation (PreparationStage) : 3 étape(s) pour 3 cheval(aux).
+  • transition / récupération (TransitionStage) : 3 étape(s) pour 3 cheval(aux).
+
+Note méthodologique : discipline, date, lieu, catégorie, rangs et cavaliers sont exclusivement issus du fact-sheet Neo4j V9.

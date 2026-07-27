@@ -1,0 +1,33 @@
+Rapport d'entraînement — Brume
+==================================
+
+Ce rapport synthétise exclusivement les faits enregistrés dans le graphe de connaissances pour le cheval Brume (identifiant Horse_Brume), race Haflinger.
+
+Cavaliers associés (relation ASSOCIATEDWITH) : Rider_Jade.
+
+Programme d'entraînement (4 étape(s) enregistrée(s))
+----------------------------------------
+
+Phase compétition (entraînement) (CompetitionStage) — 1 séance(s) :
+  • Training_Comp_Brume_01 : volume 30min, intensité Pic, fréquence 1 ; acteurs : cavalier Rider_Jade ; événements liés : Event_Strasbourg_Cross_2026.
+
+Phase pré-compétition (PreCompetitionStage) — 1 séance(s) :
+  • Training_PreComp_Brume_01 : volume 60min, intensité Élevée, fréquence 3 ; acteurs : cavalier Rider_Jade, vétérinaire Vet_DrMartin ; événements liés : Event_Strasbourg_Cross_2026.
+
+Phase préparation (PreparationStage) — 1 séance(s) :
+  • Training_Prepa_Brume_01 : volume 45min, intensité Modérée, fréquence 4 ; acteurs : cavalier Rider_Jade, soigneur Caretaker_Sophie, vétérinaire Vet_DrMartin ; événements liés : Event_Strasbourg_Cross_2026.
+
+Phase transition / récupération (TransitionStage) — 1 séance(s) :
+  • Training_Transition_Brume_01 : volume 25min, intensité Faible, fréquence 2 ; acteurs : cavalier Rider_Jade ; événements liés : Event_Strasbourg_Cross_2026.
+
+Capteurs inertiels (2 capteur(s) attaché(s))
+----------------------------------------
+  • IMU_Sternum_Brume_01 en position sternum (Sternum), fréquence d'échantillonnage 200Hz, offset 0.02, format CSV, taille de fichier 6000, objectif expérimental FatigueDetection.
+  • IMU_Withers_Brume_01 en position garrot (Withers), fréquence d'échantillonnage 200Hz, offset 0.01, format CSV, taille de fichier 5100, objectif expérimental GaitClassif_01.
+
+Participations en compétition (2 résultat(s))
+----------------------------------------
+  • Event_Strasbourg_Cross_2026 (cross / concours complet / Cross, catégorie « Amateur 1 ») le 2026-07-12 à Strasbourg : rang 3, statut « Terminé », cavalier Rider_Jade.
+  • Event_Bordeaux_Cross_2026 (cross / concours complet / Cross, catégorie « Amateur 2 ») le 2026-09-20 à Bordeaux : rang 3, statut « Terminé », cavalier Rider_Jade.
+
+Note méthodologique : aucun rang, volume, intensité, fréquence, capteur ou participant n'a été inventé ; toutes les valeurs ci-dessus proviennent du fact-sheet extrait de Neo4j V9.

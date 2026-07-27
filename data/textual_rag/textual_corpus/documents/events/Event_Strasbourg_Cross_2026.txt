@@ -1,0 +1,21 @@
+Compte rendu d'épreuve — Event_Strasbourg_Cross_2026
+========================================================
+
+Épreuve de cross / concours complet (Cross), catégorie Amateur 1, organisée le 2026-07-12 à Strasbourg, rattachée à la saison « Saison 2026 ».
+
+Classement et participants (5 engagement(s))
+----------------------------------------
+  • Rang 1 — cheval Dune (Horse_Dune, race « Camargue »), cavalier Rider_Marc, statut « Terminé ».
+  • Rang 2 — cheval Sable (Horse_Sable, race « Fjord »), cavalier Rider_Marc, statut « Terminé ».
+  • Rang 3 — cheval Brume (Horse_Brume, race « Haflinger »), cavalier Rider_Jade, statut « Terminé ».
+  • Rang 4 — cheval Riviere (Horse_Riviere, race « Camargue »), cavalier Rider_Victor, statut « Terminé ».
+  • Rang 5 — cheval Mirage (Horse_Mirage, race « Holsteiner »), cavalier Rider_Pauline, statut « Terminé ».
+
+Entraînements liés (étapes DEPENDSON vers cette épreuve)
+----------------------------------------
+  • compétition (entraînement) (CompetitionStage) : 3 étape(s) pour 3 cheval(aux).
+  • pré-compétition (PreCompetitionStage) : 3 étape(s) pour 3 cheval(aux).
+  • préparation (PreparationStage) : 3 étape(s) pour 3 cheval(aux).
+  • transition / récupération (TransitionStage) : 3 étape(s) pour 3 cheval(aux).
+
+Note méthodologique : discipline, date, lieu, catégorie, rangs et cavaliers sont exclusivement issus du fact-sheet Neo4j V9.

@@ -1,0 +1,23 @@
+Compte rendu d'épreuve — Event_SJ_2026_01
+=============================================
+
+Épreuve de saut d'obstacles (ShowJumping), catégorie Amateur 2, organisée le 2026-06-14 à Paris, rattachée à la saison « Saison 2026 ».
+
+Classement et participants (7 engagement(s))
+----------------------------------------
+  • Rang 1 — cheval Dakota (Horse_Dakota, race « Selle Français »), cavalier Rider_Manon, statut « Terminé ».
+  • Rang 2 — cheval Apollon (Horse_Apollon, race « AQPS »), cavalier Rider_Sarah, statut « Terminé ».
+  • Rang 3 — cheval Luna (Horse_Luna, race « KWPN »), cavalier Rider_Clara, statut « Terminé ».
+  • Rang 4 — cheval Mistral (Horse_Mistral, race « Oldenburg »), cavalier Rider_Tom, statut « Terminé ».
+  • Rang 5 — cheval Cascade (Horse_Cascade, race « Barbe »), cavalier Rider_Victor, statut « Terminé ».
+  • Rang 6 — cheval Ombre (Horse_Ombre, race « Percheron »), cavalier Rider_Chloe, statut « Terminé ».
+  • Rang 7 — cheval Lumiere (Horse_Lumiere, race « AQPS »), cavalier Rider_Victor, statut « Terminé ».
+
+Entraînements liés (étapes DEPENDSON vers cette épreuve)
+----------------------------------------
+  • compétition (entraînement) (CompetitionStage) : 1 étape(s) pour 1 cheval(aux).
+  • pré-compétition (PreCompetitionStage) : 1 étape(s) pour 1 cheval(aux).
+  • préparation (PreparationStage) : 1 étape(s) pour 1 cheval(aux).
+  • transition / récupération (TransitionStage) : 1 étape(s) pour 1 cheval(aux).
+
+Note méthodologique : discipline, date, lieu, catégorie, rangs et cavaliers sont exclusivement issus du fact-sheet Neo4j V9.

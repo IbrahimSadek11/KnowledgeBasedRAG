@@ -1,0 +1,82 @@
+{
+  "doc_type": "event_fact_sheet",
+  "source": "live_neo4j_v9",
+  "extracted_at": "2026-07-27T00:24:23.457609+00:00",
+  "event": {
+    "id": "Event_Nantes_SJ_2026",
+    "discipline": "ShowJumping",
+    "category": "Amateur 2",
+    "event_date": "2026-04-25",
+    "location": "Nantes",
+    "season": "Saison 2026"
+  },
+  "participants": [
+    {
+      "participation_id": "Participation_Nantes_Soleil_Alice",
+      "horse_name": "Soleil",
+      "horse_id": "Horse_Soleil",
+      "horse_race": "Andalou",
+      "rider_id": "Rider_Alice",
+      "rank": 1,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Nantes_Arrow_Alice",
+      "horse_name": "Arrow",
+      "horse_id": "Horse_Arrow",
+      "horse_race": "Quarter Horse",
+      "rider_id": "Rider_Alice",
+      "rank": 2,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Nantes_Cascade_Victor",
+      "horse_name": "Cascade",
+      "horse_id": "Horse_Cascade",
+      "horse_race": "Barbe",
+      "rider_id": "Rider_Victor",
+      "rank": 3,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Nantes_Volcan_Theo",
+      "horse_name": "Volcan",
+      "horse_id": "Horse_Volcan",
+      "horse_race": "Arabe",
+      "rider_id": "Rider_Theo",
+      "rank": 4,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Nantes_Galop_Remi",
+      "horse_name": "Galop",
+      "horse_id": "Horse_Galop",
+      "horse_race": "Connemara",
+      "rider_id": "Rider_Remi",
+      "rank": 5,
+      "status": "Terminé"
+    }
+  ],
+  "linked_training_summary": [
+    {
+      "stage_type": "CompetitionStage",
+      "stage_count": 5,
+      "horse_count": 5
+    },
+    {
+      "stage_type": "PreCompetitionStage",
+      "stage_count": 5,
+      "horse_count": 5
+    },
+    {
+      "stage_type": "PreparationStage",
+      "stage_count": 5,
+      "horse_count": 5
+    },
+    {
+      "stage_type": "TransitionStage",
+      "stage_count": 5,
+      "horse_count": 5
+    }
+  ]
+}

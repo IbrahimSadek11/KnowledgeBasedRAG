@@ -1,0 +1,135 @@
+{
+  "doc_type": "horse_fact_sheet",
+  "source": "live_neo4j_v9",
+  "extracted_at": "2026-07-27T00:24:23.226404+00:00",
+  "horse": {
+    "id": "Horse_Orage",
+    "hasName": "Orage",
+    "hasRace": "Fjord"
+  },
+  "associated_riders": [
+    "Rider_Alice"
+  ],
+  "training_stages": [
+    {
+      "stage_id": "Training_Comp_Orage_01",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1,
+      "depends_on_events": [
+        "Event_Clermont_Cross_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Alice",
+          "role": "Rider"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_PreComp_Orage_01",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3,
+      "depends_on_events": [
+        "Event_Clermont_Cross_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Alice",
+          "role": "Rider"
+        },
+        {
+          "actor_id": "Vet_DrMartin",
+          "role": "Veterinarian"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_Prepa_Orage_01",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4,
+      "depends_on_events": [
+        "Event_Clermont_Cross_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Caretaker_Sophie",
+          "role": "Caretaker"
+        },
+        {
+          "actor_id": "Rider_Alice",
+          "role": "Rider"
+        },
+        {
+          "actor_id": "Vet_DrMartin",
+          "role": "Veterinarian"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_Transition_Orage_01",
+      "stage_type": "TransitionStage",
+      "volume": "25min",
+      "intensity": "Faible",
+      "frequency": 2,
+      "depends_on_events": [
+        "Event_Clermont_Cross_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Alice",
+          "role": "Rider"
+        }
+      ]
+    }
+  ],
+  "sensors": [
+    {
+      "sensor_id": "IMU_Sternum_Orage_01",
+      "sensor_code": "IMU-ST-029",
+      "position": "Sternum",
+      "sample_rate": "200Hz",
+      "offset": "0.02",
+      "format": "CSV",
+      "file_size": 6300,
+      "objective": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Orage_01",
+      "sensor_code": "IMU-W-050",
+      "position": "Withers",
+      "sample_rate": "200Hz",
+      "offset": "0.01",
+      "format": "CSV",
+      "file_size": 5500,
+      "objective": "GaitClassif_01"
+    }
+  ],
+  "event_participations": [
+    {
+      "event_id": "Event_Toulouse_Cross_2026",
+      "discipline": "Cross",
+      "category": "Amateur 2",
+      "event_date": "2026-09-13",
+      "location": "Toulouse",
+      "rank": 2,
+      "status": "Terminé",
+      "rider_id": "Rider_Alice"
+    },
+    {
+      "event_id": "Event_Clermont_Cross_2026",
+      "discipline": "Cross",
+      "category": "Amateur 2",
+      "event_date": "2026-10-10",
+      "location": "Clermont-Ferrand",
+      "rank": 4,
+      "status": "Terminé",
+      "rider_id": "Rider_Alice"
+    }
+  ]
+}

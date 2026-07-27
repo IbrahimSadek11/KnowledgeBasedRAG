@@ -1,0 +1,33 @@
+Rapport d'entraînement — Auroch
+===================================
+
+Ce rapport synthétise exclusivement les faits enregistrés dans le graphe de connaissances pour le cheval Auroch (identifiant Horse_Auroch), race Pur-sang.
+
+Cavaliers associés (relation ASSOCIATEDWITH) : Rider_Elise.
+
+Programme d'entraînement (4 étape(s) enregistrée(s))
+----------------------------------------
+
+Phase compétition (entraînement) (CompetitionStage) — 1 séance(s) :
+  • Training_Comp_Auroch_01 : volume 30min, intensité Pic, fréquence 1 ; acteurs : cavalier Rider_Elise ; événements liés : Event_Clermont_Cross_2026.
+
+Phase pré-compétition (PreCompetitionStage) — 1 séance(s) :
+  • Training_PreComp_Auroch_01 : volume 65min, intensité Élevée, fréquence 3 ; acteurs : cavalier Rider_Elise, vétérinaire Vet_DrMartin ; événements liés : Event_Clermont_Cross_2026.
+
+Phase préparation (PreparationStage) — 1 séance(s) :
+  • Training_Prepa_Auroch_01 : volume 50min, intensité Modérée, fréquence 5 ; acteurs : cavalier Rider_Elise, soigneur Caretaker_Sophie, vétérinaire Vet_DrMartin ; événements liés : Event_Clermont_Cross_2026.
+
+Phase transition / récupération (TransitionStage) — 1 séance(s) :
+  • Training_Transition_Auroch_01 : volume 25min, intensité Faible, fréquence 2 ; acteurs : cavalier Rider_Elise ; événements liés : Event_Clermont_Cross_2026.
+
+Capteurs inertiels (2 capteur(s) attaché(s))
+----------------------------------------
+  • IMU_CanonHind_Auroch_01 en position canon postérieur (CanonOfHindlimb), fréquence d'échantillonnage 250Hz, offset 0.02, format CSV, taille de fichier 7800, objectif expérimental GaitClassif_01.
+  • IMU_Withers_Auroch_01 en position garrot (Withers), fréquence d'échantillonnage 200Hz, offset 0.01, format CSV, taille de fichier 5500, objectif expérimental GaitClassif_01.
+
+Participations en compétition (2 résultat(s))
+----------------------------------------
+  • Event_Bordeaux_Cross_2026 (cross / concours complet / Cross, catégorie « Amateur 2 ») le 2026-09-20 à Bordeaux : rang 4, statut « Terminé », cavalier Rider_Elise.
+  • Event_Clermont_Cross_2026 (cross / concours complet / Cross, catégorie « Amateur 2 ») le 2026-10-10 à Clermont-Ferrand : rang 5, statut « Terminé », cavalier Rider_Elise.
+
+Note méthodologique : aucun rang, volume, intensité, fréquence, capteur ou participant n'a été inventé ; toutes les valeurs ci-dessus proviennent du fact-sheet extrait de Neo4j V9.

@@ -1,0 +1,135 @@
+{
+  "doc_type": "horse_fact_sheet",
+  "source": "live_neo4j_v9",
+  "extracted_at": "2026-07-27T00:24:23.263887+00:00",
+  "horse": {
+    "id": "Horse_Rafale",
+    "hasName": "Rafale",
+    "hasRace": "Morgan"
+  },
+  "associated_riders": [
+    "Rider_Ines"
+  ],
+  "training_stages": [
+    {
+      "stage_id": "Training_Comp_Rafale_01",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1,
+      "depends_on_events": [
+        "Event_Clermont_Cross_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Ines",
+          "role": "Rider"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_PreComp_Rafale_01",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3,
+      "depends_on_events": [
+        "Event_Clermont_Cross_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Ines",
+          "role": "Rider"
+        },
+        {
+          "actor_id": "Vet_DrMartin",
+          "role": "Veterinarian"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_Prepa_Rafale_01",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4,
+      "depends_on_events": [
+        "Event_Clermont_Cross_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Ines",
+          "role": "Rider"
+        },
+        {
+          "actor_id": "Caretaker_Sophie",
+          "role": "Caretaker"
+        },
+        {
+          "actor_id": "Vet_DrMartin",
+          "role": "Veterinarian"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_Transition_Rafale_01",
+      "stage_type": "TransitionStage",
+      "volume": "25min",
+      "intensity": "Faible",
+      "frequency": 2,
+      "depends_on_events": [
+        "Event_Clermont_Cross_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Ines",
+          "role": "Rider"
+        }
+      ]
+    }
+  ],
+  "sensors": [
+    {
+      "sensor_id": "IMU_Sternum_Rafale_01",
+      "sensor_code": "IMU-ST-022",
+      "position": "Sternum",
+      "sample_rate": "200Hz",
+      "offset": "0.02",
+      "format": "CSV",
+      "file_size": 6300,
+      "objective": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Rafale_01",
+      "sensor_code": "IMU-W-034",
+      "position": "Withers",
+      "sample_rate": "200Hz",
+      "offset": "0.01",
+      "format": "CSV",
+      "file_size": 5500,
+      "objective": "GaitClassif_01"
+    }
+  ],
+  "event_participations": [
+    {
+      "event_id": "Event_Bordeaux_Cross_2026",
+      "discipline": "Cross",
+      "category": "Amateur 2",
+      "event_date": "2026-09-20",
+      "location": "Bordeaux",
+      "rank": 1,
+      "status": "Terminé",
+      "rider_id": "Rider_Ines"
+    },
+    {
+      "event_id": "Event_Clermont_Cross_2026",
+      "discipline": "Cross",
+      "category": "Amateur 2",
+      "event_date": "2026-10-10",
+      "location": "Clermont-Ferrand",
+      "rank": 1,
+      "status": "Terminé",
+      "rider_id": "Rider_Ines"
+    }
+  ]
+}

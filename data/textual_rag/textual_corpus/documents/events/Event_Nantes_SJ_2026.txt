@@ -1,0 +1,21 @@
+Compte rendu d'épreuve — Event_Nantes_SJ_2026
+=================================================
+
+Épreuve de saut d'obstacles (ShowJumping), catégorie Amateur 2, organisée le 2026-04-25 à Nantes, rattachée à la saison « Saison 2026 ».
+
+Classement et participants (5 engagement(s))
+----------------------------------------
+  • Rang 1 — cheval Soleil (Horse_Soleil, race « Andalou »), cavalier Rider_Alice, statut « Terminé ».
+  • Rang 2 — cheval Arrow (Horse_Arrow, race « Quarter Horse »), cavalier Rider_Alice, statut « Terminé ».
+  • Rang 3 — cheval Cascade (Horse_Cascade, race « Barbe »), cavalier Rider_Victor, statut « Terminé ».
+  • Rang 4 — cheval Volcan (Horse_Volcan, race « Arabe »), cavalier Rider_Theo, statut « Terminé ».
+  • Rang 5 — cheval Galop (Horse_Galop, race « Connemara »), cavalier Rider_Remi, statut « Terminé ».
+
+Entraînements liés (étapes DEPENDSON vers cette épreuve)
+----------------------------------------
+  • compétition (entraînement) (CompetitionStage) : 5 étape(s) pour 5 cheval(aux).
+  • pré-compétition (PreCompetitionStage) : 5 étape(s) pour 5 cheval(aux).
+  • préparation (PreparationStage) : 5 étape(s) pour 5 cheval(aux).
+  • transition / récupération (TransitionStage) : 5 étape(s) pour 5 cheval(aux).
+
+Note méthodologique : discipline, date, lieu, catégorie, rangs et cavaliers sont exclusivement issus du fact-sheet Neo4j V9.

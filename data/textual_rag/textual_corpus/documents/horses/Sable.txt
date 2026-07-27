@@ -1,0 +1,33 @@
+Rapport d'entraînement — Sable
+==================================
+
+Ce rapport synthétise exclusivement les faits enregistrés dans le graphe de connaissances pour le cheval Sable (identifiant Horse_Sable), race Fjord.
+
+Cavaliers associés (relation ASSOCIATEDWITH) : Rider_Marc.
+
+Programme d'entraînement (4 étape(s) enregistrée(s))
+----------------------------------------
+
+Phase compétition (entraînement) (CompetitionStage) — 1 séance(s) :
+  • Training_Comp_Sable_01 : volume 30min, intensité Pic, fréquence 1 ; acteurs : cavalier Rider_Marc ; événements liés : Event_Strasbourg_Cross_2026.
+
+Phase pré-compétition (PreCompetitionStage) — 1 séance(s) :
+  • Training_PreComp_Sable_01 : volume 60min, intensité Élevée, fréquence 3 ; acteurs : cavalier Rider_Marc, vétérinaire Vet_DrMartin ; événements liés : Event_Strasbourg_Cross_2026.
+
+Phase préparation (PreparationStage) — 1 séance(s) :
+  • Training_Prepa_Sable_01 : volume 45min, intensité Modérée, fréquence 4 ; acteurs : soigneur Caretaker_Sophie, cavalier Rider_Marc, vétérinaire Vet_DrMartin ; événements liés : Event_Strasbourg_Cross_2026.
+
+Phase transition / récupération (TransitionStage) — 1 séance(s) :
+  • Training_Transition_Sable_01 : volume 25min, intensité Faible, fréquence 2 ; acteurs : cavalier Rider_Marc ; événements liés : Event_Strasbourg_Cross_2026.
+
+Capteurs inertiels (2 capteur(s) attaché(s))
+----------------------------------------
+  • IMU_CanonHind_Sable_01 en position canon postérieur (CanonOfHindlimb), fréquence d'échantillonnage 250Hz, offset 0.015, format CSV, taille de fichier 7500, objectif expérimental GaitClassif_01.
+  • IMU_Withers_Sable_01 en position garrot (Withers), fréquence d'échantillonnage 200Hz, offset 0.01, format CSV, taille de fichier 5300, objectif expérimental GaitClassif_01.
+
+Participations en compétition (2 résultat(s))
+----------------------------------------
+  • Event_Strasbourg_Cross_2026 (cross / concours complet / Cross, catégorie « Amateur 1 ») le 2026-07-12 à Strasbourg : rang 2, statut « Terminé », cavalier Rider_Marc.
+  • Event_LeMans_Cross_2026 (cross / concours complet / Cross, catégorie « Amateur 1 ») le 2026-09-05 à Le Mans : rang 1, statut « Terminé », cavalier Rider_Marc.
+
+Note méthodologique : aucun rang, volume, intensité, fréquence, capteur ou participant n'a été inventé ; toutes les valeurs ci-dessus proviennent du fact-sheet extrait de Neo4j V9.

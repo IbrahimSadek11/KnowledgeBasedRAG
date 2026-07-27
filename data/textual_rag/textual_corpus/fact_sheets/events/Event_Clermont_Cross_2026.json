@@ -1,0 +1,82 @@
+{
+  "doc_type": "event_fact_sheet",
+  "source": "live_neo4j_v9",
+  "extracted_at": "2026-07-27T00:24:23.612045+00:00",
+  "event": {
+    "id": "Event_Clermont_Cross_2026",
+    "discipline": "Cross",
+    "category": "Amateur 2",
+    "event_date": "2026-10-10",
+    "location": "Clermont-Ferrand",
+    "season": "Saison 2026"
+  },
+  "participants": [
+    {
+      "participation_id": "Participation_Clermont_Rafale_Ines",
+      "horse_name": "Rafale",
+      "horse_id": "Horse_Rafale",
+      "horse_race": "Morgan",
+      "rider_id": "Rider_Ines",
+      "rank": 1,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Clermont_Glacier_Theo",
+      "horse_name": "Glacier",
+      "horse_id": "Horse_Glacier",
+      "horse_race": "Anglo-Arabe",
+      "rider_id": "Rider_Theo",
+      "rank": 2,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Clermont_Tonnerre_Ines",
+      "horse_name": "Tonnerre",
+      "horse_id": "Horse_Tonnerre",
+      "horse_race": "Mustang",
+      "rider_id": "Rider_Ines",
+      "rank": 3,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Clermont_Orage_Alice",
+      "horse_name": "Orage",
+      "horse_id": "Horse_Orage",
+      "horse_race": "Fjord",
+      "rider_id": "Rider_Alice",
+      "rank": 4,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_Clermont_Auroch_Elise",
+      "horse_name": "Auroch",
+      "horse_id": "Horse_Auroch",
+      "horse_race": "Pur-sang",
+      "rider_id": "Rider_Elise",
+      "rank": 5,
+      "status": "Terminé"
+    }
+  ],
+  "linked_training_summary": [
+    {
+      "stage_type": "CompetitionStage",
+      "stage_count": 5,
+      "horse_count": 5
+    },
+    {
+      "stage_type": "PreCompetitionStage",
+      "stage_count": 5,
+      "horse_count": 5
+    },
+    {
+      "stage_type": "PreparationStage",
+      "stage_count": 5,
+      "horse_count": 5
+    },
+    {
+      "stage_type": "TransitionStage",
+      "stage_count": 5,
+      "horse_count": 5
+    }
+  ]
+}

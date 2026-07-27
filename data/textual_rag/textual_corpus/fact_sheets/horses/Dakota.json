@@ -1,0 +1,250 @@
+{
+  "doc_type": "horse_fact_sheet",
+  "source": "live_neo4j_v9",
+  "extracted_at": "2026-07-27T00:24:22.914770+00:00",
+  "horse": {
+    "id": "Horse_Dakota",
+    "hasName": "Dakota",
+    "hasRace": "Selle Français"
+  },
+  "associated_riders": [
+    "Rider_Emma",
+    "Rider_Manon"
+  ],
+  "training_stages": [
+    {
+      "stage_id": "Training_Comp_Cross2026_Dakota_01",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1,
+      "depends_on_events": [
+        "Event_Cross_2026_01"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Emma",
+          "role": "Rider"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_Comp_Dress01_Dakota_01",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1,
+      "depends_on_events": [
+        "Event_Dressage_01"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Emma",
+          "role": "Rider"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_Competition_SJ_01",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1,
+      "depends_on_events": [
+        "Event_SJ_2026_01"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Emma",
+          "role": "Rider"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_PreComp_SJ_01",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3,
+      "depends_on_events": [
+        "Event_SJ_01"
+      ],
+      "actors": [
+        {
+          "actor_id": "Caretaker_Sophie",
+          "role": "Caretaker"
+        },
+        {
+          "actor_id": "Rider_Manon",
+          "role": "Rider"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_PreCompetition_SJ_01",
+      "stage_type": "PreCompetitionStage",
+      "volume": "60min",
+      "intensity": "Élevée",
+      "frequency": 3,
+      "depends_on_events": [
+        "Event_SJ_2026_01"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Emma",
+          "role": "Rider"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_Prepa_SJ_01",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4,
+      "depends_on_events": [
+        "Event_SJ_01"
+      ],
+      "actors": [
+        {
+          "actor_id": "Caretaker_Sophie",
+          "role": "Caretaker"
+        },
+        {
+          "actor_id": "Rider_Emma",
+          "role": "Rider"
+        },
+        {
+          "actor_id": "Vet_DrMartin",
+          "role": "Veterinarian"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_Preparation_SJ_01",
+      "stage_type": "PreparationStage",
+      "volume": "45min",
+      "intensity": "Modérée",
+      "frequency": 4,
+      "depends_on_events": [
+        "Event_SJ_2026_01"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Emma",
+          "role": "Rider"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_Transition_SJ_01",
+      "stage_type": "TransitionStage",
+      "volume": "30min",
+      "intensity": "Faible",
+      "frequency": 2,
+      "depends_on_events": [
+        "Event_SJ_2026_01"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Emma",
+          "role": "Rider"
+        }
+      ]
+    }
+  ],
+  "sensors": [
+    {
+      "sensor_id": "IMU_CanonFore_Dakota_01",
+      "sensor_code": "IMU-CF-002",
+      "position": "CanonOfForelimb",
+      "sample_rate": "250Hz",
+      "offset": "0.02",
+      "format": "CSV",
+      "file_size": 7680,
+      "objective": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_CanonHind_Dakota_01",
+      "sensor_code": "IMU-CH-003",
+      "position": "CanonOfHindlimb",
+      "sample_rate": "250Hz",
+      "offset": "0.015",
+      "format": "CSV",
+      "file_size": 7420,
+      "objective": "GaitClassif_01"
+    },
+    {
+      "sensor_id": "IMU_Sternum_Dakota_01",
+      "sensor_code": "IMU-ST-004",
+      "position": "Sternum",
+      "sample_rate": "200Hz",
+      "offset": "0.02",
+      "format": "CSV",
+      "file_size": 6890,
+      "objective": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Dakota_01",
+      "sensor_code": "IMU-W-001",
+      "position": "Withers",
+      "sample_rate": "200Hz",
+      "offset": "0.01",
+      "format": "CSV",
+      "file_size": 5120,
+      "objective": "GaitClassif_01"
+    }
+  ],
+  "event_participations": [
+    {
+      "event_id": "Event_SJ_01",
+      "discipline": "ShowJumping",
+      "category": "Amateur 1",
+      "event_date": "2026-04-12",
+      "location": "Saumur",
+      "rank": 2,
+      "status": "Terminé",
+      "rider_id": "Rider_Emma"
+    },
+    {
+      "event_id": "Event_Dressage_01",
+      "discipline": "Dressage",
+      "category": "Club Elite",
+      "event_date": "2026-05-03",
+      "location": "Angers",
+      "rank": 1,
+      "status": "Terminé",
+      "rider_id": "Rider_Emma"
+    },
+    {
+      "event_id": "Event_SJ_2026_01",
+      "discipline": "ShowJumping",
+      "category": "Amateur 2",
+      "event_date": "2026-06-14",
+      "location": "Paris",
+      "rank": 1,
+      "status": "Terminé",
+      "rider_id": "Rider_Manon"
+    },
+    {
+      "event_id": "Event_Dressage_2026_01",
+      "discipline": "Dressage",
+      "category": "Club Elite",
+      "event_date": "2026-07-20",
+      "location": "Lyon",
+      "rank": 2,
+      "status": "Terminé",
+      "rider_id": "Rider_Emma"
+    },
+    {
+      "event_id": "Event_Cross_2026_01",
+      "discipline": "Cross",
+      "category": "Amateur 1",
+      "event_date": "2026-08-10",
+      "location": "Bordeaux",
+      "rank": 2,
+      "status": "Terminé",
+      "rider_id": "Rider_Emma"
+    }
+  ]
+}

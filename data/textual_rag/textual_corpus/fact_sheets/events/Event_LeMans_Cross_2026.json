@@ -1,0 +1,100 @@
+{
+  "doc_type": "event_fact_sheet",
+  "source": "live_neo4j_v9",
+  "extracted_at": "2026-07-27T00:24:23.561264+00:00",
+  "event": {
+    "id": "Event_LeMans_Cross_2026",
+    "discipline": "Cross",
+    "category": "Amateur 1",
+    "event_date": "2026-09-05",
+    "location": "Le Mans",
+    "season": "Saison 2026"
+  },
+  "participants": [
+    {
+      "participation_id": "Participation_LeMans_Tempete_Maxime",
+      "horse_name": "Tempete",
+      "horse_id": "Horse_Tempete",
+      "horse_race": "Lipizzan",
+      "rider_id": "Rider_Maxime",
+      "rank": 0,
+      "status": "Éliminé"
+    },
+    {
+      "participation_id": "Participation_LeMans_Sable_Marc",
+      "horse_name": "Sable",
+      "horse_id": "Horse_Sable",
+      "horse_race": "Fjord",
+      "rider_id": "Rider_Marc",
+      "rank": 1,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_LeMans_Thunder_Antoine",
+      "horse_name": "Thunder",
+      "horse_id": "Horse_Thunder",
+      "horse_race": "Hanovrien",
+      "rider_id": "Rider_Antoine",
+      "rank": 2,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_LeMans_Orion_Lucas",
+      "horse_name": "Orion",
+      "horse_id": "Horse_Orion",
+      "horse_race": "Pur-sang",
+      "rider_id": "Rider_Lucas",
+      "rank": 3,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_LeMans_Zephyr_Nina",
+      "horse_name": "Zephyr",
+      "horse_id": "Horse_Zephyr",
+      "horse_race": "Trakehner",
+      "rider_id": "Rider_Nina",
+      "rank": 4,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_LeMans_Glacier_Theo",
+      "horse_name": "Glacier",
+      "horse_id": "Horse_Glacier",
+      "horse_race": "Anglo-Arabe",
+      "rider_id": "Rider_Theo",
+      "rank": 5,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_LeMans_Iris_Camille",
+      "horse_name": "Iris",
+      "horse_id": "Horse_Iris",
+      "horse_race": "PRE",
+      "rider_id": "Rider_Camille",
+      "rank": 6,
+      "status": "Terminé"
+    }
+  ],
+  "linked_training_summary": [
+    {
+      "stage_type": "CompetitionStage",
+      "stage_count": 1,
+      "horse_count": 1
+    },
+    {
+      "stage_type": "PreCompetitionStage",
+      "stage_count": 1,
+      "horse_count": 1
+    },
+    {
+      "stage_type": "PreparationStage",
+      "stage_count": 1,
+      "horse_count": 1
+    },
+    {
+      "stage_type": "TransitionStage",
+      "stage_count": 1,
+      "horse_count": 1
+    }
+  ]
+}

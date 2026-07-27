@@ -1,0 +1,100 @@
+{
+  "doc_type": "event_fact_sheet",
+  "source": "live_neo4j_v9",
+  "extracted_at": "2026-07-27T00:24:23.501847+00:00",
+  "event": {
+    "id": "Event_SJ_2026_01",
+    "discipline": "ShowJumping",
+    "category": "Amateur 2",
+    "event_date": "2026-06-14",
+    "location": "Paris",
+    "season": "Saison 2026"
+  },
+  "participants": [
+    {
+      "participation_id": "Participation_SJ2026_Dakota_Manon",
+      "horse_name": "Dakota",
+      "horse_id": "Horse_Dakota",
+      "horse_race": "Selle Français",
+      "rider_id": "Rider_Manon",
+      "rank": 1,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_SJ2026_Apollon_Sarah",
+      "horse_name": "Apollon",
+      "horse_id": "Horse_Apollon",
+      "horse_race": "AQPS",
+      "rider_id": "Rider_Sarah",
+      "rank": 2,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_SJ2026_Luna_Clara",
+      "horse_name": "Luna",
+      "horse_id": "Horse_Luna",
+      "horse_race": "KWPN",
+      "rider_id": "Rider_Clara",
+      "rank": 3,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_SJ2026_Mistral_Tom",
+      "horse_name": "Mistral",
+      "horse_id": "Horse_Mistral",
+      "horse_race": "Oldenburg",
+      "rider_id": "Rider_Tom",
+      "rank": 4,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_SJ2026_Cascade_Victor",
+      "horse_name": "Cascade",
+      "horse_id": "Horse_Cascade",
+      "horse_race": "Barbe",
+      "rider_id": "Rider_Victor",
+      "rank": 5,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_SJ2026_Ombre_Chloe",
+      "horse_name": "Ombre",
+      "horse_id": "Horse_Ombre",
+      "horse_race": "Percheron",
+      "rider_id": "Rider_Chloe",
+      "rank": 6,
+      "status": "Terminé"
+    },
+    {
+      "participation_id": "Participation_SJ2026_Lumiere_Victor",
+      "horse_name": "Lumiere",
+      "horse_id": "Horse_Lumiere",
+      "horse_race": "AQPS",
+      "rider_id": "Rider_Victor",
+      "rank": 7,
+      "status": "Terminé"
+    }
+  ],
+  "linked_training_summary": [
+    {
+      "stage_type": "CompetitionStage",
+      "stage_count": 1,
+      "horse_count": 1
+    },
+    {
+      "stage_type": "PreCompetitionStage",
+      "stage_count": 1,
+      "horse_count": 1
+    },
+    {
+      "stage_type": "PreparationStage",
+      "stage_count": 1,
+      "horse_count": 1
+    },
+    {
+      "stage_type": "TransitionStage",
+      "stage_count": 1,
+      "horse_count": 1
+    }
+  ]
+}

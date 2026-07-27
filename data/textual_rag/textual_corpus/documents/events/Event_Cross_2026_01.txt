@@ -1,0 +1,17 @@
+Compte rendu d'épreuve — Event_Cross_2026_01
+================================================
+
+Épreuve de cross / concours complet (Cross), catégorie Amateur 1, organisée le 2026-08-10 à Bordeaux, rattachée à la saison « Saison 2026 ».
+
+Classement et participants (4 engagement(s))
+----------------------------------------
+  • Rang 1 — cheval Pixie (Horse_Pixie, race « Connemara »), cavalier Rider_Julien, statut « Terminé ».
+  • Rang 2 — cheval Dakota (Horse_Dakota, race « Selle Français »), cavalier Rider_Emma, statut « Terminé ».
+  • Rang 3 — cheval Dune (Horse_Dune, race « Camargue »), cavalier Rider_Marc, statut « Terminé ».
+  • Rang 4 — cheval Ecume (Horse_Ecume, race « Akhal-Teke »), cavalier Rider_Maxime, statut « Terminé ».
+
+Entraînements liés (étapes DEPENDSON vers cette épreuve)
+----------------------------------------
+  • compétition (entraînement) (CompetitionStage) : 4 étape(s) pour 4 cheval(aux).
+
+Note méthodologique : discipline, date, lieu, catégorie, rangs et cavaliers sont exclusivement issus du fact-sheet Neo4j V9.

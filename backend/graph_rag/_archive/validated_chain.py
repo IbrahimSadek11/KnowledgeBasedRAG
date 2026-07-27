@@ -1,6 +1,6 @@
 # ARCHIVE ONLY — reconstructed from bytecode (backend/__pycache__/validated_chain.cpython-314.pyc).
 # Never committed to git; never wired into the live Graph RAG pipeline.
-# See docs/graph_validator_status.md. Do not import from production code.
+# See docs/graph_rag/graph_validator_status.md. Do not import from production code.
 
 """
 Validated replacement for langchain's GraphCypherQAChain.

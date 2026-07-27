@@ -1,0 +1,151 @@
+{
+  "doc_type": "horse_fact_sheet",
+  "source": "live_neo4j_v9",
+  "extracted_at": "2026-07-27T00:24:23.248484+00:00",
+  "horse": {
+    "id": "Horse_Pixie",
+    "hasName": "Pixie",
+    "hasRace": "Connemara"
+  },
+  "associated_riders": [
+    "Rider_Julien"
+  ],
+  "training_stages": [
+    {
+      "stage_id": "Training_Comp_Cross2026_Pixie_01",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1,
+      "depends_on_events": [
+        "Event_Cross_2026_01"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Julien",
+          "role": "Rider"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_Comp_Pixie_01",
+      "stage_type": "CompetitionStage",
+      "volume": "30min",
+      "intensity": "Pic",
+      "frequency": 1,
+      "depends_on_events": [
+        "Event_Pau_SJ_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Julien",
+          "role": "Rider"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_PreComp_Pixie_01",
+      "stage_type": "PreCompetitionStage",
+      "volume": "55min",
+      "intensity": "Élevée",
+      "frequency": 4,
+      "depends_on_events": [
+        "Event_Pau_SJ_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Julien",
+          "role": "Rider"
+        },
+        {
+          "actor_id": "Vet_DrMartin",
+          "role": "Veterinarian"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_Prepa_Pixie_01",
+      "stage_type": "PreparationStage",
+      "volume": "40min",
+      "intensity": "Modérée",
+      "frequency": 5,
+      "depends_on_events": [
+        "Event_Pau_SJ_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Julien",
+          "role": "Rider"
+        },
+        {
+          "actor_id": "Caretaker_Sophie",
+          "role": "Caretaker"
+        },
+        {
+          "actor_id": "Vet_DrMartin",
+          "role": "Veterinarian"
+        }
+      ]
+    },
+    {
+      "stage_id": "Training_Transition_Pixie_01",
+      "stage_type": "TransitionStage",
+      "volume": "25min",
+      "intensity": "Faible",
+      "frequency": 2,
+      "depends_on_events": [
+        "Event_Pau_SJ_2026"
+      ],
+      "actors": [
+        {
+          "actor_id": "Rider_Julien",
+          "role": "Rider"
+        }
+      ]
+    }
+  ],
+  "sensors": [
+    {
+      "sensor_id": "IMU_Sternum_Pixie_01",
+      "sensor_code": "IMU-ST-009",
+      "position": "Sternum",
+      "sample_rate": "200Hz",
+      "offset": "0.02",
+      "format": "CSV",
+      "file_size": 6100,
+      "objective": "FatigueDetection"
+    },
+    {
+      "sensor_id": "IMU_Withers_Pixie_01",
+      "sensor_code": "IMU-W-008",
+      "position": "Withers",
+      "sample_rate": "200Hz",
+      "offset": "0.01",
+      "format": "CSV",
+      "file_size": 5000,
+      "objective": "GaitClassif_01"
+    }
+  ],
+  "event_participations": [
+    {
+      "event_id": "Event_Cross_2026_01",
+      "discipline": "Cross",
+      "category": "Amateur 1",
+      "event_date": "2026-08-10",
+      "location": "Bordeaux",
+      "rank": 1,
+      "status": "Terminé",
+      "rider_id": "Rider_Julien"
+    },
+    {
+      "event_id": "Event_Pau_SJ_2026",
+      "discipline": "ShowJumping",
+      "category": "Amateur 1",
+      "event_date": "2026-10-18",
+      "location": "Pau",
+      "rank": 2,
+      "status": "Terminé",
+      "rider_id": "Rider_Julien"
+    }
+  ]
+}

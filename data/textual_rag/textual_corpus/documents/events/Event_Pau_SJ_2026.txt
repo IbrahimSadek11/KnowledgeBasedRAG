@@ -1,0 +1,23 @@
+Compte rendu d'épreuve — Event_Pau_SJ_2026
+==============================================
+
+Épreuve de saut d'obstacles (ShowJumping), catégorie Amateur 1, organisée le 2026-10-18 à Pau, rattachée à la saison « Saison 2026 ».
+
+Classement et participants (7 engagement(s))
+----------------------------------------
+  • Rang 0 — cheval Vega (Horse_Vega, race « Appaloosa »), cavalier Rider_Baptiste, statut « Abandon ».
+  • Rang 1 — cheval Comet (Horse_Comet, race « Selle Français »), cavalier Rider_Nina, statut « Terminé ».
+  • Rang 2 — cheval Pixie (Horse_Pixie, race « Connemara »), cavalier Rider_Julien, statut « Terminé ».
+  • Rang 3 — cheval Atlas (Horse_Atlas, race « Holsteiner »), cavalier Rider_Camille, statut « Terminé ».
+  • Rang 4 — cheval Apollon (Horse_Apollon, race « AQPS »), cavalier Rider_Sarah, statut « Terminé ».
+  • Rang 5 — cheval Galop (Horse_Galop, race « Connemara »), cavalier Rider_Remi, statut « Terminé ».
+  • Rang 6 — cheval Grondre (Horse_Grondre, race « Hanovrien »), cavalier Rider_Remi, statut « Terminé ».
+
+Entraînements liés (étapes DEPENDSON vers cette épreuve)
+----------------------------------------
+  • compétition (entraînement) (CompetitionStage) : 3 étape(s) pour 3 cheval(aux).
+  • pré-compétition (PreCompetitionStage) : 3 étape(s) pour 3 cheval(aux).
+  • préparation (PreparationStage) : 3 étape(s) pour 3 cheval(aux).
+  • transition / récupération (TransitionStage) : 3 étape(s) pour 3 cheval(aux).
+
+Note méthodologique : discipline, date, lieu, catégorie, rangs et cavaliers sont exclusivement issus du fact-sheet Neo4j V9.

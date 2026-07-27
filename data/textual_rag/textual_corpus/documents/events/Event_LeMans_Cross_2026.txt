@@ -1,0 +1,23 @@
+Compte rendu d'épreuve — Event_LeMans_Cross_2026
+====================================================
+
+Épreuve de cross / concours complet (Cross), catégorie Amateur 1, organisée le 2026-09-05 à Le Mans, rattachée à la saison « Saison 2026 ».
+
+Classement et participants (7 engagement(s))
+----------------------------------------
+  • Rang 0 — cheval Tempete (Horse_Tempete, race « Lipizzan »), cavalier Rider_Maxime, statut « Éliminé ».
+  • Rang 1 — cheval Sable (Horse_Sable, race « Fjord »), cavalier Rider_Marc, statut « Terminé ».
+  • Rang 2 — cheval Thunder (Horse_Thunder, race « Hanovrien »), cavalier Rider_Antoine, statut « Terminé ».
+  • Rang 3 — cheval Orion (Horse_Orion, race « Pur-sang »), cavalier Rider_Lucas, statut « Terminé ».
+  • Rang 4 — cheval Zephyr (Horse_Zephyr, race « Trakehner »), cavalier Rider_Nina, statut « Terminé ».
+  • Rang 5 — cheval Glacier (Horse_Glacier, race « Anglo-Arabe »), cavalier Rider_Theo, statut « Terminé ».
+  • Rang 6 — cheval Iris (Horse_Iris, race « PRE »), cavalier Rider_Camille, statut « Terminé ».
+
+Entraînements liés (étapes DEPENDSON vers cette épreuve)
+----------------------------------------
+  • compétition (entraînement) (CompetitionStage) : 1 étape(s) pour 1 cheval(aux).
+  • pré-compétition (PreCompetitionStage) : 1 étape(s) pour 1 cheval(aux).
+  • préparation (PreparationStage) : 1 étape(s) pour 1 cheval(aux).
+  • transition / récupération (TransitionStage) : 1 étape(s) pour 1 cheval(aux).
+
+Note méthodologique : discipline, date, lieu, catégorie, rangs et cavaliers sont exclusivement issus du fact-sheet Neo4j V9.
