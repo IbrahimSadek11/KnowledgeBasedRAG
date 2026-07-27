@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KALIPSO — Ontology Schema V9</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#0d1117; font-family:'Segoe UI',system-ui,sans-serif; color:#e6edf3; overflow:hidden; height:100vh; }
+
+header {
+  position:fixed; top:0; left:0; right:0; height:52px;
+  background:rgba(13,17,23,0.96); backdrop-filter:blur(12px);
+  border-bottom:1px solid #21262d;
+  display:flex; align-items:center; padding:0 20px; gap:14px; z-index:100;
+}
+header h1 { font-size:15px; font-weight:700; color:#a78bfa; letter-spacing:0.02em; }
+.v-badge { background:#2d1b4e; color:#a78bfa; border:1px solid #7c3aed; padding:2px 10px; border-radius:10px; font-size:11px; font-weight:700; }
+header span.sub { font-size:12px; color:#8b949e; }
+.tab-bar { margin-left:auto; display:flex; gap:4px; }
+.tab { background:none; border:1px solid #30363d; color:#8b949e; font-size:12px; padding:5px 14px; border-radius:6px; cursor:pointer; transition:all 0.15s; }
+.tab.active { background:#a78bfa22; border-color:#a78bfa; color:#a78bfa; }
+.tab:hover:not(.active) { background:#21262d; color:#e6edf3; }
+
+/* VIEWS */
+#view-hierarchy, #view-properties, #view-graph { display:none; position:fixed; top:52px; left:0; right:0; bottom:0; overflow:auto; }
+#view-hierarchy.active, #view-properties.active { display:block; }
+#view-graph.active { display:flex; }
+
+/* HIERARCHY VIEW */
+#view-hierarchy { padding:28px 32px; }
+.hier-section { margin-bottom:36px; }
+.hier-title {
+  font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+  color:#8b949e; margin-bottom:14px; padding-bottom:8px;
+  border-bottom:1px solid #21262d;
+  display:flex; align-items:center; gap:8px;
+}
+.hier-title .dot { width:8px; height:8px; border-radius:50%; }
+
+.tree { display:flex; flex-direction:column; gap:6px; }
+.superclass {
+  background:#161b22; border:1px solid #30363d; border-radius:10px; overflow:hidden;
+}
+.superclass-header {
+  display:flex; align-items:center; gap:10px; padding:11px 14px;
+  cursor:pointer; user-select:none;
+  transition:background 0.12s;
+}
+.superclass-header:hover { background:#1c2128; }
+.superclass-icon { font-size:13px; width:18px; text-align:center; }
+.superclass-name { font-size:13px; font-weight:700; flex:1; }
+.superclass-count { font-size:11px; background:#21262d; padding:2px 8px; border-radius:10px; color:#8b949e; }
+.arrow { font-size:11px; color:#6e7681; transition:transform 0.2s; }
+.arrow.open { transform:rotate(90deg); }
+
+.subclasses { border-top:1px solid #21262d; background:#0d1117; padding:8px 0; display:none; }
+.subclasses.open { display:block; }
+.subclass-row {
+  display:flex; align-items:center; gap:10px;
+  padding:8px 14px 8px 36px;
+  border-left:2px solid transparent;
+  transition:all 0.12s; cursor:pointer;
+}
+.subclass-row:hover { background:#161b22; border-left-color:currentColor; }
+.sub-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+.sub-name { font-size:13px; font-weight:600; flex:1; }
+.sub-count { font-size:11px; color:#6e7681; background:#161b22; padding:2px 8px; border-radius:10px; }
+.sub-props { font-size:11px; color:#6e7681; display:flex; gap:4px; flex-wrap:wrap; margin-top:4px; margin-left:36px; padding-bottom:4px; }
+.sub-prop-tag { background:#21262d; padding:2px 7px; border-radius:4px; font-family:'Courier New',monospace; }
+
+/* Standalone class (no parent) */
+.standalone {
+  background:#161b22; border:1px solid #30363d; border-radius:10px;
+  display:flex; align-items:center; gap:10px; padding:11px 14px;
+  cursor:pointer; transition:background 0.12s;
+}
+.standalone:hover { background:#1c2128; }
+.standalone .sub-dot { width:12px; height:12px; }
+.standalone-name { font-size:13px; font-weight:700; flex:1; }
+
+/* PROPERTIES VIEW */
+#view-properties { padding:28px 32px; }
+.prop-section { margin-bottom:36px; }
+.prop-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(340px,1fr)); gap:12px; }
+.prop-card {
+  background:#161b22; border:1px solid #30363d; border-radius:10px; padding:14px 16px;
+  transition:border-color 0.15s, background 0.15s; cursor:default;
+}
+.prop-card:hover { border-color:#555; background:#1c2128; }
+.prop-card-head { display:flex; align-items:center; gap:8px; margin-bottom:10px; }
+.prop-kind { font-size:10px; font-weight:700; letter-spacing:0.08em; padding:2px 8px; border-radius:4px; }
+.prop-kind.obj  { background:#1e3a5f; color:#58a6ff; }
+.prop-kind.data { background:#1a3320; color:#3fb950; }
+.prop-card-name { font-size:14px; font-weight:700; color:#e6edf3; font-family:'Courier New',monospace; }
+.prop-arrow-row { display:flex; align-items:center; gap:6px; font-size:12px; flex-wrap:wrap; }
+.prop-box { background:#21262d; border:1px solid #30363d; border-radius:6px; padding:3px 10px; font-size:12px; font-family:'Courier New',monospace; }
+.prop-box.domain { color:#f0883e; }
+.prop-box.range  { color:#a78bfa; }
+.prop-box.any    { color:#6e7681; font-style:italic; }
+.prop-arr { color:#6e7681; font-size:14px; }
+.prop-uses { margin-top:8px; font-size:11px; color:#6e7681; }
+
+/* GRAPH VIEW */
+#view-graph { flex-direction:row; }
+#graph-canvas { flex:1; position:relative; }
+#graph-canvas svg { width:100%; height:100%; }
+#graph-panel {
+  width:280px; flex-shrink:0;
+  background:#161b22; border-left:1px solid #21262d;
+  overflow-y:auto; padding:16px;
+}
+#graph-panel h3 { font-size:12px; font-weight:700; color:#8b949e; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:12px; }
+.gp-item { display:flex; align-items:center; gap:8px; margin-bottom:6px; font-size:12px; color:#c9d1d9; }
+.gp-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+.gp-line { width:24px; height:2px; border-radius:1px; flex-shrink:0; }
+.hint-bar {
+  position:fixed; bottom:16px; left:50%; transform:translateX(-50%);
+  background:rgba(22,27,34,0.92); border:1px solid #21262d;
+  border-radius:20px; padding:6px 16px; font-size:12px; color:#8b949e;
+  pointer-events:none; white-space:nowrap; z-index:50;
+}
+
+/* Detail panel (shared) */
+#detail-panel {
+  position:fixed; top:52px; right:-320px; width:300px; bottom:0;
+  background:rgba(22,27,34,0.99); border-left:1px solid #21262d;
+  transition:right 0.28s cubic-bezier(0.4,0,0.2,1); z-index:200;
+  overflow-y:auto; padding:20px;
+}
+#detail-panel.open { right:0; }
+#detail-panel .dp-close { float:right; background:none; border:none; color:#8b949e; font-size:18px; cursor:pointer; }
+#detail-panel .dp-type { display:inline-block; font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:3px 10px; border-radius:20px; margin-bottom:10px; }
+#detail-panel .dp-name { font-size:18px; font-weight:700; color:#e6edf3; margin-bottom:14px; font-family:'Courier New',monospace; }
+#detail-panel .dp-section { margin-bottom:16px; }
+#detail-panel .dp-section h4 { font-size:10px; color:#8b949e; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:8px; padding-bottom:5px; border-bottom:1px solid #21262d; }
+#detail-panel .dp-row { display:flex; align-items:center; gap:6px; padding:4px 0; font-size:12px; }
+#detail-panel .dp-key { color:#8b949e; width:80px; flex-shrink:0; font-family:'Courier New',monospace; font-size:11px; }
+#detail-panel .dp-val { color:#58a6ff; font-family:'Courier New',monospace; font-size:11px; }
+#detail-panel .dp-tag { background:#21262d; border:1px solid #30363d; border-radius:5px; padding:3px 9px; font-size:11px; margin:3px 3px 3px 0; display:inline-block; font-family:'Courier New',monospace; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>⬡ KALIPSO</h1>
+  <span class="v-badge">V9</span>
+  <span class="sub">Ontology Schema · Horse_V9_augmented · 22 classes · 11 object properties · 19 datatype properties</span>
+  <div class="tab-bar">
+    <button class="tab active" onclick="switchTab('hierarchy')">Class Hierarchy</button>
+    <button class="tab" onclick="switchTab('properties')">Properties</button>
+    <button class="tab" onclick="switchTab('graph')">Schema Graph</button>
+  </div>
+</header>
+
+<!-- DETAIL PANEL (shared) -->
+<div id="detail-panel">
+  <button class="dp-close" onclick="closeDetail()">✕</button>
+  <div id="detail-content"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- TAB 1: CLASS HIERARCHY -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div id="view-hierarchy" class="active">
+
+  <!-- SportingEvent family -->
+  <div class="hier-section">
+    <div class="hier-title"><span class="dot" style="background:#a78bfa"></span>Sporting Events</div>
+    <div class="tree">
+      <div class="superclass">
+        <div class="superclass-header" onclick="toggleTree(this)">
+          <span class="superclass-icon">🏟</span>
+          <span class="superclass-name" style="color:#a78bfa">SportingEvent</span>
+          <span class="superclass-count">Superclass · 20 instances</span>
+          <span class="arrow">▶</span>
+        </div>
+        <div class="subclasses">
+          <div class="subclass-row" style="color:#60a5fa" onclick="showClassDetail('ShowJumping','SportingEvent','#60a5fa',7,['eventDate','eventLocation','category'],['hasParticipation','inSeason'])">
+            <span class="sub-dot" style="background:#60a5fa"></span>
+            <span class="sub-name">ShowJumping</span>
+            <span class="sub-count">7 instances</span>
+          </div>
+          <div class="subclass-row" style="color:#818cf8" onclick="showClassDetail('Dressage','SportingEvent','#818cf8',6,['eventDate','eventLocation','category'],['hasParticipation','inSeason'])">
+            <span class="sub-dot" style="background:#818cf8"></span>
+            <span class="sub-name">Dressage</span>
+            <span class="sub-count">6 instances</span>
+          </div>
+          <div class="subclass-row" style="color:#38bdf8" onclick="showClassDetail('Cross','SportingEvent','#38bdf8',7,['eventDate','eventLocation','category'],['hasParticipation','inSeason'])">
+            <span class="sub-dot" style="background:#38bdf8"></span>
+            <span class="sub-name">Cross</span>
+            <span class="sub-count">7 instances</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TrainingStage family -->
+  <div class="hier-section">
+    <div class="hier-title"><span class="dot" style="background:#34d399"></span>Training Stages</div>
+    <div class="tree">
+      <div class="superclass">
+        <div class="superclass-header" onclick="toggleTree(this)">
+          <span class="superclass-icon">🏋</span>
+          <span class="superclass-name" style="color:#34d399">TrainingStage</span>
+          <span class="superclass-count">Superclass · 207 instances</span>
+          <span class="arrow">▶</span>
+        </div>
+        <div class="subclasses">
+          <div class="subclass-row" style="color:#4ade80" onclick="showClassDetail('PreparationStage','TrainingStage','#4ade80',51,['Volume','Intensity','Frequency'],['involvesActor','dependsOn'])">
+            <span class="sub-dot" style="background:#4ade80"></span>
+            <span class="sub-name">PreparationStage</span>
+            <span class="sub-count">51 instances</span>
+          </div>
+          <div class="subclass-row" style="color:#2dd4bf" onclick="showClassDetail('PreCompetitionStage','TrainingStage','#2dd4bf',51,['Volume','Intensity','Frequency'],['involvesActor','dependsOn'])">
+            <span class="sub-dot" style="background:#2dd4bf"></span>
+            <span class="sub-name">PreCompetitionStage</span>
+            <span class="sub-count">51 instances</span>
+          </div>
+          <div class="subclass-row" style="color:#34d399" onclick="showClassDetail('CompetitionStage','TrainingStage','#34d399',55,['Volume','Intensity','Frequency'],['involvesActor','dependsOn'])">
+            <span class="sub-dot" style="background:#34d399"></span>
+            <span class="sub-name">CompetitionStage</span>
+            <span class="sub-count">55 instances</span>
+          </div>
+          <div class="subclass-row" style="color:#86efac" onclick="showClassDetail('TransitionStage','TrainingStage','#86efac',50,['Volume','Intensity','Frequency'],['involvesActor','dependsOn'])">
+            <span class="sub-dot" style="background:#86efac"></span>
+            <span class="sub-name">TransitionStage</span>
+            <span class="sub-count">50 instances</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Human family -->
+  <div class="hier-section">
+    <div class="hier-title"><span class="dot" style="background:#fb923c"></span>Human Actors</div>
+    <div class="tree">
+      <div class="superclass">
+        <div class="superclass-header" onclick="toggleTree(this)">
+          <span class="superclass-icon">👤</span>
+          <span class="superclass-name" style="color:#fb923c">Human</span>
+          <span class="superclass-count">Superclass · 27 instances</span>
+          <span class="arrow">▶</span>
+        </div>
+        <div class="subclasses">
+          <div class="subclass-row" style="color:#fb923c" onclick="showClassDetail('Rider','Human','#fb923c',25,[],['AssociatedWith'])">
+            <span class="sub-dot" style="background:#fb923c"></span>
+            <span class="sub-name">Rider</span>
+            <span class="sub-count">25 instances</span>
+          </div>
+          <div class="subclass-row" style="color:#c084fc" onclick="showClassDetail('Caretaker','Human','#c084fc',1,[],[])">
+            <span class="sub-dot" style="background:#c084fc"></span>
+            <span class="sub-name">Caretaker</span>
+            <span class="sub-count">1 instance</span>
+          </div>
+          <div class="subclass-row" style="color:#f9a8d4" onclick="showClassDetail('Veterinarian','Human','#f9a8d4',1,[],[])">
+            <span class="sub-dot" style="background:#f9a8d4"></span>
+            <span class="sub-name">Veterinarian</span>
+            <span class="sub-count">1 instance</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- InertialSensors family -->
+  <div class="hier-section">
+    <div class="hier-title"><span class="dot" style="background:#22d3ee"></span>IMU Sensors</div>
+    <div class="tree">
+      <div class="superclass">
+        <div class="superclass-header" onclick="toggleTree(this)">
+          <span class="superclass-icon">📡</span>
+          <span class="superclass-name" style="color:#22d3ee">InertialSensors</span>
+          <span class="superclass-count">Superclass · 108 instances</span>
+          <span class="arrow">▶</span>
+        </div>
+        <div class="subclasses">
+          <div class="subclass-row" style="color:#67e8f9" onclick="showClassDetail('Withers','InertialSensors','#67e8f9',50,['hasSensorID','hasFormat','hasSensorOffset','hasFileSize','hasSensorTime'],['isAttachedTo','isUsedFor'])">
+            <span class="sub-dot" style="background:#67e8f9"></span>
+            <span class="sub-name">Withers</span>
+            <span class="sub-count">50 instances</span>
+          </div>
+          <div class="subclass-row" style="color:#22d3ee" onclick="showClassDetail('Sternum','InertialSensors','#22d3ee',26,['hasSensorID','hasFormat','hasSensorOffset','hasFileSize','hasSensorTime'],['isAttachedTo','isUsedFor'])">
+            <span class="sub-dot" style="background:#22d3ee"></span>
+            <span class="sub-name">Sternum</span>
+            <span class="sub-count">26 instances</span>
+          </div>
+          <div class="subclass-row" style="color:#06b6d4" onclick="showClassDetail('CanonOfForelimb','InertialSensors','#06b6d4',20,['hasSensorID','hasFormat','hasSensorOffset','hasFileSize','hasSensorTime'],['isAttachedTo','isUsedFor'])">
+            <span class="sub-dot" style="background:#06b6d4"></span>
+            <span class="sub-name">CanonOfForelimb</span>
+            <span class="sub-count">20 instances</span>
+          </div>
+          <div class="subclass-row" style="color:#0891b2" onclick="showClassDetail('CanonOfHindlimb','InertialSensors','#0891b2',12,['hasSensorID','hasFormat','hasSensorOffset','hasFileSize','hasSensorTime'],['isAttachedTo','isUsedFor'])">
+            <span class="sub-dot" style="background:#0891b2"></span>
+            <span class="sub-name">CanonOfHindlimb</span>
+            <span class="sub-count">12 instances</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Standalone classes -->
+  <div class="hier-section">
+    <div class="hier-title"><span class="dot" style="background:#f87171"></span>Core Domain Classes</div>
+    <div class="tree" style="gap:8px">
+      <div class="standalone" onclick="showClassDetail('Horse',null,'#f87171',50,['hasName','hasRace'],['CompetesIn','TrainsIn'])">
+        <span class="superclass-icon">🐴</span>
+        <span class="sub-dot" style="background:#f87171"></span>
+        <span class="standalone-name" style="color:#f87171">Horse</span>
+        <span class="superclass-count">50 instances</span>
+      </div>
+      <div class="standalone" onclick="showClassDetail('EventParticipation',null,'#f472b6',101,['rank','status'],['hasHorse','hasRider'])">
+        <span class="superclass-icon">🏆</span>
+        <span class="sub-dot" style="background:#f472b6"></span>
+        <span class="standalone-name" style="color:#f472b6">EventParticipation</span>
+        <span class="superclass-count">101 instances</span>
+      </div>
+      <div class="standalone" onclick="showClassDetail('CompetitiveSeason',null,'#facc15',1,['seasonName','seasonStart','seasonEnd'],['inSeason'])">
+        <span class="superclass-icon">📅</span>
+        <span class="sub-dot" style="background:#facc15"></span>
+        <span class="standalone-name" style="color:#facc15">CompetitiveSeason</span>
+        <span class="superclass-count">1 instance</span>
+      </div>
+      <div class="standalone" onclick="showClassDetail('ExperimentalObjective',null,'#fb7185',2,['hasName','description'],['isUsedFor'])">
+        <span class="superclass-icon">🧪</span>
+        <span class="sub-dot" style="background:#fb7185"></span>
+        <span class="standalone-name" style="color:#fb7185">ExperimentalObjective</span>
+        <span class="superclass-count">2 instances</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- TAB 2: PROPERTIES -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div id="view-properties">
+
+  <div class="prop-section" style="padding:28px 32px 0">
+    <div class="hier-title"><span class="dot" style="background:#58a6ff"></span>Object Properties <span style="font-weight:400;color:#6e7681">(11)</span></div>
+    <div class="prop-grid">
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind obj">ObjectProperty</span><span class="prop-card-name">CompetesIn</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box domain">Horse</span><span class="prop-arr">→</span><span class="prop-box range">SportingEvent</span>
+        </div>
+        <div class="prop-uses">101 triples in graph</div>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind obj">ObjectProperty</span><span class="prop-card-name">TrainsIn</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box domain">Horse</span><span class="prop-arr">→</span><span class="prop-box range">TrainingStage</span>
+        </div>
+        <div class="prop-uses">207 triples in graph</div>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind obj">ObjectProperty</span><span class="prop-card-name">dependsOn</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box domain">TrainingStage</span><span class="prop-arr">→</span><span class="prop-box range">SportingEvent</span>
+        </div>
+        <div class="prop-uses">207 triples in graph</div>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind obj">ObjectProperty</span><span class="prop-card-name">involvesActor</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box domain">TrainingStage</span><span class="prop-arr">→</span><span class="prop-box range">Human</span>
+        </div>
+        <div class="prop-uses">355 triples in graph</div>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind obj">ObjectProperty</span><span class="prop-card-name">isAttachedTo</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box domain">InertialSensors</span><span class="prop-arr">→</span><span class="prop-box range">Horse</span>
+        </div>
+        <div class="prop-uses">108 triples in graph</div>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind obj">ObjectProperty</span><span class="prop-card-name">isUsedFor</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box domain">InertialSensors</span><span class="prop-arr">→</span><span class="prop-box range">ExperimentalObjective</span>
+        </div>
+        <div class="prop-uses">108 triples in graph</div>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind obj">ObjectProperty</span><span class="prop-card-name">AssociatedWith</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box domain">Rider</span><span class="prop-arr">→</span><span class="prop-box range">Horse</span>
+        </div>
+        <div class="prop-uses">51 triples in graph</div>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind obj">ObjectProperty</span><span class="prop-card-name">hasParticipation</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box domain">SportingEvent</span><span class="prop-arr">→</span><span class="prop-box range">EventParticipation</span>
+        </div>
+        <div class="prop-uses">101 triples in graph</div>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind obj">ObjectProperty</span><span class="prop-card-name">hasHorse</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box domain">EventParticipation</span><span class="prop-arr">→</span><span class="prop-box range">Horse</span>
+        </div>
+        <div class="prop-uses">101 triples in graph</div>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind obj">ObjectProperty</span><span class="prop-card-name">hasRider</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box domain">EventParticipation</span><span class="prop-arr">→</span><span class="prop-box range">Rider</span>
+        </div>
+        <div class="prop-uses">101 triples in graph</div>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind obj">ObjectProperty</span><span class="prop-card-name">inSeason</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box domain">SportingEvent</span><span class="prop-arr">→</span><span class="prop-box range">CompetitiveSeason</span>
+        </div>
+        <div class="prop-uses">20 triples in graph</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="prop-section" style="padding:28px 32px">
+    <div class="hier-title"><span class="dot" style="background:#3fb950"></span>Datatype Properties <span style="font-weight:400;color:#6e7681">(19)</span></div>
+    <div class="prop-grid">
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind data">DatatypeProperty</span><span class="prop-card-name">hasName</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box any">Horse ∪ ExperimentalObjective</span><span class="prop-arr">→</span><span class="prop-box range">xsd:string</span>
+        </div>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind data">DatatypeProperty</span><span class="prop-card-name">hasRace</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box domain">Horse</span><span class="prop-arr">→</span><span class="prop-box range">xsd:string</span>
+        </div>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind data">DatatypeProperty</span><span class="prop-card-name">Volume</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box domain">TrainingStage</span><span class="prop-arr">→</span><span class="prop-box range">xsd:string</span>
+        </div>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind data">DatatypeProperty</span><span class="prop-card-name">Intensity</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box domain">TrainingStage</span><span class="prop-arr">→</span><span class="prop-box range">xsd:string</span>
+        </div>
+        <div class="prop-uses" style="margin-top:6px">Values: Faible · Modérée · Élevée · Pic</div>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind data">DatatypeProperty</span><span class="prop-card-name">Frequency</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box domain">TrainingStage</span><span class="prop-arr">→</span><span class="prop-box range">xsd:integer</span>
+        </div>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind data">DatatypeProperty</span><span class="prop-card-name">eventDate</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box domain">SportingEvent</span><span class="prop-arr">→</span><span class="prop-box range">xsd:date</span>
+        </div>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind data">DatatypeProperty</span><span class="prop-card-name">eventLocation</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box domain">SportingEvent</span><span class="prop-arr">→</span><span class="prop-box range">xsd:string</span>
+        </div>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind data">DatatypeProperty</span><span class="prop-card-name">category</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box domain">SportingEvent</span><span class="prop-arr">→</span><span class="prop-box range">xsd:string</span>
+        </div>
+        <div class="prop-uses" style="margin-top:6px">Values: Amateur 1 · Amateur 2 · Club Elite · Pro Elite</div>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind data">DatatypeProperty</span><span class="prop-card-name">rank</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box domain">EventParticipation</span><span class="prop-arr">→</span><span class="prop-box range">xsd:integer</span>
+        </div>
+      </div>
+
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind data">DatatypeProperty</span><span class="prop-card-name">status</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box domain">EventParticipation</span><span class="prop-arr">→</span><span class="prop-box range">xsd:string</span>
+        </div>
+        <div class="prop-uses" style="margin-top:6px">V9 values: Terminé · Éliminé · NonPartant · Abandon (101 assertions)</div>
+      </div>
+
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind data">DatatypeProperty</span><span class="prop-card-name">seasonName</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box domain">CompetitiveSeason</span><span class="prop-arr">→</span><span class="prop-box range">xsd:string</span>
+        </div>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind data">DatatypeProperty</span><span class="prop-card-name">seasonStart</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box domain">CompetitiveSeason</span><span class="prop-arr">→</span><span class="prop-box range">xsd:date</span>
+        </div>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind data">DatatypeProperty</span><span class="prop-card-name">seasonEnd</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box domain">CompetitiveSeason</span><span class="prop-arr">→</span><span class="prop-box range">xsd:date</span>
+        </div>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind data">DatatypeProperty</span><span class="prop-card-name">hasSensorID</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box domain">InertialSensors</span><span class="prop-arr">→</span><span class="prop-box range">xsd:string</span>
+        </div>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind data">DatatypeProperty</span><span class="prop-card-name">hasFormat</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box domain">InertialSensors</span><span class="prop-arr">→</span><span class="prop-box range">xsd:string</span>
+        </div>
+        <div class="prop-uses" style="margin-top:6px">Value: CSV</div>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind data">DatatypeProperty</span><span class="prop-card-name">hasSensorTime</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box domain">InertialSensors</span><span class="prop-arr">→</span><span class="prop-box range">xsd:string</span>
+        </div>
+        <div class="prop-uses" style="margin-top:6px">Values: 200Hz · 250Hz · 300Hz</div>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind data">DatatypeProperty</span><span class="prop-card-name">hasSensorOffset</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box domain">InertialSensors</span><span class="prop-arr">→</span><span class="prop-box range">xsd:string</span>
+        </div>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind data">DatatypeProperty</span><span class="prop-card-name">hasFileSize</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box domain">InertialSensors</span><span class="prop-arr">→</span><span class="prop-box range">xsd:integer</span>
+        </div>
+      </div>
+
+      <div class="prop-card">
+        <div class="prop-card-head"><span class="prop-kind data">DatatypeProperty</span><span class="prop-card-name">description</span></div>
+        <div class="prop-arrow-row">
+          <span class="prop-box domain">ExperimentalObjective</span><span class="prop-arr">→</span><span class="prop-box range">xsd:string</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- TAB 3: SCHEMA GRAPH -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div id="view-graph">
+  <div id="graph-canvas"><svg id="schema-svg"></svg></div>
+  <div id="graph-panel">
+    <h3>Node Types</h3>
+    <div class="gp-item"><span class="gp-dot" style="background:#a78bfa"></span>Superclass / Root</div>
+    <div class="gp-item"><span class="gp-dot" style="background:#f87171"></span>Horse</div>
+    <div class="gp-item"><span class="gp-dot" style="background:#fb923c"></span>Human ↳ Rider/Vet/Caretaker</div>
+    <div class="gp-item"><span class="gp-dot" style="background:#60a5fa"></span>ShowJumping</div>
+    <div class="gp-item"><span class="gp-dot" style="background:#818cf8"></span>Dressage</div>
+    <div class="gp-item"><span class="gp-dot" style="background:#38bdf8"></span>Cross</div>
+    <div class="gp-item"><span class="gp-dot" style="background:#34d399"></span>TrainingStage variants</div>
+    <div class="gp-item"><span class="gp-dot" style="background:#22d3ee"></span>IMU Sensor variants</div>
+    <div class="gp-item"><span class="gp-dot" style="background:#f472b6"></span>EventParticipation</div>
+    <div class="gp-item"><span class="gp-dot" style="background:#facc15"></span>CompetitiveSeason</div>
+    <div class="gp-item"><span class="gp-dot" style="background:#fb7185"></span>ExperimentalObjective</div>
+    <div style="margin-top:20px"></div>
+    <h3>Edge Types</h3>
+    <div class="gp-item"><span class="gp-line" style="background:#a78bfa"></span>subClassOf</div>
+    <div class="gp-item"><span class="gp-line" style="background:#f0883e"></span>ObjectProperty</div>
+    <div style="margin-top:20px"></div>
+    <h3>Hint</h3>
+    <div style="font-size:11px;color:#6e7681;line-height:1.6">
+      Drag nodes to rearrange.<br>
+      Scroll to zoom.<br>
+      Click a node for details.
+    </div>
+  </div>
+</div>
+
+<div class="hint-bar" id="hint-bar">Click legend to filter · Click a class for details</div>
+
+<script>
+// ── TAB SWITCHING ─────────────────────────────────────────────────────────────
+function switchTab(t) {
+  document.querySelectorAll('.tab').forEach((b,i)=>{
+    b.classList.toggle('active', ['hierarchy','properties','graph'][i]===t);
+  });
+  document.querySelectorAll('#view-hierarchy,#view-properties,#view-graph').forEach(v=>v.classList.remove('active'));
+  document.getElementById('view-'+t).classList.add('active');
+  if(t==='graph') initSchemaGraph();
+}
+
+// ── TREE TOGGLE ───────────────────────────────────────────────────────────────
+function toggleTree(header) {
+  const sub = header.nextElementSibling;
+  const arr = header.querySelector('.arrow');
+  sub.classList.toggle('open');
+  arr.classList.toggle('open');
+}
+
+// ── DETAIL PANEL ─────────────────────────────────────────────────────────────
+function showClassDetail(name, parent, color, count, dataProps, objProps) {
+  const panel = document.getElementById('detail-panel');
+  const content = document.getElementById('detail-content');
+
+  const parentStr = parent ? `<div class="dp-row"><span class="dp-key">subClassOf</span><span class="dp-val">${parent}</span></div>` : '';
+  const dpHTML = dataProps.length ? dataProps.map(p=>`<span class="dp-tag" style="color:#3fb950">${p}</span>`).join('') : '<span style="color:#6e7681;font-size:12px">—</span>';
+  const opHTML = objProps.length  ? objProps.map(p=>`<span class="dp-tag" style="color:#58a6ff">${p}</span>`).join('') : '<span style="color:#6e7681;font-size:12px">—</span>';
+
+  content.innerHTML = `
+    <div class="dp-type" style="background:${color}22;color:${color};border:1px solid ${color}44">owl:Class</div>
+    <div class="dp-name">${name}</div>
+    <div class="dp-section">
+      <h4>Class Info</h4>
+      <div class="dp-row"><span class="dp-key">instances</span><span class="dp-val">${count}</span></div>
+      ${parentStr}
+      <div class="dp-row"><span class="dp-key">namespace</span><span class="dp-val" style="font-size:10px;color:#6e7681">Horses#${name}</span></div>
+    </div>
+    <div class="dp-section">
+      <h4>Datatype Properties</h4>
+      ${dpHTML}
+    </div>
+    <div class="dp-section">
+      <h4>Object Properties (as domain)</h4>
+      ${opHTML}
+    </div>`;
+  panel.classList.add('open');
+}
+
+function closeDetail() {
+  document.getElementById('detail-panel').classList.remove('open');
+}
+
+// ── SCHEMA GRAPH ──────────────────────────────────────────────────────────────
+let graphInited = false;
+
+function initSchemaGraph() {
+  if (graphInited) return;
+  graphInited = true;
+
+  const canvas = document.getElementById('graph-canvas');
+  const W = canvas.clientWidth, H = canvas.clientHeight;
+
+  // Class nodes
+  const schemaNodes = [
+    // Superclasses
+    {id:'SportingEvent',   color:'#a78bfa', r:28, level:0, group:'super'},
+    {id:'TrainingStage',   color:'#a78bfa', r:28, level:0, group:'super'},
+    {id:'Human',           color:'#a78bfa', r:28, level:0, group:'super'},
+    {id:'InertialSensors', color:'#a78bfa', r:28, level:0, group:'super'},
+    // SportingEvent children
+    {id:'ShowJumping',     color:'#60a5fa', r:20, level:1, group:'event'},
+    {id:'Dressage',        color:'#818cf8', r:20, level:1, group:'event'},
+    {id:'Cross',           color:'#38bdf8', r:20, level:1, group:'event'},
+    // TrainingStage children
+    {id:'PreparationStage',    color:'#4ade80', r:18, level:1, group:'train'},
+    {id:'PreCompetitionStage', color:'#2dd4bf', r:18, level:1, group:'train'},
+    {id:'CompetitionStage',    color:'#34d399', r:18, level:1, group:'train'},
+    {id:'TransitionStage',     color:'#86efac', r:16, level:1, group:'train'},
+    // Human children
+    {id:'Rider',       color:'#fb923c', r:20, level:1, group:'human'},
+    {id:'Caretaker',   color:'#c084fc', r:14, level:1, group:'human'},
+    {id:'Veterinarian',color:'#f9a8d4', r:14, level:1, group:'human'},
+    // Sensor children
+    {id:'Withers',         color:'#67e8f9', r:18, level:1, group:'sensor'},
+    {id:'Sternum',         color:'#22d3ee', r:16, level:1, group:'sensor'},
+    {id:'CanonOfForelimb', color:'#06b6d4', r:14, level:1, group:'sensor'},
+    {id:'CanonOfHindlimb', color:'#0891b2', r:13, level:1, group:'sensor'},
+    // Standalone
+    {id:'Horse',                color:'#f87171', r:24, level:0, group:'standalone'},
+    {id:'EventParticipation',   color:'#f472b6', r:20, level:0, group:'standalone'},
+    {id:'CompetitiveSeason',    color:'#facc15', r:14, level:0, group:'standalone'},
+    {id:'ExperimentalObjective',color:'#fb7185', r:14, level:0, group:'standalone'},
+  ];
+
+  const subclassLinks = [
+    {source:'SportingEvent',   target:'ShowJumping'},
+    {source:'SportingEvent',   target:'Dressage'},
+    {source:'SportingEvent',   target:'Cross'},
+    {source:'TrainingStage',   target:'PreparationStage'},
+    {source:'TrainingStage',   target:'PreCompetitionStage'},
+    {source:'TrainingStage',   target:'CompetitionStage'},
+    {source:'TrainingStage',   target:'TransitionStage'},
+    {source:'Human',           target:'Rider'},
+    {source:'Human',           target:'Caretaker'},
+    {source:'Human',           target:'Veterinarian'},
+    {source:'InertialSensors', target:'Withers'},
+    {source:'InertialSensors', target:'Sternum'},
+    {source:'InertialSensors', target:'CanonOfForelimb'},
+    {source:'InertialSensors', target:'CanonOfHindlimb'},
+  ];
+
+  const objPropLinks = [
+    {source:'Horse',             target:'SportingEvent',        label:'CompetesIn'},
+    {source:'Horse',             target:'TrainingStage',         label:'TrainsIn'},
+    {source:'TrainingStage',     target:'SportingEvent',         label:'dependsOn'},
+    {source:'TrainingStage',     target:'Human',                 label:'involvesActor'},
+    {source:'InertialSensors',   target:'Horse',                 label:'isAttachedTo'},
+    {source:'InertialSensors',   target:'ExperimentalObjective', label:'isUsedFor'},
+    {source:'Rider',             target:'Horse',                 label:'AssociatedWith'},
+    {source:'SportingEvent',     target:'EventParticipation',    label:'hasParticipation'},
+    {source:'SportingEvent',     target:'CompetitiveSeason',     label:'inSeason'},
+    {source:'EventParticipation',target:'Horse',                 label:'hasHorse'},
+    {source:'EventParticipation',target:'Rider',                 label:'hasRider'},
+  ];
+
+  const allLinks = [
+    ...subclassLinks.map(l=>({...l, type:'sub'})),
+    ...objPropLinks.map(l=>({...l, type:'obj'}))
+  ];
+
+  const svg = d3.select('#schema-svg')
+    .attr('width', W).attr('height', H);
+
+  const defs = svg.append('defs');
+  // Arrow for subClassOf
+  defs.append('marker').attr('id','arr-sub')
+    .attr('viewBox','0 -4 8 8').attr('refX',32).attr('refY',0)
+    .attr('markerWidth',6).attr('markerHeight',6).attr('orient','auto')
+    .append('path').attr('d','M0,-4L8,0L0,4').attr('fill','#a78bfa').attr('opacity',0.6);
+  // Arrow for ObjectProperty
+  defs.append('marker').attr('id','arr-obj')
+    .attr('viewBox','0 -4 8 8').attr('refX',32).attr('refY',0)
+    .attr('markerWidth',6).attr('markerHeight',6).attr('orient','auto')
+    .append('path').attr('d','M0,-4L8,0L0,4').attr('fill','#f0883e').attr('opacity',0.8);
+
+  const g = svg.append('g');
+  svg.call(d3.zoom().scaleExtent([0.15,3]).on('zoom',e=>g.attr('transform',e.transform)));
+
+  const sim = d3.forceSimulation(schemaNodes)
+    .force('link', d3.forceLink(allLinks).id(d=>d.id).distance(d=>d.type==='sub'?90:180).strength(d=>d.type==='sub'?0.8:0.3))
+    .force('charge', d3.forceManyBody().strength(-600))
+    .force('center', d3.forceCenter(W/2, H/2))
+    .force('collide', d3.forceCollide(d=>d.r+20));
+
+  // Links
+  const linkEl = g.append('g').selectAll('line').data(allLinks).join('line')
+    .attr('stroke', d=>d.type==='sub'?'#a78bfa':'#f0883e')
+    .attr('stroke-width', d=>d.type==='sub'?2:1.5)
+    .attr('stroke-opacity', d=>d.type==='sub'?0.5:0.7)
+    .attr('stroke-dasharray', d=>d.type==='obj'?'5,3':null)
+    .attr('marker-end', d=>`url(#arr-${d.type})`);
+
+  // Link labels
+  const linkLabels = g.append('g').selectAll('text').data(allLinks.filter(l=>l.type==='obj')).join('text')
+    .attr('font-size', 9).attr('fill','#f0883e').attr('opacity',0.8)
+    .attr('text-anchor','middle').attr('font-family',"'Courier New',monospace")
+    .text(d=>d.label||'');
+
+  // Nodes
+  const nodeEl = g.append('g').selectAll('g').data(schemaNodes).join('g')
+    .attr('class','schema-node')
+    .style('cursor','pointer')
+    .call(d3.drag()
+      .on('start',(e,d)=>{ if(!e.active) sim.alphaTarget(0.3).restart(); d.fx=d.x; d.fy=d.y; })
+      .on('drag', (e,d)=>{ d.fx=e.x; d.fy=e.y; })
+      .on('end',  (e,d)=>{ if(!e.active) sim.alphaTarget(0); d.fx=null; d.fy=null; }))
+    .on('click', (e,d) => {
+      const dataProps = {
+        Horse: ['hasName','hasRace'],
+        Rider: [], Caretaker: [], Veterinarian: [],
+        ShowJumping: ['eventDate','eventLocation','category'],
+        Dressage: ['eventDate','eventLocation','category'],
+        Cross: ['eventDate','eventLocation','category'],
+        SportingEvent: ['eventDate','eventLocation','category'],
+        TrainingStage: ['Volume','Intensity','Frequency'],
+        PreparationStage: ['Volume','Intensity','Frequency'],
+        PreCompetitionStage: ['Volume','Intensity','Frequency'],
+        CompetitionStage: ['Volume','Intensity','Frequency'],
+        TransitionStage: ['Volume','Intensity','Frequency'],
+        InertialSensors: ['hasSensorID','hasFormat','hasSensorOffset','hasFileSize','hasSensorTime'],
+        Withers: ['hasSensorID','hasFormat','hasSensorOffset','hasFileSize','hasSensorTime'],
+        Sternum: ['hasSensorID','hasFormat','hasSensorOffset','hasFileSize','hasSensorTime'],
+        CanonOfForelimb: ['hasSensorID','hasFormat','hasSensorOffset','hasFileSize','hasSensorTime'],
+        CanonOfHindlimb: ['hasSensorID','hasFormat','hasSensorOffset','hasFileSize','hasSensorTime'],
+        EventParticipation: ['rank','status'],
+        CompetitiveSeason: ['seasonName','seasonStart','seasonEnd'],
+        ExperimentalObjective: ['hasName','description'],
+        Human: [],
+      };
+      const objProps = {
+        Horse: ['CompetesIn','TrainsIn'],
+        Rider: ['AssociatedWith'],
+        SportingEvent: ['hasParticipation','inSeason'],
+        ShowJumping: ['hasParticipation','inSeason'],
+        Dressage: ['hasParticipation','inSeason'],
+        Cross: ['hasParticipation','inSeason'],
+        TrainingStage: ['involvesActor','dependsOn'],
+        InertialSensors: ['isAttachedTo','isUsedFor'],
+        EventParticipation: ['hasHorse','hasRider'],
+      };
+      const counts = {
+        SportingEvent:20, TrainingStage:207, Human:27, InertialSensors:108,
+        ShowJumping:7, Dressage:6, Cross:7,
+        PreparationStage:51, PreCompetitionStage:51, CompetitionStage:55, TransitionStage:50,
+        Rider:25, Caretaker:1, Veterinarian:1,
+        Withers:50, Sternum:26, CanonOfForelimb:20, CanonOfHindlimb:12,
+        Horse:50, EventParticipation:101, CompetitiveSeason:1, ExperimentalObjective:2,
+      };
+      const parents = {
+        ShowJumping:'SportingEvent', Dressage:'SportingEvent', Cross:'SportingEvent',
+        PreparationStage:'TrainingStage', PreCompetitionStage:'TrainingStage',
+        CompetitionStage:'TrainingStage', TransitionStage:'TrainingStage',
+        Rider:'Human', Caretaker:'Human', Veterinarian:'Human',
+        Withers:'InertialSensors', Sternum:'InertialSensors',
+        CanonOfForelimb:'InertialSensors', CanonOfHindlimb:'InertialSensors',
+      };
+      showClassDetail(d.id, parents[d.id]||null, d.color, counts[d.id]||0,
+        dataProps[d.id]||[], objProps[d.id]||[]);
+    });
+
+  nodeEl.append('circle')
+    .attr('r', d=>d.r)
+    .attr('fill', d=>d.color+'33')
+    .attr('stroke', d=>d.color)
+    .attr('stroke-width', d=>d.group==='super'?2.5:1.5);
+
+  nodeEl.append('text')
+    .attr('text-anchor','middle').attr('dominant-baseline','central')
+    .attr('font-size', d=>d.r>22?12:d.r>16?10:9)
+    .attr('font-weight', d=>d.group==='super'?700:500)
+    .attr('fill', d=>d.color)
+    .attr('pointer-events','none')
+    .text(d=>d.id.length>14 ? d.id.substring(0,13)+'…' : d.id);
+
+  sim.on('tick', () => {
+    linkEl
+      .attr('x1',d=>d.source.x).attr('y1',d=>d.source.y)
+      .attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
+    linkLabels
+      .attr('x',d=>(d.source.x+d.target.x)/2)
+      .attr('y',d=>(d.source.y+d.target.y)/2-5);
+    nodeEl.attr('transform',d=>`translate(${d.x},${d.y})`);
+  });
+}
+</script>
+</body>
+</html>

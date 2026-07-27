@@ -200,6 +200,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Caretaker_Sophie">
         <rdf:type rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Caretaker"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sophie</hasName>
     </owl:NamedIndividual>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Training_Comp_Luminos_01">
@@ -4208,6 +4209,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider_Theo">
         <rdf:type rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Theo</hasName>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Glacier"/>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Nebule"/>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Volcan"/>
@@ -4215,35 +4217,41 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider_Julien">
         <rdf:type rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Julien</hasName>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Bella"/>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Pixie"/>
     </owl:NamedIndividual>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider_Camille">
         <rdf:type rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Camille</hasName>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Atlas"/>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Iris"/>
     </owl:NamedIndividual>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider_Clara">
         <rdf:type rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Clara</hasName>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Luna"/>
     </owl:NamedIndividual>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider_Nina">
         <rdf:type rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nina</hasName>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Comet"/>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Zephyr"/>
     </owl:NamedIndividual>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider_Hugo">
         <rdf:type rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hugo</hasName>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Nova"/>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Storm"/>
     </owl:NamedIndividual>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider_Victor">
         <rdf:type rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Victor</hasName>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Cascade"/>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Lumiere"/>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Riviere"/>
@@ -4251,6 +4259,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider_Elise">
         <rdf:type rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Elise</hasName>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Auroch"/>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Luminos"/>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Nuage"/>
@@ -4258,6 +4267,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider_Remi">
         <rdf:type rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Remi</hasName>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Etoile"/>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Galop"/>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Grondre"/>
@@ -4265,44 +4275,52 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider_Antoine">
         <rdf:type rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Antoine</hasName>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Thunder"/>
     </owl:NamedIndividual>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider_Chloe">
         <rdf:type rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Chloe</hasName>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Eclat"/>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Ombre"/>
     </owl:NamedIndividual>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider_Tom">
         <rdf:type rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tom</hasName>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Mistral"/>
     </owl:NamedIndividual>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider_Manon">
         <rdf:type rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Manon</hasName>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Dakota"/>
     </owl:NamedIndividual>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider_Jade">
         <rdf:type rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jade</hasName>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Brume"/>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Eclair"/>
     </owl:NamedIndividual>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider_Leo">
         <rdf:type rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Leo</hasName>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Naya"/>
     </owl:NamedIndividual>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider_Baptiste">
         <rdf:type rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Baptiste</hasName>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Sirius"/>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Vega"/>
     </owl:NamedIndividual>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider_Maxime">
         <rdf:type rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maxime</hasName>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Ecume"/>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Tempete"/>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Zephire"/>
@@ -4310,6 +4328,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider_Pauline">
         <rdf:type rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pauline</hasName>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Aurore"/>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Crepuscule"/>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Mirage"/>
@@ -4317,17 +4336,20 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider_Lucas">
         <rdf:type rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lucas</hasName>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Orion"/>
     </owl:NamedIndividual>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider_Marc">
         <rdf:type rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Marc</hasName>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Dune"/>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Sable"/>
     </owl:NamedIndividual>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider_Alice">
         <rdf:type rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Alice</hasName>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Arrow"/>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Braise"/>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Orage"/>
@@ -4336,22 +4358,26 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider_Emma">
         <rdf:type rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Emma</hasName>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Dakota"/>
     </owl:NamedIndividual>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider_Sarah">
         <rdf:type rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sarah</hasName>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Apollon"/>
     </owl:NamedIndividual>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider_Lea">
         <rdf:type rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lea</hasName>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Falcon"/>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Rio"/>
     </owl:NamedIndividual>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider_Ines">
         <rdf:type rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Rider"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ines</hasName>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Horizon"/>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Rafale"/>
         <AssociatedWith rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Horse_Tonnerre"/>
@@ -4626,6 +4652,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Vet_DrMartin">
         <rdf:type rdf:resource="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Veterinarian"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dr Martin</hasName>
     </owl:NamedIndividual>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Participation_Bordeaux_Rafale_Ines">
