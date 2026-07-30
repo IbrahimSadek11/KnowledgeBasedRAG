@@ -354,7 +354,7 @@ def main():
     if success:
         print_summary(rows, skipped, overall, bottom_five)
         print(f"\nSaved JSON report: {json_path}")
-        print(f"Saved Claude report: {markdown_path}")
+        print(f"Saved markdown report: {markdown_path}")
     else:
         sys.exit(0)
 

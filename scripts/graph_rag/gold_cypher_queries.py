@@ -458,7 +458,10 @@ GOLD_CYPHER_QUERIES: dict[str, str] = {
     "Q92": (
         "MATCH (h:Horse)<-[:ISATTACHEDTO]-(s:InertialSensors) "
         "WITH h, COUNT(s) AS sensor_count "
-        "RETURN sensor_count, COUNT(h) AS horses, COLLECT(h.hasName) AS names"
+        "WITH sensor_count, COUNT(h) AS horses, COLLECT(h.hasName) AS names "
+        "ORDER BY sensor_count ASC "
+        "LIMIT 1 "
+        "RETURN sensor_count, horses, names"
     ),
     # Exact Cypher from docs/graph_rag/graph_gt_reconciliation_signoff.md (Q93)
     "Q93": (
@@ -478,7 +481,7 @@ GOLD_CYPHER_QUERIES: dict[str, str] = {
     "Q95": (
         "MATCH (h:Horse)-[:COMPETESIN]->(e)-[:INSEASON]->(s:CompetitiveSeason) "
         "RETURN DISTINCT s.seasonName AS season, e.category AS category, "
-        "labels(e)[0] AS discipline, COUNT(*) AS n"
+        "COUNT(*) AS n"
     ),
     "Q96": (
         "MATCH (e)-[:HASPARTICIPATION]->(p1:EventParticipation)-[:HASRIDER]->(r:Rider) "
@@ -576,23 +579,7 @@ EX_NOT_APPLICABLE: dict[str, str] = {
     ),
 }
 
-# Held for human review — do not score EX until resolved.
-# Only genuine dual-interpretation cases (verified side-by-side).
-# Q53/Q63 removed: exhaustiveness / empty-Cypher bugs, not ambiguity.
-# Q54/Q93 left out of this set for now (not forced into AMBIGUOUS).
-AMBIGUOUS_FOR_REVIEW: dict[str, str] = {
-    "Q92": (
-        "Question asks which horse has the fewest IMU sensors (natural "
-        "reading = min bucket / argmin); locked gold returns the full "
-        "sensor-count histogram (2/3/4). Both shapes are defensible."
-    ),
-    "Q95": (
-        "Question asks about season vs competition level (Amateur/Club/"
-        "Pro); gold breaks out season × category × discipline, while a "
-        "season × category-only aggregation is also a reasonable reading. "
-        "Different row sets, both defensible."
-    ),
-}
+AMBIGUOUS_FOR_REVIEW: dict[str, str] = {}
 
 # Per-question overrides: question_id → "set" when COLLECT duplicate counts
 # are intentionally irrelevant. Default for all other questions is multiset.

@@ -106,10 +106,13 @@ sportllm-equestrian/
 │
 ├── backend/                    # Core logic and services
 │   ├── config.py              # Configuration management
-│   ├── graph_service.py       # Neo4j operations
-│   ├── llm_service.py         # GraphRAG pipeline (CORE)
-│   ├── evaluation_service.py  # Quality assessment
-│   └── news_service.py        # News summary 
+│   ├── evaluation_service.py  # Shared quality assessment
+│   ├── news_service.py        # News summary
+│   ├── graph_rag/             # Graph RAG (Neo4j text-to-Cypher)
+│   │   ├── llm_service.py     # GraphRAG pipeline (CORE)
+│   │   ├── graph_service.py   # Neo4j operations
+│   │   └── _archive/          # Unwired validator trio (bytecode restore)
+│   └── tabular_rag/           # Tabular RAG (SQLite text-to-SQL)
 │
 ├── frontend/                   # User interface
 │   ├── app.py                 # Main chatbot interface
@@ -118,20 +121,25 @@ sportllm-equestrian/
 │       └── 2_News.py          # News feed
 │
 ├── data/                       # Data files
-│   ├── Horse_generatedDataV2.rdf  # RDF ontology
-│   ├── test_dataset.json          # Evaluation questions
-│   └── conversations/              # Chat histories
+│   ├── test_dataset.json      # Shared evaluation questions
+│   └── conversations/         # Chat histories
 │
-├── scripts/                    # Utility scripts
-│   ├── setup_database.py      # Database initialization
-│   └── run_evaluation.py      # System testing
+├── scripts/
+│   ├── setup_database.py
+│   ├── graph_rag/             # Graph eval / retrieval / RAGAS runners
+│   └── tabular_rag/           # Tabular eval / ETL helpers
+│
+├── evaluation_results/
+│   ├── graph_rag/
+│   └── tabular_rag/
 │
 ├── docs/                       # Documentation
-│   └── IMPLEMENTATION.md      # Detailed component docs
+│   └── IMPLEMENTATION.md
 │
-├── requirements.txt            # Python dependencies
-├── .env.example               # Environment template
-└── README.md                  # This file
+├── graph_prompt_changelog.md
+├── requirements.txt
+├── .env.example
+└── README.md
 ```
 
 ## System Architecture
@@ -234,7 +242,7 @@ Performance on 40 test questions:
 To test system accuracy:
 
 ```bash
-python scripts/run_evaluation.py
+python scripts/graph_rag/run_evaluation.py
 ```
 
 Results are saved to `evaluation_results/` with detailed metrics.
@@ -265,8 +273,8 @@ Navigate to "News" page for:
 ### Adding New Questions
 
 1. Add test cases to `data/test_dataset.json`
-2. Run evaluation: `python scripts/run_evaluation.py`
-3. Adjust prompts in `backend/llm_service.py` if needed
+2. Run evaluation: `python scripts/graph_rag/run_evaluation.py`
+3. Adjust prompts in `backend/graph_rag/llm_service.py` if needed
 
 ### Extending the Ontology
 
