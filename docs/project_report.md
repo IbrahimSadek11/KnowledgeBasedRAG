@@ -31,8 +31,8 @@ The project models an equestrian sports domain with horses, riders, competitions
 | `requirements.txt` | Python dependencies for Streamlit, LangChain, OpenAI, Neo4j, RDF parsing, plotting, scraping, and data utilities. |
 | `.env.example` | Environment template. It uses `NEO4J_USERNAME`, while the code expects `NEO4J_USER`. |
 | `backend/config.py` | Loads environment variables and defines OpenAI/Neo4j settings and evaluation cost constants. |
-| `backend/graph_service.py` | Initializes LangChain's `Neo4jGraph`, refreshes schema, and executes Cypher queries. |
-| `backend/llm_service.py` | Core Graph RAG pipeline: Cypher-generation prompt, answer prompt, OpenAI model setup, and `GraphCypherQAChain` construction. |
+| `backend/graph_rag/graph_service.py` | Initializes LangChain's `Neo4jGraph`, refreshes schema, and executes Cypher queries. |
+| `backend/graph_rag/llm_service.py` | Core Graph RAG pipeline: Cypher-generation prompt, answer prompt, OpenAI model setup, and `GraphCypherQAChain` construction. |
 | `backend/evaluation_service.py` | Semantic similarity and LLM-as-judge scoring logic. |
 | `backend/news_service.py` | Equestrian RSS/web news scraping and LLM-based summaries/event extraction. |
 | `backend/timing_callback.py` | LangChain callback used by evaluation to measure Cypher-generation and answer-generation LLM call times. |
@@ -42,11 +42,11 @@ The project models an equestrian sports domain with horses, riders, competitions
 | `frontend/utils/ui_helpers.py` | Small reusable Streamlit UI helpers. |
 | `frontend/style.css` | Shared CSS for the news page and general Streamlit styling. |
 | `scripts/setup_database.py` | Loads active RDF file `data/Horse_V8_Clean.rdf` into Neo4j. Deletes existing graph before loading. |
-| `scripts/run_evaluation.py` | Runs Graph RAG evaluation over `data/test_dataset.json` and writes JSON reports to `evaluation_results/`. |
+| `scripts/graph_rag/run_evaluation.py` | Runs Graph RAG evaluation over `data/test_dataset.json` and writes JSON reports to `evaluation_results/`. |
 | `data/Horse_V8_Clean.rdf` | Active RDF/OWL source used by `scripts/setup_database.py`. Header says it was generated from a verified Neo4j export with 429 nodes and 1194 relations after cleanup. |
 | `data/Horse_generatedDataV2.rdf` | Older RDF data file referenced by docs, but not used by the current setup script. |
 | `data/Horse_v3_augmented.rdf` to `data/Horse_v8_augmented.rdf` | Historical/augmented RDF versions. Not clearly used by runtime code. |
-| `data/test_dataset.json` | Active evaluation dataset used by `scripts/run_evaluation.py`; currently contains 100 questions. |
+| `data/test_dataset.json` | Active evaluation dataset used by `scripts/graph_rag/run_evaluation.py`; currently contains 100 questions. |
 | `data/V1_100_Questions_test_dataset.json`, `data/V2_100_Questions_test_dataset.json`, `data/V2_test_dataset.json` to `data/V8_test_dataset.json` | Versioned test datasets. Not directly used by runtime code unless manually selected. |
 
 ## 4. System Architecture
@@ -57,14 +57,14 @@ The system is a graph-first RAG application. RDF/OWL data is the source represen
 flowchart TD
     A[RDF/OWL files in data/] --> B[scripts/setup_database.py]
     B --> C[Neo4j Knowledge Graph]
-    C --> D[backend/graph_service.py]
-    D --> E[backend/llm_service.py GraphCypherQAChain]
+    C --> D[backend/graph_rag/graph_service.py]
+    D --> E[backend/graph_rag/llm_service.py GraphCypherQAChain]
     F[OpenAI gpt-4o-mini] --> E
     E --> G[frontend/app.py Streamlit Chat]
     C --> H[frontend/pages/1_Analytics.py]
     F --> I[backend/news_service.py]
     I --> J[frontend/pages/2_News.py]
-    K[data/test_dataset.json] --> L[scripts/run_evaluation.py]
+    K[data/test_dataset.json] --> L[scripts/graph_rag/run_evaluation.py]
     E --> L
     F --> L
 ```
@@ -77,7 +77,7 @@ Global layers:
 - **Backend layer:** Python modules under `backend/`.
 - **Frontend layer:** Streamlit app under `frontend/`.
 - **LLM / RAG layer:** LangChain `GraphCypherQAChain` using OpenAI `gpt-4o-mini`.
-- **Evaluation layer:** `scripts/run_evaluation.py` and `backend/evaluation_service.py`.
+- **Evaluation layer:** `scripts/graph_rag/run_evaluation.py` and `backend/evaluation_service.py`.
 
 ## 5. Data and Ontology
 
@@ -213,7 +213,7 @@ NEO4J_DATABASE = os.getenv("NEO4J_DATABASE", "neo4j")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 ```
 
-The graph connection used by the app is created in `backend/graph_service.py`:
+The graph connection used by the app is created in `backend/graph_rag/graph_service.py`:
 
 ```python
 graph = Neo4jGraph(
@@ -285,7 +285,7 @@ Important config issue: `.env.example` defines `NEO4J_USERNAME`, but `backend/co
 
 ### Graph RAG
 
-Graph RAG is implemented in `backend/llm_service.py`. It uses:
+Graph RAG is implemented in `backend/graph_rag/llm_service.py`. It uses:
 
 - `ChatOpenAI(model="gpt-4o-mini", temperature=0)`
 - `GraphCypherQAChain.from_llm(...)`
@@ -319,11 +319,11 @@ Not clearly implemented in the current repository. The app has a graph QA pipeli
 
 ## 8. User Question Flow
 
-Based on `frontend/app.py` and `backend/llm_service.py`, the actual chat flow is:
+Based on `frontend/app.py` and `backend/graph_rag/llm_service.py`, the actual chat flow is:
 
 1. User opens the Streamlit app with `streamlit run app.py` from `frontend/`.
 2. `frontend/app.py` initializes a cached Graph RAG chain through `get_chain_and_graph()`.
-3. `get_chain_and_graph()` calls `backend.llm_service.init_graph_chain()`.
+3. `get_chain_and_graph()` calls `backend.graph_rag.llm_service.init_graph_chain()`.
 4. `init_graph_chain()` initializes Neo4j through `init_graph()` and initializes `ChatOpenAI`.
 5. User enters a question in `st.chat_input("Posez votre question...")`.
 6. The prompt is appended to `st.session_state.messages`.
@@ -364,7 +364,7 @@ The main chat page:
 
 There is no separate HTTP API between frontend and backend. The Streamlit app imports backend Python modules directly.
 
-The analytics page connects to Neo4j through `backend.graph_service.init_graph()` and runs direct Cypher queries to show KPIs and Plotly charts for:
+The analytics page connects to Neo4j through `backend.graph_rag.graph_service.init_graph()` and runs direct Cypher queries to show KPIs and Plotly charts for:
 
 - horse count
 - event count
@@ -394,14 +394,14 @@ Loads `.env` values and cost constants:
 - `OPENAI_API_KEY`
 - token cost constants used by evaluation
 
-### `backend/graph_service.py`
+### `backend/graph_rag/graph_service.py`
 
 Provides:
 
 - `init_graph()`: creates a LangChain `Neo4jGraph` and refreshes schema.
 - `execute_query(graph, query)`: executes a Cypher query and returns an empty list on error.
 
-### `backend/llm_service.py`
+### `backend/graph_rag/llm_service.py`
 
 Provides:
 
@@ -509,14 +509,14 @@ cd scripts
 python run_evaluation.py
 ```
 
-This differs from `README.md`, which says `python scripts/run_evaluation.py`. From the repository root, that command may fail because `../data/test_dataset.json` points outside the repository.
+This differs from `README.md`, which says `python scripts/graph_rag/run_evaluation.py`. From the repository root, that command may fail because `../data/test_dataset.json` points outside the repository.
 
 ## 12. Evaluation
 
 Evaluation is implemented through:
 
 - `data/test_dataset.json`
-- `scripts/run_evaluation.py`
+- `scripts/graph_rag/run_evaluation.py`
 - `backend/evaluation_service.py`
 - `backend/timing_callback.py`
 
@@ -586,7 +586,7 @@ The evaluation script measures:
 - combined score as the average of semantic similarity and LLM judge overall score
 - Cypher-generation time and answer-generation time through `TimingCallbackHandler`
 
-Results are written to `evaluation_results/semantic_evaluation_<timestamp>.json`.
+Results are written to `evaluation_results/graph_rag/semantic_evaluation_<timestamp>.json`.
 
 No existing `evaluation_results/` files were found in the repository at the time of this report, so claimed historical accuracy numbers in `README.md` were not verified from committed result files.
 
@@ -594,7 +594,7 @@ No existing `evaluation_results/` files were found in the repository at the time
 
 - The project has a clear graph-first design that matches the structured equestrian domain well.
 - The active RDF file contains a richer V8 dataset with horses, events, seasons, training stages, sensors, actors, participations, and ranks.
-- The Cypher prompt in `backend/llm_service.py` is detailed and domain-specific, with explicit relationship directions and common error-prevention rules.
+- The Cypher prompt in `backend/graph_rag/llm_service.py` is detailed and domain-specific, with explicit relationship directions and common error-prevention rules.
 - The frontend is usable without a separate backend server because Streamlit imports the backend modules directly.
 - The analytics page provides direct visibility into graph contents through Cypher-based KPIs and charts.
 - The evaluation system is more mature than a simple exact-match benchmark because it combines embeddings, LLM judging, timing, cost estimates, and category breakdowns.
@@ -627,7 +627,7 @@ No existing `evaluation_results/` files were found in the repository at the time
 - Add uniqueness constraints for loaded nodes regardless of label, or add a common `Resource` label to every loaded entity.
 - Add a small FastAPI backend if the project needs production-style separation between frontend and backend.
 - Implement real conversation-aware retrieval by passing summarized chat history into the question-processing flow, if follow-up questions are a goal.
-- Add committed sample evaluation reports or a reproducible benchmark summary generated from `scripts/run_evaluation.py`.
+- Add committed sample evaluation reports or a reproducible benchmark summary generated from `scripts/graph_rag/run_evaluation.py`.
 - Add unit tests for URI cleaning, RDF loading, relationship naming, prompt construction, and evaluation scoring.
 - Add Docker or Docker Compose for Neo4j plus the Streamlit app.
 - Externalize model names and temperatures into configuration.
@@ -635,13 +635,13 @@ No existing `evaluation_results/` files were found in the repository at the time
 
 ## 16. Important Source Files
 
-- `backend/llm_service.py`: most important runtime file. It defines the Graph RAG prompts and initializes `GraphCypherQAChain`.
-- `backend/graph_service.py`: central Neo4j connection and query execution module.
+- `backend/graph_rag/llm_service.py`: most important runtime file. It defines the Graph RAG prompts and initializes `GraphCypherQAChain`.
+- `backend/graph_rag/graph_service.py`: central Neo4j connection and query execution module.
 - `scripts/setup_database.py`: converts the active RDF ontology into a Neo4j graph.
 - `data/Horse_V8_Clean.rdf`: active ontology/data source used by setup.
 - `frontend/app.py`: main user interface and entry point for asking questions.
 - `frontend/pages/1_Analytics.py`: direct graph analytics and Cypher examples.
-- `scripts/run_evaluation.py`: automated evaluation runner for the Graph RAG pipeline.
+- `scripts/graph_rag/run_evaluation.py`: automated evaluation runner for the Graph RAG pipeline.
 - `backend/evaluation_service.py`: semantic and LLM-judge evaluation logic.
 - `backend/timing_callback.py`: captures separate LLM timing for Cypher and answer generation.
 - `data/test_dataset.json`: active 100-question evaluation dataset.

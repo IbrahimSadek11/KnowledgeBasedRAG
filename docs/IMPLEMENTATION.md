@@ -53,7 +53,7 @@ def execute_query(graph, query):
 
 **Why it matters**: This module abstracts database operations, making the code modular and testable. It isolates database logic from business logic.
 
-**Location**: `backend/graph_service.py`
+**Location**: `backend/graph_rag/graph_service.py`
 
 ---
 
@@ -93,7 +93,7 @@ User Question → Cypher Prompt + LLM → Cypher Query → Execute on Neo4j
 
 **Why it matters**: This is the most critical file in the system. It implements the core GraphRAG logic that enables accurate question-answering over the knowledge graph.
 
-**Location**: `backend/llm_service.py`
+**Location**: `backend/graph_rag/llm_service.py`
 
 ---
 
@@ -276,7 +276,7 @@ def get_value(obj):
 
 ---
 
-### scripts/run_evaluation.py - System Testing
+### scripts/graph_rag/run_evaluation.py - System Testing
 
 **Purpose**: Automated testing of system accuracy and performance.
 
@@ -325,7 +325,7 @@ def get_value(obj):
 
 **Why it matters**: Provides objective, reproducible measurements of system quality and enables tracking improvements over time.
 
-**Location**: `scripts/run_evaluation.py`
+**Location**: `scripts/graph_rag/run_evaluation.py`
 
 ---
 
@@ -404,9 +404,9 @@ def get_value(obj):
 ```
 User Input (frontend/app.py)
          ↓
-LLM Service (backend/llm_service.py)
+LLM Service (backend/graph_rag/llm_service.py)
          ↓
-Graph Service (backend/graph_service.py)
+Graph Service (backend/graph_rag/graph_service.py)
          ↓
 Neo4j Database (loaded by scripts/setup_database.py)
 ```

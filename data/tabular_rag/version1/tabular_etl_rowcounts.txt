@@ -1,0 +1,11 @@
+tabular ETL staleness report — 2026-07-27T21:31:09.297930+00:00
+database: C:\Users\iTECH\Desktop\Ibrahim\Internships & Courses\9- RAG\KnowledgeBasedRAG\data\tabular_rag\tabular.db
+
+trainings:            207  (expected 207)
+training_actors:      355  (expected 355)
+event_participations: 101  (expected 101)
+event_entries:        101  (should equal event_participations on V9)
+participations with NULL rank: 0  (expected 0 on V9)
+Vet/Caretaker on Comp/Transition stages: 0  (expected 0)
+
+OK — key counts match EXPECTED_V9_COUNTS.
