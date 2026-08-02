@@ -8,13 +8,20 @@ import streamlit as st
 import os
 import json
 import sys
+import traceback
 from datetime import datetime
 from pathlib import Path
 
 # Add backend to path
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from backend.graph_rag.llm_service import init_graph_chain
+from backend.fusion.adapters import get_graph_chain
+from backend.fusion.orchestrator import run_fusion_inference
 from backend.news_service import EquestrianNewsScraper
+
+_FUSION_FAIL_MSG = (
+    "Je n'ai pas pu obtenir de réponse fiable pour le moment. "
+    "Réessayez ou reformulez votre question."
+)
 
 # ============================================================================
 # PAGE CONFIGURATION
@@ -421,14 +428,6 @@ def delete_conversation(conv_id):
         return True
     return False
 
-@st.cache_resource
-def get_chain_and_graph():
-    try:
-        chain, graph = init_graph_chain()
-        return chain, graph
-    except Exception as e:
-        st.error(f"Erreur lors de l'initialisation : {str(e)}")
-        return None, None
 
 @st.cache_data(ttl=3600)
 def get_trending_articles():
@@ -597,13 +596,12 @@ if not openai_key:
     st.error("Configuration manquante : Veuillez configurer votre clé OpenAI")
     st.stop()
 
-# Initialize
-with st.spinner("Connexion..."):
-    chain, graph = get_chain_and_graph()
-
-if not chain or not graph:
-    st.error("Impossible de se connecter au graphe Neo4j")
-    st.stop()
+# Warm shared Graph chain from adapters (optional). Neo4j failure must not stop chat.
+with st.spinner("Initialisation..."):
+    try:
+        get_graph_chain()
+    except Exception:
+        pass
 
 # Display messages
 for message in st.session_state.messages:
@@ -620,23 +618,48 @@ if prompt := st.chat_input("Posez votre question..."):
         st.markdown(prompt)
     
     with st.chat_message("assistant"):
-        with st.spinner("Traitement..."):
+        with st.spinner("Fusion en cours (Graph + Tabular + Textual)..."):
             try:
-                # Appel direct à la chaîne sans mémoire
-                result = chain.invoke({"query": prompt})
-                answer = result.get("result", "Désolé, je n'ai pas pu trouver de réponse.")
-                st.markdown(answer)
-                st.session_state.messages.append({"role": "assistant", "content": answer})
-            except Exception as e:
-                error_str = str(e)
-                if "SyntaxError" in error_str or "Invalid input" in error_str:
-                    st.warning("Erreur de génération de requête")
-                    friendly_msg = "Je n'ai pas pu générer une requête valide. Essayez de reformuler."
-                    st.info(friendly_msg)
-                    st.session_state.messages.append({"role": "assistant", "content": friendly_msg})
+                fusion_result = run_fusion_inference(prompt)
+                selection = fusion_result.get("fusion") or {}
+                answer = selection.get("selected_answer")
+                if (
+                    not answer
+                    or selection.get("decision_rule") == "all_pipelines_failed"
+                    or selection.get("selected_pipeline") is None
+                ):
+                    answer = _FUSION_FAIL_MSG
+                    st.markdown(answer)
+                    st.session_state.messages.append(
+                        {"role": "assistant", "content": answer}
+                    )
                 else:
-                    st.error(f"Erreur : {error_str}")
-                    st.session_state.messages.append({"role": "assistant", "content": f"Erreur : {error_str}"})
+                    st.markdown(answer)
+                    timing = fusion_result.get("timing") or {}
+                    meta = {
+                        "selected_pipeline": selection.get("selected_pipeline"),
+                        "decision_rule": selection.get("decision_rule"),
+                        "selected_evidence_score": selection.get(
+                            "selected_evidence_score"
+                        ),
+                        "total_question_seconds": timing.get(
+                            "total_question_seconds"
+                        ),
+                    }
+                    st.session_state.messages.append(
+                        {
+                            "role": "assistant",
+                            "content": answer,
+                            "fusion_metadata": meta,
+                        }
+                    )
+            except Exception as e:
+                print(f"[fusion chat] exception: {e}", file=sys.stderr)
+                traceback.print_exc()
+                st.error(_FUSION_FAIL_MSG)
+                st.session_state.messages.append(
+                    {"role": "assistant", "content": _FUSION_FAIL_MSG}
+                )
             
             save_conversation(st.session_state.current_conversation, st.session_state.conversation_title, st.session_state.messages)
             save_config({"last_conversation": st.session_state.current_conversation})
