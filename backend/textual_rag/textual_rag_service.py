@@ -424,7 +424,7 @@ def _merge_retrieval_results(
     general: tuple[list[str], list[str], list[dict]],
     limit: int,
     anchor_values: list[str] | None = None,
-) -> tuple[list[str], list[str], list[str]]:
+) -> tuple[list[str], list[str], list[str], list[dict]]:
     """Merge forced → preferred → general, dedupe by id, cap at limit.
 
     Optional value-anchored re-rank: after building the candidate universe
@@ -433,7 +433,7 @@ def _merge_retrieval_results(
     If no anchor values are provided, or no candidate contains them, order
     is unchanged from the classic merge.
 
-    Returns (ids, documents, filenames).
+    Returns (ids, documents, filenames, metadatas).
     """
     ordered_ids: list[str] = []
     doc_by_id: dict[str, str] = {}
@@ -471,7 +471,8 @@ def _merge_retrieval_results(
     filenames = [
         (meta_by_id[i].get("filename") or f"{i}.txt") for i in ordered_ids
     ]
-    return ordered_ids, documents, filenames
+    doc_metadata = [meta_by_id[i] for i in ordered_ids]
+    return ordered_ids, documents, filenames, doc_metadata
 
 
 COMPARISON_SYNTHESIS_INSTRUCTION = (
@@ -550,7 +551,7 @@ def answer_question(question: str, n_results: int = DEFAULT_N_RESULTS) -> dict[s
     # taxonomy literal found in the question (no-op if none match).
     anchor_values = _taxonomy_values_in_question(question)
 
-    _ids, documents, filenames = _merge_retrieval_results(
+    _ids, documents, filenames, doc_metadata = _merge_retrieval_results(
         forced=forced,
         preferred=preferred,
         general=general,
@@ -566,6 +567,9 @@ def answer_question(question: str, n_results: int = DEFAULT_N_RESULTS) -> dict[s
             ),
             "retrieved_docs": [],
             "question": question,
+            "retrieved_passages": [],
+            "retrieved_ids": [],
+            "retrieved_metadata": [],
         }
 
     user_prompt = _build_user_prompt(question, documents, filenames)
@@ -603,6 +607,9 @@ def answer_question(question: str, n_results: int = DEFAULT_N_RESULTS) -> dict[s
         "answer": answer,
         "retrieved_docs": filenames,
         "question": question,
+        "retrieved_passages": documents,
+        "retrieved_ids": _ids,
+        "retrieved_metadata": doc_metadata,
     }
 
 
