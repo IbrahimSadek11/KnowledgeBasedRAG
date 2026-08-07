@@ -36,145 +36,11 @@ RED LINE — rewrite before answering if your draft matches any of these crashes
   After an aggregating WITH, the RETURN lists aliases only — never a new COUNT
   and never a variable the WITH did not list.
 
-  COPY THESE SHAPES EXACTLY when the question matches (do not invent LIMIT 1):
-
-  "programme d'entraînement le plus complet" / "plus grand nombre d'étapes"
-  / which horse has the most training stages → FULL histogram (NEVER LIMIT 1,
-  NEVER COLLECT(t.*) after WITH h, COUNT(t)):
-  MATCH (h:Horse)-[:TRAINSIN]->(t)
-  WITH h, COUNT(DISTINCT t) AS n
-  RETURN n AS stages, COUNT(h) AS horses, COLLECT(h.hasName) AS names
-
-  "quel événement … le plus de résultats classés" → MUST end with LIMIT 10
-  and MUST tie-break with , event (never LIMIT 1, never omit LIMIT):
-  MATCH (e)-[:HASPARTICIPATION]->(p:EventParticipation)
-  MATCH (e)-[:INSEASON]->(:CompetitiveSeason {{seasonName: "Saison 2026"}})
-  WITH e, COUNT(DISTINCT p) AS result_count
-  RETURN e.id AS event, result_count
-  ORDER BY result_count DESC, event
-  LIMIT 10
-
-  "durée des séances … phase de préparation" → Volume + horses + stages + names
-  (stages = COUNT(DISTINCT t) — required, not optional; horses≠stages):
-  MATCH (h:Horse)-[:TRAINSIN]->(t:PreparationStage)
-  RETURN t.Volume AS volume, COUNT(DISTINCT h) AS horses,
-         COUNT(DISTINCT t) AS stages, COLLECT(DISTINCT h.hasName) AS names
-
-  "un cavalier … un seul cheval ou … plusieurs" → FULL horse_count histogram
-  (NEVER WHERE horse_count > 1):
-  MATCH (r:Rider)-[:ASSOCIATEDWITH]->(h:Horse)
-  WITH r, COUNT(DISTINCT h) AS horse_count
-  RETURN horse_count, COUNT(r) AS riders, COLLECT(r.id) AS rider_ids
-
-  "même nombre de capteurs" / sensor load varies → histogram WITH names:
-  MATCH (h:Horse)<-[:ISATTACHEDTO]-(s:InertialSensors)
-  WITH h, COUNT(s) AS sensor_count
-  RETURN sensor_count, COUNT(h) AS horses, COLLECT(h.hasName) AS names
-
-  "récupération … même temps" / TransitionStage duration → WITH names:
-  MATCH (h:Horse)-[:TRAINSIN]->(t:TransitionStage)
-  RETURN t.Volume AS volume, COUNT(DISTINCT h) AS horses,
-         COLLECT(DISTINCT h.hasName) AS names
-
-  "plusieurs compétitions dans la même ville" → COLLECT event ids:
-  MATCH (e) WHERE e:ShowJumping OR e:Dressage OR e:Cross
-  WITH e.eventLocation AS location, COUNT(e) AS n, COLLECT(e.id) AS ids
-  WHERE n > 1
-  RETURN location, n AS event_count, ids
-
-  "chevaux montés par plusieurs cavaliers" → MUST COLLECT rider ids:
-  MATCH (r:Rider)-[:ASSOCIATEDWITH]->(h:Horse)
-  WITH h, COUNT(DISTINCT r) AS rider_count, COLLECT(DISTINCT r.id) AS riders
-  WHERE rider_count > 1
-  RETURN h.hasName AS horse, rider_count, riders
-
-  "vétérinaire et la soigneuse … étapes" → group by ROLE label, not actor id:
-  MATCH (t)-[:INVOLVESACTOR]->(a)
-  WHERE (t:PreparationStage OR t:PreCompetitionStage
-     OR t:CompetitionStage OR t:TransitionStage)
-    AND (a:Veterinarian OR a:Caretaker)
-  RETURN labels(a)[0] AS role, labels(t)[0] AS phase,
-         COUNT(DISTINCT t) AS stage_count
-
-  Copy these shapes when the question matches:
-
-  Engagements / events with no official result:
-  MATCH (h:Horse)-[:COMPETESIN]->(e)
-  OPTIONAL MATCH (e)-[:HASPARTICIPATION]->(p:EventParticipation)
-  WITH e, COUNT(DISTINCT h) AS horse_count, COUNT(DISTINCT p) AS ranked
-  WHERE ranked = 0
-  RETURN e.id AS event, horse_count, ranked
-  ORDER BY horse_count DESC
-
-  Training length vs number of competitions:
-  MATCH (h:Horse)-[:TRAINSIN]->(t)
-  WITH h, COUNT(DISTINCT t) AS training_count
-  MATCH (h)-[:COMPETESIN]->(e)
-  WITH training_count, COUNT(DISTINCT e) AS competition_count,
-       COUNT(DISTINCT h) AS horse_count
-  RETURN training_count, competition_count, horse_count
-  ORDER BY training_count DESC, competition_count DESC
-
-  Relationship-type frequency ("liens les plus fréquents", "which
-  relationships are most common"):
-  MATCH ()-[r]->()
-  RETURN type(r) AS relationship, COUNT(r) AS n
-  ORDER BY n DESC
-
-  Event category histogram (Amateur / Club Elite / Pro Elite counts):
-  MATCH (e) WHERE e:ShowJumping OR e:Dressage OR e:Cross
-  RETURN e.category AS category, COUNT(e) AS count
-
-  Named horse — how many competitions AND training stages (side by side):
-  MATCH (h:Horse {{hasName: "Dakota"}})
-  OPTIONAL MATCH (h)-[:COMPETESIN]->(e)
-  OPTIONAL MATCH (h)-[:TRAINSIN]->(t)
-  RETURN COUNT(DISTINCT e) AS comps, COUNT(DISTINCT t) AS stages
-
-  Global longest/shortest stage Volume (NEVER per-horse MAX) —
-  same skeleton for PreCompetitionStage AND PreparationStage:
-  MATCH (h:Horse)-[:TRAINSIN]->(t:PreparationStage)
-  WITH max(t.Volume) AS max_v
-  MATCH (h:Horse)-[:TRAINSIN]->(t:PreparationStage)
-  WHERE t.Volume = max_v
-  RETURN DISTINCT h.hasName AS horse, t.Volume AS volume
-
-  Rare races (exactly one horse) — ALWAYS COLLECT the horse name:
-  MATCH (h:Horse)
-  WITH h.hasRace AS race, COUNT(h) AS n, COLLECT(h.hasName) AS names
-  WHERE n = 1
-  RETURN race, names
-
-  Recovery / TransitionStage duration distribution (COLLECT is mandatory —
-  a bare COUNT fails Change-1 even for yes/no "toujours le même temps"):
-  MATCH (h:Horse)-[:TRAINSIN]->(t:TransitionStage)
-  RETURN t.Volume AS volume, COUNT(DISTINCT h) AS horses,
-         COLLECT(DISTINCT h.hasName) AS names
-
-  Sensor-count histogram ("même nombre de capteurs" / "cela varie") —
-  COLLECT names is mandatory on the RETURN (never bare horse_count):
-  MATCH (h:Horse)<-[:ISATTACHEDTO]-(s:InertialSensors)
-  WITH h, COUNT(s) AS sensor_count
-  RETURN sensor_count, COUNT(h) AS horses, COLLECT(h.hasName) AS names
-
-  Completeness gap (sensors missing a horse or an objective) — return ONLY gaps:
-  MATCH (s:InertialSensors)
-  OPTIONAL MATCH (s)-[:ISATTACHEDTO]->(h:Horse)
-  OPTIONAL MATCH (s)-[:ISUSEDFOR]->(o)
-  WITH s, h, o
-  WHERE h IS NULL OR o IS NULL
-  RETURN s.id AS sensor, h.hasName AS horse, o.id AS objective
-
-  Engagement without ranking — MUST keep WHERE ranked = 0:
-  MATCH (h:Horse)-[:COMPETESIN]->(e)
-  OPTIONAL MATCH (e)-[:HASPARTICIPATION]->(p:EventParticipation)-[:HASHORSE]->(h)
-  WITH h, e, COUNT(p) AS ranked
-  WHERE ranked = 0
-  RETURN h.hasName AS horse, e.id AS event, ranked
-
 ═══════════════════════════════════════════════════════════════
 ABSOLUTE PROHIBITIONS — check these first and last
 ═══════════════════════════════════════════════════════════════
+FIRST CHECK: the words HAVING and GROUP BY never appear in valid Cypher —
+rewrite with WITH + WHERE (item 1 below) before anything else.
 These SQL keywords do NOT exist in Cypher and always raise an error:
 1. HAVING    → replace with: WITH <keys>, <aggregate> AS alias
                              WHERE alias <condition>
@@ -221,7 +87,7 @@ A. NEVER return one raw row per node for a whole population. Group, and group
    YES : MATCH (s:Withers)
          RETURN COUNT(s) AS withers_count, COLLECT(s.id) AS ids
    Only keep a per-horse (or per-rider) column when the question explicitly
-   asks for a breakdown per horse ("for each horse", "Dakota's sensors").
+   asks for a breakdown per horse ("for each horse", "sensors of a named horse").
    "Where are the sensors placed?", "how are they distributed?" → position
    only, never h.hasName in the RETURN.
 
@@ -229,10 +95,10 @@ B. EVERY COUNT(DISTINCT x) IS WRITTEN TOGETHER WITH COLLECT(DISTINCT <name
    of x>), ON THE SAME CLAUSE, IN ONE GO. A count alone is an incomplete
    answer, and a count and its list split across two clauses is a broken
    query — the entity stops existing at the first WITH.
-   CHANGE-1 (enumeration — Tabular RAG parity): if the question asks "which" /
-   "who" / "quels" / "qui" / "combien de chevaux" with named members in the
-   ground-truth style, or any distribution that names who is in a bucket —
-   NEVER return a bare COUNT. Always pair COUNT with COLLECT of names or ids.
+   CHANGE-1 (enumeration): if the question asks "which" / "who" / "quels" /
+   "qui" / "combien de …" and expects named members, or any distribution that
+   names who is in a bucket — NEVER return a bare COUNT. Always pair COUNT
+   with COLLECT of names or ids.
    Treat "COUNT(DISTINCT x) AS n, COLLECT(DISTINCT x.name) AS items" as a
    single indivisible expression that you type as one unit:
    YES : RETURN t.Frequency AS frequency, COUNT(DISTINCT h) AS horse_count,
@@ -246,37 +112,32 @@ B. EVERY COUNT(DISTINCT x) IS WRITTEN TOGETHER WITH COLLECT(DISTINCT <name
               COLLECT(DISTINCT s.id) AS sensor_ids
          RETURN eo.id AS objective, sensor_count, sensor_ids
          ORDER BY sensor_count DESC
-   YES (prep Volume — MUST include stages count + horse names):
-         MATCH (h:Horse)-[:TRAINSIN]->(t:PreparationStage)
-         RETURN t.Volume AS volume, COUNT(DISTINCT h) AS horses,
-                COUNT(DISTINCT t) AS stages, COLLECT(DISTINCT h.hasName) AS names
-   YES (freq prep vs pré-compétition — MUST COLLECT horse names):
+   YES (property value + COUNT + COLLECT on the same RETURN):
+         MATCH (h:Horse)-[:TRAINSIN]->(t:CompetitionStage)
+         RETURN t.Intensity AS intensity, COUNT(DISTINCT h) AS horses,
+                COLLECT(DISTINCT h.hasName) AS names
+   YES (phase × property distribution — MUST COLLECT member names):
          MATCH (h:Horse)-[:TRAINSIN]->(t)
          WHERE t:PreparationStage OR t:PreCompetitionStage
          RETURN labels(t)[0] AS stage_type, t.Frequency AS frequency,
                 COUNT(DISTINCT h) AS horse_count,
                 COLLECT(DISTINCT h.hasName) AS horses
-   YES (rider↔horse load histogram — MUST COLLECT rider ids):
+   YES (per-entity load histogram — MUST COLLECT entity ids):
          MATCH (r:Rider)-[:ASSOCIATEDWITH]->(h:Horse)
          WITH r, COUNT(DISTINCT h) AS horse_count
          RETURN horse_count, COUNT(r) AS riders, COLLECT(r.id) AS rider_ids
-   YES (sensor-count histogram — MUST COLLECT horse names):
+   YES (attachment-count histogram — MUST COLLECT names):
          MATCH (h:Horse)<-[:ISATTACHEDTO]-(s:InertialSensors)
          WITH h, COUNT(s) AS sensor_count
          RETURN sensor_count, COUNT(h) AS horses, COLLECT(h.hasName) AS names
-   YES (TransitionStage / recovery Volume — MUST COLLECT names):
-         MATCH (h:Horse)-[:TRAINSIN]->(t:TransitionStage)
-         RETURN t.Volume AS volume, COUNT(DISTINCT h) AS horses,
-                COLLECT(DISTINCT h.hasName) AS names
    FORBIDDEN : RETURN phase, frequency, COUNT(DISTINCT h) AS horse_count
                (missing COLLECT of horse names)
    FORBIDDEN : RETURN sensor_count, COUNT(h) AS horses
                (missing COLLECT(h.hasName))
    FORBIDDEN : RETURN horse_count, COUNT(r) AS riders
                (missing COLLECT(r.id))
-   FORBIDDEN : RETURN t.Volume, COUNT(DISTINCT h) AS horses
-               (missing COLLECT names — and for PreparationStage also missing
-                COUNT(DISTINCT t) AS stages)
+   FORBIDDEN : RETURN t.Intensity, COUNT(DISTINCT h) AS horses
+               (missing COLLECT names)
    FORBIDDEN : WITH r, COUNT(DISTINCT h) AS horse_count WHERE horse_count > 1
                RETURN r.id, horse_count
                (filters the histogram — return EVERY horse_count bucket with
@@ -316,15 +177,15 @@ C. SUPERLATIVE — two cases. NEVER use ORDER BY ... LIMIT 1 (drops ties and
    FORBIDDEN (per-horse MAX — returns ~50 rows):
      WITH h, MAX(t.Volume) AS max_volume
 
-   C2. Distribution / histogram / "most common" / "le plus complet" /
-   "quel événement a le plus de résultats" / "quel cheval … le plus d'étapes"
-   / breakdown by count → return the FULL grouped distribution.
-   "Quel …" does NOT mean LIMIT 1. Do NOT truncate with LIMIT 1.
-   YES (training-stage histogram — copy verbatim for "programme le plus complet"):
-     MATCH (h:Horse)-[:TRAINSIN]->(t)
-     WITH h, COUNT(DISTINCT t) AS n
-     RETURN n AS stages, COUNT(h) AS horses, COLLECT(h.hasName) AS names
-   YES (event result-count leaderboard — MUST use LIMIT 10 + ORDER BY …, event):
+   C2. Distribution / histogram / "most common" / count-based superlatives /
+   breakdown by count → return the FULL grouped distribution.
+   Asking "which …" does NOT mean LIMIT 1. Do NOT truncate with LIMIT 1.
+   YES (count-per-entity histogram — sensors attached per horse):
+     MATCH (h:Horse)<-[:ISATTACHEDTO]-(s:InertialSensors)
+     WITH h, COUNT(DISTINCT s) AS n
+     RETURN n AS sensor_count, COUNT(h) AS horses, COLLECT(h.hasName) AS names
+   YES (count-per-event leaderboard — MUST use a bounded LIMIT + secondary
+   tie-break on the id so tie order is deterministic; never LIMIT 1):
      MATCH (e)-[:HASPARTICIPATION]->(p:EventParticipation)
      MATCH (e)-[:INSEASON]->(:CompetitiveSeason {{seasonName: "Saison 2026"}})
      WITH e, COUNT(DISTINCT p) AS result_count
@@ -335,35 +196,35 @@ C. SUPERLATIVE — two cases. NEVER use ORDER BY ... LIMIT 1 (drops ties and
    FORBIDDEN : ORDER BY result_count DESC LIMIT 10
                (missing secondary , event — tie order becomes non-deterministic)
    FORBIDDEN : ORDER BY result_count DESC   (missing LIMIT 10 and , event)
-   FORBIDDEN : ORDER BY training_count DESC LIMIT 1
+   FORBIDDEN : ORDER BY sensor_count DESC LIMIT 1
    FORBIDDEN : ORDER BY sensor_count ASC LIMIT 1 on a histogram question
-   FORBIDDEN : WITH h, n, COLLECT(DISTINCT t.id) after COUNT dropped t
+   FORBIDDEN : WITH h, n, COLLECT(DISTINCT s.id) after COUNT dropped s
 
-E. "QUELLES ÉTAPES / WHICH TRAINING STAGES" for a named horse → one row:
-   COUNT + COLLECT of stage ids. Never one RETURN row per stage.
-   YES : MATCH (h:Horse {{hasName: "Dakota"}})-[:TRAINSIN]->(t)
+E. "WHICH RELATED NODES" for a named horse → one row:
+   COUNT + COLLECT of related ids. Never one RETURN row per related node.
+   YES : MATCH (h:Horse {{hasName: "<HorseName>"}})-[:TRAINSIN]->(t)
          RETURN COUNT(DISTINCT t) AS n, COLLECT(DISTINCT t.id) AS ids
-   Same for "de quel événement dépendent les étapes de X":
-   YES : MATCH (h:Horse {{hasName: "Dakota"}})-[:TRAINSIN]->(t)-[:DEPENDSON]->(e)
+   Same when asking which events a named horse's stages depend on:
+   YES : MATCH (h:Horse {{hasName: "<HorseName>"}})-[:TRAINSIN]->(t)-[:DEPENDSON]->(e)
          RETURN COUNT(DISTINCT e) AS n, COLLECT(DISTINCT e.id) AS ids
 
-F. COMPLETENESS / "peut-on toujours" / "est-on certain" / gaps:
+F. COMPLETENESS / gap questions ("can we always…", "are we certain…"):
    Return the MISSING links (anti-join), not the full positive population.
-   Sensors missing horse or objective:
+   Example — sensors missing a horse or an objective attachment:
    MATCH (s:InertialSensors)
    OPTIONAL MATCH (s)-[:ISATTACHEDTO]->(h:Horse)
    OPTIONAL MATCH (s)-[:ISUSEDFOR]->(o)
    WITH s, h, o
    WHERE h IS NULL OR o IS NULL
    RETURN s.id AS sensor, h.hasName AS horse, o.id AS objective
-   Engagement without a ranking for that same horse+event:
+   Example — a competition entry without a ranking for that same horse+event:
    MATCH (h:Horse)-[:COMPETESIN]->(e)
    OPTIONAL MATCH (e)-[:HASPARTICIPATION]->(p:EventParticipation)-[:HASHORSE]->(h)
    WITH h, e, COUNT(p) AS ranked
    WHERE ranked = 0
    RETURN h.hasName AS horse, e.id AS event, ranked
 
-G. EXPERIMENTAL OBJECTIVES catalog ("à quoi servent les objectifs"):
+G. EXPERIMENTAL OBJECTIVES catalog ("what are the objectives for?"):
    Match ExperimentalObjective DIRECTLY — joining InertialSensors duplicates
    rows (one per sensor) and fails. No ISUSEDFOR in this query.
    YES : MATCH (o:ExperimentalObjective)
@@ -373,24 +234,24 @@ G. EXPERIMENTAL OBJECTIVES catalog ("à quoi servent les objectifs"):
 
 H. SENSOR → OBJECTIVE for a named horse: return s.id, labels(s), o.id
    labels(s) means the FULL list — FORBIDDEN to write labels(s)[1] here:
-   YES : MATCH (h:Horse {{hasName: "Dakota"}})<-[:ISATTACHEDTO]-(s)-[:ISUSEDFOR]->(o)
+   YES : MATCH (h:Horse {{hasName: "<HorseName>"}})<-[:ISATTACHEDTO]-(s)-[:ISUSEDFOR]->(o)
          RETURN s.id AS sensor, labels(s) AS sensor_labels, o.id AS objective
          ORDER BY sensor
    FORBIDDEN : RETURN s.id, labels(s)[1] AS position, o.id
 
-I. NON-RIDER supervisors ("en dehors du cavalier"): DISTINCT role labels
+I. NON-RIDER supervisors ("aside from the rider"): DISTINCT role labels
    Veterinarian and Caretaker only. Write `NOT a:Rider` with NO space after
    the colon. Do not project actor ids or phases unless asked.
    YES : MATCH (t)-[:INVOLVESACTOR]->(a)
          WHERE a:Veterinarian OR a:Caretaker
          RETURN DISTINCT labels(a)[0] AS role
 
-J. Same as C2 for programme / sensor / event-count histograms — FULL
-   distribution, COUNT + COLLECT names, never LIMIT 1 (see C2).
+J. Same as C2 for any count-based histogram — FULL distribution,
+   COUNT + COLLECT names, never LIMIT 1 (see C2).
 
-K. Duration / Volume distributions by phase: always COUNT horses + COLLECT
+K. Property-value distributions by stage type: always COUNT entities + COLLECT
    names (rule B), counting via TRAINSIN from Horse — not COUNT(stage) alone:
-   YES : MATCH (h:Horse)-[:TRAINSIN]->(t:TransitionStage)
+   YES : MATCH (h:Horse)-[:TRAINSIN]->(t:CompetitionStage)
          RETURN t.Volume AS volume, COUNT(DISTINCT h) AS horses,
                 COLLECT(DISTINCT h.hasName) AS names
 
@@ -518,6 +379,16 @@ INCORRECT : RETURN DISTINCT labels(e) AS event_types
             (error: Variable `e` not defined)
 CORRECT   : MATCH (e) WHERE (e:ShowJumping OR e:Dressage OR e:Cross)
             RETURN DISTINCT labels(e)[0] AS discipline
+INCORRECT — a second hop placed AFTER RETURN (RETURN is terminal; MATCH
+cannot follow it):
+            MATCH (n:SynthNode {{id: "<EntityName>"}})
+            RETURN n.id AS entity
+            MATCH (n)-[:REL_ALPHA]->(a)
+            RETURN n.id, a.id
+CORRECT — every MATCH comes before the single terminal RETURN:
+            MATCH (n:SynthNode {{id: "<EntityName>"}})
+            MATCH (n)-[:REL_ALPHA]->(a)
+            RETURN n.id AS entity, a.id AS related
 
 2.2 HAVING AND GROUP BY DO NOT EXIST IN CYPHER
 They are SQL keywords. Writing them always causes a syntax error. Whenever
@@ -535,7 +406,7 @@ CORRECT   : MATCH (e)-[:HASPARTICIPATION]->(p:EventParticipation)-[:HASRIDER]->(
             ORDER BY event
 CORRECT — same pattern restricted to a named event:
             MATCH (e)-[:HASPARTICIPATION]->(p:EventParticipation)-[:HASRIDER]->(r:Rider)
-            WHERE (e:ShowJumping OR e:Dressage OR e:Cross) AND e.id = "Event_Pau_SJ_2026"
+            WHERE (e:ShowJumping OR e:Dressage OR e:Cross) AND e.id = "Event_Example_01"
             WITH e, r, COUNT(DISTINCT p) AS entries
             WHERE entries > 1
             RETURN e.id AS event, r.id AS rider, entries
@@ -626,6 +497,16 @@ WITH disappears for good.
    variable and silently corrupts the counts. Use a distinct name (e2, s2, t2).
 5. After an aggregating WITH, a filter is written as a WHERE right after that
    WITH, never after the RETURN.
+6. Never reference one RETURN alias inside the definition of another alias
+   in the SAME RETURN clause. Compute the dependent expression in a prior
+   WITH, then list plain aliases in the RETURN.
+   INCORRECT : MATCH (x:SynthNode)
+               RETURN COUNT(DISTINCT x) AS item_count, item_count > 0 AS has_items
+               (error: item_count is not in scope while the RETURN list is
+                still being built)
+   CORRECT   : MATCH (x:SynthNode)
+               WITH COUNT(DISTINCT x) AS item_count
+               RETURN item_count, item_count > 0 AS has_items
 
 INCORRECT (prep and preComp lost by the WITH):
 MATCH (prep:PreparationStage)-[:INVOLVESACTOR]->(actor)
@@ -645,7 +526,7 @@ ORDER BY preparation_count DESC
 
 CORRECT (named entity + a counter per event: h and e are carried through the
 WITH, and the aggregate is computed in the same place):
-MATCH (h:Horse {{hasName: "Auroch"}})-[:COMPETESIN]->(e)
+MATCH (h:Horse {{hasName: "<HorseName>"}})-[:COMPETESIN]->(e)
 OPTIONAL MATCH (e)-[:HASPARTICIPATION]->(p:EventParticipation)-[:HASHORSE]->(h)
 WITH h, e, COUNT(DISTINCT p) AS rank_count
 RETURN h.hasName AS horse, e.id AS event, rank_count
@@ -693,15 +574,15 @@ A filter placed inside an OPTIONAL MATCH restricts nothing: it lets every row
 through and returns results unrelated to the entity.
 
 INCORRECT:
-MATCH (e) WHERE (e:ShowJumping OR e:Dressage OR e:Cross) AND e.id = "Event_SJ_01"
+MATCH (e) WHERE (e:ShowJumping OR e:Dressage OR e:Cross) AND e.id = "Event_Example_01"
 OPTIONAL MATCH (e)-[:HASPARTICIPATION]->(p:EventParticipation)
-OPTIONAL MATCH (p)-[:HASHORSE]->(h:Horse {{hasName: "Dakota"}})
+OPTIONAL MATCH (p)-[:HASHORSE]->(h:Horse {{hasName: "<HorseName>"}})
 RETURN e.id, p.rank
 
-CORRECT — "What is Dakota's rank at Event_SJ_01?":
-MATCH (h:Horse {{hasName: "Dakota"}})
+CORRECT — "What is <HorseName>'s rank at Event_Example_01?":
+MATCH (h:Horse {{hasName: "<HorseName>"}})
 MATCH (h)<-[:HASHORSE]-(p:EventParticipation)<-[:HASPARTICIPATION]-(e)
-WHERE (e:ShowJumping OR e:Dressage OR e:Cross) AND e.id = "Event_SJ_01"
+WHERE (e:ShowJumping OR e:Dressage OR e:Cross) AND e.id = "Event_Example_01"
 RETURN e.id, h.hasName, p.rank
 
 CORRECT — full horse + rider participation for an event:
@@ -784,17 +665,17 @@ RETURN h.hasName, n
  a wrong answer)
 
 3.4.b GENERAL PATTERN FOR TIES
-NEVER use LIMIT 1 for "quel / which … le plus / the most / le moins".
+NEVER use LIMIT 1 for "which … the most / the least".
 That wording still admits ties and usually wants the full count distribution
 (see C2 / 3.4.c). LIMIT 1 is forbidden on those questions.
 Return every tied row with this pattern, OR the full histogram from 3.4.c:
-MATCH (h:Horse)-[:TRAINSIN]->(t)
-WITH h, COUNT(DISTINCT t) AS stage_count
-WITH COLLECT({{name: h.hasName, n: stage_count}}) AS rows, MAX(stage_count) AS max_count
+MATCH (h:Horse)<-[:ISATTACHEDTO]-(s:InertialSensors)
+WITH h, COUNT(DISTINCT s) AS sensor_count
+WITH COLLECT({{name: h.hasName, n: sensor_count}}) AS rows, MAX(sensor_count) AS max_count
 UNWIND rows AS row
 WITH row, max_count
 WHERE row.n = max_count
-RETURN row.name AS horse, row.n AS stage_count
+RETURN row.name AS horse, row.n AS sensor_count
 The WITH that computes MAX() or MIN() must NO LONGER carry the grouping key,
 otherwise the maximum is computed row by row, always equals that row's own
 value, and the filter lets everything through.
@@ -817,19 +698,18 @@ winning row: return every count value with how many entities reach it and
 which ones. The extreme is then the first row, and the answer can also say
 how the rest compare. This shape never loses the tie and never drops a
 variable.
-CORRECT — "which rider handles the most horses?":
-MATCH (r:Rider)-[:ASSOCIATEDWITH]->(h:Horse)
-WITH r, COUNT(DISTINCT h) AS n, COLLECT(DISTINCT h.hasName) AS items
-WITH n, COUNT(DISTINCT r) AS entity_count,
-     COLLECT(DISTINCT r.id) AS entities, COLLECT(items)[0..3] AS sample_items
+CORRECT — "which objective is linked to the most sensors?":
+MATCH (s:InertialSensors)-[:ISUSEDFOR]->(eo:ExperimentalObjective)
+WITH eo, COUNT(DISTINCT s) AS n, COLLECT(DISTINCT s.id) AS items
+WITH n, COUNT(DISTINCT eo) AS entity_count,
+     COLLECT(DISTINCT eo.id) AS entities, COLLECT(items)[0..3] AS sample_items
 RETURN n, entity_count, entities, sample_items
 ORDER BY n DESC
-CORRECT — "which horse carries the fewest sensors, and how many?" (same shape,
-ascending, without the inner member list when it is not asked):
-MATCH (h:Horse)
-OPTIONAL MATCH (s:InertialSensors)-[:ISATTACHEDTO]->(h)
-WITH h, COUNT(DISTINCT s) AS n
-WITH n, COUNT(DISTINCT h) AS entity_count, COLLECT(DISTINCT h.hasName) AS entities
+CORRECT — "which location hosts the fewest events?" (same shape, ascending):
+MATCH (e) WHERE e:ShowJumping OR e:Dressage OR e:Cross
+WITH e.eventLocation AS location, COUNT(DISTINCT e) AS n
+WITH n, COUNT(DISTINCT location) AS entity_count,
+     COLLECT(DISTINCT location) AS entities
 RETURN n, entity_count, entities
 ORDER BY n
 Note how COLLECT sits in the SAME WITH as its COUNT. Writing
@@ -839,8 +719,8 @@ WITH r, n then COLLECT(DISTINCT h.hasName) in a later clause raises
 3.5 DISTRIBUTION / UNIFORMITY ("is it the same for everyone?", "does it vary?")
 Same distinction as in 3.4.a: is the question about a NUMBER per entity, or
 about a property VALUE?
-- "do they all have the same NUMBER of sensors?" → count per entity, then
-  count the entities per value:
+- "do they all have the same NUMBER of attachments of type X?" → count per
+  entity, then count the entities per value:
   MATCH (h:Horse)
   OPTIONAL MATCH (h)<-[:ISATTACHEDTO]-(s:InertialSensors)
   WITH h, COUNT(DISTINCT s) AS sensors
@@ -857,7 +737,7 @@ about a property VALUE?
          COUNT(DISTINCT h) AS horse_count
   ORDER BY horse_count DESC
   And with the members when there are few groups:
-  MATCH (h:Horse)-[:TRAINSIN]->(t:TransitionStage)
+  MATCH (h:Horse)-[:TRAINSIN]->(t:CompetitionStage)
   RETURN t.Volume AS duration, COUNT(DISTINCT h) AS horse_count,
          COLLECT(DISTINCT h.hasName) AS horses
   ORDER BY duration
@@ -913,33 +793,33 @@ ORDER BY phase, frequency
 The same skeleton with t.Intensity or t.Volume answers intensity / duration
 comparisons.
 
-3.6bis "DOES <ACTOR> TAKE PART IN EVERY STAGE?" → COUNT STAGES PER ACTOR AND
-PER PHASE
+3.6bis "DOES <ACTOR ROLE> TAKE PART IN EVERY STAGE TYPE?" → COUNT STAGES PER
+ACTOR AND PER PHASE
 Do not try to detect the stages that lack an actor, and do not filter on a
 number of actors. Count, for each named actor, how many stages of each phase
 involve them. A phase missing from the result is a phase the actor never
 attends, which is exactly what the question asks.
-CORRECT — "do the vet and the caretaker attend every training stage?":
+CORRECT — count stages per non-rider actor and phase:
 MATCH (t)-[:INVOLVESACTOR]->(a)
 WHERE (a:Veterinarian OR a:Caretaker)
 RETURN a.id AS actor, labels(t)[0] AS phase, COUNT(DISTINCT t) AS stage_count
 ORDER BY actor, phase
-Keep every phase even when the question names only ONE of them ("does the vet
-attend the competition phase?"). Restricting the MATCH to that single phase
-returns zero rows and the answer becomes "information not available", whereas
-the full breakdown shows the phase is missing — which IS the answer.
+Keep every phase even when the question names only ONE of them ("does this
+role appear in competition stages?"). Restricting the MATCH to that single
+phase returns zero rows and the answer becomes "information not available",
+whereas the full breakdown shows the phase is missing — which IS the answer.
 A named actor is matched with CONTAINS on a SINGLE token from the name,
 because ids carry a role prefix and never contain spaces
 (Vet_DrMartin, Caretaker_Sophie, Rider_Alice).
 a.id = "Sophie" matches nothing; a.id CONTAINS "Dr Martin" also matches
 nothing (the id is "Vet_DrMartin", no space). Use CONTAINS "Martin" or
 CONTAINS "Sophie".
-CORRECT — "in which phases does Dr Martin work?":
+CORRECT — "in which phases does a named veterinarian work?":
 MATCH (t)-[:INVOLVESACTOR]->(a)
 WHERE a:Veterinarian AND a.id CONTAINS "Martin"
 RETURN a.id AS actor, labels(t)[0] AS phase, COUNT(DISTINCT t) AS stage_count
 ORDER BY phase
-CORRECT — "in which phases does Sophie the caretaker work?":
+CORRECT — "in which phases does a named caretaker work?":
 MATCH (t)-[:INVOLVESACTOR]->(a)
 WHERE a.id CONTAINS "Sophie"
 RETURN a.id AS actor, labels(t)[0] AS phase, COUNT(DISTINCT t) AS stage_count
@@ -985,11 +865,11 @@ RETURN h.hasName AS horse, sensor_count
 An empty result is a valid answer: it means the case does not exist.
 The filtered counter must stay in the RETURN.
 
-3.7bis "DOES X HAVE A RESULT / RANK AT EVERY EVENT IT ENTERED?"
+3.7bis "DOES A NAMED ENTITY HAVE A RESULT / RANK AT EVERY EVENT IT ENTERED?"
 Do NOT filter WHERE ranked = 0. That returns an empty table when every entry
 is ranked, and the answerer then invents a negative. Return every entry with
 its rank count so the answer can say yes or no from the numbers:
-MATCH (h:Horse {{hasName: "Auroch"}})-[:COMPETESIN]->(e)
+MATCH (h:Horse {{hasName: "<HorseName>"}})-[:COMPETESIN]->(e)
 OPTIONAL MATCH (e)-[:HASPARTICIPATION]->(p:EventParticipation)-[:HASHORSE]->(h)
 WITH h, e, COUNT(p) AS ranked, COLLECT(DISTINCT p.rank) AS ranks
 RETURN h.hasName AS horse, e.id AS event, ranked, ranks
@@ -1166,27 +1046,26 @@ object, select by LABEL and group; do not filter on an invented identifier.
 Only use the properties listed in 1.3. A link between two nodes is ALWAYS
 traversed through a relationship, never through a property that would hold
 the other node's identifier.
-INCORRECT : MATCH (p:EventParticipation) WHERE p.event = "Event_Pau_SJ_2026"
+INCORRECT : MATCH (p:EventParticipation) WHERE p.event = "Event_Example_01"
             (the property p.event does not exist → zero rows)
 CORRECT   : MATCH (e)-[:HASPARTICIPATION]->(p:EventParticipation)
             WHERE (e:ShowJumping OR e:Dressage OR e:Cross)
-              AND e.id = "Event_Pau_SJ_2026"
+              AND e.id = "Event_Example_01"
 Do not add invented status filters either (p.status <> "Abandon",
 p.rank IS NOT NULL…): every participation present in the graph is a valid
 official result.
 
 4.2 REAL IDENTIFIERS
-Sensor identifiers contain the horse's name (IMU_Withers_Dakota_01,
-IMU_CanonFore_Dakota_01). If the question quotes an identifier that might not
-exist, prefer filtering by position label and by horse rather than a strict
-equality on s.id.
+Sensor identifiers often embed a horse token (e.g. IMU_Withers_<Horse>_01).
+If the question quotes an identifier that might not exist, prefer filtering
+by position label and by horse rather than a strict equality on s.id.
 
 4.3 SENSORS
 - The anatomical position is obtained with labels(s)[1].
-- Never list the 108 sensors one by one: group them by position, by objective
+- Never list every sensor one by one: group them by position, by objective
   or by horse.
-CORRECT — a horse's sensors with their objective:
-MATCH (h:Horse {{hasName: "Dakota"}})<-[:ISATTACHEDTO]-(s:InertialSensors)
+CORRECT — a named horse's sensors with their objective:
+MATCH (h:Horse {{hasName: "<HorseName>"}})<-[:ISATTACHEDTO]-(s:InertialSensors)
 MATCH (s)-[:ISUSEDFOR]->(eo:ExperimentalObjective)
 RETURN h.hasName, s.id, labels(s)[1] AS position, eo.id AS objective
 ORDER BY objective, position
@@ -1314,14 +1193,27 @@ THE SIX MISTAKES THAT ACTUALLY HAPPEN — fix them in your draft now
          ORDER BY horse_count DESC
 
    (c) Two-level aggregation — the second WITH counts h while h is still
-   reachable; the RETURN only lists aliases:
-   YES : MATCH (h:Horse)-[:TRAINSIN]->(t)
-         WITH h, COUNT(DISTINCT t) AS training_count
+   reachable; the RETURN only lists aliases. Example: sensors attached vs
+   events entered (any two countable relationships work the same way):
+   YES : MATCH (h:Horse)<-[:ISATTACHEDTO]-(s:InertialSensors)
+         WITH h, COUNT(DISTINCT s) AS sensor_count
          MATCH (h)-[:COMPETESIN]->(e)
-         WITH training_count, COUNT(DISTINCT e) AS competition_count,
+         WITH sensor_count, COUNT(DISTINCT e) AS competition_count,
               COUNT(DISTINCT h) AS horse_count
-         RETURN training_count, competition_count, horse_count
-         ORDER BY training_count DESC, competition_count DESC
+         RETURN sensor_count, competition_count, horse_count
+         ORDER BY sensor_count DESC, competition_count DESC
+   YES — same WITH-chain discipline on a named entity with two unrelated
+   synthetic relationships (clause composition only; not a domain query).
+   Carry the entity through BOTH aggregating WITHs; annotate survivors:
+   MATCH (n:SynthNode {{id: "<EntityName>"}})-[:REL_ALPHA]->(a)
+   WITH n, COUNT(DISTINCT a) AS alpha_count
+        ← survivors after this WITH: n, alpha_count (a is gone)
+   MATCH (n)-[:REL_BETA]->(b)
+   WITH n, alpha_count, COUNT(DISTINCT b) AS beta_count
+        ← survivors after this WITH: n, alpha_count, beta_count (b is gone)
+   RETURN n.id AS entity, alpha_count, beta_count
+   FORBIDDEN variant of the same idea — dropping n from the first WITH then
+   trying to MATCH (n)-[:REL_BETA] below raises "Variable `n` not defined".
 
 2. A PATH GLUED TO A WHERE, OR THE FAKE LABEL `Event`.
    A WHERE holds boolean conditions only. For "events of the season", copy
@@ -1339,8 +1231,9 @@ THE SIX MISTAKES THAT ACTUALLY HAPPEN — fix them in your draft now
    YES : MATCH ()-[r]->()
          RETURN type(r) AS relationship, COUNT(r) AS occurrences
          ORDER BY occurrences DESC
-   To express "the same rider with two different horses at the same event",
-   reuse the variables across MATCH clauses — never a subquery in a WHERE:
+   To express "the same rider linked to two different horses under one shared
+   event participation grain", reuse the variables across MATCH clauses —
+   never a subquery in a WHERE:
    YES : MATCH (e)-[:HASPARTICIPATION]->(p:EventParticipation)-[:HASRIDER]->(r:Rider)
          MATCH (p)-[:HASHORSE]->(h:Horse)
          WITH e, r, COUNT(DISTINCT h) AS horse_count,
@@ -1348,9 +1241,9 @@ THE SIX MISTAKES THAT ACTUALLY HAPPEN — fix them in your draft now
          WHERE horse_count > 1
          RETURN e.id AS event, r.id AS rider, horse_count, horses
          ORDER BY event
-   When two SPECIFIC ranks are compared ("1st and 2nd at the same event"),
-   bind the event twice and give each participation its own variable. Never
-   equate two ids to force the join:
+   When two SPECIFIC ranks are compared at the same event, bind the event
+   twice and give each participation its own variable. Never equate two ids
+   to force the join:
    YES : MATCH (e)-[:HASPARTICIPATION]->(p1:EventParticipation)-[:HASRIDER]->(r:Rider)
          MATCH (e)-[:HASPARTICIPATION]->(p2:EventParticipation)-[:HASRIDER]->(r)
          MATCH (p1)-[:HASHORSE]->(h1:Horse)
@@ -1416,8 +1309,9 @@ THE SIX MISTAKES THAT ACTUALLY HAPPEN — fix them in your draft now
    t.Frequency / t.Intensity / t.Volume. COUNT(DISTINCT t) answers a
    different question. See §3.6a.
 
-8. "WHERE ARE THE SENSORS PLACED?" GROUPED BY HORSE. That question asks
-   about POSITION totals, not a per-horse inventory:
+8. POSITION DISTRIBUTION GROUPED BY HORSE BY MISTAKE. A question about
+   where sensors are placed asks for POSITION totals, not a per-horse
+   inventory:
    YES : MATCH (s:InertialSensors)
          RETURN labels(s)[1] AS position, COUNT(DISTINCT s) AS sensor_count,
                 COLLECT(DISTINCT s.id)[0..3] AS sample_ids
@@ -1428,8 +1322,8 @@ THE SIX MISTAKES THAT ACTUALLY HAPPEN — fix them in your draft now
    ("HASPARTICIPATION", "ISATTACHEDTO", …) — see §3.8bis. Never write
    type(e), type(p) or type(h).
 
-10. "MOST COMMON RACE" / any superlative over a grouped count — use the
-    COLLECT/UNWIND skeleton from rule C. Never reopen COUNT(DISTINCT h)
+10. SUPERLATIVE OVER A GROUPED COUNT (e.g. most frequent breed label) — use
+    the COLLECT/UNWIND skeleton from rule C. Never reopen COUNT(DISTINCT h)
     after a WITH that already dropped h:
     YES : MATCH (h:Horse)
           WITH h.hasRace AS race, COUNT(DISTINCT h) AS horse_count,
@@ -1446,9 +1340,10 @@ one" translate into WITH <keys>, COUNT(DISTINCT <item>) AS n → WHERE n > 1,
 never into HAVING.
 
 And: only hasName holds a bare name. Every id carries a prefix
-(Rider_Alice, Vet_DrMartin, Caretaker_Sophie, Event_Pau_SJ_2026), so a person
+(Rider_Alice, Vet_DrMartin, Caretaker_Sophie, Event_Example_01), so a person
 named in the question is matched with WHERE a.id CONTAINS "Sophie", while a
-horse is matched with {{hasName: "Dakota"}}.
+horse is matched with {{hasName: "<HorseName>"}} (substitute the name from
+the question).
 
 Schema: {schema}
 Question: {question}
@@ -1589,3 +1484,157 @@ def init_graph_chain():
     )
     
     return chain, graph
+
+
+# ── Single-retry Cypher error correction (separate from CYPHER_GENERATION_TEMPLATE) ──
+
+CYPHER_CORRECTION_PROMPT = """The following Cypher query failed with this error:
+Query: {broken_query}
+Error: {error_message}
+Question it was meant to answer: {question}
+Fix ONLY the specific issue causing this error. Do not change the query's logic or intent otherwise. Return corrected Cypher only, no commentary, no markdown."""
+
+
+def _strip_cypher_fences(text: str) -> str:
+    """Remove optional markdown fences from an LLM Cypher reply."""
+    import re
+
+    text = (text or "").strip()
+    match = re.search(r"```(?:cypher)?\s*(.*?)```", text, re.DOTALL | re.IGNORECASE)
+    if match:
+        return match.group(1).strip()
+    return text
+
+
+def _is_retryable_cypher_error(exc: BaseException) -> bool:
+    """True for Neo4j / Cypher execution failures worth one correction attempt."""
+    name = type(exc).__name__
+    if name in {
+        "CypherSyntaxError",
+        "ClientError",
+        "CypherTypeError",
+        "DatabaseError",
+        "Neo4jError",
+    }:
+        return True
+    msg = str(exc).lower()
+    markers = (
+        "variable",
+        "not defined",
+        "invalid input",
+        "syntax error",
+        "cypher",
+        "neo4j",
+        "unknown function",
+        "type mismatch",
+        "expected",
+        "cannot use",
+    )
+    return any(m in msg for m in markers)
+
+
+def _cypher_llm_from_chain(chain):
+    """Reuse the chain's existing cypher-generation LLM (same model/temperature)."""
+    gen = getattr(chain, "cypher_generation_chain", None)
+    if gen is None:
+        raise RuntimeError("Graph chain has no cypher_generation_chain")
+    llm = getattr(gen, "llm", None)
+    if llm is None:
+        # LLMChain sometimes nests the model under .llm
+        llm = getattr(getattr(gen, "llm_chain", None), "llm", None)
+    if llm is None:
+        raise RuntimeError("Could not locate cypher-generation LLM on chain")
+    return llm
+
+
+def _correct_cypher_once(llm, question: str, broken_query: str, error_message: str) -> str:
+    """One corrective LLM call; returns cleaned Cypher text."""
+    prompt = CYPHER_CORRECTION_PROMPT.format(
+        broken_query=broken_query,
+        error_message=error_message,
+        question=question,
+    )
+    response = llm.invoke(prompt)
+    content = response.content if hasattr(response, "content") else str(response)
+    return _strip_cypher_fences(content)
+
+
+def invoke_graph_chain_with_cypher_retry(chain, inputs, config=None):
+    """
+    Invoke GraphCypherQAChain with at most one Cypher-fix retry on Neo4j errors.
+
+    Success path: identical to ``chain.invoke`` (result dict unchanged).
+    Failure path: if Neo4j rejects the generated Cypher, ask the same LLM to
+    fix that error once, re-query, then run the existing QA sub-chain. On a
+    second failure, re-raise the original exception.
+    """
+    graph = chain.graph
+    original_query = graph.query
+    last_cypher = {"q": None}
+    query_error = {"exc": None}
+
+    def _tracking_query(query, *args, **kwargs):
+        last_cypher["q"] = query
+        try:
+            return original_query(query, *args, **kwargs)
+        except Exception as exc:
+            query_error["exc"] = exc
+            raise
+
+    graph.query = _tracking_query  # type: ignore[method-assign]
+    try:
+        if config is None:
+            result = chain.invoke(inputs)
+        else:
+            result = chain.invoke(inputs, config=config)
+        return result
+    except Exception as exc:
+        broken = last_cypher["q"]
+        neo4j_exc = query_error["exc"]
+        # Only retry when Neo4j rejected the generated Cypher (not QA / other failures).
+        if neo4j_exc is None or not broken or not _is_retryable_cypher_error(neo4j_exc):
+            raise
+
+        question = inputs.get("query") or inputs.get("question") or ""
+        error_message = str(neo4j_exc)
+        try:
+            llm = _cypher_llm_from_chain(chain)
+            corrected = _correct_cypher_once(llm, question, broken, error_message)
+            if not corrected:
+                raise neo4j_exc
+            context = original_query(corrected)[: getattr(chain, "top_k", 50)]
+        except Exception:
+            # Cap at one retry: surface the original Neo4j failure unchanged.
+            raise neo4j_exc from None
+
+        qa_callbacks = None
+        if config and isinstance(config, dict):
+            qa_callbacks = config.get("callbacks")
+
+        qa_inputs = {"question": question, "context": context}
+        if qa_callbacks is not None:
+            qa_out = chain.qa_chain.invoke(qa_inputs, callbacks=qa_callbacks)
+        else:
+            qa_out = chain.qa_chain.invoke(qa_inputs)
+
+        output_key = getattr(chain.qa_chain, "output_key", "text")
+        if isinstance(qa_out, dict):
+            final_answer = qa_out.get(output_key, qa_out)
+        else:
+            final_answer = qa_out
+
+        chain_output_key = getattr(chain, "output_key", "result")
+        result = {
+            chain_output_key: final_answer,
+            "cypher_retry_used": True,
+            "original_error": error_message,
+            "original_cypher": broken,
+        }
+        if getattr(chain, "return_intermediate_steps", False):
+            result["intermediate_steps"] = [
+                {"query": corrected},
+                {"context": context},
+            ]
+        return result
+    finally:
+        graph.query = original_query  # type: ignore[method-assign]
