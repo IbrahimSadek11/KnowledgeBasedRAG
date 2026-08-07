@@ -20,7 +20,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 sys.path.append(str(REPO_ROOT))
 sys.path.append(str(SCRIPT_DIR))
 
-from backend.graph_rag.llm_service import init_graph_chain
+from backend.graph_rag.llm_service import init_graph_chain, invoke_graph_chain_with_cypher_retry
 from backend.evaluation_service import init_evaluator, calculate_semantic_similarity, llm_judge_answer
 from backend.config import COST_PER_1K_INPUT, COST_PER_1K_OUTPUT, COST_PER_1K_EMBEDDING
 from backend.timing_callback import TimingCallbackHandler
@@ -174,13 +174,16 @@ for i, q_data in enumerate(questions_data, 1):
 
     callback = TimingCallbackHandler()
     attach_timing_callback(chain, callback)
+    cypher_retry_used = False
+    original_cypher_error = None
 
     try:
         executor = ThreadPoolExecutor(max_workers=1)
         future = executor.submit(
-            chain.invoke,
+            invoke_graph_chain_with_cypher_retry,
+            chain,
             {"query": question},
-            config={"callbacks": [callback]}
+            {"callbacks": [callback]},
         )
         timed_out = False
         try:
@@ -232,7 +235,9 @@ for i, q_data in enumerate(questions_data, 1):
                 'cypher_generation_time_seconds': None,
                 'answer_generation_time_seconds': None,
                 'query_cost_usd': 0.0,
-                'eval_cost_usd': 0.0
+                'eval_cost_usd': 0.0,
+                'cypher_retry_used': False,
+                'original_error': None,
             })
             callback.reset()
             continue
@@ -242,6 +247,8 @@ for i, q_data in enumerate(questions_data, 1):
         answer = result.get("result", "")
 
         cypher_query, _raw_context = extract_cypher_and_context(result)
+        cypher_retry_used = bool(result.get("cypher_retry_used", False))
+        original_cypher_error = result.get("original_error")
 
         query_time = time.time() - start_time
 
@@ -276,6 +283,8 @@ for i, q_data in enumerate(questions_data, 1):
         answer_generation_time = callback.answer_generation_time
         success = False
         query_cost = 0
+        cypher_retry_used = False
+        original_cypher_error = str(e)
 
     total_time += query_time
     
@@ -291,6 +300,8 @@ for i, q_data in enumerate(questions_data, 1):
     )
     print(f"   ⏱️  Cypher generation : {cypher_time_text}")
     print(f"   ⏱️  Answer generation : {answer_time_text}")
+    if cypher_retry_used:
+        print(f"   🔁 Cypher retry used (original error: {original_cypher_error})")
 
     # ── Execution Accuracy (EX) — separate axis from answer quality ──
     execution_match, ex_error, ex_na_reason, gold_cypher = score_execution_accuracy(
@@ -365,7 +376,9 @@ for i, q_data in enumerate(questions_data, 1):
         'success': success,
         'semantic_similarity': semantic_score,
         'llm_judge_scores': judge_scores,
-        'combined_score': (semantic_score + judge_scores['overall']) / 2  # Average
+        'combined_score': (semantic_score + judge_scores['overall']) / 2,  # Average
+        'cypher_retry_used': cypher_retry_used,
+        'original_error': original_cypher_error,
     })
     callback.reset()
 
@@ -422,6 +435,16 @@ execution_accuracy = {
     "ex_rate": ex_rate,
 }
 
+retry_used = [r for r in results if r.get("cypher_retry_used")]
+cypher_retry_stats = {
+    "retry_attempts": len(retry_used),
+    "retry_recovered": sum(1 for r in retry_used if r.get("success")),
+    "retry_success_rate": (
+        sum(1 for r in retry_used if r.get("success")) / len(retry_used)
+        if retry_used else None
+    ),
+}
+
 # Full report
 report = {
     'metadata': {
@@ -467,6 +490,7 @@ report = {
         'avg_llm_judge_accuracy': sum(r['llm_judge_scores']['accuracy'] for r in results) / len(results),
         'avg_combined_score': sum(r['combined_score'] for r in results) / len(results),
         'execution_accuracy': execution_accuracy,
+        'cypher_retry': cypher_retry_stats,
     },
     'category_stats': category_stats,
     'difficulty_stats': difficulty_stats,
@@ -527,6 +551,16 @@ print(
     f"({ex_info['match_count']}/{ex_info['applicable_count']} applicable; "
     f"{ex_info['na_count']} N/A excluded)"
 )
+retry_info = report["overall_metrics"]["cypher_retry"]
+if retry_info["retry_attempts"]:
+    rate = retry_info["retry_success_rate"]
+    rate_txt = f"{rate * 100:.1f}%" if rate is not None else "n/a"
+    print(
+        f"  Cypher retries: {retry_info['retry_attempts']} attempted, "
+        f"{retry_info['retry_recovered']} recovered ({rate_txt} retry-success)"
+    )
+else:
+    print("  Cypher retries: 0")
 
 print(f"\n📊 By Category:")
 for category, stats in sorted(category_stats.items(), key=lambda x: x[1]['avg_combined'], reverse=True):

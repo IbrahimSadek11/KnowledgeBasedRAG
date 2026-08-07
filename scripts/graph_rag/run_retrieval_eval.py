@@ -19,7 +19,10 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 sys.path.append(str(REPO_ROOT))
 
 from backend.config import OPENAI_API_KEY
-from backend.graph_rag.llm_service import init_graph_chain
+from backend.graph_rag.llm_service import (
+    init_graph_chain,
+    invoke_graph_chain_with_cypher_retry,
+)
 from backend.timing_callback import TimingCallbackHandler
 from langchain_openai import ChatOpenAI
 
@@ -152,12 +155,13 @@ Respond ONLY in JSON (no markdown):
 
 
 def run_chain_with_timeout(chain, question, callback):
-    """Invoke GraphCypherQAChain with a per-question timeout."""
+    """Invoke GraphCypherQAChain (with one Cypher-fix retry) under a timeout."""
     executor = ThreadPoolExecutor(max_workers=1)
     future = executor.submit(
-        chain.invoke,
+        invoke_graph_chain_with_cypher_retry,
+        chain,
         {"query": question},
-        config={"callbacks": [callback]},
+        {"callbacks": [callback]},
     )
     timed_out = False
     try:
