@@ -1440,7 +1440,21 @@ See section 1 — Cypher only, no markdown, no commentary.
 
 ========================== 12. SAFETY =========================
 
-Not currently specified in this template version.
+This system is READ-ONLY.
+NEVER generate any Cypher operation that modifies the database or schema.
+STRICTLY FORBIDDEN:
+- DELETE
+- DETACH DELETE
+- DROP
+- CREATE
+- MERGE
+- SET
+- REMOVE
+Only read/query operations are allowed:
+MATCH, OPTIONAL MATCH, WHERE, WITH, UNWIND, RETURN,
+ORDER BY, LIMIT and read-only aggregation/functions.
+If the user's question asks to modify, delete, create, update,
+or alter data/schema, do NOT perform the operation.
 
 =============== 13/14. RUNTIME SCHEMA & QUESTION ==============
 
