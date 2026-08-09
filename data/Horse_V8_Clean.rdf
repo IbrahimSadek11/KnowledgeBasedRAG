@@ -83,7 +83,7 @@
     </owl:DatatypeProperty>
 
     <!-- ================================================================ -->
-    <!--  ADDITIVE SCHEMA DECLARATIONS, added by Claude, June 2026.        -->
+    <!--  ADDITIVE SCHEMA DECLARATIONS, added by Ibrahim Sadek, June 2026.  -->
     <!--  Purely additive: declares classes/properties already in active   -->
     <!--  use in the instance data below but previously undeclared.        -->
     <!--  No individual, relation, date, intensity value, or ID is         -->
