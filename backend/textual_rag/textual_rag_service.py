@@ -28,16 +28,168 @@ DEFAULT_N_RESULTS = 15
 VERIFICATION_N_RESULTS = 5
 MAX_FORCED_ENTITIES = 5
 
-SYSTEM_PROMPT = """Tu es un assistant spécialisé dans le domaine équestre.
-Tu dois répondre UNIQUEMENT à partir du contexte fourni ci-dessous.
-Règles strictes :
-- Réponds en français.
-- N'utilise aucune connaissance externe.
-- N'invente aucun fait, chiffre, nom, rang, capteur ou événement.
-- Si l'information demandée n'apparaît pas clairement dans le contexte,
-  dis-le explicitement (par exemple : « L'information n'est pas présente
-  dans les documents fournis. »).
-"""
+SYSTEM_PROMPT = "You are a grounded answer-synthesis assistant."
+
+TEXTUAL_ROLE_AND_TASK = (
+    "1. ROLE / TASK\n"
+    "Tu es un assistant spécialisé dans le domaine équestre. Réponds à la "
+    "question posée en utilisant UNIQUEMENT les documents textuels "
+    "récupérés fournis ci-dessous. Transforme ces éléments en une réponse "
+    "claire en langage naturel — ne te contente pas de reproduire des "
+    "extraits bruts."
+)
+
+TEXTUAL_GROUNDING_RULES = (
+    "4. STRICT GROUNDING\n"
+    "- Base ta réponse exclusivement sur les documents récupérés fournis.\n"
+    "- N'utilise aucune connaissance externe.\n"
+    "- N'invente jamais de fait, chiffre, nom, rang, capteur, événement, "
+    "relation ou explication absent des documents.\n"
+    "- Si un fait n'est pas explicitement soutenu par les documents "
+    "récupérés, ne l'affirme pas.\n"
+    "- Ne transforme pas une hypothèse plausible en fait.\n"
+    "- Ne complète jamais silencieusement une information manquante."
+)
+
+TEXTUAL_RELEVANCE_RULES = (
+    "5. RELEVANCE\n"
+    "- Réponds exactement à ce qui est demandé.\n"
+    "- N'ajoute pas de détails hors sujet simplement parce qu'ils "
+    "apparaissent dans les documents.\n"
+    "- Cette règle ne doit pas empêcher une réponse complète : voir la "
+    "section 6."
+)
+
+TEXTUAL_COMPLETENESS_RULES = (
+    "6. COMPLETENESS\n"
+    "- Utilise toutes les informations pertinentes présentes dans les "
+    "documents récupérés qui sont nécessaires pour répondre complètement.\n"
+    "- Si plusieurs documents apportent chacun une partie pertinente de la "
+    "réponse, combine-les.\n"
+    "- N'ignore pas un document pertinent simplement parce qu'un autre "
+    "document contient déjà une réponse partielle.\n"
+    "- Pour une liste, inclue tous les éléments pertinents réellement "
+    "présents dans les documents récupérés, sauf lorsque la question "
+    "demande seulement des exemples.\n"
+    "- Pour des valeurs extrêmes ou plusieurs réponses valides "
+    "explicitement présentes, ne supprime pas arbitrairement les "
+    "égalités.\n"
+    "- Les documents fournis sont un échantillon récupéré et peuvent ne pas "
+    "couvrir toutes les entités ou tous les faits pertinents du corpus : "
+    "n'affirme jamais qu'une réponse est exhaustive à l'échelle du corpus "
+    "entier sur la seule base de ces documents.\n"
+    "- Cette réserve d'exhaustivité vise les dénombrements, les "
+    "inventaires, les listes exhaustives et les affirmations d'absence. "
+    "Elle ne s'applique pas à une question factuelle simple portant sur une "
+    "entité nommée : si le document de cette entité énonce explicitement la "
+    "valeur demandée, réponds directement, sans réserve inutile."
+)
+
+TEXTUAL_INSUFFICIENT_CONTEXT_RULES = (
+    "7. INSUFFICIENT / EMPTY CONTEXT\n"
+    "- Si aucun document pertinent n'est fourni, ne réponds pas à partir de "
+    "connaissances externes.\n"
+    "- Si les documents ne contiennent pas l'information demandée, dis-le "
+    "explicitement (par exemple : « L'information n'est pas présente dans "
+    "les documents fournis. »).\n"
+    "- N'interprète jamais automatiquement l'absence d'information comme "
+    "une preuve de « non ».\n"
+    "- Une absence dans les documents récupérés ne prouve pas "
+    "nécessairement une absence dans tout le corpus."
+)
+
+TEXTUAL_PARTIAL_ANSWER_RULES = (
+    "8. PARTIAL ANSWER HANDLING\n"
+    "- Si une partie de la question est soutenue par les documents mais "
+    "qu'une autre partie ne l'est pas, donne la partie soutenue.\n"
+    "- Identifie clairement quelle partie manque.\n"
+    "- Ne transforme pas une réponse partielle en réponse complète.\n"
+    "- Ne refuse pas toute la réponse simplement parce qu'un élément est "
+    "absent."
+)
+
+TEXTUAL_DATA_FIDELITY_RULES = (
+    "9. DATA FIDELITY\n"
+    "- Reproduis les noms exactement tels qu'ils apparaissent.\n"
+    "- Reproduis exactement les identifiants lorsqu'ils sont pertinents.\n"
+    "- Reproduis exactement les nombres, dates, classements, fréquences, "
+    "durées, catégories, disciplines, phases d'entraînement, identifiants "
+    "de capteurs et toute autre valeur factuelle telle que les documents "
+    "récupérés la soutiennent.\n"
+    "- Ne modifie aucune valeur numérique.\n"
+    "- N'invente aucun calcul qui ne soit pas explicitement soutenu par les "
+    "documents récupérés.\n"
+    "- Ne fusionne jamais deux entités différentes au motif que leurs "
+    "descriptions se ressemblent."
+)
+
+TEXTUAL_CONFLICT_RULES = (
+    "10. CONFLICTING PASSAGES\n"
+    "- Si deux documents récupérés donnent des informations contradictoires "
+    "sur le même fait, ne choisis pas silencieusement l'un des deux.\n"
+    "- Signale brièvement la contradiction.\n"
+    "- Présente les deux valeurs ou affirmations pertinentes.\n"
+    "- N'invente pas de résolution si les documents ne permettent pas de "
+    "déterminer laquelle est correcte.\n"
+    "- Si les documents parlent de périodes, d'événements ou d'entités "
+    "différents, vérifie d'abord qu'il s'agit réellement d'une "
+    "contradiction avant de la signaler."
+)
+
+TEXTUAL_COMPARISON_RULES = (
+    "11. COMPARISON RULES\n"
+    "Cette question est une comparaison. Suis ce protocole strictement :\n"
+    "a) Nomme explicitement les entités comparées.\n"
+    "b) Pour chaque entité, n'utilise que les attributs réellement présents "
+    "dans les documents récupérés — n'invente aucun attribut manquant.\n"
+    "c) Ne compare que les champs pour lesquels toutes les entités concernées "
+    "ont une donnée (champs qui se chevauchent).\n"
+    "d) Si une entité n'a pas de donnée pour un attribut que tu voudrais "
+    "comparer, dis-le explicitement plutôt que d'omettre silencieusement "
+    "ou de deviner.\n"
+    "e) Présente les éléments retenus pour chaque entité comparée avant de "
+    "donner la conclusion finale.\n"
+    "f) N'infère aucune causalité à partir de différences descriptives."
+)
+
+TEXTUAL_AGGREGATION_RULES = (
+    "12. AGGREGATION RULES\n"
+    "Cette question demande un dénombrement, une distribution ou une "
+    "propriété d'ensemble. Suis ce protocole :\n"
+    "a) Parcours TOUS les documents fournis (pas seulement le premier).\n"
+    "b) Extrais et agrège uniquement les faits explicitement présents.\n"
+    "c) Si tu comptes ou listes des entités, base-toi sur l'union des "
+    "documents consultés et rappelle que la liste peut être partielle "
+    "(échantillon récupéré), sans inventer les manquants.\n"
+    "d) Ne présente jamais un dénombrement issu des documents récupérés "
+    "comme un total garanti à l'échelle du corpus, sauf si les documents "
+    "eux-mêmes énoncent explicitement ce total global.\n"
+    "e) Distingue clairement « dans les documents récupérés » de « dans "
+    "tout le corpus / le système »."
+)
+
+TEXTUAL_LANGUAGE_RULES = (
+    "13. LANGUAGE\n"
+    "- Réponds en français naturel et fluide."
+)
+
+TEXTUAL_RESPONSE_STYLE_RULES = (
+    "14. RESPONSE STYLE\n"
+    "- Réponse claire, naturelle et directe.\n"
+    "- Ne mentionne jamais les embeddings, Chroma, la recherche par "
+    "similarité, le nombre de documents récupérés, ni aucun détail "
+    "d'implémentation.\n"
+    "- Quand une réserve sur la couverture est nécessaire, formule-la "
+    "naturellement : « parmi les documents consultés », « cette liste "
+    "n'est peut-être pas exhaustive » ou « les documents récupérés ne "
+    "permettent pas de confirmer… ».\n"
+    "- Ne dis jamais « d'après le prompt ».\n"
+    "- Ne reproduis pas d'extraits bruts de documents.\n"
+    "- N'expose aucune structure Python ni dictionnaire de métadonnées.\n"
+    "- Donne une conclusion directe lorsque les éléments la soutiennent."
+)
+
+INCLUDE_TEXTUAL_RELEVANCE_SCOPE = False
 
 _CORPUS_IDS_CACHE: list[str] | None = None
 
@@ -85,19 +237,14 @@ def _normalize_question(question: str) -> str:
     return q.replace("’", "'").replace("`", "'")
 
 
-def _build_user_prompt(question: str, documents: list[str], filenames: list[str]) -> str:
-    parts = ["Contexte (documents récupérés) :", ""]
+def _build_user_prompt(documents: list[str], filenames: list[str]) -> str:
+    """Build section 3 of the answer prompt: the retrieved-context block."""
+    parts = ["3. RETRIEVED CONTEXT", ""]
     for i, (filename, doc) in enumerate(zip(filenames, documents), start=1):
         parts.append(f"--- Document {i}: {filename} ---")
         parts.append(doc.strip())
         parts.append("")
-    parts.append("Question :")
-    parts.append(question.strip())
-    parts.append("")
-    parts.append(
-        "Réponds uniquement à partir du contexte ci-dessus, en français."
-    )
-    return "\n".join(parts)
+    return "\n".join(parts).rstrip()
 
 
 def _is_comparative_question(question: str) -> bool:
@@ -475,29 +622,6 @@ def _merge_retrieval_results(
     return ordered_ids, documents, filenames, doc_metadata
 
 
-COMPARISON_SYNTHESIS_INSTRUCTION = (
-    "Cette question est une comparaison. Suis ce protocole strictement :\n"
-    "a) Nomme explicitement les entités comparées.\n"
-    "b) Pour chaque entité, n'utilise que les attributs réellement présents "
-    "dans les documents récupérés — n'invente aucun attribut manquant.\n"
-    "c) Ne compare que les champs pour lesquels toutes les entités concernées "
-    "ont une donnée (champs qui se chevauchent).\n"
-    "d) Si une entité n'a pas de donnée pour un attribut que tu voudrais "
-    "comparer, dis-le explicitement plutôt que d'omettre silencieusement "
-    "ou de deviner."
-)
-
-AGGREGATION_SYNTHESIS_INSTRUCTION = (
-    "Cette question demande un dénombrement, une distribution ou une "
-    "propriété d'ensemble. Suis ce protocole :\n"
-    "a) Parcours TOUS les documents fournis (pas seulement le premier).\n"
-    "b) Extrais et agrège uniquement les faits explicitement présents.\n"
-    "c) Si tu comptes ou listes des entités, base-toi sur l'union des "
-    "documents consultés et rappelle que la liste peut être partielle "
-    "(échantillon top-K), sans inventer les manquants."
-)
-
-
 def answer_question(question: str, n_results: int = DEFAULT_N_RESULTS) -> dict[str, Any]:
     """Retrieve top-K corpus docs and answer with GPT-4o-mini grounded in them."""
     openai_client = _get_openai_client()
@@ -572,22 +696,38 @@ def answer_question(question: str, n_results: int = DEFAULT_N_RESULTS) -> dict[s
             "retrieved_metadata": [],
         }
 
-    user_prompt = _build_user_prompt(question, documents, filenames)
-    user_prompt = (
-        user_prompt
-        + "\n"
-        + "Les documents fournis sont un échantillon récupéré (top-K) et "
-        + "peuvent ne pas couvrir toutes les entités ou faits pertinents du "
-        + "corpus. Si ta réponse s'appuie sur des correspondances trouvées "
-        + "dans cet échantillon, précise-le explicitement — par exemple "
-        + "« parmi les documents consultés » ou « cette liste n'est "
-        + "peut-être pas exhaustive » — au lieu de présenter ces "
-        + "correspondances comme l'ensemble complet des résultats."
-    )
+    context_block = _build_user_prompt(documents, filenames)
+
+    answer_sections = [
+        TEXTUAL_ROLE_AND_TASK,
+        "2. ORIGINAL QUESTION\nQuestion : " + question.strip(),
+        context_block,
+        TEXTUAL_GROUNDING_RULES,
+    ]
+
+    if INCLUDE_TEXTUAL_RELEVANCE_SCOPE:
+        answer_sections.append(TEXTUAL_RELEVANCE_RULES)
+
+    answer_sections.extend([
+        TEXTUAL_COMPLETENESS_RULES,
+        TEXTUAL_INSUFFICIENT_CONTEXT_RULES,
+        TEXTUAL_PARTIAL_ANSWER_RULES,
+        TEXTUAL_DATA_FIDELITY_RULES,
+        TEXTUAL_CONFLICT_RULES,
+    ])
+
     if _is_comparative_question(question):
-        user_prompt = user_prompt + "\n\n" + COMPARISON_SYNTHESIS_INSTRUCTION
+        answer_sections.append(TEXTUAL_COMPARISON_RULES)
     if _is_aggregation_question(question):
-        user_prompt = user_prompt + "\n\n" + AGGREGATION_SYNTHESIS_INSTRUCTION
+        answer_sections.append(TEXTUAL_AGGREGATION_RULES)
+
+    answer_sections.extend([
+        TEXTUAL_LANGUAGE_RULES,
+        TEXTUAL_RESPONSE_STYLE_RULES,
+        "15. ANSWER\nRéponse :",
+    ])
+
+    answer_prompt = "\n\n".join(answer_sections)
 
     try:
         completion = openai_client.chat.completions.create(
@@ -595,7 +735,7 @@ def answer_question(question: str, n_results: int = DEFAULT_N_RESULTS) -> dict[s
             temperature=0,
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": user_prompt},
+                {"role": "user", "content": answer_prompt},
             ],
         )
         answer = (completion.choices[0].message.content or "").strip()
