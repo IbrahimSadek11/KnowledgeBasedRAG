@@ -6,6 +6,7 @@ data/tabular_rag/version2/tabular.db. Gold SQL from this folder's
 gold_queries.py. Results written to evaluation_results/tabular_rag/version2/.
 """
 
+import argparse
 import importlib.util
 import json
 import os
@@ -34,7 +35,6 @@ V2_BACKEND = os.path.join(PROJECT_ROOT, "backend", "tabular_rag", "version2")
 DB_PATH = os.path.abspath(
     os.path.join(PROJECT_ROOT, "data", "tabular_rag", "version2", "tabular.db")
 )
-TEST_DATASET_PATH = os.path.join(PROJECT_ROOT, "data", "test_dataset.json")
 RESULTS_DIR = Path(PROJECT_ROOT) / "evaluation_results" / "tabular_rag" / "version2"
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -43,6 +43,43 @@ if PROJECT_ROOT not in sys.path:
 # Prefer this folder's gold_queries.py over live scripts/tabular_rag/
 if SCRIPT_DIR not in sys.path:
     sys.path.insert(0, SCRIPT_DIR)
+
+
+def _parse_dataset_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description=(
+            "Tabular RAG v2 evaluation (dataset selectable via --30 / --100)."
+        )
+    )
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument(
+        "--30",
+        dest="use_30",
+        action="store_true",
+        help="Use data/specialization_test_30.json (30-question specialization benchmark)",
+    )
+    group.add_argument(
+        "--100",
+        dest="use_100",
+        action="store_true",
+        help="Use data/test_dataset.json (full 100-question benchmark; default)",
+    )
+    return parser.parse_args()
+
+
+_args = _parse_dataset_args()
+if _args.use_30:
+    TEST_DATASET_PATH = os.path.join(
+        PROJECT_ROOT, "data", "specialization_test_30.json"
+    )
+    DATASET_LABEL = "specialization30"
+    DATASET_EXPECTED = 30
+    DATASET_DISPLAY = "specialization 30"
+else:
+    TEST_DATASET_PATH = os.path.join(PROJECT_ROOT, "data", "test_dataset.json")
+    DATASET_LABEL = "full100"
+    DATASET_EXPECTED = 100
+    DATASET_DISPLAY = "full 100"
 
 
 def _load_as(fullname: str, path: str):
@@ -120,7 +157,12 @@ def is_no_info_shaped(answer: str) -> bool:
 
 
 print("=" * 80)
-print("🎯 TABULAR RAG EVALUATION — VERSION2 FULL 100-QUESTION BENCHMARK + EX")
+print("🎯 TABULAR RAG EVALUATION — VERSION2 BENCHMARK + EX")
+print("=" * 80)
+print("=" * 80)
+print(f"DATASET: {DATASET_DISPLAY}")
+print(f"Path: {TEST_DATASET_PATH}")
+print(f"Questions expected: {DATASET_EXPECTED}")
 print("=" * 80)
 
 # ══════════════════════════════════════════════════════════════
@@ -132,7 +174,7 @@ judge_llm, embeddings = init_evaluator()
 print("✅ Evaluation tools ready")
 
 # ══════════════════════════════════════════════════════════════
-# Load full test dataset (all questions)
+# Load test dataset
 # ══════════════════════════════════════════════════════════════
 
 print("\n📥 Loading test dataset...")
@@ -140,13 +182,13 @@ with open(TEST_DATASET_PATH, "r", encoding="utf-8") as f:
     test_data = json.load(f)
 
 questions_data = test_data["test_questions"]
-print(f"✅ Loaded {len(questions_data)} test questions (full benchmark + EX)")
+print(f"✅ Loaded {len(questions_data)} test questions")
 
 # ══════════════════════════════════════════════════════════════
 # Run evaluation
 # ══════════════════════════════════════════════════════════════
 
-print("\n🚀 Running Tabular RAG on the full 100-question benchmark...")
+print(f"\n🚀 Running Tabular RAG on the {DATASET_DISPLAY} benchmark...")
 print("─" * 80)
 
 results = []
@@ -350,12 +392,18 @@ for diff in sorted(set(r["difficulty"] for r in results)):
 # ══════════════════════════════════════════════════════════════
 
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-report_file = RESULTS_DIR / f"tabular_eval_full100_ex_{timestamp}.json"
+if DATASET_LABEL == "specialization30":
+    report_file = RESULTS_DIR / f"tabular_eval_specialization30_{timestamp}.json"
+else:
+    report_file = RESULTS_DIR / f"tabular_eval_full100_ex_{timestamp}.json"
 
 report = {
     "metadata": {
         "timestamp": timestamp,
         "pipeline": "tabular_rag_version2",
+        "dataset_label": DATASET_LABEL,
+        "dataset_path": TEST_DATASET_PATH,
+        "question_count": len(questions_data),
         "run_type": "full_benchmark_ex",
         "total_questions": n,
         "total_time_seconds": total_time,
@@ -383,7 +431,7 @@ with open(report_file, "w", encoding="utf-8") as f:
 # ══════════════════════════════════════════════════════════════
 
 print("\n" + "=" * 80)
-print("📊 TABULAR RAG FULL 100-QUESTION + EX SUMMARY")
+print(f"📊 TABULAR RAG {DATASET_DISPLAY.upper()} + EX SUMMARY")
 print("=" * 80)
 
 print("\nPer-question results:")

@@ -11,6 +11,7 @@ compare against gold Cypher/SQL — free-text answers only.
 """
 from __future__ import annotations
 
+import argparse
 import json
 import os
 import sys
@@ -42,9 +43,41 @@ from backend.textual_rag.textual_rag_service import answer_question  # noqa: E40
 # Configuration
 # ══════════════════════════════════════════════════════════════
 
-TEST_DATASET_PATH = REPO_ROOT / "data" / "test_dataset.json"
 RESULTS_DIR = REPO_ROOT / "evaluation_results" / "textual_rag"
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+
+
+def _parse_dataset_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Textual RAG evaluation (dataset selectable via --30 / --100)."
+    )
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument(
+        "--30",
+        dest="use_30",
+        action="store_true",
+        help="Use data/specialization_test_30.json (30-question specialization benchmark)",
+    )
+    group.add_argument(
+        "--100",
+        dest="use_100",
+        action="store_true",
+        help="Use data/test_dataset.json (full 100-question benchmark; default)",
+    )
+    return parser.parse_args()
+
+
+_args = _parse_dataset_args()
+if _args.use_30:
+    TEST_DATASET_PATH = REPO_ROOT / "data" / "specialization_test_30.json"
+    DATASET_LABEL = "specialization30"
+    DATASET_EXPECTED = 30
+    DATASET_DISPLAY = "specialization 30"
+else:
+    TEST_DATASET_PATH = REPO_ROOT / "data" / "test_dataset.json"
+    DATASET_LABEL = "full100"
+    DATASET_EXPECTED = 100
+    DATASET_DISPLAY = "full 100"
 
 
 def _truncate(text: str, n: int = 120) -> str:
@@ -60,8 +93,13 @@ def _avg(values) -> float:
 
 
 print("=" * 80)
-print("TEXTUAL RAG EVALUATION — FULL 100-QUESTION BENCHMARK")
+print("TEXTUAL RAG EVALUATION")
 print("(semantic similarity + LLM judge only — no EX)")
+print("=" * 80)
+print("=" * 80)
+print(f"DATASET: {DATASET_DISPLAY}")
+print(f"Path: {TEST_DATASET_PATH}")
+print(f"Questions expected: {DATASET_EXPECTED}")
 print("=" * 80)
 
 print("\nInitializing evaluation tools (reused from Graph/Tabular RAG)...")
@@ -75,7 +113,7 @@ with open(TEST_DATASET_PATH, "r", encoding="utf-8") as f:
 questions_data = test_data["test_questions"]
 print(f"Loaded {len(questions_data)} test questions from {TEST_DATASET_PATH}")
 
-print("\nRunning Textual RAG on the full 100-question benchmark...")
+print(f"\nRunning Textual RAG on the {DATASET_DISPLAY} benchmark...")
 print("-" * 80)
 
 results = []
@@ -226,12 +264,15 @@ for diff in sorted({r["difficulty"] for r in results}):
     }
 
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-report_file = RESULTS_DIR / f"semantic_evaluation_{timestamp}.json"
+report_file = RESULTS_DIR / f"semantic_evaluation_{DATASET_LABEL}_{timestamp}.json"
 
 report = {
     "metadata": {
         "timestamp": timestamp,
         "pipeline": "textual_rag",
+        "dataset_label": DATASET_LABEL,
+        "dataset_path": str(TEST_DATASET_PATH),
+        "question_count": len(questions_data),
         "run_type": "full_benchmark",
         "total_questions": n,
         "total_time_seconds": total_time,

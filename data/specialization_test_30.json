@@ -1,0 +1,289 @@
+{
+  "metadata": {
+    "name": "specialization_test_30",
+    "description": "Held-out 30-question specialization benchmark for Graph / Tabular v2 / Textual RAG (and later Fusion). expected_best_pipeline is an analysis hypothesis only — never passed to pipelines at inference time.",
+    "total_questions": 30,
+    "language": "fr",
+    "created": "2026-08-10",
+    "source_data": [
+      "Neo4j V9 / data/tabular_rag/version2/tabular.db",
+      "data/textual_rag/textual_corpus/documents/"
+    ],
+    "notes": [
+      "All ground truths manually verified against SQLite v2 and/or textual corpus documents.",
+      "Questions intentionally avoid near-duplicates of data/test_dataset.json Q1–Q100 and known prompt few-shot templates."
+    ]
+  },
+  "test_questions": [
+    {
+      "question_id": "G01",
+      "question": "Quels chevaux ont terminé aux trois premières places de Event_Fontainebleau_SJ_2026, et quels cavaliers les montaient ?",
+      "ground_truth": "1er : Luna montée par Rider_Clara ; 2e : Aurore montée par Rider_Pauline ; 3e : Rio monté par Rider_Lea.",
+      "expected_best_pipeline": "graph",
+      "specialization_reason": "Requires Event → EventParticipation → Horse and EventParticipation → Rider traversal for a ranked multi-entity result.",
+      "category": "multi_hop",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "G02",
+      "question": "À quel événement sportif sont liées les étapes d'entraînement d'Orion, et dans quelle ville cet événement a-t-il lieu ?",
+      "ground_truth": "Les étapes d'entraînement d'Orion sont liées à Event_LeMans_Cross_2026, qui se déroule au Mans.",
+      "expected_best_pipeline": "graph",
+      "specialization_reason": "Requires Horse → TrainingStage → DEPENDSON → Event, then reading eventLocation.",
+      "category": "multi_hop",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "G03",
+      "question": "À Event_Versailles_SJ_2026, quels chevaux Rider_Remi a-t-il montés et quels rangs ont-ils obtenus ?",
+      "ground_truth": "Rider_Remi a monté Etoile (rang 1) et Grondre (rang 3) à Event_Versailles_SJ_2026.",
+      "expected_best_pipeline": "graph",
+      "specialization_reason": "Requires filtering participations by rider then collecting linked horses and ranks at one event.",
+      "category": "multi_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "G04",
+      "question": "Quels acteurs non-cavaliers interviennent dans la phase de préparation de Tonnerre, et à quel événement cette phase est-elle liée ?",
+      "ground_truth": "Dans la préparation de Tonnerre interviennent Vet_DrMartin (vétérinaire) et Caretaker_Sophie (soigneur) ; cette phase est liée à Event_Clermont_Cross_2026.",
+      "expected_best_pipeline": "graph",
+      "specialization_reason": "Requires Horse → PreparationStage → INVOLVESACTOR plus PreparationStage → DEPENDSON → Event.",
+      "category": "multi_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "G05",
+      "question": "Quel classement Braise a-t-elle obtenu à Event_Nice_Dressage_2026, et avec quel cavalier ?",
+      "ground_truth": "Braise a obtenu le rang 3 à Event_Nice_Dressage_2026 avec Rider_Alice.",
+      "expected_best_pipeline": "graph",
+      "specialization_reason": "Requires Event → EventParticipation → Horse/Rider with rank on the participation node.",
+      "category": "single_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "G06",
+      "question": "Pour Horizon, à quels objectifs expérimentaux ses capteurs IMU sont-ils rattachés, et à quel événement ses étapes d'entraînement sont-elles liées ?",
+      "ground_truth": "Les capteurs de Horizon servent à FatigueDetection (IMU_CanonFore_Horizon_01) et GaitClassif_01 (IMU_Withers_Horizon_01) ; ses étapes d'entraînement sont liées à Event_Montpellier_Dr_2026.",
+      "expected_best_pipeline": "graph",
+      "specialization_reason": "Combines Sensor → ISUSEDFOR → ExperimentalObjective with Horse → TrainingStage → DEPENDSON → Event.",
+      "category": "multi_hop",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "G07",
+      "question": "À Event_Clermont_Cross_2026, quels chevaux Rider_Ines a-t-elle montés et quels rangs ont-ils obtenus ?",
+      "ground_truth": "Rider_Ines a monté Rafale (rang 1) et Tonnerre (rang 3) à Event_Clermont_Cross_2026.",
+      "expected_best_pipeline": "graph",
+      "specialization_reason": "Requires shared-rider multi-horse participation lookup at a named Cross event.",
+      "category": "multi_hop",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "G08",
+      "question": "Quel cavalier est associé à Mirage (ASSOCIATEDWITH), et quel rang Mirage a-t-il obtenu à Event_Dijon_Cross_2026 ?",
+      "ground_truth": "Mirage est associé à Rider_Pauline ; à Event_Dijon_Cross_2026, Mirage a obtenu le rang 3 avec Rider_Pauline.",
+      "expected_best_pipeline": "graph",
+      "specialization_reason": "Requires distinguishing ASSOCIATEDWITH from EventParticipation ranking on the same horse–rider pair.",
+      "category": "multi_hop",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "G09",
+      "question": "Parmi les chevaux montés par Rider_Remi à Event_Pau_SJ_2026 et à Event_Versailles_SJ_2026, lequel apparaît aux deux événements ?",
+      "ground_truth": "Seul Grondre apparaît avec Rider_Remi à la fois à Event_Pau_SJ_2026 (rang 6) et à Event_Versailles_SJ_2026 (rang 3).",
+      "expected_best_pipeline": "graph",
+      "specialization_reason": "Requires set intersection of horse neighborhoods for one rider across two event participation subgraphs.",
+      "category": "multi_hop_complex",
+      "difficulty": "very_hard"
+    },
+    {
+      "question_id": "G10",
+      "question": "Quels capteurs sont attachés à Cascade, pour quels objectifs, et quel rang Cascade a-t-elle obtenu à Event_SJ_2026_01 ?",
+      "ground_truth": "Cascade porte IMU_Sternum_Cascade_01 (FatigueDetection) et IMU_Withers_Cascade_01 (GaitClassif_01) ; à Event_SJ_2026_01 (Paris) elle a obtenu le rang 5 avec Rider_Victor.",
+      "expected_best_pipeline": "graph",
+      "specialization_reason": "Joins Sensor → Horse → Objective with a separate Horse → EventParticipation → Event path.",
+      "category": "multi_hop",
+      "difficulty": "very_hard"
+    },
+    {
+      "question_id": "T01",
+      "question": "Combien de capteurs IMU ont un offset de calibration égal à 0.015 ?",
+      "ground_truth": "7 capteurs ont un offset de calibration de 0.015.",
+      "expected_best_pipeline": "tabular_v2",
+      "specialization_reason": "Simple COUNT with a numeric/categorical filter on sensors.sensor_offset.",
+      "category": "aggregation",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "T02",
+      "question": "Comment se répartissent les capteurs IMU selon leur fréquence d'échantillonnage (sample_rate) ?",
+      "ground_truth": "66 capteurs à 200Hz, 39 à 250Hz et 3 à 300Hz.",
+      "expected_best_pipeline": "tabular_v2",
+      "specialization_reason": "Requires GROUP BY sample_rate with COUNT over the sensors table.",
+      "category": "aggregation",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "T03",
+      "question": "Comment se répartissent globalement les offsets de calibration (sensor_offset) des capteurs IMU ?",
+      "ground_truth": "50 capteurs à 0.01, 7 à 0.015 et 51 à 0.02.",
+      "expected_best_pipeline": "tabular_v2",
+      "specialization_reason": "Distribution: GROUP BY sensor_offset with COUNT over all sensors.",
+      "category": "aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "T04",
+      "question": "Quel est le nombre moyen de chevaux distincts présentés par cavalier en compétition ?",
+      "ground_truth": "En moyenne, chaque cavalier présente 2,04 chevaux distincts en compétition.",
+      "expected_best_pipeline": "tabular_v2",
+      "specialization_reason": "Nested aggregation: COUNT(DISTINCT horse_id) per rider_id then AVG.",
+      "category": "aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "T05",
+      "question": "Quel est le nombre moyen de capteurs IMU par cheval ?",
+      "ground_truth": "En moyenne, chaque cheval a 2,16 capteurs IMU.",
+      "expected_best_pipeline": "tabular_v2",
+      "specialization_reason": "Requires nested aggregation: COUNT per horse then AVG of those counts.",
+      "category": "aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "T06",
+      "question": "Combien de capteurs y a-t-il pour chaque combinaison type anatomique × objectif expérimental ?",
+      "ground_truth": "CanonOfForelimb + FatigueDetection : 20 ; CanonOfHindlimb + GaitClassif_01 : 12 ; Sternum + FatigueDetection : 26 ; Withers + GaitClassif_01 : 50.",
+      "expected_best_pipeline": "tabular_v2",
+      "specialization_reason": "Two-dimensional GROUP BY on sensor_type and objective_id.",
+      "category": "aggregation",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "T07",
+      "question": "Combien de cavaliers ont présenté exactement trois chevaux distincts en compétition ?",
+      "ground_truth": "7 cavaliers ont présenté exactement trois chevaux distincts.",
+      "expected_best_pipeline": "tabular_v2",
+      "specialization_reason": "Per-rider COUNT(DISTINCT horse_id) with HAVING = 3, then COUNT of riders.",
+      "category": "aggregation",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "T08",
+      "question": "Combien de participations ont un statut autre que « Terminé », et comment se répartissent-elles par statut ?",
+      "ground_truth": "3 participations non terminées : 1 Abandon, 1 Éliminé et 1 NonPartant (sur 101 participations au total, dont 98 Terminé).",
+      "expected_best_pipeline": "tabular_v2",
+      "specialization_reason": "Conditional COUNT / GROUP BY on event_participations.status.",
+      "category": "aggregation",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "T09",
+      "question": "Comment se répartissent les cavaliers selon le nombre de chevaux distincts qu'ils ont présentés en compétition ?",
+      "ground_truth": "8 cavaliers avec 1 cheval, 9 avec 2 chevaux, 7 avec 3 chevaux, et 1 cavalier (Rider_Alice) avec 4 chevaux.",
+      "expected_best_pipeline": "tabular_v2",
+      "specialization_reason": "Two-level aggregation: COUNT(DISTINCT horse_id) per rider, then histogram of those counts.",
+      "category": "aggregation",
+      "difficulty": "very_hard"
+    },
+    {
+      "question_id": "T10",
+      "question": "Combien d'événements y a-t-il pour chaque combinaison discipline × catégorie de niveau ?",
+      "ground_truth": "Cross / Amateur 1 : 4 ; Cross / Amateur 2 : 3 ; Dressage / Club Elite : 5 ; Dressage / Pro Elite : 1 ; ShowJumping / Amateur 1 : 2 ; ShowJumping / Amateur 2 : 2 ; ShowJumping / Pro Elite : 3.",
+      "expected_best_pipeline": "tabular_v2",
+      "specialization_reason": "Two-dimensional GROUP BY on events.discipline and events.category.",
+      "category": "aggregation",
+      "difficulty": "very_hard"
+    },
+    {
+      "question_id": "X01",
+      "question": "D'après le rapport de Vega, quel statut a-t-elle obtenu à Event_Pau_SJ_2026, et avec quel cavalier ?",
+      "ground_truth": "À Event_Pau_SJ_2026, Vega a le statut « Abandon » (rang 0) avec Rider_Baptiste.",
+      "expected_best_pipeline": "textual",
+      "specialization_reason": "Entity-centered status/rider fact retrieval from the Vega horse report.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "X02",
+      "question": "D'après le compte rendu de Event_Nice_Dressage_2026, quelle est la race du cheval classé premier ?",
+      "ground_truth": "Le vainqueur est Sirius, de race Frison.",
+      "expected_best_pipeline": "textual",
+      "specialization_reason": "Requires retrieving the Nice event report and reading the ranked entrant race field.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "X03",
+      "question": "Selon le rapport d'Horizon, quelle est sa race et quel cavalier lui est associé (ASSOCIATEDWITH) ?",
+      "ground_truth": "Horizon est de race Oldenburg et lui est associé Rider_Ines.",
+      "expected_best_pipeline": "textual",
+      "specialization_reason": "Synthesizes two explicit descriptive fields from one horse report.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "X04",
+      "question": "D'après le compte rendu de Event_Nice_Dressage_2026, quels sont les trois premiers chevaux, leurs races et leurs cavaliers ?",
+      "ground_truth": "1er : Sirius (Frison) avec Rider_Baptiste ; 2e : Eclat (Morgan) avec Rider_Chloe ; 3e : Braise (Appaloosa) avec Rider_Alice.",
+      "expected_best_pipeline": "textual",
+      "specialization_reason": "Multi-attribute synthesis from a single event report podium section.",
+      "category": "hierarchical",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "X05",
+      "question": "Quels volumes, intensités et fréquences le rapport de Braise indique-t-il pour ses quatre phases d'entraînement ?",
+      "ground_truth": "Compétition : 30min, Pic, fréquence 1 ; pré-compétition : 60min, Élevée, fréquence 3 ; préparation : 45min, Modérée, fréquence 4 ; transition : 25min, Faible, fréquence 2.",
+      "expected_best_pipeline": "textual",
+      "specialization_reason": "Assembles several explicit training metrics listed together in one horse report.",
+      "category": "hierarchical",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "X06",
+      "question": "Que dit le rapport de Mirage sur sa participation à Dijon (discipline, date, lieu, rang, cavalier) ?",
+      "ground_truth": "À Event_Dijon_Cross_2026 (cross / Cross, Amateur 1) le 2026-06-06 à Dijon, Mirage a obtenu le rang 3, statut Terminé, avec Rider_Pauline.",
+      "expected_best_pipeline": "textual",
+      "specialization_reason": "Contextual multi-field synthesis of one competition paragraph in the Mirage report.",
+      "category": "hierarchical",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "X07",
+      "question": "D'après le compte rendu de Event_Clermont_Cross_2026, dresse le classement complet avec race et cavalier pour chaque cheval.",
+      "ground_truth": "1 Rafale (Morgan, Rider_Ines) ; 2 Glacier (Anglo-Arabe, Rider_Theo) ; 3 Tonnerre (Mustang, Rider_Ines) ; 4 Orage (Fjord, Rider_Alice) ; 5 Auroch (Pur-sang, Rider_Elise).",
+      "expected_best_pipeline": "textual",
+      "specialization_reason": "Requires exhaustive listing from the event report ranking section.",
+      "category": "hierarchical",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "X08",
+      "question": "Quels capteurs le rapport d'Horizon décrit-il (identifiant, position, fréquence d'échantillonnage, objectif) ?",
+      "ground_truth": "IMU_CanonFore_Horizon_01 au canon antérieur (CanonOfForelimb), 250Hz, FatigueDetection ; IMU_Withers_Horizon_01 au garrot (Withers), 200Hz, GaitClassif_01.",
+      "expected_best_pipeline": "textual",
+      "specialization_reason": "Multi-attribute sensor description block synthesis from the Horizon report.",
+      "category": "hierarchical",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "X09",
+      "question": "Compare Horizon et Mirage d'après leurs rapports : races, cavaliers associés, et événements auxquels leurs étapes d'entraînement sont liées.",
+      "ground_truth": "Horizon (Oldenburg) est associé à Rider_Ines et ses étapes sont liées à Event_Montpellier_Dr_2026 ; Mirage (Holsteiner) est associé à Rider_Pauline et ses étapes sont liées à Event_Dijon_Cross_2026.",
+      "expected_best_pipeline": "textual",
+      "specialization_reason": "Cross-document descriptive synthesis from two horse reports without requiring global aggregation.",
+      "category": "comparison",
+      "difficulty": "very_hard"
+    },
+    {
+      "question_id": "X10",
+      "question": "À partir du rapport de Cascade, résume sa race, son cavalier associé, ses deux capteurs (position et objectif), et son rang à Paris (Event_SJ_2026_01).",
+      "ground_truth": "Cascade (race Barbe) est associée à Rider_Victor ; elle porte IMU_Sternum_Cascade_01 (sternum, FatigueDetection) et IMU_Withers_Cascade_01 (garrot, GaitClassif_01) ; à Event_SJ_2026_01 à Paris elle a obtenu le rang 5 avec Rider_Victor.",
+      "expected_best_pipeline": "textual",
+      "specialization_reason": "Entity-centered multi-section synthesis spanning identity, sensors, and competition paragraphs of one report.",
+      "category": "hierarchical",
+      "difficulty": "very_hard"
+    }
+  ]
+}

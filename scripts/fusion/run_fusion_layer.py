@@ -31,7 +31,8 @@ from backend.fusion.evaluation_wrapper import get_evaluator_and_judge
 from backend.fusion.orchestrator import run_fusion_for_question
 
 DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "evaluation_results" / "fusion"
-DATASET_PATH = PROJECT_ROOT / "data" / "test_dataset.json"
+DATASET_PATH_100 = PROJECT_ROOT / "data" / "test_dataset.json"
+DATASET_PATH_30 = PROJECT_ROOT / "data" / "specialization_test_30.json"
 
 
 def _p(msg: str = "") -> None:
@@ -57,9 +58,29 @@ def _atomic_write_json(path: Path, payload: Any) -> None:
     os.replace(tmp_path, path)
 
 
+def _resolve_dataset(args: argparse.Namespace) -> tuple[Path, str, int, str]:
+    """Return (path, dataset_label, expected_count, display_name). Default = full100."""
+    if args.use_30:
+        return DATASET_PATH_30, "specialization30", 30, "specialization 30"
+    return DATASET_PATH_100, "full100", 100, "full 100"
+
+
 def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Live Fusion RAG evaluation CLI (orchestrator-backed)."
+    )
+    dataset_group = parser.add_mutually_exclusive_group()
+    dataset_group.add_argument(
+        "--30",
+        dest="use_30",
+        action="store_true",
+        help="Use data/specialization_test_30.json (30-question specialization benchmark)",
+    )
+    dataset_group.add_argument(
+        "--100",
+        dest="use_100",
+        action="store_true",
+        help="Use data/test_dataset.json (full 100-question benchmark; default)",
     )
     parser.add_argument("--limit", type=int, default=None, help="Process only the first N questions")
     parser.add_argument("--question-id", type=str, default=None, help="Process only this question_id")
@@ -79,7 +100,7 @@ def _parse_args() -> argparse.Namespace:
         "--resume",
         action="store_true",
         help=(
-            "Resume from the most recent fusion_eval_*.json in --output-dir. "
+            "Resume from the most recent fusion_eval_<dataset>_*.json in --output-dir. "
             # Resume only reads THIS runner's own progress files under --output-dir.
             # Never reads evaluation_results/graph_rag/, tabular_rag/, or textual_rag/.
             "Only reads this runner's own progress file."
@@ -88,8 +109,8 @@ def _parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def _load_questions(args: argparse.Namespace) -> list[dict]:
-    with open(DATASET_PATH, encoding="utf-8") as f:
+def _load_questions(args: argparse.Namespace, dataset_path: Path) -> list[dict]:
+    with open(dataset_path, encoding="utf-8") as f:
         data = json.load(f)
     questions = list(data["test_questions"])
 
@@ -118,18 +139,36 @@ def _load_questions(args: argparse.Namespace) -> list[dict]:
     return questions
 
 
-def _find_latest_progress(output_dir: Path) -> Path | None:
-    # Exclude sibling *_summary.json files (same fusion_eval_* prefix).
-    files = sorted(
+def _find_latest_progress(output_dir: Path, dataset_label: str) -> Path | None:
+    # Prefer dataset-tagged progress files; for full100 also allow legacy
+    # fusion_eval_<timestamp>.json from before dataset-tagged naming.
+    preferred = sorted(
         (
             p
-            for p in output_dir.glob("fusion_eval_*.json")
+            for p in output_dir.glob(f"fusion_eval_{dataset_label}_*.json")
             if not p.name.endswith("_summary.json")
         ),
         key=lambda p: p.stat().st_mtime,
         reverse=True,
     )
-    return files[0] if files else None
+    if preferred:
+        return preferred[0]
+
+    if dataset_label != "full100":
+        return None
+
+    legacy = sorted(
+        (
+            p
+            for p in output_dir.glob("fusion_eval_*.json")
+            if not p.name.endswith("_summary.json")
+            and "specialization30" not in p.name
+            and "full100" not in p.name
+        ),
+        key=lambda p: p.stat().st_mtime,
+        reverse=True,
+    )
+    return legacy[0] if legacy else None
 
 
 def _load_completed_ids(progress_path: Path) -> tuple[list[dict], set[str]]:
@@ -302,7 +341,15 @@ def _avg(values: list[float]) -> float | None:
     return statistics.mean(values) if values else None
 
 
-def _build_summary(records: list[dict], requested: int, wall_seconds: float) -> dict:
+def _build_summary(
+    records: list[dict],
+    requested: int,
+    wall_seconds: float,
+    *,
+    dataset_label: str,
+    dataset_path: str,
+    question_count: int,
+) -> dict:
     completed = len(records)
     failed_all = 0
     success_counts = {"graph": 0, "tabular_v2": 0, "textual": 0}
@@ -407,6 +454,9 @@ def _build_summary(records: list[dict], requested: int, wall_seconds: float) -> 
         return (n / completed) if completed else None
 
     summary = {
+        "dataset_label": dataset_label,
+        "dataset_path": dataset_path,
+        "question_count": question_count,
         "questions_requested": requested,
         "questions_completed": completed,
         "questions_all_pipelines_failed": failed_all,
@@ -479,23 +529,35 @@ def _print_summary(summary: dict) -> None:
 
 def main() -> int:
     args = _parse_args()
+    dataset_path, dataset_label, dataset_expected, dataset_display = _resolve_dataset(args)
+
+    _p("=" * 80)
+    _p(f"DATASET: {dataset_display}")
+    _p(f"Path: {dataset_path}")
+    _p(f"Questions expected: {dataset_expected}")
+    _p("=" * 80)
+    _p()
+
     output_dir = Path(args.output_dir)
     if not output_dir.is_absolute():
         output_dir = PROJECT_ROOT / output_dir
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    questions = _load_questions(args)
+    questions = _load_questions(args, dataset_path)
     completed_records: list[dict] = []
     output_path: Path
 
     if args.resume:
         # Resume only reads THIS runner's own progress under --output-dir.
         # Never reads evaluation_results/graph_rag/, tabular_rag/, or textual_rag/.
-        latest = _find_latest_progress(output_dir)
+        latest = _find_latest_progress(output_dir, dataset_label)
         if latest is None:
-            _p("Resume: no prior fusion_eval_*.json found; starting a fresh run.")
+            _p(
+                f"Resume: no prior fusion_eval_{dataset_label}_*.json found; "
+                "starting a fresh run."
+            )
             stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            output_path = output_dir / f"fusion_eval_{stamp}.json"
+            output_path = output_dir / f"fusion_eval_{dataset_label}_{stamp}.json"
         else:
             completed_records, done_ids = _load_completed_ids(latest)
             before = len(questions)
@@ -506,7 +568,7 @@ def main() -> int:
             output_path = latest
     else:
         stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        output_path = output_dir / f"fusion_eval_{stamp}.json"
+        output_path = output_dir / f"fusion_eval_{dataset_label}_{stamp}.json"
 
     summary_path = output_path.with_name(output_path.stem + "_summary.json")
     requested = len(questions) + (
@@ -533,6 +595,8 @@ def main() -> int:
 
             # Orchestrator runs live pipelines + judges + selection + eval.
             # Formatted sections below reprint fields from the returned record.
+            # Analysis-only fields (expected_best_pipeline, specialization_reason)
+            # are intentionally NOT passed to inference.
             _p("-" * 80)
             _p("RUNNING FULL FUSION ORCHESTRATOR (live → evidence → agreement → select → eval)")
             _p("-" * 80)
@@ -567,7 +631,14 @@ def main() -> int:
                 _p()
     finally:
         wall_seconds = time.perf_counter() - wall_start
-        summary = _build_summary(completed_records, requested, wall_seconds)
+        summary = _build_summary(
+            completed_records,
+            requested,
+            wall_seconds,
+            dataset_label=dataset_label,
+            dataset_path=str(dataset_path),
+            question_count=dataset_expected,
+        )
         _print_summary(summary)
         try:
             _atomic_write_json(summary_path, summary)
