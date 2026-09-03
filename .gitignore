@@ -10,6 +10,7 @@ dist/
 venv/
 env/
 .venv
+.pytest_cache/
 
 # Environment
 .env

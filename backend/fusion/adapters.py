@@ -85,7 +85,9 @@ def run_graph_live(question: str) -> dict:
     """Invoke the cached Graph RAG chain and normalize to the shared result shape."""
     metadata: dict[str, Any] = {}
     try:
-        from backend.graph_rag.llm_service import invoke_graph_chain_with_cypher_retry
+        from backend.graph_rag.cypher_sensor_identity import (
+            invoke_graph_chain_with_cypher_retry,
+        )
 
         chain = get_graph_chain()
         t0 = time.perf_counter()
@@ -93,11 +95,15 @@ def run_graph_live(question: str) -> dict:
         elapsed = time.perf_counter() - t0
 
         answer, cypher, raw_rows, steps = _extract_graph_fields(result)
+        if result.get("final_cypher"):
+            cypher = result["final_cypher"]
         success = bool(answer)
         if result.get("cypher_retry_used"):
             metadata["cypher_retry_used"] = True
             metadata["original_error"] = result.get("original_error")
             metadata["original_cypher"] = result.get("original_cypher")
+            metadata["final_cypher"] = result.get("final_cypher")
+            metadata["retry_reason"] = result.get("retry_reason")
 
         return {
             "pipeline": "graph",

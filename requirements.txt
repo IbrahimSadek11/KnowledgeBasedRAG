@@ -1,5 +1,8 @@
 # Core Web Framework
 streamlit
+# Production FastAPI service (api/api_server.py)
+fastapi
+uvicorn
 # LangChain Ecosystem
 langchain
 langchain-openai
@@ -8,6 +11,11 @@ langchain-core
 
 # OpenAI Integration
 openai
+
+# RAGAS evaluation (CLI: scripts/ragas/run_ragas_evaluation.py)
+# Collections API: Faithfulness, AnswerRelevancy, ContextPrecision, ContextRecall
+# Uses openai client via ragas.llms.llm_factory — does not replace langchain-openai
+ragas>=0.3.0,<0.5
 
 # Neo4j Database
 neo4j
@@ -29,4 +37,6 @@ beautifulsoup4
 # Utilities
 numpy
 pandas
+python-multipart
+pypdf
 

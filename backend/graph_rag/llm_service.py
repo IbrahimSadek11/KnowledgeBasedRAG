@@ -85,7 +85,11 @@ SECTION 1 — SCHEMA (THE ONLY SOURCE OF TRUTH)
 - EventParticipation : p.rank (integer), p.status
 - Stages           : t.Volume (STRING, e.g. "50min"), t.Intensity (STRING,
                      e.g. "Modérée"), t.Frequency (INTEGER, e.g. 4), t.id
-- Sensors          : s.id, s.hasSensorTime (STRING, e.g. "200Hz"),
+- Sensors          : s.id (RDF/graph-local identifier, e.g. "IMU_Sternum_Zephyr_01"
+                     or "dynamic_sensor_6845"),
+                     s.hasSensorID (ontology sensor identifier, e.g. "IMU-ST-010"
+                     or "6845"),
+                     s.hasSensorTime (STRING, e.g. "200Hz"),
                      s.hasSensorOffset (STRING), s.hasFormat, s.hasFileSize
 - CompetitiveSeason : s.seasonName = "Saison 2026", s.seasonStart, s.seasonEnd
 - ExperimentalObjective : eo.id ∈ {{'GaitClassif_01', 'FatigueDetection'}}
@@ -1014,22 +1018,57 @@ p.rank IS NOT NULL…): every participation present in the graph is a valid
 official result.
 
 4.2 REAL IDENTIFIERS
-Sensor identifiers often embed a horse token (e.g. IMU_Withers_<Horse>_01).
-If the question quotes an identifier that might not exist, prefer filtering
-by position label and by horse rather than a strict equality on s.id.
+Sensor RDF/graph-local ids often embed a horse token (e.g. IMU_Withers_<Horse>_01).
+That value lives in s.id. It is NOT the same as the ontology property s.hasSensorID.
+
+SENSOR IDENTIFIER RULE (InertialSensors):
+- s.id = graph/RDF-local identifier (internal). Examples: "IMU_Sternum_Zephyr_01",
+  "dynamic_sensor_6845".
+- s.hasSensorID = actual domain/business sensor identifier from the ontology.
+  Examples: "IMU-ST-010", "6845", "0C31".
+- If the question says "sensor ID", "sensor identifier", "ID of the sensor",
+  or provides a value intended as a sensor identifier, filter/return using
+  s.hasSensorID — NEVER assume that user-facing value equals s.id.
+- Do not invent Horse/Rider/Event merely because a sensor ID is asked.
 
 4.3 SENSORS
-- The anatomical position is obtained with labels(s)[1].
+- Anatomical position is a second Neo4j label among Withers, Sternum,
+  CanonOfForelimb, CanonOfHindlimb — not a property.
+- Prefer ontology-aware position checks (s:Sternum, s:Withers, …) over
+  labels(s)[1], because label order is not ontology semantics.
 - Never list every sensor one by one: group them by position, by objective
   or by horse.
+CORRECT — position for a user-facing sensor ID:
+MATCH (s:InertialSensors)
+WHERE s.hasSensorID = "6845"
+RETURN s.hasSensorID AS sensor_id,
+       CASE
+         WHEN s:Sternum THEN "Sternum"
+         WHEN s:Withers THEN "Withers"
+         WHEN s:CanonOfForelimb THEN "CanonOfForelimb"
+         WHEN s:CanonOfHindlimb THEN "CanonOfHindlimb"
+       END AS position
 CORRECT — a named horse's sensors with their objective:
 MATCH (h:Horse {{hasName: "<HorseName>"}})<-[:ISATTACHEDTO]-(s:InertialSensors)
 MATCH (s)-[:ISUSEDFOR]->(eo:ExperimentalObjective)
-RETURN h.hasName, s.id, labels(s)[1] AS position, eo.id AS objective
+RETURN h.hasName, s.hasSensorID AS sensor_id, s.id AS graph_id,
+       CASE
+         WHEN s:Sternum THEN "Sternum"
+         WHEN s:Withers THEN "Withers"
+         WHEN s:CanonOfForelimb THEN "CanonOfForelimb"
+         WHEN s:CanonOfHindlimb THEN "CanonOfHindlimb"
+       END AS position,
+       eo.id AS objective
 ORDER BY objective, position
 CORRECT — calibration per position:
 MATCH (s:InertialSensors)
-RETURN labels(s)[1] AS position, s.hasSensorOffset AS offset,
+RETURN CASE
+         WHEN s:Sternum THEN "Sternum"
+         WHEN s:Withers THEN "Withers"
+         WHEN s:CanonOfForelimb THEN "CanonOfForelimb"
+         WHEN s:CanonOfHindlimb THEN "CanonOfHindlimb"
+       END AS position,
+       s.hasSensorOffset AS offset,
        COUNT(DISTINCT s) AS sensor_count
 ORDER BY position, offset
 
