@@ -3,6 +3,9 @@ streamlit
 # Production FastAPI service (api/api_server.py)
 fastapi
 uvicorn
+# Direct pydantic models (api/api_server.py, dynamic_kg/extract_facts.py)
+pydantic
+
 # LangChain Ecosystem
 langchain
 langchain-openai
@@ -12,10 +15,15 @@ langchain-core
 # OpenAI Integration
 openai
 
+# Textual RAG vector store (backend/textual_rag, scripts/textual_rag)
+chromadb
+
 # RAGAS evaluation (CLI: scripts/ragas/run_ragas_evaluation.py)
 # Collections API: Faithfulness, AnswerRelevancy, ContextPrecision, ContextRecall
 # Uses openai client via ragas.llms.llm_factory — does not replace langchain-openai
 ragas>=0.3.0,<0.5
+# HuggingFace Datasets used by scripts/graph_rag/ragas_cypher_eval*.py
+datasets
 
 # Neo4j Database
 neo4j
@@ -39,4 +47,7 @@ numpy
 pandas
 python-multipart
 pypdf
+
+# Official test suite
+pytest
 

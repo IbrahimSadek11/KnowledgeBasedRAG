@@ -1,26 +1,30 @@
-# SportLLM: GraphRAG-Based Equestrian Knowledge System
+# KnowledgeBasedRAG: Multi-Pipeline RAG for Olympic Equestrian Sports
 
-A natural language interface for querying equestrian sports data using Graph Retrieval-Augmented Generation (GraphRAG). Built in partnership with the Institut Français du Cheval et de l'Équitation (IFCE).
+A natural language system for querying Olympic equestrian sports data across three independent RAG pipelines, with a Fusion layer for comparative evaluation. Built in partnership with the Institut Français du Cheval et de l'Équitation (IFCE).
 
 ![Equestrian Knowledge Graph](https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=1200&h=400&fit=crop&q=80)
 
 ## Overview
 
-SportLLM is an intelligent chatbot that enables natural French language queries over a structured equestrian knowledge graph. The system combines Neo4j graph database with OpenAI's GPT-4o-mini to translate questions into precise Cypher queries, retrieving accurate information about horses, riders, training sessions, sensors, and competitions.
+KnowledgeBasedRAG answers French-language questions about horses, riders, training stages, inertial sensors, and competitions. It is a **multi-pipeline** system: Graph RAG, Tabular RAG, and Textual RAG each retrieve from a different store. A Fusion layer can run all three, compare their answers, and select one for evaluation.
+
+**Only Graph RAG is integrated into RPHD.** Tabular RAG, Textual RAG, and Fusion remain standalone components in this repository. They are not called by RPHD.
 
 **Key Features:**
 - Natural language querying in French
-- GraphRAG architecture for accurate, grounded responses
-- Knowledge graph with 2 horses, 3 disciplines, 4 sensors, and comprehensive training data
-- 91.8% overall accuracy, 88% success rate on 40 test questions
-- Performance analytics dashboard
-- News summary from equestrian sources
+- Three independent RAG pipelines (graph, tabular, textual)
+- Fusion evaluation: pairwise agreement plus groundedness, completeness, and relevance
+- Graph RAG HTTP API for RPHD (PDF candidate extraction, approved Neo4j writes, scoped chat)
+- Knowledge graph with 50 horses, 25 riders, 20 events, and 108 inertial sensors
+- Streamlit analytics dashboard and equestrian news page
+- Specialization-30 and full-100 evaluation harnesses, including RAGAS
 
 **Technology Stack:**
-- Backend: Python, LangChain, Neo4j
-- Frontend: Streamlit
+- Pipelines: Neo4j + Cypher (Graph), SQLite + text-to-SQL (Tabular), Chroma + embeddings (Textual)
 - LLM: OpenAI GPT-4o-mini
-- Data: RDF/OWL ontology converted to graph database
+- Local UI: Streamlit
+- RPHD service: FastAPI and Uvicorn
+- Data: RDF/OWL ontology (`data/Horse_V9_augmented.rdf`) loaded into Neo4j
 
 ## Quick Start
 
@@ -34,8 +38,8 @@ SportLLM is an intelligent chatbot that enables natural French language queries 
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/YOUR_USERNAME/sportllm-equestrian.git
-cd sportllm-equestrian
+git clone https://github.com/IbrahimSadek11/KnowledgeBasedRAG.git
+cd KnowledgeBasedRAG
 ```
 
 2. Install dependencies:
@@ -45,35 +49,48 @@ pip install -r requirements.txt
 
 3. Configure environment variables:
 
-Create a `.env` file in the project root:
+Copy `.env.example` to `.env` in the project root:
 ```env
-# Neo4j Configuration
+OPENAI_API_KEY=your_openai_api_key_here
 NEO4J_URI=bolt://localhost:7687
 NEO4J_USER=neo4j
-NEO4J_PASSWORD=your_password
+NEO4J_PASSWORD=your_neo4j_password_here
 NEO4J_DATABASE=neo4j
-
-# OpenAI Configuration
-OPENAI_API_KEY=your_openai_api_key
 ```
 
-4. Initialize the database:
+RPHD does not read this `.env`. It reaches Graph RAG through `EQUESTRIAN_RAG_URL` (RPHD default: `http://localhost:8500`).
+
+4. Initialize the graph database:
 ```bash
 python scripts/setup_database.py
 ```
 
-This script will:
-- Parse the RDF ontology file (`data/Horse_generatedDataV2.rdf`)
-- Create nodes and relationships in Neo4j
-- Set up proper indexes
+This script parses `data/Horse_V9_augmented.rdf`, creates Neo4j nodes and relationships, and sets up indexes.
 
-5. Launch the application:
+### Standalone Streamlit interface (port 8501)
+
 ```bash
 cd frontend
 streamlit run app.py
 ```
 
-The chatbot interface will open in your browser at `http://localhost:8501`
+The local chatbot opens at `http://localhost:8501`.
+
+### FastAPI service for RPHD (port 8500)
+
+From the repository root:
+
+```bash
+python -m uvicorn api.api_server:app --host 0.0.0.0 --port 8500
+```
+
+| Method | Path | Role |
+|---|---|---|
+| `GET` | `/health` | Liveness |
+| `GET` | `/graph` | Export the current Neo4j graph for visualization |
+| `POST` | `/query` | Graph RAG question; optional `stable_node_ids` / `relationship_ids` membership scope |
+| `POST` | `/pdf-receive` | Extract a candidate graph from a PDF (no Neo4j write) |
+| `POST` | `/dynamic-ingestion/approve` | Human-approved write of a reviewed candidate graph |
 
 ## Usage Examples
 
@@ -99,44 +116,58 @@ Answer: "Dakota a 4 capteurs IMU attachés: au garrot, au sternum,
          au canon antérieur et au canon postérieur."
 ```
 
+These examples illustrate question style. The V9 graph contains 50 horses, not only Dakota and Naya.
+
 ## Project Structure
 
 ```
-sportllm-equestrian/
+KnowledgeBasedRAG/
 │
-├── backend/                    # Core logic and services
-│   ├── config.py              # Configuration management
-│   ├── evaluation_service.py  # Shared quality assessment
-│   ├── news_service.py        # News summary
-│   ├── graph_rag/             # Graph RAG (Neo4j text-to-Cypher)
-│   │   ├── llm_service.py     # GraphRAG pipeline (CORE)
-│   │   ├── graph_service.py   # Neo4j operations
-│   │   └── _archive/          # Unwired validator trio (bytecode restore)
-│   └── tabular_rag/           # Tabular RAG (SQLite text-to-SQL)
+├── api/                           # FastAPI service for RPHD (port 8500)
+│   └── api_server.py
 │
-├── frontend/                   # User interface
-│   ├── app.py                 # Main chatbot interface
+├── backend/                       # Core logic and services
+│   ├── config.py                  # Environment and cost constants
+│   ├── evaluation_service.py      # Shared semantic + LLM-as-judge scoring
+│   ├── news_service.py            # News summary
+│   ├── graph_rag/                 # Graph RAG (Neo4j text-to-Cypher)
+│   ├── tabular_rag/               # Tabular RAG (SQLite text-to-SQL)
+│   ├── textual_rag/               # Textual RAG (Chroma + embeddings)
+│   └── fusion/                    # Fusion: adapters, agreement, evidence, selector
+│
+├── dynamic_kg/                    # PDF candidate extraction for Graph RAG
+│
+├── frontend/                      # Streamlit UI (port 8501)
+│   ├── app.py
 │   └── pages/
-│       ├── 1_Analytics.py     # Statistics dashboard
-│       └── 2_News.py          # News feed
+│       ├── 1_Analytics.py
+│       └── 2_News.py
 │
-├── data/                       # Data files
-│   ├── test_dataset.json      # Shared evaluation questions
-│   └── conversations/         # Chat histories
+├── data/
+│   ├── Horse_V9_augmented.rdf     # Final RDF ontology loaded by setup_database.py
+│   ├── specialization_test_30.json
+│   ├── test_dataset.json          # Full 100-question benchmark
+│   ├── tabular_rag/               # SQLite databases for Tabular RAG
+│   └── textual_rag/               # Text corpus (Chroma store is local/regenerated)
 │
 ├── scripts/
 │   ├── setup_database.py
-│   ├── graph_rag/             # Graph eval / retrieval / RAGAS runners
-│   └── tabular_rag/           # Tabular eval / ETL helpers
+│   ├── graph_rag/                 # Graph evaluation
+│   ├── tabular_rag/               # Tabular evaluation (v2 is the current pipeline)
+│   ├── textual_rag/               # Textual evaluation and corpus indexing
+│   ├── fusion/                    # Fusion evaluation CLI
+│   └── ragas/                     # RAGAS CLI on specialization-30
 │
 ├── evaluation_results/
 │   ├── graph_rag/
-│   └── tabular_rag/
+│   ├── tabular_rag/
+│   ├── textual_rag/
+│   ├── fusion/
+│   └── ragas/
 │
-├── docs/                       # Documentation
+├── docs/
 │   └── IMPLEMENTATION.md
 │
-├── graph_prompt_changelog.md
 ├── requirements.txt
 ├── .env.example
 └── README.md
@@ -144,33 +175,51 @@ sportllm-equestrian/
 
 ## System Architecture
 
-### GraphRAG Pipeline
+### Three independent pipelines
+
+**Graph RAG** translates a French question to Cypher, executes it on Neo4j, and writes a grounded natural-language answer.
 
 ```
 User Question (French)
     ↓
-Cypher Generation Prompt + GPT-4o-mini
+Cypher generation (GPT-4o-mini)
     ↓
-Cypher Query
+Neo4j execution
     ↓
-Neo4j Execution
+Retrieved rows
     ↓
-Retrieved Data
-    ↓
-QA Prompt + GPT-4o-mini
+QA generation (GPT-4o-mini)
     ↓
 Natural Language Answer (French)
 ```
 
-### Knowledge Graph Schema
+**Tabular RAG** translates the question to SQL over SQLite (`data/tabular_rag/`) and synthesizes an answer from the result set.
+
+**Textual RAG** embeds the question, retrieves passages from a Chroma collection built from `data/textual_rag/textual_corpus/`, and synthesizes an answer from those passages.
+
+### Fusion layer
+
+Fusion is an evaluation orchestrator, not the RPHD production path:
+
+1. Runs Graph, Tabular v2, and Textual on the same question.
+2. Scores each answer against its own retrieved evidence (groundedness, completeness, relevance).
+3. Judges pairwise agreement among the three answers.
+4. Selects one answer using evidence scores, with ties broken by groundedness, then completeness, then relevance.
+
+### RPHD integration
+
+RPHD talks only to the FastAPI Graph RAG service (`EQUESTRIAN_RAG_URL`). PDF upload extracts a candidate graph; a human must approve before Neo4j is written. Chat can optionally constrain Cypher to a selected subgraph.
+
+## Knowledge Graph Schema
+
+Counts from `data/Horse_V9_augmented.rdf`:
 
 **Nodes:**
-- Horse (Dakota, Naya)
-- Rider (Emma, Leo, Manon)
-- Training Stages (Preparation, Pre-Competition, Competition, Transition)
-- Events (ShowJumping, Dressage, Cross)
-- Sensors (InertialSensors with body positions)
-- Experimental Objectives (Gait Classification, Fatigue Detection)
+- Horse (50)
+- Rider (25)
+- Sporting events (20: 7 Cross, 7 Show Jumping, 6 Dressage)
+- InertialSensors (108), with body positions such as withers, sternum, and cannons
+- Training stages (Preparation, Pre-Competition, Competition, Transition)
 
 **Relationships:**
 - `(Rider)-[:ASSOCIATEDWITH]->(Horse)`
@@ -182,105 +231,141 @@ Natural Language Answer (French)
 ## Backend Components
 
 ### config.py
-Environment variable management, Neo4j credentials, OpenAI API key, cost calculation constants
+Loads `.env`, Neo4j connection settings, the OpenAI API key, and token-cost constants.
 
-### graph_service.py
-Neo4j connection initialization, graph schema refresh, Cypher query execution
+### graph_rag/
+Cypher generation, Neo4j access, retry/identity helpers, visualization export, and dynamic ingestion writes used by the RPHD API.
 
-### llm_service.py (CORE COMPONENT)
-- Cypher generation prompt (300+ lines of detailed rules)
-- QA response prompt (formatting rules)
-- GraphCypherQAChain initialization
-- LLM configuration (GPT-4o-mini, temp=0)
-- Greeting handling and system description
-- Error management for SUM() operations on strings
+### tabular_rag/
+SQLite ETL and text-to-SQL. Version 2 is the current Tabular pipeline (`backend/tabular_rag/version2/`).
+
+### textual_rag/
+Chroma retrieval and grounded answer synthesis from the textual corpus.
+
+### fusion/
+Live adapters, evidence judge, pairwise agreement judge, deterministic selector, and per-question orchestrator.
 
 ### evaluation_service.py
-Semantic similarity calculation, LLM-as-judge evaluation, embedding-based comparison
+Semantic similarity and LLM-as-judge scoring shared by Graph, Tabular, Textual, and Fusion evaluation runners.
 
 ### news_service.py
-RSS feed aggregation, web scraping, LLM-based summarization
+RSS aggregation, page fetching, and LLM summarization for the Streamlit News page.
+
+### dynamic_kg/
+PDF text extraction to a candidate graph. Used by `POST /pdf-receive`. No Neo4j write until `POST /dynamic-ingestion/approve`.
 
 ## Frontend Components
 
 ### app.py (MAIN INTERFACE)
-Streamlit chat interface, conversation management, user input handling, response display, chat history persistence
+Streamlit chat interface, conversation management, and response display.
 
 ### pages/1_Analytics.py
-Graph statistics and visualizations (horses, events, sensors distributions)
+Graph statistics and Plotly visualizations (horses, events, sensors).
 
 ### pages/2_News.py
-Equestrian news aggregation with AI-generated summaries
+Equestrian news aggregation with generated summaries.
 
 ## Data Layer
 
-### Horse_generatedDataV2.rdf
-Semantic ontology in RDF/OWL format containing all domain knowledge
+### Horse_V9_augmented.rdf
+Final RDF/OWL ontology (4,284 triples) loaded by `scripts/setup_database.py`.
+
+### specialization_test_30.json
+30-question specialization benchmark used for the reported internship evaluation.
 
 ### test_dataset.json
-40 evaluation questions with ground truth answers, categorized by type and difficulty
+Full 100-question benchmark (`--100` on the evaluation CLIs).
 
-### conversations/
-Saved chat histories in JSON format for persistence
+### tabular_rag/
+SQLite databases consumed by Tabular RAG v1/v2.
+
+### textual_rag/textual_corpus/
+Fact sheets and documents for Textual RAG. The Chroma directory is regenerated locally with `python scripts/textual_rag/index_corpus.py` and is not required in git.
 
 ## Evaluation Results
 
-Performance on 40 test questions:
-- **Overall Accuracy:** 91.8%
-- **Success Rate:** 100% (all questions answered)
-- **Average Response Time:** 2.3 seconds
-- **Cypher Generation Accuracy:** 95%
+Figures below are from the selected **specialization-30** final JSON files (30 questions). Combined score is `(semantic_similarity + llm_judge_overall) / 2`. RAGAS metrics are 0–1 means over valid scores only.
 
-**By Question Category:**
-- Simple Retrieval: 95% accuracy
-- Multi-hop Reasoning: 92% accuracy
-- Aggregation Queries: 88% accuracy
-- Comparison Queries: 90% accuracy
+**Standalone pipelines (20 August 2026):**
+
+| Pipeline | Combined | Semantic | LLM-as-judge | Technical success | Source |
+|---|---|---|---|---|---|
+| Tabular RAG v2 | 0.829 | 0.870 | 0.789 | 29/30 (96.7%) | `evaluation_results/tabular_rag/version2/tabular_eval_specialization30_20260820_232347.json` |
+| Textual RAG | 0.790 | 0.874 | 0.707 | 30/30 (100%) | `evaluation_results/textual_rag/semantic_evaluation_specialization30_20260820_232741.json` |
+
+**Fusion selection (20 August 2026),** `fusion_eval_specialization30_20260820_232829_summary.json`:
+
+- 30/30 questions completed
+- Selected-answer combined score: 0.797 (semantic 0.877, LLM-as-judge 0.717)
+- Technical success of the three live pipelines: Graph 96.7%, Tabular v2 96.7%, Textual 100%
+- Selection counts: Graph 18, Tabular v2 10, Textual 2
+- Pairwise agreement rate: 0.460
+
+**RAGAS (17 August 2026),** same 30-question file:
+
+| Metric | Graph RAG | Fusion | Notes |
+|---|---|---|---|
+| Faithfulness | 0.788 (n=23) | 0.753 (n=28) | |
+| Answer relevancy | 0.712 (n=29) | 0.794 (n=30) | |
+| Context precision | 0.423 (n=25) | 0.422 (n=29) | |
+| Context recall | 0.710 (n=25) | 0.848 (n=29) | |
+| Inference | 29/30 | 30/30 | Graph: `graph_ragas_specialization30_20260817_170421.json`; Fusion: `fusion_ragas_specialization30_20260817_171817.json` |
 
 ## Running Evaluations
 
-To test system accuracy:
+Specialization-30 (the reported set):
 
 ```bash
-python scripts/graph_rag/run_evaluation.py
+python scripts/graph_rag/run_evaluation.py --30
+python scripts/tabular_rag/version2/run_tabular_evaluation.py --30
+python scripts/textual_rag/run_textual_evaluation.py --30
+python scripts/fusion/run_fusion_layer.py --30
 ```
 
-Results are saved to `evaluation_results/` with detailed metrics.
+Full 100-question benchmark (default if `--30` is omitted):
+
+```bash
+python scripts/graph_rag/run_evaluation.py --100
+python scripts/tabular_rag/version2/run_tabular_evaluation.py --100
+python scripts/textual_rag/run_textual_evaluation.py --100
+python scripts/fusion/run_fusion_layer.py --100
+```
+
+RAGAS on `data/specialization_test_30.json` (needs `OPENAI_API_KEY` and Neo4j for Graph/Fusion inference):
+
+```bash
+python scripts/ragas/run_ragas_evaluation.py --graph
+python scripts/ragas/run_ragas_evaluation.py --fusion
+python scripts/ragas/run_ragas_evaluation.py --all
+```
+
+JSON is written under `evaluation_results/` (RAGAS under `evaluation_results/ragas/`).
 
 ## Features
 
-### Core Chatbot
-- Natural language understanding in French
-- Accurate query translation (Cypher generation)
-- Grounded answers (no hallucination)
-- Technical query inspection
+### Local chatbot
+- French questions over Graph, Tabular, and Textual stores
+- Grounded answers from retrieved rows or passages
+- Streamlit Analytics and News pages
 
-### Analytics Dashboard
-Navigate to "Analytics" page to view:
-- Total counts (horses, events, riders, sensors)
-- Sensor distribution by position
-- Event type breakdown
-- Training intensity analysis
-
-### News Aggregation
-Navigate to "News" page for:
-- Latest equestrian news from RSS feeds
-- AI-generated weekly summaries
-- Upcoming event extraction
+### RPHD Graph RAG API
+- Health and graph export
+- Scoped Graph RAG query
+- PDF candidate extraction and approved ingestion
 
 ## Development
 
-### Adding New Questions
+### Adding evaluation questions
 
-1. Add test cases to `data/test_dataset.json`
-2. Run evaluation: `python scripts/graph_rag/run_evaluation.py`
-3. Adjust prompts in `backend/graph_rag/llm_service.py` if needed
+1. Edit `data/specialization_test_30.json` or `data/test_dataset.json`
+2. Run the matching evaluation CLI above
+3. Adjust pipeline prompts under `backend/graph_rag/`, `backend/tabular_rag/`, or `backend/textual_rag/` if needed
 
-### Extending the Ontology
+### Extending the ontology
 
-1. Update RDF file: `data/Horse_generatedDataV2.rdf`
-2. Re-run database setup: `python scripts/setup_database.py`
-3. Update Cypher prompt with new schema details
+1. Update `data/Horse_V9_augmented.rdf`
+2. Re-run `python scripts/setup_database.py`
+3. Refresh Graph RAG schema guidance in `backend/graph_rag/`
 
 ## Configuration
 
@@ -295,16 +380,11 @@ Navigate to "News" page for:
 
 ### OpenAI API
 
-Get your API key from https://platform.openai.com/api-keys
-
-**Cost Estimate:**
-- Average cost per question: ~$0.003-0.005 USD
-- 100 questions ≈ $0.30-0.50 USD
-
+Get an API key from https://platform.openai.com/api-keys
 
 ## Documentation
 
-For detailed implementation information, see [IMPLEMENTATION.md](docs/IMPLEMENTATION.md)
+For component-level notes, see [IMPLEMENTATION.md](docs/IMPLEMENTATION.md).
 
 ## Contributing
 
@@ -323,8 +403,4 @@ This project is part of academic research conducted at efrei research Lab in par
 - Our supervisor Noama Adra for guidance
 - LangChain and Neo4j communities for excellent tools
 
-
-**Version:** 1.0.0  
-**Last Updated:** January 2025  
-**Status:** Active Development
-
+**Status:** Internship evaluation complete (specialization-30 reported above)

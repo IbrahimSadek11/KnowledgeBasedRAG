@@ -1,0 +1,1748 @@
+{
+  "metadata": {
+    "timestamp": "20260820_232347",
+    "pipeline": "tabular_rag_version2",
+    "dataset_label": "specialization30",
+    "dataset_path": "data/specialization_test_30.json",
+    "question_count": 30,
+    "run_type": "full_benchmark_ex",
+    "total_questions": 30,
+    "total_time_seconds": 88.88598399946932,
+    "avg_time_per_question": 2.962866133315644,
+    "query_cost_usd": 0.00484944,
+    "evaluation_cost_usd": 0.06350270000000001,
+    "total_cost_usd": 0.06835214,
+    "model": "gpt-4o-mini",
+    "evaluation_type": "semantic_similarity + llm_judge + execution_accuracy",
+    "combined_score_formula": "(semantic_similarity + llm_judge_overall) / 2",
+    "ex_formula": "exact result-set match vs gold SQL; N/A excluded from denominator",
+    "scoring_reused_from": "backend/evaluation_service.py (Graph RAG)"
+  },
+  "overall_metrics": {
+    "avg_combined_score": 0.8294839313080984,
+    "avg_semantic_similarity": 0.8699678626161966,
+    "avg_llm_judge_overall": 0.789,
+    "success_rate": 0.9666666666666667,
+    "produced_answer_count": 29,
+    "no_answer_count": 1,
+    "execution_accuracy": {
+      "applicable_count": 0,
+      "match_count": 0,
+      "mismatch_count": 0,
+      "na_count": 30,
+      "ex_rate": 0.0
+    }
+  },
+  "category_stats": {
+    "aggregation": {
+      "count": 10,
+      "avg_combined": 0.8160908769890762,
+      "avg_semantic": 0.8651817539781526,
+      "avg_llm_judge": 0.767,
+      "success_rate": 1.0
+    },
+    "attribute_retrieval": {
+      "count": 3,
+      "avg_combined": 0.944112557544219,
+      "avg_semantic": 0.888225115088438,
+      "avg_llm_judge": 1.0,
+      "success_rate": 1.0
+    },
+    "comparison": {
+      "count": 1,
+      "avg_combined": 0.6877842845822061,
+      "avg_semantic": 0.8755685691644122,
+      "avg_llm_judge": 0.5,
+      "success_rate": 1.0
+    },
+    "hierarchical": {
+      "count": 6,
+      "avg_combined": 0.6975751815528026,
+      "avg_semantic": 0.8118170297722721,
+      "avg_llm_judge": 0.5833333333333334,
+      "success_rate": 0.8333333333333334
+    },
+    "multi_hop": {
+      "count": 8,
+      "avg_combined": 0.9203961517853695,
+      "avg_semantic": 0.903292303570739,
+      "avg_llm_judge": 0.9375,
+      "success_rate": 1.0
+    },
+    "multi_hop_complex": {
+      "count": 1,
+      "avg_combined": 0.6816332353797321,
+      "avg_semantic": 0.8632664707594643,
+      "avg_llm_judge": 0.5,
+      "success_rate": 1.0
+    },
+    "single_hop": {
+      "count": 1,
+      "avg_combined": 0.9732336731578206,
+      "avg_semantic": 0.9464673463156411,
+      "avg_llm_judge": 1.0,
+      "success_rate": 1.0
+    }
+  },
+  "difficulty_stats": {
+    "easy": {
+      "count": 6,
+      "avg_combined": 0.807310271609644,
+      "avg_semantic": 0.864620543219288,
+      "avg_llm_judge": 0.75,
+      "success_rate": 1.0
+    },
+    "hard": {
+      "count": 9,
+      "avg_combined": 0.8431628092936996,
+      "avg_semantic": 0.8529922852540657,
+      "avg_llm_judge": 0.8333333333333334,
+      "success_rate": 0.8888888888888888
+    },
+    "medium": {
+      "count": 9,
+      "avg_combined": 0.833424069017466,
+      "avg_semantic": 0.8890703602571544,
+      "avg_llm_judge": 0.7777777777777778,
+      "success_rate": 1.0
+    },
+    "very_hard": {
+      "count": 6,
+      "avg_combined": 0.8252290674640993,
+      "avg_semantic": 0.8721248015948652,
+      "avg_llm_judge": 0.7783333333333333,
+      "success_rate": 1.0
+    }
+  },
+  "detailed_results": [
+    {
+      "question_id": "G01",
+      "question": "Quels chevaux ont terminé aux trois premières places de Event_Fontainebleau_SJ_2026, et quels cavaliers les montaient ?",
+      "category": "multi_hop",
+      "difficulty": "easy",
+      "ground_truth": "1er : Luna montée par Rider_Clara ; 2e : Aurore montée par Rider_Pauline ; 3e : Rio monté par Rider_Lea.",
+      "generated_sql": "SELECT horse_id, rider_id, rank FROM event_participations WHERE event_id = 'Event_Fontainebleau_SJ_2026' AND rank <= 3;",
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": [
+        [
+          "Horse_Rio",
+          "Rider_Lea",
+          3
+        ],
+        [
+          "Horse_Aurore",
+          "Rider_Pauline",
+          2
+        ],
+        [
+          "Horse_Luna",
+          "Rider_Clara",
+          1
+        ]
+      ],
+      "system_answer": "Lors de l'événement Event_Fontainebleau_SJ_2026, les chevaux qui ont terminé aux trois premières places sont les suivants : \n\n- **Horse_Luna**, monté par **Clara**, qui a terminé à la première place.\n- **Horse_Aurore**, monté par **Pauline**, qui a terminé à la deuxième place.\n- **Horse_Rio**, monté par **Lea**, qui a terminé à la troisième place.\n\nAinsi, les chevaux et leurs cavaliers respectifs sont : Horse_Luna (Clara), Horse_Aurore (Pauline), et Horse_Rio (Lea).",
+      "num_attempts": 1,
+      "attempts": [
+        {
+          "sql": "SELECT horse_id, rider_id, rank FROM event_participations WHERE event_id = 'Event_Fontainebleau_SJ_2026' AND rank <= 3;",
+          "outcome": "success"
+        }
+      ],
+      "time_seconds": 3.904508899897337,
+      "produced_answer": true,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.8659063624299423,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse contient toutes les informations correctes et précises concernant les chevaux et les cavaliers qui ont terminé aux trois premières places de l'événement."
+      },
+      "combined_score": 0.9329531812149712,
+      "query_cost_usd": 0.000166575,
+      "eval_cost_usd": 0.0030215000000000003
+    },
+    {
+      "question_id": "G02",
+      "question": "À quel événement sportif sont liées les étapes d'entraînement d'Orion, et dans quelle ville cet événement a-t-il lieu ?",
+      "category": "multi_hop",
+      "difficulty": "easy",
+      "ground_truth": "Les étapes d'entraînement d'Orion sont liées à Event_LeMans_Cross_2026, qui se déroule au Mans.",
+      "generated_sql": "SELECT t.event_id, e.location, e.category, e.event_date, e.discipline, t.stage_type FROM trainings t JOIN events e ON t.event_id = e.event_id WHERE t.horse_id = (SELECT horse_id FROM horses WHERE LOWER(name) = LOWER('Orion'));",
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": [
+        [
+          "Event_LeMans_Cross_2026",
+          "Le Mans",
+          "Amateur 1",
+          "2026-09-05",
+          "Cross",
+          "PreparationStage"
+        ],
+        [
+          "Event_LeMans_Cross_2026",
+          "Le Mans",
+          "Amateur 1",
+          "2026-09-05",
+          "Cross",
+          "TransitionStage"
+        ],
+        [
+          "Event_LeMans_Cross_2026",
+          "Le Mans",
+          "Amateur 1",
+          "2026-09-05",
+          "Cross",
+          "PreCompetitionStage"
+        ],
+        [
+          "Event_LeMans_Cross_2026",
+          "Le Mans",
+          "Amateur 1",
+          "2026-09-05",
+          "Cross",
+          "CompetitionStage"
+        ]
+      ],
+      "system_answer": "Les étapes d'entraînement d'Orion sont liées à l'événement sportif \"Le Mans Cross 2026\", qui se déroulera à Le Mans. Les différentes phases d'entraînement incluent la phase de préparation, la phase de transition, la phase de pré-compétition et la phase de compétition.",
+      "num_attempts": 1,
+      "attempts": [
+        {
+          "sql": "SELECT t.event_id, e.location, e.category, e.event_date, e.discipline, t.stage_type FROM trainings t JOIN events e ON t.event_id = e.event_id WHERE t.horse_id = (SELECT horse_id FROM horses WHERE LOWER(name) = LOWER('Orion'));",
+          "outcome": "success"
+        }
+      ],
+      "time_seconds": 2.235298099927604,
+      "produced_answer": true,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.9474921826887244,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 0.5,
+        "accuracy": 1.0,
+        "overall": 0.5,
+        "reasoning": "La réponse contient les bonnes informations concernant l'événement et la ville, mais elle manque de mentionner que les étapes d'entraînement sont spécifiquement liées à l'événement 'Event_LeMans_Cross_2026', ce qui est un élément important de la ground truth."
+      },
+      "combined_score": 0.7237460913443622,
+      "query_cost_usd": 0.0001617,
+      "eval_cost_usd": 0.0019569
+    },
+    {
+      "question_id": "G03",
+      "question": "À Event_Versailles_SJ_2026, quels chevaux Rider_Remi a-t-il montés et quels rangs ont-ils obtenus ?",
+      "category": "multi_hop",
+      "difficulty": "medium",
+      "ground_truth": "Rider_Remi a monté Etoile (rang 1) et Grondre (rang 3) à Event_Versailles_SJ_2026.",
+      "generated_sql": "SELECT ep.horse_id, ep.rank FROM event_participations ep JOIN horses h ON ep.horse_id = h.horse_id WHERE LOWER(ep.event_id) = LOWER('Event_Versailles_SJ_2026') AND LOWER(ep.rider_id) = LOWER('Rider_Remi');",
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": [
+        [
+          "Horse_Grondre",
+          3
+        ],
+        [
+          "Horse_Etoile",
+          1
+        ]
+      ],
+      "system_answer": "À l'événement Versailles SJ 2026, le cavalier Rémi a monté deux chevaux : Horse_Grondre, qui a obtenu la 3ème place, et Horse_Etoile, qui a remporté la 1ère place.",
+      "num_attempts": 1,
+      "attempts": [
+        {
+          "sql": "SELECT ep.horse_id, ep.rank FROM event_participations ep JOIN horses h ON ep.horse_id = h.horse_id WHERE LOWER(ep.event_id) = LOWER('Event_Versailles_SJ_2026') AND LOWER(ep.rider_id) = LOWER('Rider_Remi');",
+          "outcome": "success"
+        }
+      ],
+      "time_seconds": 2.537224099971354,
+      "produced_answer": true,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.8721750829227971,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse contient toutes les informations correctes concernant les chevaux montés par Rider_Remi et leurs rangs, bien que les noms des chevaux soient légèrement modifiés. Les détails sont exacts et tous les éléments importants sont présents."
+      },
+      "combined_score": 0.9360875414613985,
+      "query_cost_usd": 0.00015799499999999997,
+      "eval_cost_usd": 0.0013609000000000002
+    },
+    {
+      "question_id": "G04",
+      "question": "Quels acteurs non-cavaliers interviennent dans la phase de préparation de Tonnerre, et à quel événement cette phase est-elle liée ?",
+      "category": "multi_hop",
+      "difficulty": "medium",
+      "ground_truth": "Dans la préparation de Tonnerre interviennent Vet_DrMartin (vétérinaire) et Caretaker_Sophie (soigneur) ; cette phase est liée à Event_Clermont_Cross_2026.",
+      "generated_sql": "SELECT DISTINCT ta.actor_id, ta.actor_role, t.event_id FROM trainings t JOIN training_actors ta ON t.training_id = ta.training_id WHERE t.stage_type = 'PreparationStage' AND t.horse_id = (SELECT horse_id FROM horses WHERE LOWER(name) = LOWER('Tonnerre'));",
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": [
+        [
+          "Caretaker_Sophie",
+          "Caretaker",
+          "Event_Clermont_Cross_2026"
+        ],
+        [
+          "Rider_Ines",
+          "Rider",
+          "Event_Clermont_Cross_2026"
+        ],
+        [
+          "Vet_DrMartin",
+          "Veterinarian",
+          "Event_Clermont_Cross_2026"
+        ]
+      ],
+      "system_answer": "Dans la phase de préparation de Tonnerre, trois acteurs non-cavaliers interviennent : Sophie, qui est soigneur, et le Dr Martin, qui est vétérinaire. Cette phase est liée à l'événement Clermont Cross 2026.",
+      "num_attempts": 1,
+      "attempts": [
+        {
+          "sql": "SELECT DISTINCT ta.actor_id, ta.actor_role, t.event_id FROM trainings t JOIN training_actors ta ON t.training_id = ta.training_id WHERE t.stage_type = 'PreparationStage' AND t.horse_id = (SELECT horse_id FROM horses WHERE LOWER(name) = LOWER('Tonnerre'));",
+          "outcome": "success"
+        }
+      ],
+      "time_seconds": 2.7086383999558166,
+      "produced_answer": true,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.9231843859125691,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse contient toutes les informations correctes, y compris les noms des acteurs non-cavaliers et l'événement associé, sans erreurs de détails."
+      },
+      "combined_score": 0.9615921929562845,
+      "query_cost_usd": 0.00016013999999999997,
+      "eval_cost_usd": 0.0019410000000000002
+    },
+    {
+      "question_id": "G05",
+      "question": "Quel classement Braise a-t-elle obtenu à Event_Nice_Dressage_2026, et avec quel cavalier ?",
+      "category": "single_hop",
+      "difficulty": "medium",
+      "ground_truth": "Braise a obtenu le rang 3 à Event_Nice_Dressage_2026 avec Rider_Alice.",
+      "generated_sql": "SELECT rider_id, rank FROM event_participations WHERE horse_id = 'Horse_Braise' AND event_id = 'Event_Nice_Dressage_2026';",
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": [
+        [
+          "Rider_Alice",
+          3
+        ]
+      ],
+      "system_answer": "Braise a obtenu la troisième place à l'événement Event_Nice_Dressage_2026, avec la cavalière Alice.",
+      "num_attempts": 1,
+      "attempts": [
+        {
+          "sql": "SELECT rider_id, rank FROM event_participations WHERE horse_id = 'Horse_Braise' AND event_id = 'Event_Nice_Dressage_2026';",
+          "outcome": "success"
+        }
+      ],
+      "time_seconds": 1.9962013000622392,
+      "produced_answer": true,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.9464673463156411,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse contient toutes les informations correctes et pertinentes, y compris le rang, l'événement et le nom du cavalier, tout en utilisant une formulation différente mais équivalente."
+      },
+      "combined_score": 0.9732336731578206,
+      "query_cost_usd": 0.00015487499999999998,
+      "eval_cost_usd": 0.0009755
+    },
+    {
+      "question_id": "G06",
+      "question": "Pour Horizon, à quels objectifs expérimentaux ses capteurs IMU sont-ils rattachés, et à quel événement ses étapes d'entraînement sont-elles liées ?",
+      "category": "multi_hop",
+      "difficulty": "hard",
+      "ground_truth": "Les capteurs de Horizon servent à FatigueDetection (IMU_CanonFore_Horizon_01) et GaitClassif_01 (IMU_Withers_Horizon_01) ; ses étapes d'entraînement sont liées à Event_Montpellier_Dr_2026.",
+      "generated_sql": "SELECT s.sensor_id, s.objective_id, t.event_id FROM sensors s JOIN objectives o ON s.objective_id = o.objective_id JOIN trainings t ON s.horse_id = t.horse_id WHERE LOWER(s.horse_id) = LOWER('Horse_Horizon');",
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": [
+        [
+          "IMU_Withers_Horizon_01",
+          "GaitClassif_01",
+          "Event_Montpellier_Dr_2026"
+        ],
+        [
+          "IMU_Withers_Horizon_01",
+          "GaitClassif_01",
+          "Event_Montpellier_Dr_2026"
+        ],
+        [
+          "IMU_Withers_Horizon_01",
+          "GaitClassif_01",
+          "Event_Montpellier_Dr_2026"
+        ],
+        [
+          "IMU_Withers_Horizon_01",
+          "GaitClassif_01",
+          "Event_Montpellier_Dr_2026"
+        ],
+        [
+          "IMU_CanonFore_Horizon_01",
+          "FatigueDetection",
+          "Event_Montpellier_Dr_2026"
+        ],
+        [
+          "IMU_CanonFore_Horizon_01",
+          "FatigueDetection",
+          "Event_Montpellier_Dr_2026"
+        ],
+        [
+          "IMU_CanonFore_Horizon_01",
+          "FatigueDetection",
+          "Event_Montpellier_Dr_2026"
+        ],
+        [
+          "IMU_CanonFore_Horizon_01",
+          "FatigueDetection",
+          "Event_Montpellier_Dr_2026"
+        ]
+      ],
+      "system_answer": "Les capteurs IMU utilisés pour Horizon sont rattachés à deux objectifs expérimentaux distincts. Le capteur IMU_Withers_Horizon_01 est associé à l'objectif d'expérimentation \"GaitClassif_01\", tandis que le capteur IMU_CanonFore_Horizon_01 est lié à l'objectif \"FatigueDetection\". \n\nConcernant les étapes d'entraînement, toutes sont liées à l'événement \"Event_Montpellier_Dr_2026\". \n\nEn résumé, les capteurs IMU sont rattachés aux objectifs suivants : \n- IMU_Withers_Horizon_01 : GaitClassif_01\n- IMU_CanonFore_Horizon_01 : FatigueDetection\n\nEt tous les entraînements sont associés à l'événement \"Event_Montpellier_Dr_2026\".",
+      "num_attempts": 1,
+      "attempts": [
+        {
+          "sql": "SELECT s.sensor_id, s.objective_id, t.event_id FROM sensors s JOIN objectives o ON s.objective_id = o.objective_id JOIN trainings t ON s.horse_id = t.horse_id WHERE LOWER(s.horse_id) = LOWER('Horse_Horizon');",
+          "outcome": "success"
+        }
+      ],
+      "time_seconds": 3.5105903000803664,
+      "produced_answer": true,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.9357835457919838,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse contient toutes les informations correctes et précises concernant les capteurs IMU et l'événement lié aux étapes d'entraînement."
+      },
+      "combined_score": 0.9678917728959919,
+      "query_cost_usd": 0.00016774499999999996,
+      "eval_cost_usd": 0.004203000000000001
+    },
+    {
+      "question_id": "G07",
+      "question": "À Event_Clermont_Cross_2026, quels chevaux Rider_Ines a-t-elle montés et quels rangs ont-ils obtenus ?",
+      "category": "multi_hop",
+      "difficulty": "hard",
+      "ground_truth": "Rider_Ines a monté Rafale (rang 1) et Tonnerre (rang 3) à Event_Clermont_Cross_2026.",
+      "generated_sql": "SELECT horse_id, rank FROM event_participations WHERE event_id = 'Event_Clermont_Cross_2026' AND rider_id = 'Rider_Ines';",
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": [
+        [
+          "Horse_Rafale",
+          1
+        ],
+        [
+          "Horse_Tonnerre",
+          3
+        ]
+      ],
+      "system_answer": "À l'événement Clermont Cross 2026, Ines a monté deux chevaux : Rafale, qui a obtenu la première place, et Tonnerre, qui a terminé à la troisième place.",
+      "num_attempts": 1,
+      "attempts": [
+        {
+          "sql": "SELECT horse_id, rank FROM event_participations WHERE event_id = 'Event_Clermont_Cross_2026' AND rider_id = 'Rider_Ines';",
+          "outcome": "success"
+        }
+      ],
+      "time_seconds": 1.782741199946031,
+      "produced_answer": true,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.8907775492465411,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse contient toutes les informations correctes concernant les chevaux montés par Rider_Ines et leurs rangs respectifs, tout en étant formulée de manière précise et complète."
+      },
+      "combined_score": 0.9453887746232705,
+      "query_cost_usd": 0.0001578,
+      "eval_cost_usd": 0.0013106
+    },
+    {
+      "question_id": "G08",
+      "question": "Quel cavalier est associé à Mirage (ASSOCIATEDWITH), et quel rang Mirage a-t-il obtenu à Event_Dijon_Cross_2026 ?",
+      "category": "multi_hop",
+      "difficulty": "hard",
+      "ground_truth": "Mirage est associé à Rider_Pauline ; à Event_Dijon_Cross_2026, Mirage a obtenu le rang 3 avec Rider_Pauline.",
+      "generated_sql": "SELECT ep.rider_id, ep.rank FROM event_participations ep WHERE ep.horse_id = (SELECT horse_id FROM horses WHERE LOWER(name) = LOWER('Mirage')) AND ep.event_id = 'Event_Dijon_Cross_2026';",
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": [
+        [
+          "Rider_Pauline",
+          3
+        ]
+      ],
+      "system_answer": "Le cavalier associé à Mirage est Pauline, et Mirage a obtenu le rang 3 à l'événement Dijon Cross 2026.",
+      "num_attempts": 1,
+      "attempts": [
+        {
+          "sql": "SELECT ep.rider_id, ep.rank FROM event_participations ep WHERE ep.horse_id = (SELECT horse_id FROM horses WHERE LOWER(name) = LOWER('Mirage')) AND ep.event_id = 'Event_Dijon_Cross_2026';",
+          "outcome": "success"
+        }
+      ],
+      "time_seconds": 1.7452538999496028,
+      "produced_answer": true,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.9158866868875724,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse contient toutes les informations correctes : le cavalier associé à Mirage est bien Pauline et le rang obtenu à l'événement est 3. Les détails sont exacts et tous les éléments importants sont présents."
+      },
+      "combined_score": 0.9579433434437862,
+      "query_cost_usd": 0.000156825,
+      "eval_cost_usd": 0.0011853000000000002
+    },
+    {
+      "question_id": "G09",
+      "question": "Parmi les chevaux montés par Rider_Remi à Event_Pau_SJ_2026 et à Event_Versailles_SJ_2026, lequel apparaît aux deux événements ?",
+      "category": "multi_hop_complex",
+      "difficulty": "very_hard",
+      "ground_truth": "Seul Grondre apparaît avec Rider_Remi à la fois à Event_Pau_SJ_2026 (rang 6) et à Event_Versailles_SJ_2026 (rang 3).",
+      "generated_sql": "SELECT horse_id FROM event_participations WHERE rider_id = 'Rider_Remi' AND event_id IN ('Event_Pau_SJ_2026', 'Event_Versailles_SJ_2026') GROUP BY horse_id HAVING COUNT(DISTINCT event_id) = 2;",
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": [
+        [
+          "Horse_Grondre"
+        ]
+      ],
+      "system_answer": "Le cheval monté par Rider_Remi à la fois à l'événement de Pau en 2026 et à l'événement de Versailles en 2026 est Horse_Grondre.",
+      "num_attempts": 1,
+      "attempts": [
+        {
+          "sql": "SELECT horse_id FROM event_participations WHERE rider_id = 'Rider_Remi' AND event_id IN ('Event_Pau_SJ_2026', 'Event_Versailles_SJ_2026') GROUP BY horse_id HAVING COUNT(DISTINCT event_id) = 2;",
+          "outcome": "success"
+        }
+      ],
+      "time_seconds": 3.8880801000632346,
+      "produced_answer": true,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.8632664707594643,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 0.5,
+        "accuracy": 1.0,
+        "overall": 0.5,
+        "reasoning": "La réponse mentionne correctement le cheval 'Horse_Grondre' et indique qu'il a été monté par Rider_Remi aux deux événements, mais elle omet les rangs des événements, ce qui est un élément important de la ground truth."
+      },
+      "combined_score": 0.6816332353797321,
+      "query_cost_usd": 0.0001578,
+      "eval_cost_usd": 0.0013521000000000002
+    },
+    {
+      "question_id": "G10",
+      "question": "Quels capteurs sont attachés à Cascade, pour quels objectifs, et quel rang Cascade a-t-elle obtenu à Event_SJ_2026_01 ?",
+      "category": "multi_hop",
+      "difficulty": "very_hard",
+      "ground_truth": "Cascade porte IMU_Sternum_Cascade_01 (FatigueDetection) et IMU_Withers_Cascade_01 (GaitClassif_01) ; à Event_SJ_2026_01 (Paris) elle a obtenu le rang 5 avec Rider_Victor.",
+      "generated_sql": "SELECT s.sensor_id, s.objective_id, ep.rank FROM sensors s JOIN objectives o ON s.objective_id = o.objective_id JOIN event_participations ep ON s.horse_id = ep.horse_id WHERE LOWER(s.horse_id) = LOWER('Horse_Cascade') AND LOWER(ep.event_id) = LOWER('Event_SJ_2026_01');",
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": [
+        [
+          "IMU_Sternum_Cascade_01",
+          "FatigueDetection",
+          5
+        ],
+        [
+          "IMU_Withers_Cascade_01",
+          "GaitClassif_01",
+          5
+        ]
+      ],
+      "system_answer": "Cascade est équipée de deux capteurs : l'IMU_Sternum_Cascade_01, qui est utilisé pour la détection de la fatigue, et l'IMU_Withers_Cascade_01, qui sert à la classification de la démarche. Dans l'événement Event_SJ_2026_01, Cascade a obtenu le rang 5.",
+      "num_attempts": 1,
+      "attempts": [
+        {
+          "sql": "SELECT s.sensor_id, s.objective_id, ep.rank FROM sensors s JOIN objectives o ON s.objective_id = o.objective_id JOIN event_participations ep ON s.horse_id = ep.horse_id WHERE LOWER(s.horse_id) = LOWER('Horse_Cascade') AND LOWER(ep.event_id) = LOWER('Event_SJ_2026_01');",
+          "outcome": "success"
+        }
+      ],
+      "time_seconds": 2.3834398000035435,
+      "produced_answer": true,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.8751326326857816,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse contient toutes les informations correctes concernant les capteurs de Cascade, leurs objectifs, et le rang obtenu à l'événement, sans erreurs de détails."
+      },
+      "combined_score": 0.9375663163428908,
+      "query_cost_usd": 0.00016052999999999998,
+      "eval_cost_usd": 0.0022419000000000002
+    },
+    {
+      "question_id": "T01",
+      "question": "Combien de capteurs IMU ont un offset de calibration égal à 0.015 ?",
+      "category": "aggregation",
+      "difficulty": "easy",
+      "ground_truth": "7 capteurs ont un offset de calibration de 0.015.",
+      "generated_sql": "SELECT COUNT(*) FROM sensors WHERE sensor_offset_value = 0.015;",
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": [
+        [
+          7
+        ]
+      ],
+      "system_answer": "Il y a 7 capteurs IMU qui ont un offset de calibration égal à 0.015.",
+      "num_attempts": 1,
+      "attempts": [
+        {
+          "sql": "SELECT COUNT(*) FROM sensors WHERE sensor_offset_value = 0.015;",
+          "outcome": "success"
+        }
+      ],
+      "time_seconds": 1.7276876999530941,
+      "produced_answer": true,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.9491954358609345,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse contient toutes les informations correctes et précises, en indiquant que 7 capteurs IMU ont un offset de calibration de 0.015, ce qui correspond exactement à la réponse de référence."
+      },
+      "combined_score": 0.9745977179304672,
+      "query_cost_usd": 0.00015545999999999998,
+      "eval_cost_usd": 0.0007161
+    },
+    {
+      "question_id": "T02",
+      "question": "Comment se répartissent les capteurs IMU selon leur fréquence d'échantillonnage (sample_rate) ?",
+      "category": "aggregation",
+      "difficulty": "easy",
+      "ground_truth": "66 capteurs à 200Hz, 39 à 250Hz et 3 à 300Hz.",
+      "generated_sql": "SELECT sample_rate, COUNT(*) AS sensor_count FROM sensors WHERE sensor_type = 'IMU' GROUP BY sample_rate;",
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": [],
+      "system_answer": "L'information concernant la répartition des capteurs IMU selon leur fréquence d'échantillonnage n'a pas été trouvée dans les résultats disponibles.",
+      "num_attempts": 1,
+      "attempts": [
+        {
+          "sql": "SELECT sample_rate, COUNT(*) AS sensor_count FROM sensors WHERE sensor_type = 'IMU' GROUP BY sample_rate;",
+          "outcome": "success"
+        }
+      ],
+      "time_seconds": 2.0696958999615163,
+      "produced_answer": true,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.73618005388096,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse ne fournit aucune information sur la répartition des capteurs IMU, ce qui est essentiel pour répondre à la question. Elle ne contient donc aucune des informations correctes demandées."
+      },
+      "combined_score": 0.36809002694048,
+      "query_cost_usd": 0.00015604499999999997,
+      "eval_cost_usd": 0.0010926000000000002
+    },
+    {
+      "question_id": "T03",
+      "question": "Comment se répartissent globalement les offsets de calibration (sensor_offset) des capteurs IMU ?",
+      "category": "aggregation",
+      "difficulty": "medium",
+      "ground_truth": "50 capteurs à 0.01, 7 à 0.015 et 51 à 0.02.",
+      "generated_sql": "SELECT sensor_offset, COUNT(*) AS num_sensors FROM sensors WHERE LOWER(sensor_type) = LOWER('IMU') GROUP BY sensor_offset;",
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": [],
+      "system_answer": "L'information concernant la répartition des offsets de calibration des capteurs IMU n'a pas été trouvée ou n'est pas disponible dans les résultats de la base de données.",
+      "num_attempts": 1,
+      "attempts": [
+        {
+          "sql": "SELECT sensor_offset, COUNT(*) AS num_sensors FROM sensors WHERE LOWER(sensor_type) = LOWER('IMU') GROUP BY sensor_offset;",
+          "outcome": "success"
+        }
+      ],
+      "time_seconds": 1.8110866999486461,
+      "produced_answer": true,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.6666594276249285,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse ne fournit aucune information sur la répartition des offsets de calibration, ce qui est essentiel pour répondre à la question. Elle indique simplement que l'information n'est pas disponible, ce qui est incorrect par rapport à la ground truth."
+      },
+      "combined_score": 0.33332971381246423,
+      "query_cost_usd": 0.0001578,
+      "eval_cost_usd": 0.0011953000000000003
+    },
+    {
+      "question_id": "T04",
+      "question": "Quel est le nombre moyen de chevaux distincts présentés par cavalier en compétition ?",
+      "category": "aggregation",
+      "difficulty": "medium",
+      "ground_truth": "En moyenne, chaque cavalier présente 2,04 chevaux distincts en compétition.",
+      "generated_sql": "SELECT AVG(horse_count) AS average_horses_per_rider FROM (SELECT rider_id, COUNT(DISTINCT horse_id) AS horse_count FROM event_participations GROUP BY rider_id);",
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": [
+        [
+          2.04
+        ]
+      ],
+      "system_answer": "Le nombre moyen de chevaux distincts présentés par cavalier en compétition est de 2,04.",
+      "num_attempts": 1,
+      "attempts": [
+        {
+          "sql": "SELECT AVG(horse_count) AS average_horses_per_rider FROM (SELECT rider_id, COUNT(DISTINCT horse_id) AS horse_count FROM event_participations GROUP BY rider_id);",
+          "outcome": "success"
+        }
+      ],
+      "time_seconds": 1.8300697000231594,
+      "produced_answer": true,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.9426401085788725,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse contient toutes les informations correctes et précises, correspondant exactement à la réponse de référence."
+      },
+      "combined_score": 0.9713200542894362,
+      "query_cost_usd": 0.00015545999999999998,
+      "eval_cost_usd": 0.0009414
+    },
+    {
+      "question_id": "T05",
+      "question": "Quel est le nombre moyen de capteurs IMU par cheval ?",
+      "category": "aggregation",
+      "difficulty": "medium",
+      "ground_truth": "En moyenne, chaque cheval a 2,16 capteurs IMU.",
+      "generated_sql": "SELECT AVG(sensor_count) AS average_sensors FROM (SELECT horse_id, COUNT(*) AS sensor_count FROM sensors GROUP BY horse_id);",
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": [
+        [
+          2.16
+        ]
+      ],
+      "system_answer": "Le nombre moyen de capteurs IMU par cheval est de 2,16.",
+      "num_attempts": 1,
+      "attempts": [
+        {
+          "sql": "SELECT AVG(sensor_count) AS average_sensors FROM (SELECT horse_id, COUNT(*) AS sensor_count FROM sensors GROUP BY horse_id);",
+          "outcome": "success"
+        }
+      ],
+      "time_seconds": 1.6013906999723986,
+      "produced_answer": true,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.9566447340656419,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse à évaluer fournit exactement la même information que la réponse de référence, avec le même nombre moyen de capteurs IMU par cheval, ce qui est correct, complet et précis."
+      },
+      "combined_score": 0.9783223670328209,
+      "query_cost_usd": 0.00015429,
+      "eval_cost_usd": 0.000634
+    },
+    {
+      "question_id": "T06",
+      "question": "Combien de capteurs y a-t-il pour chaque combinaison type anatomique × objectif expérimental ?",
+      "category": "aggregation",
+      "difficulty": "hard",
+      "ground_truth": "CanonOfForelimb + FatigueDetection : 20 ; CanonOfHindlimb + GaitClassif_01 : 12 ; Sternum + FatigueDetection : 26 ; Withers + GaitClassif_01 : 50.",
+      "generated_sql": "SELECT s.sensor_type, s.objective_id, COUNT(*) AS sensor_count \nFROM sensors s \nJOIN objectives o ON s.objective_id = o.objective_id \nGROUP BY s.sensor_type, s.objective_id;",
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": [
+        [
+          "CanonOfForelimb",
+          "FatigueDetection",
+          20
+        ],
+        [
+          "CanonOfHindlimb",
+          "GaitClassif_01",
+          12
+        ],
+        [
+          "Sternum",
+          "FatigueDetection",
+          26
+        ],
+        [
+          "Withers",
+          "GaitClassif_01",
+          50
+        ]
+      ],
+      "system_answer": "Pour chaque combinaison de type anatomique et d'objectif expérimental, voici le nombre de capteurs disponibles :\n\n- Pour le type anatomique \"CanonOfForelimb\" et l'objectif \"FatigueDetection\", il y a 20 capteurs.\n- Pour le type anatomique \"CanonOfHindlimb\" et l'objectif \"GaitClassif_01\", il y a 12 capteurs.\n- Pour le type anatomique \"Sternum\" et l'objectif \"FatigueDetection\", il y a 26 capteurs.\n- Pour le type anatomique \"Withers\" et l'objectif \"GaitClassif_01\", il y a 50 capteurs.\n\nEn résumé, il y a donc 20 capteurs pour \"CanonOfForelimb\" avec \"FatigueDetection\", 12 pour \"CanonOfHindlimb\" avec \"GaitClassif_01\", 26 pour \"Sternum\" avec \"FatigueDetection\", et 50 pour \"Withers\" avec \"GaitClassif_01\".",
+      "num_attempts": 2,
+      "attempts": [
+        {
+          "sql": "SELECT sensor_type, objective_id, COUNT(*) AS sensor_count FROM sensors s JOIN objectives o ON s.objective_id = o.objective_id GROUP BY sensor_type, objective_id;",
+          "outcome": "execution failure: ambiguous column name: objective_id"
+        },
+        {
+          "sql": "SELECT s.sensor_type, s.objective_id, COUNT(*) AS sensor_count \nFROM sensors s \nJOIN objectives o ON s.objective_id = o.objective_id \nGROUP BY s.sensor_type, s.objective_id;",
+          "outcome": "success"
+        }
+      ],
+      "time_seconds": 5.591918500023894,
+      "produced_answer": true,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.8198093714853918,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse contient toutes les informations correctes et précises concernant le nombre de capteurs pour chaque combinaison anatomique et objectif expérimental, sans omissions ni erreurs."
+      },
+      "combined_score": 0.9099046857426959,
+      "query_cost_usd": 0.00017223,
+      "eval_cost_usd": 0.0044161
+    },
+    {
+      "question_id": "T07",
+      "question": "Combien de cavaliers ont présenté exactement trois chevaux distincts en compétition ?",
+      "category": "aggregation",
+      "difficulty": "hard",
+      "ground_truth": "7 cavaliers ont présenté exactement trois chevaux distincts.",
+      "generated_sql": "SELECT COUNT(DISTINCT rider_id) FROM event_participations GROUP BY rider_id HAVING COUNT(DISTINCT horse_id) = 3;",
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": [
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ],
+      "system_answer": "Il y a un total de 7 cavaliers qui ont présenté exactement trois chevaux distincts en compétition.",
+      "num_attempts": 1,
+      "attempts": [
+        {
+          "sql": "SELECT COUNT(DISTINCT rider_id) FROM event_participations GROUP BY rider_id HAVING COUNT(DISTINCT horse_id) = 3;",
+          "outcome": "success"
+        }
+      ],
+      "time_seconds": 1.6288351999828592,
+      "produced_answer": true,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.9273139123386492,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse à évaluer contient toutes les informations correctes et essentielles, reformulées de manière précise et complète par rapport à la réponse de référence."
+      },
+      "combined_score": 0.9636569561693247,
+      "query_cost_usd": 0.00015565499999999999,
+      "eval_cost_usd": 0.0009211
+    },
+    {
+      "question_id": "T08",
+      "question": "Combien de participations ont un statut autre que « Terminé », et comment se répartissent-elles par statut ?",
+      "category": "aggregation",
+      "difficulty": "hard",
+      "ground_truth": "3 participations non terminées : 1 Abandon, 1 Éliminé et 1 NonPartant (sur 101 participations au total, dont 98 Terminé).",
+      "generated_sql": "SELECT status, COUNT(*) AS participation_count FROM event_participations WHERE LOWER(status) <> LOWER('Terminé') GROUP BY status;",
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": [
+        [
+          "Abandon",
+          1
+        ],
+        [
+          "NonPartant",
+          1
+        ],
+        [
+          "Éliminé",
+          1
+        ]
+      ],
+      "system_answer": "Il y a trois participations qui ont un statut autre que « Terminé ». Elles se répartissent comme suit : 1 participation est en statut « Abandon », 1 en statut « NonPartant » et 1 en statut « Éliminé ». \n\nEn résumé, il y a donc 3 participations non terminées, réparties également entre les statuts mentionnés.",
+      "num_attempts": 1,
+      "attempts": [
+        {
+          "sql": "SELECT status, COUNT(*) AS participation_count FROM event_participations WHERE LOWER(status) <> LOWER('Terminé') GROUP BY status;",
+          "outcome": "success"
+        }
+      ],
+      "time_seconds": 3.173331500031054,
+      "produced_answer": true,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.8895899790660569,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse contient toutes les informations correctes et pertinentes, y compris le nombre de participations non terminées et leur répartition par statut, sans erreurs de détails."
+      },
+      "combined_score": 0.9447949895330284,
+      "query_cost_usd": 0.00016462499999999998,
+      "eval_cost_usd": 0.0022935000000000004
+    },
+    {
+      "question_id": "T09",
+      "question": "Comment se répartissent les cavaliers selon le nombre de chevaux distincts qu'ils ont présentés en compétition ?",
+      "category": "aggregation",
+      "difficulty": "very_hard",
+      "ground_truth": "8 cavaliers avec 1 cheval, 9 avec 2 chevaux, 7 avec 3 chevaux, et 1 cavalier (Rider_Alice) avec 4 chevaux.",
+      "generated_sql": "SELECT rider_id, COUNT(DISTINCT horse_id) AS horse_count FROM event_participations GROUP BY rider_id;",
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": [
+        [
+          "Rider_Alice",
+          4
+        ],
+        [
+          "Rider_Antoine",
+          1
+        ],
+        [
+          "Rider_Baptiste",
+          2
+        ],
+        [
+          "Rider_Camille",
+          2
+        ],
+        [
+          "Rider_Chloe",
+          2
+        ],
+        [
+          "Rider_Clara",
+          1
+        ],
+        [
+          "Rider_Elise",
+          3
+        ],
+        [
+          "Rider_Emma",
+          1
+        ],
+        [
+          "Rider_Hugo",
+          2
+        ],
+        [
+          "Rider_Ines",
+          3
+        ],
+        [
+          "Rider_Jade",
+          2
+        ],
+        [
+          "Rider_Julien",
+          2
+        ],
+        [
+          "Rider_Lea",
+          2
+        ],
+        [
+          "Rider_Leo",
+          1
+        ],
+        [
+          "Rider_Lucas",
+          1
+        ],
+        [
+          "Rider_Manon",
+          1
+        ],
+        [
+          "Rider_Marc",
+          2
+        ],
+        [
+          "Rider_Maxime",
+          3
+        ],
+        [
+          "Rider_Nina",
+          2
+        ],
+        [
+          "Rider_Pauline",
+          3
+        ],
+        [
+          "Rider_Remi",
+          3
+        ],
+        [
+          "Rider_Sarah",
+          1
+        ],
+        [
+          "Rider_Theo",
+          3
+        ],
+        [
+          "Rider_Tom",
+          1
+        ],
+        [
+          "Rider_Victor",
+          3
+        ]
+      ],
+      "system_answer": "La répartition des cavaliers selon le nombre de chevaux distincts qu'ils ont présentés en compétition est la suivante :\n\n- Un cheval : Antoine, Clara, Emma, Léon, Lucas, Manon, Sarah, Tom (8 cavaliers)\n- Deux chevaux : Baptiste, Camille, Chloé, Hugo, Jade, Julien, Léa, Nina, Marc (9 cavaliers)\n- Trois chevaux : Elise, Ines, Maxime, Pauline, Remi, Theo, Victor (7 cavaliers)\n- Quatre chevaux : Alice (1 cavalier)\n\nEn résumé, la majorité des cavaliers ont présenté deux chevaux, suivis de ceux ayant présenté trois chevaux, puis un cheval, et enfin, un seul cavalier a présenté quatre chevaux.",
+      "num_attempts": 1,
+      "attempts": [
+        {
+          "sql": "SELECT rider_id, COUNT(DISTINCT horse_id) AS horse_count FROM event_participations GROUP BY rider_id;",
+          "outcome": "success"
+        }
+      ],
+      "time_seconds": 3.2573349999729544,
+      "produced_answer": true,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.8683922752674882,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse évalue correctement la répartition des cavaliers selon le nombre de chevaux distincts présentés, en fournissant les mêmes chiffres et noms que la réponse de référence."
+      },
+      "combined_score": 0.9341961376337441,
+      "query_cost_usd": 0.00017223,
+      "eval_cost_usd": 0.0036552000000000004
+    },
+    {
+      "question_id": "T10",
+      "question": "Combien d'événements y a-t-il pour chaque combinaison discipline × catégorie de niveau ?",
+      "category": "aggregation",
+      "difficulty": "very_hard",
+      "ground_truth": "Cross / Amateur 1 : 4 ; Cross / Amateur 2 : 3 ; Dressage / Club Elite : 5 ; Dressage / Pro Elite : 1 ; ShowJumping / Amateur 1 : 2 ; ShowJumping / Amateur 2 : 2 ; ShowJumping / Pro Elite : 3.",
+      "generated_sql": "SELECT discipline, category, COUNT(*) AS event_count FROM events GROUP BY discipline, category;",
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": [
+        [
+          "Cross",
+          "Amateur 1",
+          4
+        ],
+        [
+          "Cross",
+          "Amateur 2",
+          3
+        ],
+        [
+          "Dressage",
+          "Club Elite",
+          5
+        ],
+        [
+          "Dressage",
+          "Pro Elite",
+          1
+        ],
+        [
+          "ShowJumping",
+          "Amateur 1",
+          2
+        ],
+        [
+          "ShowJumping",
+          "Amateur 2",
+          2
+        ],
+        [
+          "ShowJumping",
+          "Pro Elite",
+          3
+        ]
+      ],
+      "system_answer": "Il y a plusieurs événements pour chaque combinaison de discipline et de catégorie de niveau. Voici les détails :\n\n- En Cross, il y a 4 événements pour la catégorie Amateur 1 et 3 événements pour la catégorie Amateur 2.\n- En Dressage, il y a 5 événements pour la catégorie Club Elite et 1 événement pour la catégorie Pro Elite.\n- En ShowJumping, il y a 2 événements pour la catégorie Amateur 1, 2 événements pour la catégorie Amateur 2 et 3 événements pour la catégorie Pro Elite.\n\nAinsi, les événements sont répartis comme suit : Cross (Amateur 1 : 4, Amateur 2 : 3), Dressage (Club Elite : 5, Pro Elite : 1), ShowJumping (Amateur 1 : 2, Amateur 2 : 2, Pro Elite : 3).",
+      "num_attempts": 1,
+      "attempts": [
+        {
+          "sql": "SELECT discipline, category, COUNT(*) AS event_count FROM events GROUP BY discipline, category;",
+          "outcome": "success"
+        }
+      ],
+      "time_seconds": 3.4517318999860436,
+      "produced_answer": true,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.8953922416126017,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 1.0,
+        "accuracy": 0.5,
+        "overall": 0.67,
+        "reasoning": "La réponse contient des informations correctes pour la plupart des combinaisons, mais elle omet la catégorie Pro Elite pour ShowJumping, ce qui affecte la précision. Cependant, tous les éléments importants sont présents."
+      },
+      "combined_score": 0.7826961208063008,
+      "query_cost_usd": 0.00017749499999999998,
+      "eval_cost_usd": 0.0044717
+    },
+    {
+      "question_id": "X01",
+      "question": "D'après le rapport de Vega, quel statut a-t-elle obtenu à Event_Pau_SJ_2026, et avec quel cavalier ?",
+      "category": "attribute_retrieval",
+      "difficulty": "easy",
+      "ground_truth": "À Event_Pau_SJ_2026, Vega a le statut « Abandon » (rang 0) avec Rider_Baptiste.",
+      "generated_sql": "SELECT ep.rider_id, ep.status FROM event_participations ep JOIN horses h ON ep.horse_id = h.horse_id WHERE LOWER(h.name) = LOWER('Vega') AND LOWER(ep.event_id) = LOWER('Event_Pau_SJ_2026');",
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": [
+        [
+          "Rider_Baptiste",
+          "Abandon"
+        ]
+      ],
+      "system_answer": "Vega a obtenu le statut d'« Abandon » à l'événement Event_Pau_SJ_2026, avec le cavalier Baptiste.",
+      "num_attempts": 1,
+      "attempts": [
+        {
+          "sql": "SELECT ep.rider_id, ep.status FROM event_participations ep JOIN horses h ON ep.horse_id = h.horse_id WHERE LOWER(h.name) = LOWER('Vega') AND LOWER(ep.event_id) = LOWER('Event_Pau_SJ_2026');",
+          "outcome": "success"
+        }
+      ],
+      "time_seconds": 2.5228683999739587,
+      "produced_answer": true,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.9194202026234252,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse contient toutes les informations correctes et pertinentes, y compris le statut d'« Abandon » et le nom du cavalier, Baptiste, sans erreurs de détails."
+      },
+      "combined_score": 0.9597101013117126,
+      "query_cost_usd": 0.00015604499999999997,
+      "eval_cost_usd": 0.0010132000000000001
+    },
+    {
+      "question_id": "X02",
+      "question": "D'après le compte rendu de Event_Nice_Dressage_2026, quelle est la race du cheval classé premier ?",
+      "category": "attribute_retrieval",
+      "difficulty": "easy",
+      "ground_truth": "Le vainqueur est Sirius, de race Frison.",
+      "generated_sql": "SELECT h.race FROM event_participations ep JOIN horses h ON ep.horse_id = h.horse_id WHERE ep.event_id = 'Event_Nice_Dressage_2026' AND ep.rank = 1;",
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": [
+        [
+          "Frison"
+        ]
+      ],
+      "system_answer": "La race du cheval classé premier dans l'événement Event_Nice_Dressage_2026 est le Frison.",
+      "num_attempts": 1,
+      "attempts": [
+        {
+          "sql": "SELECT h.race FROM event_participations ep JOIN horses h ON ep.horse_id = h.horse_id WHERE ep.event_id = 'Event_Nice_Dressage_2026' AND ep.rank = 1;",
+          "outcome": "success"
+        }
+      ],
+      "time_seconds": 1.838933699997142,
+      "produced_answer": true,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.7695290218317419,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse indique correctement que la race du cheval classé premier est le Frison, ce qui correspond exactement à l'information de référence."
+      },
+      "combined_score": 0.8847645109158709,
+      "query_cost_usd": 0.00015526499999999997,
+      "eval_cost_usd": 0.0007752000000000001
+    },
+    {
+      "question_id": "X03",
+      "question": "Selon le rapport d'Horizon, quelle est sa race et quel cavalier lui est associé (ASSOCIATEDWITH) ?",
+      "category": "attribute_retrieval",
+      "difficulty": "medium",
+      "ground_truth": "Horizon est de race Oldenburg et lui est associé Rider_Ines.",
+      "generated_sql": "SELECT h.race, ep.rider_id FROM horses h JOIN event_participations ep ON h.horse_id = ep.horse_id WHERE LOWER(h.name) = LOWER('Horizon');",
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": [
+        [
+          "Oldenburg",
+          "Rider_Ines"
+        ],
+        [
+          "Oldenburg",
+          "Rider_Ines"
+        ]
+      ],
+      "system_answer": "Horizon est de race Oldenburg et est associé au cavalier Ines.",
+      "num_attempts": 1,
+      "attempts": [
+        {
+          "sql": "SELECT h.race, ep.rider_id FROM horses h JOIN event_participations ep ON h.horse_id = ep.horse_id WHERE LOWER(h.name) = LOWER('Horizon');",
+          "outcome": "success"
+        }
+      ],
+      "time_seconds": 1.7757631000131369,
+      "produced_answer": true,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.9757261208101469,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse contient toutes les informations correctes et importantes, avec des détails exacts sur la race et le cavalier associé, même si la formulation est légèrement différente."
+      },
+      "combined_score": 0.9878630604050734,
+      "query_cost_usd": 0.00015526499999999997,
+      "eval_cost_usd": 0.0007411000000000001
+    },
+    {
+      "question_id": "X04",
+      "question": "D'après le compte rendu de Event_Nice_Dressage_2026, quels sont les trois premiers chevaux, leurs races et leurs cavaliers ?",
+      "category": "hierarchical",
+      "difficulty": "medium",
+      "ground_truth": "1er : Sirius (Frison) avec Rider_Baptiste ; 2e : Eclat (Morgan) avec Rider_Chloe ; 3e : Braise (Appaloosa) avec Rider_Alice.",
+      "generated_sql": "SELECT ep.horse_id, h.race, ep.rider_id FROM event_participations ep JOIN horses h ON ep.horse_id = h.horse_id WHERE ep.event_id = 'Event_Nice_Dressage_2026' ORDER BY ep.rank LIMIT 3;",
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": [
+        [
+          "Horse_Sirius",
+          "Frison",
+          "Rider_Baptiste"
+        ],
+        [
+          "Horse_Eclat",
+          "Morgan",
+          "Rider_Chloe"
+        ],
+        [
+          "Horse_Braise",
+          "Appaloosa",
+          "Rider_Alice"
+        ]
+      ],
+      "system_answer": "Les trois premiers chevaux du compte rendu de l'événement Event_Nice_Dressage_2026 sont : Sirius, un Frison monté par Baptiste ; Éclat, un Morgan monté par Chloé ; et Braise, un Appaloosa monté par Alice.",
+      "num_attempts": 2,
+      "attempts": [
+        {
+          "sql": "SELECT horse_id, race, rider_id FROM event_participations WHERE event_id = 'Event_Nice_Dressage_2026' ORDER BY rank LIMIT 3;",
+          "outcome": "execution failure: no such column: race"
+        },
+        {
+          "sql": "SELECT ep.horse_id, h.race, ep.rider_id FROM event_participations ep JOIN horses h ON ep.horse_id = h.horse_id WHERE ep.event_id = 'Event_Nice_Dressage_2026' ORDER BY ep.rank LIMIT 3;",
+          "outcome": "success"
+        }
+      ],
+      "time_seconds": 3.467253000009805,
+      "produced_answer": true,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.8703940181642924,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse contient toutes les informations correctes concernant les chevaux, leurs races et leurs cavaliers, tout en étant reformulée de manière précise."
+      },
+      "combined_score": 0.9351970090821462,
+      "query_cost_usd": 0.000159945,
+      "eval_cost_usd": 0.0017813000000000002
+    },
+    {
+      "question_id": "X05",
+      "question": "Quels volumes, intensités et fréquences le rapport de Braise indique-t-il pour ses quatre phases d'entraînement ?",
+      "category": "hierarchical",
+      "difficulty": "medium",
+      "ground_truth": "Compétition : 30min, Pic, fréquence 1 ; pré-compétition : 60min, Élevée, fréquence 3 ; préparation : 45min, Modérée, fréquence 4 ; transition : 25min, Faible, fréquence 2.",
+      "generated_sql": "SELECT DISTINCT volume, intensity, frequency FROM trainings WHERE horse_id = 'Horse_Braise';",
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": [
+        [
+          "45min",
+          "Modérée",
+          4
+        ],
+        [
+          "25min",
+          "Faible",
+          2
+        ],
+        [
+          "60min",
+          "Élevée",
+          3
+        ],
+        [
+          "30min",
+          "Pic",
+          1
+        ]
+      ],
+      "system_answer": "Le rapport de Braise indique les volumes, intensités et fréquences pour ses quatre phases d'entraînement comme suit :\n\n- **Phase de préparation** : volume de 45 minutes, intensité modérée, fréquence de 4.\n- **Phase de pré-compétition** : volume de 25 minutes, intensité faible, fréquence de 2.\n- **Phase de compétition** : volume de 60 minutes, intensité élevée, fréquence de 3.\n- **Phase de transition** : volume de 30 minutes, intensité au pic, fréquence de 1.\n\nAinsi, chaque phase présente des caractéristiques distinctes en termes de volume, d'intensité et de fréquence.",
+      "num_attempts": 1,
+      "attempts": [
+        {
+          "sql": "SELECT DISTINCT volume, intensity, frequency FROM trainings WHERE horse_id = 'Horse_Braise';",
+          "outcome": "success"
+        }
+      ],
+      "time_seconds": 3.068270399933681,
+      "produced_answer": true,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.8477420179194999,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse contient des informations incorrectes pour chaque phase d'entraînement, avec des erreurs dans les volumes, intensités et fréquences. Aucune des phases n'est correctement décrite par rapport à la référence."
+      },
+      "combined_score": 0.42387100895974994,
+      "query_cost_usd": 0.00017066999999999996,
+      "eval_cost_usd": 0.0038849000000000006
+    },
+    {
+      "question_id": "X06",
+      "question": "Que dit le rapport de Mirage sur sa participation à Dijon (discipline, date, lieu, rang, cavalier) ?",
+      "category": "hierarchical",
+      "difficulty": "hard",
+      "ground_truth": "À Event_Dijon_Cross_2026 (cross / Cross, Amateur 1) le 2026-06-06 à Dijon, Mirage a obtenu le rang 3, statut Terminé, avec Rider_Pauline.",
+      "generated_sql": null,
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": null,
+      "system_answer": "Could not generate a valid query after retries.",
+      "num_attempts": 3,
+      "attempts": [
+        {
+          "sql": "SELECT ep.discipline, e.event_date, e.location, ep.rank, ep.rider_id \nFROM event_participations ep \nJOIN events e ON ep.event_id = e.event_id \nWHERE ep.horse_id = (SELECT horse_id FROM horses WHERE LOWER(name) = LOWER('Mirage')) \nAND LOWER(e.location) = LOWER('Dijon');",
+          "outcome": "execution failure: no such column: ep.discipline"
+        },
+        {
+          "sql": "SELECT ep.discipline, e.event_date, e.location, ep.rank, ep.rider_id \nFROM event_participations ep \nJOIN events e ON ep.event_id = e.event_id \nWHERE ep.horse_id = (SELECT horse_id FROM horses WHERE LOWER(name) = LOWER('Mirage')) \nAND LOWER(e.location) = LOWER('Dijon');",
+          "outcome": "execution failure: no such column: ep.discipline"
+        },
+        {
+          "sql": "SELECT ep.discipline, e.event_date, e.location, ep.rank, ep.rider_id \nFROM event_participations ep \nJOIN events e ON ep.event_id = e.event_id \nWHERE ep.horse_id = (SELECT horse_id FROM horses WHERE LOWER(name) = LOWER('Mirage')) \nAND LOWER(e.location) = LOWER('Dijon');",
+          "outcome": "execution failure: no such column: ep.discipline"
+        }
+      ],
+      "time_seconds": 4.2579116999404505,
+      "produced_answer": false,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.5874733644589576,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "La réponse ne fournit aucune information pertinente sur la participation de Mirage à Dijon, ce qui la rend incorrecte et incomplète."
+      },
+      "combined_score": 0.2937366822294788,
+      "query_cost_usd": 0.00015487499999999998,
+      "eval_cost_usd": 0.0010538000000000001
+    },
+    {
+      "question_id": "X07",
+      "question": "D'après le compte rendu de Event_Clermont_Cross_2026, dresse le classement complet avec race et cavalier pour chaque cheval.",
+      "category": "hierarchical",
+      "difficulty": "hard",
+      "ground_truth": "1 Rafale (Morgan, Rider_Ines) ; 2 Glacier (Anglo-Arabe, Rider_Theo) ; 3 Tonnerre (Mustang, Rider_Ines) ; 4 Orage (Fjord, Rider_Alice) ; 5 Auroch (Pur-sang, Rider_Elise).",
+      "generated_sql": "SELECT ep.horse_id, h.race, ep.rider_id, ep.rank \nFROM event_participations ep \nJOIN horses h ON ep.horse_id = h.horse_id \nWHERE ep.event_id = 'Event_Clermont_Cross_2026' \nORDER BY ep.rank;",
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": [
+        [
+          "Horse_Rafale",
+          "Morgan",
+          "Rider_Ines",
+          1
+        ],
+        [
+          "Horse_Glacier",
+          "Anglo-Arabe",
+          "Rider_Theo",
+          2
+        ],
+        [
+          "Horse_Tonnerre",
+          "Mustang",
+          "Rider_Ines",
+          3
+        ],
+        [
+          "Horse_Orage",
+          "Fjord",
+          "Rider_Alice",
+          4
+        ],
+        [
+          "Horse_Auroch",
+          "Pur-sang",
+          "Rider_Elise",
+          5
+        ]
+      ],
+      "system_answer": "Voici le classement complet des chevaux, avec leur race et le nom des cavaliers pour l'événement Clermont Cross 2026 :\n\n1. Rafale, race : Morgan, cavalier : Ines\n2. Glacier, race : Anglo-Arabe, cavalier : Theo\n3. Tonnerre, race : Mustang, cavalier : Ines\n4. Orage, race : Fjord, cavalier : Alice\n5. Auroch, race : Pur-sang, cavalier : Elise\n\nCe classement présente tous les chevaux participants ainsi que leurs cavaliers respectifs.",
+      "num_attempts": 1,
+      "attempts": [
+        {
+          "sql": "SELECT ep.horse_id, h.race, ep.rider_id, ep.rank \nFROM event_participations ep \nJOIN horses h ON ep.horse_id = h.horse_id \nWHERE ep.event_id = 'Event_Clermont_Cross_2026' \nORDER BY ep.rank;",
+          "outcome": "success"
+        }
+      ],
+      "time_seconds": 2.7483367000240833,
+      "produced_answer": true,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.8090725347515124,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse contient toutes les informations correctes concernant le classement, les races des chevaux et les noms des cavaliers, sans aucune erreur."
+      },
+      "combined_score": 0.9045362673757562,
+      "query_cost_usd": 0.000167355,
+      "eval_cost_usd": 0.0031589
+    },
+    {
+      "question_id": "X08",
+      "question": "Quels capteurs le rapport d'Horizon décrit-il (identifiant, position, fréquence d'échantillonnage, objectif) ?",
+      "category": "hierarchical",
+      "difficulty": "hard",
+      "ground_truth": "IMU_CanonFore_Horizon_01 au canon antérieur (CanonOfForelimb), 250Hz, FatigueDetection ; IMU_Withers_Horizon_01 au garrot (Withers), 200Hz, GaitClassif_01.",
+      "generated_sql": "SELECT s.sensor_id, s.sensor_offset, s.sample_rate, s.objective_id FROM sensors s WHERE s.horse_id = (SELECT horse_id FROM horses WHERE LOWER(name) = LOWER('Horizon'));",
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": [
+        [
+          "IMU_Withers_Horizon_01",
+          "0.01",
+          "200Hz",
+          "GaitClassif_01"
+        ],
+        [
+          "IMU_CanonFore_Horizon_01",
+          "0.02",
+          "250Hz",
+          "FatigueDetection"
+        ]
+      ],
+      "system_answer": "Le rapport d'Horizon décrit deux capteurs. Le premier est l'IMU_Withers_Horizon_01, qui est positionné à 0.01 et a une fréquence d'échantillonnage de 200 Hz, avec pour objectif la classification de la marche (GaitClassif_01). Le second capteur est l'IMU_CanonFore_Horizon_01, positionné à 0.02, avec une fréquence d'échantillonnage de 250 Hz, destiné à la détection de la fatigue (FatigueDetection).",
+      "num_attempts": 1,
+      "attempts": [
+        {
+          "sql": "SELECT s.sensor_id, s.sensor_offset, s.sample_rate, s.objective_id FROM sensors s WHERE s.horse_id = (SELECT horse_id FROM horses WHERE LOWER(name) = LOWER('Horizon'));",
+          "outcome": "success"
+        }
+      ],
+      "time_seconds": 3.7931352999294177,
+      "produced_answer": true,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.9012236232599261,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.5,
+        "accuracy": 0.5,
+        "overall": 0.5,
+        "reasoning": "La réponse contient des informations correctes sur les capteurs, mais les positions sont incorrectes (0.01 et 0.02 ne correspondent pas aux positions mentionnées dans la ground truth). De plus, bien que les objectifs soient corrects, la réponse ne mentionne pas explicitement le canon antérieur pour le premier capteur, ce qui affecte la complétude."
+      },
+      "combined_score": 0.7006118116299631,
+      "query_cost_usd": 0.00016306499999999997,
+      "eval_cost_usd": 0.0029143000000000003
+    },
+    {
+      "question_id": "X09",
+      "question": "Compare Horizon et Mirage d'après leurs rapports : races, cavaliers associés, et événements auxquels leurs étapes d'entraînement sont liées.",
+      "category": "comparison",
+      "difficulty": "very_hard",
+      "ground_truth": "Horizon (Oldenburg) est associé à Rider_Ines et ses étapes sont liées à Event_Montpellier_Dr_2026 ; Mirage (Holsteiner) est associé à Rider_Pauline et ses étapes sont liées à Event_Dijon_Cross_2026.",
+      "generated_sql": "SELECT DISTINCT h.name AS horse_name, h.race, ta.actor_id, e.event_id, e.location, e.category, e.event_date, e.discipline \nFROM horses h \nLEFT JOIN trainings t ON h.horse_id = t.horse_id \nLEFT JOIN training_actors ta ON t.training_id = ta.training_id \nLEFT JOIN event_participations ep ON t.event_id = ep.event_id \nLEFT JOIN events e ON ep.event_id = e.event_id \nWHERE h.horse_id IN ('Horse_Horizon', 'Horse_Mirage');",
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": [
+        [
+          "Horizon",
+          "Oldenburg",
+          "Rider_Ines",
+          "Event_Montpellier_Dr_2026",
+          "Montpellier",
+          "Club Elite",
+          "2026-08-15",
+          "Dressage"
+        ],
+        [
+          "Horizon",
+          "Oldenburg",
+          "Vet_DrMartin",
+          "Event_Montpellier_Dr_2026",
+          "Montpellier",
+          "Club Elite",
+          "2026-08-15",
+          "Dressage"
+        ],
+        [
+          "Horizon",
+          "Oldenburg",
+          "Caretaker_Sophie",
+          "Event_Montpellier_Dr_2026",
+          "Montpellier",
+          "Club Elite",
+          "2026-08-15",
+          "Dressage"
+        ],
+        [
+          "Mirage",
+          "Holsteiner",
+          "Rider_Pauline",
+          "Event_Dijon_Cross_2026",
+          "Dijon",
+          "Amateur 1",
+          "2026-06-06",
+          "Cross"
+        ],
+        [
+          "Mirage",
+          "Holsteiner",
+          "Vet_DrMartin",
+          "Event_Dijon_Cross_2026",
+          "Dijon",
+          "Amateur 1",
+          "2026-06-06",
+          "Cross"
+        ],
+        [
+          "Mirage",
+          "Holsteiner",
+          "Caretaker_Sophie",
+          "Event_Dijon_Cross_2026",
+          "Dijon",
+          "Amateur 1",
+          "2026-06-06",
+          "Cross"
+        ]
+      ],
+      "system_answer": "Horizon et Mirage se distinguent par plusieurs aspects dans leurs rapports. \n\nHorizon est un cheval de race Oldenburg, associé à trois acteurs lors de l'événement de dressage à Montpellier le 15 août 2026. Les cavaliers et acteurs impliqués sont Ines (cavalier), Dr Martin (vétérinaire) et Sophie (soigneur).\n\nEn revanche, Mirage est un Holsteiner, également associé à trois acteurs, mais lors de l'événement de cross à Dijon le 6 juin 2026. Les acteurs pour Mirage incluent Pauline (cavalier), Dr Martin (vétérinaire) et Sophie (soigneur).\n\nEn résumé, Horizon et Mirage diffèrent par leur race, leurs événements et les cavaliers associés. Horizon est lié à un événement de dressage, tandis que Mirage participe à un événement de cross. Les vétérinaires et soigneurs sont identiques pour les deux chevaux, avec Dr Martin et Sophie présents dans les deux cas.",
+      "num_attempts": 2,
+      "attempts": [
+        {
+          "sql": "SELECT h.horse_id, h.race, ta.actor_id, ep.event_id \nFROM horses h \nLEFT JOIN event_participations ep ON h.horse_id = ep.horse_id \nLEFT JOIN training_actors ta ON h.horse_id = ta.horse_id \nWHERE h.horse_id IN ('Horse_Horizon', 'Horse_Mirage');",
+          "outcome": "execution failure: no such column: ta.horse_id"
+        },
+        {
+          "sql": "SELECT DISTINCT h.name AS horse_name, h.race, ta.actor_id, e.event_id, e.location, e.category, e.event_date, e.discipline \nFROM horses h \nLEFT JOIN trainings t ON h.horse_id = t.horse_id \nLEFT JOIN training_actors ta ON t.training_id = ta.training_id \nLEFT JOIN event_participations ep ON t.event_id = ep.event_id \nLEFT JOIN events e ON ep.event_id = e.event_id \nWHERE h.horse_id IN ('Horse_Horizon', 'Horse_Mirage');",
+          "outcome": "success"
+        }
+      ],
+      "time_seconds": 9.523938499973156,
+      "produced_answer": true,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.8755685691644122,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.5,
+        "accuracy": 0.5,
+        "overall": 0.5,
+        "reasoning": "La réponse contient des informations correctes sur les races et les événements, mais elle mentionne des acteurs incorrects et des détails erronés sur les événements. Les cavaliers associés sont également incorrects, ce qui affecte la précision globale."
+      },
+      "combined_score": 0.6877842845822061,
+      "query_cost_usd": 0.00018003,
+      "eval_cost_usd": 0.0054543000000000005
+    },
+    {
+      "question_id": "X10",
+      "question": "À partir du rapport de Cascade, résume sa race, son cavalier associé, ses deux capteurs (position et objectif), et son rang à Paris (Event_SJ_2026_01).",
+      "category": "hierarchical",
+      "difficulty": "very_hard",
+      "ground_truth": "Cascade (race Barbe) est associée à Rider_Victor ; elle porte IMU_Sternum_Cascade_01 (sternum, FatigueDetection) et IMU_Withers_Cascade_01 (garrot, GaitClassif_01) ; à Event_SJ_2026_01 à Paris elle a obtenu le rang 5 avec Rider_Victor.",
+      "generated_sql": "SELECT h.race, ep.rider_id, s.sensor_id, s.objective_id, ep.rank \nFROM horses h \nJOIN event_participations ep ON h.horse_id = ep.horse_id \nJOIN sensors s ON h.horse_id = s.horse_id \nWHERE LOWER(h.name) = LOWER('Cascade') \nAND LOWER(ep.event_id) = LOWER('Event_SJ_2026_01') \nLIMIT 2;",
+      "gold_sql": null,
+      "execution_match": null,
+      "ex_error": null,
+      "ex_na_reason": null,
+      "raw_rows": [
+        [
+          "Barbe",
+          "Rider_Victor",
+          "IMU_Sternum_Cascade_01",
+          "FatigueDetection",
+          5
+        ],
+        [
+          "Barbe",
+          "Rider_Victor",
+          "IMU_Withers_Cascade_01",
+          "GaitClassif_01",
+          5
+        ]
+      ],
+      "system_answer": "Le cheval est de race Barbe et est associé au cavalier Victor. Il utilise deux capteurs : le capteur de position \"IMU_Sternum_Cascade_01\" pour la détection de fatigue et le capteur \"IMU_Withers_Cascade_01\" pour la classification du mouvement. Son rang à Paris pour l'événement Event_SJ_2026_01 est de 5.",
+      "num_attempts": 1,
+      "attempts": [
+        {
+          "sql": "SELECT h.race, ep.rider_id, s.sensor_id, s.objective_id, ep.rank \nFROM horses h \nJOIN event_participations ep ON h.horse_id = ep.horse_id \nJOIN sensors s ON h.horse_id = s.horse_id \nWHERE LOWER(h.name) = LOWER('Cascade') \nAND LOWER(ep.event_id) = LOWER('Event_SJ_2026_01') \nLIMIT 2;",
+          "outcome": "success"
+        }
+      ],
+      "time_seconds": 3.0545142999617383,
+      "produced_answer": true,
+      "honest_unanswerable": false,
+      "scoring_note": null,
+      "semantic_similarity": 0.8549966200794437,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "La réponse contient toutes les informations correctes et précises sur la race, le cavalier, les capteurs et le rang à Paris."
+      },
+      "combined_score": 0.9274983100397218,
+      "query_cost_usd": 0.00016365,
+      "eval_cost_usd": 0.00284
+    }
+  ]
+}

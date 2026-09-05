@@ -1,0 +1,1365 @@
+{
+  "timestamp": "20260817_170421",
+  "mode": "graph",
+  "dataset": "specialization_test_30.json",
+  "dataset_path": "data/specialization_test_30.json",
+  "question_count": 30,
+  "ragas_version": "0.4.3",
+  "evaluator": {
+    "llm": "gpt-4o-mini",
+    "embeddings": "text-embedding-3-small",
+    "metric_classes": {
+      "faithfulness": "ragas.metrics.collections.faithfulness.metric.Faithfulness",
+      "answer_relevancy": "ragas.metrics.collections.answer_relevancy.metric.AnswerRelevancy",
+      "context_precision": "ragas.metrics.collections.context_precision.metric.ContextPrecision",
+      "context_recall": "ragas.metrics.collections.context_recall.metric.ContextRecall"
+    }
+  },
+  "graph_invoke_path": "backend.fusion.adapters.run_graph_live -> backend.graph_rag.cypher_sensor_identity.invoke_graph_chain_with_cypher_retry",
+  "fusion_invoke_path": null,
+  "counts": {
+    "questions": 30,
+    "successful_inference": 29,
+    "ragas_scored": 29,
+    "failures": 1
+  },
+  "averages": {
+    "faithfulness": {
+      "mean": 0.7880434782608695,
+      "n_valid": 23,
+      "n_missing": 7
+    },
+    "answer_relevancy": {
+      "mean": 0.7116667110124624,
+      "n_valid": 29,
+      "n_missing": 1
+    },
+    "context_precision": {
+      "mean": 0.4226207867459334,
+      "n_valid": 25,
+      "n_missing": 5
+    },
+    "context_recall": {
+      "mean": 0.71,
+      "n_valid": 25,
+      "n_missing": 5
+    }
+  },
+  "averages_by_category": {
+    "aggregation": {
+      "faithfulness": {
+        "mean": 0.828125,
+        "n_valid": 8,
+        "n_missing": 2
+      },
+      "answer_relevancy": {
+        "mean": 0.79872168389465,
+        "n_valid": 10,
+        "n_missing": 0
+      },
+      "context_precision": {
+        "mean": 0.27777777775,
+        "n_valid": 9,
+        "n_missing": 1
+      },
+      "context_recall": {
+        "mean": 0.4351851851851852,
+        "n_valid": 9,
+        "n_missing": 1
+      }
+    },
+    "attribute_retrieval": {
+      "faithfulness": {
+        "mean": 0.75,
+        "n_valid": 2,
+        "n_missing": 1
+      },
+      "answer_relevancy": {
+        "mean": 0.6551193180407868,
+        "n_valid": 3,
+        "n_missing": 0
+      },
+      "context_precision": {
+        "mean": 0.583333333275,
+        "n_valid": 2,
+        "n_missing": 1
+      },
+      "context_recall": {
+        "mean": 1.0,
+        "n_valid": 2,
+        "n_missing": 1
+      }
+    },
+    "comparison": {
+      "faithfulness": {
+        "mean": null,
+        "n_valid": 0,
+        "n_missing": 1
+      },
+      "answer_relevancy": {
+        "mean": 0.0,
+        "n_valid": 1,
+        "n_missing": 0
+      },
+      "context_precision": {
+        "mean": null,
+        "n_valid": 0,
+        "n_missing": 1
+      },
+      "context_recall": {
+        "mean": null,
+        "n_valid": 0,
+        "n_missing": 1
+      }
+    },
+    "hierarchical": {
+      "faithfulness": {
+        "mean": 0.9444444444444444,
+        "n_valid": 3,
+        "n_missing": 3
+      },
+      "answer_relevancy": {
+        "mean": 0.5881550706500659,
+        "n_valid": 5,
+        "n_missing": 1
+      },
+      "context_precision": {
+        "mean": 0.22471325068291706,
+        "n_valid": 4,
+        "n_missing": 2
+      },
+      "context_recall": {
+        "mean": 0.875,
+        "n_valid": 4,
+        "n_missing": 2
+      }
+    },
+    "multi_hop": {
+      "faithfulness": {
+        "mean": 0.7083333333333334,
+        "n_valid": 8,
+        "n_missing": 0
+      },
+      "answer_relevancy": {
+        "mean": 0.7484186015580538,
+        "n_valid": 8,
+        "n_missing": 0
+      },
+      "context_precision": {
+        "mean": 0.49999999997708333,
+        "n_valid": 8,
+        "n_missing": 0
+      },
+      "context_recall": {
+        "mean": 0.9166666666666666,
+        "n_valid": 8,
+        "n_missing": 0
+      }
+    },
+    "multi_hop_complex": {
+      "faithfulness": {
+        "mean": 0.5,
+        "n_valid": 1,
+        "n_missing": 0
+      },
+      "answer_relevancy": {
+        "mean": 0.821701539376584,
+        "n_valid": 1,
+        "n_missing": 0
+      },
+      "context_precision": {
+        "mean": 0.9999999999,
+        "n_valid": 1,
+        "n_missing": 0
+      },
+      "context_recall": {
+        "mean": 1.0,
+        "n_valid": 1,
+        "n_missing": 0
+      }
+    },
+    "single_hop": {
+      "faithfulness": {
+        "mean": 1.0,
+        "n_valid": 1,
+        "n_missing": 0
+      },
+      "answer_relevancy": {
+        "mean": 0.9359341212012059,
+        "n_valid": 1,
+        "n_missing": 0
+      },
+      "context_precision": {
+        "mean": 0.9999999999,
+        "n_valid": 1,
+        "n_missing": 0
+      },
+      "context_recall": {
+        "mean": 0.0,
+        "n_valid": 1,
+        "n_missing": 0
+      }
+    }
+  },
+  "averages_by_difficulty": {
+    "easy": {
+      "faithfulness": {
+        "mean": 0.6,
+        "n_valid": 5,
+        "n_missing": 1
+      },
+      "answer_relevancy": {
+        "mean": 0.8298974070464917,
+        "n_valid": 6,
+        "n_missing": 0
+      },
+      "context_precision": {
+        "mean": 0.3611111110875,
+        "n_valid": 6,
+        "n_missing": 0
+      },
+      "context_recall": {
+        "mean": 0.7222222222222222,
+        "n_valid": 6,
+        "n_missing": 0
+      }
+    },
+    "hard": {
+      "faithfulness": {
+        "mean": 0.7321428571428571,
+        "n_valid": 7,
+        "n_missing": 2
+      },
+      "answer_relevancy": {
+        "mean": 0.8521622228592187,
+        "n_valid": 8,
+        "n_missing": 1
+      },
+      "context_precision": {
+        "mean": 0.38318995865708355,
+        "n_valid": 8,
+        "n_missing": 1
+      },
+      "context_recall": {
+        "mean": 0.71875,
+        "n_valid": 8,
+        "n_missing": 1
+      }
+    },
+    "medium": {
+      "faithfulness": {
+        "mean": 0.9375,
+        "n_valid": 8,
+        "n_missing": 1
+      },
+      "answer_relevancy": {
+        "mean": 0.800642401078735,
+        "n_valid": 9,
+        "n_missing": 0
+      },
+      "context_precision": {
+        "mean": 0.49999999995833333,
+        "n_valid": 8,
+        "n_missing": 1
+      },
+      "context_recall": {
+        "mean": 0.625,
+        "n_valid": 8,
+        "n_missing": 1
+      }
+    },
+    "very_hard": {
+      "faithfulness": {
+        "mean": 0.8333333333333334,
+        "n_valid": 3,
+        "n_missing": 3
+      },
+      "answer_relevancy": {
+        "mean": 0.27264513075001595,
+        "n_valid": 6,
+        "n_missing": 0
+      },
+      "context_precision": {
+        "mean": 0.44444444439999997,
+        "n_valid": 3,
+        "n_missing": 3
+      },
+      "context_recall": {
+        "mean": 0.8888888888888888,
+        "n_valid": 3,
+        "n_missing": 3
+      }
+    }
+  },
+  "results": [
+    {
+      "question_id": "G01",
+      "question": "Quels chevaux ont terminé aux trois premières places de Event_Fontainebleau_SJ_2026, et quels cavaliers les montaient ?",
+      "ground_truth": "1er : Luna montée par Rider_Clara ; 2e : Aurore montée par Rider_Pauline ; 3e : Rio monté par Rider_Lea.",
+      "expected_best_pipeline": "graph",
+      "category": "multi_hop",
+      "difficulty": "easy",
+      "specialization_reason": "Requires Event → EventParticipation → Horse and EventParticipation → Rider traversal for a ranked multi-entity result.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": "Les chevaux qui ont terminé aux trois premières places de Event_Fontainebleau_SJ_2026 sont Luna, Aurore et Rio. Ils étaient montés par les cavaliers suivants : Rider_Clara pour Luna, Rider_Pauline pour Aurore, et Rider_Lea pour Rio.",
+      "retrieved_contexts": [
+        "{\"horse\": \"Luna\", \"rider\": \"Rider_Clara\", \"rank\": 1}",
+        "{\"horse\": \"Aurore\", \"rider\": \"Rider_Pauline\", \"rank\": 2}",
+        "{\"horse\": \"Rio\", \"rider\": \"Rider_Lea\", \"rank\": 3}"
+      ],
+      "retrieved_context_count": 3,
+      "generated_query": "MATCH (e) WHERE e.id = \"Event_Fontainebleau_SJ_2026\"\nMATCH (e)-[:HASPARTICIPATION]->(p:EventParticipation)\nWHERE p.rank <= 3\nMATCH (p)-[:HASHORSE]->(h:Horse)\nMATCH (p)-[:HASRIDER]->(r:Rider)\nRETURN h.hasName AS horse, r.id AS rider, p.rank AS rank\nORDER BY p.rank",
+      "inference_success": true,
+      "success": true,
+      "error": null,
+      "inference_seconds": 3.466639899997972,
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8588250441017244,
+        "context_precision": 0.0,
+        "context_recall": 1.0
+      },
+      "ragas_errors": {},
+      "ragas_scored": true
+    },
+    {
+      "question_id": "G02",
+      "question": "À quel événement sportif sont liées les étapes d'entraînement d'Orion, et dans quelle ville cet événement a-t-il lieu ?",
+      "ground_truth": "Les étapes d'entraînement d'Orion sont liées à Event_LeMans_Cross_2026, qui se déroule au Mans.",
+      "expected_best_pipeline": "graph",
+      "category": "multi_hop",
+      "difficulty": "easy",
+      "specialization_reason": "Requires Horse → TrainingStage → DEPENDSON → Event, then reading eventLocation.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": "Les étapes d'entraînement d'Orion sont liées à l'événement sportif « Event_LeMans_Cross_2026 », qui a lieu à Le Mans.",
+      "retrieved_contexts": [
+        "{\"event\": \"Event_LeMans_Cross_2026\", \"location\": \"Le Mans\"}",
+        "{\"event\": \"Event_LeMans_Cross_2026\", \"location\": \"Le Mans\"}",
+        "{\"event\": \"Event_LeMans_Cross_2026\", \"location\": \"Le Mans\"}",
+        "{\"event\": \"Event_LeMans_Cross_2026\", \"location\": \"Le Mans\"}"
+      ],
+      "retrieved_context_count": 4,
+      "generated_query": "MATCH (h:Horse {hasName: \"Orion\"})-[:TRAINSIN]->(t)\nMATCH (t)-[:DEPENDSON]->(e)\nRETURN e.id AS event, e.eventLocation AS location",
+      "inference_success": true,
+      "success": true,
+      "error": null,
+      "inference_seconds": 2.1946793000097387,
+      "ragas": {
+        "faithfulness": 0.5,
+        "answer_relevancy": 0.785814819509735,
+        "context_precision": 0.999999999975,
+        "context_recall": 1.0
+      },
+      "ragas_errors": {},
+      "ragas_scored": true
+    },
+    {
+      "question_id": "G03",
+      "question": "À Event_Versailles_SJ_2026, quels chevaux Rider_Remi a-t-il montés et quels rangs ont-ils obtenus ?",
+      "ground_truth": "Rider_Remi a monté Etoile (rang 1) et Grondre (rang 3) à Event_Versailles_SJ_2026.",
+      "expected_best_pipeline": "graph",
+      "category": "multi_hop",
+      "difficulty": "medium",
+      "specialization_reason": "Requires filtering participations by rider then collecting linked horses and ranks at one event.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": "À Event_Versailles_SJ_2026, Rider_Remi a monté les chevaux Etoile, qui a obtenu le rang 1, et Grondre, qui a obtenu le rang 3.",
+      "retrieved_contexts": [
+        "{\"horse\": \"Etoile\", \"rank\": 1}",
+        "{\"horse\": \"Grondre\", \"rank\": 3}"
+      ],
+      "retrieved_context_count": 2,
+      "generated_query": "MATCH (e:ShowJumping {id: \"Event_Versailles_SJ_2026\"})-[:HASPARTICIPATION]->(p:EventParticipation)\nMATCH (p)-[:HASHORSE]->(h:Horse)\nMATCH (p)-[:HASRIDER]->(r:Rider {id: \"Rider_Remi\"})\nRETURN h.hasName AS horse, p.rank AS rank",
+      "inference_success": true,
+      "success": true,
+      "error": null,
+      "inference_seconds": 3.6331913000321947,
+      "ragas": {
+        "faithfulness": 0.5,
+        "answer_relevancy": 0.9340698931509607,
+        "context_precision": 0.0,
+        "context_recall": 0.6666666666666666
+      },
+      "ragas_errors": {},
+      "ragas_scored": true
+    },
+    {
+      "question_id": "G04",
+      "question": "Quels acteurs non-cavaliers interviennent dans la phase de préparation de Tonnerre, et à quel événement cette phase est-elle liée ?",
+      "ground_truth": "Dans la préparation de Tonnerre interviennent Vet_DrMartin (vétérinaire) et Caretaker_Sophie (soigneur) ; cette phase est liée à Event_Clermont_Cross_2026.",
+      "expected_best_pipeline": "graph",
+      "category": "multi_hop",
+      "difficulty": "medium",
+      "specialization_reason": "Requires Horse → PreparationStage → INVOLVESACTOR plus PreparationStage → DEPENDSON → Event.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": "Les acteurs non-cavaliers qui interviennent dans la phase de préparation de Tonnerre sont le vétérinaire Dr Martin et la soigneuse Sophie. Cette phase est liée à l'événement Event_Clermont_Cross_2026.",
+      "retrieved_contexts": [
+        "{\"actor\": \"Rider_Ines\", \"phase\": \"PreparationStage\", \"stages\": [{\"Volume\": \"50min\", \"Intensity\": \"Modérée\", \"Frequency\": 4, \"id\": \"Training_Prepa_Tonnerre_01\", \"uri\": \"http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Training_Prepa_Tonnerre_01\"}], \"events\": [\"Event_Clermont_Cross_2026\"]}",
+        "{\"actor\": \"Vet_DrMartin\", \"phase\": \"PreparationStage\", \"stages\": [{\"Volume\": \"50min\", \"Intensity\": \"Modérée\", \"Frequency\": 4, \"id\": \"Training_Prepa_Tonnerre_01\", \"uri\": \"http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Training_Prepa_Tonnerre_01\"}], \"events\": [\"Event_Clermont_Cross_2026\"]}",
+        "{\"actor\": \"Caretaker_Sophie\", \"phase\": \"PreparationStage\", \"stages\": [{\"Volume\": \"50min\", \"Intensity\": \"Modérée\", \"Frequency\": 4, \"id\": \"Training_Prepa_Tonnerre_01\", \"uri\": \"http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#Training_Prepa_Tonnerre_01\"}], \"events\": [\"Event_Clermont_Cross_2026\"]}"
+      ],
+      "retrieved_context_count": 3,
+      "generated_query": "MATCH (t:PreparationStage)-[:INVOLVESACTOR]->(a)\nWHERE t.id CONTAINS \"Tonnerre\"\nMATCH (t)-[:DEPENDSON]->(e)\nRETURN a.id AS actor, labels(t)[0] AS phase, COLLECT(DISTINCT t) AS stages, COLLECT(DISTINCT e.id) AS events",
+      "inference_success": true,
+      "success": true,
+      "error": null,
+      "inference_seconds": 4.3908204000326805,
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.6717784398928238,
+        "context_precision": 0.9999999999666667,
+        "context_recall": 1.0
+      },
+      "ragas_errors": {},
+      "ragas_scored": true
+    },
+    {
+      "question_id": "G05",
+      "question": "Quel classement Braise a-t-elle obtenu à Event_Nice_Dressage_2026, et avec quel cavalier ?",
+      "ground_truth": "Braise a obtenu le rang 3 à Event_Nice_Dressage_2026 avec Rider_Alice.",
+      "expected_best_pipeline": "graph",
+      "category": "single_hop",
+      "difficulty": "medium",
+      "specialization_reason": "Requires Event → EventParticipation → Horse/Rider with rank on the participation node.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": "Braise a obtenu le classement 3 à l'événement Event_Nice_Dressage_2026. Le cavalier n'est pas mentionné dans le contexte.",
+      "retrieved_contexts": [
+        "{\"event\": \"Event_Nice_Dressage_2026\", \"horse\": \"Braise\", \"rank\": 3, \"status\": \"Terminé\"}"
+      ],
+      "retrieved_context_count": 1,
+      "generated_query": "MATCH (h:Horse {hasName: \"Braise\"})<-[:HASHORSE]-(p:EventParticipation)<-[:HASPARTICIPATION]-(e)\nWHERE e.id = \"Event_Nice_Dressage_2026\"\nRETURN e.id AS event, h.hasName AS horse, p.rank AS rank, p.status AS status",
+      "inference_success": true,
+      "success": true,
+      "error": null,
+      "inference_seconds": 2.4926024999585934,
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.9359341212012059,
+        "context_precision": 0.9999999999,
+        "context_recall": 0.0
+      },
+      "ragas_errors": {},
+      "ragas_scored": true
+    },
+    {
+      "question_id": "G06",
+      "question": "Pour Horizon, à quels objectifs expérimentaux ses capteurs IMU sont-ils rattachés, et à quel événement ses étapes d'entraînement sont-elles liées ?",
+      "ground_truth": "Les capteurs de Horizon servent à FatigueDetection (IMU_CanonFore_Horizon_01) et GaitClassif_01 (IMU_Withers_Horizon_01) ; ses étapes d'entraînement sont liées à Event_Montpellier_Dr_2026.",
+      "expected_best_pipeline": "graph",
+      "category": "multi_hop",
+      "difficulty": "hard",
+      "specialization_reason": "Combines Sensor → ISUSEDFOR → ExperimentalObjective with Horse → TrainingStage → DEPENDSON → Event.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": "Pour Horizon, les capteurs IMU sont rattachés aux objectifs expérimentaux suivants : GaitClassif_01, FatigueDetection. Les étapes d'entraînement sont liées à l'événement Event_Montpellier_Dr_2026.",
+      "retrieved_contexts": [
+        "{\"objectives\": [\"GaitClassif_01\", \"FatigueDetection\"], \"event\": \"Event_Montpellier_Dr_2026\"}",
+        "{\"objectives\": [\"GaitClassif_01\", \"FatigueDetection\"], \"event\": \"Event_Montpellier_Dr_2026\"}",
+        "{\"objectives\": [\"GaitClassif_01\", \"FatigueDetection\"], \"event\": \"Event_Montpellier_Dr_2026\"}",
+        "{\"objectives\": [\"GaitClassif_01\", \"FatigueDetection\"], \"event\": \"Event_Montpellier_Dr_2026\"}"
+      ],
+      "retrieved_context_count": 4,
+      "generated_query": "MATCH (h:Horse {hasName: \"Horizon\"})<-[:ISATTACHEDTO]-(s:InertialSensors)\nMATCH (s)-[:ISUSEDFOR]->(eo:ExperimentalObjective)\nWITH h, COLLECT(DISTINCT eo.id) AS objectives\nMATCH (h)-[:TRAINSIN]->(t)\nMATCH (t)-[:DEPENDSON]->(e)\nRETURN objectives, e.id AS event",
+      "inference_success": true,
+      "success": true,
+      "error": null,
+      "inference_seconds": 2.8718704000348225,
+      "ragas": {
+        "faithfulness": 0.5,
+        "answer_relevancy": 0.8342373529281836,
+        "context_precision": 0.999999999975,
+        "context_recall": 1.0
+      },
+      "ragas_errors": {},
+      "ragas_scored": true
+    },
+    {
+      "question_id": "G07",
+      "question": "À Event_Clermont_Cross_2026, quels chevaux Rider_Ines a-t-elle montés et quels rangs ont-ils obtenus ?",
+      "ground_truth": "Rider_Ines a monté Rafale (rang 1) et Tonnerre (rang 3) à Event_Clermont_Cross_2026.",
+      "expected_best_pipeline": "graph",
+      "category": "multi_hop",
+      "difficulty": "hard",
+      "specialization_reason": "Requires shared-rider multi-horse participation lookup at a named Cross event.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": "À Event_Clermont_Cross_2026, Rider_Ines a monté les chevaux Tonnerre et Rafale, qui ont obtenu respectivement les rangs 3 et 1.",
+      "retrieved_contexts": [
+        "{\"horse\": \"Tonnerre\", \"rank\": 3}",
+        "{\"horse\": \"Rafale\", \"rank\": 1}"
+      ],
+      "retrieved_context_count": 2,
+      "generated_query": "MATCH (e)-[:HASPARTICIPATION]->(p:EventParticipation)-[:HASRIDER]->(r:Rider {id: \"Rider_Ines\"})\nMATCH (p)-[:HASHORSE]->(h:Horse)\nWHERE e.id = \"Event_Clermont_Cross_2026\"\nRETURN h.hasName AS horse, p.rank AS rank",
+      "inference_success": true,
+      "success": true,
+      "error": null,
+      "inference_seconds": 2.8900601999484934,
+      "ragas": {
+        "faithfulness": 0.6666666666666666,
+        "answer_relevancy": 0.9487980643627715,
+        "context_precision": 0.0,
+        "context_recall": 1.0
+      },
+      "ragas_errors": {},
+      "ragas_scored": true
+    },
+    {
+      "question_id": "G08",
+      "question": "Quel cavalier est associé à Mirage (ASSOCIATEDWITH), et quel rang Mirage a-t-il obtenu à Event_Dijon_Cross_2026 ?",
+      "ground_truth": "Mirage est associé à Rider_Pauline ; à Event_Dijon_Cross_2026, Mirage a obtenu le rang 3 avec Rider_Pauline.",
+      "expected_best_pipeline": "graph",
+      "category": "multi_hop",
+      "difficulty": "hard",
+      "specialization_reason": "Requires distinguishing ASSOCIATEDWITH from EventParticipation ranking on the same horse–rider pair.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": "Le cavalier associé à Mirage est Pauline, et Mirage a obtenu le rang 3 à l'événement Event_Dijon_Cross_2026.",
+      "retrieved_contexts": [
+        "{\"rider\": \"Rider_Pauline\", \"rank\": 3}"
+      ],
+      "retrieved_context_count": 1,
+      "generated_query": "MATCH (h:Horse {hasName: \"Mirage\"})<-[:ASSOCIATEDWITH]-(r:Rider)\nMATCH (h)<-[:HASHORSE]-(p:EventParticipation)<-[:HASPARTICIPATION]-(e)\nWHERE e.id = \"Event_Dijon_Cross_2026\"\nRETURN r.id AS rider, p.rank AS rank",
+      "inference_success": true,
+      "success": true,
+      "error": null,
+      "inference_seconds": 2.239739099983126,
+      "ragas": {
+        "faithfulness": 0.5,
+        "answer_relevancy": 0.9538251985182317,
+        "context_precision": 0.9999999999,
+        "context_recall": 1.0
+      },
+      "ragas_errors": {},
+      "ragas_scored": true
+    },
+    {
+      "question_id": "G09",
+      "question": "Parmi les chevaux montés par Rider_Remi à Event_Pau_SJ_2026 et à Event_Versailles_SJ_2026, lequel apparaît aux deux événements ?",
+      "ground_truth": "Seul Grondre apparaît avec Rider_Remi à la fois à Event_Pau_SJ_2026 (rang 6) et à Event_Versailles_SJ_2026 (rang 3).",
+      "expected_best_pipeline": "graph",
+      "category": "multi_hop_complex",
+      "difficulty": "very_hard",
+      "specialization_reason": "Requires set intersection of horse neighborhoods for one rider across two event participation subgraphs.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": "Le cheval qui apparaît aux deux événements monté par Rider_Remi est Grondre.",
+      "retrieved_contexts": [
+        "{\"horse\": \"Grondre\", \"event1\": \"Event_Pau_SJ_2026\", \"event2\": \"Event_Versailles_SJ_2026\"}"
+      ],
+      "retrieved_context_count": 1,
+      "generated_query": "MATCH (r:Rider {id: \"Rider_Remi\"})-[:ASSOCIATEDWITH]->(h:Horse)\nMATCH (h)-[:COMPETESIN]->(e1) WHERE e1.id = \"Event_Pau_SJ_2026\"\nMATCH (h)-[:COMPETESIN]->(e2) WHERE e2.id = \"Event_Versailles_SJ_2026\"\nRETURN h.hasName AS horse, e1.id AS event1, e2.id AS event2",
+      "inference_success": true,
+      "success": true,
+      "error": null,
+      "inference_seconds": 7.723947799997404,
+      "ragas": {
+        "faithfulness": 0.5,
+        "answer_relevancy": 0.821701539376584,
+        "context_precision": 0.9999999999,
+        "context_recall": 1.0
+      },
+      "ragas_errors": {},
+      "ragas_scored": true
+    },
+    {
+      "question_id": "G10",
+      "question": "Quels capteurs sont attachés à Cascade, pour quels objectifs, et quel rang Cascade a-t-elle obtenu à Event_SJ_2026_01 ?",
+      "ground_truth": "Cascade porte IMU_Sternum_Cascade_01 (FatigueDetection) et IMU_Withers_Cascade_01 (GaitClassif_01) ; à Event_SJ_2026_01 (Paris) elle a obtenu le rang 5 avec Rider_Victor.",
+      "expected_best_pipeline": "graph",
+      "category": "multi_hop",
+      "difficulty": "very_hard",
+      "specialization_reason": "Joins Sensor → Horse → Objective with a separate Horse → EventParticipation → Event path.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": "Cascade est équipée de deux capteurs : IMU_Sternum_Cascade_01, qui a pour objectif la détection de la fatigue, et IMU_Withers_Cascade_01, qui a pour objectif la classification du mouvement. Concernant le rang obtenu à Event_SJ_2026_01, il n'est pas spécifié dans le contexte.",
+      "retrieved_contexts": [
+        "{\"sensor_id\": \"IMU_Sternum_Cascade_01\", \"objective\": \"FatigueDetection\", \"rank\": null}",
+        "{\"sensor_id\": \"IMU_Withers_Cascade_01\", \"objective\": \"GaitClassif_01\", \"rank\": null}"
+      ],
+      "retrieved_context_count": 2,
+      "generated_query": "MATCH (h:Horse {hasName: \"Cascade\"})<-[:ISATTACHEDTO]-(s:InertialSensors)\nMATCH (s)-[:ISUSEDFOR]->(eo:ExperimentalObjective)\nOPTIONAL MATCH (e:ShowJumping {id: \"Event_SJ_2026_01\"})<-[:HASPARTICIPATION]-(p:EventParticipation)-[:HASHORSE]->(h)\nRETURN s.id AS sensor_id, eo.id AS objective, p.rank AS rank",
+      "inference_success": true,
+      "success": true,
+      "error": null,
+      "inference_seconds": 14.212489700003061,
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "context_recall": 0.6666666666666666
+      },
+      "ragas_errors": {},
+      "ragas_scored": true
+    },
+    {
+      "question_id": "T01",
+      "question": "Combien de capteurs IMU ont un offset de calibration égal à 0.015 ?",
+      "ground_truth": "7 capteurs ont un offset de calibration de 0.015.",
+      "expected_best_pipeline": "tabular_v2",
+      "category": "aggregation",
+      "difficulty": "easy",
+      "specialization_reason": "Simple COUNT with a numeric/categorical filter on sensors.sensor_offset.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": "Il n'y a aucun capteur IMU avec un offset de calibration égal à 0.015.",
+      "retrieved_contexts": [
+        "{\"sensor_count\": 8, \"sensor_ids\": [\"IMU_CanonHind_Thunder_01\", \"IMU_CanonHind_Sable_01\", \"IMU_CanonHind_Dakota_01\", \"IMU_CanonHind_Zephyr_01\", \"IMU_CanonHind_Ombre_01\", \"IMU_CanonHind_Apollon_01\", \"IMU_CanonHind_Iris_01\", \"dynamic_sensor_DYNTEST-S3\"]}"
+      ],
+      "retrieved_context_count": 1,
+      "generated_query": "MATCH (s:InertialSensors) WHERE s.hasSensorOffset = \"0.015\"\nRETURN COUNT(DISTINCT s) AS sensor_count, COLLECT(DISTINCT s.id) AS sensor_ids",
+      "inference_success": true,
+      "success": true,
+      "error": null,
+      "inference_seconds": 1.9694441999890842,
+      "ragas": {
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.9149196304188566,
+        "context_precision": 0.0,
+        "context_recall": 0.0
+      },
+      "ragas_errors": {},
+      "ragas_scored": true
+    },
+    {
+      "question_id": "T02",
+      "question": "Comment se répartissent les capteurs IMU selon leur fréquence d'échantillonnage (sample_rate) ?",
+      "ground_truth": "66 capteurs à 200Hz, 39 à 250Hz et 3 à 300Hz.",
+      "expected_best_pipeline": "tabular_v2",
+      "category": "aggregation",
+      "difficulty": "easy",
+      "specialization_reason": "Requires GROUP BY sample_rate with COUNT over the sensors table.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": "La répartition des capteurs IMU selon leur fréquence d'échantillonnage est la suivante :\n\n- À 200Hz, il y a 67 capteurs : IMU_Sternum_Zephyr_01, IMU_Withers_Ecume_01, IMU_Withers_Brume_01, IMU_Withers_Zephire_01, IMU_Sternum_Dakota_01, IMU_Withers_Glacier_01, IMU_Sternum_Brume_01, IMU_Withers_Pixie_01, IMU_Withers_Iris_01, IMU_Withers_Auroch_01, IMU_Sternum_Lumiere_01, IMU_Withers_Mirage_01, IMU_Sternum_Arrow_01, IMU_Withers_Nuage_01, IMU_Withers_Nova_01, IMU_Withers_Crepuscule_01, IMU_Sternum_Luna_01, IMU_Withers_Rafale_01, IMU_Sternum_Volcan_01, IMU_Sternum_Orage_01, IMU_Withers_Thunder_01, IMU_Sternum_Zephire_01, IMU_Withers_Naya_01, IMU_Withers_Aurore_01, IMU_Sternum_Bella_01, IMU_Withers_Tempete_01, IMU_Withers_Horizon_01, IMU_Sternum_Vega_01, IMU_Withers_Dakota_01, IMU_Withers_Mistral_01, IMU_Withers_Riviere_01, IMU_Withers_Orage_01, IMU_Withers_Soleil_01, IMU_Withers_Arrow_01, IMU_Withers_Dune_01, IMU_Sternum_Sirius_01, IMU_Sternum_Mistral_01, IMU_Sternum_Pixie_01, IMU_Sternum_Atlas_01, IMU_Sternum_Galop_01, IMU_Sternum_Crepuscule_01, IMU_Withers_Nebule_01, IMU_Sternum_Ecume_01, IMU_Withers_Eclair_01, IMU_Sternum_Naya_01, IMU_Withers_Grondre_01, IMU_Withers_Braise_01, IMU_Withers_Apollon_01, IMU_Withers_Etoile_01, IMU_Sternum_Cascade_01, IMU_Sternum_Nova_01, IMU_Sternum_Rafale_01, IMU_Withers_Volcan_01, IMU_Sternum_Dune_01, IMU_Withers_Falcon_01, IMU_Sternum_Luminos_01, IMU_Withers_Ombre_01, IMU_Withers_Sable_01, IMU_Sternum_Falcon_01, IMU_Withers_Luminos_01, IMU_Sternum_Thunder_01, IMU_Withers_Cascade_01, IMU_Withers_Lumiere_01, IMU_Withers_Tonnerre_01, IMU_Withers_Galop_01, IMU_Withers_Sirius_01, dynamic_sensor_DYNTEST-S1.\n\n- À 250Hz, il y a 46 capteurs : IMU_CanonFore_Eclair_01, IMU_CanonHind_Tempete_01, IMU_CanonHind_Thunder_01, IMU_Withers_Eclat_01, IMU_Withers_Rio_01, IMU_CanonFore_Nuage_01, IMU_CanonFore_Etoile_01, IMU_CanonFore_Atlas_01, IMU_CanonFore_Braise_01, IMU_CanonFore_Riviere_01, IMU_CanonHind_Auroch_01, IMU_CanonFore_Orion_01, IMU_CanonHind_Sable_01, IMU_CanonFore_Rio_01, IMU_CanonFore_Soleil_01, IMU_Withers_Orion_01, IMU_CanonFore_Zephyr_01, IMU_Withers_Storm_01, IMU_CanonFore_Nebule_01, IMU_CanonFore_Tonnerre_01, IMU_CanonFore_Horizon_01, IMU_CanonHind_Dakota_01, IMU_CanonHind_Zephyr_01, IMU_Withers_Atlas_01, IMU_Withers_Luna_01, IMU_Withers_Bella_01, IMU_Withers_Zephyr_01, IMU_CanonHind_Grondre_01, IMU_CanonHind_Ombre_01, IMU_CanonFore_Storm_01, IMU_CanonHind_Apollon_01, IMU_CanonHind_Iris_01, IMU_Withers_Vega_01, IMU_CanonFore_Eclat_01, IMU_CanonHind_Mirage_01, IMU_CanonFore_Glacier_01, IMU_CanonFore_Dakota_01, IMU_CanonHind_Aurore_01, IMU_CanonFore_Bella_01, dynamic_sensor_6845, dynamic_sensor_0C31, dynamic_sensor_5032, dynamic_sensor_4D3C, dynamic_sensor_5CBF, dynamic_sensor_DYNTEST-S2, dynamic_sensor_DYNTEST-S3.\n\n- À 300Hz, il y a 3 capteurs : IMU_CanonFore_Luna_01, IMU_Withers_Comet_01, IMU_CanonFore_Comet_01.\n\nEn résumé, les capteurs sont répartis comme suit : 67 capteurs à 200Hz, 46 capteurs à 250Hz, et 3 capteurs à 300Hz.",
+      "retrieved_contexts": [
+        "{\"sample_rate\": \"200Hz\", \"sensor_count\": 67, \"sensor_ids\": [\"IMU_Sternum_Zephyr_01\", \"IMU_Withers_Ecume_01\", \"IMU_Withers_Brume_01\", \"IMU_Withers_Zephire_01\", \"IMU_Sternum_Dakota_01\", \"IMU_Withers_Glacier_01\", \"IMU_Sternum_Brume_01\", \"IMU_Withers_Pixie_01\", \"IMU_Withers_Iris_01\", \"IMU_Withers_Auroch_01\", \"IMU_Sternum_Lumiere_01\", \"IMU_Withers_Mirage_01\", \"IMU_Sternum_Arrow_01\", \"IMU_Withers_Nuage_01\", \"IMU_Withers_Nova_01\", \"IMU_Withers_Crepuscule_01\", \"IMU_Sternum_Luna_01\", \"IMU_Withers_Rafale_01\", \"IMU_Sternum_Volcan_01\", \"IMU_Sternum_Orage_01\", \"IMU_Withers_Thunder_01\", \"IMU_Sternum_Zephire_01\", \"IMU_Withers_Naya_01\", \"IMU_Withers_Aurore_01\", \"IMU_Sternum_Bella_01\", \"IMU_Withers_Tempete_01\", \"IMU_Withers_Horizon_01\", \"IMU_Sternum_Vega_01\", \"IMU_Withers_Dakota_01\", \"IMU_Withers_Mistral_01\", \"IMU_Withers_Riviere_01\", \"IMU_Withers_Orage_01\", \"IMU_Withers_Soleil_01\", \"IMU_Withers_Arrow_01\", \"IMU_Withers_Dune_01\", \"IMU_Sternum_Sirius_01\", \"IMU_Sternum_Mistral_01\", \"IMU_Sternum_Pixie_01\", \"IMU_Sternum_Atlas_01\", \"IMU_Sternum_Galop_01\", \"IMU_Sternum_Crepuscule_01\", \"IMU_Withers_Nebule_01\", \"IMU_Sternum_Ecume_01\", \"IMU_Withers_Eclair_01\", \"IMU_Sternum_Naya_01\", \"IMU_Withers_Grondre_01\", \"IMU_Withers_Braise_01\", \"IMU_Withers_Apollon_01\", \"IMU_Withers_Etoile_01\", \"IMU_Sternum_Cascade_01\", \"IMU_Sternum_Nova_01\", \"IMU_Sternum_Rafale_01\", \"IMU_Withers_Volcan_01\", \"IMU_Sternum_Dune_01\", \"IMU_Withers_Falcon_01\", \"IMU_Sternum_Luminos_01\", \"IMU_Withers_Ombre_01\", \"IMU_Withers_Sable_01\", \"IMU_Sternum_Falcon_01\", \"IMU_Withers_Luminos_01\", \"IMU_Sternum_Thunder_01\", \"IMU_Withers_Cascade_01\", \"IMU_Withers_Lumiere_01\", \"IMU_Withers_Tonnerre_01\", \"IMU_Withers_Galop_01\", \"IMU_Withers_Sirius_01\", \"dynamic_sensor_DYNTEST-S1\"]}",
+        "{\"sample_rate\": \"250Hz\", \"sensor_count\": 46, \"sensor_ids\": [\"IMU_CanonFore_Eclair_01\", \"IMU_CanonHind_Tempete_01\", \"IMU_CanonHind_Thunder_01\", \"IMU_Withers_Eclat_01\", \"IMU_Withers_Rio_01\", \"IMU_CanonFore_Nuage_01\", \"IMU_CanonFore_Etoile_01\", \"IMU_CanonFore_Atlas_01\", \"IMU_CanonFore_Braise_01\", \"IMU_CanonFore_Riviere_01\", \"IMU_CanonHind_Auroch_01\", \"IMU_CanonFore_Orion_01\", \"IMU_CanonHind_Sable_01\", \"IMU_CanonFore_Rio_01\", \"IMU_CanonFore_Soleil_01\", \"IMU_Withers_Orion_01\", \"IMU_CanonFore_Zephyr_01\", \"IMU_Withers_Storm_01\", \"IMU_CanonFore_Nebule_01\", \"IMU_CanonFore_Tonnerre_01\", \"IMU_CanonFore_Horizon_01\", \"IMU_CanonHind_Dakota_01\", \"IMU_CanonHind_Zephyr_01\", \"IMU_Withers_Atlas_01\", \"IMU_Withers_Luna_01\", \"IMU_Withers_Bella_01\", \"IMU_Withers_Zephyr_01\", \"IMU_CanonHind_Grondre_01\", \"IMU_CanonHind_Ombre_01\", \"IMU_CanonFore_Storm_01\", \"IMU_CanonHind_Apollon_01\", \"IMU_CanonHind_Iris_01\", \"IMU_Withers_Vega_01\", \"IMU_CanonFore_Eclat_01\", \"IMU_CanonHind_Mirage_01\", \"IMU_CanonFore_Glacier_01\", \"IMU_CanonFore_Dakota_01\", \"IMU_CanonHind_Aurore_01\", \"IMU_CanonFore_Bella_01\", \"dynamic_sensor_6845\", \"dynamic_sensor_0C31\", \"dynamic_sensor_5032\", \"dynamic_sensor_4D3C\", \"dynamic_sensor_5CBF\", \"dynamic_sensor_DYNTEST-S2\", \"dynamic_sensor_DYNTEST-S3\"]}",
+        "{\"sample_rate\": \"300Hz\", \"sensor_count\": 3, \"sensor_ids\": [\"IMU_CanonFore_Luna_01\", \"IMU_Withers_Comet_01\", \"IMU_CanonFore_Comet_01\"]}"
+      ],
+      "retrieved_context_count": 3,
+      "generated_query": "MATCH (s:InertialSensors)\nRETURN s.hasSensorTime AS sample_rate, COUNT(DISTINCT s) AS sensor_count, COLLECT(DISTINCT s.id) AS sensor_ids\nORDER BY sensor_count DESC",
+      "inference_success": true,
+      "success": true,
+      "error": null,
+      "inference_seconds": 21.6102763999952,
+      "ragas": {
+        "faithfulness": null,
+        "answer_relevancy": 0.6847155969643298,
+        "context_precision": 0.0,
+        "context_recall": 0.3333333333333333
+      },
+      "ragas_errors": {
+        "faithfulness": "The output is incomplete due to a max_tokens length limit."
+      },
+      "ragas_scored": true
+    },
+    {
+      "question_id": "T03",
+      "question": "Comment se répartissent globalement les offsets de calibration (sensor_offset) des capteurs IMU ?",
+      "ground_truth": "50 capteurs à 0.01, 7 à 0.015 et 51 à 0.02.",
+      "expected_best_pipeline": "tabular_v2",
+      "category": "aggregation",
+      "difficulty": "medium",
+      "specialization_reason": "Distribution: GROUP BY sensor_offset with COUNT over all sensors.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": "Les offsets de calibration (sensor_offset) des capteurs IMU se répartissent comme suit :\n\n- 0.02 : 53 capteurs\n- 0.01 : 50 capteurs\n- 0.015 : 8 capteurs\n- 0.010 : 1 capteur\n- 0.011 : 1 capteur\n- 0.012 : 1 capteur\n- 0.013 : 1 capteur\n- 0.014 : 1 capteur\n\nEn résumé, il y a un total de 115 capteurs avec des offsets variés.",
+      "retrieved_contexts": [
+        "{\"offset\": \"0.02\", \"sensor_count\": 53}",
+        "{\"offset\": \"0.01\", \"sensor_count\": 50}",
+        "{\"offset\": \"0.015\", \"sensor_count\": 8}",
+        "{\"offset\": \"0.010\", \"sensor_count\": 1}",
+        "{\"offset\": \"0.011\", \"sensor_count\": 1}",
+        "{\"offset\": \"0.012\", \"sensor_count\": 1}",
+        "{\"offset\": \"0.013\", \"sensor_count\": 1}",
+        "{\"offset\": \"0.014\", \"sensor_count\": 1}"
+      ],
+      "retrieved_context_count": 8,
+      "generated_query": "MATCH (s:InertialSensors)\nRETURN s.hasSensorOffset AS offset, COUNT(DISTINCT s) AS sensor_count\nORDER BY sensor_count DESC",
+      "inference_success": true,
+      "success": true,
+      "error": null,
+      "inference_seconds": 2.9399250999558717,
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8091385649503021,
+        "context_precision": 0.0,
+        "context_recall": 0.3333333333333333
+      },
+      "ragas_errors": {},
+      "ragas_scored": true
+    },
+    {
+      "question_id": "T04",
+      "question": "Quel est le nombre moyen de chevaux distincts présentés par cavalier en compétition ?",
+      "ground_truth": "En moyenne, chaque cavalier présente 2,04 chevaux distincts en compétition.",
+      "expected_best_pipeline": "tabular_v2",
+      "category": "aggregation",
+      "difficulty": "medium",
+      "specialization_reason": "Nested aggregation: COUNT(DISTINCT horse_id) per rider_id then AVG.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": "Le nombre moyen de chevaux distincts présentés par cavalier en compétition est de 2,04.",
+      "retrieved_contexts": [
+        "{\"average_horses_per_rider\": 2.0400000000000005}"
+      ],
+      "retrieved_context_count": 1,
+      "generated_query": "MATCH (r:Rider)-[:ASSOCIATEDWITH]->(h:Horse)-[:COMPETESIN]->(e)\nWITH r, COUNT(DISTINCT h) AS horse_count\nRETURN AVG(horse_count) AS average_horses_per_rider",
+      "inference_success": true,
+      "success": true,
+      "error": null,
+      "inference_seconds": 2.590259100019466,
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.9991831295225936,
+        "context_precision": 0.9999999999,
+        "context_recall": 1.0
+      },
+      "ragas_errors": {},
+      "ragas_scored": true
+    },
+    {
+      "question_id": "T05",
+      "question": "Quel est le nombre moyen de capteurs IMU par cheval ?",
+      "ground_truth": "En moyenne, chaque cheval a 2,16 capteurs IMU.",
+      "expected_best_pipeline": "tabular_v2",
+      "category": "aggregation",
+      "difficulty": "medium",
+      "specialization_reason": "Requires nested aggregation: COUNT per horse then AVG of those counts.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": "Le nombre moyen de capteurs IMU par cheval est de 2,18.",
+      "retrieved_contexts": [
+        "{\"average_sensors_per_horse\": 2.1799999999999997}"
+      ],
+      "retrieved_context_count": 1,
+      "generated_query": "MATCH (h:Horse)<-[:ISATTACHEDTO]-(s:InertialSensors)\nWHERE s.hasSensorID CONTAINS \"IMU\"\nWITH h, COUNT(DISTINCT s) AS sensor_count\nRETURN AVG(sensor_count) AS average_sensors_per_horse",
+      "inference_success": true,
+      "success": true,
+      "error": null,
+      "inference_seconds": 4.355546200007666,
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.9986164564144703,
+        "context_precision": 0.9999999999,
+        "context_recall": 0.0
+      },
+      "ragas_errors": {},
+      "ragas_scored": true
+    },
+    {
+      "question_id": "T06",
+      "question": "Combien de capteurs y a-t-il pour chaque combinaison type anatomique × objectif expérimental ?",
+      "ground_truth": "CanonOfForelimb + FatigueDetection : 20 ; CanonOfHindlimb + GaitClassif_01 : 12 ; Sternum + FatigueDetection : 26 ; Withers + GaitClassif_01 : 50.",
+      "expected_best_pipeline": "tabular_v2",
+      "category": "aggregation",
+      "difficulty": "hard",
+      "specialization_reason": "Two-dimensional GROUP BY on sensor_type and objective_id.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": "Pour chaque combinaison type anatomique × objectif expérimental, il y a les capteurs suivants :\n\n- Canon antérieur pour la détection de fatigue : 20 capteurs\n- Canon antérieur pour la classification de la démarche (GaitClassif_01) : 1 capteur\n- Canon postérieur pour la détection de fatigue : 1 capteur\n- Canon postérieur pour la classification de la démarche (GaitClassif_01) : 13 capteurs\n- Sternum pour la détection de fatigue : 26 capteurs\n- Garrot pour la classification de la démarche (GaitClassif_01) : 50 capteurs\n\nEn résumé, les capteurs sont répartis comme suit : 20, 1, 1, 13, 26, et 50.",
+      "retrieved_contexts": [
+        "{\"position\": \"CanonOfForelimb\", \"objective\": \"FatigueDetection\", \"sensor_count\": 20}",
+        "{\"position\": \"CanonOfForelimb\", \"objective\": \"GaitClassif_01\", \"sensor_count\": 1}",
+        "{\"position\": \"CanonOfHindlimb\", \"objective\": \"FatigueDetection\", \"sensor_count\": 1}",
+        "{\"position\": \"CanonOfHindlimb\", \"objective\": \"GaitClassif_01\", \"sensor_count\": 13}",
+        "{\"position\": \"Sternum\", \"objective\": \"FatigueDetection\", \"sensor_count\": 26}",
+        "{\"position\": \"Withers\", \"objective\": \"GaitClassif_01\", \"sensor_count\": 50}"
+      ],
+      "retrieved_context_count": 6,
+      "generated_query": "MATCH (s:InertialSensors)\nMATCH (s)-[:ISUSEDFOR]->(eo:ExperimentalObjective)\nRETURN labels(s)[1] AS position, eo.id AS objective, COUNT(DISTINCT s) AS sensor_count\nORDER BY position, objective",
+      "inference_success": true,
+      "success": true,
+      "error": null,
+      "inference_seconds": 4.389774599985685,
+      "ragas": {
+        "faithfulness": 0.875,
+        "answer_relevancy": 0.8827789165652463,
+        "context_precision": 0.16666666665,
+        "context_recall": 0.75
+      },
+      "ragas_errors": {},
+      "ragas_scored": true
+    },
+    {
+      "question_id": "T07",
+      "question": "Combien de cavaliers ont présenté exactement trois chevaux distincts en compétition ?",
+      "ground_truth": "7 cavaliers ont présenté exactement trois chevaux distincts.",
+      "expected_best_pipeline": "tabular_v2",
+      "category": "aggregation",
+      "difficulty": "hard",
+      "specialization_reason": "Per-rider COUNT(DISTINCT horse_id) with HAVING = 3, then COUNT of riders.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": "Non, aucun cavalier n'a présenté exactement trois chevaux distincts en compétition.",
+      "retrieved_contexts": [
+        "{\"rider_count\": 0}"
+      ],
+      "retrieved_context_count": 1,
+      "generated_query": "MATCH (r:Rider)-[:HASRIDER]->(p:EventParticipation)-[:HASHORSE]->(h:Horse)\nWITH r, COUNT(DISTINCT h) AS horse_count\nWHERE horse_count = 3\nRETURN COUNT(DISTINCT r) AS rider_count",
+      "inference_success": true,
+      "success": true,
+      "error": null,
+      "inference_seconds": 2.1386443999945186,
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.938010809221049,
+        "context_precision": 0.0,
+        "context_recall": 0.0
+      },
+      "ragas_errors": {},
+      "ragas_scored": true
+    },
+    {
+      "question_id": "T08",
+      "question": "Combien de participations ont un statut autre que « Terminé », et comment se répartissent-elles par statut ?",
+      "ground_truth": "3 participations non terminées : 1 Abandon, 1 Éliminé et 1 NonPartant (sur 101 participations au total, dont 98 Terminé).",
+      "expected_best_pipeline": "tabular_v2",
+      "category": "aggregation",
+      "difficulty": "hard",
+      "specialization_reason": "Conditional COUNT / GROUP BY on event_participations.status.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": "Il y a 3 participations avec un statut autre que « Terminé ». Elles se répartissent par statut comme suit : 1 participation avec le statut « NonPartant », 1 participation avec le statut « Abandon », et 1 participation avec le statut « Éliminé ».",
+      "retrieved_contexts": [
+        "{\"participation_status\": \"NonPartant\", \"participation_count\": 1}",
+        "{\"participation_status\": \"Abandon\", \"participation_count\": 1}",
+        "{\"participation_status\": \"Éliminé\", \"participation_count\": 1}"
+      ],
+      "retrieved_context_count": 3,
+      "generated_query": "MATCH (p:EventParticipation)\nWHERE p.status <> \"Terminé\"\nWITH p.status AS participation_status, COUNT(DISTINCT p) AS participation_count\nRETURN participation_status, participation_count\nORDER BY participation_count DESC",
+      "inference_success": true,
+      "success": true,
+      "error": null,
+      "inference_seconds": 2.322341199964285,
+      "ragas": {
+        "faithfulness": 0.75,
+        "answer_relevancy": 0.9456844897661405,
+        "context_precision": 0.0,
+        "context_recall": 0.5
+      },
+      "ragas_errors": {},
+      "ragas_scored": true
+    },
+    {
+      "question_id": "T09",
+      "question": "Comment se répartissent les cavaliers selon le nombre de chevaux distincts qu'ils ont présentés en compétition ?",
+      "ground_truth": "8 cavaliers avec 1 cheval, 9 avec 2 chevaux, 7 avec 3 chevaux, et 1 cavalier (Rider_Alice) avec 4 chevaux.",
+      "expected_best_pipeline": "tabular_v2",
+      "category": "aggregation",
+      "difficulty": "very_hard",
+      "specialization_reason": "Two-level aggregation: COUNT(DISTINCT horse_id) per rider, then histogram of those counts.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": "Cette information n'est pas disponible.",
+      "retrieved_contexts": [],
+      "retrieved_context_count": 0,
+      "generated_query": "MATCH (r:Rider)-[:HASRIDER]->(p:EventParticipation)-[:HASHORSE]->(h:Horse)\nWITH r, COUNT(DISTINCT h) AS horse_count\nRETURN horse_count, COUNT(r) AS rider_count, COLLECT(r.id) AS rider_ids\nORDER BY horse_count",
+      "inference_success": true,
+      "success": true,
+      "error": null,
+      "inference_seconds": 1.769391599984374,
+      "ragas": {
+        "faithfulness": null,
+        "answer_relevancy": 0.0,
+        "context_precision": null,
+        "context_recall": null
+      },
+      "ragas_errors": {
+        "faithfulness": "retrieved_contexts is missing. Please add retrieved_contexts to the test sample.",
+        "context_precision": "retrieved_contexts cannot be empty",
+        "context_recall": "retrieved_contexts cannot be empty"
+      },
+      "ragas_scored": true
+    },
+    {
+      "question_id": "T10",
+      "question": "Combien d'événements y a-t-il pour chaque combinaison discipline × catégorie de niveau ?",
+      "ground_truth": "Cross / Amateur 1 : 4 ; Cross / Amateur 2 : 3 ; Dressage / Club Elite : 5 ; Dressage / Pro Elite : 1 ; ShowJumping / Amateur 1 : 2 ; ShowJumping / Amateur 2 : 2 ; ShowJumping / Pro Elite : 3.",
+      "expected_best_pipeline": "tabular_v2",
+      "category": "aggregation",
+      "difficulty": "very_hard",
+      "specialization_reason": "Two-dimensional GROUP BY on events.discipline and events.category.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": "Il y a les événements suivants pour chaque combinaison discipline × catégorie de niveau :\n\n- Cross, Amateur 1 : 4 événements\n- Cross, Amateur 2 : 3 événements\n- Dressage, Club Elite : 5 événements\n- Dressage, Pro Elite : 1 événement\n- ShowJumping, Amateur 1 : 2 événements\n- ShowJumping, Amateur 2 : 2 événements\n- ShowJumping, Pro Elite : 3 événements",
+      "retrieved_contexts": [
+        "{\"discipline\": \"Cross\", \"category\": \"Amateur 1\", \"event_count\": 4}",
+        "{\"discipline\": \"Cross\", \"category\": \"Amateur 2\", \"event_count\": 3}",
+        "{\"discipline\": \"Dressage\", \"category\": \"Club Elite\", \"event_count\": 5}",
+        "{\"discipline\": \"Dressage\", \"category\": \"Pro Elite\", \"event_count\": 1}",
+        "{\"discipline\": \"ShowJumping\", \"category\": \"Amateur 1\", \"event_count\": 2}",
+        "{\"discipline\": \"ShowJumping\", \"category\": \"Amateur 2\", \"event_count\": 2}",
+        "{\"discipline\": \"ShowJumping\", \"category\": \"Pro Elite\", \"event_count\": 3}"
+      ],
+      "retrieved_context_count": 7,
+      "generated_query": "MATCH (e) WHERE (e:ShowJumping OR e:Dressage OR e:Cross)\nRETURN labels(e)[0] AS discipline, e.category AS category, COUNT(DISTINCT e) AS event_count\nORDER BY discipline, category",
+      "inference_success": true,
+      "success": true,
+      "error": null,
+      "inference_seconds": 2.824266399955377,
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8141692451235117,
+        "context_precision": 0.3333333333,
+        "context_recall": 1.0
+      },
+      "ragas_errors": {},
+      "ragas_scored": true
+    },
+    {
+      "question_id": "X01",
+      "question": "D'après le rapport de Vega, quel statut a-t-elle obtenu à Event_Pau_SJ_2026, et avec quel cavalier ?",
+      "ground_truth": "À Event_Pau_SJ_2026, Vega a le statut « Abandon » (rang 0) avec Rider_Baptiste.",
+      "expected_best_pipeline": "textual",
+      "category": "attribute_retrieval",
+      "difficulty": "easy",
+      "specialization_reason": "Entity-centered status/rider fact retrieval from the Vega horse report.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": "Vega a obtenu le statut \"Abandon\" à l'événement Event_Pau_SJ_2026, avec le cavalier Baptiste.",
+      "retrieved_contexts": [
+        "{\"event\": \"Event_Pau_SJ_2026\", \"horse\": \"Galop\", \"rider\": \"Rider_Remi\", \"status\": \"Terminé\"}",
+        "{\"event\": \"Event_Pau_SJ_2026\", \"horse\": \"Apollon\", \"rider\": \"Rider_Sarah\", \"status\": \"Terminé\"}",
+        "{\"event\": \"Event_Pau_SJ_2026\", \"horse\": \"Atlas\", \"rider\": \"Rider_Camille\", \"status\": \"Terminé\"}",
+        "{\"event\": \"Event_Pau_SJ_2026\", \"horse\": \"Grondre\", \"rider\": \"Rider_Remi\", \"status\": \"Terminé\"}",
+        "{\"event\": \"Event_Pau_SJ_2026\", \"horse\": \"Pixie\", \"rider\": \"Rider_Julien\", \"status\": \"Terminé\"}",
+        "{\"event\": \"Event_Pau_SJ_2026\", \"horse\": \"Vega\", \"rider\": \"Rider_Baptiste\", \"status\": \"Abandon\"}",
+        "{\"event\": \"Event_Pau_SJ_2026\", \"horse\": \"Comet\", \"rider\": \"Rider_Nina\", \"status\": \"Terminé\"}"
+      ],
+      "retrieved_context_count": 7,
+      "generated_query": "MATCH (h:Horse)<-[:HASHORSE]-(p:EventParticipation)<-[:HASPARTICIPATION]-(e)\nMATCH (p)-[:HASRIDER]->(r:Rider)\nWHERE e.id = \"Event_Pau_SJ_2026\"\nRETURN e.id AS event, h.hasName AS horse, r.id AS rider, p.status AS status",
+      "inference_success": true,
+      "success": true,
+      "error": null,
+      "inference_seconds": 3.1336458000005223,
+      "ragas": {
+        "faithfulness": 0.5,
+        "answer_relevancy": 0.7894080798761465,
+        "context_precision": 0.16666666665,
+        "context_recall": 1.0
+      },
+      "ragas_errors": {},
+      "ragas_scored": true
+    },
+    {
+      "question_id": "X02",
+      "question": "D'après le compte rendu de Event_Nice_Dressage_2026, quelle est la race du cheval classé premier ?",
+      "ground_truth": "Le vainqueur est Sirius, de race Frison.",
+      "expected_best_pipeline": "textual",
+      "category": "attribute_retrieval",
+      "difficulty": "easy",
+      "specialization_reason": "Requires retrieving the Nice event report and reading the ranked entrant race field.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": "La race du cheval classé premier dans le compte rendu de Event_Nice_Dressage_2026 est Frison.",
+      "retrieved_contexts": [
+        "{\"race\": \"Frison\"}"
+      ],
+      "retrieved_context_count": 1,
+      "generated_query": "MATCH (e) WHERE e.id = \"Event_Nice_Dressage_2026\"\nMATCH (e)-[:HASPARTICIPATION]->(p:EventParticipation)\nWHERE p.rank = 1\nMATCH (p)-[:HASHORSE]->(h:Horse)\nRETURN h.hasRace AS race",
+      "inference_success": true,
+      "success": true,
+      "error": null,
+      "inference_seconds": 2.3202842999598943,
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.9457012714081577,
+        "context_precision": 0.9999999999,
+        "context_recall": 1.0
+      },
+      "ragas_errors": {},
+      "ragas_scored": true
+    },
+    {
+      "question_id": "X03",
+      "question": "Selon le rapport d'Horizon, quelle est sa race et quel cavalier lui est associé (ASSOCIATEDWITH) ?",
+      "ground_truth": "Horizon est de race Oldenburg et lui est associé Rider_Ines.",
+      "expected_best_pipeline": "textual",
+      "category": "attribute_retrieval",
+      "difficulty": "medium",
+      "specialization_reason": "Synthesizes two explicit descriptive fields from one horse report.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": "Non, aucun cas de ce type n'existe dans le système.",
+      "retrieved_contexts": [],
+      "retrieved_context_count": 0,
+      "generated_query": "MATCH (h:Horse)-[:ASSOCIATEDWITH]->(r:Rider)\nRETURN h.hasRace AS race, r.id AS rider",
+      "inference_success": true,
+      "success": true,
+      "error": null,
+      "inference_seconds": 1.8660913000348955,
+      "ragas": {
+        "faithfulness": null,
+        "answer_relevancy": 0.23024860283805623,
+        "context_precision": null,
+        "context_recall": null
+      },
+      "ragas_errors": {
+        "faithfulness": "retrieved_contexts is missing. Please add retrieved_contexts to the test sample.",
+        "context_precision": "retrieved_contexts cannot be empty",
+        "context_recall": "retrieved_contexts cannot be empty"
+      },
+      "ragas_scored": true
+    },
+    {
+      "question_id": "X04",
+      "question": "D'après le compte rendu de Event_Nice_Dressage_2026, quels sont les trois premiers chevaux, leurs races et leurs cavaliers ?",
+      "ground_truth": "1er : Sirius (Frison) avec Rider_Baptiste ; 2e : Eclat (Morgan) avec Rider_Chloe ; 3e : Braise (Appaloosa) avec Rider_Alice.",
+      "expected_best_pipeline": "textual",
+      "category": "hierarchical",
+      "difficulty": "medium",
+      "specialization_reason": "Multi-attribute synthesis from a single event report podium section.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": "Les trois premiers chevaux de l'événement Event_Nice_Dressage_2026 sont Sirius, Eclat et Braise. Leurs races sont respectivement Frison, Morgan et Appaloosa. Les cavaliers sont Rider_Baptiste, Rider_Chloe et Rider_Alice.",
+      "retrieved_contexts": [
+        "{\"horse\": \"Sirius\", \"race\": \"Frison\", \"rider\": \"Rider_Baptiste\"}",
+        "{\"horse\": \"Eclat\", \"race\": \"Morgan\", \"rider\": \"Rider_Chloe\"}",
+        "{\"horse\": \"Braise\", \"race\": \"Appaloosa\", \"rider\": \"Rider_Alice\"}"
+      ],
+      "retrieved_context_count": 3,
+      "generated_query": "MATCH (e) WHERE e.id = \"Event_Nice_Dressage_2026\"\nMATCH (e)-[:HASPARTICIPATION]->(p:EventParticipation)\nMATCH (p)-[:HASHORSE]->(h:Horse)\nMATCH (p)-[:HASRIDER]->(r:Rider)\nRETURN h.hasName AS horse, h.hasRace AS race, r.id AS rider\nORDER BY p.rank ASC\nLIMIT 3",
+      "inference_success": true,
+      "success": true,
+      "error": null,
+      "inference_seconds": 3.678075500007253,
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.762041625074215,
+        "context_precision": 0.0,
+        "context_recall": 1.0
+      },
+      "ragas_errors": {},
+      "ragas_scored": true
+    },
+    {
+      "question_id": "X05",
+      "question": "Quels volumes, intensités et fréquences le rapport de Braise indique-t-il pour ses quatre phases d'entraînement ?",
+      "ground_truth": "Compétition : 30min, Pic, fréquence 1 ; pré-compétition : 60min, Élevée, fréquence 3 ; préparation : 45min, Modérée, fréquence 4 ; transition : 25min, Faible, fréquence 2.",
+      "expected_best_pipeline": "textual",
+      "category": "hierarchical",
+      "difficulty": "medium",
+      "specialization_reason": "Assembles several explicit training metrics listed together in one horse report.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": "Pour les quatre phases d'entraînement de Braise, les volumes, intensités et fréquences sont les suivants :\n\n- **Phase de Pré-Compétition** : volume de 60 minutes, intensité élevée, fréquence de 3.\n- **Phase de Préparation** : volume de 45 minutes, intensité modérée, fréquence de 4.\n- **Phase de Transition** : volume de 25 minutes, intensité faible, fréquence de 2.\n- **Phase de Compétition** : volume de 30 minutes, intensité pic, fréquence de 1.",
+      "retrieved_contexts": [
+        "{\"phase\": \"PreCompetitionStage\", \"volume\": \"60min\", \"intensity\": \"Élevée\", \"frequency\": 3}",
+        "{\"phase\": \"PreparationStage\", \"volume\": \"45min\", \"intensity\": \"Modérée\", \"frequency\": 4}",
+        "{\"phase\": \"TransitionStage\", \"volume\": \"25min\", \"intensity\": \"Faible\", \"frequency\": 2}",
+        "{\"phase\": \"CompetitionStage\", \"volume\": \"30min\", \"intensity\": \"Pic\", \"frequency\": 1}"
+      ],
+      "retrieved_context_count": 4,
+      "generated_query": "MATCH (h:Horse {hasName: \"Braise\"})-[:TRAINSIN]->(t)\nWHERE (t:PreparationStage OR t:PreCompetitionStage OR t:CompetitionStage OR t:TransitionStage)\nRETURN labels(t)[0] AS phase, t.Volume AS volume, t.Intensity AS intensity, t.Frequency AS frequency",
+      "inference_success": true,
+      "success": true,
+      "error": null,
+      "inference_seconds": 3.811195400019642,
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8647707766639868,
+        "context_precision": 0.0,
+        "context_recall": 1.0
+      },
+      "ragas_errors": {},
+      "ragas_scored": true
+    },
+    {
+      "question_id": "X06",
+      "question": "Que dit le rapport de Mirage sur sa participation à Dijon (discipline, date, lieu, rang, cavalier) ?",
+      "ground_truth": "À Event_Dijon_Cross_2026 (cross / Cross, Amateur 1) le 2026-06-06 à Dijon, Mirage a obtenu le rang 3, statut Terminé, avec Rider_Pauline.",
+      "expected_best_pipeline": "textual",
+      "category": "hierarchical",
+      "difficulty": "hard",
+      "specialization_reason": "Contextual multi-field synthesis of one competition paragraph in the Mirage report.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": null,
+      "retrieved_contexts": [],
+      "retrieved_context_count": 0,
+      "generated_query": null,
+      "inference_success": false,
+      "success": false,
+      "error": "{neo4j_code: Neo.ClientError.Statement.SyntaxError} {message: PatternExpressions are not allowed to introduce new variables: 'r'. (line 3, column 120 (offset: 294))\r\n\"RETURN labels(e)[0] AS discipline, e.eventDate AS date, e.eventLocation AS location, p.rank AS rank, (p)-[:HASRIDER]->(r:Rider) RETURN r.id AS rider\"\r\n                                                                                                                        ^} {gql_status: 42001} {gql_status_description: error: syntax error or access rule violation - invalid syntax}",
+      "inference_seconds": 0.0,
+      "ragas": {
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_precision": null,
+        "context_recall": null
+      },
+      "ragas_errors": {},
+      "ragas_scored": false
+    },
+    {
+      "question_id": "X07",
+      "question": "D'après le compte rendu de Event_Clermont_Cross_2026, dresse le classement complet avec race et cavalier pour chaque cheval.",
+      "ground_truth": "1 Rafale (Morgan, Rider_Ines) ; 2 Glacier (Anglo-Arabe, Rider_Theo) ; 3 Tonnerre (Mustang, Rider_Ines) ; 4 Orage (Fjord, Rider_Alice) ; 5 Auroch (Pur-sang, Rider_Elise).",
+      "expected_best_pipeline": "textual",
+      "category": "hierarchical",
+      "difficulty": "hard",
+      "specialization_reason": "Requires exhaustive listing from the event report ranking section.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": "Le classement complet de l'événement Event_Clermont_Cross_2026 est le suivant :\n\n1. Rafale, race Morgan, cavalier Ines\n2. Glacier, race Anglo-Arabe, cavalier Theo\n3. Tonnerre, race Mustang, cavalier Ines\n4. Orage, race Fjord, cavalier Alice\n5. Auroch, race Pur-sang, cavalier Elise",
+      "retrieved_contexts": [
+        "{\"horse\": \"Rafale\", \"race\": \"Morgan\", \"rider\": \"Rider_Ines\", \"rank\": 1}",
+        "{\"horse\": \"Glacier\", \"race\": \"Anglo-Arabe\", \"rider\": \"Rider_Theo\", \"rank\": 2}",
+        "{\"horse\": \"Tonnerre\", \"race\": \"Mustang\", \"rider\": \"Rider_Ines\", \"rank\": 3}",
+        "{\"horse\": \"Orage\", \"race\": \"Fjord\", \"rider\": \"Rider_Alice\", \"rank\": 4}",
+        "{\"horse\": \"Auroch\", \"race\": \"Pur-sang\", \"rider\": \"Rider_Elise\", \"rank\": 5}"
+      ],
+      "retrieved_context_count": 5,
+      "generated_query": "MATCH (e) WHERE e.id = \"Event_Clermont_Cross_2026\"\nMATCH (e)-[:HASPARTICIPATION]->(p:EventParticipation)\nMATCH (p)-[:HASHORSE]->(h:Horse)\nMATCH (p)-[:HASRIDER]->(r:Rider)\nRETURN h.hasName AS horse, h.hasRace AS race, r.id AS rider, p.rank AS rank\nORDER BY p.rank",
+      "inference_success": true,
+      "success": true,
+      "error": null,
+      "inference_seconds": 2.9734443000052124,
+      "ragas": {
+        "faithfulness": 0.8333333333333334,
+        "answer_relevancy": 0.7025682723499003,
+        "context_precision": 0.499999999975,
+        "context_recall": 1.0
+      },
+      "ragas_errors": {},
+      "ragas_scored": true
+    },
+    {
+      "question_id": "X08",
+      "question": "Quels capteurs le rapport d'Horizon décrit-il (identifiant, position, fréquence d'échantillonnage, objectif) ?",
+      "ground_truth": "IMU_CanonFore_Horizon_01 au canon antérieur (CanonOfForelimb), 250Hz, FatigueDetection ; IMU_Withers_Horizon_01 au garrot (Withers), 200Hz, GaitClassif_01.",
+      "expected_best_pipeline": "textual",
+      "category": "hierarchical",
+      "difficulty": "hard",
+      "specialization_reason": "Multi-attribute sensor description block synthesis from the Horizon report.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": "Le rapport d'Horizon décrit les capteurs suivants :\n\n1. IMU_CanonFore_Eclair_01 : position CanonOfForelimb, fréquence d'échantillonnage 250Hz, objectif FatigueDetection\n2. IMU_Sternum_Zephyr_01 : position Sternum, fréquence d'échantillonnage 200Hz, objectif FatigueDetection\n3. IMU_Sternum_Dakota_01 : position Sternum, fréquence d'échantillonnage 200Hz, objectif FatigueDetection\n4. IMU_Sternum_Brume_01 : position Sternum, fréquence d'échantillonnage 200Hz, objectif FatigueDetection\n5. IMU_Sternum_Lumiere_01 : position Sternum, fréquence d'échantillonnage 200Hz, objectif FatigueDetection\n6. IMU_Sternum_Arrow_01 : position Sternum, fréquence d'échantillonnage 200Hz, objectif FatigueDetection\n7. IMU_CanonFore_Nuage_01 : position CanonOfForelimb, fréquence d'échantillonnage 250Hz, objectif FatigueDetection\n8. IMU_Sternum_Luna_01 : position Sternum, fréquence d'échantillonnage 200Hz, objectif FatigueDetection\n9. IMU_Sternum_Volcan_01 : position Sternum, fréquence d'échantillonnage 200Hz, objectif FatigueDetection\n10. IMU_Sternum_Orage_01 : position Sternum, fréquence d'échantillonnage 200Hz, objectif FatigueDetection\n11. IMU_CanonFore_Etoile_01 : position CanonOfForelimb, fréquence d'échantillonnage 250Hz, objectif FatigueDetection\n12. IMU_Sternum_Zephire_01 : position Sternum, fréquence d'échantillonnage 200Hz, objectif FatigueDetection\n13. IMU_Sternum_Bella_01 : position Sternum, fréquence d'échantillonnage 200Hz, objectif FatigueDetection\n14. IMU_Sternum_Vega_01 : position Sternum, fréquence d'échantillonnage 200Hz, objectif FatigueDetection\n15. IMU_CanonFore_Atlas_01 : position CanonOfForelimb, fréquence d'échantillonnage 250Hz, objectif FatigueDetection\n16. IMU_CanonFore_Braise_01 : position CanonOfForelimb, fréquence d'échantillonnage 250Hz, objectif FatigueDetection\n17. IMU_CanonFore_Riviere_01 : position CanonOfForelimb, fréquence d'échantillonnage 250Hz, objectif FatigueDetection\n18. IMU_CanonFore_Luna_01 : position CanonOfForelimb, fréquence d'échantillonnage 300Hz, objectif FatigueDetection\n19. IMU_CanonFore_Orion_01 : position CanonOfForelimb, fréquence d'échantillonnage 250Hz, objectif FatigueDetection\n20. IMU_CanonFore_Rio_01 : position CanonOfForelimb, fréquence d'échantillonnage 250Hz, objectif FatigueDetection\n21. IMU_CanonFore_Soleil_01 : position CanonOfForelimb, fréquence d'échantillonnage 250Hz, objectif FatigueDetection\n22. IMU_Sternum_Sirius_01 : position Sternum, fréquence d'échantillonnage 200Hz, objectif FatigueDetection\n23. IMU_CanonFore_Zephyr_01 : position CanonOfForelimb, fréquence d'échantillonnage 250Hz, objectif FatigueDetection\n24. IMU_Sternum_Mistral_01 : position Sternum, fréquence d'échantillonnage 200Hz, objectif FatigueDetection\n25. IMU_Sternum_Pixie_01 : position Sternum, fréquence d'échantillonnage 200Hz, objectif FatigueDetection\n26. IMU_CanonFore_Nebule_01 : position CanonOfForelimb, fréquence d'échantillonnage 250Hz, objectif FatigueDetection\n27. IMU_Sternum_Atlas_01 : position Sternum, fréquence d'échantillonnage 200Hz, objectif FatigueDetection\n28. IMU_Sternum_Galop_01 : position Sternum, fréquence d'échantillonnage 200Hz, objectif FatigueDetection\n29. IMU_Sternum_Crepuscule_01 : position Sternum, fréquence d'échantillonnage 200Hz, objectif FatigueDetection\n30. IMU_CanonFore_Tonnerre_01 : position CanonOfForelimb, fréquence d'échantillonnage 250Hz, objectif FatigueDetection\n31. IMU_Sternum_Ecume_01 : position Sternum, fréquence d'échantillonnage 200Hz, objectif FatigueDetection\n32. IMU_CanonFore_Horizon_01 : position CanonOfForelimb, fréquence d'échantillonnage 250Hz, objectif FatigueDetection\n33. IMU_Sternum_Naya_01 : position Sternum, fréquence d'échantillonnage 200Hz, objectif FatigueDetection\n34. IMU_Sternum_Cascade_01 : position Sternum, fréquence d'échantillonnage 200Hz, objectif FatigueDetection\n35. IMU_Sternum_Nova_01 : position Sternum, fréquence d'échantillonnage 200Hz, objectif FatigueDetection\n36. IMU_Sternum_Rafale_01 : position Sternum, fréquence d'échantillonnage 200Hz, objectif FatigueDetection\n37. IMU_Sternum_Dune_01 : position Sternum, fréquence d'échantillonnage 200Hz, objectif FatigueDetection\n38. IMU_Sternum_Luminos_01 : position Sternum, fréquence d'échantillonnage 200Hz, objectif FatigueDetection\n39. IMU_Sternum_Falcon_01 : position Sternum, fréquence d'échantillonnage 200Hz, objectif FatigueDetection\n40. IMU_CanonFore_Comet_01 : position CanonOfForelimb, fréquence d'échantillonnage 300Hz, objectif FatigueDetection\n41. IMU_Sternum_Thunder_01 : position Sternum, fréquence d'échantillonnage 200Hz, objectif FatigueDetection\n42. IMU_CanonFore_Storm_01 : position CanonOfForelimb, fréquence d'échantillonnage 250Hz, objectif FatigueDetection\n43. IMU_CanonFore_Eclat_01 : position CanonOfForelimb, fréquence d'échantillonnage 250Hz, objectif FatigueDetection\n44. IMU_CanonFore_Glacier_01 : position CanonOfForelimb, fréquence d'échantillonnage 250Hz, objectif FatigueDetection\n45. IMU_CanonFore_Dakota_01 : position CanonOfForelimb, fréquence d'échantillonnage 250Hz, objectif FatigueDetection\n46. IMU_CanonFore_Bella_01 : position CanonOfForelimb, fréquence d'échantillonnage 250Hz, objectif FatigueDetection\n47. dynamic_sensor_DYNTEST-S3 : position CanonOfHindlimb, fréquence d'échantillonnage 250Hz, objectif FatigueDetection\n48. IMU_CanonHind_Tempete_01 : position CanonOfHindlimb, fréquence d'échantillonnage 250Hz, objectif GaitClassif_01\n49. IMU_CanonHind_Thunder_01 : position CanonOfHindlimb, fréquence d'échantillonnage 250Hz, objectif GaitClassif_01\n50. IMU_Withers_Ecume_01 : position Withers, fréquence d'échantillonnage 200Hz, objectif GaitClassif_01",
+      "retrieved_contexts": [
+        "{\"sensor_id\": \"IMU_CanonFore_Eclair_01\", \"position\": \"CanonOfForelimb\", \"sampling_rate\": \"250Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_Sternum_Zephyr_01\", \"position\": \"Sternum\", \"sampling_rate\": \"200Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_Sternum_Dakota_01\", \"position\": \"Sternum\", \"sampling_rate\": \"200Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_Sternum_Brume_01\", \"position\": \"Sternum\", \"sampling_rate\": \"200Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_Sternum_Lumiere_01\", \"position\": \"Sternum\", \"sampling_rate\": \"200Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_Sternum_Arrow_01\", \"position\": \"Sternum\", \"sampling_rate\": \"200Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_CanonFore_Nuage_01\", \"position\": \"CanonOfForelimb\", \"sampling_rate\": \"250Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_Sternum_Luna_01\", \"position\": \"Sternum\", \"sampling_rate\": \"200Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_Sternum_Volcan_01\", \"position\": \"Sternum\", \"sampling_rate\": \"200Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_Sternum_Orage_01\", \"position\": \"Sternum\", \"sampling_rate\": \"200Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_CanonFore_Etoile_01\", \"position\": \"CanonOfForelimb\", \"sampling_rate\": \"250Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_Sternum_Zephire_01\", \"position\": \"Sternum\", \"sampling_rate\": \"200Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_Sternum_Bella_01\", \"position\": \"Sternum\", \"sampling_rate\": \"200Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_Sternum_Vega_01\", \"position\": \"Sternum\", \"sampling_rate\": \"200Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_CanonFore_Atlas_01\", \"position\": \"CanonOfForelimb\", \"sampling_rate\": \"250Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_CanonFore_Braise_01\", \"position\": \"CanonOfForelimb\", \"sampling_rate\": \"250Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_CanonFore_Riviere_01\", \"position\": \"CanonOfForelimb\", \"sampling_rate\": \"250Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_CanonFore_Luna_01\", \"position\": \"CanonOfForelimb\", \"sampling_rate\": \"300Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_CanonFore_Orion_01\", \"position\": \"CanonOfForelimb\", \"sampling_rate\": \"250Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_CanonFore_Rio_01\", \"position\": \"CanonOfForelimb\", \"sampling_rate\": \"250Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_CanonFore_Soleil_01\", \"position\": \"CanonOfForelimb\", \"sampling_rate\": \"250Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_Sternum_Sirius_01\", \"position\": \"Sternum\", \"sampling_rate\": \"200Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_CanonFore_Zephyr_01\", \"position\": \"CanonOfForelimb\", \"sampling_rate\": \"250Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_Sternum_Mistral_01\", \"position\": \"Sternum\", \"sampling_rate\": \"200Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_Sternum_Pixie_01\", \"position\": \"Sternum\", \"sampling_rate\": \"200Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_CanonFore_Nebule_01\", \"position\": \"CanonOfForelimb\", \"sampling_rate\": \"250Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_Sternum_Atlas_01\", \"position\": \"Sternum\", \"sampling_rate\": \"200Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_Sternum_Galop_01\", \"position\": \"Sternum\", \"sampling_rate\": \"200Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_Sternum_Crepuscule_01\", \"position\": \"Sternum\", \"sampling_rate\": \"200Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_CanonFore_Tonnerre_01\", \"position\": \"CanonOfForelimb\", \"sampling_rate\": \"250Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_Sternum_Ecume_01\", \"position\": \"Sternum\", \"sampling_rate\": \"200Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_CanonFore_Horizon_01\", \"position\": \"CanonOfForelimb\", \"sampling_rate\": \"250Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_Sternum_Naya_01\", \"position\": \"Sternum\", \"sampling_rate\": \"200Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_Sternum_Cascade_01\", \"position\": \"Sternum\", \"sampling_rate\": \"200Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_Sternum_Nova_01\", \"position\": \"Sternum\", \"sampling_rate\": \"200Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_Sternum_Rafale_01\", \"position\": \"Sternum\", \"sampling_rate\": \"200Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_Sternum_Dune_01\", \"position\": \"Sternum\", \"sampling_rate\": \"200Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_Sternum_Luminos_01\", \"position\": \"Sternum\", \"sampling_rate\": \"200Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_Sternum_Falcon_01\", \"position\": \"Sternum\", \"sampling_rate\": \"200Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_CanonFore_Comet_01\", \"position\": \"CanonOfForelimb\", \"sampling_rate\": \"300Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_Sternum_Thunder_01\", \"position\": \"Sternum\", \"sampling_rate\": \"200Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_CanonFore_Storm_01\", \"position\": \"CanonOfForelimb\", \"sampling_rate\": \"250Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_CanonFore_Eclat_01\", \"position\": \"CanonOfForelimb\", \"sampling_rate\": \"250Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_CanonFore_Glacier_01\", \"position\": \"CanonOfForelimb\", \"sampling_rate\": \"250Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_CanonFore_Dakota_01\", \"position\": \"CanonOfForelimb\", \"sampling_rate\": \"250Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_CanonFore_Bella_01\", \"position\": \"CanonOfForelimb\", \"sampling_rate\": \"250Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"dynamic_sensor_DYNTEST-S3\", \"position\": \"CanonOfHindlimb\", \"sampling_rate\": \"250Hz\", \"objectives\": [\"FatigueDetection\"]}",
+        "{\"sensor_id\": \"IMU_CanonHind_Tempete_01\", \"position\": \"CanonOfHindlimb\", \"sampling_rate\": \"250Hz\", \"objectives\": [\"GaitClassif_01\"]}",
+        "{\"sensor_id\": \"IMU_CanonHind_Thunder_01\", \"position\": \"CanonOfHindlimb\", \"sampling_rate\": \"250Hz\", \"objectives\": [\"GaitClassif_01\"]}",
+        "{\"sensor_id\": \"IMU_Withers_Ecume_01\", \"position\": \"Withers\", \"sampling_rate\": \"200Hz\", \"objectives\": [\"GaitClassif_01\"]}"
+      ],
+      "retrieved_context_count": 50,
+      "generated_query": "MATCH (s:InertialSensors)\nMATCH (s)-[:ISUSEDFOR]->(eo:ExperimentalObjective)\nRETURN s.id AS sensor_id, labels(s)[1] AS position, s.hasSensorTime AS sampling_rate, COLLECT(DISTINCT eo.id) AS objectives",
+      "inference_success": true,
+      "success": true,
+      "error": null,
+      "inference_seconds": 33.27524619997712,
+      "ragas": {
+        "faithfulness": null,
+        "answer_relevancy": 0.6113946791622273,
+        "context_precision": 0.39885300275666824,
+        "context_recall": 0.5
+      },
+      "ragas_errors": {
+        "faithfulness": "The output is incomplete due to a max_tokens length limit."
+      },
+      "ragas_scored": true
+    },
+    {
+      "question_id": "X09",
+      "question": "Compare Horizon et Mirage d'après leurs rapports : races, cavaliers associés, et événements auxquels leurs étapes d'entraînement sont liées.",
+      "ground_truth": "Horizon (Oldenburg) est associé à Rider_Ines et ses étapes sont liées à Event_Montpellier_Dr_2026 ; Mirage (Holsteiner) est associé à Rider_Pauline et ses étapes sont liées à Event_Dijon_Cross_2026.",
+      "expected_best_pipeline": "textual",
+      "category": "comparison",
+      "difficulty": "very_hard",
+      "specialization_reason": "Cross-document descriptive synthesis from two horse reports without requiring global aggregation.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": "Cette information n'est pas disponible.",
+      "retrieved_contexts": [],
+      "retrieved_context_count": 0,
+      "generated_query": "MATCH (h1:Horse {hasName: \"Horizon\"})-[:ASSOCIATEDWITH]->(r1:Rider)\nMATCH (h1)-[:TRAINSIN]->(t1)-[:DEPENDSON]->(e1)\nMATCH (h2:Horse {hasName: \"Mirage\"})-[:ASSOCIATEDWITH]->(r2:Rider)\nMATCH (h2)-[:TRAINSIN]->(t2)-[:DEPENDSON]->(e2)\nRETURN h1.hasRace AS race_horizon, r1.id AS rider_horizon, e1.id AS event_horizon,\n       h2.hasRace AS race_mirage, r2.id AS rider_mirage, e2.id AS event_mirage",
+      "inference_success": true,
+      "success": true,
+      "error": null,
+      "inference_seconds": 2.738217899983283,
+      "ragas": {
+        "faithfulness": null,
+        "answer_relevancy": 0.0,
+        "context_precision": null,
+        "context_recall": null
+      },
+      "ragas_errors": {
+        "faithfulness": "retrieved_contexts is missing. Please add retrieved_contexts to the test sample.",
+        "context_precision": "retrieved_contexts cannot be empty",
+        "context_recall": "retrieved_contexts cannot be empty"
+      },
+      "ragas_scored": true
+    },
+    {
+      "question_id": "X10",
+      "question": "À partir du rapport de Cascade, résume sa race, son cavalier associé, ses deux capteurs (position et objectif), et son rang à Paris (Event_SJ_2026_01).",
+      "ground_truth": "Cascade (race Barbe) est associée à Rider_Victor ; elle porte IMU_Sternum_Cascade_01 (sternum, FatigueDetection) et IMU_Withers_Cascade_01 (garrot, GaitClassif_01) ; à Event_SJ_2026_01 à Paris elle a obtenu le rang 5 avec Rider_Victor.",
+      "expected_best_pipeline": "textual",
+      "category": "hierarchical",
+      "difficulty": "very_hard",
+      "specialization_reason": "Entity-centered multi-section synthesis spanning identity, sensors, and competition paragraphs of one report.",
+      "mode": "graph",
+      "selected_pipeline": null,
+      "decision_rule": null,
+      "decision_reason": null,
+      "selected_evidence_score": null,
+      "answer": "Cette information n'est pas disponible.",
+      "retrieved_contexts": [],
+      "retrieved_context_count": 0,
+      "generated_query": "MATCH (h:Horse {hasName: \"Cascade\"})-[:ASSOCIATEDWITH]->(r:Rider)\nMATCH (h)<-[:HASHORSE]-(p:EventParticipation)-[:HASRIDER]->(r)\nMATCH (h)<-[:ISATTACHEDTO]-(s:InertialSensors)\nMATCH (s)-[:ISUSEDFOR]->(eo:ExperimentalObjective)\nWHERE p.rank IS NOT NULL AND p.status = \"Official\"\nMATCH (e:ShowJumping {id: \"Event_SJ_2026_01\"})\nRETURN h.hasRace AS race, r.id AS rider, \n       labels(s)[1] AS position, s.hasSensorID AS sensor_id, \n       eo.id AS objective, p.rank AS rank",
+      "inference_success": true,
+      "success": true,
+      "error": null,
+      "inference_seconds": 3.245470000023488,
+      "ragas": {
+        "faithfulness": null,
+        "answer_relevancy": 0.0,
+        "context_precision": null,
+        "context_recall": null
+      },
+      "ragas_errors": {
+        "faithfulness": "retrieved_contexts is missing. Please add retrieved_contexts to the test sample.",
+        "context_precision": "retrieved_contexts cannot be empty",
+        "context_recall": "retrieved_contexts cannot be empty"
+      },
+      "ragas_scored": true
+    }
+  ]
+}
